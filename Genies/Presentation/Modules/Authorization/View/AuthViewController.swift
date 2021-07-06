@@ -9,14 +9,42 @@ import UIKit
 
 class AuthViewController: UIViewController {
     
+    @IBOutlet weak var const: NSLayoutConstraint!
+    @IBOutlet weak var phoneBox: UILabel!
+    @IBOutlet weak var emailBox: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.becomeFirstResponder()
+        setupLabelTap()
+        
+//        emailTextField.becomeFirstResponder()
+        
+        emailBox.addBottomBorderWithColor(color: UIColor.red, width: 1.0)
+        phoneBox.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.gray, thickness: 1, width: const.constant)
     }
     
+    
+    @objc func phoneBoxTapped(_ sender: UITapGestureRecognizer) {
+        phoneBox.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.red, thickness: 1, width: const.constant)
+        emailBox.addBottomBorderWithColor(color: UIColor.gray, width: 1.0)
+    }
+    
+    @objc func emailBoxTapped(_ sender: UITapGestureRecognizer) {
+        phoneBox.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.gray, thickness: 1, width: const.constant)
+        emailBox.addBottomBorderWithColor(color: UIColor.red, width: 1.0)
+    }
+        
+    func setupLabelTap() {
+        let phoneBoxTap = UITapGestureRecognizer(target: self, action: #selector(phoneBoxTapped(_:)))
+        phoneBox.isUserInteractionEnabled = true
+        phoneBox.addGestureRecognizer(phoneBoxTap)
+
+        let emailBoxTap = UITapGestureRecognizer(target: self, action: #selector(emailBoxTapped(_:)))
+        emailBox.isUserInteractionEnabled = true
+        emailBox.addGestureRecognizer(emailBoxTap)
+    }
     
 
     @IBAction func nextButtonDidPress(_ sender: Any) {
@@ -34,4 +62,5 @@ class AuthViewController: UIViewController {
     }
     
 }
+
 
