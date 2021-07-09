@@ -39,6 +39,11 @@ class SignUpViewController: UIViewController {
 //        
 //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 //        appDelegate.window?.rootViewController = homePage
+        
+        
+        let vc = PersonalDataViewController(nibName: "PersonalDataViewController", bundle: nil)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     @IBAction func dismissSignUp(_ sender: Any) {

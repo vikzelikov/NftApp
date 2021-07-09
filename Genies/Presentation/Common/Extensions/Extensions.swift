@@ -40,6 +40,13 @@ extension UIView {
 }
 
 
+extension UIButton {
+    func applyButtonStyle() {
+        self.backgroundColor = .black
+    }
+}
+
+
 //extension CALayer {
 //
 //    func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat, width: CGFloat) {

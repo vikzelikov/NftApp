@@ -12,7 +12,6 @@
         <!--View Controller-->
         <scene sceneID="UlT-oR-qfY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IuZ-v5-8x2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="b01-mb-z2v" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4TT-TB-qg2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -46,7 +45,7 @@
                                     <constraint firstAttribute="width" constant="200" id="cQy-Jx-9Q8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Create Avatar">
+                                <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -69,13 +68,13 @@
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IuZ-v5-8x2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1815" y="131"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="SCC-IZ-oLP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TVS-gP-oo5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="oSQ-0Q-nCA" customClass="SignUpViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hh5-x2-Mwt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -95,7 +94,7 @@
                                     <constraint firstAttribute="height" constant="50" id="s4F-We-mGM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Sign Up">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -104,7 +103,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="FLN-Hy-oHZ" kind="modal" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="1KM-d7-nFV"/>
+                                    <action selector="nextButtonDidPress:" destination="oSQ-0Q-nCA" eventType="touchUpInside" id="qhq-OY-HMP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUX-FQ-ZI4">
@@ -225,13 +224,13 @@
                         <outlet property="phoneTextField" destination="BVw-S6-cok" id="A9z-QM-b7N"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TVS-gP-oo5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1039" y="-223"/>
         </scene>
         <!--Log In-->
         <scene sceneID="bBw-cf-jZ7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xNm-9U-VBu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="neW-lc-n5A" customClass="LoginViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DLY-UF-VPB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -263,6 +262,9 @@
                                         <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="phE-31-tbr" kind="modal" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="qBB-Uc-9Au"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRa-jj-shh">
                                 <rect key="frame" x="15" y="15" width="20" height="20"/>
@@ -304,16 +306,17 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Wvi-8P-AfX"/>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xNm-9U-VBu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1041" y="486"/>
         </scene>
         <!--Home-->
-        <scene sceneID="EVW-yI-ekj">
+        <scene sceneID="u49-Y0-3cQ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="FLN-Hy-oHZ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cYw-yQ-2xh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Home" id="phE-31-tbr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gj8-ag-pUz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-79" y="-224"/>
+            <point key="canvasLocation" x="-81" y="486"/>
         </scene>
     </scenes>
     <resources>

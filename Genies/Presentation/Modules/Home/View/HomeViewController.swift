@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         viewer.x = Int(UIScreen.main.bounds.size.width * 0.5) - viewer.width / 2
         viewer.y = 100
         var model = Insert3DModel()
-        model.mesh = "man.obj"
+        model.mesh = "man1.obj"
         model.material = "text1.jpg"
 
         setupScene(viewerSetup: viewer, modelSetup: model)
