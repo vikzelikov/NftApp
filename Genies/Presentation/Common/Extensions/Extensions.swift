@@ -9,42 +9,61 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func addTopBorderWithColor(color: UIColor, width: CGFloat) {
-        let border = CALayer()
-        border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: width)
-        self.layer.addSublayer(border)
-    }
-
-    func addRightBorderWithColor(color: UIColor, width: CGFloat) {
-        let border = CALayer()
-        border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: self.frame.size.width - width, y: 0, width: width, height: self.frame.size.height)
-        self.layer.addSublayer(border)
-        self.layer.addSublayer(border)
-    }
-
-    func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
-        let border = CALayer()
-        border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
-        self.layer.addSublayer(border)
-    }
-
-    func addLeftBorderWithColor(color: UIColor, width: CGFloat) {
-        let border = CALayer()
-        border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: 0, y: 0, width: width, height: self.frame.size.height)
-        self.layer.addSublayer(border)
-    }
+    
 }
 
 
 extension UIButton {
     func applyButtonStyle() {
-        self.backgroundColor = .black
+        self.backgroundColor = ColorHelper.hexStringToUIColor(hex: "f0b235")
+        self.layer.cornerRadius = 12
+        self.titleLabel?.textColor = UIColor.black
+        self.tintColor = UIColor.black
+    }
+    
+    func applyButtonEffects() {
+        self.addTarget(self, action: #selector(touchDown), for: .touchDown)
+        self.addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchDragExit), for: .touchDragExit)
+    }
+    
+    @objc func touchDown(_ sender: UIButton) {
+        zoomIn()
+        
+        HapticHelper.buttonVibro(.light)
+    }
+    
+    @objc func touchUpInside(_ sender: UIButton) {
+        zoomOut()
+        
+        HapticHelper.buttonVibro(.medium)
+    }
+    
+    @objc func touchDragExit(_ sender: UIButton) {
+        zoomOut()
+    }
+    
+    private func zoomIn() {
+        UIView.animate(withDuration: 0.1,
+            animations: {
+                self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            },
+            completion: { _ in })
+    }
+    
+    private func zoomOut() {
+        UIView.animate(withDuration: 0.1,
+            animations: {
+                self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            },
+            completion: { _ in
+                UIView.animate(withDuration: 0.1) {
+                    self.transform = CGAffineTransform.identity
+                }
+            })
     }
 }
+
 
 
 //extension CALayer {

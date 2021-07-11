@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */; };
 		181742EE2698636B002B9FD7 /* PersonalDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */; };
+		181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F42699B601002B9FD7 /* HapticHelper.swift */; };
+		181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F62699B7E7002B9FD7 /* AuthViewController.swift */; };
+		181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F8269B0705002B9FD7 /* ColorHelper.swift */; };
 		18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84265266E27A40033AFC0 /* AppDelegate.swift */; };
 		18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84269266E27A40033AFC0 /* SignUpViewController.swift */; };
 		18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B8426B266E27A40033AFC0 /* Authorization.storyboard */; };
@@ -30,6 +33,9 @@
 		058902B29A06F5DBEEF6791B /* Pods-Genies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Genies.debug.xcconfig"; path = "Target Support Files/Pods-Genies/Pods-Genies.debug.xcconfig"; sourceTree = "<group>"; };
 		181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDataViewController.xib; sourceTree = "<group>"; };
+		181742F42699B601002B9FD7 /* HapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticHelper.swift; sourceTree = "<group>"; };
+		181742F62699B7E7002B9FD7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		181742F8269B0705002B9FD7 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		18B84262266E27A40033AFC0 /* Genies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B84265266E27A40033AFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B84269266E27A40033AFC0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +68,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181742F32699B5C3002B9FD7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				181742F42699B601002B9FD7 /* HapticHelper.swift */,
+				181742F8269B0705002B9FD7 /* ColorHelper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		18B84259266E27A40033AFC0 = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +228,7 @@
 				18D3FECF2697B8C40030929D /* LoginViewController.swift */,
 				181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */,
 				181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */,
+				181742F62699B7E7002B9FD7 /* AuthViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -243,6 +259,7 @@
 		18D3FEC6268FADE50030929D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				181742F32699B5C3002B9FD7 /* Utils */,
 				18D3FEC7268FAE270030929D /* Extensions */,
 			);
 			path = Common;
@@ -398,6 +415,9 @@
 				18D3FEC9268FAE390030929D /* Extensions.swift in Sources */,
 				18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */,
 				181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */,
+				181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */,
+				181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */,
+				181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */,
 				18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */,
 				18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */,
 				18B84290266F64A30033AFC0 /* HomeViewController.swift in Sources */,

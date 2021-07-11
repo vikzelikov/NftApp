@@ -33,13 +33,24 @@ class PersonalDataViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
             vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+//            present(vc, animated: true)
         }
         
         isSelectedSex = true
         selectSexButtons.isHidden = false
         dateBirthPicker.isHidden = true
         titleLabel.text = "What do you identify as?"
+        
+        UIView.animate(withDuration: 0.1,
+            animations: {
+                self.nextButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            },
+            completion: { _ in
+                UIView.animate(withDuration: 0.1) {
+                    self.nextButton.transform = CGAffineTransform.identity
+                }
+            })
+        HapticHelper.buttonVibro(.light)
     }
     
     @IBAction func maleButtonDidTap(_ sender: Any) {
