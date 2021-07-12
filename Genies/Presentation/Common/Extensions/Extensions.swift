@@ -92,6 +92,7 @@ extension UITextField {
         self.tintColor = UIColor(named: "orange")
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
+        self.borderStyle = .none
         self.font = .systemFont(ofSize: 16)
 
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.size.height))
