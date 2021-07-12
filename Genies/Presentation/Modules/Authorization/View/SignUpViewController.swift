@@ -9,28 +9,29 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
-    @IBOutlet weak var phoneContainer: UIView!
-    @IBOutlet weak var emailContainer: UIView!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPassTextField: UITextField!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        phoneTextField.becomeFirstResponder()
+        self.navigationController?.navigationBar.isHidden = true
+        emailTextField.becomeFirstResponder()
+        
+        setupStyle()
     }
     
-    @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            phoneTextField.becomeFirstResponder()
-            phoneContainer.isHidden = false
-            emailContainer.isHidden = true
-        } else {
-            emailTextField.becomeFirstResponder()
-            phoneContainer.isHidden = true
-            emailContainer.isHidden = false
-        }
+    private func setupStyle() {
+        emailTextField.applyTextFieldStyle()
+        passwordTextField.applyTextFieldStyle()
+        confirmPassTextField.applyTextFieldStyle()
+        
+        nextButton.applyButtonStyle()
+        nextButton.applyButtonEffects()
+        
+        cancelButton.applyButtonEffects()
     }
 
     @IBAction func nextButtonDidPress(_ sender: Any) {

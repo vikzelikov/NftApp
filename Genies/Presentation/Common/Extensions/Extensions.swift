@@ -15,9 +15,10 @@ extension UIView {
 
 extension UIButton {
     func applyButtonStyle() {
-        self.backgroundColor = ColorHelper.hexStringToUIColor(hex: "f0b235")
+        self.backgroundColor = UIColor(named: "orange")
         self.layer.cornerRadius = 12
         self.titleLabel?.textColor = UIColor.black
+        self.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
         self.tintColor = UIColor.black
     }
     
@@ -61,6 +62,21 @@ extension UIButton {
                     self.transform = CGAffineTransform.identity
                 }
             })
+    }
+}
+
+
+extension UITextField {
+    func applyTextFieldStyle() {
+        self.backgroundColor = UIColor(named: "gray")
+        self.tintColor = UIColor(named: "orange")
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
+        self.font = .systemFont(ofSize: 16)
+
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
     }
 }
 
