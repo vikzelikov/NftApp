@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-extension UIView {
-    
-}
-
 
 extension UIButton {
     func applyButtonStyle() {
@@ -22,6 +18,7 @@ extension UIButton {
         self.tintColor = UIColor.black
     }
     
+    // bounds and haptic effects
     func applyButtonEffects() {
         self.addTarget(self, action: #selector(touchDown), for: .touchDown)
         self.addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
@@ -62,6 +59,29 @@ extension UIButton {
                     self.transform = CGAffineTransform.identity
                 }
             })
+    }
+    
+    func loadingIndicator(isShow: Bool, titleButton: String?) {
+        let tag = 9876
+        if isShow {
+            self.setTitle("", for: .normal)
+
+            let indicator = UIActivityIndicatorView()
+            let buttonHeight = self.bounds.size.height
+            let buttonWidth = self.bounds.size.width
+            indicator.center = CGPoint(x: buttonWidth/2, y: buttonHeight/2)
+            indicator.color = UIColor(named: "gray")
+            indicator.tag = tag
+            self.addSubview(indicator)
+            indicator.startAnimating()
+        } else {
+            if let indicator = self.viewWithTag(tag) as? UIActivityIndicatorView {
+                self.setTitle(titleButton, for: .normal)
+                
+                indicator.stopAnimating()
+                indicator.removeFromSuperview()
+            }
+        }
     }
 }
 

@@ -20,47 +20,52 @@ class PersonalDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupStyle()
+        
+        // disable back swipe
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
+    private func setupStyle() {
         if #available(iOS 13.4, *) {
             dateBirthPicker.preferredDatePickerStyle = UIDatePickerStyle.wheels
         }
         
         nextButton.applyButtonStyle()
+        nextButton.applyButtonEffects()
     }
     
     @IBAction func nextDidTap(_ sender: Any) {
         if isSelectedSex {
-//            dismiss(animated: true, completion: nil)
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-            vc.modalPresentationStyle = .fullScreen
-//            present(vc, animated: true)
+            nextButton.loadingIndicator(isShow: true, titleButton: nil)
+            
+            // CREATE ACCOUNT
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showHome()
+            }
         }
         
         isSelectedSex = true
         selectSexButtons.isHidden = false
         dateBirthPicker.isHidden = true
         titleLabel.text = "What do you identify as?"
-        
-        UIView.animate(withDuration: 0.1,
-            animations: {
-                self.nextButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            },
-            completion: { _ in
-                UIView.animate(withDuration: 0.1) {
-                    self.nextButton.transform = CGAffineTransform.identity
-                }
-            })
-        HapticHelper.buttonVibro(.light)
     }
     
     @IBAction func maleButtonDidTap(_ sender: Any) {
-        maleButton.backgroundColor = UIColor.black.withAlphaComponent(0.05)
-        femaleButton.backgroundColor = UIColor.white
+        maleButton.backgroundColor = UIColor(named: "gray")
+        femaleButton.backgroundColor = UIColor.black
     }
     
     @IBAction func femaleButtonDidTap(_ sender: Any) {
-        femaleButton.backgroundColor = UIColor.black.withAlphaComponent(0.05)
-        maleButton.backgroundColor = UIColor.white
+        femaleButton.backgroundColor = UIColor(named: "gray")
+        maleButton.backgroundColor = UIColor.black
     }
     
+    private func showHome() {
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let homePage = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.window?.rootViewController = homePage
+    }
 }

@@ -30,21 +30,11 @@ class SignUpViewController: UIViewController {
         
         nextButton.applyButtonStyle()
         nextButton.applyButtonEffects()
-        
-        cancelButton.applyButtonEffects()
     }
 
     @IBAction func nextButtonDidPress(_ sender: Any) {
-//        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-//        guard let homePage = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
-//        
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//        appDelegate.window?.rootViewController = homePage
-        
-        
-        let vc = PersonalDataViewController(nibName: "PersonalDataViewController", bundle: nil)
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        let vc = PersonalDataViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func dismissSignUp(_ sender: Any) {

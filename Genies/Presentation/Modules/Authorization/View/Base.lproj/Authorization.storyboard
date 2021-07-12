@@ -66,7 +66,7 @@
             </objects>
             <point key="canvasLocation" x="-1815" y="131"/>
         </scene>
-        <!--Sign Up-->
+        <!--Sign Up View Controller-->
         <scene sceneID="SCC-IZ-oLP">
             <objects>
                 <viewController interfaceStyle="dark" id="oSQ-0Q-nCA" customClass="SignUpViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
@@ -162,7 +162,7 @@
                             <constraint firstItem="KmE-LK-2Bf" firstAttribute="top" secondItem="QbJ-3b-pxP" secondAttribute="bottom" constant="15" id="zGV-Pc-T32"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign Up" largeTitleDisplayMode="always" id="rLe-Al-xsv"/>
+                    <navigationItem key="navigationItem" id="rLe-Al-xsv"/>
                     <connections>
                         <outlet property="cancelButton" destination="TUX-FQ-ZI4" id="hAY-IP-fiX"/>
                         <outlet property="confirmPassTextField" destination="A64-rj-iVh" id="8Vw-Ko-RIQ"/>
