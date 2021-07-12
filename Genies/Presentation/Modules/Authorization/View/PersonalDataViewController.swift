@@ -63,8 +63,8 @@ class PersonalDataViewController: UIViewController {
     }
     
     private func showHome() {
-        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        guard let homePage = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+        let homeStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
+        guard let homePage = homeStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = homePage
     }
