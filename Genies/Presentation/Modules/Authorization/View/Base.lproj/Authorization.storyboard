@@ -13,7 +13,7 @@
         <!--Auth View Controller-->
         <scene sceneID="UlT-oR-qfY">
             <objects>
-                <viewController interfaceStyle="dark" id="b01-mb-z2v" customClass="AuthViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" interfaceStyle="dark" id="b01-mb-z2v" customClass="AuthViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4TT-TB-qg2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

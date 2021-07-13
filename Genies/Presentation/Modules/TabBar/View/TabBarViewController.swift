@@ -28,7 +28,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let tabBarList = [firstVC, secondVC]
     
         tabBar.isTranslucent = true
-        tabBar.tintColor = UIColor(named: "lightGray")
+        tabBar.tintColor = UIColor.white
         tabBar.barStyle = .blackOpaque
         viewControllers = tabBarList
         self.selectedIndex = 0
