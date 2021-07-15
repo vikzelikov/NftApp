@@ -20,8 +20,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqq-4B-iW0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="HiK-nU-6Pk">
-                                <rect key="frame" x="99" y="471" width="122" height="28"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="HiK-nU-6Pk">
+                                <rect key="frame" x="109" y="10" width="102.5" height="28"/>
                             </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -30,10 +30,10 @@
                             <constraint firstItem="Dqq-4B-iW0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="4fy-J9-e6m"/>
                             <constraint firstItem="Dqq-4B-iW0" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Bd0-hR-zZ5"/>
                             <constraint firstItem="Dqq-4B-iW0" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="IiR-PO-Zwy"/>
+                            <constraint firstItem="HiK-nU-6Pk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="Xhf-rl-nEX"/>
                             <constraint firstItem="Dqq-4B-iW0" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" id="ZR4-tV-Bhi"/>
                             <constraint firstItem="HiK-nU-6Pk" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="dqg-SV-4n1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="gAx-Rc-JLW"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="HiK-nU-6Pk" secondAttribute="bottom" constant="20" id="nLx-YM-65D"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Shop" image="shop" selectedImage="shop" id="seV-J7-4KD"/>

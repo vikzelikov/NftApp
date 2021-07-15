@@ -16,6 +16,13 @@
 		182342C1269DFC5500CD2907 /* ExchangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342BF269DFC5500CD2907 /* ExchangeViewController.xib */; };
 		182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342C2269DFC6300CD2907 /* DropShopViewController.swift */; };
 		182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342C3269DFC6300CD2907 /* DropShopViewController.xib */; };
+		182342CA269E410D00CD2907 /* ClothesViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342C8269E410D00CD2907 /* ClothesViewCell.xib */; };
+		182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342CB269E41F300CD2907 /* DropShopViewModel.swift */; };
+		182342CE269E469700CD2907 /* ClothesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342CD269E469700CD2907 /* ClothesViewCell.swift */; };
+		182342D0269E485200CD2907 /* ClothesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342CF269E485200CD2907 /* ClothesViewModel.swift */; };
+		182342D326A0493600CD2907 /* DetailDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342D126A0493600CD2907 /* DetailDropViewController.swift */; };
+		182342D426A0493600CD2907 /* DetailDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342D226A0493600CD2907 /* DetailDropViewController.xib */; };
+		182342D726A081EF00CD2907 /* UICustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342D626A081EF00CD2907 /* UICustomView.swift */; };
 		18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F88269CE7DB00611362 /* TabBarViewController.swift */; };
 		18523F90269CEAA000611362 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F8F269CEAA000611362 /* ShopViewController.swift */; };
 		18523F92269CEB4E00611362 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F91269CEB4E00611362 /* Shop.storyboard */; };
@@ -47,6 +54,13 @@
 		182342BF269DFC5500CD2907 /* ExchangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeViewController.xib; sourceTree = "<group>"; };
 		182342C2269DFC6300CD2907 /* DropShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropShopViewController.swift; sourceTree = "<group>"; };
 		182342C3269DFC6300CD2907 /* DropShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropShopViewController.xib; sourceTree = "<group>"; };
+		182342C8269E410D00CD2907 /* ClothesViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClothesViewCell.xib; sourceTree = "<group>"; };
+		182342CB269E41F300CD2907 /* DropShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropShopViewModel.swift; sourceTree = "<group>"; };
+		182342CD269E469700CD2907 /* ClothesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesViewCell.swift; sourceTree = "<group>"; };
+		182342CF269E485200CD2907 /* ClothesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesViewModel.swift; sourceTree = "<group>"; };
+		182342D126A0493600CD2907 /* DetailDropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDropViewController.swift; sourceTree = "<group>"; };
+		182342D226A0493600CD2907 /* DetailDropViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailDropViewController.xib; sourceTree = "<group>"; };
+		182342D626A081EF00CD2907 /* UICustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomView.swift; sourceTree = "<group>"; };
 		18523F88269CE7DB00611362 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		18523F8F269CEAA000611362 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		18523F91269CEB4E00611362 /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
@@ -128,8 +142,12 @@
 		182342BC269DFC0E00CD2907 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				182342C8269E410D00CD2907 /* ClothesViewCell.xib */,
 				182342C2269DFC6300CD2907 /* DropShopViewController.swift */,
 				182342C3269DFC6300CD2907 /* DropShopViewController.xib */,
+				182342CD269E469700CD2907 /* ClothesViewCell.swift */,
+				182342D126A0493600CD2907 /* DetailDropViewController.swift */,
+				182342D226A0493600CD2907 /* DetailDropViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,8 +155,18 @@
 		182342BD269DFC1200CD2907 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				182342CB269E41F300CD2907 /* DropShopViewModel.swift */,
+				182342CF269E485200CD2907 /* ClothesViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		182342D526A081DB00CD2907 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				182342D626A081EF00CD2907 /* UICustomView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		18523F8A269CE95300611362 /* TabBar */ = {
@@ -352,6 +380,7 @@
 		18D3FEC6268FADE50030929D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				182342D526A081DB00CD2907 /* CustomViews */,
 				181742F32699B5C3002B9FD7 /* Utils */,
 				18D3FEC7268FAE270030929D /* Extensions */,
 			);
@@ -454,6 +483,8 @@
 				18523F92269CEB4E00611362 /* Shop.storyboard in Resources */,
 				18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */,
 				18B8428E266F648F0033AFC0 /* Avatar.storyboard in Resources */,
+				182342CA269E410D00CD2907 /* ClothesViewCell.xib in Resources */,
+				182342D426A0493600CD2907 /* DetailDropViewController.xib in Resources */,
 				182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */,
 				18D3FED72697C5B00030929D /* text2.jpg in Resources */,
 			);
@@ -510,17 +541,22 @@
 			files = (
 				18D3FEC9268FAE390030929D /* Extensions.swift in Sources */,
 				18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */,
+				182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */,
 				18523F90269CEAA000611362 /* ShopViewController.swift in Sources */,
+				182342D326A0493600CD2907 /* DetailDropViewController.swift in Sources */,
 				181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */,
 				18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */,
 				181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */,
 				182342C0269DFC5500CD2907 /* ExchangeViewController.swift in Sources */,
+				182342D726A081EF00CD2907 /* UICustomView.swift in Sources */,
 				181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */,
 				182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */,
+				182342CE269E469700CD2907 /* ClothesViewCell.swift in Sources */,
 				181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */,
 				18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */,
 				18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */,
 				18B84290266F64A30033AFC0 /* AvatarViewController.swift in Sources */,
+				182342D0269E485200CD2907 /* ClothesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
