@@ -7,22 +7,28 @@
 
 import UIKit
 
-class DetailDropViewController: UIViewController {
+class DetailNftViewController: UIViewController {
     
     var clothes: ClothesCellViewModel? = nil
+    var isForDropShop: Bool = false
 
     @IBOutlet weak var clothesImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var balanceView: UIView!
+    @IBOutlet weak var originalTagView: UIView!
+    @IBOutlet weak var nftTagConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nftTagView: UIView!
+    @IBOutlet weak var moreInfoNftLabel: UIStackView!
+    @IBOutlet weak var expirationDateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        buyButton.applyButtonStyle()
-        buyButton.applyButtonEffects()
+        checkoutView()
+        
+        setupStyle()
         
         if let price = clothes?.price {
             buyButton?.setTitle("\(price)", for: .normal)
@@ -37,8 +43,34 @@ class DetailDropViewController: UIViewController {
         }
     }
     
+    private func setupStyle() {
+        buyButton.applyButtonStyle()
+        buyButton.applyButtonEffects()
+    }
+    
+    private func checkoutView() {
+        if isForDropShop {
+            moreInfoNftLabel.isHidden = true
+            expirationDateLabel.isHidden = false
+        } else {
+            moreInfoNftLabel.isHidden = true
+            expirationDateLabel.isHidden = false
+            
+            originalTagView.isHidden = true
+            nftTagConstraint.constant = 15
+        }
+    }
+    
     func getUrl(stringUrl: String) -> URL? {
         return URL(string: stringUrl)
+    }
+    
+    @IBAction func tradingHistoryDidTap(_ sender: Any) {
+        
+    }
+    
+    @IBAction func moreOffersDidTap(_ sender: Any) {
+        
     }
     
     @IBAction func dismissDetailView(_ sender: Any) {
