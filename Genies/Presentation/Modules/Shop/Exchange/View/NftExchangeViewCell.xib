@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NftExchangeViewCell" rowHeight="283" id="KGk-i7-Jjw" customClass="NftExchangeViewCell" customModule="Genies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="283"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="283"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6XI-xh-L09">
+                        <rect key="frame" x="15" y="15" width="450" height="150"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JMh-c7-eux">
+                                <rect key="frame" x="15" y="25" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="D95-kb-eUl"/>
+                                    <constraint firstAttribute="width" constant="100" id="qWp-kg-fS7"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="jV6-gJ-soe">
+                                <rect key="frame" x="130" y="42" width="305" height="66.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daE-QR-7rR">
+                                        <rect key="frame" x="0.0" y="0.0" width="305" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tW-6G-UtQ">
+                                        <rect key="frame" x="0.0" y="49.5" width="305" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="daE-QR-7rR" firstAttribute="leading" secondItem="jV6-gJ-soe" secondAttribute="leading" id="Hb3-Ts-GIH"/>
+                                    <constraint firstItem="5tW-6G-UtQ" firstAttribute="leading" secondItem="jV6-gJ-soe" secondAttribute="leading" id="VHH-gn-y03"/>
+                                    <constraint firstAttribute="trailing" secondItem="daE-QR-7rR" secondAttribute="trailing" id="qAf-Cg-xkU"/>
+                                    <constraint firstAttribute="trailing" secondItem="5tW-6G-UtQ" secondAttribute="trailing" id="ze4-NA-QrG"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="gray"/>
+                        <constraints>
+                            <constraint firstItem="jV6-gJ-soe" firstAttribute="centerY" secondItem="6XI-xh-L09" secondAttribute="centerY" id="2aq-Tu-LwK"/>
+                            <constraint firstAttribute="height" constant="150" id="6wP-1U-Ydg"/>
+                            <constraint firstItem="JMh-c7-eux" firstAttribute="centerY" secondItem="6XI-xh-L09" secondAttribute="centerY" id="9aG-QS-7Xk"/>
+                            <constraint firstAttribute="trailing" secondItem="jV6-gJ-soe" secondAttribute="trailing" constant="15" id="LwV-or-mxF"/>
+                            <constraint firstItem="jV6-gJ-soe" firstAttribute="leading" secondItem="JMh-c7-eux" secondAttribute="trailing" constant="15" id="cl0-Wt-GDh"/>
+                            <constraint firstItem="JMh-c7-eux" firstAttribute="leading" secondItem="6XI-xh-L09" secondAttribute="leading" constant="15" id="tus-Wb-Y2Q"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="6XI-xh-L09" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="57S-G3-77r"/>
+                    <constraint firstAttribute="bottom" secondItem="6XI-xh-L09" secondAttribute="bottom" constant="10" id="APG-Tk-65N"/>
+                    <constraint firstAttribute="trailing" secondItem="6XI-xh-L09" secondAttribute="trailing" constant="15" id="EZq-Ro-l7M"/>
+                    <constraint firstItem="6XI-xh-L09" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="mPx-I4-MFJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nftImageView" destination="JMh-c7-eux" id="0G6-28-6aT"/>
+                <outlet property="priceLabel" destination="5tW-6G-UtQ" id="3kv-0c-Wtl"/>
+                <outlet property="titleLabel" destination="daE-QR-7rR" id="2ym-so-Lgs"/>
+            </connections>
+            <point key="canvasLocation" x="253.62318840579712" y="185.82589285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="gray">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -23,6 +23,10 @@
 		182342D326A0493600CD2907 /* DetailDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342D126A0493600CD2907 /* DetailDropViewController.swift */; };
 		182342D426A0493600CD2907 /* DetailDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342D226A0493600CD2907 /* DetailDropViewController.xib */; };
 		182342D726A081EF00CD2907 /* UICustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342D626A081EF00CD2907 /* UICustomView.swift */; };
+		182342DB26A1E67F00CD2907 /* NftExchangeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342D926A1E67F00CD2907 /* NftExchangeViewCell.swift */; };
+		182342DC26A1E67F00CD2907 /* NftExchangeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342DA26A1E67F00CD2907 /* NftExchangeViewCell.xib */; };
+		182342DE26A1EA8E00CD2907 /* NftCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342DD26A1EA8E00CD2907 /* NftCellViewModel.swift */; };
+		182342E026A1EB9100CD2907 /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342DF26A1EB9100CD2907 /* ExchangeViewModel.swift */; };
 		18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F88269CE7DB00611362 /* TabBarViewController.swift */; };
 		18523F90269CEAA000611362 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F8F269CEAA000611362 /* ShopViewController.swift */; };
 		18523F92269CEB4E00611362 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F91269CEB4E00611362 /* Shop.storyboard */; };
@@ -61,6 +65,10 @@
 		182342D126A0493600CD2907 /* DetailDropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDropViewController.swift; sourceTree = "<group>"; };
 		182342D226A0493600CD2907 /* DetailDropViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailDropViewController.xib; sourceTree = "<group>"; };
 		182342D626A081EF00CD2907 /* UICustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomView.swift; sourceTree = "<group>"; };
+		182342D926A1E67F00CD2907 /* NftExchangeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NftExchangeViewCell.swift; sourceTree = "<group>"; };
+		182342DA26A1E67F00CD2907 /* NftExchangeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NftExchangeViewCell.xib; sourceTree = "<group>"; };
+		182342DD26A1EA8E00CD2907 /* NftCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NftCellViewModel.swift; sourceTree = "<group>"; };
+		182342DF26A1EB9100CD2907 /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
 		18523F88269CE7DB00611362 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		18523F8F269CEAA000611362 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		18523F91269CEB4E00611362 /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
@@ -128,6 +136,8 @@
 			children = (
 				182342BE269DFC5500CD2907 /* ExchangeViewController.swift */,
 				182342BF269DFC5500CD2907 /* ExchangeViewController.xib */,
+				182342D926A1E67F00CD2907 /* NftExchangeViewCell.swift */,
+				182342DA26A1E67F00CD2907 /* NftExchangeViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -135,6 +145,8 @@
 		182342BB269DFC0700CD2907 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				182342DD26A1EA8E00CD2907 /* NftCellViewModel.swift */,
+				182342DF26A1EB9100CD2907 /* ExchangeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -486,6 +498,7 @@
 				182342CA269E410D00CD2907 /* ClothesViewCell.xib in Resources */,
 				182342D426A0493600CD2907 /* DetailDropViewController.xib in Resources */,
 				182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */,
+				182342DC26A1E67F00CD2907 /* NftExchangeViewCell.xib in Resources */,
 				18D3FED72697C5B00030929D /* text2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,8 +552,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182342DE26A1EA8E00CD2907 /* NftCellViewModel.swift in Sources */,
+				182342E026A1EB9100CD2907 /* ExchangeViewModel.swift in Sources */,
 				18D3FEC9268FAE390030929D /* Extensions.swift in Sources */,
 				18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */,
+				182342DB26A1E67F00CD2907 /* NftExchangeViewCell.swift in Sources */,
 				182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */,
 				18523F90269CEAA000611362 /* ShopViewController.swift in Sources */,
 				182342D326A0493600CD2907 /* DetailDropViewController.swift in Sources */,

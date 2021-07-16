@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,31 +12,74 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExchangeViewController" customModule="Genies" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="o5s-lR-DOr" id="UX6-7V-VBi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" interfaceStyle="dark" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exchange" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuV-wI-JKx">
-                    <rect key="frame" x="122.5" y="273.5" width="75" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exchange" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hla-1S-7nY">
+                    <rect key="frame" x="113.5" y="30" width="93.5" height="27"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o5s-lR-DOr">
+                    <rect key="frame" x="0.0" y="67" width="320" height="501"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pv-OG-Lxz">
+                    <rect key="frame" x="285" y="0.0" width="35" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="XHr-N3-i4i"/>
+                        <constraint firstAttribute="width" constant="35" id="twk-FZ-qAj"/>
+                    </constraints>
+                    <color key="tintColor" name="lightGray"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="15" maxX="10" maxY="0.0"/>
+                    <state key="normal" image="search">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jha-GL-ekn">
+                    <rect key="frame" x="0.0" y="0.0" width="35" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="1EK-9o-KCv"/>
+                        <constraint firstAttribute="width" constant="35" id="XXV-OF-gDr"/>
+                    </constraints>
+                    <color key="tintColor" name="lightGray"/>
+                    <inset key="imageEdgeInsets" minX="10" minY="15" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" image="filter">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                    </state>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="kuV-wI-JKx" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="LZ1-iT-edd"/>
-                <constraint firstItem="kuV-wI-JKx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RF0-lq-VWt"/>
+                <constraint firstItem="o5s-lR-DOr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0Mh-Ns-xhz"/>
+                <constraint firstItem="o5s-lR-DOr" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="8CE-ia-z0e"/>
+                <constraint firstItem="hla-1S-7nY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="FYI-HP-4rb"/>
+                <constraint firstItem="hla-1S-7nY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Vpa-hJ-i7S"/>
+                <constraint firstItem="8pv-OG-Lxz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gn2-9F-HlU"/>
+                <constraint firstItem="o5s-lR-DOr" firstAttribute="top" secondItem="hla-1S-7nY" secondAttribute="bottom" constant="10" id="j5L-v6-0DA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8pv-OG-Lxz" secondAttribute="trailing" id="oki-bO-DK7"/>
+                <constraint firstItem="jha-GL-ekn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tzh-Nk-WVc"/>
+                <constraint firstItem="jha-GL-ekn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="udg-fd-7qS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="o5s-lR-DOr" secondAttribute="bottom" id="v4C-Rd-TQb"/>
+                <constraint firstItem="o5s-lR-DOr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="x7g-XQ-MoN"/>
             </constraints>
             <point key="canvasLocation" x="38" y="154"/>
         </view>
     </objects>
     <resources>
+        <image name="filter" width="512" height="512"/>
+        <image name="search" width="512" height="512"/>
+        <namedColor name="lightGray">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

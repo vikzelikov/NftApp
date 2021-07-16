@@ -21,11 +21,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ta-LC-yJf">
-                    <rect key="frame" x="0.0" y="72" width="320" height="496"/>
+                    <rect key="frame" x="0.0" y="67" width="320" height="501"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop Shop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lE5-nj-WAE">
-                    <rect key="frame" x="109.5" y="35" width="101.5" height="27"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop Shop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lE5-nj-WAE">
+                    <rect key="frame" x="109.5" y="30" width="101.5" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7ta-LC-yJf" secondAttribute="trailing" id="Dij-hg-mXq"/>
                 <constraint firstItem="lE5-nj-WAE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TOA-JG-uEu"/>
                 <constraint firstItem="7ta-LC-yJf" firstAttribute="top" secondItem="lE5-nj-WAE" secondAttribute="bottom" constant="10" id="aMb-Fi-KgH"/>
-                <constraint firstItem="lE5-nj-WAE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="35" id="s2I-JW-b5n"/>
+                <constraint firstItem="lE5-nj-WAE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="s2I-JW-b5n"/>
             </constraints>
             <point key="canvasLocation" x="38" y="154"/>
         </view>
