@@ -58,14 +58,14 @@ extension TradingHistoryViewController: UITableViewDelegate {
 //        HapticHelper.buttonVibro(.light)
     }
     
-//    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-//        let cell = tableView.cellForRow(at: indexPath)
-//
-//        cell?.selectionStyle = UITableViewCell.SelectionStyle.none
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+
+        cell?.selectionStyle = UITableViewCell.SelectionStyle.none
 //        UIView.animate(withDuration: 0.1) {
 //            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
 //        }
-//    }
+    }
 //
 //    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
 //        let cell = tableView.cellForRow(at: indexPath)

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */; };
+		18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */; };
+		18156D3526A38CE1006B8FE5 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D3426A38CE1006B8FE5 /* PresentationController.swift */; };
 		181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */; };
 		181742EE2698636B002B9FD7 /* PersonalDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */; };
 		181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F42699B601002B9FD7 /* HapticHelper.swift */; };
@@ -59,6 +62,9 @@
 
 /* Begin PBXFileReference section */
 		058902B29A06F5DBEEF6791B /* Pods-Genies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Genies.debug.xcconfig"; path = "Target Support Files/Pods-Genies/Pods-Genies.debug.xcconfig"; sourceTree = "<group>"; };
+		18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetViewController.swift; sourceTree = "<group>"; };
+		18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterSheetViewController.xib; sourceTree = "<group>"; };
+		18156D3426A38CE1006B8FE5 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDataViewController.xib; sourceTree = "<group>"; };
 		181742F42699B601002B9FD7 /* HapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticHelper.swift; sourceTree = "<group>"; };
@@ -124,6 +130,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18156D3626A39169006B8FE5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				18156D3426A38CE1006B8FE5 /* PresentationController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		181742F32699B5C3002B9FD7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +176,8 @@
 				182342E326A2370900CD2907 /* MoreOffersViewController.xib */,
 				182342E626A2D21400CD2907 /* OfferPriceViewCell.swift */,
 				182342E726A2D21400CD2907 /* OfferPriceViewCell.xib */,
+				18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */,
+				18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,6 +470,7 @@
 		18D3FEC6268FADE50030929D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				18156D3626A39169006B8FE5 /* Controllers */,
 				182342D526A081DB00CD2907 /* CustomViews */,
 				181742F32699B5C3002B9FD7 /* Utils */,
 				18D3FEC7268FAE270030929D /* Extensions */,
@@ -554,6 +571,7 @@
 				181742EE2698636B002B9FD7 /* PersonalDataViewController.xib in Resources */,
 				18D3FED82697C5B00030929D /* text1.jpg in Resources */,
 				18B8426F266E27A50033AFC0 /* Assets.xcassets in Resources */,
+				18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */,
 				18D3FED92697C5B00030929D /* woman.OBJ in Resources */,
 				18523F92269CEB4E00611362 /* Shop.storyboard in Resources */,
 				18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */,
@@ -633,6 +651,7 @@
 				181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */,
 				182342F626A2F10E00CD2907 /* HistoryCellViewModel.swift in Sources */,
 				182342C0269DFC5500CD2907 /* ExchangeViewController.swift in Sources */,
+				18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */,
 				182342D726A081EF00CD2907 /* UICustomView.swift in Sources */,
 				182342E826A2D21400CD2907 /* OfferPriceViewCell.swift in Sources */,
 				181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */,
@@ -645,6 +664,7 @@
 				18B84290266F64A30033AFC0 /* AvatarViewController.swift in Sources */,
 				182342D0269E485200CD2907 /* ClothesViewModel.swift in Sources */,
 				182342F326A2ECF700CD2907 /* HistoryViewCell.swift in Sources */,
+				18156D3526A38CE1006B8FE5 /* PresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
