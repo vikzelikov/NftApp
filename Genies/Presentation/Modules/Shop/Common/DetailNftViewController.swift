@@ -53,8 +53,8 @@ class DetailNftViewController: UIViewController {
             moreInfoNftLabel.isHidden = true
             expirationDateLabel.isHidden = false
         } else {
-            moreInfoNftLabel.isHidden = true
-            expirationDateLabel.isHidden = false
+            moreInfoNftLabel.isHidden = false
+            expirationDateLabel.isHidden = true
             
             originalTagView.isHidden = true
             nftTagConstraint.constant = 15
@@ -70,10 +70,15 @@ class DetailNftViewController: UIViewController {
     }
     
     @IBAction func moreOffersDidTap(_ sender: Any) {
-        
+        let vc = MoreOffersViewController(nibName: "MoreOffersViewController", bundle: nil)
+//        vc.clothes = items[indexPath.row]
+//        vc.isForDropShop = false
+        self.present(vc, animated: true, completion: nil)
+                
+        HapticHelper.buttonVibro(.light)
     }
     
-    @IBAction func dismissDetailView(_ sender: Any) {
+    @IBAction func dismissDidTap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
