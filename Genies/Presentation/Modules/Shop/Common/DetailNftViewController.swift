@@ -66,13 +66,16 @@ class DetailNftViewController: UIViewController {
     }
     
     @IBAction func tradingHistoryDidTap(_ sender: Any) {
-        
+        let vc = TradingHistoryViewController(nibName: "TradingHistoryViewController", bundle: nil)
+//        vc.nft = items[indexPath.row]
+        self.present(vc, animated: true, completion: nil)
+                
+        HapticHelper.buttonVibro(.light)
     }
     
     @IBAction func moreOffersDidTap(_ sender: Any) {
         let vc = MoreOffersViewController(nibName: "MoreOffersViewController", bundle: nil)
-//        vc.clothes = items[indexPath.row]
-//        vc.isForDropShop = false
+//        vc.nft = items[indexPath.row]
         self.present(vc, animated: true, completion: nil)
                 
         HapticHelper.buttonVibro(.light)

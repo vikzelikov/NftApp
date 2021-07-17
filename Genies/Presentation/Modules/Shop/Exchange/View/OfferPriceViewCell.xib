@@ -14,15 +14,15 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OfferPriceViewCell" rowHeight="80" id="KGk-i7-Jjw" customClass="OfferPriceViewCell" customModule="Genies" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="467-sQ-0zO">
-                        <rect key="frame" x="15" y="10" width="290" height="65"/>
+                        <rect key="frame" x="15" y="10" width="290" height="60"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pl5-Sp-NHS">
-                                <rect key="frame" x="205" y="15" width="70" height="35"/>
+                                <rect key="frame" x="205" y="12.5" width="70" height="35"/>
                                 <color key="backgroundColor" name="orange"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Iyu-sA-Qo7"/>
@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nV7-9n-cb1">
-                                <rect key="frame" x="15" y="17.5" width="185" height="30.5"/>
+                                <rect key="frame" x="15" y="15" width="185" height="30.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="US1-ih-LFn">
                                         <rect key="frame" x="0.0" y="0.0" width="92.5" height="30.5"/>
@@ -84,7 +84,7 @@
                         <constraints>
                             <constraint firstItem="Pl5-Sp-NHS" firstAttribute="leading" secondItem="nV7-9n-cb1" secondAttribute="trailing" constant="5" id="0JZ-8E-6qv"/>
                             <constraint firstAttribute="trailing" secondItem="Pl5-Sp-NHS" secondAttribute="trailing" constant="15" id="0qH-YF-AbV"/>
-                            <constraint firstAttribute="height" constant="65" id="Tg6-0q-F3c"/>
+                            <constraint firstAttribute="height" constant="60" id="Tg6-0q-F3c"/>
                             <constraint firstItem="nV7-9n-cb1" firstAttribute="leading" secondItem="467-sQ-0zO" secondAttribute="leading" constant="15" id="cg0-cm-DXe"/>
                             <constraint firstItem="Pl5-Sp-NHS" firstAttribute="centerY" secondItem="467-sQ-0zO" secondAttribute="centerY" id="kbZ-IH-YGO"/>
                             <constraint firstItem="nV7-9n-cb1" firstAttribute="centerY" secondItem="467-sQ-0zO" secondAttribute="centerY" id="xse-Qs-7aI"/>

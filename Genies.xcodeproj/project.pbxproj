@@ -31,6 +31,12 @@
 		182342E526A2370900CD2907 /* MoreOffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342E326A2370900CD2907 /* MoreOffersViewController.xib */; };
 		182342E826A2D21400CD2907 /* OfferPriceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342E626A2D21400CD2907 /* OfferPriceViewCell.swift */; };
 		182342E926A2D21400CD2907 /* OfferPriceViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342E726A2D21400CD2907 /* OfferPriceViewCell.xib */; };
+		182342EF26A2EB5E00CD2907 /* TradingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342ED26A2EB5E00CD2907 /* TradingHistoryViewController.swift */; };
+		182342F026A2EB5E00CD2907 /* TradingHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342EE26A2EB5E00CD2907 /* TradingHistoryViewController.xib */; };
+		182342F326A2ECF700CD2907 /* HistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342F126A2ECF700CD2907 /* HistoryViewCell.swift */; };
+		182342F426A2ECF700CD2907 /* HistoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342F226A2ECF700CD2907 /* HistoryViewCell.xib */; };
+		182342F626A2F10E00CD2907 /* HistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342F526A2F10E00CD2907 /* HistoryCellViewModel.swift */; };
+		182342F826A2F40500CD2907 /* TradingHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342F726A2F40500CD2907 /* TradingHistoryViewModel.swift */; };
 		18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F88269CE7DB00611362 /* TabBarViewController.swift */; };
 		18523F90269CEAA000611362 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F8F269CEAA000611362 /* ShopViewController.swift */; };
 		18523F92269CEB4E00611362 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F91269CEB4E00611362 /* Shop.storyboard */; };
@@ -77,6 +83,12 @@
 		182342E326A2370900CD2907 /* MoreOffersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreOffersViewController.xib; sourceTree = "<group>"; };
 		182342E626A2D21400CD2907 /* OfferPriceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferPriceViewCell.swift; sourceTree = "<group>"; };
 		182342E726A2D21400CD2907 /* OfferPriceViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferPriceViewCell.xib; sourceTree = "<group>"; };
+		182342ED26A2EB5E00CD2907 /* TradingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingHistoryViewController.swift; sourceTree = "<group>"; };
+		182342EE26A2EB5E00CD2907 /* TradingHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradingHistoryViewController.xib; sourceTree = "<group>"; };
+		182342F126A2ECF700CD2907 /* HistoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewCell.swift; sourceTree = "<group>"; };
+		182342F226A2ECF700CD2907 /* HistoryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryViewCell.xib; sourceTree = "<group>"; };
+		182342F526A2F10E00CD2907 /* HistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellViewModel.swift; sourceTree = "<group>"; };
+		182342F726A2F40500CD2907 /* TradingHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingHistoryViewModel.swift; sourceTree = "<group>"; };
 		18523F88269CE7DB00611362 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		18523F8F269CEAA000611362 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		18523F91269CEB4E00611362 /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
@@ -200,6 +212,35 @@
 				18523F91269CEB4E00611362 /* Shop.storyboard */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		182342EA26A2EB0B00CD2907 /* TradingHistory */ = {
+			isa = PBXGroup;
+			children = (
+				182342EC26A2EB4000CD2907 /* ViewModel */,
+				182342EB26A2EB3A00CD2907 /* View */,
+			);
+			path = TradingHistory;
+			sourceTree = "<group>";
+		};
+		182342EB26A2EB3A00CD2907 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				182342ED26A2EB5E00CD2907 /* TradingHistoryViewController.swift */,
+				182342EE26A2EB5E00CD2907 /* TradingHistoryViewController.xib */,
+				182342F126A2ECF700CD2907 /* HistoryViewCell.swift */,
+				182342F226A2ECF700CD2907 /* HistoryViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		182342EC26A2EB4000CD2907 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				182342F526A2F10E00CD2907 /* HistoryCellViewModel.swift */,
+				182342F726A2F40500CD2907 /* TradingHistoryViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		18523F8A269CE95300611362 /* TabBar */ = {
@@ -326,6 +367,7 @@
 		18B84283266F632C0033AFC0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				182342EA26A2EB0B00CD2907 /* TradingHistory */,
 				18523F8D269CEA0500611362 /* Shop */,
 				18523F8A269CE95300611362 /* TabBar */,
 				18B8428B266F63FB0033AFC0 /* Launch */,
@@ -517,8 +559,10 @@
 				18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */,
 				18B8428E266F648F0033AFC0 /* Avatar.storyboard in Resources */,
 				182342CA269E410D00CD2907 /* ClothesViewCell.xib in Resources */,
+				182342F426A2ECF700CD2907 /* HistoryViewCell.xib in Resources */,
 				182342D426A0493600CD2907 /* DetailNftViewController.xib in Resources */,
 				182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */,
+				182342F026A2EB5E00CD2907 /* TradingHistoryViewController.xib in Resources */,
 				182342DC26A1E67F00CD2907 /* NftExchangeViewCell.xib in Resources */,
 				18D3FED72697C5B00030929D /* text2.jpg in Resources */,
 				182342E926A2D21400CD2907 /* OfferPriceViewCell.xib in Resources */,
@@ -585,18 +629,22 @@
 				182342D326A0493600CD2907 /* DetailNftViewController.swift in Sources */,
 				181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */,
 				18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */,
+				182342EF26A2EB5E00CD2907 /* TradingHistoryViewController.swift in Sources */,
 				181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */,
+				182342F626A2F10E00CD2907 /* HistoryCellViewModel.swift in Sources */,
 				182342C0269DFC5500CD2907 /* ExchangeViewController.swift in Sources */,
 				182342D726A081EF00CD2907 /* UICustomView.swift in Sources */,
 				182342E826A2D21400CD2907 /* OfferPriceViewCell.swift in Sources */,
 				181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */,
 				182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */,
+				182342F826A2F40500CD2907 /* TradingHistoryViewModel.swift in Sources */,
 				182342CE269E469700CD2907 /* ClothesViewCell.swift in Sources */,
 				181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */,
 				18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */,
 				18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */,
 				18B84290266F64A30033AFC0 /* AvatarViewController.swift in Sources */,
 				182342D0269E485200CD2907 /* ClothesViewModel.swift in Sources */,
+				182342F326A2ECF700CD2907 /* HistoryViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
