@@ -9,17 +9,53 @@ import UIKit
 
 class FilterSheetViewController: UIViewController {
     
+    @IBOutlet weak var featuredLabel: UILabel!
+    @IBOutlet weak var priceLowToHighLabel: UILabel!
+    @IBOutlet weak var priceHighToLowLabel: UILabel!
+    
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
-    
-    @IBOutlet weak var slideIdicator: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
         view.addGestureRecognizer(panGesture)
         
-        slideIdicator.roundCorners(.allCorners, radius: 10)
+        let tapAction = UITapGestureRecognizer(target: self, action: #selector(actionTapped(_:)))
+        featuredLabel?.isUserInteractionEnabled = true
+        featuredLabel?.addGestureRecognizer(tapAction)
+        
+        let tapAction1 = UITapGestureRecognizer(target: self, action: #selector(actionTapped1(_:)))
+        priceLowToHighLabel?.isUserInteractionEnabled = true
+        priceLowToHighLabel?.addGestureRecognizer(tapAction1)
+        
+        let tapAction2 = UITapGestureRecognizer(target: self, action: #selector(actionTapped2(_:)))
+        priceHighToLowLabel?.isUserInteractionEnabled = true
+        priceHighToLowLabel?.addGestureRecognizer(tapAction2)
+    }
+    
+    @objc func actionTapped(_ sender: UITapGestureRecognizer) {
+        HapticHelper.buttonVibro(.light)
+        
+        featuredLabel.textColor = UIColor(named: "orange")
+        priceLowToHighLabel.textColor = UIColor.white
+        priceHighToLowLabel.textColor = UIColor.white
+    }
+    
+    @objc func actionTapped1(_ sender: UITapGestureRecognizer) {
+        HapticHelper.buttonVibro(.light)
+        
+        featuredLabel.textColor = UIColor.white
+        priceLowToHighLabel.textColor = UIColor(named: "orange")
+        priceHighToLowLabel.textColor = UIColor.white
+    }
+    
+    @objc func actionTapped2(_ sender: UITapGestureRecognizer) {
+        HapticHelper.buttonVibro(.light)
+        
+        featuredLabel.textColor = UIColor.white
+        priceLowToHighLabel.textColor = UIColor.white
+        priceHighToLowLabel.textColor = UIColor(named: "orange")
     }
     
     override func viewDidLayoutSubviews() {
