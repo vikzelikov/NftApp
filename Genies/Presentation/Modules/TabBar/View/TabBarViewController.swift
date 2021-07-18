@@ -26,10 +26,13 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         guard let secondVC = shop.instantiateViewController(withIdentifier: "ShopViewController") as? ShopViewController else { return }
 
         let tabBarList = [firstVC, secondVC]
-    
+        
         tabBar.isTranslucent = true
-        tabBar.tintColor = UIColor.white
-        tabBar.barStyle = .blackOpaque
+        tabBar.barTintColor = .black
+        tabBar.tintColor = .white
+        tabBar.backgroundColor = UIColor(named: "gray")
+        tabBar.layer.backgroundColor = UIColor.clear.cgColor
+        
         viewControllers = tabBarList
         self.selectedIndex = 0
     }
