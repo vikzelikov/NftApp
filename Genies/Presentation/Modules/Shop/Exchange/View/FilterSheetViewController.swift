@@ -35,27 +35,26 @@ class FilterSheetViewController: UIViewController {
     }
     
     @objc func actionTapped(_ sender: UITapGestureRecognizer) {
-        HapticHelper.buttonVibro(.light)
-        
+        resetFilter()
         featuredLabel.textColor = UIColor(named: "orange")
-        priceLowToHighLabel.textColor = UIColor.white
-        priceHighToLowLabel.textColor = UIColor.white
     }
     
     @objc func actionTapped1(_ sender: UITapGestureRecognizer) {
-        HapticHelper.buttonVibro(.light)
-        
-        featuredLabel.textColor = UIColor.white
+        resetFilter()
         priceLowToHighLabel.textColor = UIColor(named: "orange")
-        priceHighToLowLabel.textColor = UIColor.white
     }
     
     @objc func actionTapped2(_ sender: UITapGestureRecognizer) {
+        resetFilter()
+        priceHighToLowLabel.textColor = UIColor(named: "orange")
+    }
+    
+    private func resetFilter() {
         HapticHelper.buttonVibro(.light)
-        
+
         featuredLabel.textColor = UIColor.white
         priceLowToHighLabel.textColor = UIColor.white
-        priceHighToLowLabel.textColor = UIColor(named: "orange")
+        priceHighToLowLabel.textColor = UIColor.white
     }
     
     override func viewDidLayoutSubviews() {
@@ -64,6 +63,7 @@ class FilterSheetViewController: UIViewController {
             pointOrigin = self.view.frame.origin
         }
     }
+    
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: view)
         
