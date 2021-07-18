@@ -26,6 +26,11 @@ class ClothesViewCell: UITableViewCell {
     }
     
     func bind(viewModel: ClothesCellViewModel) {
+        mainView.layer.shadowColor = UIColor(named: "gray")?.cgColor
+        mainView.layer.shadowOpacity = 1
+        mainView.layer.shadowOffset = .zero
+        mainView.layer.shadowRadius = 5
+        
         titleLabel?.text = viewModel.title
         priceLabel?.text = viewModel.price
         if let stringUrl = viewModel.imageUrl {

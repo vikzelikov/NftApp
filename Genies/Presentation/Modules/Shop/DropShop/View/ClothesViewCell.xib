@@ -61,7 +61,7 @@
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="3o1-RH-RoL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="BCE-6d-iAO"/>
-                    <constraint firstAttribute="bottom" secondItem="3o1-RH-RoL" secondAttribute="bottom" constant="5" id="Bec-HT-9bT"/>
+                    <constraint firstAttribute="bottom" secondItem="3o1-RH-RoL" secondAttribute="bottom" constant="10" id="Bec-HT-9bT"/>
                     <constraint firstAttribute="trailing" secondItem="3o1-RH-RoL" secondAttribute="trailing" constant="15" id="ZJe-ay-B1J"/>
                     <constraint firstItem="3o1-RH-RoL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="iVu-np-Gvq"/>
                 </constraints>
@@ -78,7 +78,7 @@
     </objects>
     <resources>
         <namedColor name="gray">
-            <color red="0.14509803921568629" green="0.14509803921568629" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14499999582767487" green="0.14499999582767487" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

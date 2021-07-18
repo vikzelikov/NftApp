@@ -25,7 +25,6 @@ class NftExchangeViewCell: UITableViewCell {
     }
     
     func bind(viewModel: NftCellViewModel) {
-        
         mainView.layer.shadowColor = UIColor(named: "gray")?.cgColor
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowOffset = .zero
