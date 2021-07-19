@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func walletButtonDidTap(_ sender: Any) {
-        let walletViewController = MoreOffersViewController()
+        let walletViewController = WalletViewController()
         navigationController?.pushViewController(walletViewController, animated: true)
     }
     

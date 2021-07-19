@@ -16,6 +16,8 @@
 		18156D4326A4D925006B8FE5 /* SettingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4226A4D925006B8FE5 /* SettingCellViewModel.swift */; };
 		18156D4626A4DD3E006B8FE5 /* SettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4426A4DD3E006B8FE5 /* SettingViewCell.swift */; };
 		18156D4726A4DD3E006B8FE5 /* SettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */; };
+		18156D4F26A5D9B7006B8FE5 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4D26A5D9B7006B8FE5 /* WalletViewController.swift */; };
+		18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D4E26A5D9B7006B8FE5 /* WalletViewController.xib */; };
 		181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */; };
 		181742EE2698636B002B9FD7 /* PersonalDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */; };
 		181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F42699B601002B9FD7 /* HapticHelper.swift */; };
@@ -77,6 +79,8 @@
 		18156D4226A4D925006B8FE5 /* SettingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellViewModel.swift; sourceTree = "<group>"; };
 		18156D4426A4DD3E006B8FE5 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewCell.swift; sourceTree = "<group>"; };
 		18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewCell.xib; sourceTree = "<group>"; };
+		18156D4D26A5D9B7006B8FE5 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		18156D4E26A5D9B7006B8FE5 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
 		181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDataViewController.xib; sourceTree = "<group>"; };
 		181742F42699B601002B9FD7 /* HapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticHelper.swift; sourceTree = "<group>"; };
@@ -175,6 +179,31 @@
 			children = (
 				18156D4026A4D8F7006B8FE5 /* ProfileViewModel.swift */,
 				18156D4226A4D925006B8FE5 /* SettingCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		18156D4A26A5D99A006B8FE5 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				18156D4C26A5D9A2006B8FE5 /* ViewModel */,
+				18156D4B26A5D99F006B8FE5 /* View */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		18156D4B26A5D99F006B8FE5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18156D4D26A5D9B7006B8FE5 /* WalletViewController.swift */,
+				18156D4E26A5D9B7006B8FE5 /* WalletViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18156D4C26A5D9A2006B8FE5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -424,6 +453,7 @@
 		18B84283266F632C0033AFC0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				18156D4A26A5D99A006B8FE5 /* Wallet */,
 				18156D3726A4314B006B8FE5 /* Profile */,
 				182342EA26A2EB0B00CD2907 /* TradingHistory */,
 				18523F8D269CEA0500611362 /* Shop */,
@@ -622,6 +652,7 @@
 				18B8428E266F648F0033AFC0 /* Avatar.storyboard in Resources */,
 				182342CA269E410D00CD2907 /* ClothesViewCell.xib in Resources */,
 				182342F426A2ECF700CD2907 /* HistoryViewCell.xib in Resources */,
+				18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */,
 				182342D426A0493600CD2907 /* DetailNftViewController.xib in Resources */,
 				182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */,
 				182342F026A2EB5E00CD2907 /* TradingHistoryViewController.xib in Resources */,
@@ -693,6 +724,7 @@
 				181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */,
 				18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */,
 				182342EF26A2EB5E00CD2907 /* TradingHistoryViewController.swift in Sources */,
+				18156D4F26A5D9B7006B8FE5 /* WalletViewController.swift in Sources */,
 				18156D3D26A43250006B8FE5 /* ProfileViewController.swift in Sources */,
 				181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */,
 				18156D4126A4D8F7006B8FE5 /* ProfileViewModel.swift in Sources */,
