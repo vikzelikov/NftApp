@@ -18,6 +18,8 @@ class AvatarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.isHidden = true
+        
         var viewer = Insert3DViewer()
         viewer.width = 380
         viewer.height = Int(UIScreen.main.bounds.size.height * 0.9) - viewer.height / 2
@@ -28,11 +30,9 @@ class AvatarViewController: UIViewController {
         model.material = "text1.jpg"
 
         setupScene(viewerSetup: viewer, modelSetup: model)
+        
+        
     }
-    
-    
-    
-    
     
     
     

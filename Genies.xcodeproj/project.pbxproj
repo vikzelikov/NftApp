@@ -10,6 +10,12 @@
 		18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */; };
 		18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */; };
 		18156D3526A38CE1006B8FE5 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D3426A38CE1006B8FE5 /* PresentationController.swift */; };
+		18156D3B26A43240006B8FE5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18156D3A26A43240006B8FE5 /* Profile.storyboard */; };
+		18156D3D26A43250006B8FE5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D3C26A43250006B8FE5 /* ProfileViewController.swift */; };
+		18156D4126A4D8F7006B8FE5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4026A4D8F7006B8FE5 /* ProfileViewModel.swift */; };
+		18156D4326A4D925006B8FE5 /* SettingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4226A4D925006B8FE5 /* SettingCellViewModel.swift */; };
+		18156D4626A4DD3E006B8FE5 /* SettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4426A4DD3E006B8FE5 /* SettingViewCell.swift */; };
+		18156D4726A4DD3E006B8FE5 /* SettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */; };
 		181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */; };
 		181742EE2698636B002B9FD7 /* PersonalDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */; };
 		181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F42699B601002B9FD7 /* HapticHelper.swift */; };
@@ -65,6 +71,12 @@
 		18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetViewController.swift; sourceTree = "<group>"; };
 		18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterSheetViewController.xib; sourceTree = "<group>"; };
 		18156D3426A38CE1006B8FE5 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		18156D3A26A43240006B8FE5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		18156D3C26A43250006B8FE5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		18156D4026A4D8F7006B8FE5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		18156D4226A4D925006B8FE5 /* SettingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellViewModel.swift; sourceTree = "<group>"; };
+		18156D4426A4DD3E006B8FE5 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewCell.swift; sourceTree = "<group>"; };
+		18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewCell.xib; sourceTree = "<group>"; };
 		181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDataViewController.xib; sourceTree = "<group>"; };
 		181742F42699B601002B9FD7 /* HapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticHelper.swift; sourceTree = "<group>"; };
@@ -136,6 +148,35 @@
 				18156D3426A38CE1006B8FE5 /* PresentationController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		18156D3726A4314B006B8FE5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				18156D3926A43156006B8FE5 /* ViewModel */,
+				18156D3826A43152006B8FE5 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		18156D3826A43152006B8FE5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18156D3A26A43240006B8FE5 /* Profile.storyboard */,
+				18156D3C26A43250006B8FE5 /* ProfileViewController.swift */,
+				18156D4426A4DD3E006B8FE5 /* SettingViewCell.swift */,
+				18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18156D3926A43156006B8FE5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				18156D4026A4D8F7006B8FE5 /* ProfileViewModel.swift */,
+				18156D4226A4D925006B8FE5 /* SettingCellViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		181742F32699B5C3002B9FD7 /* Utils */ = {
@@ -383,6 +424,7 @@
 		18B84283266F632C0033AFC0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				18156D3726A4314B006B8FE5 /* Profile */,
 				182342EA26A2EB0B00CD2907 /* TradingHistory */,
 				18523F8D269CEA0500611362 /* Shop */,
 				18523F8A269CE95300611362 /* TabBar */,
@@ -567,6 +609,7 @@
 				182342E526A2370900CD2907 /* MoreOffersViewController.xib in Resources */,
 				18523F94269CED1100611362 /* TabBar.storyboard in Resources */,
 				18B84272266E27A50033AFC0 /* LaunchScreen.storyboard in Resources */,
+				18156D4726A4DD3E006B8FE5 /* SettingViewCell.xib in Resources */,
 				182342C1269DFC5500CD2907 /* ExchangeViewController.xib in Resources */,
 				181742EE2698636B002B9FD7 /* PersonalDataViewController.xib in Resources */,
 				18D3FED82697C5B00030929D /* text1.jpg in Resources */,
@@ -575,6 +618,7 @@
 				18D3FED92697C5B00030929D /* woman.OBJ in Resources */,
 				18523F92269CEB4E00611362 /* Shop.storyboard in Resources */,
 				18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */,
+				18156D3B26A43240006B8FE5 /* Profile.storyboard in Resources */,
 				18B8428E266F648F0033AFC0 /* Avatar.storyboard in Resources */,
 				182342CA269E410D00CD2907 /* ClothesViewCell.xib in Resources */,
 				182342F426A2ECF700CD2907 /* HistoryViewCell.xib in Resources */,
@@ -645,14 +689,18 @@
 				182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */,
 				18523F90269CEAA000611362 /* ShopViewController.swift in Sources */,
 				182342D326A0493600CD2907 /* DetailNftViewController.swift in Sources */,
+				18156D4326A4D925006B8FE5 /* SettingCellViewModel.swift in Sources */,
 				181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */,
 				18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */,
 				182342EF26A2EB5E00CD2907 /* TradingHistoryViewController.swift in Sources */,
+				18156D3D26A43250006B8FE5 /* ProfileViewController.swift in Sources */,
 				181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */,
+				18156D4126A4D8F7006B8FE5 /* ProfileViewModel.swift in Sources */,
 				182342F626A2F10E00CD2907 /* HistoryCellViewModel.swift in Sources */,
 				182342C0269DFC5500CD2907 /* ExchangeViewController.swift in Sources */,
 				18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */,
 				182342D726A081EF00CD2907 /* UICustomView.swift in Sources */,
+				18156D4626A4DD3E006B8FE5 /* SettingViewCell.swift in Sources */,
 				182342E826A2D21400CD2907 /* OfferPriceViewCell.swift in Sources */,
 				181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */,
 				182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */,

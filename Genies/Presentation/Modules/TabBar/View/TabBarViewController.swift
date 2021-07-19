@@ -18,14 +18,16 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func setupTabBar() {
-        let avatar = UIStoryboard(name: "Avatar", bundle: nil)
-
-        guard let firstVC = avatar.instantiateViewController(withIdentifier: "AvatarViewController") as? AvatarViewController else { return }
-
         let shop = UIStoryboard(name: "Shop", bundle: nil)
-        guard let secondVC = shop.instantiateViewController(withIdentifier: "ShopViewController") as? ShopViewController else { return }
+        guard let firstVC = shop.instantiateViewController(withIdentifier: "ShopViewController") as? ShopViewController else { return }
+        
+        let avatar = UIStoryboard(name: "Avatar", bundle: nil)
+        guard let secondVC = avatar.instantiateViewController(withIdentifier: "AvatarViewController") as? AvatarViewController else { return }
+        
+        let profile = UIStoryboard(name: "Profile", bundle: nil)
+        guard let thirdVC = profile.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController else { return }
 
-        let tabBarList = [firstVC, secondVC]
+        let tabBarList = [firstVC, secondVC, thirdVC]
         
         tabBar.isTranslucent = true
         tabBar.barTintColor = .black
@@ -34,7 +36,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         tabBar.layer.backgroundColor = UIColor.clear.cgColor
         
         viewControllers = tabBarList
-        self.selectedIndex = 0
+        self.selectedIndex = 1
     }
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
