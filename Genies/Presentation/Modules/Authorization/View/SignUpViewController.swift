@@ -9,6 +9,7 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPassTextField: UITextField!
@@ -18,12 +19,13 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        emailTextField.becomeFirstResponder()
+        loginTextField.becomeFirstResponder()
         
         setupStyle()
     }
     
     private func setupStyle() {
+        loginTextField.applyTextFieldStyle()
         emailTextField.applyTextFieldStyle()
         passwordTextField.applyTextFieldStyle()
         confirmPassTextField.applyTextFieldStyle()

@@ -25,7 +25,7 @@ class ClothesViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func bind(viewModel: ClothesCellViewModel) {
+    func bind(viewModel: NftCellViewModel) {
         mainView.layer.shadowColor = UIColor(named: "gray")?.cgColor
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowOffset = .zero

@@ -27,12 +27,6 @@ class ShopViewController: UIViewController {
         view.bringSubviewToFront(pageControl)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        scrollView.showsHorizontalScrollIndicator = false
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

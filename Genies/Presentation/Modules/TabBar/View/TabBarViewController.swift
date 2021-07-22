@@ -14,19 +14,20 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         setupTabBar()
         
-//        self.navigationController?.navigationBar.isHidden = true
         self.delegate = self
+        
     }
+    
     
     func setupTabBar() {
         let shop = UIStoryboard(name: "Shop", bundle: nil)
         guard let firstVC = shop.instantiateViewController(withIdentifier: "ShopViewController") as? ShopViewController else { return }
         
-        let avatar = UIStoryboard(name: "Avatar", bundle: nil)
-        guard let secondVC = avatar.instantiateViewController(withIdentifier: "AvatarViewController") as? AvatarViewController else { return }
+        let avatar = UIStoryboard(name: "Home", bundle: nil)
+        guard let secondVC = avatar.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
         
-        let profile = UIStoryboard(name: "Profile", bundle: nil)
-        guard let thirdVC = profile.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController else { return }
+        let profile = UIStoryboard(name: "Settings", bundle: nil)
+        guard let thirdVC = profile.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController else { return }
 
         let tabBarList = [firstVC, secondVC, thirdVC]
         

@@ -9,7 +9,7 @@ import UIKit
 
 class DetailNftViewController: UIViewController {
     
-    var clothes: ClothesCellViewModel? = nil
+    var nftCellViewModel: NftCellViewModel? = nil
     var isForDropShop: Bool = false
 
     @IBOutlet weak var clothesImageView: UIImageView!
@@ -30,13 +30,13 @@ class DetailNftViewController: UIViewController {
         
         setupStyle()
         
-        if let price = clothes?.price {
+        if let price = nftCellViewModel?.price {
             buyButton?.setTitle("\(price)", for: .normal)
         }
             
-        titleLabel?.text = clothes?.title
-        descriptionLabel?.text = clothes?.description
-        if let stringUrl = clothes?.imageUrl {
+        titleLabel?.text = nftCellViewModel?.title
+        descriptionLabel?.text = nftCellViewModel?.description
+        if let stringUrl = nftCellViewModel?.imageUrl {
             if let url = getUrl(stringUrl: stringUrl) {
                 clothesImageView.sd_setImage(with: url)
             }
