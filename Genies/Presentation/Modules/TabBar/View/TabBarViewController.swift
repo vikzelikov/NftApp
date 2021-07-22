@@ -15,8 +15,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         setupTabBar()
         
         self.delegate = self
-        
-        self.navigationController?.navigationBar.isHidden = true        
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     
