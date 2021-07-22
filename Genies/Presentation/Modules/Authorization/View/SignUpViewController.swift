@@ -35,8 +35,11 @@ class SignUpViewController: UIViewController {
     }
 
     @IBAction func nextButtonDidPress(_ sender: Any) {
-        let vc = PersonalDataViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let viewController = UIStoryboard(name: "Authorization", bundle: nil).instantiateViewController(withIdentifier: "PersonalDataViewController") as? PersonalDataViewController {
+                if let navigator = navigationController {
+                    navigator.pushViewController(viewController, animated: true)
+                }
+            }
     }
     
     @IBAction func dismissSignUp(_ sender: Any) {
@@ -44,5 +47,3 @@ class SignUpViewController: UIViewController {
     }
     
 }
-
-

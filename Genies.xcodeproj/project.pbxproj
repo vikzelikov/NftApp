@@ -19,7 +19,6 @@
 		18156D4F26A5D9B7006B8FE5 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4D26A5D9B7006B8FE5 /* WalletViewController.swift */; };
 		18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D4E26A5D9B7006B8FE5 /* WalletViewController.xib */; };
 		181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */; };
-		181742EE2698636B002B9FD7 /* PersonalDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */; };
 		181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F42699B601002B9FD7 /* HapticHelper.swift */; };
 		181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F62699B7E7002B9FD7 /* AuthViewController.swift */; };
 		181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F8269B0705002B9FD7 /* ColorHelper.swift */; };
@@ -78,7 +77,6 @@
 		18156D4D26A5D9B7006B8FE5 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		18156D4E26A5D9B7006B8FE5 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
 		181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
-		181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDataViewController.xib; sourceTree = "<group>"; };
 		181742F42699B601002B9FD7 /* HapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticHelper.swift; sourceTree = "<group>"; };
 		181742F62699B7E7002B9FD7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		181742F8269B0705002B9FD7 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
@@ -498,7 +496,6 @@
 				18B8426B266E27A40033AFC0 /* Authorization.storyboard */,
 				18D3FECF2697B8C40030929D /* LoginViewController.swift */,
 				181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */,
-				181742EC2698636B002B9FD7 /* PersonalDataViewController.xib */,
 				181742F62699B7E7002B9FD7 /* AuthViewController.swift */,
 			);
 			path = View;
@@ -628,7 +625,6 @@
 				18B84272266E27A50033AFC0 /* LaunchScreen.storyboard in Resources */,
 				18156D4726A4DD3E006B8FE5 /* SettingViewCell.xib in Resources */,
 				182342C1269DFC5500CD2907 /* ExchangeViewController.xib in Resources */,
-				181742EE2698636B002B9FD7 /* PersonalDataViewController.xib in Resources */,
 				18B8426F266E27A50033AFC0 /* Assets.xcassets in Resources */,
 				18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */,
 				18523F92269CEB4E00611362 /* Shop.storyboard in Resources */,

@@ -226,7 +226,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vm0-kQ-sZv" secondAttribute="trailing" id="FQe-n6-Q63"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="profile" selectedImage="profile" id="k16-Oa-oNj"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="k16-Oa-oNj"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="320" height="1000"/>
                     <connections>
@@ -247,7 +247,7 @@
     </scenes>
     <resources>
         <image name="ava" width="250" height="250"/>
-        <image name="profile" width="25.5" height="25"/>
+        <image name="settings" width="25" height="25"/>
         <image name="telegram" width="25" height="25"/>
         <namedColor name="gray">
             <color red="0.14499999582767487" green="0.14499999582767487" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

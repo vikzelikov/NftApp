@@ -30,9 +30,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKT-NX-agr">
-                                <rect key="frame" x="106.5" y="499" width="107" height="29"/>
+                                <rect key="frame" x="97.5" y="499" width="125" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="CREATE AVATAR">
+                                <state key="normal" title="CREATE ACCOUNT">
                                     <color key="titleColor" red="0.75295150280000001" green="0.75292283299999996" blue="0.75294226409999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
@@ -188,6 +188,117 @@
             </objects>
             <point key="canvasLocation" x="-43.125" y="-223.94366197183098"/>
         </scene>
+        <!--Personal Data View Controller-->
+        <scene sceneID="nHp-bt-O2f">
+            <objects>
+                <viewController storyboardIdentifier="PersonalDataViewController" interfaceStyle="dark" id="Gn4-Ni-7Rs" customClass="PersonalDataViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4fI-tV-CPU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="i2N-KL-Ial">
+                                <rect key="frame" x="34.5" y="81.5" width="251" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XE-j2-7jN">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="1pE-iy-RnR"/>
+                                            <constraint firstAttribute="width" constant="110" id="uYS-cP-KRs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="male">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="maleButtonDidTap:" destination="Gn4-Ni-7Rs" eventType="touchUpInside" id="A4E-CK-on1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsm-pn-dnh">
+                                        <rect key="frame" x="141" y="0.0" width="110" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="CRv-pR-hh0"/>
+                                            <constraint firstAttribute="width" constant="110" id="nlA-Cx-s9W"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="female">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="femaleButtonDidTap:" destination="Gn4-Ni-7Rs" eventType="touchUpInside" id="H1L-uc-mfy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How old are you?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zk-3V-Stj">
+                                <rect key="frame" x="78.5" y="15" width="163.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="JYE-Ct-X28">
+                                <rect key="frame" x="0.0" y="61.5" width="320" height="195"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="195" id="cj9-7S-pzH"/>
+                                </constraints>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-3187254617">
+                                    <!--1900-01-01 11:29:43 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="315399600">
+                                    <!--2010-12-30 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdD-ZI-FqO">
+                                <rect key="frame" x="15" y="276.5" width="290" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="S1P-xb-UzV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="NEXT"/>
+                                <connections>
+                                    <action selector="nextDidTap:" destination="Gn4-Ni-7Rs" eventType="touchUpInside" id="8YB-yZ-7qT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2hl-sI-HeS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="i2N-KL-Ial" firstAttribute="centerX" secondItem="4fI-tV-CPU" secondAttribute="centerX" id="375-UF-jGh"/>
+                            <constraint firstItem="JYE-Ct-X28" firstAttribute="top" secondItem="2zk-3V-Stj" secondAttribute="bottom" constant="20" id="4R7-Xb-pCZ"/>
+                            <constraint firstItem="i2N-KL-Ial" firstAttribute="top" secondItem="2zk-3V-Stj" secondAttribute="bottom" constant="40" id="AbC-MC-Ic2"/>
+                            <constraint firstAttribute="trailing" secondItem="OdD-ZI-FqO" secondAttribute="trailing" constant="15" id="KWj-Tl-9tL"/>
+                            <constraint firstItem="JYE-Ct-X28" firstAttribute="leading" secondItem="2hl-sI-HeS" secondAttribute="leading" id="PQK-BC-W0s"/>
+                            <constraint firstItem="2zk-3V-Stj" firstAttribute="top" secondItem="2hl-sI-HeS" secondAttribute="top" constant="15" id="RHF-4n-e35"/>
+                            <constraint firstItem="OdD-ZI-FqO" firstAttribute="top" secondItem="JYE-Ct-X28" secondAttribute="bottom" constant="20" id="UFR-RZ-tDg"/>
+                            <constraint firstItem="2zk-3V-Stj" firstAttribute="centerX" secondItem="4fI-tV-CPU" secondAttribute="centerX" id="Z4N-JE-M9i"/>
+                            <constraint firstAttribute="trailing" secondItem="JYE-Ct-X28" secondAttribute="trailing" id="dug-RS-kf9"/>
+                            <constraint firstItem="OdD-ZI-FqO" firstAttribute="leading" secondItem="2hl-sI-HeS" secondAttribute="leading" constant="15" id="jxN-gW-v2d"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dateBirthPicker" destination="JYE-Ct-X28" id="ezJ-MS-l2q"/>
+                        <outlet property="femaleButton" destination="tsm-pn-dnh" id="9gf-mw-c7Q"/>
+                        <outlet property="maleButton" destination="9XE-j2-7jN" id="3ln-l4-Ezv"/>
+                        <outlet property="nextButton" destination="OdD-ZI-FqO" id="ayn-rZ-3vI"/>
+                        <outlet property="selectSexButtons" destination="i2N-KL-Ial" id="TnI-pK-CmA"/>
+                        <outlet property="titleLabel" destination="2zk-3V-Stj" id="MjF-ld-xIY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gi0-2z-kGL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="947" y="-224"/>
+        </scene>
         <!--Log In-->
         <scene sceneID="bBw-cf-jZ7">
             <objects>
@@ -302,6 +413,8 @@
     <resources>
         <image name="auth_preview" width="2204" height="2357"/>
         <image name="cross" width="329" height="329"/>
+        <image name="female" width="512" height="512"/>
+        <image name="male" width="384" height="384"/>
         <namedColor name="lightGray">
             <color red="0.75300002098083496" green="0.75300002098083496" blue="0.75300002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
