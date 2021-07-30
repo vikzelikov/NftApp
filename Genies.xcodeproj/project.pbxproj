@@ -22,6 +22,9 @@
 		181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F42699B601002B9FD7 /* HapticHelper.swift */; };
 		181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F62699B7E7002B9FD7 /* AuthViewController.swift */; };
 		181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F8269B0705002B9FD7 /* ColorHelper.swift */; };
+		181C9A0F26AEFA3400A60105 /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181C9A0E26AEFA3400A60105 /* HomeHeader.xib */; };
+		181C9A1126AEFA5F00A60105 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C9A1026AEFA5F00A60105 /* HomeHeader.swift */; };
+		181C9A1326AEFCD100A60105 /* HViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C9A1226AEFCD100A60105 /* HViewController.swift */; };
 		182342C0269DFC5500CD2907 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342BE269DFC5500CD2907 /* ExchangeViewController.swift */; };
 		182342C1269DFC5500CD2907 /* ExchangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342BF269DFC5500CD2907 /* ExchangeViewController.xib */; };
 		182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342C2269DFC6300CD2907 /* DropShopViewController.swift */; };
@@ -51,6 +54,10 @@
 		18523F90269CEAA000611362 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F8F269CEAA000611362 /* ShopViewController.swift */; };
 		18523F92269CEB4E00611362 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F91269CEB4E00611362 /* Shop.storyboard */; };
 		18523F94269CED1100611362 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F93269CED1100611362 /* TabBar.storyboard */; };
+		186E5FE126B33B61008291AC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E5FDF26B33B61008291AC /* FirstViewController.swift */; };
+		186E5FE226B33B61008291AC /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E5FE026B33B61008291AC /* FirstViewController.xib */; };
+		186E5FE526B33ECF008291AC /* CollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E5FE326B33ECF008291AC /* CollectionViewCell2.swift */; };
+		186E5FE626B33ECF008291AC /* CollectionViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E5FE426B33ECF008291AC /* CollectionViewCell2.xib */; };
 		18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84265266E27A40033AFC0 /* AppDelegate.swift */; };
 		18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84269266E27A40033AFC0 /* SignUpViewController.swift */; };
 		18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B8426B266E27A40033AFC0 /* Authorization.storyboard */; };
@@ -80,6 +87,9 @@
 		181742F42699B601002B9FD7 /* HapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticHelper.swift; sourceTree = "<group>"; };
 		181742F62699B7E7002B9FD7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		181742F8269B0705002B9FD7 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
+		181C9A0E26AEFA3400A60105 /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
+		181C9A1026AEFA5F00A60105 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		181C9A1226AEFCD100A60105 /* HViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HViewController.swift; sourceTree = "<group>"; };
 		182342BE269DFC5500CD2907 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		182342BF269DFC5500CD2907 /* ExchangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeViewController.xib; sourceTree = "<group>"; };
 		182342C2269DFC6300CD2907 /* DropShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropShopViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +119,10 @@
 		18523F8F269CEAA000611362 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		18523F91269CEB4E00611362 /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
 		18523F93269CED1100611362 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		186E5FDF26B33B61008291AC /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		186E5FE026B33B61008291AC /* FirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
+		186E5FE326B33ECF008291AC /* CollectionViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell2.swift; sourceTree = "<group>"; };
+		186E5FE426B33ECF008291AC /* CollectionViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell2.xib; sourceTree = "<group>"; };
 		18B84262266E27A40033AFC0 /* Genies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B84265266E27A40033AFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B84269266E27A40033AFC0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -469,6 +483,13 @@
 			children = (
 				18B8428D266F648F0033AFC0 /* Home.storyboard */,
 				18B8428F266F64A30033AFC0 /* HomeViewController.swift */,
+				181C9A0E26AEFA3400A60105 /* HomeHeader.xib */,
+				181C9A1026AEFA5F00A60105 /* HomeHeader.swift */,
+				181C9A1226AEFCD100A60105 /* HViewController.swift */,
+				186E5FDF26B33B61008291AC /* FirstViewController.swift */,
+				186E5FE026B33B61008291AC /* FirstViewController.xib */,
+				186E5FE326B33ECF008291AC /* CollectionViewCell2.swift */,
+				186E5FE426B33ECF008291AC /* CollectionViewCell2.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -628,16 +649,19 @@
 				18B8426F266E27A50033AFC0 /* Assets.xcassets in Resources */,
 				18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */,
 				18523F92269CEB4E00611362 /* Shop.storyboard in Resources */,
+				181C9A0F26AEFA3400A60105 /* HomeHeader.xib in Resources */,
 				18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */,
 				18156D3B26A43240006B8FE5 /* Settings.storyboard in Resources */,
 				18B8428E266F648F0033AFC0 /* Home.storyboard in Resources */,
 				182342CA269E410D00CD2907 /* ClothesViewCell.xib in Resources */,
+				186E5FE626B33ECF008291AC /* CollectionViewCell2.xib in Resources */,
 				182342F426A2ECF700CD2907 /* HistoryViewCell.xib in Resources */,
 				18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */,
 				182342D426A0493600CD2907 /* DetailNftViewController.xib in Resources */,
 				182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */,
 				182342F026A2EB5E00CD2907 /* TradingHistoryViewController.xib in Resources */,
 				182342DC26A1E67F00CD2907 /* NftExchangeViewCell.xib in Resources */,
+				186E5FE226B33B61008291AC /* FirstViewController.xib in Resources */,
 				182342E926A2D21400CD2907 /* OfferPriceViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -695,12 +719,14 @@
 				182342E026A1EB9100CD2907 /* ExchangeViewModel.swift in Sources */,
 				18D3FEC9268FAE390030929D /* Extensions.swift in Sources */,
 				18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */,
+				181C9A1126AEFA5F00A60105 /* HomeHeader.swift in Sources */,
 				182342DB26A1E67F00CD2907 /* NftExchangeViewCell.swift in Sources */,
 				182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */,
 				182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */,
 				18523F90269CEAA000611362 /* ShopViewController.swift in Sources */,
 				182342D326A0493600CD2907 /* DetailNftViewController.swift in Sources */,
 				18156D4326A4D925006B8FE5 /* SettingCellViewModel.swift in Sources */,
+				186E5FE126B33B61008291AC /* FirstViewController.swift in Sources */,
 				181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */,
 				18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */,
 				182342EF26A2EB5E00CD2907 /* TradingHistoryViewController.swift in Sources */,
@@ -709,6 +735,7 @@
 				181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */,
 				18156D4126A4D8F7006B8FE5 /* ProfileViewModel.swift in Sources */,
 				182342F626A2F10E00CD2907 /* HistoryCellViewModel.swift in Sources */,
+				181C9A1326AEFCD100A60105 /* HViewController.swift in Sources */,
 				182342C0269DFC5500CD2907 /* ExchangeViewController.swift in Sources */,
 				18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */,
 				182342D726A081EF00CD2907 /* UICustomView.swift in Sources */,
@@ -720,6 +747,7 @@
 				182342CE269E469700CD2907 /* ClothesViewCell.swift in Sources */,
 				181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */,
 				18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */,
+				186E5FE526B33ECF008291AC /* CollectionViewCell2.swift in Sources */,
 				18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */,
 				18B84290266F64A30033AFC0 /* HomeViewController.swift in Sources */,
 				182342D0269E485200CD2907 /* ClothesViewModel.swift in Sources */,

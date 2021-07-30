@@ -23,8 +23,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let shop = UIStoryboard(name: "Shop", bundle: nil)
         guard let firstVC = shop.instantiateViewController(withIdentifier: "ShopViewController") as? ShopViewController else { return }
         
-        let avatar = UIStoryboard(name: "Home", bundle: nil)
-        guard let secondVC = avatar.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+        let home = UIStoryboard(name: "Home", bundle: nil)
+        guard let secondVC = home.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
         
         let profile = UIStoryboard(name: "Settings", bundle: nil)
         guard let thirdVC = profile.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController else { return }
@@ -33,7 +33,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         tabBar.isTranslucent = true
         tabBar.barTintColor = .black
-        tabBar.tintColor = .white
+        tabBar.tintColor = UIColor(named: "orange")
         tabBar.backgroundColor = UIColor(named: "gray")
         tabBar.layer.backgroundColor = UIColor.clear.cgColor
         

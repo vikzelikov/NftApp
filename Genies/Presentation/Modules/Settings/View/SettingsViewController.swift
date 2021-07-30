@@ -9,11 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var userImageView: UIImageView! {
-        didSet {
-            userImageView.layer.cornerRadius = userImageView.frame.width / 2
-        }
-    }
+
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var walletButton: UIButton!
     @IBOutlet weak var telegramButton: UIButton!

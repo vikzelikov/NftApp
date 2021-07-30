@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Wonder-Day-Ava-20.jpg",
+      "filename" : "share 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "share 1-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "share 1-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

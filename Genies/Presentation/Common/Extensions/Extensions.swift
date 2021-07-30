@@ -103,31 +103,31 @@ extension UITextField {
 
 
 
-//extension CALayer {
-//
-//    func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat, width: CGFloat) {
-//
-//            let border = CALayer()
-//
-//            switch edge {
-//            case UIRectEdge.top:
-//                border.frame = CGRect(x: 0, y: 0, width: width, height: thickness)
-//                break
-//            case UIRectEdge.bottom:
-//                border.frame = CGRect(x: 0, y: 28, width: width, height: thickness)
-//                break
-//            case UIRectEdge.left:
-//                border.frame = CGRect(x: 0, y: 0, width: thickness, height: self.bounds.height)
-//                break
-//            case UIRectEdge.right:
-//                border.frame = CGRect(x: width - thickness, y: 0, width: thickness, height: self.bounds.height)
-//                break
-//            default:
-//                break
-//            }
-//
-//            border.backgroundColor = color.cgColor;
-//
-//            self.addSublayer(border)
-//        }
-//}
+extension CALayer {
+
+    func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat, width: CGFloat) {
+
+            let border = CALayer()
+
+            switch edge {
+            case UIRectEdge.top:
+                border.frame = CGRect(x: 0, y: 0, width: width, height: thickness)
+                break
+            case UIRectEdge.bottom:
+                border.frame = CGRect(x: 0, y: 40, width: width, height: thickness)
+                break
+            case UIRectEdge.left:
+                border.frame = CGRect(x: 0, y: 0, width: thickness, height: self.bounds.height)
+                break
+            case UIRectEdge.right:
+                border.frame = CGRect(x: width - thickness, y: 0, width: thickness, height: self.bounds.height)
+                break
+            default:
+                break
+            }
+
+            border.backgroundColor = color.cgColor;
+
+            self.addSublayer(border)
+        }
+}
