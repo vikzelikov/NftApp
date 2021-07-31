@@ -114,7 +114,7 @@ extension CALayer {
                 border.frame = CGRect(x: 0, y: 0, width: width, height: thickness)
                 break
             case UIRectEdge.bottom:
-                border.frame = CGRect(x: 0, y: 40, width: width, height: thickness)
+                border.frame = CGRect(x: 0, y: 45, width: width, height: thickness)
                 break
             case UIRectEdge.left:
                 border.frame = CGRect(x: 0, y: 0, width: thickness, height: self.bounds.height)
