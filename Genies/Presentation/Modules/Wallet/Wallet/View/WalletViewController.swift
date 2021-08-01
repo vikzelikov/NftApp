@@ -69,10 +69,16 @@ class WalletViewController: UIViewController {
 
 extension WalletViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
-//        vc.clothes = items[indexPath.row]
-//        vc.isForDropShop = true
-//        self.present(vc, animated: true, completion: nil)
+        switch indexPath.row {
+        case 0:
+            let viewController = HistoryTransactionsViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        case 1:
+            let viewController = CollectionNftViewController()
+            navigationController?.pushViewController(viewController, animated: true)
+        default:
+            print(1)
+        }
 
         tableView.deselectRow(at: indexPath, animated: true)
         HapticHelper.buttonVibro(.light)

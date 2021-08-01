@@ -29,6 +29,12 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGU-Vo-Hv7">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="702"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEe-i0-hoK">
+                                    <rect key="frame" x="130.5" y="15" width="59" height="26.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5A-ro-X2A">
                                     <rect key="frame" x="15" y="212" width="290" height="60"/>
                                     <subviews>
@@ -154,6 +160,7 @@
                                 <constraint firstItem="Dy5-PH-hSe" firstAttribute="leading" secondItem="IGU-Vo-Hv7" secondAttribute="leading" constant="15" id="8fL-5E-etj"/>
                                 <constraint firstItem="sE7-5T-qFo" firstAttribute="leading" secondItem="IGU-Vo-Hv7" secondAttribute="leading" constant="15" id="9zu-Rk-m6q"/>
                                 <constraint firstItem="o3G-of-uMU" firstAttribute="top" secondItem="S5A-ro-X2A" secondAttribute="bottom" constant="20" id="BVU-u9-Zgk"/>
+                                <constraint firstItem="IEe-i0-hoK" firstAttribute="top" secondItem="IGU-Vo-Hv7" secondAttribute="top" constant="15" id="CSG-r1-qDP"/>
                                 <constraint firstAttribute="trailing" secondItem="Vht-6b-VxV" secondAttribute="trailing" constant="15" id="GCx-08-fBU"/>
                                 <constraint firstItem="Vht-6b-VxV" firstAttribute="leading" secondItem="IGU-Vo-Hv7" secondAttribute="leading" constant="15" id="SUb-IV-R3k"/>
                                 <constraint firstItem="S5A-ro-X2A" firstAttribute="top" secondItem="Vht-6b-VxV" secondAttribute="bottom" constant="20" id="VfP-Et-rCr"/>
@@ -170,20 +177,13 @@
                                 <constraint firstItem="o3G-of-uMU" firstAttribute="leading" secondItem="IGU-Vo-Hv7" secondAttribute="leading" constant="30" id="u3o-ed-wvW"/>
                                 <constraint firstAttribute="trailing" secondItem="sE7-5T-qFo" secondAttribute="trailing" constant="15" id="ude-ZW-tru"/>
                                 <constraint firstItem="sZW-dn-N6i" firstAttribute="top" secondItem="o3G-of-uMU" secondAttribute="bottom" constant="10" id="udz-q3-b4g"/>
+                                <constraint firstItem="IEe-i0-hoK" firstAttribute="centerX" secondItem="IGU-Vo-Hv7" secondAttribute="centerX" id="wfx-N4-vum"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEe-i0-hoK">
-                            <rect key="frame" x="130.5" y="15" width="59" height="26.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="IEe-i0-hoK" firstAttribute="centerX" secondItem="9Oy-dl-e2z" secondAttribute="centerX" id="0Ja-Hy-TtW"/>
                         <constraint firstItem="IGU-Vo-Hv7" firstAttribute="top" secondItem="9Oy-dl-e2z" secondAttribute="top" id="GXd-6H-BQy"/>
                         <constraint firstAttribute="bottom" secondItem="IGU-Vo-Hv7" secondAttribute="bottom" id="JdG-d2-qbs"/>
-                        <constraint firstItem="IEe-i0-hoK" firstAttribute="top" secondItem="9Oy-dl-e2z" secondAttribute="top" constant="15" id="OXl-Py-hrv"/>
                         <constraint firstAttribute="trailing" secondItem="IGU-Vo-Hv7" secondAttribute="trailing" id="g5s-2u-pPM"/>
                         <constraint firstItem="IGU-Vo-Hv7" firstAttribute="width" secondItem="9Oy-dl-e2z" secondAttribute="width" id="h8Q-sa-3Cd"/>
                         <constraint firstItem="IGU-Vo-Hv7" firstAttribute="height" secondItem="9Oy-dl-e2z" secondAttribute="height" priority="250" id="i1J-cX-5TP"/>
