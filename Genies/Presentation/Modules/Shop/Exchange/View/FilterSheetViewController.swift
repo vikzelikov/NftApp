@@ -50,7 +50,7 @@ class FilterSheetViewController: UIViewController {
     }
     
     private func resetFilter() {
-        HapticHelper.buttonVibro(.light)
+        HapticHelper.vibro(.light)
 
         featuredLabel.textColor = UIColor.white
         priceLowToHighLabel.textColor = UIColor.white

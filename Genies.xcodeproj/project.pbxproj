@@ -70,6 +70,9 @@
 		186E600E26B6DFE3008291AC /* CollectionNftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E600C26B6DFE3008291AC /* CollectionNftViewController.xib */; };
 		186E601126B6E27E008291AC /* TransactionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E600F26B6E27E008291AC /* TransactionViewCell.swift */; };
 		186E601226B6E27E008291AC /* TransactionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E601026B6E27E008291AC /* TransactionViewCell.xib */; };
+		186E601926B6E695008291AC /* DetailTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E601726B6E695008291AC /* DetailTransactionViewController.swift */; };
+		186E601A26B6E695008291AC /* DetailTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E601826B6E695008291AC /* DetailTransactionViewController.xib */; };
+		186E601C26B6F178008291AC /* TransactionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E601B26B6F178008291AC /* TransactionCellViewModel.swift */; };
 		18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84265266E27A40033AFC0 /* AppDelegate.swift */; };
 		18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84269266E27A40033AFC0 /* SignUpViewController.swift */; };
 		18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B8426B266E27A40033AFC0 /* Authorization.storyboard */; };
@@ -147,6 +150,9 @@
 		186E600C26B6DFE3008291AC /* CollectionNftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionNftViewController.xib; sourceTree = "<group>"; };
 		186E600F26B6E27E008291AC /* TransactionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewCell.swift; sourceTree = "<group>"; };
 		186E601026B6E27E008291AC /* TransactionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionViewCell.xib; sourceTree = "<group>"; };
+		186E601726B6E695008291AC /* DetailTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransactionViewController.swift; sourceTree = "<group>"; };
+		186E601826B6E695008291AC /* DetailTransactionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTransactionViewController.xib; sourceTree = "<group>"; };
+		186E601B26B6F178008291AC /* TransactionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellViewModel.swift; sourceTree = "<group>"; };
 		18B84262266E27A40033AFC0 /* Genies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B84265266E27A40033AFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B84269266E27A40033AFC0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -212,7 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				186E600426B6DF86008291AC /* CollectionNft */,
-				186E600126B6DF55008291AC /* History */,
+				186E600126B6DF55008291AC /* HistoryTransactions */,
 				186E5FFD26B6A430008291AC /* Wallet */,
 				186E5FEE26B6A3C2008291AC /* Withdraw */,
 				186E5FEB26B6A3AD008291AC /* AddFunds */,
@@ -496,13 +502,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		186E600126B6DF55008291AC /* History */ = {
+		186E600126B6DF55008291AC /* HistoryTransactions */ = {
 			isa = PBXGroup;
 			children = (
-				186E600326B6DF5F008291AC /* ViewModel */,
-				186E600226B6DF5C008291AC /* View */,
+				186E601426B6E622008291AC /* DetailTransaction */,
+				186E601326B6E619008291AC /* Transactions */,
 			);
-			path = History;
+			path = HistoryTransactions;
 			sourceTree = "<group>";
 		};
 		186E600226B6DF5C008291AC /* View */ = {
@@ -519,6 +525,7 @@
 		186E600326B6DF5F008291AC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				186E601B26B6F178008291AC /* TransactionCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -542,6 +549,40 @@
 			sourceTree = "<group>";
 		};
 		186E600626B6DF93008291AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		186E601326B6E619008291AC /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				186E600326B6DF5F008291AC /* ViewModel */,
+				186E600226B6DF5C008291AC /* View */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		186E601426B6E622008291AC /* DetailTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				186E601626B6E63D008291AC /* ViewModel */,
+				186E601526B6E638008291AC /* View */,
+			);
+			path = DetailTransaction;
+			sourceTree = "<group>";
+		};
+		186E601526B6E638008291AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				186E601726B6E695008291AC /* DetailTransactionViewController.swift */,
+				186E601826B6E695008291AC /* DetailTransactionViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		186E601626B6E63D008291AC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -841,6 +882,7 @@
 				18B8426F266E27A50033AFC0 /* Assets.xcassets in Resources */,
 				18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */,
 				18523F92269CEB4E00611362 /* Shop.storyboard in Resources */,
+				186E601A26B6E695008291AC /* DetailTransactionViewController.xib in Resources */,
 				181C9A0F26AEFA3400A60105 /* HomeHeader.xib in Resources */,
 				18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */,
 				18156D3B26A43240006B8FE5 /* Settings.storyboard in Resources */,
@@ -910,6 +952,7 @@
 			files = (
 				182342DE26A1EA8E00CD2907 /* NftCellViewModel.swift in Sources */,
 				186E5FFA26B6A413008291AC /* AddFundsViewModel.swift in Sources */,
+				186E601926B6E695008291AC /* DetailTransactionViewController.swift in Sources */,
 				182342E026A1EB9100CD2907 /* ExchangeViewModel.swift in Sources */,
 				18D3FEC9268FAE390030929D /* Extensions.swift in Sources */,
 				18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */,
@@ -918,6 +961,7 @@
 				186E5FFC26B6A420008291AC /* WithdrawViewModel.swift in Sources */,
 				182342DB26A1E67F00CD2907 /* NftExchangeViewCell.swift in Sources */,
 				182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */,
+				186E601C26B6F178008291AC /* TransactionCellViewModel.swift in Sources */,
 				182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */,
 				18523F90269CEAA000611362 /* ShopViewController.swift in Sources */,
 				182342D326A0493600CD2907 /* DetailNftViewController.swift in Sources */,

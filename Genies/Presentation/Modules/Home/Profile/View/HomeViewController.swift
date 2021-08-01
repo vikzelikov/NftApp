@@ -120,7 +120,7 @@ extension HomeViewController: UICollectionViewDelegate {
 //        navigationController?.pushViewController(vc, animated: true)
 
         
-        HapticHelper.buttonVibro(.light)
+        HapticHelper.vibro(.light)
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {

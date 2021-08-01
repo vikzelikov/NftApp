@@ -88,7 +88,7 @@ class DetailNftViewController: UIViewController {
 //        vc.nft = items[indexPath.row]
         self.present(vc, animated: true, completion: nil)
                 
-        HapticHelper.buttonVibro(.light)
+        HapticHelper.vibro(.light)
     }
     
     @IBAction func moreOffersDidTap(_ sender: Any) {
@@ -96,7 +96,7 @@ class DetailNftViewController: UIViewController {
 //        vc.nft = items[indexPath.row]
         self.present(vc, animated: true, completion: nil)
                 
-        HapticHelper.buttonVibro(.light)
+        HapticHelper.vibro(.light)
     }
     
     @IBAction func dismissDidTap(_ sender: Any) {

@@ -42,7 +42,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        HapticHelper.buttonVibro(.light)
+        HapticHelper.vibro(.light)
     }
     
 }

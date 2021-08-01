@@ -28,13 +28,13 @@ extension UIButton {
     @objc func touchDown(_ sender: UIButton) {
         zoomIn()
         
-        HapticHelper.buttonVibro(.light)
+        HapticHelper.vibro(.light)
     }
     
     @objc func touchUpInside(_ sender: UIButton) {
         zoomOut()
         
-        HapticHelper.buttonVibro(.medium)
+        HapticHelper.vibro(.medium)
     }
     
     @objc func touchDragExit(_ sender: UIButton) {

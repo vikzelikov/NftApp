@@ -27,7 +27,7 @@ class OfferPriceViewCell: UITableViewCell {
     }
     
     @IBAction func buyButtonDidTap(_ sender: UIButton) {
-        HapticHelper.buttonVibro(.light)
+        HapticHelper.vibro(.light)
         sender.isEnabled = false
         sender.loadingIndicator(isShow: true, titleButton: nil)
         

@@ -81,7 +81,7 @@ extension WalletViewController: UITableViewDelegate {
         }
 
         tableView.deselectRow(at: indexPath, animated: true)
-        HapticHelper.buttonVibro(.light)
+        HapticHelper.vibro(.light)
     }
 }
 

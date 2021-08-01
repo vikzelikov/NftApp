@@ -101,7 +101,7 @@ extension SettingsViewController: UITableViewDelegate {
 //        self.present(vc, animated: true, completion: nil)
 
         tableView.deselectRow(at: indexPath, animated: true)
-        HapticHelper.buttonVibro(.light)
+        HapticHelper.vibro(.light)
     }
 }
 

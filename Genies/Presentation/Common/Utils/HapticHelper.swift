@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct HapticHelper {
-    static func buttonVibro(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
+    static func vibro(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
         UIImpactFeedbackGenerator(style: style).impactOccurred()
     }
 }

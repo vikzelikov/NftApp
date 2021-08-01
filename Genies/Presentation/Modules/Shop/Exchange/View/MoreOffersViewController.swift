@@ -85,7 +85,7 @@ extension MoreOffersViewController: UITableViewDataSource {
 
         cell.bind(viewModel: items[indexPath.row])
         
-        HapticHelper.buttonVibro(.light)
+        HapticHelper.vibro(.light)
         
         return cell
     }
