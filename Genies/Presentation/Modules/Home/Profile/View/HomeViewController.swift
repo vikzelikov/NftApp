@@ -114,6 +114,12 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewController = DetailNftViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+//        let vc = storyboard?.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
+//        navigationController?.pushViewController(vc, animated: true)
+
+        
         HapticHelper.buttonVibro(.light)
     }
     

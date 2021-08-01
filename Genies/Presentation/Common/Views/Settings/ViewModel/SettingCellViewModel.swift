@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 struct SettingCellViewModel {
     let title: String?
     let contentLabel: String?
+    let iconContentView: UIImage?
 }

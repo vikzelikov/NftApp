@@ -32,23 +32,25 @@ class SettingsViewController: UIViewController {
         
         setupOtherSettingsTableView()
         
-        items.append(SettingCellViewModel(title: "E-mail", contentLabel: "vikzeawhjhjhbjhbhhghlikov@yandex.ru"))
-        items.append(SettingCellViewModel(title: "Password", contentLabel: "Change"))
-        items.append(SettingCellViewModel(title: "Pin code", contentLabel: "Off"))
         
-        items1.append(SettingCellViewModel(title: "Contact developer", contentLabel: "vikzeawhjhjh"))
-        items1.append(SettingCellViewModel(title: "Share application", contentLabel: "Change"))
-        items1.append(SettingCellViewModel(title: "Share application", contentLabel: "Off"))
+        
+        items.append(SettingCellViewModel(title: "E-mail", contentLabel: "vikzeawhjhjhbjhbhhghlikov@yandex.ru", iconContentView: nil))
+        items.append(SettingCellViewModel(title: "Password", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+        items.append(SettingCellViewModel(title: "Pin code", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+        
+        items1.append(SettingCellViewModel(title: "Contact developer", contentLabel: nil, iconContentView: UIImage(named: "mail")))
+        items1.append(SettingCellViewModel(title: "Share application", contentLabel: nil, iconContentView: UIImage(named: "share")))
+
+    
         
         telegramButton.layer.cornerRadius = telegramButton.frame.width / 2
 
         reload()
-        
     }
     
     @IBAction func walletButtonDidTap(_ sender: Any) {
-        let walletViewController = WalletViewController()
-        navigationController?.pushViewController(walletViewController, animated: true)
+        let viewController = WalletViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func reload() {
@@ -57,7 +59,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+                
         heightPersonalDataTableView.constant = personalDataTableView.contentSize.height
         heightOtherSettingsTableView.constant = otherSettingsTableView.contentSize.height
     }
@@ -105,7 +107,13 @@ extension SettingsViewController: UITableViewDelegate {
 
 extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if tableView === personalDataTableView {
+            return items.count
+        } else if tableView === otherSettingsTableView {
+            return items1.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,7 +139,7 @@ extension SettingsViewController: UITableViewDataSource {
             cell.selectionStyle = UITableViewCell.SelectionStyle.default
 
             cell.bind(viewModel: items1[indexPath.row])
-                    
+            
             return cell
         } else {
             return UITableViewCell()

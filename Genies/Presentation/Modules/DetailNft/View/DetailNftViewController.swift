@@ -10,12 +10,19 @@ import UIKit
 class DetailNftViewController: UIViewController {
     
     var nftCellViewModel: NftCellViewModel? = nil
-    var isForDropShop: Bool = false
+    enum TypeDetailNFT {
+        case detail
+        case dropShop
+        case exchange
+    }
+    
+    var typeDetailNFT: TypeDetailNFT = TypeDetailNFT.detail
 
     @IBOutlet weak var clothesImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var balanceContainer: UICustomView!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var originalTagView: UIView!
     @IBOutlet weak var nftTagConstraint: NSLayoutConstraint!
@@ -49,15 +56,26 @@ class DetailNftViewController: UIViewController {
     }
     
     private func checkoutView() {
-        if isForDropShop {
-            moreInfoNftLabel.isHidden = true
-            expirationDateLabel.isHidden = false
-        } else {
-            moreInfoNftLabel.isHidden = false
-            expirationDateLabel.isHidden = true
+        switch typeDetailNFT {
+            case .detail:
+                print(6)
+//                buyButton.isHidden = true
+//                balanceContainer.isHidden = true
             
-            originalTagView.isHidden = true
-            nftTagConstraint.constant = 15
+            case .dropShop:
+                buyButton.isHidden = false
+                balanceContainer.isHidden = false
+                moreInfoNftLabel.isHidden = true
+                expirationDateLabel.isHidden = false
+            
+            case .exchange:
+                buyButton.isHidden = false
+                balanceContainer.isHidden = false
+                
+                moreInfoNftLabel.isHidden = false
+                expirationDateLabel.isHidden = true
+                originalTagView.isHidden = true
+                nftTagConstraint.constant = 15
         }
     }
     
@@ -83,6 +101,8 @@ class DetailNftViewController: UIViewController {
     
     @IBAction func dismissDidTap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+        
+        navigationController?.popViewController(animated: true)
     }
     
 }

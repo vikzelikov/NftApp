@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WithdrawViewController" customModule="Genies" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" interfaceStyle="dark" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q2k-rG-rpQ">
+                    <rect key="frame" x="15" y="97" width="290" height="64.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="re4-y6-hUX">
+                    <rect key="frame" x="285" y="0.0" width="35" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="143-1V-DQm"/>
+                        <constraint firstAttribute="width" constant="35" id="1ou-fd-bwx"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="20" maxX="15" maxY="0.0"/>
+                    <state key="normal" image="cross"/>
+                    <connections>
+                        <action selector="dismissDidTap:" destination="-1" eventType="touchUpInside" id="3fh-Ay-xfA"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laJ-mD-wk5">
+                    <rect key="frame" x="15" y="488" width="290" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="ss5-79-cGv"/>
+                    </constraints>
+                    <state key="normal" title="Withdraw"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You get 500 USD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cm8-dy-32N">
+                    <rect key="frame" x="15" y="176.5" width="290" height="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Tokens amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUa-7u-xYn">
+                    <rect key="frame" x="15" y="65" width="290" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Withdraw" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TV-m4-8wO">
+                    <rect key="frame" x="114.5" y="15" width="91.5" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="laJ-mD-wk5" secondAttribute="bottom" constant="20" id="73r-KZ-sSG"/>
+                <constraint firstItem="Cm8-dy-32N" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="9dp-q9-o3J"/>
+                <constraint firstItem="re4-y6-hUX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="EXo-g0-AfC"/>
+                <constraint firstItem="5TV-m4-8wO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Fm0-Wn-QOF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Q2k-rG-rpQ" secondAttribute="trailing" constant="15" id="HAB-o8-S02"/>
+                <constraint firstItem="laJ-mD-wk5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Ktt-PG-Hzr"/>
+                <constraint firstItem="DUa-7u-xYn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="TPA-zK-Lwg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Cm8-dy-32N" secondAttribute="trailing" constant="15" id="UKC-3B-uBN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="re4-y6-hUX" secondAttribute="trailing" id="c5X-fu-2Q6"/>
+                <constraint firstItem="Q2k-rG-rpQ" firstAttribute="top" secondItem="DUa-7u-xYn" secondAttribute="bottom" constant="15" id="e6p-jm-g4B"/>
+                <constraint firstItem="Q2k-rG-rpQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="hl1-gd-BWU"/>
+                <constraint firstItem="DUa-7u-xYn" firstAttribute="top" secondItem="re4-y6-hUX" secondAttribute="bottom" constant="25" id="lD0-0o-Zx3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="laJ-mD-wk5" secondAttribute="trailing" constant="15" id="oOf-4o-4Y3"/>
+                <constraint firstItem="5TV-m4-8wO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="uMK-5O-doY"/>
+                <constraint firstItem="Cm8-dy-32N" firstAttribute="top" secondItem="Q2k-rG-rpQ" secondAttribute="bottom" constant="15" id="wLE-C0-sXl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DUa-7u-xYn" secondAttribute="trailing" constant="15" id="wmq-sY-iCr"/>
+            </constraints>
+            <point key="canvasLocation" x="109" y="106"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cross" width="329" height="329"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -12,7 +12,7 @@
 		18156D3526A38CE1006B8FE5 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D3426A38CE1006B8FE5 /* PresentationController.swift */; };
 		18156D3B26A43240006B8FE5 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18156D3A26A43240006B8FE5 /* Settings.storyboard */; };
 		18156D3D26A43250006B8FE5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D3C26A43250006B8FE5 /* SettingsViewController.swift */; };
-		18156D4126A4D8F7006B8FE5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4026A4D8F7006B8FE5 /* ProfileViewModel.swift */; };
+		18156D4126A4D8F7006B8FE5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4026A4D8F7006B8FE5 /* SettingsViewModel.swift */; };
 		18156D4326A4D925006B8FE5 /* SettingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4226A4D925006B8FE5 /* SettingCellViewModel.swift */; };
 		18156D4626A4DD3E006B8FE5 /* SettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4426A4DD3E006B8FE5 /* SettingViewCell.swift */; };
 		18156D4726A4DD3E006B8FE5 /* SettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */; };
@@ -58,6 +58,12 @@
 		186E5FE226B33B61008291AC /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E5FE026B33B61008291AC /* FirstViewController.xib */; };
 		186E5FE526B33ECF008291AC /* CollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E5FE326B33ECF008291AC /* CollectionViewCell2.swift */; };
 		186E5FE626B33ECF008291AC /* CollectionViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E5FE426B33ECF008291AC /* CollectionViewCell2.xib */; };
+		186E5FF326B6A3E2008291AC /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E5FF126B6A3E2008291AC /* WithdrawViewController.swift */; };
+		186E5FF426B6A3E2008291AC /* WithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E5FF226B6A3E2008291AC /* WithdrawViewController.xib */; };
+		186E5FF726B6A3FD008291AC /* AddFundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E5FF526B6A3FD008291AC /* AddFundsViewController.swift */; };
+		186E5FF826B6A3FD008291AC /* AddFundsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E5FF626B6A3FD008291AC /* AddFundsViewController.xib */; };
+		186E5FFA26B6A413008291AC /* AddFundsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E5FF926B6A413008291AC /* AddFundsViewModel.swift */; };
+		186E5FFC26B6A420008291AC /* WithdrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E5FFB26B6A420008291AC /* WithdrawViewModel.swift */; };
 		18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84265266E27A40033AFC0 /* AppDelegate.swift */; };
 		18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84269266E27A40033AFC0 /* SignUpViewController.swift */; };
 		18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B8426B266E27A40033AFC0 /* Authorization.storyboard */; };
@@ -77,7 +83,7 @@
 		18156D3426A38CE1006B8FE5 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		18156D3A26A43240006B8FE5 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		18156D3C26A43250006B8FE5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		18156D4026A4D8F7006B8FE5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		18156D4026A4D8F7006B8FE5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		18156D4226A4D925006B8FE5 /* SettingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellViewModel.swift; sourceTree = "<group>"; };
 		18156D4426A4DD3E006B8FE5 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewCell.swift; sourceTree = "<group>"; };
 		18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewCell.xib; sourceTree = "<group>"; };
@@ -123,6 +129,12 @@
 		186E5FE026B33B61008291AC /* FirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
 		186E5FE326B33ECF008291AC /* CollectionViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell2.swift; sourceTree = "<group>"; };
 		186E5FE426B33ECF008291AC /* CollectionViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell2.xib; sourceTree = "<group>"; };
+		186E5FF126B6A3E2008291AC /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
+		186E5FF226B6A3E2008291AC /* WithdrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawViewController.xib; sourceTree = "<group>"; };
+		186E5FF526B6A3FD008291AC /* AddFundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFundsViewController.swift; sourceTree = "<group>"; };
+		186E5FF626B6A3FD008291AC /* AddFundsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFundsViewController.xib; sourceTree = "<group>"; };
+		186E5FF926B6A413008291AC /* AddFundsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFundsViewModel.swift; sourceTree = "<group>"; };
+		186E5FFB26B6A420008291AC /* WithdrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewModel.swift; sourceTree = "<group>"; };
 		18B84262266E27A40033AFC0 /* Genies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B84265266E27A40033AFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B84269266E27A40033AFC0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -172,8 +184,6 @@
 			children = (
 				18156D3A26A43240006B8FE5 /* Settings.storyboard */,
 				18156D3C26A43250006B8FE5 /* SettingsViewController.swift */,
-				18156D4426A4DD3E006B8FE5 /* SettingViewCell.swift */,
-				18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,8 +191,7 @@
 		18156D3926A43156006B8FE5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				18156D4026A4D8F7006B8FE5 /* ProfileViewModel.swift */,
-				18156D4226A4D925006B8FE5 /* SettingCellViewModel.swift */,
+				18156D4026A4D8F7006B8FE5 /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -190,8 +199,10 @@
 		18156D4A26A5D99A006B8FE5 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				18156D4C26A5D9A2006B8FE5 /* ViewModel */,
-				18156D4B26A5D99F006B8FE5 /* View */,
+				186E600126B6DF55008291AC /* History */,
+				186E5FFD26B6A430008291AC /* Wallet */,
+				186E5FEE26B6A3C2008291AC /* Withdraw */,
+				186E5FEB26B6A3AD008291AC /* AddFunds */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -284,12 +295,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		182342D526A081DB00CD2907 /* CustomViews */ = {
+		182342D526A081DB00CD2907 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				186E5FFE26B6CC67008291AC /* Settings */,
 				182342D626A081EF00CD2907 /* UICustomView.swift */,
 			);
-			path = CustomViews;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		182342EA26A2EB0B00CD2907 /* TradingHistory */ = {
@@ -371,6 +383,125 @@
 			isa = PBXGroup;
 			children = (
 				182342DD26A1EA8E00CD2907 /* NftCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		186E5FEA26B5E2DE008291AC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				18B84287266F63620033AFC0 /* ViewModel */,
+				18B84285266F63500033AFC0 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		186E5FEB26B6A3AD008291AC /* AddFunds */ = {
+			isa = PBXGroup;
+			children = (
+				186E5FED26B6A3B9008291AC /* ViewModel */,
+				186E5FEC26B6A3B4008291AC /* View */,
+			);
+			path = AddFunds;
+			sourceTree = "<group>";
+		};
+		186E5FEC26B6A3B4008291AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				186E5FF526B6A3FD008291AC /* AddFundsViewController.swift */,
+				186E5FF626B6A3FD008291AC /* AddFundsViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		186E5FED26B6A3B9008291AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				186E5FF926B6A413008291AC /* AddFundsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		186E5FEE26B6A3C2008291AC /* Withdraw */ = {
+			isa = PBXGroup;
+			children = (
+				186E5FF026B6A3D1008291AC /* ViewModel */,
+				186E5FEF26B6A3CE008291AC /* View */,
+			);
+			path = Withdraw;
+			sourceTree = "<group>";
+		};
+		186E5FEF26B6A3CE008291AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				186E5FF126B6A3E2008291AC /* WithdrawViewController.swift */,
+				186E5FF226B6A3E2008291AC /* WithdrawViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		186E5FF026B6A3D1008291AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				186E5FFB26B6A420008291AC /* WithdrawViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		186E5FFD26B6A430008291AC /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				18156D4C26A5D9A2006B8FE5 /* ViewModel */,
+				18156D4B26A5D99F006B8FE5 /* View */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		186E5FFE26B6CC67008291AC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				186E600026B6CC77008291AC /* ViewModel */,
+				186E5FFF26B6CC74008291AC /* View */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		186E5FFF26B6CC74008291AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18156D4426A4DD3E006B8FE5 /* SettingViewCell.swift */,
+				18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		186E600026B6CC77008291AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				18156D4226A4D925006B8FE5 /* SettingCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		186E600126B6DF55008291AC /* History */ = {
+			isa = PBXGroup;
+			children = (
+				186E600326B6DF5F008291AC /* ViewModel */,
+				186E600226B6DF5C008291AC /* View */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		186E600226B6DF5C008291AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		186E600326B6DF5F008291AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -488,8 +619,7 @@
 		18B84284266F633C0033AFC0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				18B84287266F63620033AFC0 /* ViewModel */,
-				18B84285266F63500033AFC0 /* View */,
+				186E5FEA26B5E2DE008291AC /* Profile */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -565,7 +695,7 @@
 			isa = PBXGroup;
 			children = (
 				18156D3626A39169006B8FE5 /* Controllers */,
-				182342D526A081DB00CD2907 /* CustomViews */,
+				182342D526A081DB00CD2907 /* Views */,
 				181742F32699B5C3002B9FD7 /* Utils */,
 				18D3FEC7268FAE270030929D /* Extensions */,
 			);
@@ -661,6 +791,7 @@
 				18523F94269CED1100611362 /* TabBar.storyboard in Resources */,
 				18B84272266E27A50033AFC0 /* LaunchScreen.storyboard in Resources */,
 				18156D4726A4DD3E006B8FE5 /* SettingViewCell.xib in Resources */,
+				186E5FF426B6A3E2008291AC /* WithdrawViewController.xib in Resources */,
 				182342C1269DFC5500CD2907 /* ExchangeViewController.xib in Resources */,
 				18B8426F266E27A50033AFC0 /* Assets.xcassets in Resources */,
 				18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */,
@@ -675,6 +806,7 @@
 				18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */,
 				182342D426A0493600CD2907 /* DetailNftViewController.xib in Resources */,
 				182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */,
+				186E5FF826B6A3FD008291AC /* AddFundsViewController.xib in Resources */,
 				182342F026A2EB5E00CD2907 /* TradingHistoryViewController.xib in Resources */,
 				182342DC26A1E67F00CD2907 /* NftExchangeViewCell.xib in Resources */,
 				186E5FE226B33B61008291AC /* FirstViewController.xib in Resources */,
@@ -732,10 +864,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				182342DE26A1EA8E00CD2907 /* NftCellViewModel.swift in Sources */,
+				186E5FFA26B6A413008291AC /* AddFundsViewModel.swift in Sources */,
 				182342E026A1EB9100CD2907 /* ExchangeViewModel.swift in Sources */,
 				18D3FEC9268FAE390030929D /* Extensions.swift in Sources */,
 				18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */,
 				181C9A1126AEFA5F00A60105 /* HomeHeader.swift in Sources */,
+				186E5FFC26B6A420008291AC /* WithdrawViewModel.swift in Sources */,
 				182342DB26A1E67F00CD2907 /* NftExchangeViewCell.swift in Sources */,
 				182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */,
 				182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */,
@@ -749,7 +883,7 @@
 				18156D4F26A5D9B7006B8FE5 /* WalletViewController.swift in Sources */,
 				18156D3D26A43250006B8FE5 /* SettingsViewController.swift in Sources */,
 				181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */,
-				18156D4126A4D8F7006B8FE5 /* ProfileViewModel.swift in Sources */,
+				18156D4126A4D8F7006B8FE5 /* SettingsViewModel.swift in Sources */,
 				182342F626A2F10E00CD2907 /* HistoryCellViewModel.swift in Sources */,
 				181C9A1326AEFCD100A60105 /* HViewController.swift in Sources */,
 				182342C0269DFC5500CD2907 /* ExchangeViewController.swift in Sources */,
@@ -762,6 +896,7 @@
 				182342F826A2F40500CD2907 /* TradingHistoryViewModel.swift in Sources */,
 				182342CE269E469700CD2907 /* ClothesViewCell.swift in Sources */,
 				181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */,
+				186E5FF326B6A3E2008291AC /* WithdrawViewController.swift in Sources */,
 				18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */,
 				186E5FE526B33ECF008291AC /* CollectionViewCell2.swift in Sources */,
 				18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */,
@@ -769,6 +904,7 @@
 				182342D0269E485200CD2907 /* ClothesViewModel.swift in Sources */,
 				182342F326A2ECF700CD2907 /* HistoryViewCell.swift in Sources */,
 				18156D3526A38CE1006B8FE5 /* PresentationController.swift in Sources */,
+				186E5FF726B6A3FD008291AC /* AddFundsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

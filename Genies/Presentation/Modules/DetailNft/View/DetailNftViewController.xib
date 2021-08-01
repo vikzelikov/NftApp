@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailNftViewController">
             <connections>
+                <outlet property="balanceContainer" destination="nrV-fG-GaK" id="gkc-m1-mTJ"/>
                 <outlet property="balanceLabel" destination="qck-81-F1C" id="vvP-31-ln6"/>
                 <outlet property="buyButton" destination="sz4-bn-BkF" id="Gm9-VL-l8C"/>
                 <outlet property="clothesImageView" destination="XZK-Lc-jps" id="taN-En-CFQ"/>
@@ -73,10 +74,10 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4G-Y8-pry">
-                    <rect key="frame" x="0.0" y="40" width="320" height="260"/>
+                    <rect key="frame" x="0.0" y="40" width="320" height="270"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XZK-Lc-jps">
-                            <rect key="frame" x="15" y="21.5" width="290" height="217.5"/>
+                            <rect key="frame" x="15" y="26.5" width="290" height="217.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="XZK-Lc-jps" secondAttribute="height" multiplier="2:1.5" id="iz1-Dj-ACn"/>
                             </constraints>
@@ -113,26 +114,23 @@
                             </connections>
                         </button>
                     </subviews>
-                    <constraints>
-                        <constraint firstItem="Q12-N8-bw3" firstAttribute="leading" secondItem="g1k-SA-3tB" secondAttribute="trailing" id="flM-vW-U88"/>
-                    </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5R-2H-Avs">
-                    <rect key="frame" x="138" y="310" width="44.5" height="29"/>
+                    <rect key="frame" x="138" y="320" width="44.5" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEm-zv-R5L">
-                    <rect key="frame" x="15" y="349" width="290" height="17"/>
+                    <rect key="frame" x="15" y="359" width="290" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" name="lightGray"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sz4-bn-BkF">
-                    <rect key="frame" x="15" y="391" width="290" height="60"/>
+                    <rect key="frame" x="15" y="401" width="290" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="PBG-EU-udc"/>
+                        <constraint firstAttribute="height" constant="50" id="PBG-EU-udc"/>
                     </constraints>
                     <state key="normal" title="GET"/>
                 </button>
