@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,14 +43,28 @@
                     <rect key="frame" x="0.0" y="56.5" width="320" height="511.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGX-cB-dw9">
+                    <rect key="frame" x="275" y="0.0" width="45" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="X1J-Ot-YNv"/>
+                        <constraint firstAttribute="width" constant="45" id="iqR-PD-aUj"/>
+                    </constraints>
+                    <color key="tintColor" name="lightGray"/>
+                    <inset key="imageEdgeInsets" minX="10" minY="15" maxX="10" maxY="0.0"/>
+                    <state key="normal" image="filter">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                    </state>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="jlb-6Z-OuQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CKP-ty-QB8"/>
+                <constraint firstAttribute="trailing" secondItem="lGX-cB-dw9" secondAttribute="trailing" id="Qcl-wH-7W0"/>
                 <constraint firstItem="bcz-Ku-IYM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TfX-oy-q8r"/>
                 <constraint firstItem="LmB-sk-kLy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TzA-zt-l2j"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jlb-6Z-OuQ" secondAttribute="trailing" id="aCF-bT-AgF"/>
+                <constraint firstItem="lGX-cB-dw9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="b4I-2y-8yE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jlb-6Z-OuQ" secondAttribute="bottom" id="f5N-Gt-bCq"/>
                 <constraint firstItem="jlb-6Z-OuQ" firstAttribute="top" secondItem="bcz-Ku-IYM" secondAttribute="bottom" constant="15" id="iNj-gz-7oE"/>
                 <constraint firstItem="bcz-Ku-IYM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="sGP-IC-fku"/>
@@ -59,7 +74,11 @@
         </view>
     </objects>
     <resources>
+        <image name="filter" width="512" height="512"/>
         <image name="left_arrow" width="25" height="25"/>
+        <namedColor name="lightGray">
+            <color red="0.75300002098083496" green="0.75300002098083496" blue="0.75300002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

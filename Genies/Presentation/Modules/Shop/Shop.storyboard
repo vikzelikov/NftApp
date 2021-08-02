@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </scrollView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="HiK-nU-6Pk">
-                                <rect key="frame" x="109" y="0.0" width="102.5" height="10"/>
+                                <rect key="frame" x="109" y="5" width="102.5" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="fE8-LD-dJ5"/>
                                 </constraints>
@@ -33,7 +33,7 @@
                             <constraint firstItem="Dqq-4B-iW0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="4fy-J9-e6m"/>
                             <constraint firstItem="Dqq-4B-iW0" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Bd0-hR-zZ5"/>
                             <constraint firstItem="Dqq-4B-iW0" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="IiR-PO-Zwy"/>
-                            <constraint firstItem="HiK-nU-6Pk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Xhf-rl-nEX"/>
+                            <constraint firstItem="HiK-nU-6Pk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="5" id="Xhf-rl-nEX"/>
                             <constraint firstItem="Dqq-4B-iW0" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" id="ZR4-tV-Bhi"/>
                             <constraint firstItem="HiK-nU-6Pk" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="dqg-SV-4n1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="gAx-Rc-JLW"/>

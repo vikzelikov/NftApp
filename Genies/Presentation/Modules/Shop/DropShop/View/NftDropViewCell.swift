@@ -8,9 +8,9 @@
 import UIKit
 import SDWebImage
 
-class ClothesViewCell: UITableViewCell {
+class NftDropViewCell: UITableViewCell {
     
-    static let cellIdentifier = String(describing: ClothesViewCell.self)
+    static let cellIdentifier = String(describing: NftDropViewCell.self)
 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var clothesImageView: UIImageView!

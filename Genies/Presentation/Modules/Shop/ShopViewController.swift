@@ -33,7 +33,7 @@ class ShopViewController: UIViewController {
     
     private func setupSlideScrollView() {
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height:  view.frame.size.height)
-        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(2), height: view.frame.height)
+        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(2), height: view.frame.height - 70)
         scrollView.isPagingEnabled = true
         
         let dropShop = DropShopViewController(nibName: "DropShopViewController", bundle: nil)

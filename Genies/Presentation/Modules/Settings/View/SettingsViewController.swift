@@ -91,6 +91,12 @@ class SettingsViewController: UIViewController {
 //        personalDataTableView.register(SettingViewCell.self, forCellReuseIdentifier: SettingViewCell.cellIdentifier)
         personalDataTableView.register(UINib(nibName: "SettingViewCell", bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
     }
+    
+    
+    @IBAction func searchDidTap(_ sender: Any) {
+        let vc = SearchViewController()
+        present(vc, animated: true, completion: nil)
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate {
