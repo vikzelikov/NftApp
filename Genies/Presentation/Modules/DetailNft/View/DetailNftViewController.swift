@@ -31,11 +31,17 @@ class DetailNftViewController: UIViewController {
     @IBOutlet weak var originalTagView: UIView!
     @IBOutlet weak var nftTagView: UIView!
     @IBOutlet weak var leftNumberTagView: UIView!
+    @IBOutlet weak var leftNumberLabel: UILabel!
     @IBOutlet weak var moreInfoNftLabel: UIStackView!
     @IBOutlet weak var moreOffersButton: UIButton!
     @IBOutlet weak var expirationDateLabel: UILabel!
     @IBOutlet weak var ownerLoginContainer: UIStackView!
     @IBOutlet weak var priceView: UIView!
+    @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    
+    @IBOutlet weak var leftTagConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rightTagConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,16 +72,6 @@ class DetailNftViewController: UIViewController {
         ownerLoginContainer?.addGestureRecognizer(ownerLoginTap)
     }
     
-    @objc func ownerLoginDidTap(_ sender: UITapGestureRecognizer) {
-        // with user id
-        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        guard let profilePage = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
-        profilePage.isOtherUser = true
-        present(profilePage, animated: true, completion: nil)
-                
-        HapticHelper.vibro(.light)
-    }
-    
     private func checkoutView() {
         switch typeDetailNFT {
             case .detail:
@@ -86,6 +82,11 @@ class DetailNftViewController: UIViewController {
                 moreInfoNftLabel.isHidden = false
                 buyButton.isHidden = true
                 priceView.isHidden = false
+                dismissButton.isHidden = true
+                backButton.isHidden = false
+                leftTagConstraint.isActive = false
+                rightTagConstraint.constant = 15
+                rightTagConstraint.priority = .required
 
             case .dropShop:
                 buyButton.isHidden = false
@@ -106,6 +107,16 @@ class DetailNftViewController: UIViewController {
         return URL(string: stringUrl)
     }
     
+    @objc func ownerLoginDidTap(_ sender: UITapGestureRecognizer) {
+        // with user id
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let profilePage = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+        profilePage.isOtherUser = true
+        present(profilePage, animated: true, completion: nil)
+                
+        HapticHelper.vibro(.light)
+    }
+    
     @IBAction func tradingHistoryDidTap(_ sender: Any) {
         let vc = TradingHistoryViewController(nibName: "TradingHistoryViewController", bundle: nil)
 //        vc.nft = items[indexPath.row]
@@ -124,9 +135,10 @@ class DetailNftViewController: UIViewController {
     
     @IBAction func dismissDidTap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        
-        navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
 }
 

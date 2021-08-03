@@ -33,13 +33,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
  
         setupStyle()
-    
-        if isOtherUser {
-            miniTopButton.setTitle("Follow", for: .normal)
-            miniTopButton.setImage(nil, for: .normal)
-            
-            observablesLabel.isHidden = true
-        }
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -121,26 +114,36 @@ class HomeViewController: UIViewController {
     
     private func setupStyle() {
         scrollView.delaysContentTouches = false
-        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        scrollView.addSubview(refreshControl)
         
         let windowWidth: CGFloat = UIScreen.main.bounds.width
-        var borderWidth = windowWidth / 2
-        if isOtherUser { borderWidth = windowWidth}
-        collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.white, thickness: 1, width: borderWidth)
+        let borderWidth = windowWidth / 2
         observablesLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.lightGray.withAlphaComponent(0.2), thickness: 1, width: borderWidth)
         observablesLabel.textColor = UIColor.gray
-        
-        let collectionTap = UITapGestureRecognizer(target: self, action: #selector(collectionDidTap(_:)))
-        collectionLabel?.isUserInteractionEnabled = true
-        collectionLabel?.addGestureRecognizer(collectionTap)
         
         let observablesTap = UITapGestureRecognizer(target: self, action: #selector(observablesDidTap(_:)))
         observablesLabel?.isUserInteractionEnabled = true
         observablesLabel?.addGestureRecognizer(observablesTap)
 
         miniTopButton.applyButtonEffects()
-        miniTopButton.addTarget(self, action: #selector(shareDidTap), for: .touchUpInside)
+        
+        if isOtherUser {
+            miniTopButton.setTitle("Follow", for: .normal)
+            miniTopButton.setImage(nil, for: .normal)
+            miniTopButton.addTarget(self, action: #selector(subscribeDidTap), for: .touchUpInside)
+
+            observablesLabel.isHidden = true
+            collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.lightGray.withAlphaComponent(0.2), thickness: 1, width: windowWidth)
+        } else {
+            refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+            scrollView.addSubview(refreshControl)
+
+            miniTopButton.addTarget(self, action: #selector(shareDidTap), for: .touchUpInside)
+            collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.white, thickness: 1, width: borderWidth)
+            
+            let collectionTap = UITapGestureRecognizer(target: self, action: #selector(collectionDidTap(_:)))
+            collectionLabel?.isUserInteractionEnabled = true
+            collectionLabel?.addGestureRecognizer(collectionTap)
+        }
     }
 
     @objc func refresh(_ sender: AnyObject) {
