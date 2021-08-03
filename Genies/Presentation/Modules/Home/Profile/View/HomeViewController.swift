@@ -24,6 +24,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var miniTopButton: UIButton!
     @IBOutlet weak var collectionLabel: UILabel!
     @IBOutlet weak var observablesLabel: UILabel!
+    @IBOutlet weak var followersContainer: UIStackView!
+    @IBOutlet weak var followingContainer: UIStackView!
     
     let refreshControl = UIRefreshControl()
     var items: [NftCellViewModel] = []
@@ -126,6 +128,11 @@ class HomeViewController: UIViewController {
 
         miniTopButton.applyButtonEffects()
         
+        let followsTap = UITapGestureRecognizer(target: self, action: #selector(followsContainerDidTap(_:)))
+        followersContainer?.isUserInteractionEnabled = true
+        followersContainer?.addGestureRecognizer(followsTap)
+        
+        
         if isOtherUser {
             miniTopButton.setTitle("Follow", for: .normal)
             miniTopButton.setImage(nil, for: .normal)
@@ -144,6 +151,11 @@ class HomeViewController: UIViewController {
             collectionLabel?.isUserInteractionEnabled = true
             collectionLabel?.addGestureRecognizer(collectionTap)
         }
+    }
+    
+    @objc func followsContainerDidTap(_ sender: AnyObject) {
+        let vc = FollowsViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func refresh(_ sender: AnyObject) {

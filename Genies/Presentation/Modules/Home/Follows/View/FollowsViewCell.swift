@@ -10,7 +10,12 @@ import UIKit
 class FollowsViewCell: UITableViewCell {
 
     static let cellIdentifier = String(describing: FollowsViewCell.self)
-
+    @IBOutlet weak var userImageView: UIImageView! {
+        didSet {
+            userImageView.layer.cornerRadius = userImageView.frame.width / 2
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
