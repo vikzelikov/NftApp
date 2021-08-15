@@ -79,6 +79,19 @@
 		186E602B26B98C38008291AC /* FollowsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E602926B98C38008291AC /* FollowsViewController.xib */; };
 		186E602E26B98EE7008291AC /* FollowsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E602C26B98EE7008291AC /* FollowsViewCell.swift */; };
 		186E602F26B98EE7008291AC /* FollowsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E602D26B98EE7008291AC /* FollowsViewCell.xib */; };
+		1879C55926C9B5C000CE367E /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C55826C9B5C000CE367E /* AuthRepository.swift */; };
+		1879C55B26C9B62A00CE367E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C55A26C9B62A00CE367E /* User.swift */; };
+		1879C55E26C9B76200CE367E /* SignupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C55D26C9B76200CE367E /* SignupUseCase.swift */; };
+		1879C56126C9B7EA00CE367E /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C56026C9B7EA00CE367E /* AuthRepositoryImpl.swift */; };
+		1879C56626C9C17400CE367E /* AuthEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C56526C9C17400CE367E /* AuthEndpoints.swift */; };
+		1879C56826C9C67100CE367E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C56726C9C67100CE367E /* Endpoint.swift */; };
+		1879C56A26C9C74D00CE367E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C56926C9C74D00CE367E /* Constants.swift */; };
+		1879C56C26C9C90D00CE367E /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C56B26C9C90D00CE367E /* NetworkHelper.swift */; };
+		1879C56E26C9C9DF00CE367E /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C56D26C9C9DF00CE367E /* LoginUseCase.swift */; };
+		1879C57226C9D30900CE367E /* SignupRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57126C9D30900CE367E /* SignupRequestDTO.swift */; };
+		1879C57426C9D31B00CE367E /* LoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57326C9D31B00CE367E /* LoginRequestDTO.swift */; };
+		1879C57626C9D32F00CE367E /* SignupResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57526C9D32F00CE367E /* SignupResponseDTO.swift */; };
+		1879C57826C9D34300CE367E /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57726C9D34300CE367E /* LoginResponseDTO.swift */; };
 		18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84265266E27A40033AFC0 /* AppDelegate.swift */; };
 		18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84269266E27A40033AFC0 /* SignUpViewController.swift */; };
 		18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B8426B266E27A40033AFC0 /* Authorization.storyboard */; };
@@ -165,6 +178,19 @@
 		186E602926B98C38008291AC /* FollowsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowsViewController.xib; sourceTree = "<group>"; };
 		186E602C26B98EE7008291AC /* FollowsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowsViewCell.swift; sourceTree = "<group>"; };
 		186E602D26B98EE7008291AC /* FollowsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowsViewCell.xib; sourceTree = "<group>"; };
+		1879C55826C9B5C000CE367E /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		1879C55A26C9B62A00CE367E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1879C55D26C9B76200CE367E /* SignupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUseCase.swift; sourceTree = "<group>"; };
+		1879C56026C9B7EA00CE367E /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
+		1879C56526C9C17400CE367E /* AuthEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoints.swift; sourceTree = "<group>"; };
+		1879C56726C9C67100CE367E /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		1879C56926C9C74D00CE367E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1879C56B26C9C90D00CE367E /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		1879C56D26C9C9DF00CE367E /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		1879C57126C9D30900CE367E /* SignupRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequestDTO.swift; sourceTree = "<group>"; };
+		1879C57326C9D31B00CE367E /* LoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestDTO.swift; sourceTree = "<group>"; };
+		1879C57526C9D32F00CE367E /* SignupResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponseDTO.swift; sourceTree = "<group>"; };
+		1879C57726C9D34300CE367E /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
 		18B84262266E27A40033AFC0 /* Genies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B84265266E27A40033AFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B84269266E27A40033AFC0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -653,6 +679,85 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		1879C55526C9B4F400CE367E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1879C55626C9B59100CE367E /* Repositories */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1879C55626C9B59100CE367E /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				1879C55726C9B5A200CE367E /* Authorization */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		1879C55726C9B5A200CE367E /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				1879C55826C9B5C000CE367E /* AuthRepository.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		1879C55C26C9B73000CE367E /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				1879C55D26C9B76200CE367E /* SignupUseCase.swift */,
+				1879C56D26C9C9DF00CE367E /* LoginUseCase.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		1879C55F26C9B7BC00CE367E /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				1879C56026C9B7EA00CE367E /* AuthRepositoryImpl.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		1879C56226C9BCF100CE367E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1879C56726C9C67100CE367E /* Endpoint.swift */,
+				1879C56B26C9C90D00CE367E /* NetworkHelper.swift */,
+				1879C56F26C9D0E900CE367E /* Authorization */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1879C56326C9C13E00CE367E /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				1879C56526C9C17400CE367E /* AuthEndpoints.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		1879C56F26C9D0E900CE367E /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				1879C57026C9D16A00CE367E /* DataMapping */,
+				1879C56326C9C13E00CE367E /* Endpoints */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		1879C57026C9D16A00CE367E /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				1879C57126C9D30900CE367E /* SignupRequestDTO.swift */,
+				1879C57326C9D31B00CE367E /* LoginRequestDTO.swift */,
+				1879C57526C9D32F00CE367E /* SignupResponseDTO.swift */,
+				1879C57726C9D34300CE367E /* LoginResponseDTO.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
 		18B84259266E27A40033AFC0 = {
 			isa = PBXGroup;
 			children = (
@@ -696,6 +801,7 @@
 		18B8427C266F60FD0033AFC0 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				1879C55526C9B4F400CE367E /* Protocols */,
 				18B84282266F62090033AFC0 /* Entities */,
 				18B8427F266F618F0033AFC0 /* UseCases */,
 			);
@@ -705,6 +811,7 @@
 		18B8427D266F61030033AFC0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				1879C56226C9BCF100CE367E /* Network */,
 				18B84281266F61F90033AFC0 /* Repositories */,
 				18B84280266F61DF0033AFC0 /* Storage */,
 			);
@@ -715,6 +822,7 @@
 			isa = PBXGroup;
 			children = (
 				18B8426E266E27A50033AFC0 /* Assets.xcassets */,
+				1879C56926C9C74D00CE367E /* Constants.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -722,6 +830,7 @@
 		18B8427F266F618F0033AFC0 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				1879C55C26C9B73000CE367E /* Authorization */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -736,6 +845,7 @@
 		18B84281266F61F90033AFC0 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				1879C55F26C9B7BC00CE367E /* Authorization */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -743,6 +853,7 @@
 		18B84282266F62090033AFC0 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				1879C55A26C9B62A00CE367E /* User.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1019,27 +1130,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1879C55B26C9B62A00CE367E /* User.swift in Sources */,
 				182342DE26A1EA8E00CD2907 /* NftCellViewModel.swift in Sources */,
 				186E5FFA26B6A413008291AC /* AddFundsViewModel.swift in Sources */,
+				1879C56626C9C17400CE367E /* AuthEndpoints.swift in Sources */,
 				186E601926B6E695008291AC /* DetailTransactionViewController.swift in Sources */,
 				182342E026A1EB9100CD2907 /* ExchangeViewModel.swift in Sources */,
 				18D3FEC9268FAE390030929D /* Extensions.swift in Sources */,
 				18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */,
 				181C9A1126AEFA5F00A60105 /* HomeHeader.swift in Sources */,
+				1879C57426C9D31B00CE367E /* LoginRequestDTO.swift in Sources */,
 				186E600926B6DFCA008291AC /* HistoryTransactionsViewController.swift in Sources */,
 				186E5FFC26B6A420008291AC /* WithdrawViewModel.swift in Sources */,
+				1879C57226C9D30900CE367E /* SignupRequestDTO.swift in Sources */,
 				182342DB26A1E67F00CD2907 /* NftExchangeViewCell.swift in Sources */,
+				1879C57626C9D32F00CE367E /* SignupResponseDTO.swift in Sources */,
 				182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */,
 				186E601C26B6F178008291AC /* TransactionCellViewModel.swift in Sources */,
+				1879C56E26C9C9DF00CE367E /* LoginUseCase.swift in Sources */,
+				1879C56C26C9C90D00CE367E /* NetworkHelper.swift in Sources */,
 				182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */,
 				18523F90269CEAA000611362 /* ShopViewController.swift in Sources */,
+				1879C56126C9B7EA00CE367E /* AuthRepositoryImpl.swift in Sources */,
 				182342D326A0493600CD2907 /* DetailNftViewController.swift in Sources */,
 				18156D4326A4D925006B8FE5 /* SettingCellViewModel.swift in Sources */,
 				186E5FE126B33B61008291AC /* FirstViewController.swift in Sources */,
+				1879C56A26C9C74D00CE367E /* Constants.swift in Sources */,
 				181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */,
 				186E601126B6E27E008291AC /* TransactionViewCell.swift in Sources */,
 				18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */,
 				186E600D26B6DFE3008291AC /* CollectionNftViewController.swift in Sources */,
+				1879C55E26C9B76200CE367E /* SignupUseCase.swift in Sources */,
 				186E602E26B98EE7008291AC /* FollowsViewCell.swift in Sources */,
 				182342EF26A2EB5E00CD2907 /* TradingHistoryViewController.swift in Sources */,
 				18156D4F26A5D9B7006B8FE5 /* WalletViewController.swift in Sources */,
@@ -1049,6 +1170,7 @@
 				182342F626A2F10E00CD2907 /* HistoryCellViewModel.swift in Sources */,
 				186E602A26B98C38008291AC /* FollowsViewController.swift in Sources */,
 				181C9A1326AEFCD100A60105 /* HViewController.swift in Sources */,
+				1879C55926C9B5C000CE367E /* AuthRepository.swift in Sources */,
 				182342C0269DFC5500CD2907 /* ExchangeViewController.swift in Sources */,
 				18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */,
 				182342D726A081EF00CD2907 /* UICustomView.swift in Sources */,
@@ -1056,6 +1178,7 @@
 				182342E826A2D21400CD2907 /* OfferPriceViewCell.swift in Sources */,
 				181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */,
 				182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */,
+				1879C56826C9C67100CE367E /* Endpoint.swift in Sources */,
 				182342F826A2F40500CD2907 /* TradingHistoryViewModel.swift in Sources */,
 				182342CE269E469700CD2907 /* NftDropViewCell.swift in Sources */,
 				181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */,
@@ -1066,6 +1189,7 @@
 				186E602226B88F25008291AC /* SearchViewController.swift in Sources */,
 				18B84290266F64A30033AFC0 /* HomeViewController.swift in Sources */,
 				182342D0269E485200CD2907 /* ClothesViewModel.swift in Sources */,
+				1879C57826C9D34300CE367E /* LoginResponseDTO.swift in Sources */,
 				182342F326A2ECF700CD2907 /* HistoryViewCell.swift in Sources */,
 				18156D3526A38CE1006B8FE5 /* PresentationController.swift in Sources */,
 				186E5FF726B6A3FD008291AC /* AddFundsViewController.swift in Sources */,

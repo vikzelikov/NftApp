@@ -18,7 +18,16 @@ class NftProfileViewCell: UICollectionViewCell {
     
     func bind(viewModel: NftCellViewModel) {
         titleNft.text = viewModel.title
-        imageView.image = UIImage(named: "ava")
+//        imageView.image = UIImage(named: "ava")
+        if let stringUrl = viewModel.imageUrl {
+            if let url = getUrl(stringUrl: stringUrl) {
+                imageView.sd_setImage(with: url)
+            }
+        }
+    }
+    
+    func getUrl(stringUrl: String) -> URL? {
+        return URL(string: stringUrl)
     }
 
 }
