@@ -92,6 +92,7 @@
 		1879C57426C9D31B00CE367E /* LoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57326C9D31B00CE367E /* LoginRequestDTO.swift */; };
 		1879C57626C9D32F00CE367E /* SignupResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57526C9D32F00CE367E /* SignupResponseDTO.swift */; };
 		1879C57826C9D34300CE367E /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57726C9D34300CE367E /* LoginResponseDTO.swift */; };
+		1879C57A26CA79BB00CE367E /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57926CA79BB00CE367E /* SignupViewModel.swift */; };
 		18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84265266E27A40033AFC0 /* AppDelegate.swift */; };
 		18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84269266E27A40033AFC0 /* SignUpViewController.swift */; };
 		18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B8426B266E27A40033AFC0 /* Authorization.storyboard */; };
@@ -101,6 +102,7 @@
 		18B84290266F64A30033AFC0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8428F266F64A30033AFC0 /* HomeViewController.swift */; };
 		18D3FEC9268FAE390030929D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FEC8268FAE390030929D /* Extensions.swift */; };
 		18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FECF2697B8C40030929D /* LoginViewController.swift */; };
+		18E8F3C726CBCCF100E62E33 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8F3C626CBCCF100E62E33 /* Observable.swift */; };
 		1B7B67A6D500DFCD6B6C7F8B /* Pods_Genies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661EB53AD28E8B632381DCF3 /* Pods_Genies.framework */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +193,7 @@
 		1879C57326C9D31B00CE367E /* LoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestDTO.swift; sourceTree = "<group>"; };
 		1879C57526C9D32F00CE367E /* SignupResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponseDTO.swift; sourceTree = "<group>"; };
 		1879C57726C9D34300CE367E /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
+		1879C57926CA79BB00CE367E /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		18B84262266E27A40033AFC0 /* Genies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B84265266E27A40033AFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B84269266E27A40033AFC0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +205,7 @@
 		18B8428F266F64A30033AFC0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18D3FEC8268FAE390030929D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		18D3FECF2697B8C40030929D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		18E8F3C626CBCCF100E62E33 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		23F248C39FCAFFBCD26E99BA /* Pods-Genies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Genies.release.xcconfig"; path = "Target Support Files/Pods-Genies/Pods-Genies.release.xcconfig"; sourceTree = "<group>"; };
 		661EB53AD28E8B632381DCF3 /* Pods_Genies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Genies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -931,6 +935,7 @@
 		18B8428A266F63A00033AFC0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1879C57926CA79BB00CE367E /* SignupViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -958,6 +963,7 @@
 				182342D526A081DB00CD2907 /* Views */,
 				181742F32699B5C3002B9FD7 /* Utils */,
 				18D3FEC7268FAE270030929D /* Extensions */,
+				18E8F3C626CBCCF100E62E33 /* Observable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1156,6 +1162,7 @@
 				18156D4326A4D925006B8FE5 /* SettingCellViewModel.swift in Sources */,
 				186E5FE126B33B61008291AC /* FirstViewController.swift in Sources */,
 				1879C56A26C9C74D00CE367E /* Constants.swift in Sources */,
+				18E8F3C726CBCCF100E62E33 /* Observable.swift in Sources */,
 				181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */,
 				186E601126B6E27E008291AC /* TransactionViewCell.swift in Sources */,
 				18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */,
@@ -1180,6 +1187,7 @@
 				182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */,
 				1879C56826C9C67100CE367E /* Endpoint.swift in Sources */,
 				182342F826A2F40500CD2907 /* TradingHistoryViewModel.swift in Sources */,
+				1879C57A26CA79BB00CE367E /* SignupViewModel.swift in Sources */,
 				182342CE269E469700CD2907 /* NftDropViewCell.swift in Sources */,
 				181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */,
 				186E5FF326B6A3E2008291AC /* WithdrawViewController.swift in Sources */,
@@ -1343,7 +1351,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RS4VTLD734;
+				DEVELOPMENT_TEAM = 64ZXKZ9BQ6;
 				INFOPLIST_FILE = Genies/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1368,7 +1376,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RS4VTLD734;
+				DEVELOPMENT_TEAM = 64ZXKZ9BQ6;
 				INFOPLIST_FILE = Genies/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (

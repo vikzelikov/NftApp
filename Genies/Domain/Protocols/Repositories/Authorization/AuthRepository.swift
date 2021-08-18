@@ -9,7 +9,7 @@ import Foundation
 
 protocol AuthRepository {
     
-    func signup(request: SignupRequestUseCase, completion: @escaping (Result<SignupResponseDTO, Error>) -> Void)
+    func signup(request: SignupRequest, completion: @escaping (Result<SignupResponseDTO, Error>) -> Void)
     
     func login(request: LoginRequestUseCase, completion: @escaping (Result<LoginResponseDTO, Error>) -> Void)
     

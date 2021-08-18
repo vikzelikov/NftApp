@@ -10,7 +10,7 @@ import Alamofire
 
 class AuthRepositoryImpl: AuthRepository {
     
-    func signup(request: SignupRequestUseCase, completion: @escaping (Result<SignupResponseDTO, Error>) -> Void) {
+    func signup(request: SignupRequest, completion: @escaping (Result<SignupResponseDTO, Error>) -> Void) {
         
         let endpoint = AuthEndpoints.getSignupEndpoint()
         
@@ -23,12 +23,10 @@ class AuthRepositoryImpl: AuthRepository {
             login: request.login,
             email: request.email,
             password: request.password,
-            sex: request.sex,
+            isMale: request.isMale,
             birthDate: request.birthDate
         ).parameters
         
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
-
         AF.request(url, method: endpoint.method, parameters: requestDTO, headers: endpoint.headers).responseString { response in
             guard let data = response.data else {
                 completion(.failure(NetworkError.errorData))
@@ -52,7 +50,6 @@ class AuthRepositoryImpl: AuthRepository {
             }
         }
     }
-    
     
     func login(request: LoginRequestUseCase, completion: @escaping (Result<LoginResponseDTO, Error>) -> Void) {
         

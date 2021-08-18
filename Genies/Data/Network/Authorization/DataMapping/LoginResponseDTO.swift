@@ -12,7 +12,7 @@ struct LoginResponseDTO: Decodable {
         case login
         case email
         case password
-        case sex
+        case isMale = "is_male"
         case birthDate = "birth_date"
         case balance
     }
@@ -20,7 +20,7 @@ struct LoginResponseDTO: Decodable {
     let login: String
     let email: String
     let password: String
-    let sex: String
-    let birthDate: String
+    let isMale: Bool
+    let birthDate: TimeInterval
     let balance: String
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoginRequestDTO {
+class LoginRequestDTO: Decodable {
     private var login: String
     private var password: String
     

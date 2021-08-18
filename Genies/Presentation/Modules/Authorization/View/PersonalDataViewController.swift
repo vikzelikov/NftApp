@@ -8,6 +8,8 @@
 import UIKit
 
 class PersonalDataViewController: UIViewController {
+    
+    var viewModel: SignupViewModel?
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
@@ -15,15 +17,12 @@ class PersonalDataViewController: UIViewController {
     @IBOutlet weak var dateBirthPicker: UIDatePicker!
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var femaleButton: UIButton!
-    private var isSelectedSex: Bool = false
+    private var isMale: Bool? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupStyle()
-        
-        // disable back swipe
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     private func setupStyle() {
@@ -36,33 +35,48 @@ class PersonalDataViewController: UIViewController {
     }
     
     @IBAction func nextDidTap(_ sender: Any) {
-        if isSelectedSex {
-            nextButton.loadingIndicator(isShow: true, titleButton: nil)
+        if isMale != nil {
+            let birthDate = self.dateBirthPicker?.date.timeIntervalSince1970
             
-            // CREATE ACCOUNT
+            viewModel?.updatePersonalData(isMale: isMale, birthDate: birthDate)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.showHome()
-            }
+            viewModel?.inputPersonalData()
         }
         
-        isSelectedSex = true
         selectSexButtons.isHidden = false
         dateBirthPicker.isHidden = true
         titleLabel.text = "What do you identify as?"
     }
     
+    func bindData() {
+        viewModel?.isLoading.bind { [weak self] in
+            if $0 {
+                self?.nextButton.loadingIndicator(isShow: true, titleButton: nil)
+            } else {
+                self?.nextButton.loadingIndicator(isShow: false, titleButton: "NEXT")
+            }
+        }
+        
+        viewModel?.isSuccess.bind { [weak self] in
+            if $0 { self?.showHomeView() }
+        }
+    }
+    
     @IBAction func maleButtonDidTap(_ sender: Any) {
+        isMale = true
+        
         maleButton.backgroundColor = UIColor(named: "gray")
         femaleButton.backgroundColor = UIColor.black
     }
     
     @IBAction func femaleButtonDidTap(_ sender: Any) {
+        isMale = false
+        
         femaleButton.backgroundColor = UIColor(named: "gray")
         maleButton.backgroundColor = UIColor.black
     }
     
-    private func showHome() {
+    private func showHomeView() {
         let homeStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
         guard let homePage = homeStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }

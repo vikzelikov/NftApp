@@ -8,12 +8,12 @@
 import Foundation
 
 struct User: Equatable, Identifiable {
-    let id: String?
+    let id: Int?
     let login: String?
     let email: String?
     let password: String?
-    let sex: String?
-    let birthDate: String?
+    let isMale: Bool?
+    let birthDate: TimeInterval?
     let balance: String?
     let influencerId: String?
 }

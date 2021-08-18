@@ -7,27 +7,26 @@
 
 import Foundation
 
-class SignupRequestDTO {
+class SignupRequestDTO: Decodable {
     private var login: String
     private var email: String
     private var password: String
-    private var sex: String
-    private var birthDate: String
+    private var isMale: Bool
+    private var birthDate: TimeInterval
     
     lazy var parameters = [
         "login": login,
         "email": email,
         "password": password,
-        "sex": sex,
-        "birth_date": birthDate,
-        "email": email,
-    ]
+        "is_male": isMale,
+        "birth_date": birthDate
+    ] as [String : Any]
 
-    init(login: String, email: String, password: String, sex: String, birthDate: String) {
+    init(login: String, email: String, password: String, isMale: Bool, birthDate: TimeInterval) {
         self.login = login
         self.email = email
         self.password = password
-        self.sex = sex
+        self.isMale = isMale
         self.birthDate = birthDate
     }
 }
