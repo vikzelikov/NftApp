@@ -25,6 +25,8 @@ class SignUpViewController: UIViewController {
         bindData()
         
         setupStyle()
+        
+        print(NSLocalizedString("Hello", comment: ""))
     }
     
     private func setupStyle() {

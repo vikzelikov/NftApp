@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "0f6-XM-3D4"; */
+"0f6-XM-3D4.text" = "Регистрация";
+
+/* Class = "UILabel"; text = "How old are you?"; ObjectID = "2zk-3V-Stj"; */
+"2zk-3V-Stj.text" = "Сколько Вам лет?";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "A4q-ck-FPf"; */
+"A4q-ck-FPf.text" = "Авторизация";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "A64-rj-iVh"; */
+"A64-rj-iVh.placeholder" = "Повторите пароль";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "KmE-LK-2Bf"; */
+"KmE-LK-2Bf.placeholder" = "Пароль";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "OdD-ZI-FqO"; */
+"OdD-ZI-FqO.normalTitle" = "ДАЛЕЕ";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "QbJ-3b-pxP"; */
+"QbJ-3b-pxP.placeholder" = "Электронная почта";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "UDC-Z9-C66"; */
+"UDC-Z9-C66.placeholder" = "Пароль";
+
+/* Class = "UINavigationItem"; title = "Log In"; ObjectID = "Xgd-cX-7hV"; */
+"Xgd-cX-7hV.title" = "Войти";
+
+/* Class = "UITextField"; placeholder = "Login"; ObjectID = "fDs-eb-PFO"; */
+"fDs-eb-PFO.placeholder" = "Логин";
+
+/* Class = "UILabel"; text = "By tapping \"Next\", you acknowledge that you have read the Privacy Policy and agree to the Terms of Service."; ObjectID = "fHw-R2-Ts7"; */
+"fHw-R2-Ts7.text" = "Нажав \"Далее\", Вы подтверждаете, что ознакомились с Политикой конфиденциальности и согласны с Условиями предоставления услуг.";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "ixX-YT-B2b"; */
+"ixX-YT-B2b.normalTitle" = "ВОЙТИ";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "kEc-rS-fvm"; */
+"kEc-rS-fvm.normalTitle" = "ДАЛЕЕ";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "o0d-29-5fy"; */
+"o0d-29-5fy.normalTitle" = "ВОЙТИ";
+
+/* Class = "UITextField"; placeholder = "Login"; ObjectID = "u6p-b7-Cvb"; */
+"u6p-b7-Cvb.placeholder" = "Логин";
+
+/* Class = "UIButton"; normalTitle = "CREATE ACCOUNT"; ObjectID = "wKT-NX-agr"; */
+"wKT-NX-agr.normalTitle" = "СОЗДАТЬ АККАУНТ";
