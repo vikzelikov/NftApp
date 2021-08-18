@@ -10,25 +10,43 @@ import Alamofire
 
 struct AuthEndpoints {
     
-    static func getSignupEndpoint() -> Endpoint {
+    static func getSignupEndpoint(request: SignupRequest) -> Endpoint {
+        let requestDTO = SignupRequestDTO (
+            login: request.login,
+            email: request.email,
+            password: request.password,
+            isMale: request.isMale,
+            birthDate: request.birthDate
+        ).parameters
+        
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = URL(string: Constant.BASE_URL + "/api/auth/signup")
         
-        return Endpoint(url: url, method: .post, headers: headers)
+        return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }
     
-    static func getLoginEndpoint() -> Endpoint {
+    static func getLoginEndpoint(request: LoginRequest) -> Endpoint {
+        let requestDTO = LoginRequestDTO (
+            login: request.login,
+            password: request.password
+        ).parameters
+        
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = URL(string: Constant.BASE_URL + "/api/auth/login")
         
-        return Endpoint(url: url, method: .post, headers: headers)
+        return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }
     
-    static func getAuthCheckEndpoint() -> Endpoint {
+    static func getAuthCheckEndpoint(request: LoginRequest) -> Endpoint {
+        let requestDTO = LoginRequestDTO (
+            login: request.login,
+            password: request.password
+        ).parameters
+        
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = URL(string: Constant.BASE_URL + "/api/auth/check")
         
-        return Endpoint(url: url, method: .post, headers: headers)
+        return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }
     
 }

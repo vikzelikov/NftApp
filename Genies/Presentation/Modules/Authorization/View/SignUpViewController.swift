@@ -44,7 +44,7 @@ class SignUpViewController: UIViewController {
     @IBAction func nextButtonDidPress(_ sender: Any) {
         viewModel?.updateCredentials(
             login: loginTextField.text!,
-            email: loginTextField.text!,
+            email: emailTextField.text!,
             password: passwordTextField.text!,
             confirmPassword: confirmPassTextField.text!
         )

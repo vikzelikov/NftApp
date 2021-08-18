@@ -22,6 +22,8 @@ class PersonalDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bindData()
+        
         setupStyle()
     }
     

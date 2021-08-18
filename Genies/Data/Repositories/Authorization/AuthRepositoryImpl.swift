@@ -11,84 +11,84 @@ import Alamofire
 class AuthRepositoryImpl: AuthRepository {
     
     func signup(request: SignupRequest, completion: @escaping (Result<SignupResponseDTO, Error>) -> Void) {
-        
-        let endpoint = AuthEndpoints.getSignupEndpoint()
+
+        let endpoint = AuthEndpoints.getSignupEndpoint(request: request)
         
         guard let url = endpoint.url else {
-            completion(.failure(NetworkError.cancelled))
+            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
             return
         }
         
-        let requestDTO = SignupRequestDTO (
-            login: request.login,
-            email: request.email,
-            password: request.password,
-            isMale: request.isMale,
-            birthDate: request.birthDate
-        ).parameters
-        
-        AF.request(url, method: endpoint.method, parameters: requestDTO, headers: endpoint.headers).responseString { response in
+        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+            guard let resp = response.response else {
+                completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: nil)))
+                return
+            }
+            
             guard let data = response.data else {
-                completion(.failure(NetworkError.errorData))
+                completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
                 return
             }
             
-            guard let response = response.response else {
-                completion(.failure(NetworkError.errorData))
-                return
+            if response.error != nil {
+                print(response.error!)
+                if let errorDTO = try? JSONDecoder().decode(ErrorDTO.self, from: data) {
+                    let error = ErrorMessage(errorType: .error, errorDTO: errorDTO, code: resp.statusCode)
+                    completion(.failure(error))
+                    return
+                } else {
+                    completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
+                    return
+                }
             }
-            
-            if response.statusCode != 200 {
-                completion(.failure(NetworkError.errorCode(statusCode: response.statusCode)))
-                return
-            }
-            
+                        
             if let responseDTO = try? JSONDecoder().decode(SignupResponseDTO.self, from: data) {
                 completion(.success(responseDTO))
             } else {
-                completion(.failure(NetworkError.errorData))
+                completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
             }
         }
     }
     
-    func login(request: LoginRequestUseCase, completion: @escaping (Result<LoginResponseDTO, Error>) -> Void) {
+    func login(request: LoginRequest, completion: @escaping (Result<LoginResponseDTO, Error>) -> Void) {
         
-        let endpoint = AuthEndpoints.getLoginEndpoint()
+        let endpoint = AuthEndpoints.getLoginEndpoint(request: request)
         
         guard let url = endpoint.url else {
-            completion(.failure(NetworkError.cancelled))
+            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
             return
         }
         
-        let requestDTO = LoginRequestDTO (
-            login: request.login,
-            password: request.password
-        ).parameters
-        
-        AF.request(url, method: endpoint.method, parameters: requestDTO, headers: endpoint.headers).responseString { response in
+        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+            guard let resp = response.response else {
+                completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: nil)))
+                return
+            }
+            
             guard let data = response.data else {
-                completion(.failure(NetworkError.errorData))
+                completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
                 return
             }
             
-            guard let response = response.response else {
-                completion(.failure(NetworkError.errorData))
-                return
+            if response.error != nil {
+                print(response.error!)
+                if let errorDTO = try? JSONDecoder().decode(ErrorDTO.self, from: data) {
+                    let error = ErrorMessage(errorType: .error, errorDTO: errorDTO, code: resp.statusCode)
+                    completion(.failure(error))
+                    return
+                } else {
+                    completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
+                    return
+                }
             }
-            
-            if response.statusCode != 200 {
-                completion(.failure(NetworkError.errorCode(statusCode: response.statusCode)))
-                return
-            }
-            
+                        
             if let responseDTO = try? JSONDecoder().decode(LoginResponseDTO.self, from: data) {
                 completion(.success(responseDTO))
             } else {
-                completion(.failure(NetworkError.errorData))
+                completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
             }
         }
     }
-        
 }
     
 

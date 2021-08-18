@@ -144,7 +144,7 @@
                                     <constraint firstAttribute="height" constant="40" id="SVd-5r-x8x"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q0A-cg-A3F"/>
@@ -307,13 +307,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6p-b7-Cvb">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6p-b7-Cvb">
                                 <rect key="frame" x="15" y="61.5" width="290" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eF8-h1-BAG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDC-Z9-C66">
                                 <rect key="frame" x="15" y="116.5" width="290" height="40"/>
@@ -382,8 +382,8 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Wvi-8P-AfX"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailTextField" destination="u6p-b7-Cvb" id="UUS-9x-pZr"/>
                         <outlet property="loginButton" destination="ixX-YT-B2b" id="gWH-bS-VOG"/>
+                        <outlet property="loginTextField" destination="u6p-b7-Cvb" id="UUS-9x-pZr"/>
                         <outlet property="passwordTextField" destination="UDC-Z9-C66" id="Pd4-mK-ec6"/>
                     </connections>
                 </viewController>

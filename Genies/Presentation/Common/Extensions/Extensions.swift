@@ -64,6 +64,7 @@ extension UIButton {
     func loadingIndicator(isShow: Bool, titleButton: String?) {
         let tag = 9876
         if isShow {
+            self.isEnabled = false
             self.setTitle("", for: .normal)
 
             let indicator = UIActivityIndicatorView()
@@ -76,6 +77,7 @@ extension UIButton {
             indicator.startAnimating()
         } else {
             if let indicator = self.viewWithTag(tag) as? UIActivityIndicatorView {
+                self.isEnabled = true
                 self.setTitle(titleButton, for: .normal)
                 
                 indicator.stopAnimating()

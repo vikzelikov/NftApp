@@ -9,18 +9,23 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var emailTextField: UITextField!
+    var viewModel: LoginViewModel?
+    
+    @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel = LoginViewModelImpl()
+        bindData()
+        
         setupStyle()
     }
     
     private func setupStyle() {
-        emailTextField.applyTextFieldStyle()
+        loginTextField.applyTextFieldStyle()
         passwordTextField.applyTextFieldStyle()
         
         loginButton.applyButtonStyle()
@@ -28,24 +33,44 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginDidTap(_ sender: Any) {
-        loginButton.loadingIndicator(isShow: true, titleButton: nil)
+        viewModel?.updateCredentials(
+            login: loginTextField.text!,
+            password: passwordTextField.text!
+        )
         
-        // LOGiN
+        viewModel?.inputCredentials()
+    }
+    
+    func bindData() {
+        viewModel?.isLoading.bind { [weak self] in
+            if $0 {
+                self?.loginButton.loadingIndicator(isShow: true, titleButton: nil)
+            } else {
+                self?.loginButton.loadingIndicator(isShow: false, titleButton: "NEXT")
+            }
+        }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.showHome()
+        viewModel?.isSuccess.bind { [weak self] in
+            if $0 { self?.showHomeView() }
+        }
+            
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    @IBAction func dismissLogin(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    private func showHome() {
+    private func showHomeView() {
         let homeStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
         guard let homePage = homeStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = homePage
+    }
+    
+    @IBAction func dismissLogin(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
 }

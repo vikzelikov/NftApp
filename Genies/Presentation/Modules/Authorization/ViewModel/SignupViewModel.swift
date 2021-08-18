@@ -7,10 +7,7 @@
 
 import Foundation
 
-protocol SignupViewModel {
-    var isLoading: Observable<Bool> { get }
-    var isSuccess: Observable<Bool> { get }
-    var errorMessage: Observable<String?> { get }
+protocol SignupViewModel : BaseViewModel {
     
     func updateCredentials(login: String, email: String, password: String, confirmPassword: String)
     
@@ -79,7 +76,20 @@ class SignupViewModelImpl: SignupViewModel {
             case .failure(let error):
                 self.isSuccess.value = false
                 NSLog("ERROR: \(String(describing: SignupViewModel.self)) \(error)")
-//                errorMessage.value = "Login already exists"
+                if let error = error as? ErrorMessage, let code = error.code {
+                    switch code {
+                    case let c where c >= HttpCode.internalServerError:
+                        self.errorMessage.value = "Something went wrong"
+                    case HttpCode.unauthorized:
+                        self.errorMessage.value = "Do login"
+                    case HttpCode.badRequest:
+                        let message = error.errorDTO?.message
+                        self.errorMessage.value = message
+                    default:
+                        self.errorMessage.value = "Something went wrong"
+                    }
+                }
+
             }
             
             self.isLoading.value = false
@@ -89,6 +99,12 @@ class SignupViewModelImpl: SignupViewModel {
     func inputCredentials() {
         if login.isEmpty || email.isEmpty  {
             errorMessage.value = "Please provide login and E-mail"
+            isSuccess.value = false
+            return
+        }
+        
+        if !isValidEmail(email: email) {
+            errorMessage.value = "E-mail is not vaild"
             isSuccess.value = false
             return
         }
@@ -106,7 +122,7 @@ class SignupViewModelImpl: SignupViewModel {
         }
         
         
-        isSuccess.value = true
+//        isSuccess.value = true
         signup()
         
     }
@@ -115,6 +131,13 @@ class SignupViewModelImpl: SignupViewModel {
         // validate
         
         signup()
+    }
+    
+    private func isValidEmail(email: String) -> Bool {
+        let emailRegEx = "^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let result = emailTest.evaluate(with: email)
+        return result
     }
     
     private func validUserData() -> Bool {

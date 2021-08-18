@@ -10,6 +10,7 @@ import Foundation
 struct Constant {
     
     static let BASE_URL = ""
-    static let AUTH_TOKEN = UserDefaults.standard.object(forKey: "accessToken") as? String ?? ""
+    
+    static let AUTH_TOKEN = UserDefaults.standard.object(forKey: "authToken") as? String ?? ""
     
 }
