@@ -55,14 +55,12 @@ class LoginViewModelImpl: LoginViewModel {
                 if let error = error as? ErrorMessage, let code = error.code {
                     switch code {
                     case let c where c >= HttpCode.internalServerError:
-                        self.errorMessage.value = "Something went wrong"
-                    case HttpCode.unauthorized:
-                        self.errorMessage.value = "Do login"
+                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
                     case HttpCode.badRequest:
                         let message = error.errorDTO?.message
                         self.errorMessage.value = message
                     default:
-                        self.errorMessage.value = "Something went wrong"
+                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
                     }
                 }
 

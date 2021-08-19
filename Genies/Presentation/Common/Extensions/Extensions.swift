@@ -13,9 +13,9 @@ extension UIButton {
     func applyButtonStyle() {
         self.backgroundColor = UIColor(named: "orange")
         self.layer.cornerRadius = 12
-        self.titleLabel?.textColor = UIColor.black
+        self.titleLabel?.textColor = UIColor(named: "grayLabel")
         self.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
-        self.tintColor = UIColor.black
+        self.tintColor = UIColor(named: "grayLabel")
     }
     
     // bounds and haptic effects
@@ -92,6 +92,7 @@ extension UITextField {
     func applyTextFieldStyle() {
         self.backgroundColor = UIColor(named: "gray")
         self.tintColor = UIColor(named: "orange")
+        self.textColor = UIColor(named: "grayLabel")
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
         self.borderStyle = .none
