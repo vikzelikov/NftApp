@@ -12,5 +12,5 @@ struct Endpoint {
     let url: URL?
     let method: HTTPMethod
     let headers: HTTPHeaders
-    let data: [String : Any]
+    let data: [String : Any]?
 }

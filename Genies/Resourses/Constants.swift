@@ -9,8 +9,9 @@ import Foundation
 
 struct Constant {
     
-    static let BASE_URL = "http://asgard-invest.org"
+    static let BASE_URL = "http://80.249.147.240:5000"
     
-    static let AUTH_TOKEN = UserDefaults.standard.object(forKey: "authToken") as? String ?? ""
+    static var AUTH_TOKEN = UserDefaults.standard.object(forKey: "authToken") as? String ?? ""
     
 }
+

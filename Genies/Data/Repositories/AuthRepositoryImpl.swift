@@ -31,7 +31,6 @@ class AuthRepositoryImpl: AuthRepository {
             }
             
             if response.error != nil {
-                print(response.error!)
                 if let errorDTO = try? JSONDecoder().decode(ErrorDTO.self, from: data) {
                     let error = ErrorMessage(errorType: .error, errorDTO: errorDTO, code: resp.statusCode)
                     completion(.failure(error))
@@ -41,7 +40,7 @@ class AuthRepositoryImpl: AuthRepository {
                     return
                 }
             }
-                        
+                      
             if let responseDTO = try? JSONDecoder().decode(SignupResponseDTO.self, from: data) {
                 completion(.success(responseDTO))
             } else {
@@ -71,7 +70,6 @@ class AuthRepositoryImpl: AuthRepository {
             }
             
             if response.error != nil {
-                print(response.error!)
                 if let errorDTO = try? JSONDecoder().decode(ErrorDTO.self, from: data) {
                     let error = ErrorMessage(errorType: .error, errorDTO: errorDTO, code: resp.statusCode)
                     completion(.failure(error))

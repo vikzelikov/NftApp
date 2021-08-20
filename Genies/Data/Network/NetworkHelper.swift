@@ -32,7 +32,7 @@ struct NetworkHelper {
     static func getHeaders() -> HTTPHeaders {
         return [
             "Authorization": "Bearer " + Constant.AUTH_TOKEN,
-            "Accept": "text/html"
+            "Accept": "application/json"
         ]
     }
     

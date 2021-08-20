@@ -9,8 +9,10 @@ import Foundation
 
 struct ErrorDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
+        case statusCode
         case message
     }
     
+    let statusCode: Int
     let message: String
 }

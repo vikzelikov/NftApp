@@ -9,6 +9,8 @@ import Foundation
 
 protocol SignupViewModel : BaseViewModel {
     
+    var isSuccess: Observable<Bool> { get }
+    
     func updateCredentials(login: String, email: String, password: String, confirmPassword: String)
     
     func updatePersonalData(isMale: Bool?, birthDate: TimeInterval?)
@@ -70,11 +72,11 @@ class SignupViewModelImpl: SignupViewModel {
         
         signupUseCase.signup(request: signupRequest, completion: { result in
             switch result {
-            case .success(let user):
-                NSLog("OK: \(user)")
+            case .success(let isSuccess):
+                NSLog("OK Signup: \(isSuccess)")
                 self.isSuccess.value = true
             case .failure(let error):
-                self.isSuccess.value = true
+                self.isSuccess.value = false
                 NSLog("ERROR: \(String(describing: SignupViewModel.self)) \(error)")
                 if let error = error as? ErrorMessage, let code = error.code {
                     switch code {
@@ -86,10 +88,12 @@ class SignupViewModelImpl: SignupViewModel {
                     default:
                         self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
                     }
+                } else {
+                    self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
                 }
 
             }
-            
+
             self.isLoading.value = false
         })
     }

@@ -9,7 +9,7 @@ import Foundation
 
 protocol SignupUseCase {
     
-    func signup(request: SignupRequest, completion: @escaping (Result<User, Error>) -> Void)
+    func signup(request: SignupRequest, completion: @escaping (Result<Bool, Error>) -> Void)
     
 }
 
@@ -23,27 +23,22 @@ final class SignupUseCaseImpl: SignupUseCase {
         self.userStorage = UserStorageImpl()
     }
     
-    func signup(request: SignupRequest, completion: @escaping (Result<User, Error>) -> Void) {
+    func signup(request: SignupRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
 
         repository?.signup(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    let user = User(
-                        id: resp.id,
-                        authToken: resp.authToken,
-                        login: resp.login,
-                        email: resp.email,
-                        password: resp.password,
-                        isMale: resp.isMale,
-                        birthDate: resp.birthDate,
-                        balance: resp.balance,
-                        influencerId: resp.influencerId
-                    )
-                                            
-                    self.userStorage?.saveAuthToken(token: user.authToken!)
-                    self.userStorage?.saveUserId(userId: user.id!)
-                    
-                    completion(.success(user))
+                    let authToken = resp.token
+
+                    if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
+                        Constant.AUTH_TOKEN = authToken
+                        self.userStorage?.saveAuthToken(token: authToken)
+                        self.userStorage?.saveUserId(userId: userId)
+                        
+                        completion(.success(true))
+                    } else {
+                        completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+                    }
                 }
                 
                 case .failure(let error) : do {

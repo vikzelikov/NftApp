@@ -59,7 +59,7 @@
         </view>
     </objects>
     <resources>
-        <image name="cross" width="329" height="329"/>
+        <image name="cross" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

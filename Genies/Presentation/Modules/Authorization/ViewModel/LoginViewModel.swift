@@ -9,6 +9,8 @@ import Foundation
 
 protocol LoginViewModel : BaseViewModel {
     
+    var isSuccess: Observable<Bool> { get }
+    
     func updateCredentials(login: String, password: String)
         
     func inputCredentials()

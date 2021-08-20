@@ -10,9 +10,7 @@ import Foundation
 protocol BaseViewModel {
     
     var isLoading: Observable<Bool> { get }
-    
-    var isSuccess: Observable<Bool> { get }
-    
+        
     var errorMessage: Observable<String?> { get }
     
 }

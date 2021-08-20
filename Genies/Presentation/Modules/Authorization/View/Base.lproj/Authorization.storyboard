@@ -32,7 +32,7 @@
                                 <rect key="frame" x="97.5" y="499" width="125" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="CREATE ACCOUNT">
-                                    <color key="titleColor" systemColor="secondaryLabelColor"/>
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="kOO-8r-AwJ" kind="presentation" modalPresentationStyle="fullScreen" id="5Of-m1-jf9"/>
@@ -73,7 +73,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0f6-XM-3D4">
-                                                <rect key="frame" x="122.5" y="20" width="75.5" height="26.5"/>
+                                                <rect key="frame" x="122.5" y="15" width="75.5" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -91,7 +91,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fDs-eb-PFO">
-                                                <rect key="frame" x="15" y="66.5" width="290" height="40"/>
+                                                <rect key="frame" x="15" y="61.5" width="290" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="SVd-5r-x8x"/>
                                                 </constraints>
@@ -99,7 +99,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QbJ-3b-pxP">
-                                                <rect key="frame" x="15" y="121.5" width="290" height="40"/>
+                                                <rect key="frame" x="15" y="116.5" width="290" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="49m-A9-OmY"/>
                                                 </constraints>
@@ -107,7 +107,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KmE-LK-2Bf">
-                                                <rect key="frame" x="15" y="176.5" width="290" height="40"/>
+                                                <rect key="frame" x="15" y="171.5" width="290" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="exh-n2-nd3"/>
                                                 </constraints>
@@ -115,7 +115,7 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A64-rj-iVh">
-                                                <rect key="frame" x="15" y="231.5" width="290" height="40"/>
+                                                <rect key="frame" x="15" y="226.5" width="290" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="6rg-ke-3BI"/>
                                                 </constraints>
@@ -123,13 +123,13 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By tapping &quot;Next&quot;, you acknowledge that you have read the Privacy Policy and agree to the Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHw-R2-Ts7">
-                                                <rect key="frame" x="15" y="291.5" width="290" height="43"/>
+                                                <rect key="frame" x="15" y="286.5" width="290" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEc-rS-fvm">
-                                                <rect key="frame" x="15" y="354.5" width="290" height="60"/>
+                                                <rect key="frame" x="15" y="349.5" width="290" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="s4F-We-mGM"/>
                                                 </constraints>
@@ -164,7 +164,7 @@
                                             <constraint firstItem="fDs-eb-PFO" firstAttribute="leading" secondItem="gwZ-Em-lsh" secondAttribute="leading" constant="15" id="h8E-Tn-fIC"/>
                                             <constraint firstItem="TUX-FQ-ZI4" firstAttribute="top" secondItem="gwZ-Em-lsh" secondAttribute="top" id="nJh-8f-AhP"/>
                                             <constraint firstAttribute="trailing" secondItem="TUX-FQ-ZI4" secondAttribute="trailing" id="qnL-Zr-Dmh"/>
-                                            <constraint firstItem="0f6-XM-3D4" firstAttribute="top" secondItem="gwZ-Em-lsh" secondAttribute="top" constant="20" id="qzE-0K-SZM"/>
+                                            <constraint firstItem="0f6-XM-3D4" firstAttribute="top" secondItem="gwZ-Em-lsh" secondAttribute="top" constant="15" id="qzE-0K-SZM"/>
                                             <constraint firstItem="fDs-eb-PFO" firstAttribute="top" secondItem="0f6-XM-3D4" secondAttribute="bottom" constant="20" id="sUf-hA-OrD"/>
                                             <constraint firstItem="0f6-XM-3D4" firstAttribute="centerX" secondItem="gwZ-Em-lsh" secondAttribute="centerX" id="tsB-KN-usp"/>
                                             <constraint firstAttribute="height" constant="700" id="vl7-Xv-8YR"/>
@@ -325,7 +325,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6p-b7-Cvb">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6p-b7-Cvb">
                                 <rect key="frame" x="15" y="61.5" width="290" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eF8-h1-BAG"/>
@@ -333,7 +333,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDC-Z9-C66">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDC-Z9-C66">
                                 <rect key="frame" x="15" y="116.5" width="290" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rwC-4t-LBO"/>
@@ -430,9 +430,6 @@
         <image name="cross" width="25" height="25"/>
         <image name="female" width="512" height="512"/>
         <image name="male" width="384" height="384"/>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -9,5 +9,6 @@ target 'Genies' do
 
 pod “Alamofire”
 pod 'SDWebImage', '~> 5.0'
+pod 'SwiftyJSON', '~> 4.0'
 
 end

@@ -18,7 +18,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    
     func setupTabBar() {
         let shop = UIStoryboard(name: "Shop", bundle: nil)
         guard let firstVC = shop.instantiateViewController(withIdentifier: "ShopViewController") as? ShopViewController else { return }
@@ -32,7 +31,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let tabBarList = [firstVC, secondVC, thirdVC]
         
         tabBar.isTranslucent = true
-        tabBar.barTintColor = .black
+        tabBar.clipsToBounds = false
         tabBar.tintColor = UIColor(named: "orange")
         tabBar.backgroundColor = UIColor(named: "gray")
         tabBar.layer.backgroundColor = UIColor.clear.cgColor

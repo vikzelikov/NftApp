@@ -9,13 +9,25 @@ import UIKit
 
 class OfferPriceViewCell: UITableViewCell {
     
-    
     static let cellIdentifier = String(describing: OfferPriceViewCell.self)
+    
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        setupStyle()
+    }
+    
+    private func setupStyle() {
+        mainView.layer.shadowColor = UIColor(named: "gray")?.cgColor
+        mainView.layer.shadowOpacity = 1
+        mainView.layer.shadowOffset = .zero
+        mainView.layer.shadowRadius = 4
+        
+//        buyButton.applyButtonStyle()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,11 +35,11 @@ class OfferPriceViewCell: UITableViewCell {
     }
     
     func bind(viewModel: NftCellViewModel) {
+        
 //        priceLabel?.text = viewModel.price
     }
     
     @IBAction func buyButtonDidTap(_ sender: UIButton) {
-        HapticHelper.vibro(.light)
         sender.isEnabled = false
         sender.loadingIndicator(isShow: true, titleButton: nil)
         

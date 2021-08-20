@@ -14,7 +14,7 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         loginButton.applyButtonStyle()
         loginButton.applyButtonEffects()
         

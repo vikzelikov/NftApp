@@ -52,7 +52,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="gray"/>
+                        <color key="backgroundColor" name="default"/>
                         <constraints>
                             <constraint firstItem="jV6-gJ-soe" firstAttribute="centerY" secondItem="6XI-xh-L09" secondAttribute="centerY" id="2aq-Tu-LwK"/>
                             <constraint firstAttribute="height" constant="100" id="6wP-1U-Ydg"/>
@@ -68,7 +68,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="6XI-xh-L09" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="57S-G3-77r"/>
                     <constraint firstAttribute="bottom" secondItem="6XI-xh-L09" secondAttribute="bottom" constant="10" id="APG-Tk-65N"/>
@@ -87,8 +86,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="gray">
-            <color red="0.14499999582767487" green="0.14499999582767487" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="default">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
