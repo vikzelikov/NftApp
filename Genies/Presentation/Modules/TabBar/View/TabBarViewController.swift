@@ -31,7 +31,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let tabBarList = [firstVC, secondVC, thirdVC]
         
         tabBar.isTranslucent = true
-        tabBar.clipsToBounds = false
+        tabBar.clipsToBounds = true
         tabBar.tintColor = UIColor(named: "orange")
         tabBar.backgroundColor = UIColor(named: "gray")
         tabBar.layer.backgroundColor = UIColor.clear.cgColor
