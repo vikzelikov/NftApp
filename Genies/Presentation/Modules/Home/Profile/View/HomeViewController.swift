@@ -86,10 +86,10 @@ class HomeViewController: UIViewController {
     
     private func checkoutCollections(selectedLabel: UILabel, unselectedLabel: UILabel) {
         let borderWidth = (UIScreen.main.bounds.width - 0) / 2
-        selectedLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.white, thickness: 1, width: borderWidth)
+        selectedLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "black") ?? UIColor.black, thickness: 1, width: borderWidth)
         unselectedLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
         
-        selectedLabel.textColor = UIColor.white
+        selectedLabel.textColor = UIColor(named: "black")
         unselectedLabel.textColor = UIColor.gray
     }
     
@@ -121,9 +121,8 @@ class HomeViewController: UIViewController {
         
         let windowWidth: CGFloat = UIScreen.main.bounds.width
         let borderWidth = windowWidth / 2
-        observablesLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.lightGray.withAlphaComponent(0.2), thickness: 1, width: borderWidth)
+        observablesLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
         observablesLabel.textColor = UIColor.gray
-        
         let observablesTap = UITapGestureRecognizer(target: self, action: #selector(observablesDidTap(_:)))
         observablesLabel?.isUserInteractionEnabled = true
         observablesLabel?.addGestureRecognizer(observablesTap)
@@ -136,19 +135,19 @@ class HomeViewController: UIViewController {
         
         
         if isOtherUser {
-            miniTopButton.setTitle("Follow", for: .normal)
+            miniTopButton.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
             miniTopButton.setImage(nil, for: .normal)
             miniTopButton.addTarget(self, action: #selector(subscribeDidTap), for: .touchUpInside)
 
             observablesLabel.isHidden = true
-            collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.lightGray.withAlphaComponent(0.2), thickness: 1, width: windowWidth)
+            collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: windowWidth)
         } else {
             refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
             scrollView.addSubview(refreshControl)
 
             miniTopButton.addTarget(self, action: #selector(shareDidTap), for: .touchUpInside)
-            collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.white, thickness: 1, width: borderWidth)
             
+            collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "black") ?? UIColor.black, thickness: 1, width: borderWidth)
             let collectionTap = UITapGestureRecognizer(target: self, action: #selector(collectionDidTap(_:)))
             collectionLabel?.isUserInteractionEnabled = true
             collectionLabel?.addGestureRecognizer(collectionTap)
@@ -173,9 +172,6 @@ extension HomeViewController: UICollectionViewDelegate {
         let viewController = DetailNftViewController()
         viewController.nftCellViewModel = items[indexPath.row]
         navigationController?.pushViewController(viewController, animated: true)
-//        let vc = storyboard?.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
-//        navigationController?.pushViewController(vc, animated: true)
-
         
         HapticHelper.vibro(.light)
     }
@@ -202,9 +198,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NftProfileViewCell", for: indexPath) as! NftProfileViewCell
-        cell.backgroundColor = UIColor(named: "gray")
-        cell.layer.cornerRadius = 12
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NftProfileViewCell", for: indexPath) as? NftProfileViewCell else { return UICollectionViewCell() }
         
         cell.bind(viewModel: items[indexPath.row])
         
@@ -216,7 +210,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
             let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-            let size = (collectionView.frame.size.width - space) / 2 - 5
+            let size = (collectionView.frame.size.width - space) / 2 - 1
             return CGSize(width: size, height: size)
         }
 }

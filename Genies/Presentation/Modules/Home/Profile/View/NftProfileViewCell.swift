@@ -9,11 +9,17 @@ import UIKit
 
 class NftProfileViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var titleNft: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        mainView.layer.shadowColor = UIColor(named: "gray")?.cgColor
+        mainView.layer.shadowOpacity = 1
+        mainView.layer.shadowOffset = .zero
+        mainView.layer.shadowRadius = 5
     }
     
     func bind(viewModel: NftCellViewModel) {
