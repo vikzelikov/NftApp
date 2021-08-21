@@ -29,6 +29,7 @@
         <scene sceneID="Zzj-Ip-iKE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="dur-tj-psx" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="X47-2z-6ps">
                         <autoresizingMask key="autoresizingMask"/>

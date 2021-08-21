@@ -52,9 +52,9 @@ class FilterSheetViewController: UIViewController {
     private func resetFilter() {
         HapticHelper.vibro(.light)
 
-        featuredLabel.textColor = UIColor.white
-        priceLowToHighLabel.textColor = UIColor.white
-        priceHighToLowLabel.textColor = UIColor.white
+        featuredLabel.textColor = UIColor(named: "black")
+        priceLowToHighLabel.textColor = UIColor(named: "black")
+        priceHighToLowLabel.textColor = UIColor(named: "black")
     }
     
     override func viewDidLayoutSubviews() {
