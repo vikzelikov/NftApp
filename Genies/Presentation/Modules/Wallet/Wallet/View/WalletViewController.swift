@@ -96,7 +96,7 @@ extension WalletViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.backgroundColor = UIColor(named: "gray")
+        cell.backgroundColor = UIColor(named: "clear")
         cell.selectionStyle = UITableViewCell.SelectionStyle.default
 
         cell.bind(viewModel: items[indexPath.row])

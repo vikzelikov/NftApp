@@ -41,8 +41,6 @@ class SettingsViewController: UIViewController {
         items1.append(SettingCellViewModel(title: "Contact developer", contentLabel: nil, iconContentView: UIImage(named: "mail")))
         items1.append(SettingCellViewModel(title: "Share application", contentLabel: nil, iconContentView: UIImage(named: "share")))
 
-    
-        
         telegramButton.layer.cornerRadius = telegramButton.frame.width / 2
 
         reload()
@@ -129,7 +127,7 @@ extension SettingsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.backgroundColor = UIColor(named: "gray")
+            cell.backgroundColor = UIColor(named: "clear")
             cell.selectionStyle = UITableViewCell.SelectionStyle.default
 
             cell.bind(viewModel: items[indexPath.row])
@@ -141,7 +139,7 @@ extension SettingsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.backgroundColor = UIColor(named: "gray")
+            cell.backgroundColor = UIColor(named: "clear")
             cell.selectionStyle = UITableViewCell.SelectionStyle.default
 
             cell.bind(viewModel: items1[indexPath.row])

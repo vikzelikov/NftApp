@@ -178,11 +178,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="search" width="512" height="512"/>
+        <image name="search" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
         <image name="telegram" width="25" height="25"/>
         <namedColor name="gray">
-            <color red="0.14499999582767487" green="0.14499999582767487" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="lightGray">
             <color red="0.75300002098083496" green="0.75300002098083496" blue="0.75300002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

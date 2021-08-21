@@ -32,7 +32,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEe-i0-hoK">
                                     <rect key="frame" x="130.5" y="15" width="59" height="26.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5A-ro-X2A">
@@ -44,7 +44,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Fmg-rO-84A">
                                                     <rect key="frame" x="0.0" y="6.5" width="122" height="47.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHc-sa-ubp">
+                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Tokens" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHc-sa-ubp">
                                                             <rect key="frame" x="0.0" y="0.0" width="122" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
@@ -56,7 +56,7 @@
                                                                 <constraint firstAttribute="height" constant="30" id="xLF-XS-PJk"/>
                                                             </constraints>
                                                             <color key="tintColor" systemColor="labelColor"/>
-                                                            <state key="normal" image="plus" catalog="system">
+                                                            <state key="normal" image="plus">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                             </state>
                                                             <connections>
@@ -80,7 +80,7 @@
                                                                 <constraint firstAttribute="height" constant="30" id="uFd-9L-k3P"/>
                                                             </constraints>
                                                             <color key="tintColor" systemColor="labelColor"/>
-                                                            <state key="normal" image="minus" catalog="system"/>
+                                                            <state key="normal" image="minus"/>
                                                             <connections>
                                                                 <action selector="withdrawDidTap:" destination="-1" eventType="touchUpInside" id="zwO-2U-n70"/>
                                                             </connections>
@@ -91,7 +91,7 @@
                                             </subviews>
                                         </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" name="gray"/>
+                                    <color key="backgroundColor" name="clear"/>
                                     <constraints>
                                         <constraint firstItem="H9N-Pr-93L" firstAttribute="leading" secondItem="S5A-ro-X2A" secondAttribute="leading" constant="15" id="3U8-bZ-8KB"/>
                                         <constraint firstItem="H9N-Pr-93L" firstAttribute="top" secondItem="S5A-ro-X2A" secondAttribute="top" id="4K9-d7-66A"/>
@@ -205,10 +205,10 @@
     </objects>
     <resources>
         <image name="left_arrow" width="25" height="25"/>
-        <image name="minus" catalog="system" width="128" height="24"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
-        <namedColor name="gray">
-            <color red="0.14499999582767487" green="0.14499999582767487" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="minus" width="25" height="25"/>
+        <image name="plus" width="25" height="25"/>
+        <namedColor name="clear">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
