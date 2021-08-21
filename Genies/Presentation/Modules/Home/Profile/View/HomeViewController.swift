@@ -26,6 +26,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var observablesLabel: UILabel!
     @IBOutlet weak var followersContainer: UIStackView!
     @IBOutlet weak var followingContainer: UIStackView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     
     let refreshControl = UIRefreshControl()
     var items: [NftCellViewModel] = []
@@ -141,6 +143,12 @@ class HomeViewController: UIViewController {
 
             observablesLabel.isHidden = true
             collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: windowWidth)
+            
+            if (navigationController == nil) {
+                backButton.isHidden = true
+            } else {
+                closeButton.isHidden = true
+            }
         } else {
             refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
             scrollView.addSubview(refreshControl)
@@ -151,6 +159,9 @@ class HomeViewController: UIViewController {
             let collectionTap = UITapGestureRecognizer(target: self, action: #selector(collectionDidTap(_:)))
             collectionLabel?.isUserInteractionEnabled = true
             collectionLabel?.addGestureRecognizer(collectionTap)
+            
+            backButton.isHidden = true
+            closeButton.isHidden = true
         }
     }
     
@@ -163,6 +174,14 @@ class HomeViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.refreshControl.endRefreshing()
         }
+    }
+    
+    @IBAction func dismissDidTap(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
 }
 

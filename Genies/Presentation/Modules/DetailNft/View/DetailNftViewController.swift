@@ -112,8 +112,8 @@ class DetailNftViewController: UIViewController {
         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
         guard let profilePage = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
         profilePage.isOtherUser = true
-        present(profilePage, animated: true, completion: nil)
-                
+        navigationController?.pushViewController(profilePage, animated: true) ?? present(profilePage, animated: true, completion: nil)
+
         HapticHelper.vibro(.light)
     }
     
