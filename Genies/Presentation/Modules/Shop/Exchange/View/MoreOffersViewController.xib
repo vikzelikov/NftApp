@@ -20,18 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4iR-Ew-sma">
-                    <rect key="frame" x="285" y="0.0" width="35" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="RS9-br-fBr"/>
-                        <constraint firstAttribute="width" constant="35" id="cta-hQ-NUA"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="20" maxX="15" maxY="0.0"/>
-                    <state key="normal" image="cross"/>
-                    <connections>
-                        <action selector="dismissDidTap:" destination="-1" eventType="touchUpInside" id="hdV-JB-Dcp"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More offers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KM5-SI-v1m">
                     <rect key="frame" x="105.5" y="15" width="109" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -42,15 +30,27 @@
                     <rect key="frame" x="0.0" y="52" width="320" height="516"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ss4-mf-hpw">
+                    <rect key="frame" x="285" y="0.0" width="35" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="7jD-7g-q84"/>
+                        <constraint firstAttribute="height" constant="40" id="fiz-bf-jCw"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="20" maxX="15" maxY="0.0"/>
+                    <state key="normal" image="cross"/>
+                    <connections>
+                        <action selector="dismissDidTap:" destination="-1" eventType="touchUpInside" id="gCL-9T-Xnk"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ss4-mf-hpw" secondAttribute="trailing" id="45m-7k-1wU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FvK-uF-tva" secondAttribute="trailing" id="595-MX-9VT"/>
+                <constraint firstItem="ss4-mf-hpw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="BUS-6a-Hl0"/>
                 <constraint firstItem="KM5-SI-v1m" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="IjK-N5-D9r"/>
                 <constraint firstItem="FvK-uF-tva" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XtT-o9-H8H"/>
-                <constraint firstItem="4iR-Ew-sma" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dqO-dy-pyw"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4iR-Ew-sma" secondAttribute="trailing" id="fgn-RY-bp6"/>
                 <constraint firstItem="FvK-uF-tva" firstAttribute="top" secondItem="KM5-SI-v1m" secondAttribute="bottom" constant="10" id="go7-3c-3vV"/>
                 <constraint firstItem="KM5-SI-v1m" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="x0I-V4-Gbl"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FvK-uF-tva" secondAttribute="bottom" id="yla-1N-zX4"/>

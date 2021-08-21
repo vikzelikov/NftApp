@@ -33,8 +33,6 @@ final class UserUseCaseImpl: UserUseCase {
                             login: resp.login,
                             email: resp.email
                         )
-
-                        print(user)
                     }
                     
                     case .failure(let error) : do {

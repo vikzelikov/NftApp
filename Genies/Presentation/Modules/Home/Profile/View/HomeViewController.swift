@@ -34,28 +34,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UserUseCaseImpl().getUser( completion: { result in
-            switch result {
-            case .success(let isSuccess):
-                NSLog("OK Signup!!!!: \(isSuccess)")
-            case .failure(let error):
-                NSLog("ERROR!!!!: \(String(describing: SignupViewModel.self)) \(error)")
-                if let error = error as? ErrorMessage, let code = error.code {
-                    switch code {
-                    case let c where c >= HttpCode.internalServerError:
-                        print( NSLocalizedString("defaultError", comment: ""))
-                    case HttpCode.badRequest:
-                        print( error.errorDTO?.message)
-                    case HttpCode.unauthorized:
-                        print("авторизуйся")
-                    default:
-                        print( NSLocalizedString("defaultError", comment: ""))
-                    }
-                }
-
-            }
-        })
- 
         setupStyle()
         
         collectionView.delegate = self
