@@ -92,7 +92,7 @@ extension UITextField {
     func applyTextFieldStyle() {
         self.backgroundColor = UIColor(named: "gray")
         self.tintColor = UIColor(named: "orange")
-        self.textColor = UIColor(named: "grayLabel")
+        self.textColor = UIColor(named: "black")
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
         self.borderStyle = .none

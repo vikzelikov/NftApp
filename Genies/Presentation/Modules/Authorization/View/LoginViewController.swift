@@ -70,7 +70,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func dismissLogin(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
 }

@@ -28,8 +28,6 @@ class SignUpViewController: UIViewController {
     }
     
     private func setupStyle() {
-        self.navigationController?.navigationBar.isHidden = true
-
         loginTextField.becomeFirstResponder()
 
         loginTextField.applyTextFieldStyle()
@@ -49,7 +47,8 @@ class SignUpViewController: UIViewController {
             confirmPassword: confirmPassTextField.text!
         )
         
-        viewModel?.inputCredentials()
+//        viewModel?.inputCredentials()
+        showHomeView()
     }
         
     func bindData() {
@@ -85,12 +84,13 @@ class SignUpViewController: UIViewController {
     private func showHomeView() {
         let homeStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
         guard let homePage = homeStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        appDelegate.window?.rootViewController = homePage
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//        appDelegate.window?.rootViewController = homePage
+        navigationController?.pushViewController(homePage, animated: false)
     }
     
     @IBAction func dismissSignUp(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
 }

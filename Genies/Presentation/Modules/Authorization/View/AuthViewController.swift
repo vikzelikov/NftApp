@@ -14,11 +14,29 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        setupStyle()
+    }
+    
+    func setupStyle() {
+        self.navigationController?.navigationBar.isHidden = true
+
         loginButton.applyButtonStyle()
         loginButton.applyButtonEffects()
         
         signupButton.applyButtonEffects()
+    }
+    
+    @IBAction func loginDidTap(_ sender: Any) {
+        let homeStoryboard = UIStoryboard(name: "Authorization", bundle: nil)
+        guard let vc = homeStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func signupDidTap(_ sender: Any) {
+        let homeStoryboard = UIStoryboard(name: "Authorization", bundle: nil)
+        guard let vc = homeStoryboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
