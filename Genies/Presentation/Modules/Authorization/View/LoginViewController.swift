@@ -38,7 +38,8 @@ class LoginViewController: UIViewController {
             password: passwordTextField.text!
         )
         
-        viewModel?.inputCredentials()
+//        viewModel?.inputCredentials()
+        showHomeView()
     }
     
     func bindData() {
@@ -65,8 +66,9 @@ class LoginViewController: UIViewController {
     private func showHomeView() {
         let homeStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
         guard let homePage = homeStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        appDelegate.window?.rootViewController = homePage
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//        appDelegate.window?.rootViewController = homePage
+        navigationController?.pushViewController(homePage, animated: false)
     }
     
     @IBAction func dismissLogin(_ sender: Any) {
