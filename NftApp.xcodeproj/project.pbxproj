@@ -103,7 +103,7 @@
 		18D8452826CD682400888D32 /* ErrorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452726CD682400888D32 /* ErrorDTO.swift */; };
 		18D8452D26CDAEF100888D32 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452C26CDAEF100888D32 /* UserStorage.swift */; };
 		18D8452F26CDB2BA00888D32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452E26CDB2BA00888D32 /* LoginViewModel.swift */; };
-		18D8453826CDCAB200888D32 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D8453626CDCAB200888D32 /* Localizable.strings */; };
+		18E1106F26D595EF007FD66E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18E1107126D595EF007FD66E /* Localizable.strings */; };
 		18E39B1326D02D4900FEC003 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39B1226D02D4900FEC003 /* JWT.swift */; };
 		18E39B1626D0394C00FEC003 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39B1526D0394C00FEC003 /* UserRepositoryImpl.swift */; };
 		18E39B1926D039B000FEC003 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39B1826D039B000FEC003 /* UserRepository.swift */; };
@@ -217,8 +217,8 @@
 		18D8452C26CDAEF100888D32 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		18D8452E26CDB2BA00888D32 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		18D8453026CDC40500888D32 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Authorization.strings; sourceTree = "<group>"; };
-		18D8453726CDCAB200888D32 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Presentation/Modules/Authorization/View/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		18D8453926CDCBE500888D32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Presentation/Modules/Authorization/View/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18E1107026D595EF007FD66E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18E1107226D595F3007FD66E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18E39B1226D02D4900FEC003 /* JWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWT.swift; sourceTree = "<group>"; };
 		18E39B1526D0394C00FEC003 /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		18E39B1826D039B000FEC003 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -836,7 +836,7 @@
 		18B8427E266F61180033AFC0 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				18D8453626CDCAB200888D32 /* Localizable.strings */,
+				18E1107126D595EF007FD66E /* Localizable.strings */,
 				1879C56926C9C74D00CE367E /* Constants.swift */,
 				18E39B1226D02D4900FEC003 /* JWT.swift */,
 				18855F3526D52A360018B072 /* Assets.xcassets */,
@@ -1133,11 +1133,11 @@
 				18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */,
 				18523F92269CEB4E00611362 /* Shop.storyboard in Resources */,
 				186E601A26B6E695008291AC /* DetailTransactionViewController.xib in Resources */,
-				18D8453826CDCAB200888D32 /* Localizable.strings in Resources */,
 				181C9A0F26AEFA3400A60105 /* HomeHeader.xib in Resources */,
 				18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */,
 				18156D3B26A43240006B8FE5 /* Settings.storyboard in Resources */,
 				18B8428E266F648F0033AFC0 /* Home.storyboard in Resources */,
+				18E1106F26D595EF007FD66E /* Localizable.strings in Resources */,
 				186E602326B88F25008291AC /* SearchViewController.xib in Resources */,
 				182342CA269E410D00CD2907 /* NftDropViewCell.xib in Resources */,
 				186E5FE626B33ECF008291AC /* NftProfileViewCell.xib in Resources */,
@@ -1301,11 +1301,11 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		18D8453626CDCAB200888D32 /* Localizable.strings */ = {
+		18E1107126D595EF007FD66E /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				18D8453726CDCAB200888D32 /* ru */,
-				18D8453926CDCBE500888D32 /* en */,
+				18E1107026D595EF007FD66E /* en */,
+				18E1107226D595F3007FD66E /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1452,7 +1452,7 @@
 				MARKETING_VERSION = 0.0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nft.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Debug Provision Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1480,7 +1480,7 @@
 				MARKETING_VERSION = 0.0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nft.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Debug Provision Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
