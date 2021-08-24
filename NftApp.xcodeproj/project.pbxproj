@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */; };
 		18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */; };
-		18156D3526A38CE1006B8FE5 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D3426A38CE1006B8FE5 /* PresentationController.swift */; };
+		18156D3526A38CE1006B8FE5 /* FilterSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D3426A38CE1006B8FE5 /* FilterSheetController.swift */; };
 		18156D3B26A43240006B8FE5 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18156D3A26A43240006B8FE5 /* Settings.storyboard */; };
 		18156D3D26A43250006B8FE5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D3C26A43250006B8FE5 /* SettingsViewController.swift */; };
 		18156D4126A4D8F7006B8FE5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4026A4D8F7006B8FE5 /* SettingsViewModel.swift */; };
@@ -119,7 +119,7 @@
 		058902B29A06F5DBEEF6791B /* Pods-Genies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Genies.debug.xcconfig"; path = "Target Support Files/Pods-Genies/Pods-Genies.debug.xcconfig"; sourceTree = "<group>"; };
 		18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetViewController.swift; sourceTree = "<group>"; };
 		18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterSheetViewController.xib; sourceTree = "<group>"; };
-		18156D3426A38CE1006B8FE5 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		18156D3426A38CE1006B8FE5 /* FilterSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetController.swift; sourceTree = "<group>"; };
 		18156D3A26A43240006B8FE5 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		18156D3C26A43250006B8FE5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		18156D4026A4D8F7006B8FE5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -245,14 +245,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18156D3626A39169006B8FE5 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				18156D3426A38CE1006B8FE5 /* PresentationController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		18156D3726A4314B006B8FE5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +302,8 @@
 		181742F32699B5C3002B9FD7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				18E39B1226D02D4900FEC003 /* JWT.swift */,
+				18E8F3C626CBCCF100E62E33 /* Observable.swift */,
 				181742F42699B601002B9FD7 /* HapticHelper.swift */,
 				181742F8269B0705002B9FD7 /* ColorHelper.swift */,
 			);
@@ -337,6 +331,7 @@
 		182342BA269DFC0100CD2907 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18156D3426A38CE1006B8FE5 /* FilterSheetController.swift */,
 				182342BE269DFC5500CD2907 /* ExchangeViewController.swift */,
 				182342BF269DFC5500CD2907 /* ExchangeViewController.xib */,
 				182342D926A1E67F00CD2907 /* NftExchangeViewCell.swift */,
@@ -838,7 +833,6 @@
 			children = (
 				18E1107126D595EF007FD66E /* Localizable.strings */,
 				1879C56926C9C74D00CE367E /* Constants.swift */,
-				18E39B1226D02D4900FEC003 /* JWT.swift */,
 				18855F3526D52A360018B072 /* Assets.xcassets */,
 			);
 			path = Resourses;
@@ -974,11 +968,9 @@
 			isa = PBXGroup;
 			children = (
 				18D8452226CD5D1600888D32 /* ViewModels */,
-				18156D3626A39169006B8FE5 /* Controllers */,
 				182342D526A081DB00CD2907 /* Views */,
 				181742F32699B5C3002B9FD7 /* Utils */,
 				18D3FEC7268FAE270030929D /* Extensions */,
-				18E8F3C626CBCCF100E62E33 /* Observable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1276,7 +1268,7 @@
 				18E39B1326D02D4900FEC003 /* JWT.swift in Sources */,
 				182342F326A2ECF700CD2907 /* HistoryViewCell.swift in Sources */,
 				18D8452826CD682400888D32 /* ErrorDTO.swift in Sources */,
-				18156D3526A38CE1006B8FE5 /* PresentationController.swift in Sources */,
+				18156D3526A38CE1006B8FE5 /* FilterSheetController.swift in Sources */,
 				186E5FF726B6A3FD008291AC /* AddFundsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

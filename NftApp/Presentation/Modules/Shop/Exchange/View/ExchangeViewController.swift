@@ -102,6 +102,6 @@ extension ExchangeViewController: UITableViewDataSource {
 
 extension ExchangeViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        PresentationController(presentedViewController: presented, presenting: presenting)
+        FilterSheetController(presentedViewController: presented, presenting: presenting)
     }
 }

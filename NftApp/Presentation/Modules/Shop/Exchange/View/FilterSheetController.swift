@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PresentationController: UIPresentationController {
+class FilterSheetController: UIPresentationController {
 
   let blurEffectView: UIVisualEffectView!
   var tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer()
