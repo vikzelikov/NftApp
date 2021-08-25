@@ -35,13 +35,20 @@ class AuthViewController: UIViewController {
     }
     
     @IBAction func signupDidTap(_ sender: Any) {
-//        startApplePay()
         let homeStoryboard = UIStoryboard(name: "Authorization", bundle: nil)
         guard let vc = homeStoryboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
     
    
+    
+    
+    
+    
+    
+    
+    
+    
  
     func displayDefaultAlert(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
