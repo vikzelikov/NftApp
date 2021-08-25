@@ -10,8 +10,8 @@ import Alamofire
 
 struct DropShopEndpoints {
     
-    static func getNftsEndpoint(request: GetNftsRequest) -> Endpoint {
-        let requestDTO = GetNftsRequestDTO (
+    static func getEditionsEndpoint(request: GetEditionsRequest) -> Endpoint {
+        let requestDTO = GetEditionsRequestDTO (
             page: request.page
         ).parameters
         

@@ -8,9 +8,9 @@
 import Foundation
 
 struct User: Equatable, Identifiable {
-    let id: Int?
-    let login: String?
-    let email: String?
+    var id: Int
+    var login: String
+    var email: String
 //    let password: String?
 //    let isMale: Bool?
 //    let birthDate: TimeInterval?

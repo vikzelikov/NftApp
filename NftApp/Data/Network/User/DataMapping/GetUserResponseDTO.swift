@@ -12,9 +12,11 @@ class GetUserResponseDTO: Decodable {
         case id
         case login
         case email
+        case balance
     }
     
     let id: Int
     let login: String
     let email: String
+    let balance: Double
 }

@@ -7,7 +7,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 class UserRepositoryImpl: UserRepository {
     
@@ -20,34 +19,39 @@ class UserRepositoryImpl: UserRepository {
         }
         
         AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
-            guard let resp = response.response else {
-                completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: nil)))
-                return
-            }
             
-            guard let data = response.data else {
-                completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
-                return
-            }
+            NetworkHelper.validateResponse(response: response, completion: completion)
             
-            if response.error != nil {
-                if let errorDTO = try? JSONDecoder().decode(ErrorDTO.self, from: data) {
-                    let error = ErrorMessage(errorType: .error, errorDTO: errorDTO, code: resp.statusCode)
-                    completion(.failure(error))
-                    return
-                } else {
-                    completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
-                    return
-                }
-            }
-                      
-            print(JSON(data))
+        }
+    }
+    
+    func updateUser(userId: Int, request: User, completion: @escaping (Result<UpdateUserResponseDTO, Error>) -> Void) {
+        let endpoint = UserEndpoints.updateUserEndpoint(userId: userId, request: request)
+        
+        guard let url = endpoint.url else {
+            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
+            return
+        }
+        
+        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
             
-            if let responseDTO = try? JSONDecoder().decode(GetUserResponseDTO.self, from: data) {
-                completion(.success(responseDTO))
-            } else {
-                completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
-            }
+            NetworkHelper.validateResponse(response: response, completion: completion)
+            
+        }
+    }
+    
+    func getNfts(userId: Int, request: GetNftsRequest, completion: @escaping (Result<GetNftsResponseDTO, Error>) -> Void) {
+        let endpoint = UserEndpoints.getNftsEndpoint(userId: userId, request: request)
+        
+        guard let url = endpoint.url else {
+            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
+            return
+        }
+        
+        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+           
+            NetworkHelper.validateResponse(response: response, completion: completion)
+            
         }
     }
     

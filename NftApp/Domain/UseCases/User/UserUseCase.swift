@@ -7,13 +7,15 @@
 
 import Foundation
 
-protocol UserUseCase {
+protocol GetUserUseCase {
     
     func getUser(completion: @escaping (Result<User, Error>) -> Void)
     
+    func updateUser(request: User, completion: @escaping (Result<Bool, Error>) -> Void)
+    
 }
 
-final class UserUseCaseImpl: UserUseCase {
+final class GetUserUseCaseImpl: GetUserUseCase {
     
     private let repository: UserRepository?
     private let userStorage: UserStorage?
@@ -46,4 +48,23 @@ final class UserUseCaseImpl: UserUseCase {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
         }
     }
+    
+    func updateUser(request: User, completion: @escaping (Result<Bool, Error>) -> Void) {
+        if let userId = userStorage?.getUserId() {
+            repository?.updateUser(userId: userId, request: request, completion: { result in
+                switch result {
+                    case .success(let resp) : do {
+                        print(resp)
+                    }
+                    
+                    case .failure(let error) : do {
+                        completion(.failure(error))
+                    }
+                }
+            })
+        } else {
+            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+        }
+    }
+    
 }

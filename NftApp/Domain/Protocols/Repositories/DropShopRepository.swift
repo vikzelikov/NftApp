@@ -9,7 +9,7 @@ import Foundation
 
 protocol DropShopRepository {
     
-    func getNfts(request: GetNftsRequest, completion: @escaping (Result<GetNftsResponseDTO, Error>) -> Void)
+    func getEditions(request: GetEditionsRequest, completion: @escaping (Result<GetEditionsResponseDTO, Error>) -> Void)
     
     func buyNft(request: BuyNftRequest, completion: @escaping (Result<BuyNftResponseDTO, Error>) -> Void)
     

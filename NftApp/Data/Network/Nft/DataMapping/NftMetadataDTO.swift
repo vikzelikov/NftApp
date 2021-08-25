@@ -14,7 +14,7 @@ struct NftMetadataDTO: Decodable {
         case mediaUrl
     }
     
-    let title: String?
-    let description: String?
-    let mediaUrl: String?
+    let title: String
+    let description: String
+    let mediaUrl: String
 }

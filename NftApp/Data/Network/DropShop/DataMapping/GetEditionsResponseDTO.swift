@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetNftsResponseDTO: Decodable {
+struct GetEditionsResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
         case editions
     }

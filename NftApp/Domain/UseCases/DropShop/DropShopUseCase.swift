@@ -9,7 +9,7 @@ import Foundation
 
 protocol DropShopUseCase {
     
-    func getNfts(request: GetNftsRequest, completion: @escaping (Result<Bool, Error>) -> Void)
+    func getEditions(request: GetEditionsRequest, completion: @escaping (Result<Bool, Error>) -> Void)
     
     func buyNft(request: BuyNftRequest, completion: @escaping (Result<Bool, Error>) -> Void)
     
@@ -23,9 +23,9 @@ final class DropShopUseCaseImpl: DropShopUseCase {
         self.repository = DropShopRepositoryImpl()
     }
     
-    func getNfts(request: GetNftsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func getEditions(request: GetEditionsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
 
-        repository?.getNfts(request: request, completion: { result in
+        repository?.getEditions(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
                     print("success \(resp)")
@@ -55,7 +55,7 @@ final class DropShopUseCaseImpl: DropShopUseCase {
     
 }
 
-struct GetNftsRequest {
+struct GetEditionsRequest {
     var page: Int = 0
 }
 
