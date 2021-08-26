@@ -120,6 +120,12 @@
 		18DDEA2026D7912600306A60 /* GetMarketNftsRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA1F26D7912600306A60 /* GetMarketNftsRequestDTO.swift */; };
 		18DDEA2226D7919400306A60 /* CreateSellNftRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA2126D7919400306A60 /* CreateSellNftRequestDTO.swift */; };
 		18DDEA2426D791B900306A60 /* UpdateSellNftRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA2326D791B900306A60 /* UpdateSellNftRequestDTO.swift */; };
+		18DDEA2726D7997A00306A60 /* InitialRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA2626D7997A00306A60 /* InitialRepositoryImpl.swift */; };
+		18DDEA2926D7998B00306A60 /* InitialRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA2826D7998B00306A60 /* InitialRepository.swift */; };
+		18DDEA2D26D79ADC00306A60 /* InitialEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA2C26D79ADC00306A60 /* InitialEndpoints.swift */; };
+		18DDEA2F26D79AEC00306A60 /* InitialResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA2E26D79AEC00306A60 /* InitialResponseDTO.swift */; };
+		18DDEA3226D79C6B00306A60 /* InitialUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA3126D79C6B00306A60 /* InitialUseCase.swift */; };
+		18DDEA3426D79CB400306A60 /* InitialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA3326D79CB400306A60 /* InitialData.swift */; };
 		18E1106F26D595EF007FD66E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18E1107126D595EF007FD66E /* Localizable.strings */; };
 		18E1107426D59F4F007FD66E /* DropShopRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1107326D59F4F007FD66E /* DropShopRepositoryImpl.swift */; };
 		18E1107626D59F6B007FD66E /* DropShopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1107526D59F6B007FD66E /* DropShopRepository.swift */; };
@@ -268,6 +274,12 @@
 		18DDEA1F26D7912600306A60 /* GetMarketNftsRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMarketNftsRequestDTO.swift; sourceTree = "<group>"; };
 		18DDEA2126D7919400306A60 /* CreateSellNftRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSellNftRequestDTO.swift; sourceTree = "<group>"; };
 		18DDEA2326D791B900306A60 /* UpdateSellNftRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSellNftRequestDTO.swift; sourceTree = "<group>"; };
+		18DDEA2626D7997A00306A60 /* InitialRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialRepositoryImpl.swift; sourceTree = "<group>"; };
+		18DDEA2826D7998B00306A60 /* InitialRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialRepository.swift; sourceTree = "<group>"; };
+		18DDEA2C26D79ADC00306A60 /* InitialEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialEndpoints.swift; sourceTree = "<group>"; };
+		18DDEA2E26D79AEC00306A60 /* InitialResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialResponseDTO.swift; sourceTree = "<group>"; };
+		18DDEA3126D79C6B00306A60 /* InitialUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialUseCase.swift; sourceTree = "<group>"; };
+		18DDEA3326D79CB400306A60 /* InitialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialData.swift; sourceTree = "<group>"; };
 		18E1107026D595EF007FD66E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18E1107226D595F3007FD66E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18E1107326D59F4F007FD66E /* DropShopRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropShopRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -785,6 +797,7 @@
 				18DDE9F426D6EE5E00306A60 /* WalletRepository.swift */,
 				18E1107526D59F6B007FD66E /* DropShopRepository.swift */,
 				18DDEA1126D703DF00306A60 /* MarketRepository.swift */,
+				18DDEA2826D7998B00306A60 /* InitialRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -801,6 +814,7 @@
 		1879C56226C9BCF100CE367E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				18DDEA2526D7996500306A60 /* Initial */,
 				18DDE9FB26D6F64300306A60 /* Wallet */,
 				18E1108726D5A8C6007FD66E /* Nft */,
 				18E1107A26D5A4B0007FD66E /* DropShop */,
@@ -917,6 +931,7 @@
 		18B8427F266F618F0033AFC0 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				18DDEA3026D79C5F00306A60 /* Initial */,
 				18DDEA0826D6FDD700306A60 /* Market */,
 				18DDE9F626D6F07600306A60 /* Wallet */,
 				18E1107726D59FA8007FD66E /* DropShop */,
@@ -942,6 +957,7 @@
 				18E1107326D59F4F007FD66E /* DropShopRepositoryImpl.swift */,
 				18DDE9F926D6F55900306A60 /* WalletRepositoryImpl.swift */,
 				18DDEA1326D78D0300306A60 /* MarketRepositoryImpl.swift */,
+				18DDEA2626D7997A00306A60 /* InitialRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -952,6 +968,7 @@
 				1879C55A26C9B62A00CE367E /* User.swift */,
 				18E1109B26D684C7007FD66E /* NFT.swift */,
 				18E1109D26D684EE007FD66E /* NftMetadata.swift */,
+				18DDEA3326D79CB400306A60 /* InitialData.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1153,6 +1170,39 @@
 				18DDEA1926D78EDD00306A60 /* Endpoints.swift */,
 			);
 			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		18DDEA2526D7996500306A60 /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				18DDEA2B26D79A3200306A60 /* DataMapping */,
+				18DDEA2A26D79A2C00306A60 /* Endpoint */,
+			);
+			path = Initial;
+			sourceTree = "<group>";
+		};
+		18DDEA2A26D79A2C00306A60 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				18DDEA2C26D79ADC00306A60 /* InitialEndpoints.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		18DDEA2B26D79A3200306A60 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				18DDEA2E26D79AEC00306A60 /* InitialResponseDTO.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		18DDEA3026D79C5F00306A60 /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				18DDEA3126D79C6B00306A60 /* InitialUseCase.swift */,
+			);
+			path = Initial;
 			sourceTree = "<group>";
 		};
 		18E1107726D59FA8007FD66E /* DropShop */ = {
@@ -1414,6 +1464,7 @@
 				18E39B1E26D03A3000FEC003 /* UserEndpoints.swift in Sources */,
 				18DDEA1C26D7906800306A60 /* CommonDTO.swift in Sources */,
 				18E1109E26D684EE007FD66E /* NftMetadata.swift in Sources */,
+				18DDEA3426D79CB400306A60 /* InitialData.swift in Sources */,
 				18E1107626D59F6B007FD66E /* DropShopRepository.swift in Sources */,
 				18E1109026D67DE5007FD66E /* UpdateUserResponseDTO.swift in Sources */,
 				1879C55B26C9B62A00CE367E /* User.swift in Sources */,
@@ -1426,6 +1477,7 @@
 				186E5FFA26B6A413008291AC /* AddFundsViewModel.swift in Sources */,
 				1879C56626C9C17400CE367E /* AuthEndpoints.swift in Sources */,
 				186E601926B6E695008291AC /* DetailTransactionViewController.swift in Sources */,
+				18DDEA3226D79C6B00306A60 /* InitialUseCase.swift in Sources */,
 				18E1108226D5A556007FD66E /* BuyNftRequestDTO.swift in Sources */,
 				18E1107926D59FB0007FD66E /* DropShopUseCase.swift in Sources */,
 				182342E026A1EB9100CD2907 /* MarketViewModel.swift in Sources */,
@@ -1434,6 +1486,7 @@
 				181C9A1126AEFA5F00A60105 /* HomeHeader.swift in Sources */,
 				1879C57426C9D31B00CE367E /* LoginRequestDTO.swift in Sources */,
 				186E600926B6DFCA008291AC /* HistoryTransactionsViewController.swift in Sources */,
+				18DDEA2926D7998B00306A60 /* InitialRepository.swift in Sources */,
 				186E5FFC26B6A420008291AC /* WithdrawViewModel.swift in Sources */,
 				1879C57226C9D30900CE367E /* SignupRequestDTO.swift in Sources */,
 				18E1108A26D5AA56007FD66E /* NftMetadataDTO.swift in Sources */,
@@ -1461,8 +1514,10 @@
 				18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */,
 				186E600D26B6DFE3008291AC /* CollectionNftViewController.swift in Sources */,
 				1879C55E26C9B76200CE367E /* SignupUseCase.swift in Sources */,
+				18DDEA2726D7997A00306A60 /* InitialRepositoryImpl.swift in Sources */,
 				186E602E26B98EE7008291AC /* FollowsViewCell.swift in Sources */,
 				18DDEA1226D703DF00306A60 /* MarketRepository.swift in Sources */,
+				18DDEA2F26D79AEC00306A60 /* InitialResponseDTO.swift in Sources */,
 				182342EF26A2EB5E00CD2907 /* TradingHistoryViewController.swift in Sources */,
 				18E1107426D59F4F007FD66E /* DropShopRepositoryImpl.swift in Sources */,
 				18DDEA0526D6F8A300306A60 /* WithdrawFundsResponseDTO.swift in Sources */,
@@ -1500,6 +1555,7 @@
 				181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */,
 				186E5FF326B6A3E2008291AC /* WithdrawViewController.swift in Sources */,
 				18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */,
+				18DDEA2D26D79ADC00306A60 /* InitialEndpoints.swift in Sources */,
 				186E5FE526B33ECF008291AC /* NftProfileViewCell.swift in Sources */,
 				18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */,
 				18DDEA0126D6F88100306A60 /* AddFundsResponseDTO.swift in Sources */,
