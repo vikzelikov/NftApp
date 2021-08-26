@@ -40,7 +40,7 @@ class ShopViewController: UIViewController {
         let dropShop = DropShopViewController(nibName: "DropShopViewController", bundle: nil)
         addViewController(vc: dropShop, x: 0)
         
-        let exchange = ExchangeViewController(nibName: "ExchangeViewController", bundle: nil)
+        let exchange = MarketViewController(nibName: "ExchangeViewController", bundle: nil)
         addViewController(vc: exchange, x: view.frame.width)
     }
     

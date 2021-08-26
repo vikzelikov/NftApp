@@ -7,9 +7,9 @@
 
 import UIKit
 
-class NftExchangeViewCell: UITableViewCell {
+class NftMarketViewCell: UITableViewCell {
     
-    static let cellIdentifier = String(describing: NftExchangeViewCell.self)
+    static let cellIdentifier = String(describing: NftMarketViewCell.self)
 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var nftImageView: UIImageView!

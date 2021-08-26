@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExchangeViewController: UIViewController {
+class MarketViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var items: [NftCellViewModel] = []
@@ -22,7 +22,7 @@ class ExchangeViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: "NftExchangeViewCell", bundle: nil), forCellReuseIdentifier: NftExchangeViewCell.cellIdentifier)
+        tableView.register(UINib(nibName: "NftExchangeViewCell", bundle: nil), forCellReuseIdentifier: NftMarketViewCell.cellIdentifier)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
 
         
@@ -55,7 +55,7 @@ class ExchangeViewController: UIViewController {
 }
 
 
-extension ExchangeViewController: UITableViewDelegate {
+extension MarketViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
         vc.nftCellViewModel = items[indexPath.row]
@@ -80,13 +80,13 @@ extension ExchangeViewController: UITableViewDelegate {
     }
 }
 
-extension ExchangeViewController: UITableViewDataSource {
+extension MarketViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NftExchangeViewCell", for: indexPath) as? NftExchangeViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NftExchangeViewCell", for: indexPath) as? NftMarketViewCell else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()
         }
@@ -100,7 +100,7 @@ extension ExchangeViewController: UITableViewDataSource {
     }
 }
 
-extension ExchangeViewController: UIViewControllerTransitioningDelegate {
+extension MarketViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         FilterSheetController(presentedViewController: presented, presenting: presenting)
     }

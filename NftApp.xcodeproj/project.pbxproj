@@ -24,8 +24,8 @@
 		181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F8269B0705002B9FD7 /* ColorHelper.swift */; };
 		181C9A0F26AEFA3400A60105 /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181C9A0E26AEFA3400A60105 /* HomeHeader.xib */; };
 		181C9A1126AEFA5F00A60105 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C9A1026AEFA5F00A60105 /* HomeHeader.swift */; };
-		182342C0269DFC5500CD2907 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342BE269DFC5500CD2907 /* ExchangeViewController.swift */; };
-		182342C1269DFC5500CD2907 /* ExchangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342BF269DFC5500CD2907 /* ExchangeViewController.xib */; };
+		182342C0269DFC5500CD2907 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342BE269DFC5500CD2907 /* MarketViewController.swift */; };
+		182342C1269DFC5500CD2907 /* MarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342BF269DFC5500CD2907 /* MarketViewController.xib */; };
 		182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342C2269DFC6300CD2907 /* DropShopViewController.swift */; };
 		182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342C3269DFC6300CD2907 /* DropShopViewController.xib */; };
 		182342CA269E410D00CD2907 /* NftDropViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342C8269E410D00CD2907 /* NftDropViewCell.xib */; };
@@ -35,10 +35,10 @@
 		182342D326A0493600CD2907 /* DetailNftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342D126A0493600CD2907 /* DetailNftViewController.swift */; };
 		182342D426A0493600CD2907 /* DetailNftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342D226A0493600CD2907 /* DetailNftViewController.xib */; };
 		182342D726A081EF00CD2907 /* UICustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342D626A081EF00CD2907 /* UICustomView.swift */; };
-		182342DB26A1E67F00CD2907 /* NftExchangeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342D926A1E67F00CD2907 /* NftExchangeViewCell.swift */; };
-		182342DC26A1E67F00CD2907 /* NftExchangeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342DA26A1E67F00CD2907 /* NftExchangeViewCell.xib */; };
+		182342DB26A1E67F00CD2907 /* NftMarketViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342D926A1E67F00CD2907 /* NftMarketViewCell.swift */; };
+		182342DC26A1E67F00CD2907 /* NftMarketViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342DA26A1E67F00CD2907 /* NftMarketViewCell.xib */; };
 		182342DE26A1EA8E00CD2907 /* NftCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342DD26A1EA8E00CD2907 /* NftCellViewModel.swift */; };
-		182342E026A1EB9100CD2907 /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342DF26A1EB9100CD2907 /* ExchangeViewModel.swift */; };
+		182342E026A1EB9100CD2907 /* MarketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342DF26A1EB9100CD2907 /* MarketViewModel.swift */; };
 		182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342E226A2370900CD2907 /* MoreOffersViewController.swift */; };
 		182342E526A2370900CD2907 /* MoreOffersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342E326A2370900CD2907 /* MoreOffersViewController.xib */; };
 		182342E826A2D21400CD2907 /* OfferPriceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342E626A2D21400CD2907 /* OfferPriceViewCell.swift */; };
@@ -168,8 +168,8 @@
 		181742F8269B0705002B9FD7 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		181C9A0E26AEFA3400A60105 /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
 		181C9A1026AEFA5F00A60105 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
-		182342BE269DFC5500CD2907 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
-		182342BF269DFC5500CD2907 /* ExchangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeViewController.xib; sourceTree = "<group>"; };
+		182342BE269DFC5500CD2907 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		182342BF269DFC5500CD2907 /* MarketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketViewController.xib; sourceTree = "<group>"; };
 		182342C2269DFC6300CD2907 /* DropShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropShopViewController.swift; sourceTree = "<group>"; };
 		182342C3269DFC6300CD2907 /* DropShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropShopViewController.xib; sourceTree = "<group>"; };
 		182342C8269E410D00CD2907 /* NftDropViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NftDropViewCell.xib; sourceTree = "<group>"; };
@@ -179,10 +179,10 @@
 		182342D126A0493600CD2907 /* DetailNftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNftViewController.swift; sourceTree = "<group>"; };
 		182342D226A0493600CD2907 /* DetailNftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailNftViewController.xib; sourceTree = "<group>"; };
 		182342D626A081EF00CD2907 /* UICustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomView.swift; sourceTree = "<group>"; };
-		182342D926A1E67F00CD2907 /* NftExchangeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NftExchangeViewCell.swift; sourceTree = "<group>"; };
-		182342DA26A1E67F00CD2907 /* NftExchangeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NftExchangeViewCell.xib; sourceTree = "<group>"; };
+		182342D926A1E67F00CD2907 /* NftMarketViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NftMarketViewCell.swift; sourceTree = "<group>"; };
+		182342DA26A1E67F00CD2907 /* NftMarketViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NftMarketViewCell.xib; sourceTree = "<group>"; };
 		182342DD26A1EA8E00CD2907 /* NftCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NftCellViewModel.swift; sourceTree = "<group>"; };
-		182342DF26A1EB9100CD2907 /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
+		182342DF26A1EB9100CD2907 /* MarketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewModel.swift; sourceTree = "<group>"; };
 		182342E226A2370900CD2907 /* MoreOffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreOffersViewController.swift; sourceTree = "<group>"; };
 		182342E326A2370900CD2907 /* MoreOffersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreOffersViewController.xib; sourceTree = "<group>"; };
 		182342E626A2D21400CD2907 /* OfferPriceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferPriceViewCell.swift; sourceTree = "<group>"; };
@@ -400,10 +400,10 @@
 			isa = PBXGroup;
 			children = (
 				18156D3426A38CE1006B8FE5 /* FilterSheetController.swift */,
-				182342BE269DFC5500CD2907 /* ExchangeViewController.swift */,
-				182342BF269DFC5500CD2907 /* ExchangeViewController.xib */,
-				182342D926A1E67F00CD2907 /* NftExchangeViewCell.swift */,
-				182342DA26A1E67F00CD2907 /* NftExchangeViewCell.xib */,
+				182342BE269DFC5500CD2907 /* MarketViewController.swift */,
+				182342BF269DFC5500CD2907 /* MarketViewController.xib */,
+				182342D926A1E67F00CD2907 /* NftMarketViewCell.swift */,
+				182342DA26A1E67F00CD2907 /* NftMarketViewCell.xib */,
 				182342E226A2370900CD2907 /* MoreOffersViewController.swift */,
 				182342E326A2370900CD2907 /* MoreOffersViewController.xib */,
 				182342E626A2D21400CD2907 /* OfferPriceViewCell.swift */,
@@ -417,7 +417,7 @@
 		182342BB269DFC0700CD2907 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				182342DF26A1EB9100CD2907 /* ExchangeViewModel.swift */,
+				182342DF26A1EB9100CD2907 /* MarketViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1334,7 +1334,7 @@
 				18156D4726A4DD3E006B8FE5 /* SettingViewCell.xib in Resources */,
 				186E600E26B6DFE3008291AC /* CollectionNftViewController.xib in Resources */,
 				186E5FF426B6A3E2008291AC /* WithdrawViewController.xib in Resources */,
-				182342C1269DFC5500CD2907 /* ExchangeViewController.xib in Resources */,
+				182342C1269DFC5500CD2907 /* MarketViewController.xib in Resources */,
 				186E601226B6E27E008291AC /* TransactionViewCell.xib in Resources */,
 				18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */,
 				18523F92269CEB4E00611362 /* Shop.storyboard in Resources */,
@@ -1354,7 +1354,7 @@
 				18855F3626D52A360018B072 /* Assets.xcassets in Resources */,
 				186E5FF826B6A3FD008291AC /* AddFundsViewController.xib in Resources */,
 				182342F026A2EB5E00CD2907 /* TradingHistoryViewController.xib in Resources */,
-				182342DC26A1E67F00CD2907 /* NftExchangeViewCell.xib in Resources */,
+				182342DC26A1E67F00CD2907 /* NftMarketViewCell.xib in Resources */,
 				186E602B26B98C38008291AC /* FollowsViewController.xib in Resources */,
 				182342E926A2D21400CD2907 /* OfferPriceViewCell.xib in Resources */,
 				186E602F26B98EE7008291AC /* FollowsViewCell.xib in Resources */,
@@ -1428,7 +1428,7 @@
 				186E601926B6E695008291AC /* DetailTransactionViewController.swift in Sources */,
 				18E1108226D5A556007FD66E /* BuyNftRequestDTO.swift in Sources */,
 				18E1107926D59FB0007FD66E /* DropShopUseCase.swift in Sources */,
-				182342E026A1EB9100CD2907 /* ExchangeViewModel.swift in Sources */,
+				182342E026A1EB9100CD2907 /* MarketViewModel.swift in Sources */,
 				18D3FEC9268FAE390030929D /* Extensions.swift in Sources */,
 				18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */,
 				181C9A1126AEFA5F00A60105 /* HomeHeader.swift in Sources */,
@@ -1437,7 +1437,7 @@
 				186E5FFC26B6A420008291AC /* WithdrawViewModel.swift in Sources */,
 				1879C57226C9D30900CE367E /* SignupRequestDTO.swift in Sources */,
 				18E1108A26D5AA56007FD66E /* NftMetadataDTO.swift in Sources */,
-				182342DB26A1E67F00CD2907 /* NftExchangeViewCell.swift in Sources */,
+				182342DB26A1E67F00CD2907 /* NftMarketViewCell.swift in Sources */,
 				1879C57626C9D32F00CE367E /* SignupResponseDTO.swift in Sources */,
 				182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */,
 				186E601C26B6F178008291AC /* TransactionCellViewModel.swift in Sources */,
@@ -1478,7 +1478,7 @@
 				186E602A26B98C38008291AC /* FollowsViewController.swift in Sources */,
 				18E1108626D5A580007FD66E /* DropShopEndpoints.swift in Sources */,
 				1879C55926C9B5C000CE367E /* AuthRepository.swift in Sources */,
-				182342C0269DFC5500CD2907 /* ExchangeViewController.swift in Sources */,
+				182342C0269DFC5500CD2907 /* MarketViewController.swift in Sources */,
 				18E1107E26D5A530007FD66E /* GetEditionsRequestDTO.swift in Sources */,
 				18D8452D26CDAEF100888D32 /* UserStorage.swift in Sources */,
 				18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */,
