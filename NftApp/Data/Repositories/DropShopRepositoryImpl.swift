@@ -26,9 +26,9 @@ class DropShopRepositoryImpl: DropShopRepository {
         }
     }
     
-    func buyNft(request: BuyNftRequest, completion: @escaping (Result<BuyNftResponseDTO, Error>) -> Void) {
+    func buyNft(editionId: Int, completion: @escaping (Result<BuyNftResponseDTO, Error>) -> Void) {
 
-        let endpoint = DropShopEndpoints.buyNftEndpoint(request: request)
+        let endpoint = DropShopEndpoints.buyNftEndpoint(editionId: editionId)
         
         guard let url = endpoint.url else {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))

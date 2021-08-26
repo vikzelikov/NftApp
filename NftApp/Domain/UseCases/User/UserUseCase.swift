@@ -26,45 +26,37 @@ final class GetUserUseCaseImpl: GetUserUseCase {
     }
     
     func getUser(completion: @escaping (Result<User, Error>) -> Void) {
-        if let userId = userStorage?.getUserId() {
-            repository?.getUser(userId: userId, completion: { result in
-                switch result {
-                    case .success(let resp) : do {
-                        let user = User(
-                            id: resp.id,
-                            login: resp.login,
-                            email: resp.email
-                        )
-                        
-                        print(user)
-                    }
+        repository?.getUser(completion: { result in
+            switch result {
+                case .success(let resp) : do {
+                    let user = User(
+                        id: resp.id,
+                        login: resp.login,
+                        email: resp.email
+                    )
                     
-                    case .failure(let error) : do {
-                        completion(.failure(error))
-                    }
+                    print(user)
                 }
-            })
-        } else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
-        }
+                
+                case .failure(let error) : do {
+                    completion(.failure(error))
+                }
+            }
+        })
     }
     
     func updateUser(request: User, completion: @escaping (Result<Bool, Error>) -> Void) {
-        if let userId = userStorage?.getUserId() {
-            repository?.updateUser(userId: userId, request: request, completion: { result in
-                switch result {
-                    case .success(let resp) : do {
-                        print(resp)
-                    }
-                    
-                    case .failure(let error) : do {
-                        completion(.failure(error))
-                    }
+        repository?.updateUser(request: request, completion: { result in
+            switch result {
+                case .success(let resp) : do {
+                    print(resp)
                 }
-            })
-        } else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
-        }
+                
+                case .failure(let error) : do {
+                    completion(.failure(error))
+                }
+            }
+        })
     }
     
 }

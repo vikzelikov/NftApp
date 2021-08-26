@@ -11,7 +11,7 @@ protocol DropShopUseCase {
     
     func getEditions(request: GetEditionsRequest, completion: @escaping (Result<Bool, Error>) -> Void)
     
-    func buyNft(request: BuyNftRequest, completion: @escaping (Result<Bool, Error>) -> Void)
+    func buyNft(editionId: Int, completion: @escaping (Result<Bool, Error>) -> Void)
     
 }
 
@@ -38,9 +38,9 @@ final class DropShopUseCaseImpl: DropShopUseCase {
         })
     }
     
-    func buyNft(request: BuyNftRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func buyNft(editionId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
 
-        repository?.buyNft(request: request, completion: { result in
+        repository?.buyNft(editionId: editionId, completion: { result in
             switch result {
                 case .success(let resp) : do {
                     print("success \(resp)")
@@ -57,9 +57,4 @@ final class DropShopUseCaseImpl: DropShopUseCase {
 
 struct GetEditionsRequest {
     var page: Int = 0
-}
-
-struct BuyNftRequest {
-    var userId: Int = 0
-    var editionId: Int = 0
 }

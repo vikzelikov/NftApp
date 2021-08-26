@@ -13,5 +13,7 @@ struct Constant {
     
     static var AUTH_TOKEN = UserDefaults.standard.object(forKey: "authToken") as? String ?? ""
     
+    static var USER_ID = UserDefaults.standard.object(forKey: "userId") as? Int ?? 0
+    
 }
 

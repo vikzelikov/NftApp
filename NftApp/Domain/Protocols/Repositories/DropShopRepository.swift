@@ -11,6 +11,6 @@ protocol DropShopRepository {
     
     func getEditions(request: GetEditionsRequest, completion: @escaping (Result<GetEditionsResponseDTO, Error>) -> Void)
     
-    func buyNft(request: BuyNftRequest, completion: @escaping (Result<BuyNftResponseDTO, Error>) -> Void)
+    func buyNft(editionId: Int, completion: @escaping (Result<BuyNftResponseDTO, Error>) -> Void)
     
 }

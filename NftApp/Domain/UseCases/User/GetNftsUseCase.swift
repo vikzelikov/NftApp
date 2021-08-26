@@ -24,21 +24,17 @@ final class GetNftsUseCaseImpl: GetNftsUseCase {
     }
     
     func getNfts(request: GetNftsRequest, completion: @escaping (Result<[NFT], Error>) -> Void) {
-        if let userId = userStorage?.getUserId() {
-            repository?.getNfts(userId: userId, request: request, completion: { result in
-                switch result {
-                    case .success(let resp) : do {
-                        print("success \(resp)")
-                    }
-                    
-                    case .failure(let error) : do {
-                        completion(.failure(error))
-                    }
+        repository?.getNfts(request: request, completion: { result in
+            switch result {
+                case .success(let resp) : do {
+                    print("success \(resp)")
                 }
-            })
-        } else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
-        }
+                
+                case .failure(let error) : do {
+                    completion(.failure(error))
+                }
+            }
+        })
     }
 }
 

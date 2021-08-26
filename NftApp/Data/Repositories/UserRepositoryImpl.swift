@@ -10,8 +10,8 @@ import Alamofire
 
 class UserRepositoryImpl: UserRepository {
     
-    func getUser(userId: Int, completion: @escaping (Result<GetUserResponseDTO, Error>) -> Void) {
-        let endpoint = UserEndpoints.getUserEndpoint(userId: userId)
+    func getUser(completion: @escaping (Result<GetUserResponseDTO, Error>) -> Void) {
+        let endpoint = UserEndpoints.getUserEndpoint()
         
         guard let url = endpoint.url else {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
@@ -25,8 +25,8 @@ class UserRepositoryImpl: UserRepository {
         }
     }
     
-    func updateUser(userId: Int, request: User, completion: @escaping (Result<UpdateUserResponseDTO, Error>) -> Void) {
-        let endpoint = UserEndpoints.updateUserEndpoint(userId: userId, request: request)
+    func updateUser(request: User, completion: @escaping (Result<UpdateUserResponseDTO, Error>) -> Void) {
+        let endpoint = UserEndpoints.updateUserEndpoint(request: request)
         
         guard let url = endpoint.url else {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
@@ -40,8 +40,8 @@ class UserRepositoryImpl: UserRepository {
         }
     }
     
-    func getNfts(userId: Int, request: GetNftsRequest, completion: @escaping (Result<GetNftsResponseDTO, Error>) -> Void) {
-        let endpoint = UserEndpoints.getNftsEndpoint(userId: userId, request: request)
+    func getNfts(request: GetNftsRequest, completion: @escaping (Result<GetNftsResponseDTO, Error>) -> Void) {
+        let endpoint = UserEndpoints.getNftsEndpoint(request: request)
         
         guard let url = endpoint.url else {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
