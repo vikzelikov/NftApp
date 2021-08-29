@@ -30,6 +30,8 @@ struct HttpCode {
 
 struct NetworkHelper {
     
+    static let TIMEOUT: Double = 5
+    
     static func getHeaders() -> HTTPHeaders {
         return [
             "Authorization": "Bearer " + Constant.AUTH_TOKEN,

@@ -17,8 +17,8 @@ class UserRepositoryImpl: UserRepository {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
             return
         }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+
+        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers) { $0.timeoutInterval = NetworkHelper.TIMEOUT } .validate().responseString { response in
             
             NetworkHelper.validateResponse(response: response, completion: completion)
             

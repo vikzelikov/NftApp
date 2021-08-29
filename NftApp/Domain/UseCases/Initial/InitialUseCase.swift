@@ -22,7 +22,7 @@ final class InitialUseCaseImpl: InitialUseCase {
     }
     
     func getInitialData(completion: @escaping (Result<InitialData, Error>) -> Void) {
-
+        
         repository?.getInitialData(completion: { result in
             switch result {
                 case .success(let resp) : do {

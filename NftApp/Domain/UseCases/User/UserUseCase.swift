@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GetUserUseCase {
+protocol UserUseCase {
     
     func getUser(completion: @escaping (Result<User, Error>) -> Void)
     
@@ -15,7 +15,7 @@ protocol GetUserUseCase {
     
 }
 
-final class GetUserUseCaseImpl: GetUserUseCase {
+final class UserUseCaseImpl: UserUseCase {
     
     private let repository: UserRepository?
     private let userStorage: UserStorage?

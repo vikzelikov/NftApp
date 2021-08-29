@@ -126,6 +126,9 @@
 		18DDEA2F26D79AEC00306A60 /* InitialResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA2E26D79AEC00306A60 /* InitialResponseDTO.swift */; };
 		18DDEA3226D79C6B00306A60 /* InitialUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA3126D79C6B00306A60 /* InitialUseCase.swift */; };
 		18DDEA3426D79CB400306A60 /* InitialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA3326D79CB400306A60 /* InitialData.swift */; };
+		18DDEA3726D7A0D100306A60 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18DDEA3626D7A0D100306A60 /* Initial.storyboard */; };
+		18DDEA3926D7A16800306A60 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA3826D7A16800306A60 /* InitialViewController.swift */; };
+		18DDEA3C26D7A1A300306A60 /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA3B26D7A1A300306A60 /* InitialViewModel.swift */; };
 		18E1106F26D595EF007FD66E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18E1107126D595EF007FD66E /* Localizable.strings */; };
 		18E1107426D59F4F007FD66E /* DropShopRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1107326D59F4F007FD66E /* DropShopRepositoryImpl.swift */; };
 		18E1107626D59F6B007FD66E /* DropShopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1107526D59F6B007FD66E /* DropShopRepository.swift */; };
@@ -280,6 +283,9 @@
 		18DDEA2E26D79AEC00306A60 /* InitialResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialResponseDTO.swift; sourceTree = "<group>"; };
 		18DDEA3126D79C6B00306A60 /* InitialUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialUseCase.swift; sourceTree = "<group>"; };
 		18DDEA3326D79CB400306A60 /* InitialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialData.swift; sourceTree = "<group>"; };
+		18DDEA3626D7A0D100306A60 /* Initial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
+		18DDEA3826D7A16800306A60 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		18DDEA3B26D7A1A300306A60 /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
 		18E1107026D595EF007FD66E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18E1107226D595F3007FD66E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18E1107326D59F4F007FD66E /* DropShopRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropShopRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -1052,6 +1058,7 @@
 		18B8428B266F63FB0033AFC0 /* Launch */ = {
 			isa = PBXGroup;
 			children = (
+				18DDEA3A26D7A17B00306A60 /* ViewModel */,
 				18B8428C266F64140033AFC0 /* View */,
 			);
 			path = Launch;
@@ -1060,7 +1067,9 @@
 		18B8428C266F64140033AFC0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18DDEA3826D7A16800306A60 /* InitialViewController.swift */,
 				18B84270266E27A50033AFC0 /* LaunchScreen.storyboard */,
+				18DDEA3626D7A0D100306A60 /* Initial.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1203,6 +1212,14 @@
 				18DDEA3126D79C6B00306A60 /* InitialUseCase.swift */,
 			);
 			path = Initial;
+			sourceTree = "<group>";
+		};
+		18DDEA3A26D7A17B00306A60 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				18DDEA3B26D7A1A300306A60 /* InitialViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		18E1107726D59FA8007FD66E /* DropShop */ = {
@@ -1396,6 +1413,7 @@
 				18E1106F26D595EF007FD66E /* Localizable.strings in Resources */,
 				186E602326B88F25008291AC /* SearchViewController.xib in Resources */,
 				182342CA269E410D00CD2907 /* NftDropViewCell.xib in Resources */,
+				18DDEA3726D7A0D100306A60 /* Initial.storyboard in Resources */,
 				186E5FE626B33ECF008291AC /* NftProfileViewCell.xib in Resources */,
 				182342F426A2ECF700CD2907 /* HistoryViewCell.xib in Resources */,
 				18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */,
@@ -1565,6 +1583,7 @@
 				18B84290266F64A30033AFC0 /* HomeViewController.swift in Sources */,
 				182342D0269E485200CD2907 /* ClothesViewModel.swift in Sources */,
 				18DDE9FA26D6F55900306A60 /* WalletRepositoryImpl.swift in Sources */,
+				18DDEA3926D7A16800306A60 /* InitialViewController.swift in Sources */,
 				18DDEA1426D78D0300306A60 /* MarketRepositoryImpl.swift in Sources */,
 				18E1109226D681D8007FD66E /* GetNftsRequestDTO.swift in Sources */,
 				1879C57826C9D34300CE367E /* LoginResponseDTO.swift in Sources */,
@@ -1574,6 +1593,7 @@
 				18D8452826CD682400888D32 /* ErrorDTO.swift in Sources */,
 				18156D3526A38CE1006B8FE5 /* FilterSheetController.swift in Sources */,
 				186E5FF726B6A3FD008291AC /* AddFundsViewController.swift in Sources */,
+				18DDEA3C26D7A1A300306A60 /* InitialViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

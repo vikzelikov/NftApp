@@ -22,7 +22,7 @@ class MarketViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: "NftExchangeViewCell", bundle: nil), forCellReuseIdentifier: NftMarketViewCell.cellIdentifier)
+        tableView.register(UINib(nibName: NftMarketViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftMarketViewCell.cellIdentifier)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
 
         
@@ -86,7 +86,7 @@ extension MarketViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NftExchangeViewCell", for: indexPath) as? NftMarketViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NftMarketViewCell.cellIdentifier, for: indexPath) as? NftMarketViewCell else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()
         }
