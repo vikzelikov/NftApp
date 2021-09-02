@@ -28,7 +28,7 @@ class AuthViewController: UIViewController {
         signupButton.applyButtonEffects()
     }
     
-    @IBAction func loginDidTap(_ sender: Any) {
+    @IBAction func loginDidTap(_ sender: Any) {        
         let homeStoryboard = UIStoryboard(name: "Authorization", bundle: nil)
         guard let vc = homeStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
         navigationController?.pushViewController(vc, animated: true)

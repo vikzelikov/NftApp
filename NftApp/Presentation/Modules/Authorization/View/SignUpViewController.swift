@@ -82,11 +82,10 @@ class SignUpViewController: UIViewController {
     }
     
     private func showHomeView() {
-        let homeStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
-        guard let homePage = homeStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//        appDelegate.window?.rootViewController = homePage
-        navigationController?.pushViewController(homePage, animated: false)
+        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+        guard let page = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }
     
     @IBAction func dismissSignUp(_ sender: Any) {

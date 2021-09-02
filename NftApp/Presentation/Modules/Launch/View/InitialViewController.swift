@@ -22,6 +22,9 @@ class InitialViewController: UIViewController {
         viewModel?.initial()
         
         bindData()
+        
+        self.navigationController?.navigationBar.isHidden = true
+
     }
     
     func bindData() {        
@@ -45,23 +48,17 @@ class InitialViewController: UIViewController {
     }
     
     private func showAuthView() {
-        let authStoryboard = UIStoryboard(name: "Authorization", bundle: nil)
-        guard let page = authStoryboard.instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController else { return }
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//        appDelegate.window?.rootViewController = page
-        
-        page.modalPresentationStyle = .fullScreen
-        present(page, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Authorization", bundle: nil)
+        guard let page = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController else { return }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }
     
     private func showHomeView() {
-        let homeStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
-        guard let page = homeStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//        appDelegate.window?.rootViewController = page
-        
-        page.modalPresentationStyle = .fullScreen
-        present(page, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+        guard let page = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }
     
 }
