@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WithdrawViewController" customModule="NftApp" customModuleProvider="target">
             <connections>
                 <outlet property="amountTextField" destination="Q2k-rG-rpQ" id="Q0Q-Gz-OX1"/>
+                <outlet property="calcAmountsLabel" destination="Cm8-dy-32N" id="TiL-4X-Y1F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="withdrawButton" destination="laJ-mD-wk5" id="2Xx-jf-YVF"/>
             </connections>
@@ -24,6 +26,7 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="100" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q2k-rG-rpQ">
                     <rect key="frame" x="15" y="97" width="290" height="60"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="tintColor" name="orange"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="MPG-Z7-ceL"/>
                     </constraints>
@@ -93,6 +96,9 @@
     </objects>
     <resources>
         <image name="cross" width="25" height="25"/>
+        <namedColor name="orange">
+            <color red="0.94099998474121094" green="0.69800001382827759" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
