@@ -13,7 +13,7 @@
         <!--Home-->
         <scene sceneID="lqQ-eL-8tb">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" interfaceStyle="dark" id="Gey-dx-OrY" customClass="HomeViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" interfaceStyle="dark" id="Gey-dx-OrY" customClass="HomeViewController" customModule="NftApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rO5-B9-FLV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

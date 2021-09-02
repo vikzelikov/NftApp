@@ -11,6 +11,8 @@ struct Constant {
     
     static let BASE_URL = "http://80.249.147.240:5000"
     
+    static let MERCHANT_ID = "merchant.com.nft.dev"
+    
     static var AUTH_TOKEN = UserDefaults.standard.object(forKey: "authToken") as? String ?? ""
     
     static var USER_ID = UserDefaults.standard.object(forKey: "userId") as? Int ?? 0
