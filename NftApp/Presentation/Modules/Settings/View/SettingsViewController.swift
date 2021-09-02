@@ -110,8 +110,8 @@ extension SettingsViewController: UITableViewDelegate {
 //            print(1)
 //        }
 //
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        HapticHelper.vibro(.light)
+        tableView.deselectRow(at: indexPath, animated: true)
+        HapticHelper.vibro(.light)
     }
 }
 

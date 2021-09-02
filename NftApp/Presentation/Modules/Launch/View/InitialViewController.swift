@@ -24,7 +24,6 @@ class InitialViewController: UIViewController {
         bindData()
         
         self.navigationController?.navigationBar.isHidden = true
-
     }
     
     func bindData() {        
