@@ -29,17 +29,20 @@ class WithdrawViewController: UIViewController {
         withdrawButton.applyButtonEffects()
         
         amountTextField.delegate = self
+        
+        calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(0) USD"
     }
     
     @objc func amountFieldDidChange(_ sender: Any) {
-        var calcTokens = 0
+        var calcAmounts = 0.0
         
-        if let amountString = amountTextField.text, let amount = Int(amountString) {
-            calcTokens = amount / 3
-            calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcTokens) T"
+        if let amountString = amountTextField.text, let amount = Double(amountString) {
+            calcAmounts = amount / 3
+            calcAmounts = Double(round(100 * calcAmounts) / 100)
+            calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcAmounts) T"
         }
         
-        calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcTokens) USD"
+        calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcAmounts) РУБ"
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {

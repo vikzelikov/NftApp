@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PassKit
 
 protocol WalletUseCase {
     
@@ -23,6 +24,21 @@ final class WalletUseCaseImpl: WalletUseCase {
         self.repository = WalletRepositoryImpl()
     }
     
+    func addFunds(request: AddFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
+
+        repository?.addFunds(request: request, completion: { result in
+            switch result {
+                case .success(let resp) : do {
+                    print("success \(resp)")
+                }
+                
+                case .failure(let error) : do {
+                    completion(.failure(error))
+                }
+            }
+        })
+    }
+    
     func withdrawFunds(request: WithdrawFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
 
         repository?.withdrawFunds(request: request, completion: { result in
@@ -38,25 +54,11 @@ final class WalletUseCaseImpl: WalletUseCase {
         })
     }
     
-    func addFunds(request: AddFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
-
-        repository?.addFunds(request: request, completion: { result in
-            switch result {
-                case .success(let resp) : do {
-                    print("success \(resp)")
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
-            }
-        })
-    }
-
 }
 
 struct AddFundsRequest {
-    var amount: Double = 0
+    var amount: Double = 0.0
+    var paymentData: PKPayment = PKPayment()
 }
 
 struct WithdrawFundsRequest {

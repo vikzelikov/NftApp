@@ -16,6 +16,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         self.navigationController?.navigationBar.isHidden = true
         self.delegate = self
+        
     }
     
     func setupTabBar() {

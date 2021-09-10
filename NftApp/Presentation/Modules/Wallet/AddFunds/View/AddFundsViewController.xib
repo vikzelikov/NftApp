@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddFundsViewController" customModule="NftApp" customModuleProvider="target">
             <connections>
                 <outlet property="amountTextField" destination="TWf-43-6ic" id="tfz-zB-G6s"/>
-                <outlet property="applePayButton" destination="Bi2-i9-2qB" id="QGm-oI-3O5"/>
+                <outlet property="applePayView" destination="Nra-uV-awF" id="qaq-yM-iBb"/>
                 <outlet property="calcAmountsLabel" destination="gii-Wm-u6C" id="ipW-qs-4AY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="100" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TWf-43-6ic">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" borderStyle="roundedRect" placeholder="100" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TWf-43-6ic">
                     <rect key="frame" x="15" y="97" width="290" height="64.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="tintColor" name="orange"/>
@@ -42,33 +42,13 @@
                         <action selector="dismissDidTap:" destination="-1" eventType="touchUpInside" id="4SB-cS-nBO"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bi2-i9-2qB">
-                    <rect key="frame" x="15" y="488" width="290" height="60"/>
-                    <color key="backgroundColor" name="black"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="R0T-vB-0lR"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
-                    <inset key="imageEdgeInsets" minX="-2" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="Pay" image="apple">
-                        <color key="titleColor" name="default"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="12"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="applePayButtonDidTap:" destination="-1" eventType="touchUpInside" id="Y9v-lV-cQF"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You get 500 Tokens" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gii-Wm-u6C">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You get 0 T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gii-Wm-u6C">
                     <rect key="frame" x="15" y="176.5" width="290" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter USD amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e26-u2-Dhb">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter RUB amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e26-u2-Dhb">
                     <rect key="frame" x="15" y="65" width="290" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
@@ -80,39 +60,39 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nra-uV-awF">
+                    <rect key="frame" x="15" y="488" width="290" height="60"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="RYs-gI-0wc"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nra-uV-awF" secondAttribute="trailing" constant="15" id="2Y2-XY-Xf2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gii-Wm-u6C" secondAttribute="trailing" constant="15" id="36v-0W-e6m"/>
+                <constraint firstItem="Nra-uV-awF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="4EM-Uw-hVQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TWf-43-6ic" secondAttribute="trailing" constant="15" id="5nV-UZ-oAh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Nra-uV-awF" secondAttribute="bottom" constant="20" id="5pd-9b-D8k"/>
                 <constraint firstItem="l6l-4S-7d3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="7HX-Bc-EO9"/>
                 <constraint firstItem="e26-u2-Dhb" firstAttribute="top" secondItem="l6l-4S-7d3" secondAttribute="bottom" constant="25" id="CCD-gs-mdC"/>
                 <constraint firstItem="TWf-43-6ic" firstAttribute="top" secondItem="e26-u2-Dhb" secondAttribute="bottom" constant="15" id="E3x-c1-GkW"/>
                 <constraint firstItem="TWf-43-6ic" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Kpz-qh-k2w"/>
-                <constraint firstItem="Bi2-i9-2qB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="UJI-X1-XCX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="e26-u2-Dhb" secondAttribute="trailing" constant="15" id="Vc8-fD-Onj"/>
                 <constraint firstItem="gii-Wm-u6C" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="W54-dc-5Ex"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Bi2-i9-2qB" secondAttribute="bottom" constant="20" id="ZxP-Qa-fOf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="l6l-4S-7d3" secondAttribute="trailing" id="agM-bF-diV"/>
                 <constraint firstItem="gii-Wm-u6C" firstAttribute="top" secondItem="TWf-43-6ic" secondAttribute="bottom" constant="15" id="dYB-4T-Oc4"/>
                 <constraint firstItem="e26-u2-Dhb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="glx-R8-vlz"/>
                 <constraint firstItem="xXI-Qq-iE0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="vFb-aq-YT9"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bi2-i9-2qB" secondAttribute="trailing" constant="15" id="xPr-Qr-kea"/>
                 <constraint firstItem="xXI-Qq-iE0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zFc-ud-afu"/>
             </constraints>
             <point key="canvasLocation" x="109" y="106"/>
         </view>
     </objects>
     <resources>
-        <image name="apple" width="25" height="25"/>
         <image name="cross" width="25" height="25"/>
-        <namedColor name="black">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="default">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="orange">
             <color red="0.94099998474121094" green="0.69800001382827759" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

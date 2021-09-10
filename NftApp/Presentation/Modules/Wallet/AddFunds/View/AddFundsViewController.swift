@@ -9,13 +9,20 @@ import UIKit
 import PassKit
 
 class AddFundsViewController: UIViewController {
+    
+    var viewModel: AddFundsViewModel?
 
     @IBOutlet weak var amountTextField: UITextField!
-    @IBOutlet weak var applePayButton: UIButton!
+    @IBOutlet weak var applePayView: UIView!
     @IBOutlet weak var calcAmountsLabel: UILabel!
+    private var applePayButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel = AddFundsViewModelImpl()
+        
+        bindData()
 
         setupStyle()
         
@@ -26,25 +33,54 @@ class AddFundsViewController: UIViewController {
     }
     
     func setupStyle() {
-        applePayButton.applyButtonEffects()
-        applePayButton.adjustsImageWhenHighlighted = false
+        if self.traitCollection.userInterfaceStyle == .dark {
+            applePayButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .white)
+        } else {
+            applePayButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .black)
+        }
+        
+        if let applePayButton = applePayButton {
+            applePayView.addSubview(applePayButton)
+            applePayButton.translatesAutoresizingMaskIntoConstraints = false
+            applePayButton.applyButtonEffects()
+            NSLayoutConstraint.activate([
+                applePayButton.widthAnchor.constraint(equalTo: self.applePayView.widthAnchor, multiplier: 1),
+            ])
+            applePayButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+            applePayButton.layer.cornerRadius = 12
+            applePayButton.clipsToBounds = true
+            
+            applePayButton.addTarget(self, action: #selector(self.applePayButtonDidTap), for: .touchUpInside)
+        }
         
         amountTextField.delegate = self
+        
+        calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(0) T"
     }
     
-    @IBAction func applePayButtonDidTap(_ sender: Any) {
+    func bindData() {
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            let alert = UIAlertController(title: "Error Message", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
+    @objc func applePayButtonDidTap() {
         startApplePay()
     }
     
     @objc func amountFieldDidChange(_ sender: Any) {
-        var calcTokens = 0
+        var calcAmounts = 0
         
-        if let amountString = amountTextField.text, let amount = Int(amountString) {            
-            calcTokens = amount * 3
-            calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcTokens) T"
+        if let amountString = amountTextField.text, let amount = Int(amountString) {
+            calcAmounts = amount * 3
+            calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcAmounts) T"
         }
         
-        calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcTokens) T"
+        calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcAmounts) T"
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -54,15 +90,6 @@ class AddFundsViewController: UIViewController {
     @IBAction func dismissDidTap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-
-
-
-    
-    
-    
-    
-    
 
     func displayDefaultAlert(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -72,25 +99,27 @@ class AddFundsViewController: UIViewController {
     }
 
     func startApplePay() {
-        let paymentItem = PKPaymentSummaryItem.init(label: "Карточка #231", amount: NSDecimalNumber(value: 23.40))
-        let paymentNetworks = [PKPaymentNetwork.amex, .discover, .masterCard, .visa]
-        
-        if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks) {
-            let request = PKPaymentRequest()
-            request.currencyCode = "USD"
-            request.countryCode = "US"
-            request.merchantIdentifier = Constant.MERCHANT_ID
-            request.merchantCapabilities = PKMerchantCapability.capability3DS
-            request.supportedNetworks = paymentNetworks
-            request.paymentSummaryItems = [paymentItem]
+        if let amountString = amountTextField.text, let amount = Int(amountString) {
+            let paymentItem = PKPaymentSummaryItem.init(label: "Пополнение баланса", amount: NSDecimalNumber(value: amount))
+            let paymentNetworks = [PKPaymentNetwork.amex, .discover, .masterCard, .visa]
             
-            guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: request) else {
-                displayDefaultAlert(title: "Error", message: "Unable to present Apple Pay authorization.")
-                return
+            if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks) {
+                let request = PKPaymentRequest()
+                request.currencyCode = "RUB"
+                request.countryCode = "RU"
+                request.merchantIdentifier = Constant.MERCHANT_ID
+                request.merchantCapabilities = PKMerchantCapability.capability3DS
+                request.supportedNetworks = paymentNetworks
+                request.paymentSummaryItems = [paymentItem]
+                
+                guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: request) else {
+                    displayDefaultAlert(title: "Error", message: "Unable to present Apple Pay authorization.")
+                    return
+                }
+                
+                paymentVC.delegate = self
+                self.present(paymentVC, animated: true, completion: nil)
             }
-            
-            paymentVC.delegate = self
-            self.present(paymentVC, animated: true, completion: nil)
         }
     }
 
@@ -103,8 +132,24 @@ extension AddFundsViewController: PKPaymentAuthorizationViewControllerDelegate {
     }
     
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
-        dismiss(animated: true, completion: nil)
-        displayDefaultAlert(title: "Success!", message: "The Apple Pay transaction was complete.")
+        
+        completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
+        
+//        var status: PKPaymentAuthorizationStatus = .failure
+//
+//        guard let vm = viewModel else { return }
+//        vm.isSuccess.bind { isSuccess in
+//            if isSuccess { status = .success }
+//
+//            completion(PKPaymentAuthorizationResult(status: status, errors: nil))
+//        }
+//
+//        if let amountString = amountTextField.text, let amount = Int(amountString) {
+//            viewModel?.updateCredentials(amount: Double(amount), paymentData: payment)
+//        }
+//
+//        viewModel?.inputData()
+        
     }
     
 }
@@ -122,3 +167,4 @@ extension AddFundsViewController: UITextFieldDelegate {
     }
     
 }
+

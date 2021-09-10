@@ -12,11 +12,11 @@ struct WalletEndpoints {
     
     static func addFundsEndpoint(request: AddFundsRequest) -> Endpoint {
         let requestDTO = AddFundsRequestDTO (
-            amount: request.amount
+            paymentData: request.paymentData
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "/api")
+        let url = URL(string: "https://api.yookassa.ru/v3/payments")
         
         return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }

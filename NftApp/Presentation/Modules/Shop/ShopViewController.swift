@@ -22,7 +22,7 @@ class ShopViewController: UIViewController {
         
         setupSlideScrollView()
         
-        pageControl.numberOfPages = 2
+        pageControl.numberOfPages = 1
         pageControl.currentPage = 0
         view.bringSubviewToFront(pageControl)
     }
@@ -34,14 +34,14 @@ class ShopViewController: UIViewController {
     // MARK: fix this
     private func setupSlideScrollView() {
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height:  view.frame.size.height)
-        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(2), height: view.frame.height - 150)
+        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(1), height: view.frame.height - 150)
         scrollView.isPagingEnabled = true
         
         let dropShop = DropShopViewController(nibName: "DropShopViewController", bundle: nil)
         addViewController(vc: dropShop, x: 0)
         
-        let exchange = MarketViewController(nibName: "MarketViewController", bundle: nil)
-        addViewController(vc: exchange, x: view.frame.width)
+//        let exchange = MarketViewController(nibName: "MarketViewController", bundle: nil)
+//        addViewController(vc: exchange, x: view.frame.width)
     }
     
     private func addViewController(vc: UIViewController, x: CGFloat) {

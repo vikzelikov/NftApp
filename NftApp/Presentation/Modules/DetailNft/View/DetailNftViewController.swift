@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DetailNftViewController: UIViewController {
     
@@ -56,11 +57,9 @@ class DetailNftViewController: UIViewController {
             
         titleLabel?.text = nftCellViewModel?.title
         descriptionLabel?.text = nftCellViewModel?.description
-//        if let stringUrl = nftCellViewModel?.imageUrl {
-//            if let url = getUrl(stringUrl: stringUrl) {
-//                nftImageView.sd_setImage(with: url)
-//            }
-//        }
+        if let url = nftCellViewModel?.imageUrl {
+            nftImageView.sd_setImage(with: URL(string: url)!)
+        }
     }
     
     private func setupStyle() {

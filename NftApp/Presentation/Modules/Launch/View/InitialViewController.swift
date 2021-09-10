@@ -11,7 +11,7 @@ class InitialViewController: UIViewController {
     
     var viewModel: InitialViewModel?
     
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    let loadingIndicator = UIActivityIndicatorView(style: .whiteLarge)
     @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
@@ -22,6 +22,10 @@ class InitialViewController: UIViewController {
         viewModel?.initial()
         
         bindData()
+        
+        loadingIndicator.center = self.view.center
+        self.view.addSubview(loadingIndicator)
+        loadingIndicator.startAnimating()
         
         self.navigationController?.navigationBar.isHidden = true
     }

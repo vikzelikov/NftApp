@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import SDWebImage
 
 class NftDropViewCell: UITableViewCell {
     
     static let cellIdentifier = String(describing: NftDropViewCell.self)
 
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var clothesImageView: UIImageView!
+    @IBOutlet weak var nftImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
@@ -29,14 +30,13 @@ class NftDropViewCell: UITableViewCell {
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowOffset = .zero
         mainView.layer.shadowRadius = 5
+        nftImageView.layer.cornerRadius = 12
         
         titleLabel?.text = viewModel.title
         priceLabel?.text = viewModel.price
-//        if let stringUrl = viewModel.imageUrl {
-//            if let url = getUrl(stringUrl: stringUrl) {
-//                clothesImageView.sd_setImage(with: url)
-//            }
-//        }
+        if let url = viewModel.imageUrl {
+            nftImageView.sd_setImage(with: URL(string: url)!)
+        }
     }
     
     func getUrl(stringUrl: String) -> URL? {

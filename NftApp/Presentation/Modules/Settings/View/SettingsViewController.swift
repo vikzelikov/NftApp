@@ -34,7 +34,7 @@ class SettingsViewController: UIViewController {
         
         
         
-        items.append(SettingCellViewModel(title: "E-mail", contentLabel: "vikzeawhjhjhbjhbhhghlikov@yandex.ru", iconContentView: nil))
+        items.append(SettingCellViewModel(title: "E-mail", contentLabel: "email@example.ru", iconContentView: nil))
         items.append(SettingCellViewModel(title: "Password", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         items.append(SettingCellViewModel(title: "Pin code", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         
