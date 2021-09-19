@@ -7,6 +7,8 @@
 
 import UIKit
 import PassKit
+import TinkoffASDKUI
+import TinkoffASDKCore
 
 class AddFundsViewController: UIViewController {
     
@@ -99,31 +101,65 @@ class AddFundsViewController: UIViewController {
     }
 
     func startApplePay() {
-        if let amountString = amountTextField.text, let amount = Int(amountString) {
-            let paymentItem = PKPaymentSummaryItem.init(label: "Пополнение баланса", amount: NSDecimalNumber(value: amount))
-            let paymentNetworks = [PKPaymentNetwork.amex, .discover, .masterCard, .visa]
+        // терминал и пароль
+        let credentional = AcquiringSdkCredential(terminalKey: "werfwerfwerf", publicKey: "werfwerfwerf")
+        // конфигурация для старта sdk
+        let acquiringSDKConfiguration = AcquiringSdkConfiguration(credential: credentional)
+        // включаем логи, результаты работы запросов пишутся в консоль
+        acquiringSDKConfiguration.logger = AcquiringLoggerDefault()
+        
+        let paymentInitData = PaymentInitData(amount: 12.12, orderId: "qwef", customerKey: "werfwerf")
+        print("1")
+        if let sdk = try? AcquiringUISDK.init(configuration: acquiringSDKConfiguration) {
+            print("2")
+            // SDK проинициализировалось, можно приступать к работе
+            sdk.presentPaymentApplePay(on: self, paymentData: paymentInitData, viewConfiguration: AcquiringViewConfiguration.init(), paymentConfiguration: AcquiringUISDK.ApplePayConfiguration.init(), completionHandler: { result in
+                print("3")
+            })
             
-            if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks) {
-                let request = PKPaymentRequest()
-                request.currencyCode = "RUB"
-                request.countryCode = "RU"
-                request.merchantIdentifier = Constant.MERCHANT_ID
-                request.merchantCapabilities = PKMerchantCapability.capability3DS
-                request.supportedNetworks = paymentNetworks
-                request.paymentSummaryItems = [paymentItem]
-                
-                guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: request) else {
-                    displayDefaultAlert(title: "Error", message: "Unable to present Apple Pay authorization.")
-                    return
-                }
-                
-                paymentVC.delegate = self
-                self.present(paymentVC, animated: true, completion: nil)
-            }
         }
+        
+        
+//        AcquiringUISDK.presentPaymentApplePay(on presentingViewController: UIViewController,
+//                                            paymentData data: PaymentInitData,
+//                                            viewConfiguration: AcquiringViewConfigration,
+//                                            paymentConfiguration: AcquiringUISDK.ApplePayConfiguration,
+//                                            completionHandler: @escaping PaymentCompletionHandler)
+
+
+        
+//        if let amountString = amountTextField.text, let amount = Int(amountString) {
+//            let paymentItem = PKPaymentSummaryItem.init(label: "Пополнение баланса", amount: NSDecimalNumber(value: amount))
+//            let paymentNetworks = [PKPaymentNetwork.amex, .discover, .masterCard, .visa]
+//
+//            if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks) {
+//                let request = PKPaymentRequest()
+//                request.currencyCode = "RUB"
+//                request.countryCode = "RU"
+//                request.merchantIdentifier = Constant.MERCHANT_ID
+//                request.merchantCapabilities = PKMerchantCapability.capability3DS
+//                request.supportedNetworks = paymentNetworks
+//                request.paymentSummaryItems = [paymentItem]
+//
+//                guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: request) else {
+//                    displayDefaultAlert(title: "Error", message: "Unable to present Apple Pay authorization.")
+//                    return
+//                }
+//
+//                paymentVC.delegate = self
+//                self.present(paymentVC, animated: true, completion: nil)
+//            }
+//        }
     }
 
 }
+struct MyAwesomeStyle: Style {
+    var bigButtonStyle: ButtonStyle
+    
+
+}
+
+
 
 extension AddFundsViewController: PKPaymentAuthorizationViewControllerDelegate {
     
