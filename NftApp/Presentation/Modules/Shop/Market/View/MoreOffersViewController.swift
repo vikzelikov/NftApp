@@ -25,13 +25,11 @@ class MoreOffersViewController: UIViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.register(UINib(nibName: "OfferPriceViewCell", bundle: nil), forCellReuseIdentifier: OfferPriceViewCell.cellIdentifier)
         
-        items.append(NftCellViewModel(title: "Footwear by Lego", price: "100 USD", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, imageUrl: "https://i.ibb.co/K0G7h0d/image-removebg-preview-2-2.png"))
-        items.append(NftCellViewModel(title: "Jacket by Lego", price: "50 USD", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, imageUrl: "https://i.ibb.co/LNxks2f/image-33.png"))
-        items.append(NftCellViewModel(title: "Footwear by Lego", price: "80 USD", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, imageUrl: "https://i.ibb.co/HzXYLpz/image-43.png"))
+        items.append(NftCellViewModel(id: 0, price: 0.0, serialNumber: 0, isForCell: false, edition: EditionCellViewModel(id: 0, influencerId: 0, count: 0, name: "NFT #1", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, price: 500, dateExpiration: nil, mediaUrl: "https://sun9-64.userapi.com/impg/b6b8-4ek3-HAYctsvHRXcpPPMNOsmW_dGq418g/dZ2rmaBjGdM.jpg?size=1080x1080&quality=96&sign=cff5e3de07aff007fa4e9f091737da4d&type=album")))
         
-        items.append(NftCellViewModel(title: "Footwear by Lego", price: "10 USD", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, imageUrl: "https://i.ibb.co/K0G7h0d/image-removebg-preview-2-2.png"))
-        items.append(NftCellViewModel(title: "Jacket by Lego", price: "80 USD", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, imageUrl: "https://i.ibb.co/LNxks2f/image-33.png"))
-        items.append(NftCellViewModel(title: "Footwear by Lego", price: "60 USD", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, imageUrl: "https://i.ibb.co/HzXYLpz/image-43.png"))
+        items.append(NftCellViewModel(id: 0, price: 0.0, serialNumber: 0, isForCell: false, edition: EditionCellViewModel(id: 0, influencerId: 0, count: 0, name: "NFT #2", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, price: 500, dateExpiration: nil, mediaUrl: "https://sun9-13.userapi.com/impg/RnIxGWvqxgaaigGE6qa8biwFt941LsmD48c7KQ/FJsXIqTSPag.jpg?size=1080x1080&quality=96&sign=df30af1f666f0db0cce43e5fd08b62ed&type=album")))
+        
+        items.append(NftCellViewModel(id: 0, price: 0.0, serialNumber: 0, isForCell: false, edition: EditionCellViewModel(id: 0, influencerId: 0, count: 0, name: "NFT #3", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, price: 500, dateExpiration: nil, mediaUrl: "https://sun9-75.userapi.com/impg/WH1eWaouXisW-LsvaOBAQFqcxlhZqNll5caF7w/cAbqcwEVRXM.jpg?size=1080x1080&quality=96&sign=3a1d6db8a95833baed6530f1ecfcfa3a&type=album")))
         
         reload()
     }

@@ -32,11 +32,10 @@ class NftDropViewCell: UITableViewCell {
         mainView.layer.shadowRadius = 5
         nftImageView.layer.cornerRadius = 12
         
-        titleLabel?.text = viewModel.title
-        priceLabel?.text = viewModel.price
-        if let url = viewModel.imageUrl {
-            nftImageView.sd_setImage(with: URL(string: url)!)
-        }
+        titleLabel?.text = viewModel.edition.name
+        priceLabel?.text = String(viewModel.price)
+        nftImageView.sd_setImage(with: URL(string: viewModel.edition.mediaUrl)!)
+        
     }
     
     func getUrl(stringUrl: String) -> URL? {

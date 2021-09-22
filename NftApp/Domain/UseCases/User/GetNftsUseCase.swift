@@ -9,7 +9,7 @@ import Foundation
 
 protocol GetNftsUseCase {
     
-    func getNfts(request: GetNftsRequest, completion: @escaping (Result<[NFT], Error>) -> Void)
+    func getNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void)
         
 }
 
@@ -23,7 +23,7 @@ final class GetNftsUseCaseImpl: GetNftsUseCase {
         self.userStorage = UserStorageImpl()
     }
     
-    func getNfts(request: GetNftsRequest, completion: @escaping (Result<[NFT], Error>) -> Void) {
+    func getNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void) {
         repository?.getNfts(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {

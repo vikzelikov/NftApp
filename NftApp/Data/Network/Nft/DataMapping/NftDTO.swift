@@ -10,9 +10,15 @@ import Foundation
 struct NftDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id
-        case metadata
+        case price
+        case serialNumber
+        case isForCell
+        case edition
     }
     
     let id: Int
-    let metadata: NftMetadataDTO
+    let price: Double
+    let serialNumber: Int
+    let isForCell: Bool
+    let edition: EditionDTO
 }

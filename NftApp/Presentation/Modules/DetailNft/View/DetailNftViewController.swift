@@ -10,7 +10,7 @@ import SDWebImage
 
 class DetailNftViewController: UIViewController {
     
-    var nftCellViewModel: NftCellViewModel? = nil
+    var viewModel: DetailNftViewModel? = nil
     
     enum TypeDetailNFT {
         case detail
@@ -51,15 +51,12 @@ class DetailNftViewController: UIViewController {
         
         setupStyle()
         
-        if let price = nftCellViewModel?.price {
-            buyButton?.setTitle("\(price)", for: .normal)
-        }
-            
-        titleLabel?.text = nftCellViewModel?.title
-        descriptionLabel?.text = nftCellViewModel?.description
-        if let url = nftCellViewModel?.imageUrl {
-            nftImageView.sd_setImage(with: URL(string: url)!)
-        }
+        guard let nftViewModel = viewModel?.nftViewModel.value else { return }
+        buyButton?.setTitle("\(nftViewModel.price)", for: .normal)
+        titleLabel?.text = nftViewModel.edition.name
+        descriptionLabel?.text = nftViewModel.edition.description
+        nftImageView.sd_setImage(with: URL(string: nftViewModel.edition.mediaUrl)!)
+        
     }
     
     private func setupStyle() {

@@ -39,9 +39,7 @@ class NftProfileViewCell: UICollectionViewCell {
     }
     
     func bind(viewModel: NftCellViewModel) {
-        if let url = viewModel.imageUrl {
-            mainImageView.sd_setImage(with: URL(string: url)!)
-        }
+        mainImageView.sd_setImage(with: URL(string: viewModel.edition.mediaUrl)!)
     }
 }
 

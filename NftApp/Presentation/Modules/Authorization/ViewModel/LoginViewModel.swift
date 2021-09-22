@@ -18,6 +18,7 @@ protocol LoginViewModel : BaseViewModel {
 }
 
 class LoginViewModelImpl: LoginViewModel {
+    
     private let loginUseCase: LoginUseCase
     
     private var loginRequest = LoginRequest() {
@@ -65,7 +66,6 @@ class LoginViewModelImpl: LoginViewModel {
                         self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
                     }
                 }
-
             }
             
             self.isLoading.value = false

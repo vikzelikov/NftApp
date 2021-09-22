@@ -22,6 +22,7 @@ protocol SignupViewModel : BaseViewModel {
 }
 
 class SignupViewModelImpl: SignupViewModel {
+    
     private let signupUseCase: SignupUseCase
     
     private var signupRequest = SignupRequest() {
@@ -91,7 +92,6 @@ class SignupViewModelImpl: SignupViewModel {
                 } else {
                     self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
                 }
-
             }
 
             self.isLoading.value = false
