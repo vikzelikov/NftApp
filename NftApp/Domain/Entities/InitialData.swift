@@ -8,7 +8,7 @@
 import Foundation
 
 struct InitialData: Equatable {
-    var tokenCurrency: Int
+    var tokenCurrency: Double
     var marketFee: Double
     var isAppAvailable: Bool
     var isDropShopAvailable: Bool

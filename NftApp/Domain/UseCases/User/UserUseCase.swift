@@ -35,7 +35,7 @@ final class UserUseCaseImpl: UserUseCase {
                         email: resp.email
                     )
                     
-                    print(user)
+                    completion(.success(user))
                 }
                 
                 case .failure(let error) : do {

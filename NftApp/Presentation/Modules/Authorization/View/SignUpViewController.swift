@@ -47,8 +47,7 @@ class SignUpViewController: UIViewController {
             confirmPassword: confirmPassTextField.text!
         )
         
-//        viewModel?.inputCredentials()
-        showHomeView()
+        viewModel?.inputCredentials()
     }
         
     func bindData() {

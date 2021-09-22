@@ -41,8 +41,6 @@ class PersonalDataViewController: UIViewController {
             let birthDate = self.dateBirthPicker?.date.timeIntervalSince1970
             
             viewModel?.updatePersonalData(isMale: isMale, birthDate: birthDate)
-            
-            viewModel?.inputPersonalData()
         }
         
         selectSexButtons.isHidden = false

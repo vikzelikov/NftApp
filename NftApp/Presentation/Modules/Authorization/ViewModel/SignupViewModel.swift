@@ -16,9 +16,7 @@ protocol SignupViewModel : BaseViewModel {
     func updatePersonalData(isMale: Bool?, birthDate: TimeInterval?)
     
     func inputCredentials()
-    
-    func inputPersonalData()
-    
+        
 }
 
 class SignupViewModelImpl: SignupViewModel {
@@ -31,8 +29,6 @@ class SignupViewModelImpl: SignupViewModel {
             email = signupRequest.email
             password = signupRequest.password
             confirmPassword = signupRequest.confirmPassword
-            isMale = signupRequest.isMale
-            birthDate = signupRequest.birthDate
         }
     }
     
@@ -59,13 +55,13 @@ class SignupViewModelImpl: SignupViewModel {
     }
     
     func updatePersonalData(isMale: Bool?, birthDate: TimeInterval?) {
-        if let isMale = isMale {
-            signupRequest.isMale = isMale
-        }
-        
-        if let birthDate = birthDate {
-            signupRequest.birthDate = birthDate
-        }
+//        if let isMale = isMale {
+//            signupRequest.isMale = isMale
+//        }
+//        
+//        if let birthDate = birthDate {
+//            signupRequest.birthDate = birthDate
+//        }
     }
     
     private func signup() {
@@ -123,16 +119,8 @@ class SignupViewModelImpl: SignupViewModel {
             return
         }
         
-        
-//        isSuccess.value = true
         signup()
         
-    }
-    
-    func inputPersonalData() {
-        // validate
-        
-        signup()
     }
     
     private func isValidEmail(email: String) -> Bool {

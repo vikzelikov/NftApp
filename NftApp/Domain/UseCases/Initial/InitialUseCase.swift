@@ -26,9 +26,17 @@ final class InitialUseCaseImpl: InitialUseCase {
         repository?.getInitialData(completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    print("success \(resp)")
+                    let initialData = InitialData(tokenCurrency: resp.tokenCurrency,
+                                                  marketFee: resp.exchangeFee,
+                                                  isAppAvailable: resp.isAppAvailable,
+                                                  isDropShopAvailable: resp.isDropshopAvailable,
+                                                  isMarketAvailable: resp.isMarketAvailable,
+                                                  isDepositAvailable: resp.isDepositAvailable,
+                                                  isWithdrawAvailable: resp.isWithdrawAvailable)
+                    
+                    completion(.success(initialData))
                 }
-                
+                            
                 case .failure(let error) : do {
                     completion(.failure(error))
                 }

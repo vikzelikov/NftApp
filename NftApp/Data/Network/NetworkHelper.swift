@@ -36,8 +36,7 @@ struct NetworkHelper {
     static func getHeaders() -> HTTPHeaders {
         return [
             "Authorization": "Bearer " + Constant.AUTH_TOKEN,
-            "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Accept": "application/json"
         ]
     }
     
@@ -57,17 +56,23 @@ struct NetworkHelper {
             if let errorDTO = try? JSONDecoder().decode(ErrorDTO.self, from: data) {
 
                 let error = ErrorMessage(errorType: .error, errorDTO: errorDTO, code: resp.statusCode)
+                print(error)
                 completion(.failure(error))
                 return
             } else {
                 completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
+                print(resp.statusCode)
                 return
             }
         }
                 
+        var json = JSON(data)
+//        print(json)
+        
         if let responseDTO = try? JSONDecoder().decode(T.self, from: data) {
             completion(.success(responseDTO))
         } else {
+            print("пизда \(resp.statusCode)")
             completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
         }
     }

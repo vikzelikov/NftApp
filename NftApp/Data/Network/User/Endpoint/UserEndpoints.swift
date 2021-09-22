@@ -12,7 +12,7 @@ struct UserEndpoints {
     
     static func getUserEndpoint() -> Endpoint {
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "/users/\(Constant.USER_ID)")
+        let url = URL(string: Constant.BASE_URL + "api/users/\(Constant.USER_ID)")
         
         return Endpoint(url: url, method: .get, headers: headers, data: nil)
     }
@@ -23,7 +23,7 @@ struct UserEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "/users/\(Constant.USER_ID)")
+        let url = URL(string: Constant.BASE_URL + "api/users/\(Constant.USER_ID)")
         
         return Endpoint(url: url, method: .put, headers: headers, data: requestDTO)
     }
@@ -34,7 +34,7 @@ struct UserEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "/users/\(Constant.USER_ID)/nfts")
+        let url = URL(string: Constant.BASE_URL + "api/users/\(Constant.USER_ID)/nfts")
         
         return Endpoint(url: url, method: .put, headers: headers, data: requestDTO)
     }

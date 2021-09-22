@@ -54,6 +54,4 @@ struct SignupRequest {
     var email: String = ""
     var password: String = ""
     var confirmPassword: String = ""
-    var isMale: Bool = true
-    var birthDate: TimeInterval = 0
 }

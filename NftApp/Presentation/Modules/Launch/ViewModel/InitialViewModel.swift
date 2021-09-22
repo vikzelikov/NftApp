@@ -34,7 +34,7 @@ class InitialViewModelImpl: InitialViewModel {
             self.isShowHome.value = false
             return
         }
-        
+
         getUser()
         
     }

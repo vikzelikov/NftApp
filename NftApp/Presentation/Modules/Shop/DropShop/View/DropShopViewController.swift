@@ -30,13 +30,13 @@ class DropShopViewController: UIViewController {
     func bindData() {
         viewModel?.getEditions()
         
-        viewModel?.isLoading.bind { [weak self] in
-            if $0 {
-//                self?.loginButton.loadingIndicator(isShow: true, titleButton: nil)
-            } else {
-//                self?.loginButton.loadingIndicator(isShow: false, titleButton: "NEXT")
-            }
-        }
+//        viewModel?.isLoading.bind { [weak self] in
+//            if $0 {
+////                self?.loginButton.loadingIndicator(isShow: true, titleButton: nil)
+//            } else {
+////                self?.loginButton.loadingIndicator(isShow: false, titleButton: "NEXT")
+//            }
+//        }
             
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }

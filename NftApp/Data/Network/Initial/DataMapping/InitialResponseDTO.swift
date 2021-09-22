@@ -9,13 +9,22 @@ import Foundation
 
 struct InitialResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
+        case id
         case tokenCurrency
-        case marketFee
+        case exchangeFee
         case isAppAvailable
-        
+        case isDropshopAvailable
+        case isMarketAvailable
+        case isDepositAvailable
+        case isWithdrawAvailable
     }
     
-    let tokenCurrency: Int
-    let marketFee: Double
+    let id: Int
+    let tokenCurrency: Double
+    let exchangeFee: Double
     let isAppAvailable: Bool
+    let isDropshopAvailable: Bool
+    let isMarketAvailable: Bool
+    let isDepositAvailable: Bool
+    let isWithdrawAvailable: Bool
 }
