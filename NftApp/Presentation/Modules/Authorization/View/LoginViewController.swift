@@ -38,8 +38,7 @@ class LoginViewController: UIViewController {
             password: passwordTextField.text!
         )
         
-//        viewModel?.inputCredentials()
-        showHomeView()
+        viewModel?.inputCredentials()
     }
     
     func bindData() {

@@ -50,18 +50,19 @@ class LoginViewModelImpl: LoginViewModel {
         loginUseCase.login(request: loginRequest, completion: { result in
             switch result {
             case .success(let user):
-                NSLog("OK: \(user)")
+                // save user
                 self.isSuccess.value = true
             case .failure(let error):
                 self.isSuccess.value = false
-                NSLog("ERROR: \(String(describing: SignupViewModel.self)) \(error)")
+                
                 if let error = error as? ErrorMessage, let code = error.code {
                     switch code {
                     case let c where c >= HttpCode.internalServerError:
                         self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    case HttpCode.badRequest:
-                        let message = error.errorDTO?.message
-                        self.errorMessage.value = message
+                        break
+                    case let c where c >= HttpCode.badRequest:
+                        self.errorMessage.value = NSLocalizedString("unauthorization", comment: "")
+                        break
                     default:
                         self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
                     }

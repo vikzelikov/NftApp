@@ -29,11 +29,16 @@ final class LoginUseCaseImpl: LoginUseCase {
             switch result {
                 case .success(let resp) : do {
                     let authToken = resp.token
-                                            
-                    self.userStorage?.saveAuthToken(token: authToken)
-//                    self.userStorage?.saveUserId(userId: 1)
                     
-                    completion(.success(true))
+                    if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
+                        Constant.AUTH_TOKEN = authToken
+                        self.userStorage?.saveAuthToken(token: authToken)
+                        self.userStorage?.saveUserId(userId: userId)
+                        
+                        completion(.success(true))
+                    } else {
+                        completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+                    }
                 }
                 
                 case .failure(let error) : do {

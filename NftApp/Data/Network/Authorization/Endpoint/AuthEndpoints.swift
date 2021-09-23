@@ -35,16 +35,4 @@ struct AuthEndpoints {
         return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }
     
-    static func getAuthCheckEndpoint(request: LoginRequest) -> Endpoint {
-        let requestDTO = LoginRequestDTO (
-            login: request.login,
-            password: request.password
-        ).parameters
-        
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "/api/auth/check")
-        
-        return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
-    }
-    
 }

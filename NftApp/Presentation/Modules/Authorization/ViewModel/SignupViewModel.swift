@@ -58,7 +58,7 @@ class SignupViewModelImpl: SignupViewModel {
 //        if let isMale = isMale {
 //            signupRequest.isMale = isMale
 //        }
-//        
+//
 //        if let birthDate = birthDate {
 //            signupRequest.birthDate = birthDate
 //        }
@@ -69,12 +69,12 @@ class SignupViewModelImpl: SignupViewModel {
         
         signupUseCase.signup(request: signupRequest, completion: { result in
             switch result {
-            case .success(let isSuccess):
-                NSLog("OK Signup: \(isSuccess)")
+            case .success(let user):
+                // save user
                 self.isSuccess.value = true
             case .failure(let error):
                 self.isSuccess.value = false
-                NSLog("ERROR: \(String(describing: SignupViewModel.self)) \(error)")
+
                 if let error = error as? ErrorMessage, let code = error.code {
                     switch code {
                     case let c where c >= HttpCode.internalServerError:
