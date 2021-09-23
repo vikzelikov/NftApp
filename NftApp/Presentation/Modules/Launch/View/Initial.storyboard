@@ -23,17 +23,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sle-7C-zS7">
+                                <rect key="frame" x="15" y="488" width="290" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="4El-Qu-ZC0"/>
+                                </constraints>
+                                <state key="normal" title="RELOAD"/>
+                                <connections>
+                                    <action selector="reloadDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="B9T-jZ-htm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gjA-RL-9Pt" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="6jl-y7-rZ9"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Sle-7C-zS7" secondAttribute="trailing" constant="15" id="P1y-BA-p50"/>
                             <constraint firstItem="gjA-RL-9Pt" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="aTj-aA-LaH"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Sle-7C-zS7" secondAttribute="bottom" constant="20" id="dxv-89-HBd"/>
+                            <constraint firstItem="Sle-7C-zS7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="gBn-Na-qLh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5ns-5y-LUA"/>
                     <connections>
                         <outlet property="errorLabel" destination="gjA-RL-9Pt" id="lPy-xQ-W3k"/>
+                        <outlet property="reloadButton" destination="Sle-7C-zS7" id="ALV-yd-ucU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

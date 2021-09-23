@@ -11,7 +11,7 @@ protocol InitialViewModel: BaseViewModel {
     
     var isShowHome: Observable<Bool?> { get }
     
-    func initial()
+    func initial(isDelay: Bool)
     
 }
 
@@ -29,14 +29,20 @@ class InitialViewModelImpl: InitialViewModel {
         userUseCase = UserUseCaseImpl()
     }
     
-    func initial() {
-        if Constant.USER_ID == 0 || Constant.AUTH_TOKEN == "" {
-            self.isShowHome.value = false
-            return
-        }
-
-        getUser()
+    func initial(isDelay: Bool) {
+        var seconds = 0.0
+        if isDelay { seconds = 0.5 }
         
+        isLoading.value = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            if Constant.USER_ID == 0 || Constant.AUTH_TOKEN == "" {
+                self.isShowHome.value = false
+                return
+            }
+
+            self.getUser()
+        }
     }
     
     private func getUser() {

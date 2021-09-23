@@ -13,15 +13,21 @@ class InitialViewController: UIViewController {
     
     let loadingIndicator = UIActivityIndicatorView(style: .whiteLarge)
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var reloadButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewModel = InitialViewModelImpl()
-        
-        viewModel?.initial()
-        
+        viewModel?.initial(isDelay: false)
         bindData()
+        
+        setupStyle()
+    }
+    
+    func setupStyle() {
+        reloadButton.applyButtonStyle()
+        reloadButton.applyButtonEffects()
         
         loadingIndicator.center = self.view.center
         self.view.addSubview(loadingIndicator)
@@ -34,20 +40,36 @@ class InitialViewController: UIViewController {
         viewModel?.isShowHome.bind { [weak self] in
             guard let isShowHome = $0 else { return }
             
-            if isShowHome {
-                self?.showHomeView()
-            } else {
-                self?.showAuthView()
-            }
+            isShowHome ? self?.showHomeView() : self?.showAuthView()
         }
         
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
             
+            self.checkoutLoading(isShow: false)
+            
             self.errorLabel.text = errorMessage
-            self.errorLabel.isHidden = false
-            self.loadingIndicator.stopAnimating()
         }
+        
+        viewModel?.isLoading.bind {
+            self.checkoutLoading(isShow: $0)
+        }
+    }
+    
+    func checkoutLoading(isShow: Bool) {
+        if isShow {
+            self.loadingIndicator.startAnimating()
+            self.errorLabel.isHidden = true
+            self.reloadButton.isHidden = true
+        } else {
+            self.loadingIndicator.stopAnimating()
+            self.errorLabel.isHidden = false
+            self.reloadButton.isHidden = false
+        }
+    }
+    
+    @IBAction func reloadDidTap(_ sender: Any) {
+        viewModel?.initial(isDelay: true)
     }
     
     private func showAuthView() {
