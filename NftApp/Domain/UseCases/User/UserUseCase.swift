@@ -35,6 +35,9 @@ final class UserUseCaseImpl: UserUseCase {
                         email: resp.email
                     )
                     
+                    // save static user
+                    UserObject.user = user
+                    
                     completion(.success(user))
                 }
                 

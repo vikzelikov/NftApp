@@ -32,6 +32,7 @@ final class LoginUseCaseImpl: LoginUseCase {
                     
                     if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
                         Constant.AUTH_TOKEN = authToken
+                        Constant.USER_ID = userId
                         self.userStorage?.saveAuthToken(token: authToken)
                         self.userStorage?.saveUserId(userId: userId)
                         

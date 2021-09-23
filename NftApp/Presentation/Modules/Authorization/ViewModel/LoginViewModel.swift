@@ -20,7 +20,8 @@ protocol LoginViewModel : BaseViewModel {
 class LoginViewModelImpl: LoginViewModel {
     
     private let loginUseCase: LoginUseCase
-    
+    private let userUseCase: UserUseCase
+
     private var loginRequest = LoginRequest() {
         didSet {
             login = loginRequest.login
@@ -37,6 +38,7 @@ class LoginViewModelImpl: LoginViewModel {
     
     init() {
         loginUseCase = LoginUseCaseImpl()
+        userUseCase = UserUseCaseImpl()
     }
     
     func updateCredentials(login: String, password: String) {
@@ -49,10 +51,11 @@ class LoginViewModelImpl: LoginViewModel {
         
         loginUseCase.login(request: loginRequest, completion: { result in
             switch result {
-            case .success(let user):
-                // save user
-                self.isSuccess.value = true
+            case .success:
+                self.getUser()
+                
             case .failure(let error):
+                self.isLoading.value = false
                 self.isSuccess.value = false
                 
                 if let error = error as? ErrorMessage, let code = error.code {
@@ -68,8 +71,35 @@ class LoginViewModelImpl: LoginViewModel {
                     }
                 }
             }
+        })
+    }
+    
+    private func getUser() {
+        userUseCase.getUser(completion: { result in
+            switch result {
+            case .success:
+                self.isSuccess.value = true
+                
+            case .failure(let error):
+                self.isSuccess.value = false
+                
+                if let error = error as? ErrorMessage, let code = error.code {
+                    switch code {
+                    case let c where c >= HttpCode.internalServerError:
+                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
+                    case HttpCode.badRequest:
+                        let message = error.errorDTO?.message
+                        self.errorMessage.value = message
+                    default:
+                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
+                    }
+                } else {
+                    self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
+                }
+            }
             
             self.isLoading.value = false
+
         })
     }
     

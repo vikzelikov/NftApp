@@ -299,6 +299,7 @@
                         <outlet property="collectionViewHeight" destination="1Jl-9m-mje" id="mNC-Cz-MUj"/>
                         <outlet property="followersContainer" destination="3T4-QQ-vdM" id="ENZ-mC-PWV"/>
                         <outlet property="followingContainer" destination="9wc-Sj-pdr" id="sB9-Tu-INB"/>
+                        <outlet property="loginLabel" destination="Yly-Ka-LCU" id="tdn-Nf-DTn"/>
                         <outlet property="miniTopButton" destination="bXq-3U-dPL" id="Kq6-l1-HBZ"/>
                         <outlet property="observablesLabel" destination="3yh-uM-42a" id="Bwa-NT-RFw"/>
                         <outlet property="scrollView" destination="bHZ-EJ-KRJ" id="SRU-GA-oHd"/>
