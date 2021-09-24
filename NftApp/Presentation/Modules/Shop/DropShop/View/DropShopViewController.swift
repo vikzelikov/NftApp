@@ -13,7 +13,8 @@ class DropShopViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorLabel: UILabel!
-    let loadingIndicator = UIActivityIndicatorView()
+    let loadingIndicator1 = UIActivityIndicatorView()
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +64,6 @@ class DropShopViewController: UIViewController {
     }
     
     func setupStyle() {
-        self.view.addSubview(loadingIndicator)
-        loadingIndicator.center = self.view.center
         loadingIndicator.startAnimating()
         
         tableView.estimatedRowHeight = tableView.rowHeight
