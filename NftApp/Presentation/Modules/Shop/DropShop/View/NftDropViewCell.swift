@@ -16,6 +16,7 @@ class NftDropViewCell: UITableViewCell {
     @IBOutlet weak var nftImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var leftCountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +36,7 @@ class NftDropViewCell: UITableViewCell {
         titleLabel?.text = viewModel.edition.name
         priceLabel?.text = String(viewModel.edition.price)
         nftImageView.sd_setImage(with: URL(string: viewModel.edition.mediaUrl)!)
-        
+        leftCountLabel?.text = "x\(viewModel.edition.count)"
     }
     
     func getUrl(stringUrl: String) -> URL? {

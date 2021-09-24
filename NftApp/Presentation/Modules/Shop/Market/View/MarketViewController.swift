@@ -58,7 +58,7 @@ extension MarketViewController: UITableViewDelegate {
         let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
         vc.viewModel = DetailNftViewModelImpl()
         vc.viewModel?.nftViewModel.value = items[indexPath.row]
-        vc.typeDetailNFT = .exchange
+        vc.viewModel?.typeDetailNFT = .market
         self.present(vc, animated: true, completion: nil)
                 
         

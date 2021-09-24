@@ -17,8 +17,8 @@
                 <outlet property="descriptionLabel" destination="GEm-zv-R5L" id="9aM-zo-ppm"/>
                 <outlet property="dismissButton" destination="Rnw-hD-MHF" id="Agg-KW-fpy"/>
                 <outlet property="expirationDateLabel" destination="16O-a3-4vf" id="OrG-32-bdJ"/>
-                <outlet property="leftNumberLabel" destination="7c9-1P-TnS" id="QrC-Lb-e4Z"/>
-                <outlet property="leftNumberTagView" destination="9Eh-dk-pA9" id="jrY-Nd-Ovc"/>
+                <outlet property="leftCountLabel" destination="7c9-1P-TnS" id="QrC-Lb-e4Z"/>
+                <outlet property="leftCountTagView" destination="9Eh-dk-pA9" id="jrY-Nd-Ovc"/>
                 <outlet property="leftTagConstraint" destination="7Ok-pM-z9h" id="mNX-8G-GL9"/>
                 <outlet property="moreInfoNftLabel" destination="Ggl-IM-pp4" id="O4D-UV-jFR"/>
                 <outlet property="moreOffersButton" destination="Q12-N8-bw3" id="a0l-d6-lkV"/>
@@ -125,6 +125,9 @@
                         <constraint firstAttribute="height" constant="60" id="PBG-EU-udc"/>
                     </constraints>
                     <state key="normal" title="GET"/>
+                    <connections>
+                        <action selector="buyNftDidTap:" destination="-1" eventType="touchUpInside" id="s73-SD-kR1"/>
+                    </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vPm-cX-VtC">
                     <rect key="frame" x="15" y="20" width="290" height="20"/>
@@ -182,7 +185,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Eh-dk-pA9">
                             <rect key="frame" x="193.5" y="0.0" width="96.5" height="20"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" x9 LEFT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7c9-1P-TnS">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" x0 LEFT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7c9-1P-TnS">
                                     <rect key="frame" x="8" y="2" width="80.5" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" name="grayLabel"/>
@@ -239,8 +242,8 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KHo-b6-eUr">
                             <rect key="frame" x="100.5" y="12.5" width="89" height="35"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500 РУБ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erp-tC-86d">
-                                    <rect key="frame" x="11.5" y="0.0" width="66" height="20.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erp-tC-86d">
+                                    <rect key="frame" x="30.5" y="0.0" width="28.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>

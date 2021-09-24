@@ -87,7 +87,7 @@ extension DropShopViewController: UITableViewDelegate {
             let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
             vc.viewModel = DetailNftViewModelImpl()
             vc.viewModel?.nftViewModel.value = nftViewModel
-            vc.typeDetailNFT = .dropShop
+            vc.viewModel?.typeDetailNFT = .dropShop
             self.present(vc, animated: true, completion: nil)
         }
         
