@@ -27,23 +27,21 @@ final class DropShopUseCaseImpl: DropShopUseCase {
 
         repository?.getEditions(request: request, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    print("success \(resp)")
-                    
-                    let editions = resp.nfts.map {
-                        Nft(id: $0.id,
-                            price: $0.price,
-                            serialNumber: $0.serialNumber,
-                            isForCell: $0.isForCell,
-                            edition: NftEdition(id: $0.edition.id,
-                                                influencerId: $0.edition.influencerId,
-                                                count: $0.edition.count,
-                                                name: $0.edition.name,
-                                                description: $0.edition.description,
-                                                date: $0.edition.date,
-                                                price: $0.edition.price,
-                                                dateExpiration: $0.edition.dateExpiration,
-                                                mediaUrl: $0.edition.mediaUrl)
+                case .success(let resp) : do {                    
+                    let editions = resp.rows.map {
+                        Nft(id: 1,
+                            price: 1,
+                            serialNumber: 1,
+                            isForCell: false,
+                            edition: NftEdition(id: $0.id,
+                                                influencerId: $0.influencerId,
+                                                count: $0.count,
+                                                name: $0.name,
+                                                description: $0.description,
+                                                date: 0,
+                                                price: $0.price,
+                                                dateExpiration: Double($0.dateExpiration) ?? 0.0,
+                                                mediaUrl: $0.mediaUrl)
                         )
                     }
                     

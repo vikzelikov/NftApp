@@ -11,7 +11,8 @@ class InitialViewController: UIViewController {
     
     var viewModel: InitialViewModel?
     
-    let loadingIndicator = UIActivityIndicatorView(style: .whiteLarge)
+    let loadingIndicator = UIActivityIndicatorView()
+    
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var reloadButton: UIButton!
     
@@ -29,6 +30,7 @@ class InitialViewController: UIViewController {
         reloadButton.applyButtonStyle()
         reloadButton.applyButtonEffects()
         
+        loadingIndicator.transform = CGAffineTransform(scaleX: 2, y: 2)
         loadingIndicator.center = self.view.center
         self.view.addSubview(loadingIndicator)
         loadingIndicator.startAnimating()

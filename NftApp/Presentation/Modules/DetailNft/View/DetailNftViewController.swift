@@ -47,19 +47,28 @@ class DetailNftViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkoutView()
-        
         setupStyle()
         
         guard let nftViewModel = viewModel?.nftViewModel.value else { return }
-        buyButton?.setTitle("\(nftViewModel.price)", for: .normal)
+        buyButton?.setTitle("\(nftViewModel.edition.price)", for: .normal)
         titleLabel?.text = nftViewModel.edition.name
         descriptionLabel?.text = nftViewModel.edition.description
         nftImageView.sd_setImage(with: URL(string: nftViewModel.edition.mediaUrl)!)
         
+        let tapAction = UITapGestureRecognizer(target: self, action: #selector(descriptionDidTap(_:)))
+        descriptionLabel?.isUserInteractionEnabled = true
+        descriptionLabel?.addGestureRecognizer(tapAction)
+    }
+    
+    @objc func descriptionDidTap(_ sender: UITapGestureRecognizer) {
+        let vc = DetailDescriptionViewController()
+        vc.descriptionNft = viewModel?.nftViewModel.value?.edition.description
+        present(vc, animated: true, completion: nil)
     }
     
     private func setupStyle() {
+        checkoutView()
+
         buyButton.applyButtonStyle()
         buyButton.applyButtonEffects()
         

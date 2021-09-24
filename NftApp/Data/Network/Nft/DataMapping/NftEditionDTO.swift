@@ -14,7 +14,6 @@ struct EditionDTO: Decodable {
         case count
         case name
         case description
-        case date
         case price
         case dateExpiration
         case mediaUrl
@@ -25,8 +24,7 @@ struct EditionDTO: Decodable {
     let count: Int
     let name: String
     let description: String
-    let date: TimeInterval
     let price: Double
-    let dateExpiration: TimeInterval
+    let dateExpiration: String
     let mediaUrl: String
 }

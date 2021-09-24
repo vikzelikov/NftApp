@@ -33,7 +33,7 @@ class NftDropViewCell: UITableViewCell {
         nftImageView.layer.cornerRadius = 12
         
         titleLabel?.text = viewModel.edition.name
-        priceLabel?.text = String(viewModel.price)
+        priceLabel?.text = String(viewModel.edition.price)
         nftImageView.sd_setImage(with: URL(string: viewModel.edition.mediaUrl)!)
         
     }

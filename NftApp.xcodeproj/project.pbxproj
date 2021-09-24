@@ -48,6 +48,8 @@
 		182342F426A2ECF700CD2907 /* HistoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342F226A2ECF700CD2907 /* HistoryViewCell.xib */; };
 		182342F626A2F10E00CD2907 /* HistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342F526A2F10E00CD2907 /* HistoryCellViewModel.swift */; };
 		182342F826A2F40500CD2907 /* TradingHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342F726A2F40500CD2907 /* TradingHistoryViewModel.swift */; };
+		1833847026FD399A00EAD9EB /* DetailDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833846E26FD399A00EAD9EB /* DetailDescriptionViewController.swift */; };
+		1833847126FD399A00EAD9EB /* DetailDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1833846F26FD399A00EAD9EB /* DetailDescriptionViewController.xib */; };
 		18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F88269CE7DB00611362 /* TabBarViewController.swift */; };
 		18523F90269CEAA000611362 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F8F269CEAA000611362 /* ShopViewController.swift */; };
 		18523F92269CEB4E00611362 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F91269CEB4E00611362 /* Shop.storyboard */; };
@@ -201,6 +203,8 @@
 		182342F226A2ECF700CD2907 /* HistoryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryViewCell.xib; sourceTree = "<group>"; };
 		182342F526A2F10E00CD2907 /* HistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellViewModel.swift; sourceTree = "<group>"; };
 		182342F726A2F40500CD2907 /* TradingHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingHistoryViewModel.swift; sourceTree = "<group>"; };
+		1833846E26FD399A00EAD9EB /* DetailDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDescriptionViewController.swift; sourceTree = "<group>"; };
+		1833846F26FD399A00EAD9EB /* DetailDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailDescriptionViewController.xib; sourceTree = "<group>"; };
 		18523F88269CE7DB00611362 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		18523F8F269CEAA000611362 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		18523F91269CEB4E00611362 /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
@@ -541,6 +545,8 @@
 			children = (
 				182342D126A0493600CD2907 /* DetailNftViewController.swift */,
 				182342D226A0493600CD2907 /* DetailNftViewController.xib */,
+				1833846E26FD399A00EAD9EB /* DetailDescriptionViewController.swift */,
+				1833846F26FD399A00EAD9EB /* DetailDescriptionViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1425,6 +1431,7 @@
 				18855F3626D52A360018B072 /* Assets.xcassets in Resources */,
 				186E5FF826B6A3FD008291AC /* AddFundsViewController.xib in Resources */,
 				182342F026A2EB5E00CD2907 /* TradingHistoryViewController.xib in Resources */,
+				1833847126FD399A00EAD9EB /* DetailDescriptionViewController.xib in Resources */,
 				182342DC26A1E67F00CD2907 /* NftMarketViewCell.xib in Resources */,
 				186E602B26B98C38008291AC /* FollowsViewController.xib in Resources */,
 				182342E926A2D21400CD2907 /* OfferPriceViewCell.xib in Resources */,
@@ -1481,6 +1488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1833847026FD399A00EAD9EB /* DetailDescriptionViewController.swift in Sources */,
 				18E39B2526D03BF200FEC003 /* UserUseCase.swift in Sources */,
 				185F58B726F8B95A00473DDB /* EditionCellViewModel.swift in Sources */,
 				18E39B1E26D03A3000FEC003 /* UserEndpoints.swift in Sources */,

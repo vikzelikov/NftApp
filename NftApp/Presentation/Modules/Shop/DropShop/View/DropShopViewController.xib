@@ -9,8 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropShopViewController" customModule="Genies" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropShopViewController" customModule="NftApp" customModuleProvider="target">
             <connections>
+                <outlet property="errorLabel" destination="1Lh-NP-vBe" id="Jt0-pV-9Bo"/>
                 <outlet property="tableView" destination="7ta-LC-yJf" id="WlR-pf-VMN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,6 +31,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lh-NP-vBe">
+                    <rect key="frame" x="118.5" y="273.5" width="83.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -37,9 +44,11 @@
                 <constraint firstItem="7ta-LC-yJf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3D6-vx-KPa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7ta-LC-yJf" secondAttribute="bottom" id="6xd-53-4FD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7ta-LC-yJf" secondAttribute="trailing" id="Dij-hg-mXq"/>
+                <constraint firstItem="1Lh-NP-vBe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qw6-XF-epQ"/>
                 <constraint firstItem="lE5-nj-WAE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TOA-JG-uEu"/>
                 <constraint firstItem="7ta-LC-yJf" firstAttribute="top" secondItem="lE5-nj-WAE" secondAttribute="bottom" constant="10" id="aMb-Fi-KgH"/>
                 <constraint firstItem="lE5-nj-WAE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="s2I-JW-b5n"/>
+                <constraint firstItem="1Lh-NP-vBe" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="wCD-Mk-xdf"/>
             </constraints>
             <point key="canvasLocation" x="38" y="154"/>
         </view>

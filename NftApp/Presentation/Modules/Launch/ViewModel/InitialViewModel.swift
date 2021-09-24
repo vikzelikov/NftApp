@@ -55,7 +55,7 @@ class InitialViewModelImpl: InitialViewModel {
                     switch code {
                     case let c where c >= HttpCode.internalServerError:
                         self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    case HttpCode.badRequest:
+                    case let c where c >= HttpCode.badRequest:
                         self.isShowHome.value = false
                     default:
                         self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
