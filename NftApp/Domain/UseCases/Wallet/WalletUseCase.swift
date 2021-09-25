@@ -13,6 +13,8 @@ protocol WalletUseCase {
     func addFunds(request: AddFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void)
     
     func withdrawFunds(request: WithdrawFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void)
+    
+    func getTransaction(completion: @escaping (Result<Bool, Error>) -> Void)
         
 }
 
@@ -52,6 +54,10 @@ final class WalletUseCaseImpl: WalletUseCase {
                 }
             }
         })
+    }
+    
+    func getTransaction(completion: @escaping (Result<Bool, Error>) -> Void) {
+        
     }
     
 }

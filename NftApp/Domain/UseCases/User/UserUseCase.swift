@@ -36,7 +36,7 @@ final class UserUseCaseImpl: UserUseCase {
                     )
                     
                     // save static user
-                    UserObject.user = user
+                    UserObject.user.value = user
                     
                     completion(.success(user))
                 }

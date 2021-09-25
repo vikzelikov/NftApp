@@ -1,19 +1,19 @@
 //
-//  GetNftsUseCase.swift
+//  NftUseCase.swift
 //  NftApp
 //
-//  Created by Yegor on 25.08.2021.
+//  Created by Yegor on 25.09.2021.
 //
 
 import Foundation
 
-protocol GetNftsUseCase {
+protocol NftUseCase {
     
     func getNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void)
         
 }
 
-final class GetNftsUseCaseImpl: GetNftsUseCase {
+final class NftUseCaseImpl: NftUseCase {
     
     private let repository: UserRepository?
     private let userStorage: UserStorage?
@@ -36,6 +36,7 @@ final class GetNftsUseCaseImpl: GetNftsUseCase {
             }
         })
     }
+    
 }
 
 struct GetNftsRequest {

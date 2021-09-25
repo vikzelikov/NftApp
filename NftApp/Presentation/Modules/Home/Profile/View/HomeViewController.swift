@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    var viewModel: HomeViewModel?
+
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
             userImageView.layer.cornerRadius = userImageView.frame.width / 2
@@ -21,6 +23,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBOutlet weak var loginLabel: UILabel!
+    @IBOutlet weak var loginSubtitleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var miniTopButton: UIButton!
@@ -38,22 +41,47 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel = HomeViewModelImpl()
+        bindData()
+        
         setupStyle()
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         collectionView.register(UINib(nibName: "NftProfileViewCell", bundle: nil), forCellWithReuseIdentifier: "NftProfileViewCell")
+    }
+    
+    func bindData() {
+        viewModel?.getCollectionNfts()
         
-        items.append(NftCellViewModel(id: 0, price: 0.0, serialNumber: 0, isForCell: false, edition: EditionCellViewModel(id: 0, influencerId: 0, count: 0, name: "NFT #1", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, price: 500, dateExpiration: nil, mediaUrl: "https://sun9-64.userapi.com/impg/b6b8-4ek3-HAYctsvHRXcpPPMNOsmW_dGq418g/dZ2rmaBjGdM.jpg?size=1080x1080&quality=96&sign=cff5e3de07aff007fa4e9f091737da4d&type=album")))
+        viewModel?.items.bind {
+            [weak self] _ in self?.reload()
         
-        items.append(NftCellViewModel(id: 0, price: 0.0, serialNumber: 0, isForCell: false, edition: EditionCellViewModel(id: 0, influencerId: 0, count: 0, name: "NFT #2", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, price: 500, dateExpiration: nil, mediaUrl: "https://sun9-13.userapi.com/impg/RnIxGWvqxgaaigGE6qa8biwFt941LsmD48c7KQ/FJsXIqTSPag.jpg?size=1080x1080&quality=96&sign=df30af1f666f0db0cce43e5fd08b62ed&type=album")))
+//            self?.checkoutLoading(isShow: false)
+//            self?.tableView.isHidden = false
+//            self?.errorLabel.isHidden = true
+        }
         
-        items.append(NftCellViewModel(id: 0, price: 0.0, serialNumber: 0, isForCell: false, edition: EditionCellViewModel(id: 0, influencerId: 0, count: 0, name: "NFT #3", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry", date: nil, price: 500, dateExpiration: nil, mediaUrl: "https://sun9-75.userapi.com/impg/WH1eWaouXisW-LsvaOBAQFqcxlhZqNll5caF7w/cAbqcwEVRXM.jpg?size=1080x1080&quality=96&sign=3a1d6db8a95833baed6530f1ecfcfa3a&type=album")))
+        viewModel?.isLoading.bind { _ in 
+            print("1")
+//            self.checkoutLoading(isShow: $0)
+        }
         
-        loginLabel.text = UserObject.user?.login
-
-        reload()
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            let alert = UIAlertController(title: "Error Message", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        UserObject.user.bind {
+            guard let userViewModel = $0 else { return }
+            
+            self.loginLabel.text = userViewModel.login
+            self.loginSubtitleLabel.text = "@\(userViewModel.login)"
+        }
+        
+        
     }
     
     func reload() {

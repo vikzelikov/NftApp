@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gey-dx-OrY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gey-dx-OrY">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -300,6 +300,7 @@
                         <outlet property="followersContainer" destination="3T4-QQ-vdM" id="ENZ-mC-PWV"/>
                         <outlet property="followingContainer" destination="9wc-Sj-pdr" id="sB9-Tu-INB"/>
                         <outlet property="loginLabel" destination="Yly-Ka-LCU" id="tdn-Nf-DTn"/>
+                        <outlet property="loginSubtitleLabel" destination="Lqr-dW-Mtx" id="8RC-CX-o94"/>
                         <outlet property="miniTopButton" destination="bXq-3U-dPL" id="Kq6-l1-HBZ"/>
                         <outlet property="observablesLabel" destination="3yh-uM-42a" id="Bwa-NT-RFw"/>
                         <outlet property="scrollView" destination="bHZ-EJ-KRJ" id="SRU-GA-oHd"/>

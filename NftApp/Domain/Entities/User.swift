@@ -20,6 +20,6 @@ struct User: Equatable, Identifiable {
 
 struct UserObject {
     
-    static var user: User? = nil
+    static var user: Observable<User?> = Observable(nil)
     
 }

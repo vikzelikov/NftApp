@@ -24,7 +24,6 @@ class DropShopViewModelImpl: DropShopViewModel {
     private var query: String = ""
     private var currentPage: Int = 1
     private var totalPageCount: Int = 1
-
     var items: Observable<[NftCellViewModel]> = Observable([])
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
