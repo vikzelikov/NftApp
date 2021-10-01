@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 struct ColorHelper {
+    
     static func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
@@ -30,4 +31,5 @@ struct ColorHelper {
             alpha: CGFloat(1.0)
         )
     }
+    
 }

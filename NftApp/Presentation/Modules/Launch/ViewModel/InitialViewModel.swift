@@ -45,8 +45,8 @@ class InitialViewModelImpl: InitialViewModel {
         }
     }
     
-    private func getUser() {
-        userUseCase.getUser(completion: { result in
+    private func getUser() {        
+        userUseCase.getUser(userId: Constant.USER_ID, completion: { result in
             switch result {
             case .success:
                 self.getInitialData()

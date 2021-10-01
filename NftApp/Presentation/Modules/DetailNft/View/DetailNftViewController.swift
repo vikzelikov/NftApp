@@ -129,11 +129,12 @@ class DetailNftViewController: UIViewController {
     }
     
     @objc func ownerLoginDidTap(_ sender: UITapGestureRecognizer) {
-        // with user id
-        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        guard let profilePage = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
-        profilePage.isOtherUser = true
-        navigationController?.pushViewController(profilePage, animated: true) ?? present(profilePage, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+        vc.viewModel = HomeViewModelImpl()
+        vc.viewModel?.userViewModel.value = nil
+        vc.viewModel?.isOtherUser = true
+        navigationController?.pushViewController(vc, animated: true) ?? present(vc, animated: true, completion: nil)
 
         HapticHelper.vibro(.light)
     }

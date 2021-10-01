@@ -96,7 +96,7 @@ class SignupViewModelImpl: SignupViewModel {
     }
     
     private func getUser() {
-        userUseCase.getUser(completion: { result in
+        userUseCase.getUser(userId: Constant.USER_ID, completion: { result in
             switch result {
             case .success:
                 self.isSuccess.value = true

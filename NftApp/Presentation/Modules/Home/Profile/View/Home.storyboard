@@ -100,7 +100,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOa-Qf-oo0">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOa-Qf-oo0">
                                                                                 <rect key="frame" x="0.0" y="17.5" width="54" height="24"/>
                                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                                 <nil key="textColor"/>
@@ -117,7 +117,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="0wn-bN-zNZ">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="0wn-bN-zNZ">
                                                                                 <rect key="frame" x="0.0" y="17.5" width="54" height="24"/>
                                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                                 <nil key="textColor"/>
@@ -297,8 +297,8 @@
                         <outlet property="collectionLabel" destination="4r9-AX-Ebv" id="y1O-kX-cTT"/>
                         <outlet property="collectionView" destination="Xmg-nI-k5u" id="ePZ-lq-dEI"/>
                         <outlet property="collectionViewHeight" destination="1Jl-9m-mje" id="mNC-Cz-MUj"/>
-                        <outlet property="followersContainer" destination="3T4-QQ-vdM" id="ENZ-mC-PWV"/>
-                        <outlet property="followingContainer" destination="9wc-Sj-pdr" id="sB9-Tu-INB"/>
+                        <outlet property="followersLabel" destination="UOa-Qf-oo0" id="Rbt-Bu-bZM"/>
+                        <outlet property="followingLabel" destination="0wn-bN-zNZ" id="46w-hD-KK2"/>
                         <outlet property="loginLabel" destination="Yly-Ka-LCU" id="tdn-Nf-DTn"/>
                         <outlet property="loginSubtitleLabel" destination="Lqr-dW-Mtx" id="8RC-CX-o94"/>
                         <outlet property="miniTopButton" destination="bXq-3U-dPL" id="Kq6-l1-HBZ"/>

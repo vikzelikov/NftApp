@@ -12,23 +12,11 @@ class GetUserResponseDTO: Decodable {
         case id
         case login
         case email
-        case sex
-        case birthday
-        case balance
         case avatarUrl
-        case influencerId
-        case flowAddress
-        case publicKey
     }
     
     let id: Int
     let login: String
     let email: String
-    let sex: String?
-    let birthday: String?
-    let balance: String
     let avatarUrl: String?
-    let influencerId: String?
-    let flowAddress: String?
-    let publicKey: String?
 }

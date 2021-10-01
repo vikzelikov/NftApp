@@ -40,5 +40,6 @@ final class NftUseCaseImpl: NftUseCase {
 }
 
 struct GetNftsRequest {
+    var userId: Int = 0
     var page: Int = 0
 }

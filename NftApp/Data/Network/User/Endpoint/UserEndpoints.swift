@@ -10,9 +10,9 @@ import Alamofire
 
 struct UserEndpoints {
     
-    static func getUserEndpoint() -> Endpoint {
+    static func getUserEndpoint(userId: Int) -> Endpoint {
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/users/\(Constant.USER_ID)")
+        let url = URL(string: Constant.BASE_URL + "api/users/\(userId)")
         
         return Endpoint(url: url, method: .get, headers: headers, data: nil)
     }

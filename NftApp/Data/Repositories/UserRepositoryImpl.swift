@@ -10,8 +10,8 @@ import Alamofire
 
 class UserRepositoryImpl: UserRepository {
 
-    func getUser(completion: @escaping (Result<GetUserResponseDTO, Error>) -> Void) {
-        let endpoint = UserEndpoints.getUserEndpoint()
+    func getUser(userId: Int, completion: @escaping (Result<GetUserResponseDTO, Error>) -> Void) {
+        let endpoint = UserEndpoints.getUserEndpoint(userId: userId)
         
         guard let url = endpoint.url else {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
@@ -87,6 +87,8 @@ class UserRepositoryImpl: UserRepository {
     
     func follow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
         let endpoint = FollowsEndpoints.followEndpoint(userId: userId)
+        
+        print(endpoint.url?.absoluteString)
         
         guard let url = endpoint.url else {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))

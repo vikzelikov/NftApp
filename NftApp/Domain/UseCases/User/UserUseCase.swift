@@ -9,7 +9,7 @@ import Foundation
 
 protocol UserUseCase {
     
-    func getUser(completion: @escaping (Result<User, Error>) -> Void)
+    func getUser(userId: Int, completion: @escaping (Result<User, Error>) -> Void)
     
     func updateUser(request: User, completion: @escaping (Result<Bool, Error>) -> Void)
     
@@ -25,8 +25,8 @@ final class UserUseCaseImpl: UserUseCase {
         self.userStorage = UserStorageImpl()
     }
     
-    func getUser(completion: @escaping (Result<User, Error>) -> Void) {
-        repository?.getUser(completion: { result in
+    func getUser(userId: Int, completion: @escaping (Result<User, Error>) -> Void) {
+        repository?.getUser(userId: userId, completion: { result in
             switch result {
                 case .success(let resp) : do {
                     let user = User(
@@ -34,9 +34,6 @@ final class UserUseCaseImpl: UserUseCase {
                         login: resp.login,
                         email: resp.email
                     )
-                    
-                    // save static user
-                    UserObject.user.value = user
                     
                     completion(.success(user))
                 }

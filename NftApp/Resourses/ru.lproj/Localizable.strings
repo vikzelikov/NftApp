@@ -1,8 +1,13 @@
 "NEXT" = "ДАЛЕЕ";
 "defaultError" = "Что-то пошло не так...";
-"unauthorization" = "Неверный логин или пароль";
+"Error login or password" = "Неверный логин или пароль";
+"unauthorization" = "Вы не авторизованы";
 "Follow" = "Подписаться";
+"Followers" = "Подписчики";
+"Following" = "Подписки";
 "You get" = "Вы получите";
 "Drop Shop is empty" = "Нет NFTs для продажи";
+"Collection is empty" = "В коллекции ничего нет";
+"Empty" = "Тут еще ничего нет";
 "left" = "ОСТАЛОСЬ";
 

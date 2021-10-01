@@ -9,7 +9,7 @@ import Foundation
 
 protocol UserRepository {
     
-    func getUser(completion: @escaping (Result<GetUserResponseDTO, Error>) -> Void)
+    func getUser(userId: Int, completion: @escaping (Result<GetUserResponseDTO, Error>) -> Void)
     
     func updateUser(request: User, completion: @escaping (Result<UpdateUserResponseDTO, Error>) -> Void)
     

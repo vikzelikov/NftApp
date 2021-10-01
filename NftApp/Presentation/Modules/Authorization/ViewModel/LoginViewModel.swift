@@ -64,7 +64,7 @@ class LoginViewModelImpl: LoginViewModel {
                         self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
                         break
                     case let c where c >= HttpCode.badRequest:
-                        self.errorMessage.value = NSLocalizedString("unauthorization", comment: "")
+                        self.errorMessage.value = NSLocalizedString("Error login or password", comment: "")
                         break
                     default:
                         self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
@@ -75,7 +75,7 @@ class LoginViewModelImpl: LoginViewModel {
     }
     
     private func getUser() {
-        userUseCase.getUser(completion: { result in
+        userUseCase.getUser(userId: Constant.USER_ID, completion: { result in
             switch result {
             case .success:
                 self.isSuccess.value = true

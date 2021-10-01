@@ -16,7 +16,7 @@ struct FollowsEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/users/\(Constant.USER_ID)/followers")
+        let url = URL(string: Constant.BASE_URL + "api/users/\(request.userId)/followers")
         
         return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
     }
@@ -27,7 +27,7 @@ struct FollowsEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/users/\(Constant.USER_ID)/following")
+        let url = URL(string: Constant.BASE_URL + "api/users/\(request.userId)/following")
 
         return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
     }

@@ -21,7 +21,6 @@ class HomeViewController: UIViewController {
             scrollView.delegate = self
         }
     }
-    
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var loginSubtitleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -29,19 +28,18 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var miniTopButton: UIButton!
     @IBOutlet weak var collectionLabel: UILabel!
     @IBOutlet weak var observablesLabel: UILabel!
-    @IBOutlet weak var followersContainer: UIStackView!
-    @IBOutlet weak var followingContainer: UIStackView!
+    @IBOutlet weak var followersLabel: UILabel!
+    @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     
     let refreshControl = UIRefreshControl()
-    var items: [NftCellViewModel] = []
-    var isOtherUser = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewModel = HomeViewModelImpl()
+        viewModel?.viewDidLoad()
         bindData()
         
         setupStyle()
@@ -52,9 +50,7 @@ class HomeViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.getCollectionNfts()
-        
-        viewModel?.items.bind {
+        viewModel?.collectionNfts.bind {
             [weak self] _ in self?.reload()
         
 //            self?.checkoutLoading(isShow: false)
@@ -71,17 +67,23 @@ class HomeViewController: UIViewController {
             guard let errorMessage = $0 else { return }
             let alert = UIAlertController(title: "Error Message", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+//            self.present(alert, animated: true, completion: nil)
         }
         
-        UserObject.user.bind {
+        viewModel?.userViewModel.bind {
             guard let userViewModel = $0 else { return }
             
             self.loginLabel.text = userViewModel.login
             self.loginSubtitleLabel.text = "@\(userViewModel.login)"
         }
         
+        viewModel?.followers.bind {
+            self.followersLabel.text = "\($0.count)"
+        }
         
+        viewModel?.following.bind {
+            self.followingLabel.text = "\($0.count)"
+        }
     }
     
     func reload() {
@@ -119,7 +121,7 @@ class HomeViewController: UIViewController {
         let textToShare = "Check out my app"
 
         // enter link to your app here
-        if let myWebsite = URL(string: "https://mydomain.com/@login") {
+        if let myWebsite = URL(string: "https://showyouryup.com/@login") {
             let objectsToShare = [textToShare, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 
@@ -131,7 +133,9 @@ class HomeViewController: UIViewController {
     }
     
     @objc func subscribeDidTap(_ sender: UIButton) {
-        // new subscribe
+        viewModel?.manageSubscribeDidTap(isFollow: true, completion: { result in
+            print(result)
+        })
     }
     
     private func setupStyle() {
@@ -147,12 +151,17 @@ class HomeViewController: UIViewController {
 
         miniTopButton.applyButtonEffects()
         
-        let followsTap = UITapGestureRecognizer(target: self, action: #selector(followsContainerDidTap(_:)))
-        followersContainer?.isUserInteractionEnabled = true
-        followersContainer?.addGestureRecognizer(followsTap)
+        let followersTap = UITapGestureRecognizer(target: self, action: #selector(followersContainerDidTap(_:)))
+        followersLabel?.isUserInteractionEnabled = true
+        followersLabel?.addGestureRecognizer(followersTap)
         
+        let followingsTap = UITapGestureRecognizer(target: self, action: #selector(followingContainerDidTap(_:)))
+        followingLabel?.isUserInteractionEnabled = true
+        followingLabel?.addGestureRecognizer(followingsTap)
         
-        if isOtherUser {
+        guard let isOtherUser = viewModel?.isOtherUser else { return }
+        
+        if !isOtherUser {
             miniTopButton.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
             miniTopButton.setImage(nil, for: .normal)
             miniTopButton.addTarget(self, action: #selector(subscribeDidTap), for: .touchUpInside)
@@ -181,8 +190,19 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func followsContainerDidTap(_ sender: AnyObject) {
+    @objc func followersContainerDidTap(_ sender: AnyObject) {
         let vc = FollowsViewController()
+        vc.viewModel = FollowsViewModelImpl()
+        vc.viewModel?.items.value = viewModel?.followers.value ?? []
+        vc.viewModel?.typeFollows = .followers
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func followingContainerDidTap(_ sender: AnyObject) {
+        let vc = FollowsViewController()
+        vc.viewModel = FollowsViewModelImpl()
+        vc.viewModel?.items.value = viewModel?.following.value ?? []
+        vc.viewModel?.typeFollows = .following
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -204,10 +224,12 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = DetailNftViewController()
-        vc.viewModel = DetailNftViewModelImpl()
-        vc.viewModel?.nftViewModel.value = items[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        viewModel?.didSelectItem(at: indexPath.row) { nftViewModel in
+            let vc = DetailNftViewController()
+            vc.viewModel = DetailNftViewModelImpl()
+            vc.viewModel?.nftViewModel.value = nftViewModel
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
         HapticHelper.vibro(.light)
     }
@@ -230,13 +252,19 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        if let count = viewModel?.collectionNfts.value.count {
+            return count
+        } else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NftProfileViewCell", for: indexPath) as? NftProfileViewCell else { return UICollectionViewCell() }
         
-        cell.bind(viewModel: items[indexPath.row])
+        if let vm = viewModel?.collectionNfts.value[indexPath.row] {
+            cell.bind(viewModel: vm)
+        }
         
         return cell
     }

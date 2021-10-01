@@ -9,115 +9,161 @@ import Foundation
 
 protocol HomeViewModel: BaseViewModel {
     
-    var items: Observable<[NftCellViewModel]> { get }
+    var userViewModel: Observable<UserCellViewModel?> { get }
+    var followers: Observable<[UserCellViewModel]> { get }
+    var following: Observable<[UserCellViewModel]> { get }
+    var collectionNfts: Observable<[NftCellViewModel]> { get }
+    var isOtherUser: Bool { get set }
     
-    func getCollectionNfts()
-    
+    func viewDidLoad()
+            
     func didSelectItem(at index: Int, completion: @escaping (NftCellViewModel) -> Void)
+    
+    func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void)
     
 }
 
 class HomeViewModelImpl: HomeViewModel {
-    
-    private let userUseCase: UserUseCase
-    private let nftUserCase: NftUseCase
-    
-    private var getNftsRequest = GetNftsRequest() {
-        didSet {
-            page = getNftsRequest.page
-        }
-    }
 
-    private var page = 1
-    private var currentPage: Int = 1
-    private var totalPageCount: Int = 1
-    var items: Observable<[NftCellViewModel]> = Observable([])
+    let userUseCase: UserUseCase
+    let followsUseCase: FollowsUseCase
+    let nftUserCase: NftUseCase
+
+    var page = 1
+    var currentPage: Int = 1
+    var totalPageCount: Int = 1
+    var isOtherUser: Bool = false
+    var userViewModel: Observable<UserCellViewModel?> = Observable(nil)
+    var followers: Observable<[UserCellViewModel]> = Observable([])
+    var following: Observable<[UserCellViewModel]> = Observable([])
+    var collectionNfts: Observable<[NftCellViewModel]> = Observable([])
     var isLoading: Observable<Bool> = Observable(true)
     var errorMessage: Observable<String?> = Observable(nil)
     
     init() {
         userUseCase = UserUseCaseImpl()
+        followsUseCase = FollowsUseCaseImpl()
         nftUserCase = NftUseCaseImpl()
+    }
+    
+    func viewDidLoad() {
+        getUser()
+        
+        getFollows()
+        
+        getCollectionNfts()
+    }
+    
+    private func getUser() {
+        let userId = userViewModel.value?.id ?? Constant.USER_ID
+        
+        userUseCase.getUser(userId: userId, completion: { result in
+            switch result {
+            case .success(let user):
+                self.userViewModel.value = UserCellViewModel.init(user: user)
+                
+            case .failure(let error):
+                let (_, errorStr) = ErrorHelper.validateError(error: error)
+                self.errorMessage.value = errorStr
+            }
+        })
+    }
+    
+    func getFollows() {
+        let userId = userViewModel.value?.id ?? Constant.USER_ID
+        let request = FollowsRequest(userId: userId)
+        
+        followsUseCase.getFollowers(request: request, completion: { result in
+            switch result {
+            case .success(let users):
+                self.followers.value = users.map(UserCellViewModel.init)
+
+            case .failure(let error):
+                let (_, errorStr) = ErrorHelper.validateError(error: error)
+                self.errorMessage.value = errorStr
+            }
+        })
+        
+        followsUseCase.getFollowing(request: request, completion: { result in
+            switch result {
+            case .success(let users):
+                self.following.value = users.map(UserCellViewModel.init)
+
+            case .failure(let error):
+                let (_, errorStr) = ErrorHelper.validateError(error: error)
+                self.errorMessage.value = errorStr
+            }
+        })
     }
     
     func getCollectionNfts() {
         isLoading.value = true
         
-        nftUserCase.getNfts(request: getNftsRequest) { result in
+        guard let userId = userViewModel.value?.id else { return }
+        let request = GetNftsRequest(userId: userId, page: page)
+        
+        nftUserCase.getNfts(request: request) { result in
             switch result {
-            case .success:
-                print("ok")
+            case .success(let nfts):
+                self.appendNfts(nfts: nfts)
+                
             case .failure(let error):
-                if let error = error as? ErrorMessage, let code = error.code {
-                    switch code {
-                    case let c where c >= HttpCode.internalServerError:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                        break
-                    case let c where c >= HttpCode.badRequest:
-                        let message = error.errorDTO?.message
-                        self.errorMessage.value = message
-                        break
-                    default:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    }
-                } else {
-                    self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                }
+                let (code, errorStr) = ErrorHelper.validateError(error: error)
+                if code == 404 { self.errorMessage.value = NSLocalizedString("Collection is empty", comment: "") }
+                else { self.errorMessage.value = errorStr }
             }
             
             self.isLoading.value = false
-            
         }
-    }
-    
-    private func getUser() {
-        userUseCase.getUser(completion: { result in
-            switch result {
-            case .success:
-                print("ok")
-            case .failure(let error):
-                if let error = error as? ErrorMessage, let code = error.code {
-                    switch code {
-                    case let c where c >= HttpCode.internalServerError:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                        break
-                    case let c where c >= HttpCode.badRequest:
-                        let message = error.errorDTO?.message
-                        self.errorMessage.value = message
-                        break
-                    default:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    }
-                } else {
-                    self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                }
-            }
-        })
     }
     
     private func appendNfts(nfts: [Nft]) {
 //        currentPage = page.page
 //        totalPageCount = page.totalPages
         
-        let nftEditions = nfts.map(NftCellViewModel.init)
+        let nfts = nfts.map(NftCellViewModel.init)
         
-        items.value += nftEditions
+        collectionNfts.value += nfts
         
-        if items.value.isEmpty {
-            self.errorMessage.value = NSLocalizedString("Drop Shop is empty", comment: "")
+        if collectionNfts.value.isEmpty {
+            self.errorMessage.value = NSLocalizedString("Collection is empty", comment: "")
         }
     }
     
     private func resetPages() {
         currentPage = 1
         totalPageCount = 1
-        items.value.removeAll()
+        collectionNfts.value.removeAll()
     }
     
     func didSelectItem(at index: Int, completion: @escaping (NftCellViewModel) -> Void) {
-        let viewModel = items.value[index]
+        let viewModel = collectionNfts.value[index]
         
         completion(viewModel)
+    }
+    
+    func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void) {
+        guard let userId = userViewModel.value?.id else { return }
+        
+        followsUseCase.follow(userId: 2, completion: { result in
+            switch result {
+            case .success:
+                completion(true)
+                
+            case .failure:
+                completion(false)
+            }
+        })
+        
+//        followsUseCase.unfollow(userId: userId, completion: { result in
+//            switch result {
+//            case .success:
+//                print("ok")
+//
+//            case .failure:
+//                completion(false)
+//            }
+//        })
     }
     
 }

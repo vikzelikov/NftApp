@@ -11,7 +11,7 @@ protocol FollowsUseCase {
     
     func getFollowers(request: FollowsRequest, completion: @escaping (Result<[User], Error>) -> Void)
     
-    func getFollowings(request: FollowsRequest, completion: @escaping (Result<[User], Error>) -> Void)
+    func getFollowing(request: FollowsRequest, completion: @escaping (Result<[User], Error>) -> Void)
     
     func follow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void)
     
@@ -22,18 +22,18 @@ protocol FollowsUseCase {
 final class FollowsUseCaseImpl: FollowsUseCase {
     
     private let repository: UserRepository?
-    private let userStorage: UserStorage?
     
     init() {
         self.repository = UserRepositoryImpl()
-        self.userStorage = UserStorageImpl()
     }
     
     func getFollowers(request: FollowsRequest, completion: @escaping (Result<[User], Error>) -> Void) {
         repository?.getFollowers(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    print("success \(resp)")
+                    let users = resp.users.map{User(id: $0.id, login: $0.login, email: $0.email)}
+                    
+                    completion(.success(users))
                 }
                 
                 case .failure(let error) : do {
@@ -43,11 +43,13 @@ final class FollowsUseCaseImpl: FollowsUseCase {
         })
     }
 
-    func getFollowings(request: FollowsRequest, completion: @escaping (Result<[User], Error>) -> Void) {
+    func getFollowing(request: FollowsRequest, completion: @escaping (Result<[User], Error>) -> Void) {
         repository?.getFollowings(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    print("success \(resp)")
+                    let users = resp.users.map{User(id: $0.id, login: $0.login, email: $0.email)}
+                    
+                    completion(.success(users))
                 }
                 
                 case .failure(let error) : do {
@@ -58,35 +60,16 @@ final class FollowsUseCaseImpl: FollowsUseCase {
     }
     
     func follow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.follow(userId: userId, completion: { result in
-            switch result {
-                case .success(let resp) : do {
-                    print("success \(resp)")
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
-            }
-        })
+        repository?.follow(userId: userId, completion: completion)
     }
     
     func unfollow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.unfollow(userId: userId, completion: { result in
-            switch result {
-                case .success(let resp) : do {
-                    print("success \(resp)")
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
-            }
-        })
+        repository?.unfollow(userId: userId, completion: completion)
     }
     
 }
 
 struct FollowsRequest {
+    var userId: Int = 0
     var page: Int = 0
 }
