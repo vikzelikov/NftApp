@@ -42,4 +42,5 @@ class NftDropViewCell: UITableViewCell {
     func getUrl(stringUrl: String) -> URL? {
         return URL(string: stringUrl)
     }
+    
 }

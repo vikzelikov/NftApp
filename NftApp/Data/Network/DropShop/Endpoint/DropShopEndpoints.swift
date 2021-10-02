@@ -16,7 +16,7 @@ struct DropShopEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/editions")
+        let url = URL(string: Constant.BASE_URL + "api/editions/?type=dropshop")
         
         return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
     }

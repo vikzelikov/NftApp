@@ -20,8 +20,8 @@ class WalletRepositoryImpl: WalletRepository {
             return
         }
         
-        let username = Constant.YOOKASSA_MERCHANT_ID
-        let password = Constant.YOOKASSA_SEKRET
+        let username = ""
+        let password = ""
         let loginString = String(format: "%@:%@", username, password)
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()

@@ -43,17 +43,8 @@ class DropShopViewModelImpl: DropShopViewModel {
                 self.appendEditions(nfts: nfts)
 
             case .failure(let error):
-                if let error = error as? ErrorMessage, let code = error.code {
-                    switch code {
-                    case let c where c >= HttpCode.internalServerError:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    case HttpCode.badRequest:
-                        let message = error.errorDTO?.message
-                        self.errorMessage.value = message
-                    default:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    }
-                }
+                let (_, errorStr) = ErrorHelper.validateError(error: error)
+                self.errorMessage.value = errorStr
             }
 
             self.isLoading.value = false
@@ -80,9 +71,11 @@ class DropShopViewModelImpl: DropShopViewModel {
     }
     
     func didSelectItem(at index: Int, completion: @escaping (NftCellViewModel) -> Void) {
-        let viewModel = items.value[index]
-        
-        completion(viewModel)
+        if items.value.indices.contains(index) {
+            let viewModel = items.value[index]
+            
+            completion(viewModel)
+        }
     }
     
 }

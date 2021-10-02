@@ -8,7 +8,7 @@
 import UIKit
 
 class DropShopViewController: UIViewController {
-    
+    var storedOffsets = [Int: CGFloat]()
     var viewModel: DropShopViewModel? = nil
     
     @IBOutlet weak var tableView: UITableView!
@@ -70,7 +70,8 @@ class DropShopViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: "NftDropViewCell", bundle: nil), forCellReuseIdentifier: NftDropViewCell.cellIdentifier)
+        tableView.register(UINib(nibName: NftDropViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftDropViewCell.cellIdentifier)
+        tableView.register(UINib(nibName: InfluencersCollectionView.cellIdentifier, bundle: nil), forCellReuseIdentifier: InfluencersCollectionView.cellIdentifier)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
     }
     
@@ -82,7 +83,9 @@ class DropShopViewController: UIViewController {
 
 extension DropShopViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.didSelectItem(at: indexPath.row) { nftViewModel in
+        if indexPath.row == 0 { return }
+        
+        viewModel?.didSelectItem(at: indexPath.row - 1) { nftViewModel in
             let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
             vc.viewModel = DetailNftViewModelImpl()
             vc.viewModel?.nftViewModel.value = nftViewModel
@@ -94,6 +97,8 @@ extension DropShopViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 { return }
+        
         let cell = tableView.cellForRow(at: indexPath)
         UIView.animate(withDuration: 0.1) {
             cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
@@ -101,6 +106,8 @@ extension DropShopViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 { return }
+        
         let cell = tableView.cellForRow(at: indexPath)
         UIView.animate(withDuration: 0.1, delay: 0.1) {
             cell?.transform = .identity
@@ -111,25 +118,81 @@ extension DropShopViewController: UITableViewDelegate {
 extension DropShopViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = viewModel?.items.value.count {
-            return count
+            return count + 1
         } else {
             return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NftDropViewCell", for: indexPath) as? NftDropViewCell else {
-            assertionFailure("Cannot dequeue reusable cell")
-            return UITableViewCell()
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: InfluencersCollectionView.cellIdentifier, for: indexPath)
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NftDropViewCell.cellIdentifier, for: indexPath) as? NftDropViewCell else { return UITableViewCell() }
+            
+            cell.selectionStyle = .none
+            HapticHelper.vibro(.light)
+            
+            if let vm = viewModel?.items.value[indexPath.row - 1] {
+                cell.bind(viewModel: vm)
+            }
+            
+            return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let tableViewCell = cell as? InfluencersCollectionView else { return }
         
-        cell.selectionStyle = .none
-        HapticHelper.vibro(.light)
-        
-        if let vm = viewModel?.items.value[indexPath.row] {
-            cell.bind(viewModel: vm)
-        }
-        
+        tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+        tableViewCell.collectionViewOffset = storedOffsets[indexPath.row] ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let tableViewCell = cell as? InfluencersCollectionView else { return }
+
+        storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
+    }
+}
+
+extension DropShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfluencerCollectionViewCell.cellIdentifier, for: indexPath) as? InfluencerCollectionViewCell else { return UICollectionViewCell() }
+
+        cell.bind()
+
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        viewModel?.didSelectItem(at: indexPath.row - 1) { nftViewModel in
+//            let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
+//            vc.viewModel = DetailNftViewModelImpl()
+//            vc.viewModel?.nftViewModel.value = nftViewModel
+//            vc.viewModel?.typeDetailNFT = .dropShop
+//            self.present(vc, animated: true, completion: nil)
+//        }
+        
+        HapticHelper.vibro(.light)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.1) {
+            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.1, delay: 0.1) {
+            cell?.transform = .identity
+        }
     }
 }
