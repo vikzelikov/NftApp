@@ -77,7 +77,8 @@ extension WalletViewController: UITableViewDelegate {
             let viewController = CollectionNftViewController()
             navigationController?.pushViewController(viewController, animated: true)
         default:
-            print(1)
+            let viewController = HistoryTransactionsViewController()
+            navigationController?.pushViewController(viewController, animated: true)
         }
 
         tableView.deselectRow(at: indexPath, animated: true)

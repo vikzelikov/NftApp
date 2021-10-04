@@ -59,7 +59,6 @@ class HomeViewController: UIViewController {
         }
         
         viewModel?.isLoading.bind { _ in 
-            print("1")
 //            self.checkoutLoading(isShow: $0)
         }
         

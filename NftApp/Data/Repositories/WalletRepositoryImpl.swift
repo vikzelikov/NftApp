@@ -13,39 +13,6 @@ class WalletRepositoryImpl: WalletRepository {
     
     func addFunds(request: AddFundsRequest, completion: @escaping (Result<AddFundsResponseDTO, Error>) -> Void) {
 
-        let endpoint = WalletEndpoints.addFundsEndpoint(request: request)
-        
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        let username = ""
-        let password = ""
-        let loginString = String(format: "%@:%@", username, password)
-        let loginData = loginString.data(using: String.Encoding.utf8)!
-        let base64LoginString = loginData.base64EncodedString()
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("wefwqefqwefq" + String(CACurrentMediaTime()), forHTTPHeaderField: "Idempotence-Key")
-  
-        request.httpBody = try? JSONSerialization.data(withJSONObject: endpoint.data!)
-
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                return
-            }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            print(responseJSON!)
-        }
-
-        task.resume()
         
     }
     

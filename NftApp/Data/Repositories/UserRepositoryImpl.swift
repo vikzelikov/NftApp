@@ -87,9 +87,7 @@ class UserRepositoryImpl: UserRepository {
     
     func follow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
         let endpoint = FollowsEndpoints.followEndpoint(userId: userId)
-        
-        print(endpoint.url?.absoluteString)
-        
+                
         guard let url = endpoint.url else {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
             return

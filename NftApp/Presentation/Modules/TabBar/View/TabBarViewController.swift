@@ -36,6 +36,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         tabBar.tintColor = UIColor(named: "orange")
         tabBar.backgroundColor = UIColor(named: "gray")
         tabBar.layer.backgroundColor = UIColor.clear.cgColor
+
+        if #available(iOS 15.0, *) {
+            tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        }
         
         viewControllers = tabBarList
         self.selectedIndex = 1

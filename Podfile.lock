@@ -4,16 +4,16 @@ PODS:
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
   - SwiftyJSON (4.3.0)
-  - TinkoffASDKCore (2.5.0)
-  - TinkoffASDKUI (2.5.0):
+  - TinkoffASDKCore (2.4.3)
+  - TinkoffASDKUI (2.4.3):
     - TinkoffASDKCore
 
 DEPENDENCIES:
   - Alamofire
   - SDWebImage (~> 5.0)
   - SwiftyJSON (~> 4.0)
-  - TinkoffASDKCore
-  - TinkoffASDKUI
+  - TinkoffASDKCore (~> 2.4.0)
+  - TinkoffASDKUI (~> 2.4.0)
 
 SPEC REPOS:
   trunk:
@@ -27,9 +27,9 @@ SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
-  TinkoffASDKCore: 63bb667f9f438e7d66465c11a2ea4a06f86d4e67
-  TinkoffASDKUI: 2fb830e1649edd511ab5baec4fdbf36fb2b16e77
+  TinkoffASDKCore: 2121c29c4e54e4f920c3390a1a6a8c5c51aa0b8b
+  TinkoffASDKUI: 02d120f38c79f17746947796ec806dfce4ff16a9
 
-PODFILE CHECKSUM: 42576bc0fba73459400639f1a9ce092d49bfaba2
+PODFILE CHECKSUM: 0947ddf23d9ba8d458e014041609a37e79ef7720
 
 COCOAPODS: 1.11.0

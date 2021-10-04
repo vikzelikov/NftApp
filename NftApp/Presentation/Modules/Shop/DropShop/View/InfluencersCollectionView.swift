@@ -24,7 +24,7 @@ extension InfluencersCollectionView {
         collectionView.tag = row
         collectionView.setContentOffset(collectionView.contentOffset, animated: false)
         collectionView.reloadData()
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 3)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         collectionView.register(UINib(nibName: InfluencerCollectionViewCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: InfluencerCollectionViewCell.cellIdentifier)
     }
 

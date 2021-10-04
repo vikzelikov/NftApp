@@ -100,25 +100,63 @@ class AddFundsViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    func startApplePay() {
+    lazy var paymentApplePayConfiguration = AcquiringUISDK.ApplePayConfiguration()
 
-        let credentional = AcquiringSdkCredential(terminalKey: "eryvf940uml43y5k", publicKey: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv5yse9ka3ZQE0feuGtemYv3IqOlLck8zHUM7lTr0za6lXTszRSXfUO7jMb+L5C7e2QNFs+7sIX2OQJ6a+HG8kr+jwJ4tS3cVsWtd9NXpsU40PE4MeNr5RqiNXjcDxA+L4OsEm/BlyFOEOh2epGyYUd5/iO3OiQFRNicomT2saQYAeqIwuELPs1XpLk9HLx5qPbm8fRrQhjeUD5TLO8b+4yCnObe8vy/BMUwBfq+ieWADIjwWCMp2KTpMGLz48qnaD9kdrYJ0iyHqzb2mkDhdIzkim24A3lWoYitJCBrrB2xM05sm9+OdCI1f7nPNJbl5URHobSwR94IRGT7CJcUjvwIDAQAB")
+    
+    
+    
+    private func createPaymentData() -> PaymentInitData {
+        let amount = 100.10
+        let randomOrderId = String(Int64(arc4random()))
+        var paymentData = PaymentInitData(amount: NSDecimalNumber(value: amount), orderId: randomOrderId, customerKey: "TestSDK_CustomerKey1")
+        paymentData.description = "Краткое описние товара"
+
+        var receiptItems: [Item] = []
+        let product = Product(price: 12.2, name: "name", id: 1)
+        var item: Item = Item(amount: product.price.int64Value * 100,
+                              price: product.price.int64Value * 100,
+                              name: "wewe",
+                              tax: .vat10)
+        
+       receiptItems.append(item)
+                   
+       paymentData.receipt = Receipt(shopCode: nil,
+                                      email: "vkzelikov@yandex.ru",
+                                      taxation: .osn,
+                                      phone: "+79876543210",
+                                      items: receiptItems,
+                                      agentData: nil,
+                                      supplierInfo: nil,
+                                      customer: nil,
+                                      customerInn: nil)
+
+        return paymentData
+    }
+    
+    func startApplePay() {
+        let credentional = AcquiringSdkCredential(terminalKey: "1632305973794DEMO",
+                                                  password: "eryvf940uml43y5k",
+                                                  publicKey: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv5yse9ka3ZQE0feuGtemYv3IqOlLck8zHUM7lTr0za6lXTszRSXfUO7jMb+L5C7e2QNFs+7sIX2OQJ6a+HG8kr+jwJ4tS3cVsWtd9NXpsU40PE4MeNr5RqiNXjcDxA+L4OsEm/BlyFOEOh2epGyYUd5/iO3OiQFRNicomT2saQYAeqIwuELPs1XpLk9HLx5qPbm8fRrQhjeUD5TLO8b+4yCnObe8vy/BMUwBfq+ieWADIjwWCMp2KTpMGLz48qnaD9kdrYJ0iyHqzb2mkDhdIzkim24A3lWoYitJCBrrB2xM05sm9+OdCI1f7nPNJbl5URHobSwR94IRGT7CJcUjvwIDAQAB")
+        
         // конфигурация для старта sdk
         let acquiringSDKConfiguration = AcquiringSdkConfiguration(credential: credentional)
         // включаем логи, результаты работы запросов пишутся в консоль
         acquiringSDKConfiguration.logger = AcquiringLoggerDefault()
         
-        let paymentInitData = PaymentInitData(amount: 12.12, orderId: "qwef", customerKey: "werfwerf")
-        print("1")
+        let paymentInitData = PaymentInitData(amount: 10.1, orderId: "qwef1", customerKey: "werfwerf123ka1")
+
         if let sdk = try? AcquiringUISDK.init(configuration: acquiringSDKConfiguration) {
+            
             print("2")
             // SDK проинициализировалось, можно приступать к работе
-            sdk.presentPaymentApplePay(on: self, paymentData: paymentInitData, viewConfiguration: AcquiringViewConfiguration.init(), paymentConfiguration: AcquiringUISDK.ApplePayConfiguration.init(), completionHandler: { result in
-                print("3")
-            })
+            sdk.presentPaymentApplePay(on: self,
+                                       paymentData: createPaymentData(),
+                                       viewConfiguration: AcquiringViewConfiguration(),
+                                       paymentConfiguration: paymentApplePayConfiguration) { [weak self] response in
+                    print("!!")
             
+            }
         }
-        
         
 //        AcquiringUISDK.presentPaymentApplePay(on presentingViewController: UIViewController,
 //                                            paymentData data: PaymentInitData,
@@ -204,3 +242,38 @@ extension AddFundsViewController: UITextFieldDelegate {
     
 }
 
+
+struct Product: Codable {
+
+    var price: NSDecimalNumber
+    var name: String
+    var id: Int
+
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case price
+        case name
+    }
+
+    init(price: Double, name: String, id: Int) {
+        self.price = NSDecimalNumber(value: price)
+        self.name = name
+        self.id = id
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        let priceDouble = try container.decode(Double.self, forKey: .price)
+        price = NSDecimalNumber(value: priceDouble)
+
+        name = try container.decode(String.self, forKey: .name)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(price.doubleValue, forKey: .price)
+    }
+}
