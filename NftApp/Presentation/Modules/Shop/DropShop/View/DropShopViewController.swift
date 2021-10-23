@@ -11,6 +11,8 @@ class DropShopViewController: UIViewController {
     var storedOffsets = [Int: CGFloat]()
     var viewModel: DropShopViewModel? = nil
     
+    let influencers: [String] = ["bloger", "morgen", "bloger#1231", "blogerbloger123", "bloger", "bloger", "bloger"]
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorLabel: UILabel!
     let loadingIndicator1 = UIActivityIndicatorView()
@@ -159,13 +161,13 @@ extension DropShopViewController: UITableViewDataSource {
 
 extension DropShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return influencers.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfluencerCollectionViewCell.cellIdentifier, for: indexPath) as? InfluencerCollectionViewCell else { return UICollectionViewCell() }
 
-        cell.bind()
+        cell.bind(name: influencers[indexPath.row])
 
         return cell
     }

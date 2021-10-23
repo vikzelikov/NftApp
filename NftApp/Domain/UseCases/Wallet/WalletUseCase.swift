@@ -64,7 +64,6 @@ final class WalletUseCaseImpl: WalletUseCase {
 
 struct AddFundsRequest {
     var amount: Double = 0.0
-    var paymentData: PKPayment = PKPayment()
 }
 
 struct WithdrawFundsRequest {

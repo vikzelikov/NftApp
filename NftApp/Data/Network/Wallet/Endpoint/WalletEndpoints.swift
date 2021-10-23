@@ -10,15 +10,11 @@ import Alamofire
 
 struct WalletEndpoints {
     
-    static func addFundsEndpoint(request: AddFundsRequest) -> Endpoint {
-        let requestDTO = AddFundsRequestDTO (
-            paymentData: request.paymentData
-        ).parameters
-        
+    static func addFundsEndpoint(request: AddFundsRequest) -> Endpoint {        
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = URL(string: "https://api.yookassa.ru/v3/payments")
         
-        return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
+        return Endpoint(url: url, method: .post, headers: headers, data: nil)
     }
     
     static func withdrawFundsEndpoint(request: WithdrawFundsRequest) -> Endpoint {

@@ -60,6 +60,7 @@
 		18523F90269CEAA000611362 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F8F269CEAA000611362 /* ShopViewController.swift */; };
 		18523F92269CEB4E00611362 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F91269CEB4E00611362 /* Shop.storyboard */; };
 		18523F94269CED1100611362 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F93269CED1100611362 /* TabBar.storyboard */; };
+		185CBA222723223F007DF8CF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185CBA212723223F007DF8CF /* WebKit.framework */; };
 		185F58B526F8B43A00473DDB /* NftEdition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F58B426F8B43A00473DDB /* NftEdition.swift */; };
 		185F58B726F8B95A00473DDB /* EditionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F58B626F8B95A00473DDB /* EditionCellViewModel.swift */; };
 		1869F0F42701D79400C7654A /* FollowsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869F0F32701D79400C7654A /* FollowsViewModel.swift */; };
@@ -228,6 +229,7 @@
 		18523F91269CEB4E00611362 /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
 		18523F93269CED1100611362 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		185435E326D4164C00368C8E /* NftApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NftApp.entitlements; sourceTree = "<group>"; };
+		185CBA212723223F007DF8CF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		185F58B426F8B43A00473DDB /* NftEdition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NftEdition.swift; sourceTree = "<group>"; };
 		185F58B626F8B95A00473DDB /* EditionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditionCellViewModel.swift; sourceTree = "<group>"; };
 		186221C126E2C8110024C8B9 /* TMXProfiling.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfiling.xcframework; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185CBA222723223F007DF8CF /* WebKit.framework in Frameworks */,
 				EB46AD086124994FAC569F86 /* Pods_NftApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1386,6 +1389,7 @@
 		4119338D394F328773616786 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				185CBA212723223F007DF8CF /* WebKit.framework */,
 				186221C126E2C8110024C8B9 /* TMXProfiling.xcframework */,
 				186221C226E2C8120024C8B9 /* TMXProfilingConnections.xcframework */,
 				6EA8DFE8A2280954A19F8340 /* Pods_NftApp.framework */,

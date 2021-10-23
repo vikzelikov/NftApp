@@ -66,7 +66,7 @@ struct NetworkHelper {
             }
         }
                 
-        print(T.self)
+//        print(T.self)
 //        var json = JSON(data)
 //        print(json)
         

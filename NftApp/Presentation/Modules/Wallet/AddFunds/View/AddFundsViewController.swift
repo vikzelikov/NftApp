@@ -8,7 +8,6 @@
 import UIKit
 import PassKit
 import TinkoffASDKUI
-import TinkoffASDKCore
 
 class AddFundsViewController: UIViewController {
     
@@ -18,7 +17,7 @@ class AddFundsViewController: UIViewController {
     @IBOutlet weak var applePayView: UIView!
     @IBOutlet weak var calcAmountsLabel: UILabel!
     private var applePayButton: UIButton?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +28,7 @@ class AddFundsViewController: UIViewController {
         setupStyle()
         
         amountTextField.addTarget(self, action: #selector(amountFieldDidChange), for: .editingChanged)
+        calcTokens()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
@@ -69,15 +69,27 @@ class AddFundsViewController: UIViewController {
         }
     }
     
-    
     @objc func applePayButtonDidTap() {
-        startApplePay()
+        calcTokens()
+        
+        viewModel?.applePayButtonDidTap { sdk, applePayConfigs, paymentData in
+            sdk.presentPaymentApplePay(on: self, paymentData: paymentData, viewConfiguration: AcquiringViewConfiguration(), paymentConfiguration: applePayConfigs, completionHandler: { response in
+
+                print(response)
+            })
+        }
     }
     
     @objc func amountFieldDidChange(_ sender: Any) {
+        calcTokens()
+    }
+    
+    func calcTokens() {
         var calcAmounts = 0
         
         if let amountString = amountTextField.text, let amount = Int(amountString) {
+            viewModel?.updateData(amount: Double(amount))
+
             calcAmounts = amount * 3
             calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcAmounts) T"
         }
@@ -93,139 +105,6 @@ class AddFundsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    func displayDefaultAlert(title: String?, message: String?) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-
-    lazy var paymentApplePayConfiguration = AcquiringUISDK.ApplePayConfiguration()
-
-    
-    
-    
-    private func createPaymentData() -> PaymentInitData {
-        let amount = 100.10
-        let randomOrderId = String(Int64(arc4random()))
-        var paymentData = PaymentInitData(amount: NSDecimalNumber(value: amount), orderId: randomOrderId, customerKey: "TestSDK_CustomerKey1")
-        paymentData.description = "Краткое описние товара"
-
-        var receiptItems: [Item] = []
-        let product = Product(price: 12.2, name: "name", id: 1)
-        var item: Item = Item(amount: product.price.int64Value * 100,
-                              price: product.price.int64Value * 100,
-                              name: "wewe",
-                              tax: .vat10)
-        
-       receiptItems.append(item)
-                   
-       paymentData.receipt = Receipt(shopCode: nil,
-                                      email: "vkzelikov@yandex.ru",
-                                      taxation: .osn,
-                                      phone: "+79876543210",
-                                      items: receiptItems,
-                                      agentData: nil,
-                                      supplierInfo: nil,
-                                      customer: nil,
-                                      customerInn: nil)
-
-        return paymentData
-    }
-    
-    func startApplePay() {
-        let credentional = AcquiringSdkCredential(terminalKey: "1632305973794DEMO",
-                                                  password: "eryvf940uml43y5k",
-                                                  publicKey: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv5yse9ka3ZQE0feuGtemYv3IqOlLck8zHUM7lTr0za6lXTszRSXfUO7jMb+L5C7e2QNFs+7sIX2OQJ6a+HG8kr+jwJ4tS3cVsWtd9NXpsU40PE4MeNr5RqiNXjcDxA+L4OsEm/BlyFOEOh2epGyYUd5/iO3OiQFRNicomT2saQYAeqIwuELPs1XpLk9HLx5qPbm8fRrQhjeUD5TLO8b+4yCnObe8vy/BMUwBfq+ieWADIjwWCMp2KTpMGLz48qnaD9kdrYJ0iyHqzb2mkDhdIzkim24A3lWoYitJCBrrB2xM05sm9+OdCI1f7nPNJbl5URHobSwR94IRGT7CJcUjvwIDAQAB")
-        
-        // конфигурация для старта sdk
-        let acquiringSDKConfiguration = AcquiringSdkConfiguration(credential: credentional)
-        // включаем логи, результаты работы запросов пишутся в консоль
-        acquiringSDKConfiguration.logger = AcquiringLoggerDefault()
-        
-        let paymentInitData = PaymentInitData(amount: 10.1, orderId: "qwef1", customerKey: "werfwerf123ka1")
-
-        if let sdk = try? AcquiringUISDK.init(configuration: acquiringSDKConfiguration) {
-            
-            print("2")
-            // SDK проинициализировалось, можно приступать к работе
-            sdk.presentPaymentApplePay(on: self,
-                                       paymentData: createPaymentData(),
-                                       viewConfiguration: AcquiringViewConfiguration(),
-                                       paymentConfiguration: paymentApplePayConfiguration) { [weak self] response in
-                    print("!!")
-            
-            }
-        }
-        
-//        AcquiringUISDK.presentPaymentApplePay(on presentingViewController: UIViewController,
-//                                            paymentData data: PaymentInitData,
-//                                            viewConfiguration: AcquiringViewConfigration,
-//                                            paymentConfiguration: AcquiringUISDK.ApplePayConfiguration,
-//                                            completionHandler: @escaping PaymentCompletionHandler)
-
-
-        
-//        if let amountString = amountTextField.text, let amount = Int(amountString) {
-//            let paymentItem = PKPaymentSummaryItem.init(label: "Пополнение баланса", amount: NSDecimalNumber(value: amount))
-//            let paymentNetworks = [PKPaymentNetwork.amex, .discover, .masterCard, .visa]
-//
-//            if PKPaymentAuthorizationViewController.canMakePayments(usingNetworks: paymentNetworks) {
-//                let request = PKPaymentRequest()
-//                request.currencyCode = "RUB"
-//                request.countryCode = "RU"
-//                request.merchantIdentifier = Constant.MERCHANT_ID
-//                request.merchantCapabilities = PKMerchantCapability.capability3DS
-//                request.supportedNetworks = paymentNetworks
-//                request.paymentSummaryItems = [paymentItem]
-//
-//                guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: request) else {
-//                    displayDefaultAlert(title: "Error", message: "Unable to present Apple Pay authorization.")
-//                    return
-//                }
-//
-//                paymentVC.delegate = self
-//                self.present(paymentVC, animated: true, completion: nil)
-//            }
-//        }
-    }
-
-}
-struct MyAwesomeStyle: Style {
-    var bigButtonStyle: ButtonStyle
-    
-
-}
-
-
-
-extension AddFundsViewController: PKPaymentAuthorizationViewControllerDelegate {
-    
-    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
-        
-        completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
-        
-//        var status: PKPaymentAuthorizationStatus = .failure
-//
-//        guard let vm = viewModel else { return }
-//        vm.isSuccess.bind { isSuccess in
-//            if isSuccess { status = .success }
-//
-//            completion(PKPaymentAuthorizationResult(status: status, errors: nil))
-//        }
-//
-//        if let amountString = amountTextField.text, let amount = Int(amountString) {
-//            viewModel?.updateCredentials(amount: Double(amount), paymentData: payment)
-//        }
-//
-//        viewModel?.inputData()
-        
-    }
-    
 }
 
 extension AddFundsViewController: UITextFieldDelegate {
@@ -240,40 +119,4 @@ extension AddFundsViewController: UITextFieldDelegate {
         return count <= 4
     }
     
-}
-
-
-struct Product: Codable {
-
-    var price: NSDecimalNumber
-    var name: String
-    var id: Int
-
-    private enum CodingKeys: String, CodingKey {
-        case id
-        case price
-        case name
-    }
-
-    init(price: Double, name: String, id: Int) {
-        self.price = NSDecimalNumber(value: price)
-        self.name = name
-        self.id = id
-    }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(Int.self, forKey: .id)
-        let priceDouble = try container.decode(Double.self, forKey: .price)
-        price = NSDecimalNumber(value: priceDouble)
-
-        name = try container.decode(String.self, forKey: .name)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
-        try container.encode(price.doubleValue, forKey: .price)
-    }
 }

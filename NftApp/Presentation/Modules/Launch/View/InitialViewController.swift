@@ -38,7 +38,9 @@ class InitialViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func bindData() {        
+    func bindData() {
+        showHomeView()
+        
         viewModel?.isShowHome.bind { [weak self] in
             guard let isShowHome = $0 else { return }
             

@@ -19,14 +19,14 @@ class InfluencerCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func bind() {
+    func bind(name: String) {
         mainView.layer.shadowColor = UIColor(named: "gray")?.cgColor
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowOffset = .zero
         mainView.layer.shadowRadius = 5
         userImageView.layer.cornerRadius = userImageView.frame.width / 2
 
-        nameLabel?.text = "Bloger #1"
+        nameLabel?.text = name
     }
 
 }

@@ -145,17 +145,17 @@ class HomeViewModelImpl: HomeViewModel {
     func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void) {
         guard let userId = userViewModel.value?.id else { return }
         
-        followsUseCase.follow(userId: 2, completion: { result in
+        followsUseCase.follow(userId: 3, completion: { result in
             switch result {
             case .success:
                 completion(true)
-                
+
             case .failure:
                 completion(false)
             }
         })
         
-//        followsUseCase.unfollow(userId: userId, completion: { result in
+//        followsUseCase.unfollow(userId: 3, completion: { result in
 //            switch result {
 //            case .success:
 //                print("ok")
