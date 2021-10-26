@@ -79,7 +79,6 @@ class DetailNftViewController: UIViewController {
     private func setupStyle() {
         checkoutView()
 
-        buyButton.applyButtonStyle()
         buyButton.applyButtonEffects()
         
         let ownerLoginTap = UITapGestureRecognizer(target: self, action: #selector(ownerLoginDidTap(_:)))

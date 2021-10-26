@@ -16,7 +16,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPassTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,8 @@ class SignUpViewController: UIViewController {
     }
     
     private func setupStyle() {
+        self.scrollView.delaysContentTouches = false
+
         loginTextField.becomeFirstResponder()
 
         loginTextField.applyTextFieldStyle()
@@ -35,7 +37,6 @@ class SignUpViewController: UIViewController {
         passwordTextField.applyTextFieldStyle()
         confirmPassTextField.applyTextFieldStyle()
         
-        nextButton.applyButtonStyle()
         nextButton.applyButtonEffects()
     }
 

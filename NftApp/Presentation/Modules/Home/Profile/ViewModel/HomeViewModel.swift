@@ -137,9 +137,9 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func didSelectItem(at index: Int, completion: @escaping (NftCellViewModel) -> Void) {
-        let viewModel = collectionNfts.value[index]
-        
-        completion(viewModel)
+//        let viewModel = collectionNfts.value[index]
+//        
+//        completion(viewModel)
     }
     
     func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void) {

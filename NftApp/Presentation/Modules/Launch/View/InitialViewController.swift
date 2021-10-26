@@ -27,7 +27,6 @@ class InitialViewController: UIViewController {
     }
     
     func setupStyle() {
-        reloadButton.applyButtonStyle()
         reloadButton.applyButtonEffects()
         
         loadingIndicator.transform = CGAffineTransform(scaleX: 2, y: 2)
@@ -38,7 +37,7 @@ class InitialViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func bindData() {        
+    func bindData() {
         viewModel?.isShowHome.bind { [weak self] in
             guard let isShowHome = $0 else { return }
             

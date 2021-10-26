@@ -25,7 +25,6 @@ class SettingsViewController: UIViewController {
         
         self.scrollView.delaysContentTouches = false
         
-        walletButton.applyButtonStyle()
         walletButton.applyButtonEffects()
 
         setupPersonalDataTableView()

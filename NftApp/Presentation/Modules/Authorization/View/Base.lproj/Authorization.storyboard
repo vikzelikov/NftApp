@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qer-m6-ks0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qer-m6-ks0">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,12 +12,12 @@
         <!--Auth View Controller-->
         <scene sceneID="UlT-oR-qfY">
             <objects>
-                <viewController storyboardIdentifier="AuthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b01-mb-z2v" customClass="AuthViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b01-mb-z2v" customClass="AuthViewController" customModule="NftApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4TT-TB-qg2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0d-29-5fy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0d-29-5fy" customClass="AccentButton" customModule="NftApp" customModuleProvider="target">
                                 <rect key="frame" x="15" y="408" width="290" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="4hc-oC-bQY"/>
@@ -62,7 +62,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="SCC-IZ-oLP">
             <objects>
-                <viewController storyboardIdentifier="SignUpViewController" id="oSQ-0Q-nCA" customClass="SignUpViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="oSQ-0Q-nCA" customClass="SignUpViewController" customModule="NftApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hh5-x2-Mwt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,7 +117,7 @@
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEc-rS-fvm">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEc-rS-fvm" customClass="AccentButton" customModule="NftApp" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="349.5" width="290" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="s4F-We-mGM"/>
@@ -140,17 +140,17 @@
                                             <constraint firstItem="QbJ-3b-pxP" firstAttribute="top" secondItem="fDs-eb-PFO" secondAttribute="bottom" constant="15" id="4Sz-2A-Mpb"/>
                                             <constraint firstItem="fHw-R2-Ts7" firstAttribute="leading" secondItem="gwZ-Em-lsh" secondAttribute="leading" constant="15" id="7l5-oe-lGK"/>
                                             <constraint firstItem="KmE-LK-2Bf" firstAttribute="top" secondItem="QbJ-3b-pxP" secondAttribute="bottom" constant="15" id="8c8-yz-Rkc"/>
+                                            <constraint firstAttribute="trailing" secondItem="kEc-rS-fvm" secondAttribute="trailing" constant="15" id="C37-X9-0rC"/>
                                             <constraint firstAttribute="trailing" secondItem="fHw-R2-Ts7" secondAttribute="trailing" constant="15" id="HA5-y8-qsv"/>
                                             <constraint firstAttribute="trailing" secondItem="fDs-eb-PFO" secondAttribute="trailing" constant="15" id="HaX-c1-Mce"/>
-                                            <constraint firstItem="kEc-rS-fvm" firstAttribute="leading" secondItem="gwZ-Em-lsh" secondAttribute="leading" constant="15" id="IJk-CK-gbm"/>
                                             <constraint firstAttribute="trailing" secondItem="QbJ-3b-pxP" secondAttribute="trailing" constant="15" id="JH4-OT-KHK"/>
                                             <constraint firstAttribute="trailing" secondItem="KmE-LK-2Bf" secondAttribute="trailing" constant="15" id="NOQ-KN-4FG"/>
                                             <constraint firstItem="QbJ-3b-pxP" firstAttribute="leading" secondItem="gwZ-Em-lsh" secondAttribute="leading" constant="15" id="Rf0-gT-ReE"/>
                                             <constraint firstItem="A64-rj-iVh" firstAttribute="top" secondItem="KmE-LK-2Bf" secondAttribute="bottom" constant="15" id="RiK-as-tDa"/>
                                             <constraint firstAttribute="trailing" secondItem="A64-rj-iVh" secondAttribute="trailing" constant="15" id="Sac-fw-TEh"/>
-                                            <constraint firstAttribute="trailing" secondItem="kEc-rS-fvm" secondAttribute="trailing" constant="15" id="Uxa-0q-6jI"/>
                                             <constraint firstItem="A64-rj-iVh" firstAttribute="leading" secondItem="gwZ-Em-lsh" secondAttribute="leading" constant="15" id="Yum-ki-wRR"/>
                                             <constraint firstItem="fDs-eb-PFO" firstAttribute="leading" secondItem="gwZ-Em-lsh" secondAttribute="leading" constant="15" id="h8E-Tn-fIC"/>
+                                            <constraint firstItem="kEc-rS-fvm" firstAttribute="leading" secondItem="gwZ-Em-lsh" secondAttribute="leading" constant="15" id="i2l-tC-3MT"/>
                                             <constraint firstItem="0f6-XM-3D4" firstAttribute="top" secondItem="gwZ-Em-lsh" secondAttribute="top" constant="15" id="qzE-0K-SZM"/>
                                             <constraint firstItem="fDs-eb-PFO" firstAttribute="top" secondItem="0f6-XM-3D4" secondAttribute="bottom" constant="20" id="sUf-hA-OrD"/>
                                             <constraint firstItem="0f6-XM-3D4" firstAttribute="centerX" secondItem="gwZ-Em-lsh" secondAttribute="centerX" id="tsB-KN-usp"/>
@@ -200,6 +200,7 @@
                         <outlet property="loginTextField" destination="fDs-eb-PFO" id="IjQ-Cs-BdJ"/>
                         <outlet property="nextButton" destination="kEc-rS-fvm" id="Gqa-c3-G0D"/>
                         <outlet property="passwordTextField" destination="KmE-LK-2Bf" id="oL8-Tt-Osk"/>
+                        <outlet property="scrollView" destination="aBK-mL-hJ1" id="0OT-n2-Uyi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVS-gP-oo5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -209,7 +210,7 @@
         <!--Personal Data View Controller-->
         <scene sceneID="nHp-bt-O2f">
             <objects>
-                <viewController storyboardIdentifier="PersonalDataViewController" id="Gn4-Ni-7Rs" customClass="PersonalDataViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonalDataViewController" id="Gn4-Ni-7Rs" customClass="PersonalDataViewController" customModule="NftApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4fI-tV-CPU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,7 +321,7 @@
         <!--Log In-->
         <scene sceneID="bBw-cf-jZ7">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="neW-lc-n5A" customClass="LoginViewController" customModule="Genies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="neW-lc-n5A" customClass="LoginViewController" customModule="NftApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DLY-UF-VPB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,7 +342,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixX-YT-B2b">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixX-YT-B2b" customClass="AccentButton" customModule="NftApp" customModuleProvider="target">
                                 <rect key="frame" x="15" y="176.5" width="290" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="SIY-xe-WSO"/>

@@ -11,11 +11,9 @@ import UIKit
 
 extension UIButton {
     func applyButtonStyle() {
-        self.backgroundColor = UIColor(named: "orange")
-        self.layer.cornerRadius = 12
-        self.titleLabel?.textColor = UIColor(named: "grayLabel")
+        self.titleLabel?.textColor = UIColor(named: "default")
         self.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
-        self.tintColor = UIColor(named: "grayLabel")
+        self.tintColor = UIColor(named: "default")
     }
     
     // bounds and haptic effects
@@ -133,4 +131,33 @@ extension CALayer {
 
             self.addSublayer(border)
         }
+}
+
+class AccentButton: UIButton {
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = bounds
+        
+        self.titleLabel?.textColor = UIColor(named: "default")
+        self.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
+        self.tintColor = UIColor(named: "default")
+    }
+
+    private lazy var gradientLayer: CAGradientLayer = {
+        let l = CAGradientLayer()
+
+        l.colors = [
+            UIColor(red: 1, green: 0.333, blue: 0, alpha: 1).cgColor,
+            UIColor(red: 1, green: 0.733, blue: 0, alpha: 1).cgColor
+        ]
+
+        l.startPoint = CGPoint(x: 0, y: 0.5)
+        l.endPoint = CGPoint(x: 1, y: 0.5)
+        l.cornerRadius = 16
+        l.frame = self.bounds
+        layer.insertSublayer(l, at: 0)
+        return l
+    }()
+    
 }

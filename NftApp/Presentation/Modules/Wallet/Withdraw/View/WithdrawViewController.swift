@@ -25,7 +25,6 @@ class WithdrawViewController: UIViewController {
     }
     
     func setupStyle() {
-        withdrawButton.applyButtonStyle()
         withdrawButton.applyButtonEffects()
         
         amountTextField.delegate = self

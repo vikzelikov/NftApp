@@ -20,13 +20,11 @@ class AuthViewController: UIViewController {
     
     func setupStyle() {
         self.navigationController?.navigationBar.isHidden = true
-
-        loginButton.applyButtonStyle()
-        loginButton.applyButtonEffects()
         
+        loginButton.applyButtonEffects()
         signupButton.applyButtonEffects()
     }
-    
+        
     @IBAction func loginDidTap(_ sender: Any) {        
         let homeStoryboard = UIStoryboard(name: "Authorization", bundle: nil)
         guard let vc = homeStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }

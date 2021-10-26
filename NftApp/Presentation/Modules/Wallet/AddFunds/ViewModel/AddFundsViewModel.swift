@@ -103,9 +103,11 @@ class AddFundsViewModelImpl: AddFundsViewModel {
     
     private func createPaymentData() -> PaymentInitData {
         let amount = NSDecimalNumber(value: amount)
-        let randomOrderId = String(Int64(arc4random()))
-        var paymentData = PaymentInitData(amount: amount, orderId: randomOrderId, customerKey: nil)
+        let randomOrderId = String(Int64(arc4random())) + "id\(Constant.USER_ID)"
+        var paymentData = PaymentInitData(amount: amount, orderId: randomOrderId, customerKey: "1")
         paymentData.description = "Yup NFT"
+        paymentData.paymentFormData = ["LOL": "456", "TEST": "dhdrthdr"]
+//        paymentData.addPaymentData(["userid": "456", "567567": "dhdrthdr"])
 
         var receiptItems: [Item] = []
         let item: Item = Item(amount: amount.int64Value * 100,
@@ -122,7 +124,7 @@ class AddFundsViewModelImpl: AddFundsViewModel {
                                       items: receiptItems,
                                       agentData: nil,
                                       supplierInfo: nil,
-                                      customer: nil,
+                                      customer: "1234",
                                       customerInn: nil)
 
         return paymentData

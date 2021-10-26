@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,16 +11,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NftProfileViewCell" id="gTV-IL-0wX" customClass="NftProfileViewCell" customModule="NftApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="185" height="184"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="185" height="184"/>
-                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NftProfileViewCell" rowHeight="286" id="KGk-i7-Jjw" customClass="NftProfileViewCell" customModule="NftApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="318" height="286"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="318" height="286"/>
+                <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MH8-4J-5ho">
-                        <rect key="frame" x="10" y="10" width="165" height="164"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TT-tr-NHc">
+                        <rect key="frame" x="15" y="10" width="288" height="250"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava" translatesAutoresizingMaskIntoConstraints="NO" id="mrU-R1-JoF">
+                                <rect key="frame" x="0.0" y="0.0" width="288" height="250"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" name="default"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="mrU-R1-JoF" secondAttribute="bottom" id="Hr8-KA-vFY"/>
+                            <constraint firstItem="mrU-R1-JoF" firstAttribute="top" secondItem="1TT-tr-NHc" secondAttribute="top" id="YWW-Zf-EOG"/>
+                            <constraint firstAttribute="trailing" secondItem="mrU-R1-JoF" secondAttribute="trailing" id="miy-Xp-Tsz"/>
+                            <constraint firstItem="mrU-R1-JoF" firstAttribute="leading" secondItem="1TT-tr-NHc" secondAttribute="leading" id="oxV-8r-P0j"/>
+                            <constraint firstAttribute="height" constant="250" id="zr7-fP-28b"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="12"/>
@@ -28,19 +40,19 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-            </view>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <constraints>
-                <constraint firstItem="MH8-4J-5ho" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="3Wy-wR-qDv"/>
-                <constraint firstAttribute="trailing" secondItem="MH8-4J-5ho" secondAttribute="trailing" constant="10" id="SpB-r0-cQm"/>
-                <constraint firstAttribute="bottom" secondItem="MH8-4J-5ho" secondAttribute="bottom" constant="10" id="VD4-YI-BXr"/>
-                <constraint firstItem="MH8-4J-5ho" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="nhY-d6-mlg"/>
-            </constraints>
-            <size key="customSize" width="216" height="192"/>
-            <point key="canvasLocation" x="-11" y="-7"/>
-        </collectionViewCell>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="1TT-tr-NHc" secondAttribute="trailing" constant="15" id="SQD-ZK-UKe"/>
+                    <constraint firstAttribute="bottom" secondItem="1TT-tr-NHc" secondAttribute="bottom" constant="10" id="afI-hV-RPP"/>
+                    <constraint firstItem="1TT-tr-NHc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="and-5b-6wL"/>
+                    <constraint firstItem="1TT-tr-NHc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="qU3-TI-1u0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="27.536231884057973" y="67.633928571428569"/>
+        </tableViewCell>
     </objects>
     <resources>
+        <image name="ava" width="800" height="800"/>
         <namedColor name="default">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

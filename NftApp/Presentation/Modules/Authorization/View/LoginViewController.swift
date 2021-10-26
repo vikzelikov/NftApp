@@ -20,6 +20,10 @@ class LoginViewController: UIViewController {
         
         viewModel = LoginViewModelImpl()
         bindData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         setupStyle()
     }
