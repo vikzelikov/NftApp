@@ -17,3 +17,7 @@ struct User: Equatable, Identifiable {
 //    let balance: String?
 //    let influencerId: Int?
 }
+
+struct UserObject {
+    static var user: User?
+}

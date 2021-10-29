@@ -9,15 +9,15 @@ import Foundation
 
 protocol HomeViewModel: BaseViewModel {
     
-    var userViewModel: Observable<UserCellViewModel?> { get }
-    var followers: Observable<[UserCellViewModel]> { get }
-    var following: Observable<[UserCellViewModel]> { get }
-    var collectionNfts: Observable<[NftCellViewModel]> { get }
-    var isOtherUser: Bool { get set }
+    var userViewModel: Observable<UserViewModel?> { get }
+    var followers: Observable<[UserViewModel]> { get }
+    var following: Observable<[UserViewModel]> { get }
+    var collectionNfts: Observable<[NftViewModel]> { get }
+    var typeFollows: Observable<TypeFollows?> { get }
     
     func viewDidLoad()
             
-    func didSelectItem(at index: Int, completion: @escaping (NftCellViewModel) -> Void)
+    func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void)
     
     func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void)
     
@@ -32,11 +32,11 @@ class HomeViewModelImpl: HomeViewModel {
     var page = 1
     var currentPage: Int = 1
     var totalPageCount: Int = 1
-    var isOtherUser: Bool = false
-    var userViewModel: Observable<UserCellViewModel?> = Observable(nil)
-    var followers: Observable<[UserCellViewModel]> = Observable([])
-    var following: Observable<[UserCellViewModel]> = Observable([])
-    var collectionNfts: Observable<[NftCellViewModel]> = Observable([])
+    var userViewModel: Observable<UserViewModel?> = Observable(nil)
+    var followers: Observable<[UserViewModel]> = Observable([])
+    var following: Observable<[UserViewModel]> = Observable([])
+    var collectionNfts: Observable<[NftViewModel]> = Observable([])
+    var typeFollows: Observable<TypeFollows?> = Observable(nil)
     var isLoading: Observable<Bool> = Observable(true)
     var errorMessage: Observable<String?> = Observable(nil)
     
@@ -44,14 +44,23 @@ class HomeViewModelImpl: HomeViewModel {
         userUseCase = UserUseCaseImpl()
         followsUseCase = FollowsUseCaseImpl()
         nftUserCase = NftUseCaseImpl()
+        
+        // set main user by default 
+        if let user = UserObject.user {
+            userViewModel.value = UserViewModel(id: user.id, login: user.login, email: user.email)
+        }
     }
     
     func viewDidLoad() {
-        getUser()
-        
+        if isValidUser() { getUser() }
+
         getFollows()
         
         getCollectionNfts()
+        
+        if typeFollows.value == nil && userViewModel.value?.id != Constant.USER_ID {
+            checkFollow()
+        }
     }
     
     private func getUser() {
@@ -60,7 +69,7 @@ class HomeViewModelImpl: HomeViewModel {
         userUseCase.getUser(userId: userId, completion: { result in
             switch result {
             case .success(let user):
-                self.userViewModel.value = UserCellViewModel.init(user: user)
+                self.userViewModel.value = UserViewModel.init(user: user)
                 
             case .failure(let error):
                 let (_, errorStr) = ErrorHelper.validateError(error: error)
@@ -76,7 +85,7 @@ class HomeViewModelImpl: HomeViewModel {
         followsUseCase.getFollowers(request: request, completion: { result in
             switch result {
             case .success(let users):
-                self.followers.value = users.map(UserCellViewModel.init)
+                self.followers.value = users.map(UserViewModel.init)
 
             case .failure(let error):
                 let (_, errorStr) = ErrorHelper.validateError(error: error)
@@ -87,7 +96,7 @@ class HomeViewModelImpl: HomeViewModel {
         followsUseCase.getFollowing(request: request, completion: { result in
             switch result {
             case .success(let users):
-                self.following.value = users.map(UserCellViewModel.init)
+                self.following.value = users.map(UserViewModel.init)
 
             case .failure(let error):
                 let (_, errorStr) = ErrorHelper.validateError(error: error)
@@ -98,13 +107,14 @@ class HomeViewModelImpl: HomeViewModel {
     
     func getCollectionNfts() {
         isLoading.value = true
-        
-        guard let userId = userViewModel.value?.id else { return }
+
+        let userId = userViewModel.value?.id ?? Constant.USER_ID
         let request = GetNftsRequest(userId: userId, page: page)
         
         nftUserCase.getNfts(request: request) { result in
             switch result {
             case .success(let nfts):
+                print(nfts.count)
                 self.appendNfts(nfts: nfts)
                 
             case .failure(let error):
@@ -121,7 +131,7 @@ class HomeViewModelImpl: HomeViewModel {
 //        currentPage = page.page
 //        totalPageCount = page.totalPages
         
-        let nfts = nfts.map(NftCellViewModel.init)
+        let nfts = nfts.map(NftViewModel.init)
         
         collectionNfts.value += nfts
         
@@ -136,7 +146,7 @@ class HomeViewModelImpl: HomeViewModel {
         collectionNfts.value.removeAll()
     }
     
-    func didSelectItem(at index: Int, completion: @escaping (NftCellViewModel) -> Void) {
+    func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void) {
 //        let viewModel = collectionNfts.value[index]
 //        
 //        completion(viewModel)
@@ -145,25 +155,53 @@ class HomeViewModelImpl: HomeViewModel {
     func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void) {
         guard let userId = userViewModel.value?.id else { return }
         
-        followsUseCase.follow(userId: 3, completion: { result in
-            switch result {
-            case .success:
-                completion(true)
+        if typeFollows.value == TypeFollows.none {
+            followsUseCase.follow(userId: userId, completion: { result in
+                switch result {
+                case .success:
+                    self.typeFollows.value = .followers
+                    completion(true)
 
-            case .failure:
-                completion(false)
+                case .failure:
+                    completion(false)
+                }
+            })
+        }
+        
+        if typeFollows.value == TypeFollows.following {
+            followsUseCase.unfollow(userId: userId, completion: { result in
+                switch result {
+                case .success:
+                    self.typeFollows.value = TypeFollows.none
+                    completion(true)
+
+                case .failure:
+                    completion(false)
+                }
+            })
+        }
+    }
+    
+    func checkFollow() {
+        guard let userId = userViewModel.value?.id else { return }
+        
+        followsUseCase.checkFollow(userId: userId, completion: { result in
+            switch result {
+            case .success(let typeFollows):
+                self.typeFollows.value = typeFollows
+                
+            case .failure(let error):
+                let (_, errorStr) = ErrorHelper.validateError(error: error)
+                self.errorMessage.value = errorStr
             }
         })
-        
-//        followsUseCase.unfollow(userId: 3, completion: { result in
-//            switch result {
-//            case .success:
-//                print("ok")
-//
-//            case .failure:
-//                completion(false)
-//            }
-//        })
+    }
+    
+    private func isValidUser() -> Bool {
+        return userViewModel.value == nil ||
+        userViewModel.value?.id == nil ||
+        userViewModel.value?.login == nil ||
+        userViewModel.value?.login == ""
     }
     
 }

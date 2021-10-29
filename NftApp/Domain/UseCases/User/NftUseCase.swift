@@ -27,10 +27,11 @@ final class NftUseCaseImpl: NftUseCase {
         repository?.getNfts(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    print("success \(resp)")
+                    print("success!!!!!! \(resp)")
                 }
                 
                 case .failure(let error) : do {
+                    print("!!!!success ")
                     completion(.failure(error))
                 }
             }

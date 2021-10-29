@@ -132,7 +132,6 @@ class DetailNftViewController: UIViewController {
         guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
         vc.viewModel = HomeViewModelImpl()
         vc.viewModel?.userViewModel.value = nil
-        vc.viewModel?.isOtherUser = true
         navigationController?.pushViewController(vc, animated: true) ?? present(vc, animated: true, completion: nil)
 
         HapticHelper.vibro(.light)

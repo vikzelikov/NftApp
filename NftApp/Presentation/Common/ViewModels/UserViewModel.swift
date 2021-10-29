@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct UserCellViewModel {
+struct UserViewModel {
     var id: Int
     var login: String
     var email: String
 }
 
-extension UserCellViewModel {
+extension UserViewModel {
     init(user: User) {
         self.id = user.id
         self.login = user.login

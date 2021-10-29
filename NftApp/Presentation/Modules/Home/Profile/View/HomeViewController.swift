@@ -10,35 +10,21 @@ import UIKit
 class HomeViewController: UIViewController {
     
     var viewModel: HomeViewModel?
+    var headerView: ProfileHeaderView?
     
     @IBOutlet weak var tableView: UITableView!
-    let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: -431, width: UIScreen.main.bounds.size.width, height: 431))
+    let refreshControl = UIRefreshControl()
 
-    var items:[String] = ["","","","","","","","",""]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        viewModel = HomeViewModelImpl()
+        headerView = ProfileHeaderView()
+        if viewModel == nil { viewModel = HomeViewModelImpl() }
         viewModel?.viewDidLoad()
         bindData()
         
-        setupStyle()
+        setupHeader()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: NftProfileViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftProfileViewCell.cellIdentifier)
-        tableView.contentInset = UIEdgeInsets(top: 431, left: 0, bottom: 0, right: 0)
-
-        headerView.contentMode = .scaleAspectFill
-        headerView.clipsToBounds = true
-        tableView.addSubview(headerView)
-
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        setupStyle()
     }
     
     func bindData() {
@@ -62,12 +48,68 @@ class HomeViewController: UIViewController {
         }
     }
     
+    // MARK: fix this
     func setupStyle() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: NftViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftViewCell.cellIdentifier)
+        tableView.contentInset = UIEdgeInsets(top: 431, left: 0, bottom: 0, right: 0)
         
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        
+        tableView.addSubview(refreshControl)
+        tableView.refreshControl = refreshControl
+        tableView.refreshControl?.bounds.origin.y = 431
+    }
+    
+    func setupHeader() {
+        guard let header = headerView else { return }
+        header.viewModel = viewModel
+        header.navigationController = navigationController
+        tableView.addSubview(header)
+        header.viewDidLoad()
+        
+        header.shareButtonDidTap = { [weak self] sender in
+            self?.shareDidTap(sender)
+        }
+        
+        header.dismissDidTap = { [weak self] in
+            self?.dismissDidTap()
+        }
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
+    func shareDidTap(_ sender: UIButton) {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        UIGraphicsEndImageContext()
+
+        let textToShare = "Check out my app"
+
+        // enter link to your app here
+        if let myWebsite = URL(string: "https://showyouryup.com/@login") {
+            let objectsToShare = [textToShare, myWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+
+            activityVC.popoverPresentationController?.sourceView = sender as UIView
+            self.present(activityVC, animated: true, completion: nil)
+        }
     }
     
     func reload() {
         tableView.reloadData()
+    }
+    
+    func dismissDidTap() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
 }
@@ -99,16 +141,17 @@ extension HomeViewController: UITableViewDelegate {
         }
     }
     
+    // MARK: fix this
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var positionY = -abs(scrollView.contentOffset.y + 400)
-        
+
         if positionY > -350 {
             positionY = -431
         } else {
             positionY = scrollView.contentOffset.y - 380
         }
 
-        headerView.frame = CGRect(x: 0, y: positionY, width: UIScreen.main.bounds.size.width, height: 431)
+        headerView?.frame = CGRect(x: 0, y: positionY, width: UIScreen.main.bounds.size.width, height: 431)
     }
     
 }
@@ -116,18 +159,20 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = viewModel?.collectionNfts.value.count {
-            return items.count
+            return count + 11
         } else {
-            return items.count
+            return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NftProfileViewCell.cellIdentifier, for: indexPath) as? NftProfileViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath) as? NftViewCell else { return UITableViewCell() }
         
 //        if let vm = viewModel?.collectionNfts.value[indexPath.row] {
 //            cell.bind(viewModel: vm)
 //        }
+        cell.selectionStyle = .none
+        HapticHelper.vibro(.light)
         
         return cell
     }

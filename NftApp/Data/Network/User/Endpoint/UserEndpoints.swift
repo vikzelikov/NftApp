@@ -28,6 +28,13 @@ struct UserEndpoints {
         return Endpoint(url: url, method: .put, headers: headers, data: requestDTO)
     }
     
+    static func getInfluencersEndpoint() -> Endpoint {
+        let headers: HTTPHeaders = NetworkHelper.getHeaders()
+        let url = URL(string: Constant.BASE_URL + "api/influencers")
+        
+        return Endpoint(url: url, method: .get, headers: headers, data: nil)
+    }
+    
     static func getNftsEndpoint(request: GetNftsRequest) -> Endpoint {
         let requestDTO = GetNftsRequestDTO (
             page: request.page

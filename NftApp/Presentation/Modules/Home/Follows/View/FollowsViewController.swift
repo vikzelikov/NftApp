@@ -87,7 +87,7 @@ extension FollowsViewController: UITableViewDelegate {
             guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
             vc.viewModel = HomeViewModelImpl()
             vc.viewModel?.userViewModel.value = userViewModel
-            vc.viewModel?.isOtherUser = true
+            vc.viewModel?.typeFollows.value = self.viewModel?.typeFollows ?? TypeFollows.none
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

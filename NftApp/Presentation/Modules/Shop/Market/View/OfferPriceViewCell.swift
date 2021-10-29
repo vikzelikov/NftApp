@@ -34,7 +34,7 @@ class OfferPriceViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func bind(viewModel: NftCellViewModel) {
+    func bind(viewModel: NftViewModel) {
         
 //        priceLabel?.text = viewModel.price
     }

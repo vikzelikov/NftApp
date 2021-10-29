@@ -54,18 +54,16 @@ struct NetworkHelper {
         
         if response.error != nil {
             if let errorDTO = try? JSONDecoder().decode(ErrorDTO.self, from: data) {
-
                 let error = ErrorMessage(errorType: .error, errorDTO: errorDTO, code: resp.statusCode)
                 print(error)
                 completion(.failure(error))
                 return
             } else {
                 completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
-                print(resp.statusCode)
                 return
             }
         }
-                
+        
         print(T.self)
         var json = JSON(data)
         print(json)
@@ -76,6 +74,33 @@ struct NetworkHelper {
             print("пизда \(resp.statusCode)")
             completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
         }
+        
     }
     
+    static func validateBoolResponse(response: AFDataResponse<String>,
+                                 completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        guard let resp = response.response else {
+            completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: nil)))
+            return
+        }
+        guard let data = response.data else {
+            completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
+            return
+        }
+        
+        if response.error != nil {
+            if let errorDTO = try? JSONDecoder().decode(ErrorDTO.self, from: data) {
+                let error = ErrorMessage(errorType: .error, errorDTO: errorDTO, code: resp.statusCode)
+                print(error)
+                completion(.failure(error))
+                return
+            } else {
+                completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
+                return
+            }
+        } else { 
+            completion(.success(true))
+        }
+    }
 }

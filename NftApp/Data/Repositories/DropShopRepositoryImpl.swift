@@ -36,7 +36,7 @@ class DropShopRepositoryImpl: DropShopRepository {
         }
         
         AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
-            
+
             NetworkHelper.validateResponse(response: response, completion: completion)
             
         }

@@ -11,7 +11,7 @@ protocol DetailNftViewModel : BaseViewModel {
     
     var typeDetailNFT: TypeDetailNFT { set get }
     
-    var nftViewModel: Observable<NftCellViewModel?> { get }
+    var nftViewModel: Observable<NftViewModel?> { get }
     
     func buyNftDidTap()
     
@@ -29,7 +29,7 @@ class DetailNftViewModelImpl: DetailNftViewModel {
     private let marketUserCase: MarketUseCase
     
     var typeDetailNFT: TypeDetailNFT = TypeDetailNFT.detail
-    var nftViewModel: Observable<NftCellViewModel?> = Observable(nil)
+    var nftViewModel: Observable<NftViewModel?> = Observable(nil)
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     

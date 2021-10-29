@@ -27,7 +27,7 @@ final class InitialUseCaseImpl: InitialUseCase {
             switch result {
                 case .success(let resp) : do {
                     let initialData = InitialData(tokenCurrency: resp.tokenCurrency,
-                                                  marketFee: resp.exchangeFee,
+                                                  marketFee: resp.marketFee,
                                                   isAppAvailable: resp.isAppAvailable,
                                                   isDropShopAvailable: resp.isDropshopAvailable,
                                                   isMarketAvailable: resp.isMarketAvailable,

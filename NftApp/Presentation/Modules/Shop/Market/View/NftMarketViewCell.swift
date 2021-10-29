@@ -24,7 +24,7 @@ class NftMarketViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func bind(viewModel: NftCellViewModel) {
+    func bind(viewModel: NftViewModel) {
         mainView.layer.shadowColor = UIColor(named: "gray")?.cgColor
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowOffset = .zero

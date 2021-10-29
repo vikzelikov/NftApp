@@ -11,7 +11,7 @@ struct InitialResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id
         case tokenCurrency
-        case exchangeFee
+        case marketFee
         case isAppAvailable
         case isDropshopAvailable
         case isMarketAvailable
@@ -21,7 +21,7 @@ struct InitialResponseDTO: Decodable {
     
     let id: Int
     let tokenCurrency: Double
-    let exchangeFee: Double
+    let marketFee: Double
     let isAppAvailable: Bool
     let isDropshopAvailable: Bool
     let isMarketAvailable: Bool

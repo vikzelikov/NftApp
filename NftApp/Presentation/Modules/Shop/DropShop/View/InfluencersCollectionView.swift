@@ -13,12 +13,15 @@ class InfluencersCollectionView: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
+    func reload() {
+        collectionView.reloadData()
+    }
+    
 }
 
 extension InfluencersCollectionView {
 
     func setCollectionViewDataSourceDelegate<D: UICollectionViewDataSource & UICollectionViewDelegate>(_ dataSourceDelegate: D, forRow row: Int) {
-
         collectionView.delegate = dataSourceDelegate
         collectionView.dataSource = dataSourceDelegate
         collectionView.tag = row

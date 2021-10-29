@@ -48,8 +48,13 @@ class InitialViewModelImpl: InitialViewModel {
     private func getUser() {        
         userUseCase.getUser(userId: Constant.USER_ID, completion: { result in
             switch result {
-            case .success:
+            case .success(let user):
+                // save static
+                UserObject.user = user
+                
                 self.getInitialData()
+                break
+                
             case .failure(let error):
                 if let error = error as? ErrorMessage, let code = error.code {
                     switch code {

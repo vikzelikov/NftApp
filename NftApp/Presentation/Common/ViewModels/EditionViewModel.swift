@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EditionCellViewModel {
+struct EditionViewModel {
     var id: Int
     var influencerId: Int
     var count: Int
@@ -19,7 +19,7 @@ struct EditionCellViewModel {
     var mediaUrl: String
 }
 
-extension EditionCellViewModel {
+extension EditionViewModel {
     init(edition: NftEdition) {
         self.id = edition.id
         self.influencerId = edition.influencerId

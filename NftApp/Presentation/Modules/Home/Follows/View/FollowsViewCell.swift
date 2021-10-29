@@ -25,7 +25,7 @@ class FollowsViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func bind(viewModel: UserCellViewModel) {
+    func bind(viewModel: UserViewModel) {
         loginLabel?.text = viewModel.login
 //        userImageView.sd_setImage(with: URL(string: viewModel.edition.mediaUrl)!)
     }

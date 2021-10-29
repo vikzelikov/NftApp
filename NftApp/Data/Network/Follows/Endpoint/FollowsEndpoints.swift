@@ -21,7 +21,7 @@ struct FollowsEndpoints {
         return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
     }
     
-    static func getFollowingsEndpoint(request: FollowsRequest) -> Endpoint {
+    static func getFollowingEndpoint(request: FollowsRequest) -> Endpoint {
         let requestDTO = GetFollowsRequestDTO (
             page: request.page
         ).parameters
@@ -44,6 +44,13 @@ struct FollowsEndpoints {
         let url = URL(string: Constant.BASE_URL + "api/users/\(userId)/unfollow")
         
         return Endpoint(url: url, method: .delete, headers: headers, data: nil)
+    }
+    
+    static func checkFollowEndpoint(userId: Int) -> Endpoint {
+        let headers: HTTPHeaders = NetworkHelper.getHeaders()
+        let url = URL(string: Constant.BASE_URL + "api/users/\(userId)/checkFollow")
+        
+        return Endpoint(url: url, method: .get, headers: headers, data: nil)
     }
     
 }

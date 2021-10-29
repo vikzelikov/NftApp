@@ -7,20 +7,20 @@
 
 import Foundation
 
-struct NftCellViewModel {
+struct NftViewModel {
     var id: Int
     var price: Double
     var serialNumber: Int
     var isForCell: Bool
-    var edition: EditionCellViewModel
+    var edition: EditionViewModel
 }
 
-extension NftCellViewModel {
+extension NftViewModel {
     init(nft: Nft) {
         self.id = nft.id
         self.price = nft.price
         self.serialNumber = nft.serialNumber
         self.isForCell = nft.isForCell
-        self.edition = EditionCellViewModel.init(edition: nft.edition)
+        self.edition = EditionViewModel.init(edition: nft.edition)
     }
 }

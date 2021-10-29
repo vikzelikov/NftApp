@@ -9,9 +9,9 @@ import Foundation
 
 class GetFollowsResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
-        case users
+        case rows
     }
     
-    let users: [GetUserResponseDTO]
+    let rows: [GetUserResponseDTO]
     
 }

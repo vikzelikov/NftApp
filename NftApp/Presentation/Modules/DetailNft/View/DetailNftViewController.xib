@@ -335,7 +335,7 @@
             <color red="0.14499999582767487" green="0.14499999582767487" blue="0.14499999582767487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="orange">
-            <color red="0.83651041984558105" green="0.83651041984558105" blue="0.83651041984558105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.45100000500679016" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
