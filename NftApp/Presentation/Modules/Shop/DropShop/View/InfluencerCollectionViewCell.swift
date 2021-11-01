@@ -13,7 +13,11 @@ class InfluencerCollectionViewCell: UICollectionViewCell {
     
     var isAll: Bool = false
     
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userImageView: UIImageView! {
+        didSet {
+            userImageView.layer.cornerRadius = userImageView.frame.width / 2
+        }
+    }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mainView: UIView!
 
@@ -26,14 +30,21 @@ class InfluencerCollectionViewCell: UICollectionViewCell {
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowOffset = .zero
         mainView.layer.shadowRadius = 5
-        userImageView.layer.cornerRadius = userImageView.frame.width / 2
-
-        nameLabel?.text = viewModel?.login
+        userImageView.isHidden = false
         
-        if isAll {
-            nameLabel.text = "All"
-            userImageView.isHidden = true
+        nameLabel?.text = viewModel?.login
+        if let avatarUrl = viewModel?.avatarUrl, let url = URL(string: avatarUrl) {
+            userImageView.contentMode = .scaleAspectFill
+            userImageView.sd_setImage(with: url)
+        } else {
+            userImageView.contentMode = .scaleAspectFit
+            userImageView.image = UIImage(named: "launch_icon")
         }
+    }
+    
+    func setupAll() {
+        nameLabel.text = NSLocalizedString("All", comment: "")
+        userImageView.isHidden = true
     }
 
 }

@@ -98,9 +98,8 @@ class HomeViewController: UIViewController {
         view.layer.render(in: UIGraphicsGetCurrentContext()!)
         UIGraphicsEndImageContext()
 
-        let textToShare = "Check out my app"
+        let textToShare = "Yup NFT"
 
-        // enter link to your app here
         if let myWebsite = URL(string: "https://showyouryup.com") {
             let objectsToShare = [textToShare, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)

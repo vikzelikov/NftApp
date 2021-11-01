@@ -21,6 +21,8 @@ protocol HomeViewModel: BaseViewModel {
     
     func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void)
     
+    func userImageDidTap(completion: @escaping (Bool) -> Void)
+    
     func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void)
     
 }
@@ -196,6 +198,10 @@ class HomeViewModelImpl: HomeViewModel {
                 self.errorMessage.value = errorStr
             }
         })
+    }
+    
+    func userImageDidTap(completion: @escaping (Bool) -> Void) {
+        completion(userViewModel.value?.id == Constant.USER_ID)
     }
     
     private func isValidUser() -> Bool {

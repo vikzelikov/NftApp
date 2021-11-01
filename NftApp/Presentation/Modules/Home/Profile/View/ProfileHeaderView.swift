@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class ProfileHeaderView: UIView {
     
@@ -71,12 +70,9 @@ class ProfileHeaderView: UIView {
             self.loginLabel.text = userViewModel.login
             self.loginSubtitleLabel.text = userViewModel.flowAddress ?? "@\(userViewModel.login)"
             
-            if let avatarUrl = userViewModel.avatarUrl {
-                if let url = URL(string: avatarUrl) {
-                    if let data = try? Data(contentsOf: url) {
-                        self.userImageView.image = UIImage(data: data)
-                    }
-                }
+            if let avatarUrl = userViewModel.avatarUrl, let url = URL(string: avatarUrl) {
+                self.userImageView.contentMode = .scaleAspectFill
+                self.userImageView.sd_setImage(with: url)
             }
         }
         
@@ -125,7 +121,9 @@ class ProfileHeaderView: UIView {
     }
     
     @objc func userImageDidTap(_ sender: UITapGestureRecognizer) {
-        userImageDidTap?()
+        viewModel?.userImageDidTap { result in
+            if result { self.userImageDidTap?() }
+        }
     }
     
     @objc func shareDidTap(_ sender: UIButton) {

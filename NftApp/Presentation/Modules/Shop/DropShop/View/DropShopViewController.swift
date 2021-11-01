@@ -183,7 +183,7 @@ extension DropShopViewController: UITableViewDataSource {
 
 extension DropShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let count = viewModel?.influencers.value.count {
+        if let count = viewModel?.influencers.value.prefix(10).count {
             return count + 1
         } else {
             return 0
@@ -192,10 +192,9 @@ extension DropShopViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfluencerCollectionViewCell.cellIdentifier, for: indexPath) as? InfluencerCollectionViewCell else { return UICollectionViewCell() }
-        
+
         if indexPath.row == 0 {
-            cell.isAll = true
-            cell.bind(viewModel: nil)
+            cell.setupAll()
         } else {
             if let vm = viewModel?.influencers.value[indexPath.row - 1] {
                 cell.bind(viewModel: vm)

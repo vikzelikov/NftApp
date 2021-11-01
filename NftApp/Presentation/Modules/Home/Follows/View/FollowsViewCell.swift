@@ -27,7 +27,13 @@ class FollowsViewCell: UITableViewCell {
     
     func bind(viewModel: UserViewModel) {
         loginLabel?.text = viewModel.login
-//        userImageView.sd_setImage(with: URL(string: viewModel.edition.mediaUrl)!)
+
+        if let avatarUrl = viewModel.avatarUrl, let url = URL(string: avatarUrl) {
+            userImageView.contentMode = .scaleAspectFill
+            userImageView.sd_setImage(with: url)
+        } else {
+            userImageView.image = UIImage(named: "launch_icon")
+        }
     }
     
 }
