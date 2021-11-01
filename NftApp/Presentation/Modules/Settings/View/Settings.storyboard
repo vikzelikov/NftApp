@@ -163,6 +163,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="320" height="1000"/>
                     <connections>
+                        <outlet property="balanceLabel" destination="hmb-tV-YbT" id="Ydx-O6-5am"/>
                         <outlet property="heightOtherSettingsTableView" destination="BtH-xx-uD2" id="fuQ-Uy-uNx"/>
                         <outlet property="heightPersonalDataTableView" destination="7A0-g8-ffj" id="4FC-gq-8bq"/>
                         <outlet property="otherSettingsTableView" destination="diQ-dL-0e8" id="zik-gT-f3R"/>

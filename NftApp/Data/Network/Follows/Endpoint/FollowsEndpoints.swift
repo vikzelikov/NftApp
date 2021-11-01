@@ -40,10 +40,7 @@ struct FollowsEndpoints {
     }
     
     static func unfollowEndpoint(userId: Int) -> Endpoint {
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + Constant.AUTH_TOKEN,
-            "Accept": "text/html"
-        ]
+        let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/users/\(userId)/unfollow"
         
         return Endpoint(url: url, method: .delete, headers: headers, data: nil)

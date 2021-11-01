@@ -14,6 +14,7 @@ class GetUserResponseDTO: Decodable {
         case email
         case avatarUrl
         case flowAddress
+        case balance
     }
     
     let id: Int
@@ -21,4 +22,5 @@ class GetUserResponseDTO: Decodable {
     let email: String
     let avatarUrl: String?
     let flowAddress: String?
+    let balance: String?
 }

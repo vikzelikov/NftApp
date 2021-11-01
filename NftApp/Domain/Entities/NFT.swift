@@ -13,5 +13,5 @@ struct Nft: Equatable {
     let currentPrice: Double?
     var serialNumber: Int
     var isForSell: Bool
-    var edition: NftEdition
+    var edition: Edition
 }

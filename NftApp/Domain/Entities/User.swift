@@ -13,6 +13,7 @@ struct User: Equatable, Identifiable {
     var email: String
     var flowAddress: String?
     var avatarUrl: String?
+    var balance: Double?
 //    let password: String?
 //    let isMale: Bool?
 //    let birthDate: TimeInterval?
@@ -21,5 +22,5 @@ struct User: Equatable, Identifiable {
 }
 
 struct UserObject {
-    static var user: User?
+    static var user: Observable<UserViewModel?> = Observable(nil)
 }

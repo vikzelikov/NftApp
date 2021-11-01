@@ -7,14 +7,13 @@
 
 import Foundation
 
-struct NftEdition: Equatable {
+struct Edition: Equatable {
     let id: Int
     let influencerId: Int
     let count: Int
     let name: String
     let description: String
-    let date: TimeInterval
     let price: Double
-    let dateExpiration: TimeInterval
+    let dateExpiration: String
     let mediaUrl: String
 }

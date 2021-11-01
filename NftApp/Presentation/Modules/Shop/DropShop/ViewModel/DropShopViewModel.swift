@@ -9,12 +9,12 @@ import Foundation
 
 protocol DropShopViewModel : BaseViewModel {
     
-    var items: Observable<[NftViewModel]> { get }
+    var items: Observable<[EditionViewModel]> { get }
     var influencers: Observable<[UserViewModel]> { get }
     
     func viewDidLoad()
     
-    func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void)
+    func didSelectItem(at index: Int, completion: @escaping (EditionViewModel) -> Void)
     
     func didSelectInfluencers(at index: Int, completion: @escaping ([UserViewModel]) -> Void)
     
@@ -30,7 +30,7 @@ class DropShopViewModelImpl: DropShopViewModel {
     private var query: String = ""
     private var currentPage: Int = 1
     private var totalPageCount: Int = 1
-    var items: Observable<[NftViewModel]> = Observable([])
+    var items: Observable<[EditionViewModel]> = Observable([])
     var influencers: Observable<[UserViewModel]> = Observable([])
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
@@ -55,8 +55,8 @@ class DropShopViewModelImpl: DropShopViewModel {
         
         dropShopUseCase.getEditions(request: request, completion: { result in
             switch result {
-            case .success(let nfts):
-                self.appendEditions(nfts: nfts)
+            case .success(let editions):
+                self.appendEditions(editions: editions)
 
             case .failure(let error):
                 let (_, errorStr) = ErrorHelper.validateError(error: error)
@@ -84,20 +84,20 @@ class DropShopViewModelImpl: DropShopViewModel {
         }
     }
     
-    private func appendEditions(nfts: [Nft]) {
+    private func appendEditions(editions: [Edition]) {
 //        currentPage = page.page
 //        totalPageCount = page.totalPages
         
-        let nftEditions = nfts.map(NftViewModel.init)
+        let editions = editions.map(EditionViewModel.init)
         
-        items.value += nftEditions
+        items.value += editions
         
         if items.value.isEmpty {
             self.errorMessage.value = NSLocalizedString("Drop Shop is empty", comment: "")
         }
     }
     
-    func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void) {
+    func didSelectItem(at index: Int, completion: @escaping (EditionViewModel) -> Void) {
         if items.value.indices.contains(index) {
             let viewModel = items.value[index]
             

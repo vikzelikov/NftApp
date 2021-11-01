@@ -13,20 +13,18 @@ struct EditionViewModel {
     var count: Int
     var name: String
     var description: String
-    var date: TimeInterval?
     var price: Double
-    var dateExpiration: TimeInterval?
+    var dateExpiration: String
     var mediaUrl: String
 }
 
 extension EditionViewModel {
-    init(edition: NftEdition) {
+    init(edition: Edition) {
         self.id = edition.id
         self.influencerId = edition.influencerId
         self.count = edition.count
         self.name = edition.name
         self.description = edition.description
-        self.date = edition.date
         self.price = edition.price
         self.dateExpiration = edition.dateExpiration
         self.mediaUrl = edition.mediaUrl

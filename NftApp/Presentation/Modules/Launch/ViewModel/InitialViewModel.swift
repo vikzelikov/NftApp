@@ -50,7 +50,7 @@ class InitialViewModelImpl: InitialViewModel {
             switch result {
             case .success(let user):
                 // save static
-                UserObject.user = user
+                UserObject.user.value = UserViewModel.init(user: user)
                 
                 self.getInitialData()
                 break

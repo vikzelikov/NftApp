@@ -9,7 +9,7 @@ import Foundation
 
 protocol DropShopUseCase {
     
-    func getEditions(request: GetEditionsRequest, completion: @escaping (Result<[Nft], Error>) -> Void)
+    func getEditions(request: GetEditionsRequest, completion: @escaping (Result<[Edition], Error>) -> Void)
     
     func buyNft(editionId: Int, completion: @escaping (Result<Bool, Error>) -> Void)
     
@@ -23,27 +23,20 @@ final class DropShopUseCaseImpl: DropShopUseCase {
         self.repository = DropShopRepositoryImpl()
     }
     
-    func getEditions(request: GetEditionsRequest, completion: @escaping (Result<[Nft], Error>) -> Void) {
+    func getEditions(request: GetEditionsRequest, completion: @escaping (Result<[Edition], Error>) -> Void) {
 
         repository?.getEditions(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {                    
                     let editions = resp.rows.map {
-                        Nft(id: 1,
-                            lastPrice: 1.0,
-                            currentPrice: 1.0,
-                            serialNumber: 1,
-                            isForSell: false,
-                            edition: NftEdition(id: $0.id,
-                                                influencerId: $0.influencerId,
-                                                count: $0.count,
-                                                name: $0.name,
-                                                description: $0.description,
-                                                date: 0,
-                                                price: $0.price,
-                                                dateExpiration: Double($0.dateExpiration) ?? 0.0,
-                                                mediaUrl: $0.mediaUrl)
-                        )
+                        Edition(id: $0.id,
+                                influencerId: $0.influencerId,
+                                count: $0.count,
+                                name: $0.name,
+                                description: $0.description,
+                                price: $0.price,
+                                dateExpiration: $0.dateExpiration,
+                                mediaUrl: $0.mediaUrl)
                     }
                     
                     completion(.success(editions))

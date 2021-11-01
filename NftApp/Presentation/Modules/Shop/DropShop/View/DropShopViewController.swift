@@ -107,10 +107,10 @@ extension DropShopViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 { return }
         
-        viewModel?.didSelectItem(at: indexPath.row - 1) { nftViewModel in
+        viewModel?.didSelectItem(at: indexPath.row - 1) { editionViewModel in
             let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
             vc.viewModel = DetailNftViewModelImpl()
-            vc.viewModel?.nftViewModel.value = nftViewModel
+            vc.viewModel?.nftViewModel.value = NftViewModel(id: 0, price: 0.0, serialNumber: 0, isForCell: false, edition: editionViewModel)
             vc.viewModel?.typeDetailNFT = .dropShop
             self.present(vc, animated: true, completion: nil)
         }
@@ -159,7 +159,7 @@ extension DropShopViewController: UITableViewDataSource {
             
             if let vm = viewModel?.items.value[indexPath.row - 1] {
                 cell.typeDetailNFT = .dropShop
-                cell.bind(viewModel: vm)
+                cell.bindEdition(viewModel: vm)
             }
             
             return cell

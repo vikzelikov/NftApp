@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         headerView = ProfileHeaderView()
         if viewModel == nil { viewModel = HomeViewModelImpl() }
-        viewModel?.viewDidLoad()
+        viewModel?.viewDidLoad(isRefresh: false)
         bindData()
         
         setupHeader()
@@ -86,7 +86,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func refresh(_ sender: AnyObject) {
-        viewModel?.viewDidLoad()
+        viewModel?.viewDidLoad(isRefresh: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.refreshControl.endRefreshing()
@@ -177,7 +177,7 @@ extension HomeViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath) as? NftViewCell else { return UITableViewCell() }
         
         if let vm = viewModel?.collectionNfts.value[indexPath.row] {
-            cell.bind(viewModel: vm)
+            cell.bindNft(viewModel: vm)
         }
         
         cell.selectionStyle = .none

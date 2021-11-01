@@ -10,6 +10,7 @@ import UIKit
 class WalletViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var settingsHeightTableView: NSLayoutConstraint!
     var items: [SettingCellViewModel] = []
@@ -19,12 +20,20 @@ class WalletViewController: UIViewController {
         
         self.scrollView.delaysContentTouches = false
         
+        bindData()
+        
         setupSettingsTableView()
         
         items.append(SettingCellViewModel(title: "History transactions", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         items.append(SettingCellViewModel(title: "Collection NFTs", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         
         reload()
+    }
+    
+    func bindData() {
+        UserObject.user.bind {
+            self.balanceLabel.text = String($0?.balance ?? 0.0)
+        }
     }
     
     func reload() {
@@ -57,7 +66,11 @@ class WalletViewController: UIViewController {
         settingsTableView.separatorStyle = .singleLine
         settingsTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: settingsTableView.frame.size.width, height: 1))
         settingsTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-        settingsTableView.register(UINib(nibName: "SettingViewCell", bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
+        settingsTableView.register(UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
+        
+        if #available(iOS 15.0, *) {
+            settingsTableView.sectionHeaderTopPadding = 0.0
+        }
     }
     
     @IBAction func dismissDidTap(_ sender: Any) {

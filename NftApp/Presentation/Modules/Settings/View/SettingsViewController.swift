@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var walletButton: UIButton!
+    @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var telegramButton: UIButton!
     @IBOutlet weak var personalDataTableView: UITableView!
     @IBOutlet weak var otherSettingsTableView: UITableView!
@@ -31,7 +32,7 @@ class SettingsViewController: UIViewController {
         
         setupOtherSettingsTableView()
         
-        
+        bindData()
         
         items.append(SettingCellViewModel(title: "E-mail", contentLabel: "email@example.ru", iconContentView: nil))
         items.append(SettingCellViewModel(title: "Password", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
@@ -43,6 +44,12 @@ class SettingsViewController: UIViewController {
         telegramButton.layer.cornerRadius = telegramButton.frame.width / 2
 
         reload()
+    }
+    
+    func bindData() {
+        UserObject.user.bind {
+            self.balanceLabel.text = String($0?.balance ?? 0.0)
+        }
     }
     
     @IBAction func walletButtonDidTap(_ sender: Any) {
@@ -70,9 +77,13 @@ class SettingsViewController: UIViewController {
         otherSettingsTableView.separatorColor = UIColor.lightGray.withAlphaComponent(0.3)
         otherSettingsTableView.separatorStyle = .singleLine
         otherSettingsTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: otherSettingsTableView.frame.size.width, height: 1))
+        otherSettingsTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: otherSettingsTableView.frame.size.width, height: 1))
         otherSettingsTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-//        personalDataTableView.register(SettingViewCell.self, forCellReuseIdentifier: SettingViewCell.cellIdentifier)
-        otherSettingsTableView.register(UINib(nibName: "SettingViewCell", bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
+        otherSettingsTableView.register(UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
+        
+        if #available(iOS 15.0, *) {
+            otherSettingsTableView.sectionHeaderTopPadding = 0.0
+        }
     }
     
     private func setupPersonalDataTableView() {
@@ -84,9 +95,13 @@ class SettingsViewController: UIViewController {
         personalDataTableView.separatorColor = UIColor.lightGray.withAlphaComponent(0.3)
         personalDataTableView.separatorStyle = .singleLine
         personalDataTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: personalDataTableView.frame.size.width, height: 1))
+        personalDataTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: personalDataTableView.frame.size.width, height: 1))
         personalDataTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-//        personalDataTableView.register(SettingViewCell.self, forCellReuseIdentifier: SettingViewCell.cellIdentifier)
-        personalDataTableView.register(UINib(nibName: "SettingViewCell", bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
+        personalDataTableView.register(UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
+        
+        if #available(iOS 15.0, *) {
+            personalDataTableView.sectionHeaderTopPadding = 0.0
+        }
     }
     
     

@@ -15,7 +15,7 @@ protocol HomeViewModel: BaseViewModel {
     var collectionNfts: Observable<[NftViewModel]> { get }
     var typeFollows: Observable<TypeFollows?> { get }
     
-    func viewDidLoad()
+    func viewDidLoad(isRefresh: Bool)
             
     func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void)
     
@@ -50,15 +50,15 @@ class HomeViewModelImpl: HomeViewModel {
         nftUserCase = NftUseCaseImpl()
         
         // set main user by default 
-        if let user = UserObject.user {
-            userViewModel.value = UserViewModel(id: user.id, login: user.login, email: user.email, flowAddress: user.flowAddress, avatarUrl: user.avatarUrl)
+        if let user = UserObject.user.value {
+            userViewModel.value = user
         }
     }
     
-    func viewDidLoad() {
+    func viewDidLoad(isRefresh: Bool) {
         resetViewModel()
         
-        if isValidUser() { getUser() }
+        if isValidUser() || isRefresh { getUser() }
 
         getFollows()
         

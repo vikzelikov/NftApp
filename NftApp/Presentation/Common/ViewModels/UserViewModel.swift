@@ -13,6 +13,7 @@ struct UserViewModel {
     var email: String
     var flowAddress: String?
     var avatarUrl: String?
+    var balance: Double?
 }
 
 extension UserViewModel {
@@ -22,5 +23,6 @@ extension UserViewModel {
         self.email = user.email
         self.flowAddress = user.flowAddress
         self.avatarUrl = user.avatarUrl
+        self.balance = user.balance
     }
 }

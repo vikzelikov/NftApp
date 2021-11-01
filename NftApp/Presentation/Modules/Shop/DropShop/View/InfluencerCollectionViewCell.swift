@@ -43,6 +43,11 @@ class InfluencerCollectionViewCell: UICollectionViewCell {
     }
     
     func setupAll() {
+        mainView.layer.shadowColor = UIColor(named: "gray")?.cgColor
+        mainView.layer.shadowOpacity = 1
+        mainView.layer.shadowOffset = .zero
+        mainView.layer.shadowRadius = 5
+        
         nameLabel.text = NSLocalizedString("All", comment: "")
         userImageView.isHidden = true
     }

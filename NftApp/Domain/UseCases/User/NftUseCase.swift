@@ -33,7 +33,7 @@ final class NftUseCaseImpl: NftUseCase {
                             currentPrice: $0.currentPrice,
                             serialNumber: $0.serialNumber,
                             isForSell: $0.isForSell,
-                            edition: NftEdition(id: $0.id, influencerId: $0.edition.influencerId, count: $0.edition.count, name: $0.edition.name, description: $0.edition.description, date: 0, price: $0.edition.price, dateExpiration: Double($0.edition.dateExpiration) ?? 0.0, mediaUrl: $0.edition.mediaUrl)
+                            edition: Edition(id: $0.id, influencerId: $0.edition.influencerId, count: $0.edition.count, name: $0.edition.name, description: $0.edition.description, price: $0.edition.price, dateExpiration: $0.edition.dateExpiration, mediaUrl: $0.edition.mediaUrl)
                         )
                     }
 

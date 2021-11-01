@@ -56,8 +56,13 @@ class InfluencersViewController: UIViewController {
         tableView.separatorColor = UIColor.lightGray.withAlphaComponent(0.3)
         tableView.separatorStyle = .singleLine
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 0)
         tableView.register(UINib(nibName: InfluencerViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: InfluencerViewCell.cellIdentifier)
+    
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0.0
+        }
     }
     
     func reload() {
