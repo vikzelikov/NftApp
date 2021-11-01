@@ -18,7 +18,7 @@ struct AuthEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/auth/registration")
+        let url = Constant.BASE_URL + "api/auth/registration"
         
         return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }
@@ -30,7 +30,7 @@ struct AuthEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/auth/login")
+        let url = Constant.BASE_URL + "api/auth/login"
         
         return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }

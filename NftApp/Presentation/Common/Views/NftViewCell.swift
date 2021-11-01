@@ -11,6 +11,8 @@ class NftViewCell: UITableViewCell {
     
     static let cellIdentifier = String(describing: NftViewCell.self)
 
+    var typeDetailNFT: TypeDetailNFT = .detail
+    
     @IBOutlet weak var influencerImage: UIImageView! {
         didSet {
             influencerImage.layer.cornerRadius = influencerImage.frame.width / 2
@@ -38,6 +40,10 @@ class NftViewCell: UITableViewCell {
         priceLabel?.text = String(viewModel.edition.price)
         nftImage.sd_setImage(with: URL(string: viewModel.edition.mediaUrl)!)
 //        leftCountLabel?.text = "x\(viewModel.edition.count)"
+        
+        if typeDetailNFT == .detail {
+            expirationView.isHidden = true
+        }
     }
     
 }

@@ -56,7 +56,6 @@ class HomeViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 431, left: 0, bottom: 0, right: 0)
         
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        
         tableView.addSubview(refreshControl)
         tableView.refreshControl = refreshControl
         tableView.refreshControl?.bounds.origin.y = 431
@@ -76,9 +75,19 @@ class HomeViewController: UIViewController {
         header.dismissDidTap = { [weak self] in
             self?.dismissDidTap()
         }
+        
+        header.userImageDidTap = { [self] in
+            ImagePickerHelper().pickImage(self) { image in
+                self.headerView?.userImageView.image = image
+                
+                self.viewModel?.updateAvatar(request: UpdateAvatarRequest(image: image), completion: { _ in })
+            }
+        }
     }
     
     @objc func refresh(_ sender: AnyObject) {
+        viewModel?.viewDidLoad()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.refreshControl.endRefreshing()
         }
@@ -92,7 +101,7 @@ class HomeViewController: UIViewController {
         let textToShare = "Check out my app"
 
         // enter link to your app here
-        if let myWebsite = URL(string: "https://showyouryup.com/@login") {
+        if let myWebsite = URL(string: "https://showyouryup.com") {
             let objectsToShare = [textToShare, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 
@@ -159,7 +168,7 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = viewModel?.collectionNfts.value.count {
-            return count + 11
+            return count
         } else {
             return 0
         }
@@ -168,12 +177,17 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath) as? NftViewCell else { return UITableViewCell() }
         
-//        if let vm = viewModel?.collectionNfts.value[indexPath.row] {
-//            cell.bind(viewModel: vm)
-//        }
+        if let vm = viewModel?.collectionNfts.value[indexPath.row] {
+            cell.bind(viewModel: vm)
+        }
+        
         cell.selectionStyle = .none
         HapticHelper.vibro(.light)
         
         return cell
     }
+}
+
+struct UpdateAvatarRequest {
+    var image: UIImage
 }

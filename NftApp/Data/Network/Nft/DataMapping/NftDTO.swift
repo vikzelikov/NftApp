@@ -7,18 +7,22 @@
 
 import Foundation
 
-struct NftDTO: Decodable {
+class NftDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id
-        case price
+        case userId
+        case lastPrice
+        case currentPrice
         case serialNumber
-        case isForCell
+        case isForSell
         case edition
     }
     
     let id: Int
-    let price: Double
+    let userId: Int
+    let lastPrice: Double
+    let currentPrice: Double?
     let serialNumber: Int
-    let isForCell: Bool
+    let isForSell: Bool
     let edition: EditionDTO
 }

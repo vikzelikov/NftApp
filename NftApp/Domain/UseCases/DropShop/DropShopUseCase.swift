@@ -30,9 +30,10 @@ final class DropShopUseCaseImpl: DropShopUseCase {
                 case .success(let resp) : do {                    
                     let editions = resp.rows.map {
                         Nft(id: 1,
-                            price: 1,
+                            lastPrice: 1.0,
+                            currentPrice: 1.0,
                             serialNumber: 1,
-                            isForCell: false,
+                            isForSell: false,
                             edition: NftEdition(id: $0.id,
                                                 influencerId: $0.influencerId,
                                                 count: $0.count,

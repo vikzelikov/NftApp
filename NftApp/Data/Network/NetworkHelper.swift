@@ -47,6 +47,7 @@ struct NetworkHelper {
             completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: nil)))
             return
         }
+        
         guard let data = response.data else {
             completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
             return
@@ -64,9 +65,9 @@ struct NetworkHelper {
             }
         }
         
-        print(T.self)
-        var json = JSON(data)
-        print(json)
+//        print(T.self)
+//        var json = JSON(data)
+//        print(json)
         
         if let responseDTO = try? JSONDecoder().decode(T.self, from: data) {
             completion(.success(responseDTO))
@@ -84,6 +85,7 @@ struct NetworkHelper {
             completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: nil)))
             return
         }
+        
         guard let data = response.data else {
             completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
             return
@@ -99,7 +101,7 @@ struct NetworkHelper {
                 completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
                 return
             }
-        } else { 
+        } else {
             completion(.success(true))
         }
     }

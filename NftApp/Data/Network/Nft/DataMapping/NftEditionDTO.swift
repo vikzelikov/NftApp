@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EditionDTO: Decodable {
+class EditionDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id
         case influencerId

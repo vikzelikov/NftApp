@@ -21,6 +21,8 @@ protocol HomeViewModel: BaseViewModel {
     
     func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void)
     
+    func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void)
+    
 }
 
 class HomeViewModelImpl: HomeViewModel {
@@ -47,11 +49,13 @@ class HomeViewModelImpl: HomeViewModel {
         
         // set main user by default 
         if let user = UserObject.user {
-            userViewModel.value = UserViewModel(id: user.id, login: user.login, email: user.email)
+            userViewModel.value = UserViewModel(id: user.id, login: user.login, email: user.email, flowAddress: user.flowAddress, avatarUrl: user.avatarUrl)
         }
     }
     
     func viewDidLoad() {
+        resetViewModel()
+        
         if isValidUser() { getUser() }
 
         getFollows()
@@ -114,7 +118,6 @@ class HomeViewModelImpl: HomeViewModel {
         nftUserCase.getNfts(request: request) { result in
             switch result {
             case .success(let nfts):
-                print(nfts.count)
                 self.appendNfts(nfts: nfts)
                 
             case .failure(let error):
@@ -140,26 +143,24 @@ class HomeViewModelImpl: HomeViewModel {
         }
     }
     
-    private func resetPages() {
-        currentPage = 1
-        totalPageCount = 1
-        collectionNfts.value.removeAll()
+    func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void) {
+        let viewModel = collectionNfts.value[index]
+        
+        completion(viewModel)
     }
     
-    func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void) {
-//        let viewModel = collectionNfts.value[index]
-//        
-//        completion(viewModel)
+    func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
+        userUseCase.updateAvatar(request: request, completion: completion)
     }
     
     func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void) {
         guard let userId = userViewModel.value?.id else { return }
-        
-        if typeFollows.value == TypeFollows.none {
+
+        if typeFollows.value == TypeFollows.none || typeFollows.value == TypeFollows.followers {
             followsUseCase.follow(userId: userId, completion: { result in
                 switch result {
                 case .success:
-                    self.typeFollows.value = .followers
+                    self.typeFollows.value = .following
                     completion(true)
 
                 case .failure:
@@ -202,6 +203,14 @@ class HomeViewModelImpl: HomeViewModel {
         userViewModel.value?.id == nil ||
         userViewModel.value?.login == nil ||
         userViewModel.value?.login == ""
+    }
+    
+    private func resetViewModel() {
+        currentPage = 1
+        totalPageCount = 1
+        collectionNfts.value.removeAll()
+        followers.value.removeAll()
+        following.value.removeAll()
     }
     
 }

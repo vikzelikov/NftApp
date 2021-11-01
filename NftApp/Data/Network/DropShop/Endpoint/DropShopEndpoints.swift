@@ -16,14 +16,14 @@ struct DropShopEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/editions/?type=dropshop")
+        let url = Constant.BASE_URL + "api/editions/?type=dropshop"
         
         return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
     }
     
     static func buyNftEndpoint(editionId: Int) -> Endpoint {
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/editions/\(editionId)")
+        let url = Constant.BASE_URL + "api/editions/\(editionId)"
         
         return Endpoint(url: url, method: .post, headers: headers, data: nil)
     }

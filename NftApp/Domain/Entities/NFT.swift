@@ -9,8 +9,9 @@ import Foundation
 
 struct Nft: Equatable {
     var id: Int
-    var price: Double
+    var lastPrice: Double
+    let currentPrice: Double?
     var serialNumber: Int
-    var isForCell: Bool
+    var isForSell: Bool
     var edition: NftEdition
 }

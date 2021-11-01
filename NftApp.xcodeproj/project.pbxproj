@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180164B9272FF6A1003C68E0 /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180164B8272FF6A1003C68E0 /* ImagePickerHelper.swift */; };
 		1803C4A82728820F00486F1F /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803C4A62728820F00486F1F /* ProfileHeaderView.swift */; };
 		1803C4A92728820F00486F1F /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1803C4A72728820F00486F1F /* ProfileHeaderView.xib */; };
 		18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */; };
@@ -162,6 +163,11 @@
 		18E1109626D68300007FD66E /* NftDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1109526D68300007FD66E /* NftDTO.swift */; };
 		18E1109C26D684C7007FD66E /* Nft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1109B26D684C7007FD66E /* Nft.swift */; };
 		18E19CE5272B441700FD86FA /* CheckFollowResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E19CE4272B441700FD86FA /* CheckFollowResponseDTO.swift */; };
+		18E37752272F009F00A2795B /* InfluencersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E37751272F009F00A2795B /* InfluencersViewModel.swift */; };
+		18E37755272F00AF00A2795B /* InfluencersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E37753272F00AF00A2795B /* InfluencersViewController.swift */; };
+		18E37756272F00AF00A2795B /* InfluencersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E37754272F00AF00A2795B /* InfluencersViewController.xib */; };
+		18E37759272F00C700A2795B /* InfluencerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E37757272F00C700A2795B /* InfluencerViewCell.swift */; };
+		18E3775A272F00C700A2795B /* InfluencerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E37758272F00C700A2795B /* InfluencerViewCell.xib */; };
 		18E39B1326D02D4900FEC003 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39B1226D02D4900FEC003 /* JWT.swift */; };
 		18E39B1626D0394C00FEC003 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39B1526D0394C00FEC003 /* UserRepositoryImpl.swift */; };
 		18E39B1926D039B000FEC003 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39B1826D039B000FEC003 /* UserRepository.swift */; };
@@ -175,6 +181,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180164B8272FF6A1003C68E0 /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
 		1803C4A62728820F00486F1F /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		1803C4A72728820F00486F1F /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetViewController.swift; sourceTree = "<group>"; };
@@ -337,6 +344,11 @@
 		18E1109526D68300007FD66E /* NftDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NftDTO.swift; sourceTree = "<group>"; };
 		18E1109B26D684C7007FD66E /* Nft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nft.swift; sourceTree = "<group>"; };
 		18E19CE4272B441700FD86FA /* CheckFollowResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFollowResponseDTO.swift; sourceTree = "<group>"; };
+		18E37751272F009F00A2795B /* InfluencersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencersViewModel.swift; sourceTree = "<group>"; };
+		18E37753272F00AF00A2795B /* InfluencersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencersViewController.swift; sourceTree = "<group>"; };
+		18E37754272F00AF00A2795B /* InfluencersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfluencersViewController.xib; sourceTree = "<group>"; };
+		18E37757272F00C700A2795B /* InfluencerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerViewCell.swift; sourceTree = "<group>"; };
+		18E37758272F00C700A2795B /* InfluencerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfluencerViewCell.xib; sourceTree = "<group>"; };
 		18E39B1226D02D4900FEC003 /* JWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWT.swift; sourceTree = "<group>"; };
 		18E39B1526D0394C00FEC003 /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		18E39B1826D039B000FEC003 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -426,6 +438,7 @@
 				181742F42699B601002B9FD7 /* HapticHelper.swift */,
 				181742F8269B0705002B9FD7 /* ColorHelper.swift */,
 				1869F0F72704961900C7654A /* ErrorHelper.swift */,
+				180164B8272FF6A1003C68E0 /* ImagePickerHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -914,8 +927,8 @@
 		1879C56F26C9D0E900CE367E /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				1879C57026C9D16A00CE367E /* DataMapping */,
 				1879C56326C9C13E00CE367E /* Endpoint */,
+				1879C57026C9D16A00CE367E /* DataMapping */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -1050,6 +1063,7 @@
 		18B84283266F632C0033AFC0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				18E3774E272F005100A2795B /* Influencers */,
 				186E601D26B88F08008291AC /* Search */,
 				186E5FE726B5DBF4008291AC /* DetailNft */,
 				18156D4A26A5D99A006B8FE5 /* Wallet */,
@@ -1254,8 +1268,8 @@
 		18DDEA2526D7996500306A60 /* Initial */ = {
 			isa = PBXGroup;
 			children = (
-				18DDEA2B26D79A3200306A60 /* DataMapping */,
 				18DDEA2A26D79A2C00306A60 /* Endpoint */,
+				18DDEA2B26D79A3200306A60 /* DataMapping */,
 			);
 			path = Initial;
 			sourceTree = "<group>";
@@ -1303,8 +1317,8 @@
 		18E1107A26D5A4B0007FD66E /* DropShop */ = {
 			isa = PBXGroup;
 			children = (
-				18E1107C26D5A4EF007FD66E /* DataMapping */,
 				18E1107B26D5A4E6007FD66E /* Endpoint */,
+				18E1107C26D5A4EF007FD66E /* DataMapping */,
 			);
 			path = DropShop;
 			sourceTree = "<group>";
@@ -1343,6 +1357,34 @@
 				18E1109526D68300007FD66E /* NftDTO.swift */,
 			);
 			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		18E3774E272F005100A2795B /* Influencers */ = {
+			isa = PBXGroup;
+			children = (
+				18E37750272F006D00A2795B /* ViewModel */,
+				18E3774F272F006600A2795B /* View */,
+			);
+			path = Influencers;
+			sourceTree = "<group>";
+		};
+		18E3774F272F006600A2795B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18E37753272F00AF00A2795B /* InfluencersViewController.swift */,
+				18E37754272F00AF00A2795B /* InfluencersViewController.xib */,
+				18E37757272F00C700A2795B /* InfluencerViewCell.swift */,
+				18E37758272F00C700A2795B /* InfluencerViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18E37750272F006D00A2795B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				18E37751272F009F00A2795B /* InfluencersViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		18E39B1A26D039D100FEC003 /* User */ = {
@@ -1488,9 +1530,11 @@
 				186E602326B88F25008291AC /* SearchViewController.xib in Resources */,
 				18DDEA3726D7A0D100306A60 /* Initial.storyboard in Resources */,
 				182342F426A2ECF700CD2907 /* HistoryViewCell.xib in Resources */,
+				18E37756272F00AF00A2795B /* InfluencersViewController.xib in Resources */,
 				18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */,
 				1803C4A92728820F00486F1F /* ProfileHeaderView.xib in Resources */,
 				1869F0FC2707537200C7654A /* InfluencersCollectionView.xib in Resources */,
+				18E3775A272F00C700A2795B /* InfluencerViewCell.xib in Resources */,
 				182342D426A0493600CD2907 /* DetailNftViewController.xib in Resources */,
 				182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */,
 				18855F3626D52A360018B072 /* Assets.xcassets in Resources */,
@@ -1594,6 +1638,7 @@
 				186E601C26B6F178008291AC /* TransactionCellViewModel.swift in Sources */,
 				1879C56E26C9C9DF00CE367E /* LoginUseCase.swift in Sources */,
 				1879C56C26C9C90D00CE367E /* NetworkHelper.swift in Sources */,
+				18E37759272F00C700A2795B /* InfluencerViewCell.swift in Sources */,
 				182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */,
 				18523F90269CEAA000611362 /* ShopViewController.swift in Sources */,
 				1879C56126C9B7EA00CE367E /* AuthRepositoryImpl.swift in Sources */,
@@ -1605,6 +1650,7 @@
 				18D8452426CD5D2500888D32 /* BaseViewModel.swift in Sources */,
 				18156D4326A4D925006B8FE5 /* SettingCellViewModel.swift in Sources */,
 				18DDEA2426D791B900306A60 /* UpdateSellNftRequestDTO.swift in Sources */,
+				180164B9272FF6A1003C68E0 /* ImagePickerHelper.swift in Sources */,
 				1879C56A26C9C74D00CE367E /* Constants.swift in Sources */,
 				18E8F3C726CBCCF100E62E33 /* Observable.swift in Sources */,
 				1833847326FF160100EAD9EB /* HomeViewModel.swift in Sources */,
@@ -1638,6 +1684,7 @@
 				1879C55926C9B5C000CE367E /* AuthRepository.swift in Sources */,
 				182342C0269DFC5500CD2907 /* MarketViewController.swift in Sources */,
 				18E1107E26D5A530007FD66E /* GetEditionsRequestDTO.swift in Sources */,
+				18E37752272F009F00A2795B /* InfluencersViewModel.swift in Sources */,
 				18D8452D26CDAEF100888D32 /* UserStorage.swift in Sources */,
 				18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */,
 				182342D726A081EF00CD2907 /* UICustomView.swift in Sources */,
@@ -1647,6 +1694,7 @@
 				18E39B1626D0394C00FEC003 /* UserRepositoryImpl.swift in Sources */,
 				18156D4626A4DD3E006B8FE5 /* SettingViewCell.swift in Sources */,
 				182342E826A2D21400CD2907 /* OfferPriceViewCell.swift in Sources */,
+				18E37755272F00AF00A2795B /* InfluencersViewController.swift in Sources */,
 				18DDE9F526D6EE5E00306A60 /* WalletRepository.swift in Sources */,
 				181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */,
 				182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */,

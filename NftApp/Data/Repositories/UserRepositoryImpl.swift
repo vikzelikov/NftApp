@@ -12,13 +12,8 @@ class UserRepositoryImpl: UserRepository {
 
     func getUser(userId: Int, completion: @escaping (Result<GetUserResponseDTO, Error>) -> Void) {
         let endpoint = UserEndpoints.getUserEndpoint(userId: userId)
-        
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
 
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers) { $0.timeoutInterval = NetworkHelper.TIMEOUT } .validate().responseString { response in
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers) { $0.timeoutInterval = NetworkHelper.TIMEOUT } .validate().responseString { response in
             
             NetworkHelper.validateResponse(response: response, completion: completion)
             
@@ -27,28 +22,32 @@ class UserRepositoryImpl: UserRepository {
     
     func updateUser(request: User, completion: @escaping (Result<UpdateUserResponseDTO, Error>) -> Void) {
         let endpoint = UserEndpoints.updateUserEndpoint(request: request)
-        
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
             
             NetworkHelper.validateResponse(response: response, completion: completion)
             
         }
     }
     
+    func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
+        let endpoint = UserEndpoints.updateAvatarEndpoint()
+        
+        guard let imageData = request.image.jpegData(compressionQuality: 0.1) else { return }
+        
+        AF.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(imageData, withName: "image", fileName: "image.jpg", mimeType: "image/jpeg")
+        }, to: endpoint.url, method: endpoint.method, headers: endpoint.headers, interceptor: nil, fileManager: .default).responseString { response in
+
+            NetworkHelper.validateBoolResponse(response: response, completion: completion)
+            
+        }
+    }
+    
     func getInfluencers(completion: @escaping (Result<GetInfluencersResponseDTO, Error>) -> Void) {
         let endpoint = UserEndpoints.getInfluencersEndpoint()
-        
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
            
             NetworkHelper.validateResponse(response: response, completion: completion)
             
@@ -58,12 +57,7 @@ class UserRepositoryImpl: UserRepository {
     func getNfts(request: GetNftsRequest, completion: @escaping (Result<GetNftsResponseDTO, Error>) -> Void) {
         let endpoint = UserEndpoints.getNftsEndpoint(request: request)
         
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
            
             NetworkHelper.validateResponse(response: response, completion: completion)
             
@@ -73,12 +67,7 @@ class UserRepositoryImpl: UserRepository {
     func getFollowers(request: FollowsRequest, completion: @escaping (Result<GetFollowsResponseDTO, Error>) -> Void) {
         let endpoint = FollowsEndpoints.getFollowersEndpoint(request: request)
         
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
            
             NetworkHelper.validateResponse(response: response, completion: completion)
             
@@ -87,13 +76,8 @@ class UserRepositoryImpl: UserRepository {
     
     func getFollowing(request: FollowsRequest, completion: @escaping (Result<GetFollowsResponseDTO, Error>) -> Void) {
         let endpoint = FollowsEndpoints.getFollowingEndpoint(request: request)
-        
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
            
             NetworkHelper.validateResponse(response: response, completion: completion)
             
@@ -102,13 +86,8 @@ class UserRepositoryImpl: UserRepository {
     
     func follow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
         let endpoint = FollowsEndpoints.followEndpoint(userId: userId)
-                
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
            
             NetworkHelper.validateBoolResponse(response: response, completion: completion)
 
@@ -118,12 +97,7 @@ class UserRepositoryImpl: UserRepository {
     func unfollow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
         let endpoint = FollowsEndpoints.unfollowEndpoint(userId: userId)
         
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
            
             NetworkHelper.validateBoolResponse(response: response, completion: completion)
             
@@ -133,12 +107,7 @@ class UserRepositoryImpl: UserRepository {
     func checkFollow(userId: Int, completion: @escaping (Result<CheckFollowResponseDTO, Error>) -> Void) {
         let endpoint = FollowsEndpoints.checkFollowEndpoint(userId: userId)
         
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
            
             NetworkHelper.validateResponse(response: response, completion: completion)
             

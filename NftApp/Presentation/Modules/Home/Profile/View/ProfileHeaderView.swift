@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileHeaderView: UIView {
     
@@ -13,6 +14,7 @@ class ProfileHeaderView: UIView {
     var navigationController: UINavigationController?
     var shareButtonDidTap: ((_ sender: UIButton) -> Void)?
     var dismissDidTap: (() -> Void)?
+    var userImageDidTap: (() -> Void)?
     
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
@@ -67,7 +69,15 @@ class ProfileHeaderView: UIView {
             guard let userViewModel = $0 else { return }
             
             self.loginLabel.text = userViewModel.login
-            self.loginSubtitleLabel.text = "@\(userViewModel.login)"
+            self.loginSubtitleLabel.text = userViewModel.flowAddress ?? "@\(userViewModel.login)"
+            
+            if let avatarUrl = userViewModel.avatarUrl {
+                if let url = URL(string: avatarUrl) {
+                    if let data = try? Data(contentsOf: url) {
+                        self.userImageView.image = UIImage(data: data)
+                    }
+                }
+            }
         }
         
         viewModel?.followers.bind {
@@ -79,13 +89,21 @@ class ProfileHeaderView: UIView {
         }
         
         viewModel?.typeFollows.bind {
-            if $0 == .following {
-                self.miniTopButton.titleLabel?.text = "follow"
+            if $0 == TypeFollows.none {
+                self.miniTopButton.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
             }
             
-            if $0 == .none {
-                self.miniTopButton.titleLabel?.text = "unfollow"
+            if $0 == TypeFollows.following {
+                self.miniTopButton.setTitle(NSLocalizedString("Unfollow", comment: ""), for: .normal)
             }
+        }
+    }
+    
+    @objc func loginSubtitleDidTap(_ sender: UITapGestureRecognizer) {
+        guard let flowAddress = viewModel?.userViewModel.value?.flowAddress else { return }
+        
+        if let link = URL(string: "https://flowscan.org/account/\(flowAddress)") {
+            UIApplication.shared.open(link)
         }
     }
     
@@ -106,13 +124,18 @@ class ProfileHeaderView: UIView {
         unselectedLabel.textColor = UIColor.gray
     }
     
+    @objc func userImageDidTap(_ sender: UITapGestureRecognizer) {
+        userImageDidTap?()
+    }
+    
     @objc func shareDidTap(_ sender: UIButton) {
         shareButtonDidTap?(sender)
     }
     
     @objc func subscribeDidTap(_ sender: UIButton) {
-        viewModel?.manageSubscribeDidTap(isFollow: true, completion: { result in
-            print(result)
+        miniTopButton.isEnabled = false
+        viewModel?.manageSubscribeDidTap(isFollow: true, completion: { _ in
+            self.miniTopButton.isEnabled = true
         })
     }
     
@@ -134,6 +157,14 @@ class ProfileHeaderView: UIView {
         let followingsTap = UITapGestureRecognizer(target: self, action: #selector(followingContainerDidTap(_:)))
         followingLabel?.isUserInteractionEnabled = true
         followingLabel?.addGestureRecognizer(followingsTap)
+        
+        let loginSubtitleTap = UITapGestureRecognizer(target: self, action: #selector(loginSubtitleDidTap(_:)))
+        loginSubtitleLabel?.isUserInteractionEnabled = true
+        loginSubtitleLabel?.addGestureRecognizer(loginSubtitleTap)
+        
+        let userImageTap = UITapGestureRecognizer(target: self, action: #selector(userImageDidTap(_:)))
+        userImageView?.isUserInteractionEnabled = true
+        userImageView?.addGestureRecognizer(userImageTap)
         
         if let count = navigationController?.viewControllers.count {
             if count < 2 { backButton.isHidden = true }

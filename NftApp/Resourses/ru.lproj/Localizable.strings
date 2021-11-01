@@ -3,6 +3,8 @@
 "Error login or password" = "Неверный логин или пароль";
 "unauthorization" = "Вы не авторизованы";
 "Follow" = "Подписаться";
+"Unfollow" = "Отписаться";
+"Follow back" = "Подписаться ответ";
 "Followers" = "Подписчики";
 "Following" = "Подписки";
 "You get" = "Вы получите";

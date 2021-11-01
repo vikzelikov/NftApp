@@ -15,10 +15,10 @@ class GetInfluencersResponseDTO: Decodable {
     let rows: [InfluencerDTO]
 }
 
-struct InfluencerDTO: Decodable {
+class InfluencerDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
-        case userId
+        case user
     }
     
-    let userId: Int
+    let user: GetUserResponseDTO
 }

@@ -17,15 +17,9 @@ class WalletRepositoryImpl: WalletRepository {
     }
     
     func withdrawFunds(request: WithdrawFundsRequest, completion: @escaping (Result<WithdrawFundsResponseDTO, Error>) -> Void) {
-
         let endpoint = WalletEndpoints.withdrawFundsEndpoint(request: request)
-        
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
             
             NetworkHelper.validateResponse(response: response, completion: completion)
             

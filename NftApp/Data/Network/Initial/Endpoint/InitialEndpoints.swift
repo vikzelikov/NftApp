@@ -12,7 +12,7 @@ struct InitialEndpoints {
     
     static func getInitialEndpoint() -> Endpoint {
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/initial")
+        let url = Constant.BASE_URL + "api/initial"
         
         return Endpoint(url: url, method: .get, headers: headers, data: nil)
     }

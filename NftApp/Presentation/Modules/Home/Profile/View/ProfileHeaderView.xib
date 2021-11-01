@@ -154,7 +154,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-13" minY="5" maxX="0.0" maxY="5"/>
-                            <state key="normal" title="showyouryup.com@login" image="shareHome">
+                            <state key="normal" title="showyouryup.com" image="shareHome">
                                 <color key="titleColor" name="grayLabel"/>
                             </state>
                             <userDefinedRuntimeAttributes>

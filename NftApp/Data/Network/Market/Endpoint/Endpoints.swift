@@ -16,7 +16,7 @@ struct MarketEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "/api")
+        let url = Constant.BASE_URL + "/api"
         
         return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }
@@ -27,14 +27,14 @@ struct MarketEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "/api")
+        let url = Constant.BASE_URL + "/api"
         
         return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }
     
     static func cancelSellNft(nftId: Int) -> Endpoint {
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "/api")
+        let url = Constant.BASE_URL + "/api"
         
         return Endpoint(url: url, method: .post, headers: headers, data: nil)
     }
@@ -45,14 +45,14 @@ struct MarketEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "/api")
+        let url = Constant.BASE_URL + "/api"
         
         return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }
     
     static func buyNft(nftId: Int) -> Endpoint {
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "/api")
+        let url = Constant.BASE_URL + "/api"
         
         return Endpoint(url: url, method: .post, headers: headers, data: nil)
     }

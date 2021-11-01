@@ -85,7 +85,6 @@ extension UIButton {
     }
 }
 
-
 extension UITextField {
     func applyTextFieldStyle() {
         self.backgroundColor = UIColor(named: "gray")
@@ -101,8 +100,6 @@ extension UITextField {
         self.leftViewMode = .always
     }
 }
-
-
 
 extension CALayer {
 

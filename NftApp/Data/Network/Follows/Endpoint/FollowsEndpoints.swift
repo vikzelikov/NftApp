@@ -16,7 +16,7 @@ struct FollowsEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/users/\(request.userId)/followers")
+        let url = Constant.BASE_URL + "api/users/\(request.userId)/followers"
         
         return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
     }
@@ -27,28 +27,31 @@ struct FollowsEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/users/\(request.userId)/following")
+        let url = Constant.BASE_URL + "api/users/\(request.userId)/following"
 
         return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
     }
     
     static func followEndpoint(userId: Int) -> Endpoint {
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/users/\(userId)/follow")
+        let url = Constant.BASE_URL + "api/users/\(userId)/follow"
         
         return Endpoint(url: url, method: .post, headers: headers, data: nil)
     }
     
     static func unfollowEndpoint(userId: Int) -> Endpoint {
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/users/\(userId)/unfollow")
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer " + Constant.AUTH_TOKEN,
+            "Accept": "text/html"
+        ]
+        let url = Constant.BASE_URL + "api/users/\(userId)/unfollow"
         
         return Endpoint(url: url, method: .delete, headers: headers, data: nil)
     }
     
     static func checkFollowEndpoint(userId: Int) -> Endpoint {
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = URL(string: Constant.BASE_URL + "api/users/\(userId)/checkFollow")
+        let url = Constant.BASE_URL + "api/users/\(userId)/checkFollow"
         
         return Endpoint(url: url, method: .get, headers: headers, data: nil)
     }

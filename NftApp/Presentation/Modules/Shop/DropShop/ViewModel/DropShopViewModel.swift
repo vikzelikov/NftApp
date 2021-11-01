@@ -12,11 +12,11 @@ protocol DropShopViewModel : BaseViewModel {
     var items: Observable<[NftViewModel]> { get }
     var influencers: Observable<[UserViewModel]> { get }
     
-    func getEditions()
-
-    func getInfluencers()
+    func viewDidLoad()
     
     func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void)
+    
+    func didSelectInfluencers(at index: Int, completion: @escaping ([UserViewModel]) -> Void)
     
     func didSelectInfluencer(at index: Int, completion: @escaping (UserViewModel) -> Void)
     
@@ -39,8 +39,16 @@ class DropShopViewModelImpl: DropShopViewModel {
         dropShopUseCase = DropShopUseCaseImpl()
         userUseCase = UserUseCaseImpl()
     }
+    
+    func viewDidLoad() {
+        resetViewModel()
+        
+        getEditions()
+        
+        getInfluencers()
+    }
 
-    func getEditions() {
+    private func getEditions() {
         self.isLoading.value = true
         
         let request = GetEditionsRequest()
@@ -59,7 +67,7 @@ class DropShopViewModelImpl: DropShopViewModel {
         })
     }
     
-    func getInfluencers() {
+    private func getInfluencers() {
         self.isLoading.value = true
         
         userUseCase.getInfluencers { result in
@@ -89,12 +97,6 @@ class DropShopViewModelImpl: DropShopViewModel {
         }
     }
     
-    private func resetPages() {
-        currentPage = 1
-        totalPageCount = 1
-        items.value.removeAll()
-    }
-    
     func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void) {
         if items.value.indices.contains(index) {
             let viewModel = items.value[index]
@@ -109,6 +111,17 @@ class DropShopViewModelImpl: DropShopViewModel {
             
             completion(viewModel)
         }
+    }
+    
+    func didSelectInfluencers(at index: Int, completion: @escaping ([UserViewModel]) -> Void) {
+        completion(influencers.value)
+    }
+    
+    private func resetViewModel() {
+        currentPage = 1
+        totalPageCount = 1
+        items.value.removeAll()
+        influencers.value.removeAll()
     }
     
 }

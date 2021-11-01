@@ -13,6 +13,8 @@ protocol UserRepository {
     
     func updateUser(request: User, completion: @escaping (Result<UpdateUserResponseDTO, Error>) -> Void)
     
+    func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void)
+    
     func getInfluencers(completion: @escaping (Result<GetInfluencersResponseDTO, Error>) -> Void)
     
     func getNfts(request: GetNftsRequest, completion: @escaping (Result<GetNftsResponseDTO, Error>) -> Void)

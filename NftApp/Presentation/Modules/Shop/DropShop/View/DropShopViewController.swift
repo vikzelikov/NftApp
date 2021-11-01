@@ -15,6 +15,7 @@ class DropShopViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
+    let refreshControl = UIRefreshControl()
     var collectionView: UICollectionView?
     var storedOffsets = [Int: CGFloat]()
     
@@ -22,6 +23,7 @@ class DropShopViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel = DropShopViewModelImpl()
+        viewModel?.viewDidLoad()
         bindData()
         
         tableView.delegate = self
@@ -31,10 +33,6 @@ class DropShopViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.getEditions()
-        
-        viewModel?.getInfluencers()
-        
         viewModel?.items.bind {
             [weak self] _ in self?.reload()
         
@@ -81,6 +79,18 @@ class DropShopViewController: UIViewController {
         tableView.register(UINib(nibName: NftViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftViewCell.cellIdentifier)
         tableView.register(UINib(nibName: InfluencersCollectionView.cellIdentifier, bundle: nil), forCellReuseIdentifier: InfluencersCollectionView.cellIdentifier)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
+        
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        tableView.refreshControl = refreshControl
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        viewModel?.viewDidLoad()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.refreshControl.endRefreshing()
+        }
     }
     
     func reload() {
@@ -148,6 +158,7 @@ extension DropShopViewController: UITableViewDataSource {
             HapticHelper.vibro(.light)
             
             if let vm = viewModel?.items.value[indexPath.row - 1] {
+                cell.typeDetailNFT = .dropShop
                 cell.bind(viewModel: vm)
             }
             
@@ -173,7 +184,7 @@ extension DropShopViewController: UITableViewDataSource {
 extension DropShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = viewModel?.influencers.value.count {
-            return count
+            return count + 1
         } else {
             return 0
         }
@@ -181,21 +192,35 @@ extension DropShopViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfluencerCollectionViewCell.cellIdentifier, for: indexPath) as? InfluencerCollectionViewCell else { return UICollectionViewCell() }
-
-        if let vm = viewModel?.influencers.value[indexPath.row] {
-            cell.bind(name: "\(vm.id)")
+        
+        if indexPath.row == 0 {
+            cell.isAll = true
+            cell.bind(viewModel: nil)
+        } else {
+            if let vm = viewModel?.influencers.value[indexPath.row - 1] {
+                cell.bind(viewModel: vm)
+            }
         }
-
+        
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.didSelectInfluencer(at: indexPath.row) { userViewModel in
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
-            vc.viewModel = HomeViewModelImpl()
-            vc.viewModel?.userViewModel.value = userViewModel
-            self.navigationController?.pushViewController(vc, animated: true)
+        if indexPath.row == 0 {
+            viewModel?.didSelectInfluencers(at: indexPath.row) { influencers in
+                let vc = InfluencersViewController()
+                vc.viewModel = InfluencersViewModelImpl()
+                vc.viewModel?.items.value = influencers
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        } else {
+            viewModel?.didSelectInfluencer(at: indexPath.row - 1) { userViewModel in
+                let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+                vc.viewModel = HomeViewModelImpl()
+                vc.viewModel?.userViewModel.value = userViewModel
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
         
         HapticHelper.vibro(.light)

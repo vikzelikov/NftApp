@@ -27,11 +27,20 @@ final class NftUseCaseImpl: NftUseCase {
         repository?.getNfts(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    print("success!!!!!! \(resp)")
+                    let nfts = resp.rows.map {
+                        Nft(id: $0.id,
+                            lastPrice: $0.lastPrice,
+                            currentPrice: $0.currentPrice,
+                            serialNumber: $0.serialNumber,
+                            isForSell: $0.isForSell,
+                            edition: NftEdition(id: $0.id, influencerId: $0.edition.influencerId, count: $0.edition.count, name: $0.edition.name, description: $0.edition.description, date: 0, price: $0.edition.price, dateExpiration: Double($0.edition.dateExpiration) ?? 0.0, mediaUrl: $0.edition.mediaUrl)
+                        )
+                    }
+
+                    completion(.success(nfts))
                 }
                 
                 case .failure(let error) : do {
-                    print("!!!!success ")
                     completion(.failure(error))
                 }
             }

@@ -11,6 +11,8 @@ struct User: Equatable, Identifiable {
     var id: Int
     var login: String
     var email: String
+    var flowAddress: String?
+    var avatarUrl: String?
 //    let password: String?
 //    let isMale: Bool?
 //    let birthDate: TimeInterval?

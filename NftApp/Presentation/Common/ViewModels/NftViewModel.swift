@@ -18,9 +18,9 @@ struct NftViewModel {
 extension NftViewModel {
     init(nft: Nft) {
         self.id = nft.id
-        self.price = nft.price
+        self.price = nft.lastPrice
         self.serialNumber = nft.serialNumber
-        self.isForCell = nft.isForCell
+        self.isForCell = nft.isForSell
         self.edition = EditionViewModel.init(edition: nft.edition)
     }
 }

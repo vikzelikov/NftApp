@@ -13,6 +13,8 @@ protocol UserUseCase {
     
     func updateUser(request: User, completion: @escaping (Result<Bool, Error>) -> Void)
     
+    func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void)
+    
     func getInfluencers(completion: @escaping (Result<[User], Error>) -> Void)
     
 }
@@ -34,7 +36,9 @@ final class UserUseCaseImpl: UserUseCase {
                     let user = User(
                         id: resp.id,
                         login: resp.login,
-                        email: resp.email
+                        email: resp.email,
+                        flowAddress: resp.flowAddress,
+                        avatarUrl: resp.avatarUrl
                     )
                     
                     completion(.success(user))
@@ -61,11 +65,15 @@ final class UserUseCaseImpl: UserUseCase {
         })
     }
     
+    func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
+        repository?.updateAvatar(request: request, completion: completion)
+    }
+    
     func getInfluencers(completion: @escaping (Result<[User], Error>) -> Void) {
         repository?.getInfluencers { result in
             switch result {
                 case .success(let resp) : do {
-                    let users = resp.rows.map{User(id: $0.userId, login: "", email: "")}
+                    let users = resp.rows.map{User(id: $0.user.id, login: $0.user.login, email: $0.user.email)}
                     
                     completion(.success(users))
                 }

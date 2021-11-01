@@ -11,15 +11,9 @@ import Alamofire
 class DropShopRepositoryImpl: DropShopRepository {
     
     func getEditions(request: GetEditionsRequest, completion: @escaping (Result<GetEditionsResponseDTO, Error>) -> Void) {
-
         let endpoint = DropShopEndpoints.getEditionsEndpoint(request: request)
         
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
-        
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
             
             NetworkHelper.validateResponse(response: response, completion: completion)
             
@@ -27,15 +21,9 @@ class DropShopRepositoryImpl: DropShopRepository {
     }
     
     func buyNft(editionId: Int, completion: @escaping (Result<BuyNftResponseDTO, Error>) -> Void) {
-
         let endpoint = DropShopEndpoints.buyNftEndpoint(editionId: editionId)
-                
-        guard let url = endpoint.url else {
-            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil)))
-            return
-        }
         
-        AF.request(url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
 
             NetworkHelper.validateResponse(response: response, completion: completion)
             

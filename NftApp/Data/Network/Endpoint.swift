@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 struct Endpoint {
-    let url: URL?
+    let url: String
     let method: HTTPMethod
     let headers: HTTPHeaders
     let data: [String : Any]?

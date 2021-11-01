@@ -13,10 +13,12 @@ class GetUserResponseDTO: Decodable {
         case login
         case email
         case avatarUrl
+        case flowAddress
     }
     
     let id: Int
     let login: String
     let email: String
     let avatarUrl: String?
+    let flowAddress: String?
 }
