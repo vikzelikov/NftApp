@@ -48,7 +48,7 @@ struct UserEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = Constant.BASE_URL + "api/users/\(Constant.USER_ID)/nfts"
+        let url = Constant.BASE_URL + "api/users/\(request.userId)/nfts"
         
         return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
     }
