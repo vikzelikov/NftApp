@@ -15,7 +15,7 @@ class NftViewCell: UITableViewCell {
     var removeItem: (() -> Void)?
 
     private var timer: Timer?
-    private var deltaTime: Int = 0
+    private var expirationTime: Int = 0
     private var expiryTimeInterval: Int? {
         didSet {
             startTimer()
@@ -72,7 +72,7 @@ class NftViewCell: UITableViewCell {
     
     private func startTimer() {
         if let interval = expiryTimeInterval {
-            deltaTime = interval
+            expirationTime = interval
             
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onComplete), userInfo: nil, repeats: true)
             
@@ -82,16 +82,16 @@ class NftViewCell: UITableViewCell {
     }
 
     @objc func onComplete() {
-        guard deltaTime >= 1 else {
+        guard expirationTime >= 1 else {
             removeItem?()
             timer?.invalidate()
             timer = nil
             return
         }
         
-        deltaTime -= 1
+        expirationTime -= 1
         
-        setTime(deltaTime: deltaTime)
+        setTime(deltaTime: expirationTime)
     }
     
     func setTime(deltaTime: Int) {

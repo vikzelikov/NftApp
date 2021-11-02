@@ -19,7 +19,7 @@ protocol HomeViewModel: BaseViewModel {
             
     func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void)
     
-    func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void)
+    func manageSubscribeDidTap(completion: @escaping (Bool) -> Void)
     
     func userImageDidTap(completion: @escaping (Bool) -> Void)
     
@@ -155,7 +155,7 @@ class HomeViewModelImpl: HomeViewModel {
         userUseCase.updateAvatar(request: request, completion: completion)
     }
     
-    func manageSubscribeDidTap(isFollow: Bool, completion: @escaping (Bool) -> Void) {
+    func manageSubscribeDidTap(completion: @escaping (Bool) -> Void) {
         guard let userId = userViewModel.value?.id else { return }
 
         if typeFollows.value == TypeFollows.none || typeFollows.value == TypeFollows.followers {

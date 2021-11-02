@@ -55,13 +55,11 @@ class HomeViewController: UIViewController {
         tableView.register(UINib(nibName: NftViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftViewCell.cellIdentifier)
         tableView.contentInset = UIEdgeInsets(top: 431, left: 0, bottom: 0, right: 0)
         
-        if let userId = viewModel?.userViewModel.value?.id {
-            if userId != Constant.USER_ID {
-                refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-                tableView.addSubview(refreshControl)
-                tableView.refreshControl = refreshControl
-                tableView.refreshControl?.bounds.origin.y = 431
-            }
+        if !self.isModal {
+            refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+            tableView.addSubview(refreshControl)
+            tableView.refreshControl = refreshControl
+            tableView.refreshControl?.bounds.origin.y = 431
         }
     }
     

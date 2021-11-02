@@ -133,7 +133,7 @@ class ProfileHeaderView: UIView {
     
     @objc func subscribeDidTap(_ sender: UIButton) {
         miniTopButton.isEnabled = false
-        viewModel?.manageSubscribeDidTap(isFollow: true, completion: { _ in
+        viewModel?.manageSubscribeDidTap(completion: { _ in
             self.miniTopButton.isEnabled = true
         })
     }

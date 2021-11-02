@@ -55,7 +55,7 @@ final class DropShopUseCaseImpl: DropShopUseCase {
         repository?.buyNft(editionId: editionId, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    print("success \(resp)")
+                    completion(.success(true))
                 }
                 
                 case .failure(let error) : do {

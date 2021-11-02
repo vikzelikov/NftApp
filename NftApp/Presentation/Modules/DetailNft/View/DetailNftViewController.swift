@@ -39,9 +39,10 @@ class DetailNftViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupStyle()
-        
+        viewModel?.viewDidLoad()
         bindData()
+        
+        setupStyle()
         
         let tapAction = UITapGestureRecognizer(target: self, action: #selector(descriptionDidTap(_:)))
         descriptionLabel?.isUserInteractionEnabled = true
@@ -49,15 +50,15 @@ class DetailNftViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.isLoading.bind { [weak self] in
-            guard let price = self?.viewModel?.nftViewModel.value?.edition.price else { return }
-            
-            if $0 {
-                self?.buyButton.loadingIndicator(isShow: true, titleButton: nil)
-            } else {
-                self?.buyButton.loadingIndicator(isShow: false, titleButton: "\(price)")
-            }
-        }
+//        viewModel?.isLoading.bind { [weak self] in
+//            guard let price = self?.viewModel?.nftViewModel.value?.edition.price else { return }
+//            
+//            if $0 {
+//                self?.buyButton.loadingIndicator(isShow: true, titleButton: nil)
+//            } else {
+//                self?.buyButton.loadingIndicator(isShow: false, titleButton: "\(price)")
+//            }
+//        }
         
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
@@ -73,16 +74,22 @@ class DetailNftViewController: UIViewController {
             self.descriptionLabel?.text = nftViewModel.edition.description
             self.nftImageView.sd_setImage(with: URL(string: nftViewModel.edition.mediaUrl)!)
             self.leftCountLabel.text = "x\(nftViewModel.edition.count - nftViewModel.edition.countNFTs) " + NSLocalizedString("left", comment: "")
-            
-            if let dateExpiration = TimeInterval($0?.edition.dateExpiration ?? "0") {
-                let timeInterval = NSDate().timeIntervalSince1970
-                let exp = dateExpiration / 1000
-                
-                let del = Int((exp - timeInterval))
-                self.expiryTimeInterval = del
-
-                self.setTime(deltaTime: del)
+        }
+        
+        viewModel?.expirationTime.bind {
+            guard $0 >= 1 else {
+                self.dismiss(animated: true, completion: nil)
+                return
             }
+            
+            let (d, h, m, s) = self.secondsToHoursMinutesSeconds(seconds: Int($0))
+            var timeStr = NSLocalizedString("Expiration in", comment: "") + " \(d)d \(h)h \(m)m \(s)s"
+            
+            if d == 0 {
+                timeStr = NSLocalizedString("Expiration in", comment: "") + " \(h)h \(m)m \(s)s"
+            }
+            
+            self.expirationLabel.text = timeStr
         }
     }
     
@@ -132,54 +139,16 @@ class DetailNftViewController: UIViewController {
     func getUrl(stringUrl: String) -> URL? {
         return URL(string: stringUrl)
     }
-    private var timer: Timer?
-    private var deltaTime: Int = 0
-    private var expiryTimeInterval: Int? {
-        didSet {
-            startTimer()
-        }
-    }
-    func startTimer() {
-        if let interval = expiryTimeInterval {
-            deltaTime = interval
-            
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onComplete), userInfo: nil, repeats: true)
-            
-            guard let t = timer else { return }
-            RunLoop.current.add(t, forMode: RunLoop.Mode.common)
-        }
-    }
 
-    @objc func onComplete() {
-        guard deltaTime >= 1 else {
-            dismiss(animated: true, completion: nil)
-            timer?.invalidate()
-            timer = nil
-            return
-        }
-        
-        deltaTime -= 1
-        
-        setTime(deltaTime: deltaTime)
-    }
-    
-    func setTime(deltaTime: Int) {
-        let (d, h, m, s) = secondsToHoursMinutesSeconds(seconds: Int(deltaTime))
-        var timeStr = NSLocalizedString("Expiration in", comment: "") + " \(d)d \(h)h \(m)m \(s)s"
-        
-        if d == 0 {
-            timeStr = NSLocalizedString("Expiration in", comment: "") + " \(h)h \(m)m \(s)s"
-        }
-        
-        expirationLabel.text = timeStr
-    }
-    
-    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int, Int) {
-        return (seconds / 86400, (seconds % 86400) / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
-    }
     
     @IBAction func buyNftDidTap(_ sender: Any) {
-        viewModel?.buyNftDidTap()
+        guard let price = viewModel?.nftViewModel.value?.edition.price else { return }
+        
+        buyButton.loadingIndicator(isShow: true, titleButton: nil)
+   
+        viewModel?.buyNftDidTap(completion: { _ in
+            self.buyButton.loadingIndicator(isShow: false, titleButton: "\(price)")
+        })
     }
     
     @objc func ownerLoginDidTap(_ sender: UITapGestureRecognizer) {
@@ -222,11 +191,8 @@ class DetailNftViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        timer?.invalidate()
-        timer = nil
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int, Int) {
+        return (seconds / 86400, (seconds % 86400) / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
 }
