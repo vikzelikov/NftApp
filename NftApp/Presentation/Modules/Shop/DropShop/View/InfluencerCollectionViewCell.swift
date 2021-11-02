@@ -38,7 +38,7 @@ class InfluencerCollectionViewCell: UICollectionViewCell {
             userImageView.sd_setImage(with: url)
         } else {
             userImageView.contentMode = .scaleAspectFit
-            userImageView.image = UIImage(named: "launch_icon")
+            userImageView.image = UIImage(named: "mini_icon")
         }
     }
     

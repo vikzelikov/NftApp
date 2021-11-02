@@ -11,6 +11,7 @@ class TransactionViewCell: UITableViewCell {
 
     static let cellIdentifier = String(describing: TransactionViewCell.self)
 
+    @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

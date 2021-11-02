@@ -33,12 +33,14 @@ class DropShopViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.items.bind {
-            [weak self] _ in self?.reload()
-        
+        viewModel?.items.bind {  [weak self] _ in        
             self?.checkoutLoading(isShow: false)
             self?.tableView.isHidden = false
             self?.errorLabel.isHidden = true
+        }
+        
+        viewModel?.reloadItems = { [weak self] in
+            self?.reload()
         }
         
         viewModel?.influencers.bind {
@@ -114,7 +116,7 @@ extension DropShopViewController: UITableViewDelegate {
             vc.viewModel?.typeDetailNFT = .dropShop
             self.present(vc, animated: true, completion: nil)
         }
-        
+
         HapticHelper.vibro(.light)
     }
     
@@ -157,9 +159,19 @@ extension DropShopViewController: UITableViewDataSource {
             cell.selectionStyle = .none
             HapticHelper.vibro(.light)
             
-            if let vm = viewModel?.items.value[indexPath.row - 1] {
-                cell.typeDetailNFT = .dropShop
-                cell.bindEdition(viewModel: vm)
+            if let items = viewModel?.items.value {
+                if items.indices.contains(indexPath.row - 1) {
+                    if let vm = viewModel?.items.value[indexPath.row - 1] {
+                        cell.typeDetailNFT = .dropShop
+                        cell.bindEdition(viewModel: vm)
+                    }
+                }
+            }
+            
+            cell.removeItem = { [weak self] in
+                self?.viewModel?.items.value.remove(at: indexPath.row - 1)
+                let indexPath = IndexPath(item: indexPath.row, section: 0)
+                self?.tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
             return cell

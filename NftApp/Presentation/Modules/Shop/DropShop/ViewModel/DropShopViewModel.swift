@@ -11,7 +11,8 @@ protocol DropShopViewModel : BaseViewModel {
     
     var items: Observable<[EditionViewModel]> { get }
     var influencers: Observable<[UserViewModel]> { get }
-    
+    var reloadItems: (() -> Void)? { get set }
+
     func viewDidLoad()
     
     func didSelectItem(at index: Int, completion: @escaping (EditionViewModel) -> Void)
@@ -32,6 +33,7 @@ class DropShopViewModelImpl: DropShopViewModel {
     private var totalPageCount: Int = 1
     var items: Observable<[EditionViewModel]> = Observable([])
     var influencers: Observable<[UserViewModel]> = Observable([])
+    var reloadItems: (() -> Void)?
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
@@ -91,6 +93,8 @@ class DropShopViewModelImpl: DropShopViewModel {
         let editions = editions.map(EditionViewModel.init)
         
         items.value += editions
+        
+        self.reloadItems?()
         
         if items.value.isEmpty {
             self.errorMessage.value = NSLocalizedString("Drop Shop is empty", comment: "")

@@ -50,8 +50,8 @@ class HomeViewModelImpl: HomeViewModel {
         nftUserCase = NftUseCaseImpl()
         
         // set main user by default 
-        if let user = UserObject.user.value {
-            userViewModel.value = user
+        UserObject.user.bind {
+            self.userViewModel.value = $0
         }
     }
     

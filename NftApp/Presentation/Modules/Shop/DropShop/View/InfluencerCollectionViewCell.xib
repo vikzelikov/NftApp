@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N50-f2-4x3">
                         <rect key="frame" x="7" y="10" width="100" height="100"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava" translatesAutoresizingMaskIntoConstraints="NO" id="NVA-nm-Ej1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mini_icon" translatesAutoresizingMaskIntoConstraints="NO" id="NVA-nm-Ej1">
                                 <rect key="frame" x="10" y="10" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="DgO-44-aJ0"/>
@@ -69,7 +69,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ava" width="800" height="800"/>
+        <image name="mini_icon" width="208" height="117.5"/>
         <namedColor name="default">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
