@@ -46,7 +46,7 @@ class NftViewCell: UITableViewCell {
     
     func bindNft(viewModel: NftViewModel) {
         titleNftLabel?.text = viewModel.edition.name
-        priceLabel?.text = String(viewModel.edition.price)
+        priceLabel?.text = String(Int(viewModel.lastPrice))
         nftImage.sd_setImage(with: URL(string: viewModel.edition.mediaUrl)!)
         
         if typeDetailNFT == .detail {
@@ -56,7 +56,7 @@ class NftViewCell: UITableViewCell {
     
     func bindEdition(viewModel: EditionViewModel) {
         titleNftLabel?.text = viewModel.name
-        priceLabel?.text = String(viewModel.price)
+        priceLabel?.text = String(Int(viewModel.price))
         nftImage.sd_setImage(with: URL(string: viewModel.mediaUrl)!)
 
         if let dateExpiration = TimeInterval(viewModel.dateExpiration) {

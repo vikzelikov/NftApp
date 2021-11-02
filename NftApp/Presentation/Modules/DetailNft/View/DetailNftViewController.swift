@@ -27,7 +27,7 @@ class DetailNftViewController: UIViewController {
     @IBOutlet weak var leftCountLabel: UILabel!
     @IBOutlet weak var moreInfoNftLabel: UIStackView!
     @IBOutlet weak var moreOffersButton: UIButton!
-    @IBOutlet weak var expirationDateLabel: UILabel!
+    @IBOutlet weak var expirationLabel: UILabel!
     @IBOutlet weak var ownerLoginContainer: UIStackView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var dismissButton: UIButton!
@@ -68,11 +68,21 @@ class DetailNftViewController: UIViewController {
         
         viewModel?.nftViewModel.bind {
             guard let nftViewModel = $0 else { return }
-            self.buyButton?.setTitle("\(nftViewModel.edition.price)", for: .normal)
+            self.buyButton?.setTitle("\(Int(nftViewModel.edition.price))", for: .normal)
             self.titleLabel?.text = nftViewModel.edition.name
             self.descriptionLabel?.text = nftViewModel.edition.description
             self.nftImageView.sd_setImage(with: URL(string: nftViewModel.edition.mediaUrl)!)
-            self.leftCountLabel.text = "x\(nftViewModel.edition.count) " + NSLocalizedString("left", comment: "")
+            self.leftCountLabel.text = "x\(nftViewModel.edition.count - nftViewModel.edition.countNFTs) " + NSLocalizedString("left", comment: "")
+            
+            if let dateExpiration = TimeInterval($0?.edition.dateExpiration ?? "0") {
+                let timeInterval = NSDate().timeIntervalSince1970
+                let exp = dateExpiration / 1000
+                
+                let del = Int((exp - timeInterval))
+                self.expiryTimeInterval = del
+
+                self.setTime(deltaTime: del)
+            }
         }
     }
     
@@ -94,7 +104,7 @@ class DetailNftViewController: UIViewController {
                 leftCountTagView.isHidden = true
                 moreOffersButton.isHidden = true
                 originalTagView.isHidden = true
-                expirationDateLabel.isHidden = true
+                expirationLabel.isHidden = true
                 moreInfoNftLabel.isHidden = false
                 buyButton.isHidden = true
                 priceView.isHidden = false
@@ -107,13 +117,13 @@ class DetailNftViewController: UIViewController {
             case .dropShop:
                 buyButton.isHidden = false
                 moreInfoNftLabel.isHidden = true
-                expirationDateLabel.isHidden = false
-                ownerLoginContainer.isHidden = true
+                expirationLabel.isHidden = false
+                ownerLoginContainer.isHidden = false
             
             case .market:
                 buyButton.isHidden = false
                 moreInfoNftLabel.isHidden = false
-                expirationDateLabel.isHidden = true
+                expirationLabel.isHidden = true
                 originalTagView.isHidden = true
                 leftCountTagView.isHidden = true
         }
@@ -121,6 +131,51 @@ class DetailNftViewController: UIViewController {
     
     func getUrl(stringUrl: String) -> URL? {
         return URL(string: stringUrl)
+    }
+    private var timer: Timer?
+    private var deltaTime: Int = 0
+    private var expiryTimeInterval: Int? {
+        didSet {
+            startTimer()
+        }
+    }
+    func startTimer() {
+        if let interval = expiryTimeInterval {
+            deltaTime = interval
+            
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onComplete), userInfo: nil, repeats: true)
+            
+            guard let t = timer else { return }
+            RunLoop.current.add(t, forMode: RunLoop.Mode.common)
+        }
+    }
+
+    @objc func onComplete() {
+        guard deltaTime >= 1 else {
+            dismiss(animated: true, completion: nil)
+            timer?.invalidate()
+            timer = nil
+            return
+        }
+        
+        deltaTime -= 1
+        
+        setTime(deltaTime: deltaTime)
+    }
+    
+    func setTime(deltaTime: Int) {
+        let (d, h, m, s) = secondsToHoursMinutesSeconds(seconds: Int(deltaTime))
+        var timeStr = NSLocalizedString("Expiration in", comment: "") + " \(d)d \(h)h \(m)m \(s)s"
+        
+        if d == 0 {
+            timeStr = NSLocalizedString("Expiration in", comment: "") + " \(h)h \(m)m \(s)s"
+        }
+        
+        expirationLabel.text = timeStr
+    }
+    
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int, Int) {
+        return (seconds / 86400, (seconds % 86400) / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
     @IBAction func buyNftDidTap(_ sender: Any) {
@@ -166,5 +221,13 @@ class DetailNftViewController: UIViewController {
     @IBAction func backButtonDidTap(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        timer?.invalidate()
+        timer = nil
+    }
+    
 }
 

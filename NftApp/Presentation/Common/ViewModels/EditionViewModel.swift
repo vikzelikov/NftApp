@@ -16,6 +16,7 @@ struct EditionViewModel {
     var price: Double
     var dateExpiration: String
     var mediaUrl: String
+    var countNFTs: Int
 }
 
 extension EditionViewModel {
@@ -28,5 +29,6 @@ extension EditionViewModel {
         self.price = edition.price
         self.dateExpiration = edition.dateExpiration
         self.mediaUrl = edition.mediaUrl
+        self.countNFTs = edition.countNFTs
     }
 }

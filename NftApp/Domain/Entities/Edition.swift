@@ -16,4 +16,5 @@ struct Edition: Equatable {
     let price: Double
     let dateExpiration: String
     let mediaUrl: String
+    let countNFTs: Int
 }

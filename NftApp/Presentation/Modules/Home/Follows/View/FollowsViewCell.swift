@@ -32,7 +32,7 @@ class FollowsViewCell: UITableViewCell {
             userImageView.contentMode = .scaleAspectFill
             userImageView.sd_setImage(with: url)
         } else {
-            userImageView.image = UIImage(named: "launch_icon")
+            userImageView.image = UIImage(named: "mini_icon")
         }
     }
     

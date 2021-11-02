@@ -12,6 +12,7 @@ class EditionDTO: Decodable {
         case id
         case influencerId
         case count
+        case countNFTs
         case name
         case description
         case price
@@ -22,6 +23,7 @@ class EditionDTO: Decodable {
     let id: Int
     let influencerId: Int
     let count: Int
+    let countNFTs: String?
     let name: String
     let description: String
     let price: Double

@@ -36,7 +36,8 @@ final class DropShopUseCaseImpl: DropShopUseCase {
                                 description: $0.description,
                                 price: $0.price,
                                 dateExpiration: $0.dateExpiration,
-                                mediaUrl: $0.mediaUrl)
+                                mediaUrl: $0.mediaUrl,
+                                countNFTs: Int($0.countNFTs ?? "0") ?? 0)
                     }
                     
                     completion(.success(editions))

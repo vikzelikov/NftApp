@@ -14,6 +14,7 @@ class ProfileHeaderView: UIView {
     var shareButtonDidTap: ((_ sender: UIButton) -> Void)?
     var dismissDidTap: (() -> Void)?
     var userImageDidTap: (() -> Void)?
+    var isModal = false
     
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
@@ -166,7 +167,11 @@ class ProfileHeaderView: UIView {
         
         if let count = navigationController?.viewControllers.count {
             if count < 2 { backButton.isHidden = true }
+        } else {
+            backButton.isHidden = true
         }
+        
+        if isModal { closeButton.isHidden = false }
         
         guard let userId = viewModel?.userViewModel.value?.id else { return }
         

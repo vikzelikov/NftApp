@@ -49,21 +49,8 @@ class DetailNftViewModelImpl: DetailNftViewModel {
                 print("ok!")
                 
             case .failure(let error):
-                self.isLoading.value = false
-
-                if let error = error as? ErrorMessage, let code = error.code {
-                    switch code {
-                    case let c where c >= HttpCode.internalServerError:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    case HttpCode.badRequest:
-                        let message = error.errorDTO?.message
-                        self.errorMessage.value = message
-                    default:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    }
-                } else {
-                    self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                }
+                let (_, errorStr) = ErrorHelper.validateError(error: error)
+                self.errorMessage.value = errorStr
             }
             
             self.isLoading.value = false

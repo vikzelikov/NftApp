@@ -16,7 +16,7 @@
                 <outlet property="buyButton" destination="sz4-bn-BkF" id="Gm9-VL-l8C"/>
                 <outlet property="descriptionLabel" destination="GEm-zv-R5L" id="9aM-zo-ppm"/>
                 <outlet property="dismissButton" destination="Rnw-hD-MHF" id="Agg-KW-fpy"/>
-                <outlet property="expirationDateLabel" destination="16O-a3-4vf" id="OrG-32-bdJ"/>
+                <outlet property="expirationLabel" destination="16O-a3-4vf" id="OrG-32-bdJ"/>
                 <outlet property="leftCountLabel" destination="7c9-1P-TnS" id="QrC-Lb-e4Z"/>
                 <outlet property="leftCountTagView" destination="9Eh-dk-pA9" id="jrY-Nd-Ovc"/>
                 <outlet property="leftTagConstraint" destination="7Ok-pM-z9h" id="mNX-8G-GL9"/>
@@ -212,24 +212,24 @@
                         <constraint firstAttribute="height" constant="20" id="gp7-u5-uMZ"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiration in 3 days" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16O-a3-4vf">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiration in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16O-a3-4vf">
                     <rect key="frame" x="15" y="529" width="290" height="19"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FZU-TJ-UkS">
-                    <rect key="frame" x="113.5" y="421" width="93.5" height="20"/>
+                    <rect key="frame" x="132.5" y="421" width="55.5" height="20"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava" translatesAutoresizingMaskIntoConstraints="NO" id="V45-hx-1R4">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mini_icon" translatesAutoresizingMaskIntoConstraints="NO" id="V45-hx-1R4">
                             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="5PE-31-my6"/>
                                 <constraint firstAttribute="width" constant="20" id="JIp-ry-M4M"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="owner login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-fa-4DL">
-                            <rect key="frame" x="28" y="0.0" width="65.5" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-fa-4DL">
+                            <rect key="frame" x="28" y="0.0" width="27.5" height="20"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -242,8 +242,8 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KHo-b6-eUr">
                             <rect key="frame" x="100.5" y="12.5" width="89" height="35"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erp-tC-86d">
-                                    <rect key="frame" x="30.5" y="0.0" width="28.5" height="20.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erp-tC-86d">
+                                    <rect key="frame" x="39.5" y="0.0" width="10.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -325,9 +325,9 @@
         </view>
     </objects>
     <resources>
-        <image name="ava" width="800" height="800"/>
         <image name="cross" width="25" height="25"/>
         <image name="left_arrow" width="25" height="25"/>
+        <image name="mini_icon" width="208" height="117.5"/>
         <namedColor name="gray">
             <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
