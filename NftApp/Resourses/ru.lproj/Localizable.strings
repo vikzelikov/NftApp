@@ -11,7 +11,7 @@
 "Drop Shop is empty" = "Нет NFTs для продажи";
 "Collection is empty" = "В коллекции ничего нет";
 "Empty" = "Тут еще ничего нет";
-"left" = "ОСТАЛОСЬ";
+"left" = "";
 "All" = "Все";
 "Expiration in" = "Истекает через";
 "Buy tokens" = "Покупка токенов";
@@ -20,3 +20,10 @@
 "Market" = "Биржа";
 "RUB" = "RUB";
 "History transactions" = "История транзакций";
+"Yes" = "Да";
+"No" = "Нет";
+"Cancel" = "Отмена";
+"Warning" = "Внимание";
+"Do you want to logout?" = "Вы действительно хотите выйти?";
+"Support" = "Поддержка";
+"Logout" = "Выйти";

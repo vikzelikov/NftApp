@@ -61,6 +61,8 @@
 		1834E7582732DA310081EFB1 /* GetTransactionsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E7572732DA310081EFB1 /* GetTransactionsResponseDTO.swift */; };
 		1834E75A2732DAF50081EFB1 /* TransactionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E7592732DAF50081EFB1 /* TransactionDTO.swift */; };
 		1834E75C2733014A0081EFB1 /* DetailTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E75B2733014A0081EFB1 /* DetailTransactionViewModel.swift */; };
+		1834E761273332490081EFB1 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E75F273332490081EFB1 /* PasswordViewController.swift */; };
+		1834E762273332490081EFB1 /* PasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834E760273332490081EFB1 /* PasswordViewController.xib */; };
 		18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F88269CE7DB00611362 /* TabBarViewController.swift */; };
 		18523F90269CEAA000611362 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F8F269CEAA000611362 /* ShopViewController.swift */; };
 		18523F92269CEB4E00611362 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F91269CEB4E00611362 /* Shop.storyboard */; };
@@ -239,6 +241,8 @@
 		1834E7572732DA310081EFB1 /* GetTransactionsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransactionsResponseDTO.swift; sourceTree = "<group>"; };
 		1834E7592732DAF50081EFB1 /* TransactionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDTO.swift; sourceTree = "<group>"; };
 		1834E75B2733014A0081EFB1 /* DetailTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransactionViewModel.swift; sourceTree = "<group>"; };
+		1834E75F273332490081EFB1 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		1834E760273332490081EFB1 /* PasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordViewController.xib; sourceTree = "<group>"; };
 		18523F88269CE7DB00611362 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		18523F8F269CEAA000611362 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		18523F91269CEB4E00611362 /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
@@ -398,6 +402,8 @@
 			children = (
 				18156D3C26A43250006B8FE5 /* SettingsViewController.swift */,
 				18156D3A26A43240006B8FE5 /* Settings.storyboard */,
+				1834E75F273332490081EFB1 /* PasswordViewController.swift */,
+				1834E760273332490081EFB1 /* PasswordViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1522,6 +1528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				182342E526A2370900CD2907 /* MoreOffersViewController.xib in Resources */,
+				1834E762273332490081EFB1 /* PasswordViewController.xib in Resources */,
 				18523F94269CED1100611362 /* TabBar.storyboard in Resources */,
 				18B84272266E27A50033AFC0 /* LaunchScreen.storyboard in Resources */,
 				186E600A26B6DFCA008291AC /* HistoryTransactionsViewController.xib in Resources */,
@@ -1650,6 +1657,7 @@
 				186E601C26B6F178008291AC /* TransactionViewModel.swift in Sources */,
 				1879C56E26C9C9DF00CE367E /* LoginUseCase.swift in Sources */,
 				1879C56C26C9C90D00CE367E /* NetworkHelper.swift in Sources */,
+				1834E761273332490081EFB1 /* PasswordViewController.swift in Sources */,
 				18E37759272F00C700A2795B /* InfluencerViewCell.swift in Sources */,
 				182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */,
 				18523F90269CEAA000611362 /* ShopViewController.swift in Sources */,

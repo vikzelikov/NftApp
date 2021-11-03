@@ -17,6 +17,8 @@ protocol UserUseCase {
     
     func getInfluencers(completion: @escaping (Result<[User], Error>) -> Void)
     
+    func clearUserStorage()
+    
 }
 
 final class UserUseCaseImpl: UserUseCase {
@@ -84,6 +86,10 @@ final class UserUseCaseImpl: UserUseCase {
                 }
             }
         }
+    }
+    
+    func clearUserStorage() {
+        userStorage?.clearUserStorage()
     }
     
 }

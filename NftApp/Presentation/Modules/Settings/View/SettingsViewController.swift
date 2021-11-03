@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import MessageUI
 
 class SettingsViewController: UIViewController {
 
+    var viewModel: SettingsViewModel? = nil
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var walletButton: UIButton!
@@ -24,26 +26,11 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.scrollView.delaysContentTouches = false
-        
-        walletButton.applyButtonEffects()
-
-        setupPersonalDataTableView()
-        
-        setupOtherSettingsTableView()
-        
+        viewModel = SettingsViewModelImpl()
+        viewModel?.viewDidLoad()
         bindData()
         
-        items.append(SettingCellViewModel(title: "E-mail", contentLabel: "email@example.ru", iconContentView: nil))
-        items.append(SettingCellViewModel(title: "Password", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
-        items.append(SettingCellViewModel(title: "Pin code", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
-        
-        items1.append(SettingCellViewModel(title: "Contact developer", contentLabel: nil, iconContentView: UIImage(named: "mail")))
-        items1.append(SettingCellViewModel(title: "Share application", contentLabel: nil, iconContentView: UIImage(named: "share")))
-
-        telegramButton.layer.cornerRadius = telegramButton.frame.width / 2
-
-        reload()
+        setupStyle()
     }
     
     func bindData() {
@@ -52,13 +39,20 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    func setupStyle() {
+        self.scrollView.delaysContentTouches = false
+        
+        walletButton.applyButtonEffects()
+
+        setupPersonalDataTableView()
+        setupOtherSettingsTableView()
+        
+        telegramButton.layer.cornerRadius = telegramButton.frame.width / 2
+    }
+    
     @IBAction func walletButtonDidTap(_ sender: Any) {
         let viewController = WalletViewController()
         navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    func reload() {
-        personalDataTableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,7 +62,7 @@ class SettingsViewController: UIViewController {
         heightOtherSettingsTableView.constant = otherSettingsTableView.contentSize.height
     }
     
-    private func setupOtherSettingsTableView() {
+    func setupOtherSettingsTableView() {
         otherSettingsTableView.delegate = self
         otherSettingsTableView.dataSource = self
         
@@ -81,12 +75,15 @@ class SettingsViewController: UIViewController {
         otherSettingsTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         otherSettingsTableView.register(UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
         
+        items.append(SettingCellViewModel(title: "E-mail", contentLabel: "email@example.ru", iconContentView: nil))
+        items.append(SettingCellViewModel(title: "Password", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+        
         if #available(iOS 15.0, *) {
             otherSettingsTableView.sectionHeaderTopPadding = 0.0
         }
     }
     
-    private func setupPersonalDataTableView() {
+    func setupPersonalDataTableView() {
         personalDataTableView.delegate = self
         personalDataTableView.dataSource = self
         
@@ -98,6 +95,9 @@ class SettingsViewController: UIViewController {
         personalDataTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: personalDataTableView.frame.size.width, height: 1))
         personalDataTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         personalDataTableView.register(UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
+        
+        items1.append(SettingCellViewModel(title: NSLocalizedString("Support", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+        items1.append(SettingCellViewModel(title: NSLocalizedString("Logout", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         
         if #available(iOS 15.0, *) {
             personalDataTableView.sectionHeaderTopPadding = 0.0
@@ -113,20 +113,65 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        switch indexPath.row {
-//        case 0:
-//            let viewController = HistoryTransactionsViewController()
-//            navigationController?.pushViewController(viewController, animated: true)
-//        case 1:
-//            let viewController = CollectionNftViewController()
-//            navigationController?.pushViewController(viewController, animated: true)
-//        default:
-//            print(1)
-//        }
-//
+        if tableView === personalDataTableView {
+            switch indexPath.row {
+            case 0:
+                let viewController = HistoryTransactionsViewController()
+                navigationController?.pushViewController(viewController, animated: true)
+            case 1:
+                let vc = PasswordViewController()
+                navigationController?.pushViewController(vc, animated: true)
+            default: break
+                
+            }
+        } else if tableView === otherSettingsTableView {
+            switch indexPath.row {
+            
+            case 0: openEmailApp()
+                
+            case 1: logout()
+                
+            default: break
+                
+            }
+        }
+
         tableView.deselectRow(at: indexPath, animated: true)
         HapticHelper.vibro(.light)
     }
+    
+    func openEmailApp() {
+        let recipientEmail = "support@showyouryup.com"
+        
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients([recipientEmail])
+            present(mail, animated: true)
+        } else if let url = URL(string: "mailto:\(recipientEmail)") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    func logout() {
+        let alert = UIAlertController(title: NSLocalizedString("Warning", comment: ""), message: NSLocalizedString("Do you want to logout?", comment: ""), preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { _ in
+              
+            self.viewModel?.logoutDidTap()
+
+            let storyboard = UIStoryboard(name: "Authorization", bundle: nil)
+            guard let page = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController else { return }
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
+            
+        }))
+
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension SettingsViewController: UITableViewDataSource {
@@ -142,7 +187,7 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView === personalDataTableView {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingViewCell", for: indexPath) as? SettingViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingViewCell.cellIdentifier, for: indexPath) as? SettingViewCell else {
                 assertionFailure("Cannot dequeue reusable cell")
                 return UITableViewCell()
             }
@@ -154,7 +199,7 @@ extension SettingsViewController: UITableViewDataSource {
                     
             return cell
         } else if tableView === otherSettingsTableView {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingViewCell", for: indexPath) as? SettingViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingViewCell.cellIdentifier, for: indexPath) as? SettingViewCell else {
                 assertionFailure("Cannot dequeue reusable cell")
                 return UITableViewCell()
             }
@@ -168,5 +213,11 @@ extension SettingsViewController: UITableViewDataSource {
         } else {
             return UITableViewCell()
         }
+    }
+}
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

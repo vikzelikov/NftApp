@@ -17,19 +17,17 @@ class WithdrawViewController: UIViewController {
         super.viewDidLoad()
         
         setupStyle()
-        
-        amountTextField.addTarget(self, action: #selector(amountFieldDidChange), for: .editingChanged)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
     }
     
     func setupStyle() {
         withdrawButton.applyButtonEffects()
         
         amountTextField.delegate = self
-        
+        amountTextField.addTarget(self, action: #selector(amountFieldDidChange), for: .editingChanged)
         calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(0) USD"
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     @objc func amountFieldDidChange(_ sender: Any) {
