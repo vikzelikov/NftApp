@@ -14,4 +14,9 @@
 "left" = "ОСТАЛОСЬ";
 "All" = "Все";
 "Expiration in" = "Истекает через";
-
+"Buy tokens" = "Покупка токенов";
+"Withdraw tokens" = "Вывод токенов";
+"Dropshop" = "Dropshop";
+"Market" = "Биржа";
+"RUB" = "RUB";
+"History transactions" = "История транзакций";

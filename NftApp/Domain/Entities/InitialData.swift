@@ -16,3 +16,7 @@ struct InitialData: Equatable {
     var isDepositAvailable: Bool
     var isWithdrawAvailable: Bool
 }
+
+struct InitialDataObject {
+    static var data: Observable<InitialData?> = Observable(nil)
+}

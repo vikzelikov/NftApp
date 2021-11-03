@@ -9,23 +9,44 @@ import UIKit
 
 class HistoryTransactionsViewController: UIViewController {
     
+    var viewModel: HistoryTransactionsViewModel? = nil
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
-    }
-
-    @IBAction func dismissDidTap(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func reload() {
-        tableView.reloadData()
+        viewModel = HistoryTransactionsViewModelImpl()
+        viewModel?.viewDidLoad()
+        bindData()
+        
+        setupStyle()
     }
     
-    private func setupTableView() {
+    func bindData() {
+        viewModel?.items.bind {
+            [weak self] _ in self?.reload()
+        
+//            self?.checkoutLoading(isShow: false)
+//            self?.tableView.isHidden = false
+//            self?.errorLabel.isHidden = true
+        }
+        
+        viewModel?.isLoading.bind { _ in
+//            self.checkoutLoading(isShow: $0)
+        }
+        
+        viewModel?.errorMessage.bind { _ in
+//            guard let errorMessage = $0 else { return }
+            
+//            self.checkoutLoading(isShow: false)
+//            self.tableView.isHidden = true
+//            self.errorLabel.text = errorMessage
+//            self.errorLabel.isHidden = false
+        }
+    }
+    
+    private func setupStyle() {
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -42,14 +63,26 @@ class HistoryTransactionsViewController: UIViewController {
             tableView.sectionHeaderTopPadding = 0.0
         }
     }
+    
+    func reload() {
+        tableView.reloadData()
+    }
+    
+    @IBAction func dismissDidTap(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension HistoryTransactionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = DetailTransactionViewController()
-//        viewController.transaction = transactions[indexPath.row]
-        navigationController?.pushViewController(viewController, animated: true)
-    
+        viewModel?.didSelectItem(at: indexPath.row) { transactionViewModel in
+            let vc = DetailTransactionViewController()
+            vc.viewModel = DetailTransactionViewModelImpl()
+            vc.viewModel?.transactionViewModel.value = transactionViewModel
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
         HapticHelper.vibro(.light)
     }
@@ -57,7 +90,11 @@ extension HistoryTransactionsViewController: UITableViewDelegate {
 
 extension HistoryTransactionsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        if let count = viewModel?.items.value.count {
+            return count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,7 +105,9 @@ extension HistoryTransactionsViewController: UITableViewDataSource {
         
         cell.selectionStyle = UITableViewCell.SelectionStyle.default
 
-//        cell.bind(viewModel: items[indexPath.row])
+        if let vm = viewModel?.items.value[indexPath.row] {
+            cell.bind(viewModel: vm)
+        }
                 
         return cell
     }

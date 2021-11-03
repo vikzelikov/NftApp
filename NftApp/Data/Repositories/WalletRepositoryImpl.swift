@@ -7,17 +7,21 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 class WalletRepositoryImpl: WalletRepository {
     
-    func addFunds(request: AddFundsRequest, completion: @escaping (Result<AddFundsResponseDTO, Error>) -> Void) {
-
-        
-    }
-    
     func withdrawFunds(request: WithdrawFundsRequest, completion: @escaping (Result<WithdrawFundsResponseDTO, Error>) -> Void) {
         let endpoint = WalletEndpoints.withdrawFundsEndpoint(request: request)
+
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+            
+            NetworkHelper.validateResponse(response: response, completion: completion)
+            
+        }
+    }
+    
+    func getTransactions(request: GetTransactionsRequest, completion: @escaping (Result<GetTransactionsResponseDTO, Error>) -> Void) {
+        let endpoint = WalletEndpoints.getTransactionsEndpoint(request: request)
 
         AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
             

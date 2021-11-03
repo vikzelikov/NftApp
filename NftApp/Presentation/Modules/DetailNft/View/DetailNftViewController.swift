@@ -30,6 +30,7 @@ class DetailNftViewController: UIViewController {
     @IBOutlet weak var expirationLabel: UILabel!
     @IBOutlet weak var ownerLoginContainer: UIStackView!
     @IBOutlet weak var priceView: UIView!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
@@ -74,6 +75,7 @@ class DetailNftViewController: UIViewController {
             self.descriptionLabel?.text = nftViewModel.edition.description
             self.nftImageView.sd_setImage(with: URL(string: nftViewModel.edition.mediaUrl)!)
             self.leftCountLabel.text = "x\(nftViewModel.edition.count - nftViewModel.edition.countNFTs) " + NSLocalizedString("left", comment: "")
+            self.priceLabel.text = String(Int(nftViewModel.lastPrice))
         }
         
         viewModel?.expirationTime.bind {

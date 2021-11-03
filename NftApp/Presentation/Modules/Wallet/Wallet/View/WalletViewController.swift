@@ -11,21 +11,20 @@ class WalletViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var fiatBalanceLabel: UILabel!
     @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var settingsHeightTableView: NSLayoutConstraint!
     var items: [SettingCellViewModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.scrollView.delaysContentTouches = false
-        
+                
         bindData()
         
-        setupSettingsTableView()
+        setupStyle()
         
-        items.append(SettingCellViewModel(title: "History transactions", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
-        items.append(SettingCellViewModel(title: "Collection NFTs", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+        items.append(SettingCellViewModel(title: NSLocalizedString("History transactions", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+//        items.append(SettingCellViewModel(title: "Collection NFTs", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         
         reload()
     }
@@ -33,6 +32,9 @@ class WalletViewController: UIViewController {
     func bindData() {
         UserObject.user.bind {
             self.balanceLabel.text = String($0?.balance ?? 0.0)
+            
+            let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
+            self.fiatBalanceLabel.text = "~ \(((($0?.balance ?? 0.0) / currency) * 100) / 100) \(NSLocalizedString("RUB", comment: ""))"
         }
     }
     
@@ -56,7 +58,9 @@ class WalletViewController: UIViewController {
         settingsHeightTableView.constant = settingsTableView.contentSize.height
     }
     
-    private func setupSettingsTableView() {
+    private func setupStyle() {
+        scrollView.delaysContentTouches = false
+
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
         

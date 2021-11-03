@@ -27,6 +27,7 @@
                 <outlet property="originalTagView" destination="V4R-bl-6C6" id="cbo-Ci-KlM"/>
                 <outlet property="ownerAvatarImage" destination="V45-hx-1R4" id="kYl-PR-pz9"/>
                 <outlet property="ownerLoginContainer" destination="FZU-TJ-UkS" id="sEd-6f-cEG"/>
+                <outlet property="priceLabel" destination="Erp-tC-86d" id="Y0b-BC-OIg"/>
                 <outlet property="priceView" destination="KHh-r0-nDW" id="95e-uY-KuB"/>
                 <outlet property="rightTagConstraint" destination="q1q-eB-fQz" id="dNb-WM-4Oj"/>
                 <outlet property="titleLabel" destination="r5R-2H-Avs" id="A0T-ig-wli"/>

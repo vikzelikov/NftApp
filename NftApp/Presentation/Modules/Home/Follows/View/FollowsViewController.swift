@@ -20,9 +20,6 @@ class FollowsViewController: UIViewController {
         viewModel?.viewDidLoad()
         bindData()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         setupStyle()
     }
     
@@ -55,6 +52,9 @@ class FollowsViewController: UIViewController {
         } else {
             followsTitleLabel?.text = NSLocalizedString("Followers", comment: "")
         }
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension

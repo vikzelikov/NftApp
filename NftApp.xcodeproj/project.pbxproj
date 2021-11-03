@@ -55,6 +55,12 @@
 		1833848626FF3E1400EAD9EB /* GetFollowsRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833848526FF3E1400EAD9EB /* GetFollowsRequestDTO.swift */; };
 		1833848826FF3E2300EAD9EB /* GetFollowsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833848726FF3E2300EAD9EB /* GetFollowsResponseDTO.swift */; };
 		1833848A26FF3F6200EAD9EB /* FollowsEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833848926FF3F6200EAD9EB /* FollowsEndpoints.swift */; };
+		1834E7522732D57A0081EFB1 /* HistoryTransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E7512732D57A0081EFB1 /* HistoryTransactionsViewModel.swift */; };
+		1834E7542732D6550081EFB1 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E7532732D6550081EFB1 /* Transaction.swift */; };
+		1834E7562732DA0C0081EFB1 /* GetTransactionsRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E7552732DA0C0081EFB1 /* GetTransactionsRequestDTO.swift */; };
+		1834E7582732DA310081EFB1 /* GetTransactionsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E7572732DA310081EFB1 /* GetTransactionsResponseDTO.swift */; };
+		1834E75A2732DAF50081EFB1 /* TransactionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E7592732DAF50081EFB1 /* TransactionDTO.swift */; };
+		1834E75C2733014A0081EFB1 /* DetailTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E75B2733014A0081EFB1 /* DetailTransactionViewModel.swift */; };
 		18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F88269CE7DB00611362 /* TabBarViewController.swift */; };
 		18523F90269CEAA000611362 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F8F269CEAA000611362 /* ShopViewController.swift */; };
 		18523F92269CEB4E00611362 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F91269CEB4E00611362 /* Shop.storyboard */; };
@@ -85,7 +91,7 @@
 		186E601226B6E27E008291AC /* TransactionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E601026B6E27E008291AC /* TransactionViewCell.xib */; };
 		186E601926B6E695008291AC /* DetailTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E601726B6E695008291AC /* DetailTransactionViewController.swift */; };
 		186E601A26B6E695008291AC /* DetailTransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E601826B6E695008291AC /* DetailTransactionViewController.xib */; };
-		186E601C26B6F178008291AC /* TransactionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E601B26B6F178008291AC /* TransactionCellViewModel.swift */; };
+		186E601C26B6F178008291AC /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E601B26B6F178008291AC /* TransactionViewModel.swift */; };
 		186E602226B88F25008291AC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E602026B88F25008291AC /* SearchViewController.swift */; };
 		186E602326B88F25008291AC /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E602126B88F25008291AC /* SearchViewController.xib */; };
 		186E602A26B98C38008291AC /* FollowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E602826B98C38008291AC /* FollowsViewController.swift */; };
@@ -122,8 +128,6 @@
 		18D8452F26CDB2BA00888D32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452E26CDB2BA00888D32 /* LoginViewModel.swift */; };
 		18DDE9F526D6EE5E00306A60 /* WalletRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDE9F426D6EE5E00306A60 /* WalletRepository.swift */; };
 		18DDE9FA26D6F55900306A60 /* WalletRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDE9F926D6F55900306A60 /* WalletRepositoryImpl.swift */; };
-		18DDE9FF26D6F87500306A60 /* AddFundsRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDE9FE26D6F87500306A60 /* AddFundsRequestDTO.swift */; };
-		18DDEA0126D6F88100306A60 /* AddFundsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA0026D6F88100306A60 /* AddFundsResponseDTO.swift */; };
 		18DDEA0326D6F88F00306A60 /* WithdrawFundsRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA0226D6F88F00306A60 /* WithdrawFundsRequestDTO.swift */; };
 		18DDEA0526D6F8A300306A60 /* WithdrawFundsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA0426D6F8A300306A60 /* WithdrawFundsResponseDTO.swift */; };
 		18DDEA0726D6F9F700306A60 /* WalletEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA0626D6F9F700306A60 /* WalletEndpoints.swift */; };
@@ -229,6 +233,12 @@
 		1833848526FF3E1400EAD9EB /* GetFollowsRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFollowsRequestDTO.swift; sourceTree = "<group>"; };
 		1833848726FF3E2300EAD9EB /* GetFollowsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFollowsResponseDTO.swift; sourceTree = "<group>"; };
 		1833848926FF3F6200EAD9EB /* FollowsEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowsEndpoints.swift; sourceTree = "<group>"; };
+		1834E7512732D57A0081EFB1 /* HistoryTransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransactionsViewModel.swift; sourceTree = "<group>"; };
+		1834E7532732D6550081EFB1 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		1834E7552732DA0C0081EFB1 /* GetTransactionsRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransactionsRequestDTO.swift; sourceTree = "<group>"; };
+		1834E7572732DA310081EFB1 /* GetTransactionsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTransactionsResponseDTO.swift; sourceTree = "<group>"; };
+		1834E7592732DAF50081EFB1 /* TransactionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDTO.swift; sourceTree = "<group>"; };
+		1834E75B2733014A0081EFB1 /* DetailTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransactionViewModel.swift; sourceTree = "<group>"; };
 		18523F88269CE7DB00611362 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		18523F8F269CEAA000611362 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		18523F91269CEB4E00611362 /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
@@ -262,7 +272,7 @@
 		186E601026B6E27E008291AC /* TransactionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionViewCell.xib; sourceTree = "<group>"; };
 		186E601726B6E695008291AC /* DetailTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransactionViewController.swift; sourceTree = "<group>"; };
 		186E601826B6E695008291AC /* DetailTransactionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTransactionViewController.xib; sourceTree = "<group>"; };
-		186E601B26B6F178008291AC /* TransactionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellViewModel.swift; sourceTree = "<group>"; };
+		186E601B26B6F178008291AC /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		186E602026B88F25008291AC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		186E602126B88F25008291AC /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		186E602826B98C38008291AC /* FollowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowsViewController.swift; sourceTree = "<group>"; };
@@ -302,8 +312,6 @@
 		18D8453026CDC40500888D32 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Authorization.strings; sourceTree = "<group>"; };
 		18DDE9F426D6EE5E00306A60 /* WalletRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletRepository.swift; sourceTree = "<group>"; };
 		18DDE9F926D6F55900306A60 /* WalletRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletRepositoryImpl.swift; sourceTree = "<group>"; };
-		18DDE9FE26D6F87500306A60 /* AddFundsRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFundsRequestDTO.swift; sourceTree = "<group>"; };
-		18DDEA0026D6F88100306A60 /* AddFundsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFundsResponseDTO.swift; sourceTree = "<group>"; };
 		18DDEA0226D6F88F00306A60 /* WithdrawFundsRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawFundsRequestDTO.swift; sourceTree = "<group>"; };
 		18DDEA0426D6F8A300306A60 /* WithdrawFundsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawFundsResponseDTO.swift; sourceTree = "<group>"; };
 		18DDEA0626D6F9F700306A60 /* WalletEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEndpoints.swift; sourceTree = "<group>"; };
@@ -742,7 +750,8 @@
 		186E600326B6DF5F008291AC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				186E601B26B6F178008291AC /* TransactionCellViewModel.swift */,
+				186E601B26B6F178008291AC /* TransactionViewModel.swift */,
+				1834E7512732D57A0081EFB1 /* HistoryTransactionsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -802,6 +811,7 @@
 		186E601626B6E63D008291AC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1834E75B2733014A0081EFB1 /* DetailTransactionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1056,6 +1066,7 @@
 				18E1109B26D684C7007FD66E /* Nft.swift */,
 				18DDEA3326D79CB400306A60 /* InitialData.swift */,
 				185F58B426F8B43A00473DDB /* Edition.swift */,
+				1834E7532732D6550081EFB1 /* Transaction.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1213,10 +1224,11 @@
 		18DDE9FC26D6F80B00306A60 /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
-				18DDE9FE26D6F87500306A60 /* AddFundsRequestDTO.swift */,
-				18DDEA0026D6F88100306A60 /* AddFundsResponseDTO.swift */,
 				18DDEA0226D6F88F00306A60 /* WithdrawFundsRequestDTO.swift */,
 				18DDEA0426D6F8A300306A60 /* WithdrawFundsResponseDTO.swift */,
+				1834E7552732DA0C0081EFB1 /* GetTransactionsRequestDTO.swift */,
+				1834E7572732DA310081EFB1 /* GetTransactionsResponseDTO.swift */,
+				1834E7592732DAF50081EFB1 /* TransactionDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -1635,12 +1647,14 @@
 				182342DB26A1E67F00CD2907 /* NftMarketViewCell.swift in Sources */,
 				1879C57626C9D32F00CE367E /* SignupResponseDTO.swift in Sources */,
 				182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */,
-				186E601C26B6F178008291AC /* TransactionCellViewModel.swift in Sources */,
+				186E601C26B6F178008291AC /* TransactionViewModel.swift in Sources */,
 				1879C56E26C9C9DF00CE367E /* LoginUseCase.swift in Sources */,
 				1879C56C26C9C90D00CE367E /* NetworkHelper.swift in Sources */,
 				18E37759272F00C700A2795B /* InfluencerViewCell.swift in Sources */,
 				182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */,
 				18523F90269CEAA000611362 /* ShopViewController.swift in Sources */,
+				1834E7542732D6550081EFB1 /* Transaction.swift in Sources */,
+				1834E75C2733014A0081EFB1 /* DetailTransactionViewModel.swift in Sources */,
 				1879C56126C9B7EA00CE367E /* AuthRepositoryImpl.swift in Sources */,
 				18E1109C26D684C7007FD66E /* Nft.swift in Sources */,
 				18DDEA1A26D78EDD00306A60 /* Endpoints.swift in Sources */,
@@ -1669,8 +1683,10 @@
 				182342EF26A2EB5E00CD2907 /* TradingHistoryViewController.swift in Sources */,
 				18E1107426D59F4F007FD66E /* DropShopRepositoryImpl.swift in Sources */,
 				18DDEA0526D6F8A300306A60 /* WithdrawFundsResponseDTO.swift in Sources */,
+				1834E7562732DA0C0081EFB1 /* GetTransactionsRequestDTO.swift in Sources */,
 				18E39B1926D039B000FEC003 /* UserRepository.swift in Sources */,
 				18DDEA0326D6F88F00306A60 /* WithdrawFundsRequestDTO.swift in Sources */,
+				1834E75A2732DAF50081EFB1 /* TransactionDTO.swift in Sources */,
 				18156D4F26A5D9B7006B8FE5 /* WalletViewController.swift in Sources */,
 				18156D3D26A43250006B8FE5 /* SettingsViewController.swift in Sources */,
 				181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */,
@@ -1685,6 +1701,7 @@
 				182342C0269DFC5500CD2907 /* MarketViewController.swift in Sources */,
 				18E1107E26D5A530007FD66E /* GetEditionsRequestDTO.swift in Sources */,
 				18E37752272F009F00A2795B /* InfluencersViewModel.swift in Sources */,
+				1834E7582732DA310081EFB1 /* GetTransactionsResponseDTO.swift in Sources */,
 				18D8452D26CDAEF100888D32 /* UserStorage.swift in Sources */,
 				18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */,
 				182342D726A081EF00CD2907 /* UICustomView.swift in Sources */,
@@ -1699,6 +1716,7 @@
 				181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */,
 				182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */,
 				1879C56826C9C67100CE367E /* Endpoint.swift in Sources */,
+				1834E7522732D57A0081EFB1 /* HistoryTransactionsViewModel.swift in Sources */,
 				18DDEA1E26D790EB00306A60 /* GetMarketNftsResponseDTO.swift in Sources */,
 				18DDEA2226D7919400306A60 /* CreateSellNftRequestDTO.swift in Sources */,
 				182342F826A2F40500CD2907 /* TradingHistoryViewModel.swift in Sources */,
@@ -1709,8 +1727,6 @@
 				18DDEA2D26D79ADC00306A60 /* InitialEndpoints.swift in Sources */,
 				18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */,
 				1869F0FF2707555B00C7654A /* InfluencerCollectionViewCell.swift in Sources */,
-				18DDEA0126D6F88100306A60 /* AddFundsResponseDTO.swift in Sources */,
-				18DDE9FF26D6F87500306A60 /* AddFundsRequestDTO.swift in Sources */,
 				18DDEA0726D6F9F700306A60 /* WalletEndpoints.swift in Sources */,
 				186E602226B88F25008291AC /* SearchViewController.swift in Sources */,
 				18B84290266F64A30033AFC0 /* HomeViewController.swift in Sources */,
