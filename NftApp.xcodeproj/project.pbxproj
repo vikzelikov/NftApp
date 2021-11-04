@@ -25,7 +25,6 @@
 		18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D4E26A5D9B7006B8FE5 /* WalletViewController.xib */; };
 		181742ED2698636B002B9FD7 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742EB2698636B002B9FD7 /* PersonalViewController.swift */; };
 		181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F42699B601002B9FD7 /* HapticHelper.swift */; };
-		181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F62699B7E7002B9FD7 /* AuthViewController.swift */; };
 		181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F8269B0705002B9FD7 /* ColorHelper.swift */; };
 		182342C0269DFC5500CD2907 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182342BE269DFC5500CD2907 /* MarketViewController.swift */; };
 		182342C1269DFC5500CD2907 /* MarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182342BF269DFC5500CD2907 /* MarketViewController.xib */; };
@@ -188,12 +187,29 @@
 		EB46AD086124994FAC569F86 /* Pods_NftApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA8DFE8A2280954A19F8340 /* Pods_NftApp.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1813844627346A4D004530BD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		180164B8272FF6A1003C68E0 /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
 		1803C4A62728820F00486F1F /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		1803C4A72728820F00486F1F /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		1813842E27343CE2004530BD /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		1813842F27343CE2004530BD /* PersonalDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDataViewController.xib; sourceTree = "<group>"; };
+		1813843727346A4C004530BD /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		1813843A27346A4C004530BD /* AccountAuthenticationModificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthenticationModificationViewController.swift; sourceTree = "<group>"; };
+		1813843D27346A4C004530BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		1813843F27346A4C004530BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetViewController.swift; sourceTree = "<group>"; };
 		18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterSheetViewController.xib; sourceTree = "<group>"; };
 		18156D3426A38CE1006B8FE5 /* FilterSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetController.swift; sourceTree = "<group>"; };
@@ -207,7 +223,6 @@
 		18156D4E26A5D9B7006B8FE5 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
 		181742EB2698636B002B9FD7 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		181742F42699B601002B9FD7 /* HapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticHelper.swift; sourceTree = "<group>"; };
-		181742F62699B7E7002B9FD7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		181742F8269B0705002B9FD7 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		182342BE269DFC5500CD2907 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		182342BF269DFC5500CD2907 /* MarketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketViewController.xib; sourceTree = "<group>"; };
@@ -392,6 +407,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1813843927346A4C004530BD /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1813843A27346A4C004530BD /* AccountAuthenticationModificationViewController.swift */,
+				1813843C27346A4C004530BD /* MainInterface.storyboard */,
+				1813843F27346A4C004530BD /* Info.plist */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		18156D3726A4314B006B8FE5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -970,6 +995,7 @@
 			isa = PBXGroup;
 			children = (
 				18B84264266E27A40033AFC0 /* NftApp */,
+				1813843927346A4C004530BD /* Auth */,
 				18B84263266E27A40033AFC0 /* Products */,
 				60C56D7339B681B0264C7CF2 /* Pods */,
 				4119338D394F328773616786 /* Frameworks */,
@@ -1145,7 +1171,6 @@
 				18B84269266E27A40033AFC0 /* SignUpViewController.swift */,
 				18B8426B266E27A40033AFC0 /* Authorization.storyboard */,
 				18D3FECF2697B8C40030929D /* LoginViewController.swift */,
-				181742F62699B7E7002B9FD7 /* AuthViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1459,6 +1484,7 @@
 				186221C126E2C8110024C8B9 /* TMXProfiling.xcframework */,
 				186221C226E2C8120024C8B9 /* TMXProfilingConnections.xcframework */,
 				6EA8DFE8A2280954A19F8340 /* Pods_NftApp.framework */,
+				1813843727346A4C004530BD /* AuthenticationServices.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1484,6 +1510,7 @@
 				18B8425F266E27A40033AFC0 /* Frameworks */,
 				18B84260266E27A40033AFC0 /* Resources */,
 				594A84E779B15B2DCE4D680B /* [CP] Embed Pods Frameworks */,
+				1813844627346A4D004530BD /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -1500,7 +1527,7 @@
 		18B8425A266E27A40033AFC0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					18B84261266E27A40033AFC0 = {
@@ -1737,7 +1764,6 @@
 				18DDEA2226D7919400306A60 /* CreateSellNftRequestDTO.swift in Sources */,
 				182342F826A2F40500CD2907 /* TradingHistoryViewModel.swift in Sources */,
 				1879C57A26CA79BB00CE367E /* SignupViewModel.swift in Sources */,
-				181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */,
 				186E5FF326B6A3E2008291AC /* WithdrawViewController.swift in Sources */,
 				18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */,
 				18DDEA2D26D79ADC00306A60 /* InitialEndpoints.swift in Sources */,
@@ -1768,6 +1794,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1813843C27346A4C004530BD /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1813843D27346A4C004530BD /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		18B8426B266E27A40033AFC0 /* Authorization.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1919,6 +1953,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EE4974C0330698A662A69260 /* Pods-NftApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -1947,6 +1982,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 378E9BC71BC47BBC46C5CB26 /* Pods-NftApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;

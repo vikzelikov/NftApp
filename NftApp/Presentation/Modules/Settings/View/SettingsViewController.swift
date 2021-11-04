@@ -161,7 +161,7 @@ extension SettingsViewController: UITableViewDelegate {
             self.viewModel?.logoutDidTap()
 
             let storyboard = UIStoryboard(name: "Authorization", bundle: nil)
-            guard let page = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController else { return }
+            guard let page = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
             

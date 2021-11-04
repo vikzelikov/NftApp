@@ -34,7 +34,7 @@ class WalletViewController: UIViewController {
             self.balanceLabel.text = String($0?.balance ?? 0.0)
             
             let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
-            self.fiatBalanceLabel.text = "~ \(((($0?.balance ?? 0.0) / currency) * 100) / 100) \(NSLocalizedString("RUB", comment: ""))"
+            self.fiatBalanceLabel.text = "~ \((($0?.balance ?? 0.0) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
         }
     }
     
