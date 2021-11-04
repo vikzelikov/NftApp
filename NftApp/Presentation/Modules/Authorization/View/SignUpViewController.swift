@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController {
     }
     
     private func showPersonalDataView() {
-        if let viewController = UIStoryboard(name: "Authorization", bundle: nil).instantiateViewController(withIdentifier: "PersonalDataViewController") as? PersonalDataViewController {
+        if let viewController = UIStoryboard(name: "Authorization", bundle: nil).instantiateViewController(withIdentifier: "PersonalViewController") as? PersonalViewController {
             if let navigator = self.navigationController {
                 viewController.viewModel = self.viewModel
                     navigator.pushViewController(viewController, animated: true)

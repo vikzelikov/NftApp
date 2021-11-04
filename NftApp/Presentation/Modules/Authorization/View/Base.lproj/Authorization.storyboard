@@ -207,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="-45" y="-313.73239436619718"/>
         </scene>
-        <!--Personal Data View Controller-->
+        <!--Personal View Controller-->
         <scene sceneID="nHp-bt-O2f">
             <objects>
-                <viewController storyboardIdentifier="PersonalDataViewController" id="Gn4-Ni-7Rs" customClass="PersonalDataViewController" customModule="NftApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonalDataViewController" id="Gn4-Ni-7Rs" customClass="PersonalViewController" customModule="NftApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4fI-tV-CPU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

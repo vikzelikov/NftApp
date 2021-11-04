@@ -69,7 +69,7 @@ class ProfileHeaderView: UIView {
             guard let userViewModel = $0 else { return }
             
             self.loginLabel.text = userViewModel.login
-            self.loginSubtitleLabel.text = userViewModel.flowAddress ?? "@\(userViewModel.login)"
+            self.loginSubtitleLabel.text = userViewModel.flowAddress ?? "@\(String(describing: userViewModel.login))"
             
             if let avatarUrl = userViewModel.avatarUrl, let url = URL(string: avatarUrl) {
                 self.userImageView.contentMode = .scaleAspectFill

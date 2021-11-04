@@ -57,8 +57,8 @@ final class UserUseCaseImpl: UserUseCase {
     func updateUser(request: User, completion: @escaping (Result<Bool, Error>) -> Void) {
         repository?.updateUser(request: request, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    print(resp)
+                case .success : do {
+                    completion(.success(true))
                 }
                 
                 case .failure(let error) : do {

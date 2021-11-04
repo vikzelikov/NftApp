@@ -75,7 +75,7 @@ class SettingsViewController: UIViewController {
         otherSettingsTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         otherSettingsTableView.register(UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
         
-        items.append(SettingCellViewModel(title: "E-mail", contentLabel: "email@example.ru", iconContentView: nil))
+        items.append(SettingCellViewModel(title: "Personal information", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         items.append(SettingCellViewModel(title: "Password", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         
         if #available(iOS 15.0, *) {
@@ -116,8 +116,8 @@ extension SettingsViewController: UITableViewDelegate {
         if tableView === personalDataTableView {
             switch indexPath.row {
             case 0:
-                let viewController = HistoryTransactionsViewController()
-                navigationController?.pushViewController(viewController, animated: true)
+                let vc = PersonalDataViewController()
+                navigationController?.pushViewController(vc, animated: true)
             case 1:
                 let vc = PasswordViewController()
                 navigationController?.pushViewController(vc, animated: true)

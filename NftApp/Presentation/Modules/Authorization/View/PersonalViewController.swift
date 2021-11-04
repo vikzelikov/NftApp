@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PersonalDataViewController: UIViewController {
+class PersonalViewController: UIViewController {
     
     var viewModel: SignupViewModel?
 

@@ -10,6 +10,8 @@
 		180164B9272FF6A1003C68E0 /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180164B8272FF6A1003C68E0 /* ImagePickerHelper.swift */; };
 		1803C4A82728820F00486F1F /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803C4A62728820F00486F1F /* ProfileHeaderView.swift */; };
 		1803C4A92728820F00486F1F /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1803C4A72728820F00486F1F /* ProfileHeaderView.xib */; };
+		1813843027343CE2004530BD /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813842E27343CE2004530BD /* PersonalDataViewController.swift */; };
+		1813843127343CE2004530BD /* PersonalDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1813842F27343CE2004530BD /* PersonalDataViewController.xib */; };
 		18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */; };
 		18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */; };
 		18156D3526A38CE1006B8FE5 /* FilterSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D3426A38CE1006B8FE5 /* FilterSheetController.swift */; };
@@ -21,7 +23,7 @@
 		18156D4726A4DD3E006B8FE5 /* SettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */; };
 		18156D4F26A5D9B7006B8FE5 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D4D26A5D9B7006B8FE5 /* WalletViewController.swift */; };
 		18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D4E26A5D9B7006B8FE5 /* WalletViewController.xib */; };
-		181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */; };
+		181742ED2698636B002B9FD7 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742EB2698636B002B9FD7 /* PersonalViewController.swift */; };
 		181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F42699B601002B9FD7 /* HapticHelper.swift */; };
 		181742F72699B7E7002B9FD7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F62699B7E7002B9FD7 /* AuthViewController.swift */; };
 		181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181742F8269B0705002B9FD7 /* ColorHelper.swift */; };
@@ -190,6 +192,8 @@
 		180164B8272FF6A1003C68E0 /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
 		1803C4A62728820F00486F1F /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		1803C4A72728820F00486F1F /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		1813842E27343CE2004530BD /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
+		1813842F27343CE2004530BD /* PersonalDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDataViewController.xib; sourceTree = "<group>"; };
 		18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetViewController.swift; sourceTree = "<group>"; };
 		18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterSheetViewController.xib; sourceTree = "<group>"; };
 		18156D3426A38CE1006B8FE5 /* FilterSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetController.swift; sourceTree = "<group>"; };
@@ -201,7 +205,7 @@
 		18156D4526A4DD3E006B8FE5 /* SettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewCell.xib; sourceTree = "<group>"; };
 		18156D4D26A5D9B7006B8FE5 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		18156D4E26A5D9B7006B8FE5 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
-		181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
+		181742EB2698636B002B9FD7 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		181742F42699B601002B9FD7 /* HapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticHelper.swift; sourceTree = "<group>"; };
 		181742F62699B7E7002B9FD7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		181742F8269B0705002B9FD7 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
@@ -404,6 +408,8 @@
 				18156D3A26A43240006B8FE5 /* Settings.storyboard */,
 				1834E75F273332490081EFB1 /* PasswordViewController.swift */,
 				1834E760273332490081EFB1 /* PasswordViewController.xib */,
+				1813842E27343CE2004530BD /* PersonalDataViewController.swift */,
+				1813842F27343CE2004530BD /* PersonalDataViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1135,10 +1141,10 @@
 		18B84289266F639D0033AFC0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				181742EB2698636B002B9FD7 /* PersonalViewController.swift */,
 				18B84269266E27A40033AFC0 /* SignUpViewController.swift */,
 				18B8426B266E27A40033AFC0 /* Authorization.storyboard */,
 				18D3FECF2697B8C40030929D /* LoginViewController.swift */,
-				181742EB2698636B002B9FD7 /* PersonalDataViewController.swift */,
 				181742F62699B7E7002B9FD7 /* AuthViewController.swift */,
 			);
 			path = View;
@@ -1537,6 +1543,7 @@
 				186E600E26B6DFE3008291AC /* CollectionNftViewController.xib in Resources */,
 				186E5FF426B6A3E2008291AC /* WithdrawViewController.xib in Resources */,
 				182342C1269DFC5500CD2907 /* MarketViewController.xib in Resources */,
+				1813843127343CE2004530BD /* PersonalDataViewController.xib in Resources */,
 				186E601226B6E27E008291AC /* TransactionViewCell.xib in Resources */,
 				18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */,
 				18523F92269CEB4E00611362 /* Shop.storyboard in Resources */,
@@ -1622,6 +1629,7 @@
 				1869F0F42701D79400C7654A /* FollowsViewModel.swift in Sources */,
 				18E39B1E26D03A3000FEC003 /* UserEndpoints.swift in Sources */,
 				18DDEA1C26D7906800306A60 /* CommonDTO.swift in Sources */,
+				1813843027343CE2004530BD /* PersonalDataViewController.swift in Sources */,
 				18DDEA3426D79CB400306A60 /* InitialData.swift in Sources */,
 				18E1107626D59F6B007FD66E /* DropShopRepository.swift in Sources */,
 				18E1109026D67DE5007FD66E /* UpdateUserResponseDTO.swift in Sources */,
@@ -1676,7 +1684,7 @@
 				1879C56A26C9C74D00CE367E /* Constants.swift in Sources */,
 				18E8F3C726CBCCF100E62E33 /* Observable.swift in Sources */,
 				1833847326FF160100EAD9EB /* HomeViewModel.swift in Sources */,
-				181742ED2698636B002B9FD7 /* PersonalDataViewController.swift in Sources */,
+				181742ED2698636B002B9FD7 /* PersonalViewController.swift in Sources */,
 				186E601126B6E27E008291AC /* TransactionViewCell.swift in Sources */,
 				18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */,
 				186E600D26B6DFE3008291AC /* CollectionNftViewController.swift in Sources */,

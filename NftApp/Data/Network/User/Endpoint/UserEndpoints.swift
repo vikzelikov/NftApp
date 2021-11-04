@@ -18,9 +18,10 @@ struct UserEndpoints {
     }
     
     static func updateUserEndpoint(request: User) -> Endpoint {
-        let requestDTO = UpdateUserRequestDTO (
-            email: request.email
-        ).parameters
+        var requestDTO = UpdateUserRequestDTO().parameters
+        
+        if request.login != nil { requestDTO["login"] = request.login }
+        if request.email != nil { requestDTO["email"] = request.email }
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/users/\(Constant.USER_ID)"

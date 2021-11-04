@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalDataViewController" customModule="NftApp" customModuleProvider="target">
+            <connections>
+                <outlet property="emailTextField" destination="ApN-uw-DoX" id="kqn-lp-sHc"/>
+                <outlet property="loginTextField" destination="sui-hu-cAo" id="iEG-s8-ylX"/>
+                <outlet property="saveButton" destination="hUD-zH-08Q" id="g8X-fi-1k0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBd-WY-9Q8">
+                    <rect key="frame" x="63" y="15" width="194.5" height="27"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sui-hu-cAo">
+                    <rect key="frame" x="15" y="62" width="290" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="15Z-fv-0Vk"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ApN-uw-DoX">
+                    <rect key="frame" x="15" y="117" width="290" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="OtN-cY-zg5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUD-zH-08Q" customClass="AccentButton" customModule="NftApp" customModuleProvider="target">
+                    <rect key="frame" x="15" y="488" width="290" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="RKK-uB-FAD"/>
+                    </constraints>
+                    <state key="normal" title="SAVE"/>
+                    <connections>
+                        <action selector="saveDidTap:" destination="-1" eventType="touchUpInside" id="yQK-vO-TsT"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ApN-uw-DoX" secondAttribute="trailing" constant="15" id="7Sr-yu-iBL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hUD-zH-08Q" secondAttribute="bottom" constant="20" id="HRd-W0-qxQ"/>
+                <constraint firstItem="KBd-WY-9Q8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MtS-Kz-5vO"/>
+                <constraint firstItem="hUD-zH-08Q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="OAx-ax-CMo"/>
+                <constraint firstItem="sui-hu-cAo" firstAttribute="top" secondItem="KBd-WY-9Q8" secondAttribute="bottom" constant="20" id="OeP-I5-g2m"/>
+                <constraint firstItem="ApN-uw-DoX" firstAttribute="top" secondItem="sui-hu-cAo" secondAttribute="bottom" constant="15" id="RLA-nC-r6I"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hUD-zH-08Q" secondAttribute="trailing" constant="15" id="TCQ-Va-VS0"/>
+                <constraint firstItem="sui-hu-cAo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Xhs-PY-Gi1"/>
+                <constraint firstItem="KBd-WY-9Q8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="a75-gC-Sa2"/>
+                <constraint firstItem="ApN-uw-DoX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="hMe-PV-MBy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sui-hu-cAo" secondAttribute="trailing" constant="15" id="zVz-2B-Mf2"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="99"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

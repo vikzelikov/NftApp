@@ -36,7 +36,7 @@ class PasswordViewController: UIViewController {
     }
     
     @IBAction func saveDidTap(_ sender: Any) {
-        
+        viewModel?.passwordUpdateDidTap()
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
