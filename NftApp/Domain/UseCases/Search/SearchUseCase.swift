@@ -45,7 +45,7 @@ final class SearchUseCaseImpl: SearchUseCase {
         repository?.searchEditions(keyWord: keyWord, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    let results = resp.rows.map{SearchCellViewModel(id: $0.id, title: $0.name, subtitle: $0.description, mediaUrl: $0.mediaUrl, type: .editions)}
+                    let results = resp.rows.map{SearchCellViewModel(id: $0.id ?? 0, title: $0.name, subtitle: $0.description, mediaUrl: $0.mediaUrl, type: .editions)}
                     
                     completion(.success(results))
                 }

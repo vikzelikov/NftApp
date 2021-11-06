@@ -127,15 +127,9 @@ class DetailNftViewController: UIViewController {
         
         if let count = navigationController?.viewControllers.count {
             if count > 1 {
-                backButton.isHidden = false
-                closeButton.isHidden = true
-                
                 rightTags()
             }
         } else {
-            backButton.isHidden = true
-            closeButton.isHidden = !isModal
-            
             leftTags()
         }
     }
@@ -177,15 +171,21 @@ class DetailNftViewController: UIViewController {
     }
 
     func leftTags() {
-        rightTagConstraint.isActive = false
-        leftTagConstraint.constant = 15
-        leftTagConstraint.priority = .required
+        backButton.isHidden = true
+        closeButton.isHidden = !isModal
+        
+        rightTagConstraint?.isActive = false
+        leftTagConstraint?.constant = 15
+        leftTagConstraint?.priority = .required
     }
     
     func rightTags() {
-        leftTagConstraint.isActive = false
-        rightTagConstraint.constant = 15
-        rightTagConstraint.priority = .required
+        backButton.isHidden = false
+        closeButton.isHidden = true
+        
+        leftTagConstraint?.isActive = false
+        rightTagConstraint?.constant = 15
+        rightTagConstraint?.priority = .required
     }
     
     @IBAction func buyNftDidTap(_ sender: Any) {

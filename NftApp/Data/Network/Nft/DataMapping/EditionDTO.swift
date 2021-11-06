@@ -21,13 +21,13 @@ class EditionDTO: Decodable {
         case influencer
     }
     
-    let id: Int
-    let influencerId: Int
+    let id: Int?
+    let influencerId: Int?
     let count: Int
     let countNFTs: String?
     let name: String
     let description: String
-    let price: Double
+    let price: Double?
     let dateExpiration: String
     let mediaUrl: String
     let influencer: EditionInfluencerDTO

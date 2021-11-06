@@ -15,6 +15,7 @@ class NftDTO: Decodable {
         case currentPrice
         case serialNumber
         case isForSell
+        case isHidden
         case edition
     }
     
@@ -24,5 +25,6 @@ class NftDTO: Decodable {
     let currentPrice: Double?
     let serialNumber: Int
     let isForSell: Bool
+    let isHidden: Bool
     let edition: EditionDTO
 }
