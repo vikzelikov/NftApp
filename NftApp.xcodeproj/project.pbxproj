@@ -12,6 +12,16 @@
 		1803C4A92728820F00486F1F /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1803C4A72728820F00486F1F /* ProfileHeaderView.xib */; };
 		1813843027343CE2004530BD /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813842E27343CE2004530BD /* PersonalDataViewController.swift */; };
 		1813843127343CE2004530BD /* PersonalDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1813842F27343CE2004530BD /* PersonalDataViewController.xib */; };
+		18138448273549CA004530BD /* AppleLoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18138447273549CA004530BD /* AppleLoginRequestDTO.swift */; };
+		1813844A27355E49004530BD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813844927355E49004530BD /* SearchViewModel.swift */; };
+		1813845127355F03004530BD /* SearchRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813845027355F03004530BD /* SearchRequestDTO.swift */; };
+		181384542735612E004530BD /* SearchEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181384532735612E004530BD /* SearchEndpoints.swift */; };
+		18138456273561F1004530BD /* SearchRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18138455273561F1004530BD /* SearchRepositoryImpl.swift */; };
+		1813845827356211004530BD /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813845727356211004530BD /* SearchRepository.swift */; };
+		1813845D273564C6004530BD /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813845C273564C6004530BD /* SearchUseCase.swift */; };
+		1813846027356FA6004530BD /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813845E27356FA6004530BD /* SearchViewCell.swift */; };
+		1813846127356FA6004530BD /* SearchViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1813845F27356FA6004530BD /* SearchViewCell.xib */; };
+		18138463273572C5004530BD /* SearchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18138462273572C5004530BD /* SearchCellViewModel.swift */; };
 		18156D0E26A361CC006B8FE5 /* FilterSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */; };
 		18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */; };
 		18156D3526A38CE1006B8FE5 /* FilterSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18156D3426A38CE1006B8FE5 /* FilterSheetController.swift */; };
@@ -54,7 +64,7 @@
 		1833847626FF1BFB00EAD9EB /* NftUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833847526FF1BFB00EAD9EB /* NftUseCase.swift */; };
 		1833847926FF1C9700EAD9EB /* FollowsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833847826FF1C9700EAD9EB /* FollowsUseCase.swift */; };
 		1833848626FF3E1400EAD9EB /* GetFollowsRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833848526FF3E1400EAD9EB /* GetFollowsRequestDTO.swift */; };
-		1833848826FF3E2300EAD9EB /* GetFollowsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833848726FF3E2300EAD9EB /* GetFollowsResponseDTO.swift */; };
+		1833848826FF3E2300EAD9EB /* GetUsersResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833848726FF3E2300EAD9EB /* GetUsersResponseDTO.swift */; };
 		1833848A26FF3F6200EAD9EB /* FollowsEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833848926FF3F6200EAD9EB /* FollowsEndpoints.swift */; };
 		1834E7522732D57A0081EFB1 /* HistoryTransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E7512732D57A0081EFB1 /* HistoryTransactionsViewModel.swift */; };
 		1834E7542732D6550081EFB1 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E7532732D6550081EFB1 /* Transaction.swift */; };
@@ -210,6 +220,16 @@
 		1813843A27346A4C004530BD /* AccountAuthenticationModificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAuthenticationModificationViewController.swift; sourceTree = "<group>"; };
 		1813843D27346A4C004530BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		1813843F27346A4C004530BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18138447273549CA004530BD /* AppleLoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRequestDTO.swift; sourceTree = "<group>"; };
+		1813844927355E49004530BD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		1813845027355F03004530BD /* SearchRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestDTO.swift; sourceTree = "<group>"; };
+		181384532735612E004530BD /* SearchEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndpoints.swift; sourceTree = "<group>"; };
+		18138455273561F1004530BD /* SearchRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryImpl.swift; sourceTree = "<group>"; };
+		1813845727356211004530BD /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
+		1813845C273564C6004530BD /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
+		1813845E27356FA6004530BD /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
+		1813845F27356FA6004530BD /* SearchViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewCell.xib; sourceTree = "<group>"; };
+		18138462273572C5004530BD /* SearchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellViewModel.swift; sourceTree = "<group>"; };
 		18156D0C26A361CC006B8FE5 /* FilterSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetViewController.swift; sourceTree = "<group>"; };
 		18156D0D26A361CC006B8FE5 /* FilterSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterSheetViewController.xib; sourceTree = "<group>"; };
 		18156D3426A38CE1006B8FE5 /* FilterSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetController.swift; sourceTree = "<group>"; };
@@ -252,7 +272,7 @@
 		1833847526FF1BFB00EAD9EB /* NftUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NftUseCase.swift; sourceTree = "<group>"; };
 		1833847826FF1C9700EAD9EB /* FollowsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowsUseCase.swift; sourceTree = "<group>"; };
 		1833848526FF3E1400EAD9EB /* GetFollowsRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFollowsRequestDTO.swift; sourceTree = "<group>"; };
-		1833848726FF3E2300EAD9EB /* GetFollowsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFollowsResponseDTO.swift; sourceTree = "<group>"; };
+		1833848726FF3E2300EAD9EB /* GetUsersResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersResponseDTO.swift; sourceTree = "<group>"; };
 		1833848926FF3F6200EAD9EB /* FollowsEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowsEndpoints.swift; sourceTree = "<group>"; };
 		1834E7512732D57A0081EFB1 /* HistoryTransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransactionsViewModel.swift; sourceTree = "<group>"; };
 		1834E7532732D6550081EFB1 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -415,6 +435,39 @@
 				1813843F27346A4C004530BD /* Info.plist */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		1813844B27355E5A004530BD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1813845227356113004530BD /* Endpoint */,
+				1813844D27355E72004530BD /* DataMapping */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		1813844D27355E72004530BD /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				1813845027355F03004530BD /* SearchRequestDTO.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		1813845227356113004530BD /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				181384532735612E004530BD /* SearchEndpoints.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		1813845B273564AD004530BD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1813845C273564C6004530BD /* SearchUseCase.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		18156D3726A4314B006B8FE5 /* Settings */ = {
@@ -607,7 +660,7 @@
 			children = (
 				18E19CE4272B441700FD86FA /* CheckFollowResponseDTO.swift */,
 				1833848526FF3E1400EAD9EB /* GetFollowsRequestDTO.swift */,
-				1833848726FF3E2300EAD9EB /* GetFollowsResponseDTO.swift */,
+				1833848726FF3E2300EAD9EB /* GetUsersResponseDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -867,6 +920,8 @@
 			children = (
 				186E602026B88F25008291AC /* SearchViewController.swift */,
 				186E602126B88F25008291AC /* SearchViewController.xib */,
+				1813845E27356FA6004530BD /* SearchViewCell.swift */,
+				1813845F27356FA6004530BD /* SearchViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -874,6 +929,8 @@
 		186E601F26B88F15008291AC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1813844927355E49004530BD /* SearchViewModel.swift */,
+				18138462273572C5004530BD /* SearchCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -931,6 +988,7 @@
 				18E1107526D59F6B007FD66E /* DropShopRepository.swift */,
 				18DDEA1126D703DF00306A60 /* MarketRepository.swift */,
 				18DDEA2826D7998B00306A60 /* InitialRepository.swift */,
+				1813845727356211004530BD /* SearchRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -947,6 +1005,7 @@
 		1879C56226C9BCF100CE367E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1813844B27355E5A004530BD /* Search */,
 				1833848226FF3D7E00EAD9EB /* Follows */,
 				18DDEA2526D7996500306A60 /* Initial */,
 				18DDE9FB26D6F64300306A60 /* Wallet */,
@@ -987,6 +1046,7 @@
 				1879C57526C9D32F00CE367E /* SignupResponseDTO.swift */,
 				1879C57326C9D31B00CE367E /* LoginRequestDTO.swift */,
 				1879C57726C9D34300CE367E /* LoginResponseDTO.swift */,
+				18138447273549CA004530BD /* AppleLoginRequestDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -1066,6 +1126,7 @@
 		18B8427F266F618F0033AFC0 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				1813845B273564AD004530BD /* Search */,
 				18DDEA3026D79C5F00306A60 /* Initial */,
 				18DDEA0826D6FDD700306A60 /* Market */,
 				18DDE9F626D6F07600306A60 /* Wallet */,
@@ -1093,6 +1154,7 @@
 				18DDE9F926D6F55900306A60 /* WalletRepositoryImpl.swift */,
 				18DDEA1326D78D0300306A60 /* MarketRepositoryImpl.swift */,
 				18DDEA2626D7997A00306A60 /* InitialRepositoryImpl.swift */,
+				18138455273561F1004530BD /* SearchRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1573,6 +1635,7 @@
 				1813843127343CE2004530BD /* PersonalDataViewController.xib in Resources */,
 				186E601226B6E27E008291AC /* TransactionViewCell.xib in Resources */,
 				18156D0F26A361CC006B8FE5 /* FilterSheetViewController.xib in Resources */,
+				1813846127356FA6004530BD /* SearchViewCell.xib in Resources */,
 				18523F92269CEB4E00611362 /* Shop.storyboard in Resources */,
 				186E601A26B6E695008291AC /* DetailTransactionViewController.xib in Resources */,
 				18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */,
@@ -1685,6 +1748,7 @@
 				18DDEA2926D7998B00306A60 /* InitialRepository.swift in Sources */,
 				186E5FFC26B6A420008291AC /* WithdrawViewModel.swift in Sources */,
 				1879C57226C9D30900CE367E /* SignupRequestDTO.swift in Sources */,
+				1813846027356FA6004530BD /* SearchViewCell.swift in Sources */,
 				18E1108A26D5AA56007FD66E /* NftEditionDTO.swift in Sources */,
 				182342DB26A1E67F00CD2907 /* NftMarketViewCell.swift in Sources */,
 				1879C57626C9D32F00CE367E /* SignupResponseDTO.swift in Sources */,
@@ -1700,9 +1764,11 @@
 				1834E75C2733014A0081EFB1 /* DetailTransactionViewModel.swift in Sources */,
 				1879C56126C9B7EA00CE367E /* AuthRepositoryImpl.swift in Sources */,
 				18E1109C26D684C7007FD66E /* Nft.swift in Sources */,
+				181384542735612E004530BD /* SearchEndpoints.swift in Sources */,
 				18DDEA1A26D78EDD00306A60 /* Endpoints.swift in Sources */,
 				182342D326A0493600CD2907 /* DetailNftViewController.swift in Sources */,
 				1869F0F82704961900C7654A /* ErrorHelper.swift in Sources */,
+				1813845127355F03004530BD /* SearchRequestDTO.swift in Sources */,
 				18D8452F26CDB2BA00888D32 /* LoginViewModel.swift in Sources */,
 				18D8452426CD5D2500888D32 /* BaseViewModel.swift in Sources */,
 				18156D4326A4D925006B8FE5 /* SettingCellViewModel.swift in Sources */,
@@ -1711,11 +1777,12 @@
 				1879C56A26C9C74D00CE367E /* Constants.swift in Sources */,
 				18E8F3C726CBCCF100E62E33 /* Observable.swift in Sources */,
 				1833847326FF160100EAD9EB /* HomeViewModel.swift in Sources */,
+				18138448273549CA004530BD /* AppleLoginRequestDTO.swift in Sources */,
 				181742ED2698636B002B9FD7 /* PersonalViewController.swift in Sources */,
 				186E601126B6E27E008291AC /* TransactionViewCell.swift in Sources */,
 				18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */,
 				186E600D26B6DFE3008291AC /* CollectionNftViewController.swift in Sources */,
-				1833848826FF3E2300EAD9EB /* GetFollowsResponseDTO.swift in Sources */,
+				1833848826FF3E2300EAD9EB /* GetUsersResponseDTO.swift in Sources */,
 				1879C55E26C9B76200CE367E /* SignupUseCase.swift in Sources */,
 				18DDEA2726D7997A00306A60 /* InitialRepositoryImpl.swift in Sources */,
 				185F58B526F8B43A00473DDB /* Edition.swift in Sources */,
@@ -1734,6 +1801,7 @@
 				18156D3D26A43250006B8FE5 /* SettingsViewController.swift in Sources */,
 				181742F52699B601002B9FD7 /* HapticHelper.swift in Sources */,
 				18E39B2026D03AD300FEC003 /* GetUserRequestDTO.swift in Sources */,
+				1813845827356211004530BD /* SearchRepository.swift in Sources */,
 				18156D4126A4D8F7006B8FE5 /* SettingsViewModel.swift in Sources */,
 				182342F626A2F10E00CD2907 /* HistoryCellViewModel.swift in Sources */,
 				1833848626FF3E1400EAD9EB /* GetFollowsRequestDTO.swift in Sources */,
@@ -1754,7 +1822,9 @@
 				18E39B1626D0394C00FEC003 /* UserRepositoryImpl.swift in Sources */,
 				18156D4626A4DD3E006B8FE5 /* SettingViewCell.swift in Sources */,
 				182342E826A2D21400CD2907 /* OfferPriceViewCell.swift in Sources */,
+				18138463273572C5004530BD /* SearchCellViewModel.swift in Sources */,
 				18E37755272F00AF00A2795B /* InfluencersViewController.swift in Sources */,
+				1813844A27355E49004530BD /* SearchViewModel.swift in Sources */,
 				18DDE9F526D6EE5E00306A60 /* WalletRepository.swift in Sources */,
 				181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */,
 				182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */,
@@ -1763,6 +1833,7 @@
 				18DDEA1E26D790EB00306A60 /* GetMarketNftsResponseDTO.swift in Sources */,
 				18DDEA2226D7919400306A60 /* CreateSellNftRequestDTO.swift in Sources */,
 				182342F826A2F40500CD2907 /* TradingHistoryViewModel.swift in Sources */,
+				18138456273561F1004530BD /* SearchRepositoryImpl.swift in Sources */,
 				1879C57A26CA79BB00CE367E /* SignupViewModel.swift in Sources */,
 				186E5FF326B6A3E2008291AC /* WithdrawViewController.swift in Sources */,
 				18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */,
@@ -1770,6 +1841,7 @@
 				18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */,
 				1869F0FF2707555B00C7654A /* InfluencerCollectionViewCell.swift in Sources */,
 				18DDEA0726D6F9F700306A60 /* WalletEndpoints.swift in Sources */,
+				1813845D273564C6004530BD /* SearchUseCase.swift in Sources */,
 				186E602226B88F25008291AC /* SearchViewController.swift in Sources */,
 				18B84290266F64A30033AFC0 /* HomeViewController.swift in Sources */,
 				18DDE9FA26D6F55900306A60 /* WalletRepositoryImpl.swift in Sources */,

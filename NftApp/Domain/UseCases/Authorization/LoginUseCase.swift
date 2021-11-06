@@ -11,6 +11,8 @@ protocol LoginUseCase {
     
     func login(request: LoginRequest, completion: @escaping (Result<Bool, Error>) -> Void)
     
+    func appleLogin(appleId: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    
 }
 
 final class LoginUseCaseImpl: LoginUseCase {
@@ -24,7 +26,6 @@ final class LoginUseCaseImpl: LoginUseCase {
     }
     
     func login(request: LoginRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
-
         repository?.login(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
@@ -48,6 +49,32 @@ final class LoginUseCaseImpl: LoginUseCase {
             }
         })
     }
+    
+    func appleLogin(appleId: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        repository?.appleLogin(appleId: appleId, completion: { result in
+            switch result {
+                case .success(let resp) : do {
+                    let authToken = resp.token
+                    
+                    if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
+                        Constant.AUTH_TOKEN = authToken
+                        Constant.USER_ID = userId
+                        self.userStorage?.saveAuthToken(token: authToken)
+                        self.userStorage?.saveUserId(userId: userId)
+                        
+                        completion(.success(true))
+                    } else {
+                        completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+                    }
+                }
+                
+                case .failure(let error) : do {
+                    completion(.failure(error))
+                }
+            }
+        })
+    }
+    
 }
 
 struct LoginRequest {

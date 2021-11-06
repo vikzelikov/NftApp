@@ -13,4 +13,6 @@ protocol AuthRepository {
     
     func login(request: LoginRequest, completion: @escaping (Result<LoginResponseDTO, Error>) -> Void)
     
+    func appleLogin(appleId: String, completion: @escaping (Result<LoginResponseDTO, Error>) -> Void)
+    
 }

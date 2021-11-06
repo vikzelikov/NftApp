@@ -32,7 +32,7 @@ class NftMarketViewCell: UITableViewCell {
 
         
         titleLabel?.text = viewModel.edition.name
-        priceLabel?.text = String(viewModel.price)
+        priceLabel?.text = "\(viewModel.price ?? 0.0)"
 //        if let stringUrl = viewModel.imageUrl {
 //            if let url = getUrl(stringUrl: stringUrl) {
 //                nftImageView.sd_setImage(with: url)

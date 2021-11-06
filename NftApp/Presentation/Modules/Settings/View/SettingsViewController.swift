@@ -106,8 +106,10 @@ class SettingsViewController: UIViewController {
     
     
     @IBAction func searchDidTap(_ sender: Any) {
+        let nav = UINavigationController()
         let vc = SearchViewController()
-        present(vc, animated: true, completion: nil)
+        nav.viewControllers = [vc]
+        present(nav, animated: true, completion: nil)
     }
 }
 

@@ -34,6 +34,8 @@ final class InitialUseCaseImpl: InitialUseCase {
                                                   isDepositAvailable: resp.isDepositAvailable,
                                                   isWithdrawAvailable: resp.isWithdrawAvailable)
                     
+                    InitialDataObject.data.value = initialData
+                    
                     completion(.success(initialData))
                 }
                             

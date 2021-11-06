@@ -10,6 +10,7 @@ import UIKit
 class FollowsViewCell: UITableViewCell {
 
     static let cellIdentifier = String(describing: FollowsViewCell.self)
+    
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {

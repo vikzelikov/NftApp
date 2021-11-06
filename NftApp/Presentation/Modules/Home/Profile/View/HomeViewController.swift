@@ -82,6 +82,7 @@ class HomeViewController: UIViewController {
         header.userImageDidTap = { [self] in
             ImagePickerHelper().pickImage(self) { image in
                 self.headerView?.userImageView.image = image
+                self.headerView?.userImageView.contentMode = .scaleAspectFill
                 
                 self.viewModel?.updateAvatar(request: UpdateAvatarRequest(image: image), completion: { _ in })
             }

@@ -77,9 +77,7 @@ class InitialViewModelImpl: InitialViewModel {
     private func getInitialData() {
         initialUseCase.getInitialData(completion: { result in
             switch result {
-            case .success(let data):
-                InitialDataObject.data.value = data
-                
+            case .success:                
                 self.isShowHome.value = true
                 break
             case .failure:

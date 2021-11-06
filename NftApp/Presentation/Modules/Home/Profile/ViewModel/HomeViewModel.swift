@@ -58,7 +58,7 @@ class HomeViewModelImpl: HomeViewModel {
     func viewDidLoad(isRefresh: Bool) {
         resetViewModel()
         
-        if isValidUser() || isRefresh { getUser() }
+        if isInvalidUser() || isRefresh { getUser() }
 
         getFollows()
         
@@ -204,7 +204,7 @@ class HomeViewModelImpl: HomeViewModel {
         completion(userViewModel.value?.id == Constant.USER_ID)
     }
     
-    private func isValidUser() -> Bool {
+    private func isInvalidUser() -> Bool {
         return userViewModel.value == nil ||
         userViewModel.value?.id == nil ||
         userViewModel.value?.login == nil ||

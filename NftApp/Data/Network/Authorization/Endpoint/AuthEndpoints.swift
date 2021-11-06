@@ -10,7 +10,7 @@ import Alamofire
 
 struct AuthEndpoints {
     
-    static func getSignupEndpoint(request: SignupRequest) -> Endpoint {
+    static func signupEndpoint(request: SignupRequest) -> Endpoint {
         let requestDTO = SignupRequestDTO (
             login: request.login,
             email: request.email,
@@ -31,6 +31,17 @@ struct AuthEndpoints {
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/auth/login"
+        
+        return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
+    }
+    
+    static func appleLoginEndpoint(appleId: String) -> Endpoint {
+        let requestDTO = AppleLoginRequestDTO (
+            appleId: appleId
+        ).parameters
+        
+        let headers: HTTPHeaders = NetworkHelper.getHeaders()
+        let url = Constant.BASE_URL + "api/auth/apple"
         
         return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }

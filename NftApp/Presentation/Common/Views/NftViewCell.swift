@@ -46,8 +46,11 @@ class NftViewCell: UITableViewCell {
     
     func bindNft(viewModel: NftViewModel) {
         titleNftLabel?.text = viewModel.edition.name
-        priceLabel?.text = String(Int(viewModel.lastPrice))
-        nftImage.sd_setImage(with: URL(string: viewModel.edition.mediaUrl)!)
+        priceLabel?.text = String(Int(viewModel.lastPrice ?? 0.0))
+        
+        if let urlString = viewModel.edition.mediaUrl, let url = URL(string: urlString) {
+            nftImage.sd_setImage(with: url)
+        }
         
         if typeDetailNFT == .detail {
             expirationView.isHidden = true
@@ -56,10 +59,13 @@ class NftViewCell: UITableViewCell {
     
     func bindEdition(viewModel: EditionViewModel) {
         titleNftLabel?.text = viewModel.name
-        priceLabel?.text = String(Int(viewModel.price))
-        nftImage.sd_setImage(with: URL(string: viewModel.mediaUrl)!)
+        priceLabel?.text = String(Int(viewModel.price ?? 0.0))
+        
+        if let urlString = viewModel.mediaUrl, let url = URL(string: urlString) {
+            nftImage.sd_setImage(with: url)
+        }
 
-        if let dateExpiration = TimeInterval(viewModel.dateExpiration) {
+        if let exp = viewModel.dateExpiration, let dateExpiration = TimeInterval(exp) {
             let timeInterval = NSDate().timeIntervalSince1970
             let exp = dateExpiration / 1000
             

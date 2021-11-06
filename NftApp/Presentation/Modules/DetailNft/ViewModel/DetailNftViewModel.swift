@@ -28,7 +28,7 @@ enum TypeDetailNFT {
 class DetailNftViewModelImpl: DetailNftViewModel {
     
     private let dropShopUseCase: DropShopUseCase
-    private let marketUserCase: MarketUseCase
+    private let marketUseCase: MarketUseCase
     
     var typeDetailNFT: TypeDetailNFT = TypeDetailNFT.detail
     var nftViewModel: Observable<NftViewModel?> = Observable(nil)
@@ -45,17 +45,31 @@ class DetailNftViewModelImpl: DetailNftViewModel {
     
     init() {
         dropShopUseCase = DropShopUseCaseImpl()
-        marketUserCase = MarketUseCaseImpl()
+        marketUseCase = MarketUseCaseImpl()
     }
     
     func viewDidLoad() {
-        if let dateExpiration = TimeInterval(nftViewModel.value?.edition.dateExpiration ?? "0") {
-            let timeInterval = NSDate().timeIntervalSince1970
-            let exp = dateExpiration / 1000
-            
-            let del = Int((exp - timeInterval))
-            expiryTimeInterval = del
-            expirationTime.value = del
+        if isInvalidEdition() {
+            getEdition()
+        } else {
+            initTimer()
+        }
+    }
+    
+    func getEdition() {
+        guard let editionId = nftViewModel.value?.edition.id else { return }
+        
+        self.dropShopUseCase.getEdition(editionId: editionId) { result in
+            switch result {
+            case .success(let edition):
+                self.nftViewModel.value?.edition = EditionViewModel(edition: edition)
+                
+                self.initTimer()
+                
+            case .failure(let error):
+                let (_, errorStr) = ErrorHelper.validateError(error: error)
+                self.errorMessage.value = errorStr
+            }
         }
     }
     
@@ -80,6 +94,17 @@ class DetailNftViewModelImpl: DetailNftViewModel {
         }
     }
     
+    private func initTimer() {
+        if let dateExpiration = TimeInterval(nftViewModel.value?.edition.dateExpiration ?? "0") {
+            let timeInterval = NSDate().timeIntervalSince1970
+            let exp = dateExpiration / 1000
+            
+            let del = Int((exp - timeInterval))
+            expiryTimeInterval = del
+            expirationTime.value = del
+        }
+    }
+    
     private func startTimer() {
         if let interval = expiryTimeInterval {
             expirationTime.value = interval
@@ -101,6 +126,9 @@ class DetailNftViewModelImpl: DetailNftViewModel {
         expirationTime.value -= 1
     }
 
+    private func isInvalidEdition() -> Bool {
+        return nftViewModel.value?.edition.name == nil
+    }
     
 }
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GetFollowsResponseDTO: Decodable {
+class GetUsersResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
         case rows
     }

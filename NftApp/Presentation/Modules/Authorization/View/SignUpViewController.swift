@@ -38,6 +38,14 @@ class SignUpViewController: UIViewController {
         confirmPassTextField.applyTextFieldStyle()
         
         nextButton.applyButtonEffects()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+        
+        loginTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPassTextField.delegate = self
     }
 
     @IBAction func nextButtonDidPress(_ sender: Any) {
@@ -61,7 +69,7 @@ class SignUpViewController: UIViewController {
         }
         
         viewModel?.isSuccess.bind { [weak self] in
-            if $0 { self?.showHomeView() }
+            if $0 { self?.showInitialView() }
         }
             
         viewModel?.errorMessage.bind {
@@ -81,15 +89,50 @@ class SignUpViewController: UIViewController {
             }
     }
     
-    private func showHomeView() {
+    private func showInitialView() {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
         guard let page = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }
     
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        loginTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        confirmPassTextField.resignFirstResponder()
+    }
+    
     @IBAction func dismissSignUp(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
     
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == loginTextField {
+            textField.resignFirstResponder()
+            emailTextField.becomeFirstResponder()
+        } else if textField == emailTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
+            confirmPassTextField.becomeFirstResponder()
+        } else if textField == confirmPassTextField {
+            viewModel?.updateCredentials(
+                login: loginTextField.text!,
+                email: emailTextField.text!,
+                password: passwordTextField.text!,
+                confirmPassword: confirmPassTextField.text!
+            )
+            
+            viewModel?.inputCredentials()
+            
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
 }

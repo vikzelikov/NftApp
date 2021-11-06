@@ -69,7 +69,7 @@ class ProfileHeaderView: UIView {
             guard let userViewModel = $0 else { return }
             
             self.loginLabel.text = userViewModel.login
-            self.loginSubtitleLabel.text = userViewModel.flowAddress ?? "@\(String(describing: userViewModel.login))"
+            self.loginSubtitleLabel.text = userViewModel.flowAddress ?? "@\(userViewModel.login ?? "")"
             
             if let avatarUrl = userViewModel.avatarUrl, let url = URL(string: avatarUrl) {
                 self.userImageView.contentMode = .scaleAspectFill
@@ -169,10 +169,12 @@ class ProfileHeaderView: UIView {
             if count < 2 { backButton.isHidden = true }
         } else {
             backButton.isHidden = true
+            
+            if isModal {
+                closeButton.isHidden = false
+            }
         }
-        
-        if isModal { closeButton.isHidden = false }
-        
+                
         guard let userId = viewModel?.userViewModel.value?.id else { return }
         
         if userId != Constant.USER_ID {

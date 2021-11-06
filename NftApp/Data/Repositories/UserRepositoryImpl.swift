@@ -64,7 +64,7 @@ class UserRepositoryImpl: UserRepository {
         }
     }
     
-    func getFollowers(request: FollowsRequest, completion: @escaping (Result<GetFollowsResponseDTO, Error>) -> Void) {
+    func getFollowers(request: FollowsRequest, completion: @escaping (Result<GetUsersResponseDTO, Error>) -> Void) {
         let endpoint = FollowsEndpoints.getFollowersEndpoint(request: request)
         
         AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
@@ -74,7 +74,7 @@ class UserRepositoryImpl: UserRepository {
         }
     }
     
-    func getFollowing(request: FollowsRequest, completion: @escaping (Result<GetFollowsResponseDTO, Error>) -> Void) {
+    func getFollowing(request: FollowsRequest, completion: @escaping (Result<GetUsersResponseDTO, Error>) -> Void) {
         let endpoint = FollowsEndpoints.getFollowingEndpoint(request: request)
 
         AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in

@@ -70,17 +70,23 @@ class DetailNftViewController: UIViewController {
         
         viewModel?.nftViewModel.bind {
             guard let nftViewModel = $0 else { return }
-            self.buyButton?.setTitle("\(Int(nftViewModel.edition.price))", for: .normal)
+            self.buyButton?.setTitle("\(Int(nftViewModel.edition.price ?? 0.0))", for: .normal)
             self.titleLabel?.text = nftViewModel.edition.name
             self.descriptionLabel?.text = nftViewModel.edition.description
-            self.nftImageView.sd_setImage(with: URL(string: nftViewModel.edition.mediaUrl)!)
-            self.leftCountLabel.text = "x\(nftViewModel.edition.count - nftViewModel.edition.countNFTs) " + NSLocalizedString("left", comment: "")
-            self.priceLabel.text = String(Int(nftViewModel.lastPrice))
+            self.priceLabel.text = String(Int(nftViewModel.lastPrice ?? 0.0))
+            
+            if let count = nftViewModel.edition.count, let countNFTs = nftViewModel.edition.countNFTs {
+                self.leftCountLabel.text = "x\(count - countNFTs) " + NSLocalizedString("left", comment: "")
+            }
+            
+            if let url = URL(string: nftViewModel.edition.mediaUrl ?? "") {
+                self.nftImageView.sd_setImage(with: url)
+            }
         }
         
         viewModel?.expirationTime.bind {
             guard $0 >= 1 else {
-                self.dismiss(animated: true, completion: nil)
+//                self.dismiss(animated: true, completion: nil)
                 return
             }
             
@@ -114,7 +120,7 @@ class DetailNftViewController: UIViewController {
                 moreOffersButton.isHidden = true
                 originalTagView.isHidden = true
                 expirationLabel.isHidden = true
-                moreInfoNftLabel.isHidden = false
+                moreInfoNftLabel.isHidden = true
                 buyButton.isHidden = true
                 priceView.isHidden = false
                 dismissButton.isHidden = true

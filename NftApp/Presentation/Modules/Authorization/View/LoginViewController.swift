@@ -40,6 +40,9 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
+        
+        loginTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     @IBAction func loginDidTap(_ sender: Any) {
@@ -53,8 +56,8 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
     
     @IBAction func signupDidTap(_ sender: Any) {
         let homeStoryboard = UIStoryboard(name: "Authorization", bundle: nil)
-                guard let vc = homeStoryboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
-                navigationController?.pushViewController(vc, animated: true)
+        guard let vc = homeStoryboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func bindData() {
@@ -67,7 +70,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
         }
         
         viewModel?.isSuccess.bind { [weak self] in
-            if $0 { self?.showHomeView() }
+            if $0 { self?.showInitialView() }
         }
             
         viewModel?.errorMessage.bind {
@@ -78,9 +81,9 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
         }
     }
     
-    private func showHomeView() {
-        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
-        guard let page = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
+    private func showInitialView() {
+        let storyboard = UIStoryboard(name: "Initial", bundle: nil)
+        guard let page = storyboard.instantiateViewController(withIdentifier: "InitialViewController") as? InitialViewController else { return }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }
@@ -93,17 +96,17 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
             } else {
                 authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
             }
-//            authorizationButton.addTarget(self, action: #selector(handleAppleIdRequest), for: .touchDown)
+
             let appleAuthTap = UITapGestureRecognizer(target: self, action: #selector(handleAppleIdRequest))
             appleAuthTap.cancelsTouchesInView = false
             appleAuthView.addGestureRecognizer(appleAuthTap)
-            authorizationButton.cornerRadius = 8
+            authorizationButton.cornerRadius = 10
             authorizationButton.translatesAutoresizingMaskIntoConstraints = false
             appleAuthView.addSubview(authorizationButton)
             authorizationButton.centerXAnchor.constraint(equalTo: appleAuthView.centerXAnchor).isActive = true
             authorizationButton.centerYAnchor.constraint(equalTo: appleAuthView.centerYAnchor).isActive = true
             authorizationButton.widthAnchor.constraint(equalToConstant: 240).isActive = true
-            authorizationButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            authorizationButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
 
         } else {
             appleAuthView.isHidden = true
@@ -114,7 +117,6 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
         if #available(iOS 13.0, *) {
             let appleIDProvider = ASAuthorizationAppleIDProvider()
             let request = appleIDProvider.createRequest()
-            request.requestedScopes = [.fullName, .email]
             let authorizationController = ASAuthorizationController(authorizationRequests: [request])
             authorizationController.delegate = self
             authorizationController.performRequests()
@@ -125,9 +127,8 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            let userIdentifier = appleIDCredential.user
-            let fullName = appleIDCredential.fullName
-            let email = appleIDCredential.email
+            let appleId = appleIDCredential.user
+            viewModel?.appleAuthDidTap(appleId: appleId)
         }
     }
     
@@ -140,4 +141,24 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
         navigationController?.popViewController(animated: true)
     }
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == loginTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            viewModel?.updateCredentials(
+                login: loginTextField.text!,
+                password: passwordTextField.text!
+            )
+
+            viewModel?.inputCredentials()
+            
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
 }

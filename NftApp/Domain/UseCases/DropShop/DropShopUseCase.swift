@@ -11,6 +11,8 @@ protocol DropShopUseCase {
     
     func getEditions(request: GetEditionsRequest, completion: @escaping (Result<[Edition], Error>) -> Void)
     
+    func getEdition(editionId: Int, completion: @escaping (Result<Edition, Error>) -> Void)
+    
     func buyNft(editionId: Int, completion: @escaping (Result<Bool, Error>) -> Void)
     
 }
@@ -24,7 +26,6 @@ final class DropShopUseCaseImpl: DropShopUseCase {
     }
     
     func getEditions(request: GetEditionsRequest, completion: @escaping (Result<[Edition], Error>) -> Void) {
-
         repository?.getEditions(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {                    
@@ -50,8 +51,31 @@ final class DropShopUseCaseImpl: DropShopUseCase {
         })
     }
     
+    func getEdition(editionId: Int, completion: @escaping (Result<Edition, Error>) -> Void) {
+        repository?.getEdition(editionId: editionId, completion: { result in
+            switch result {
+                case .success(let resp) : do {
+                    let editions = Edition(id: resp.id,
+                                influencerId: resp.influencerId,
+                                count: resp.count,
+                                name: resp.name,
+                                description: resp.description,
+                                price: resp.price,
+                                dateExpiration: resp.dateExpiration,
+                                mediaUrl: resp.mediaUrl,
+                                countNFTs: Int(resp.countNFTs ?? "0") ?? 0)
+                    
+                    completion(.success(editions))
+                }
+                
+                case .failure(let error) : do {
+                    completion(.failure(error))
+                }
+            }
+        })
+    }
+    
     func buyNft(editionId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
-
         repository?.buyNft(editionId: editionId, completion: { result in
             switch result {
                 case .success: do {

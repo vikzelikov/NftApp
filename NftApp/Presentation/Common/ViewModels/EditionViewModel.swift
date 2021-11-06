@@ -9,14 +9,14 @@ import Foundation
 
 struct EditionViewModel {
     var id: Int
-    var influencerId: Int
-    var count: Int
-    var name: String
-    var description: String
-    var price: Double
-    var dateExpiration: String
-    var mediaUrl: String
-    var countNFTs: Int
+    var influencerId: Int?
+    var count: Int?
+    var name: String?
+    var description: String?
+    var price: Double?
+    var dateExpiration: String?
+    var mediaUrl: String?
+    var countNFTs: Int?
 }
 
 extension EditionViewModel {

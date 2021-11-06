@@ -19,9 +19,9 @@ protocol UserRepository {
     
     func getNfts(request: GetNftsRequest, completion: @escaping (Result<GetNftsResponseDTO, Error>) -> Void)
     
-    func getFollowers(request: FollowsRequest, completion: @escaping (Result<GetFollowsResponseDTO, Error>) -> Void)
+    func getFollowers(request: FollowsRequest, completion: @escaping (Result<GetUsersResponseDTO, Error>) -> Void)
     
-    func getFollowing(request: FollowsRequest, completion: @escaping (Result<GetFollowsResponseDTO, Error>) -> Void)
+    func getFollowing(request: FollowsRequest, completion: @escaping (Result<GetUsersResponseDTO, Error>) -> Void)
     
     func follow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void)
     

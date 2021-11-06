@@ -9,10 +9,10 @@ import Foundation
 
 struct NftViewModel {
     var id: Int
-    var price: Double
-    var lastPrice: Double
-    var serialNumber: Int
-    var isForCell: Bool
+    var price: Double?
+    var lastPrice: Double?
+    var serialNumber: Int?
+    var isForCell: Bool?
     var edition: EditionViewModel
 }
 

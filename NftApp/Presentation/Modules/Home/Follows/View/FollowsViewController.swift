@@ -63,7 +63,7 @@ class FollowsViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: "FollowsViewCell", bundle: nil), forCellReuseIdentifier: FollowsViewCell.cellIdentifier)
+        tableView.register(UINib(nibName: FollowsViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: FollowsViewCell.cellIdentifier)
         
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0.0
@@ -111,7 +111,7 @@ extension FollowsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FollowsViewCell", for: indexPath) as? FollowsViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FollowsViewCell.cellIdentifier, for: indexPath) as? FollowsViewCell else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()
         }
