@@ -15,7 +15,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var walletButton: UIButton!
     @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var telegramButton: UIButton!
+    @IBOutlet weak var tiktokButton: UIButton!
+    @IBOutlet weak var instagramButton: UIButton!
     @IBOutlet weak var personalDataTableView: UITableView!
     @IBOutlet weak var otherSettingsTableView: UITableView!
     @IBOutlet weak var heightPersonalDataTableView: NSLayoutConstraint!
@@ -47,7 +48,8 @@ class SettingsViewController: UIViewController {
         setupPersonalDataTableView()
         setupOtherSettingsTableView()
         
-        telegramButton.layer.cornerRadius = telegramButton.frame.width / 2
+        tiktokButton.layer.cornerRadius = tiktokButton.frame.width / 2
+        instagramButton.layer.cornerRadius = instagramButton.frame.width / 2
     }
     
     @IBAction func walletButtonDidTap(_ sender: Any) {
@@ -104,13 +106,25 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    
     @IBAction func searchDidTap(_ sender: Any) {
         let nav = UINavigationController()
         let vc = SearchViewController()
         nav.viewControllers = [vc]
         present(nav, animated: true, completion: nil)
     }
+    
+    @IBAction func tiktokDidTap(_ sender: Any) {
+        if let link = URL(string: "https://www.tiktok.com/@showyouryup") {
+            UIApplication.shared.open(link)
+        }
+    }
+    
+    @IBAction func instagramDidTap(_ sender: Any) {
+        if let link = URL(string: "https://www.instagram.com/showyouryup/") {
+            UIApplication.shared.open(link)
+        }
+    }
+    
 }
 
 extension SettingsViewController: UITableViewDelegate {

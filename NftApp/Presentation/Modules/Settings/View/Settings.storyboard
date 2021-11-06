@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rc6-eO-9DO">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="895.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bXi-Xc-0SF">
                                                 <rect key="frame" x="15" y="241" width="290" height="180"/>
@@ -70,16 +70,37 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDY-t4-O4N">
-                                                <rect key="frame" x="130" y="701.5" width="60" height="60"/>
-                                                <color key="backgroundColor" name="gray"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="Jbn-WP-Z3l"/>
-                                                    <constraint firstAttribute="height" constant="60" id="unm-i6-huM"/>
-                                                </constraints>
-                                                <inset key="imageEdgeInsets" minX="3" minY="5" maxX="5" maxY="5"/>
-                                                <state key="normal" image="telegram"/>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="Kam-gP-Ixx">
+                                                <rect key="frame" x="82.5" y="701.5" width="155" height="60"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDY-t4-O4N">
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                        <color key="backgroundColor" name="gray"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="60" id="Jbn-WP-Z3l"/>
+                                                            <constraint firstAttribute="height" constant="60" id="unm-i6-huM"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="4" minY="5" maxX="5" maxY="5"/>
+                                                        <state key="normal" image="tiktok"/>
+                                                        <connections>
+                                                            <action selector="tiktokDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="A8y-lD-KSO"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjD-5l-ebH">
+                                                        <rect key="frame" x="95" y="0.0" width="60" height="60"/>
+                                                        <color key="backgroundColor" name="gray"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="F9X-Na-hOH"/>
+                                                            <constraint firstAttribute="width" constant="60" id="xuU-7V-3oj"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                        <state key="normal" image="instagram"/>
+                                                        <connections>
+                                                            <action selector="instagramDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CIa-8s-uCZ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJ6-iR-KQy">
                                                 <rect key="frame" x="275" y="0.0" width="45" height="45"/>
                                                 <constraints>
@@ -121,22 +142,21 @@
                                             <constraint firstItem="bXi-Xc-0SF" firstAttribute="top" secondItem="SAU-yJ-bzs" secondAttribute="bottom" constant="10" id="6xy-3u-ZsH"/>
                                             <constraint firstItem="SAU-yJ-bzs" firstAttribute="leading" secondItem="Rc6-eO-9DO" secondAttribute="leading" constant="30" id="9kp-FT-WsY"/>
                                             <constraint firstAttribute="trailing" secondItem="fz7-v1-JGI" secondAttribute="trailing" constant="45" id="HpC-eT-5eR"/>
+                                            <constraint firstItem="Kam-gP-Ixx" firstAttribute="top" secondItem="diQ-dL-0e8" secondAttribute="bottom" constant="50" id="LzJ-Fc-uT5"/>
                                             <constraint firstAttribute="trailing" secondItem="BJ6-iR-KQy" secondAttribute="trailing" id="SSA-pC-6pb"/>
                                             <constraint firstItem="fz7-v1-JGI" firstAttribute="top" secondItem="Rc6-eO-9DO" secondAttribute="top" constant="20" id="T5J-kM-LVF"/>
                                             <constraint firstItem="eWf-82-var" firstAttribute="top" secondItem="bXi-Xc-0SF" secondAttribute="bottom" constant="20" id="VYx-He-tMU"/>
-                                            <constraint firstItem="XDY-t4-O4N" firstAttribute="top" secondItem="diQ-dL-0e8" secondAttribute="bottom" constant="50" id="WPH-2q-rls"/>
                                             <constraint firstItem="diQ-dL-0e8" firstAttribute="top" secondItem="eWf-82-var" secondAttribute="bottom" constant="10" id="Wj8-19-s0j"/>
-                                            <constraint firstItem="XDY-t4-O4N" firstAttribute="centerX" secondItem="Rc6-eO-9DO" secondAttribute="centerX" id="YiC-KT-KrT"/>
                                             <constraint firstItem="NW7-dZ-R9P" firstAttribute="top" secondItem="fz7-v1-JGI" secondAttribute="bottom" constant="20" id="a1Z-79-UAz"/>
                                             <constraint firstAttribute="trailing" secondItem="diQ-dL-0e8" secondAttribute="trailing" constant="15" id="a9l-Wv-WZE"/>
                                             <constraint firstItem="bXi-Xc-0SF" firstAttribute="leading" secondItem="Rc6-eO-9DO" secondAttribute="leading" constant="15" id="bx1-vR-8E1"/>
                                             <constraint firstAttribute="trailing" secondItem="NW7-dZ-R9P" secondAttribute="trailing" constant="15" id="fE4-9I-Jh3"/>
                                             <constraint firstItem="diQ-dL-0e8" firstAttribute="leading" secondItem="Rc6-eO-9DO" secondAttribute="leading" constant="15" id="ftG-5Q-CVl"/>
                                             <constraint firstItem="fz7-v1-JGI" firstAttribute="leading" secondItem="Rc6-eO-9DO" secondAttribute="leading" constant="15" id="irO-IN-6la"/>
+                                            <constraint firstItem="Kam-gP-Ixx" firstAttribute="centerX" secondItem="Rc6-eO-9DO" secondAttribute="centerX" id="lPc-Vy-KtE"/>
                                             <constraint firstItem="eWf-82-var" firstAttribute="leading" secondItem="Rc6-eO-9DO" secondAttribute="leading" constant="30" id="m7h-G4-J9K"/>
                                             <constraint firstItem="BJ6-iR-KQy" firstAttribute="top" secondItem="Rc6-eO-9DO" secondAttribute="top" id="o9J-n0-iFf"/>
                                             <constraint firstItem="SAU-yJ-bzs" firstAttribute="top" secondItem="NW7-dZ-R9P" secondAttribute="bottom" constant="20" id="yfD-79-5sr"/>
-                                            <constraint firstAttribute="bottom" secondItem="XDY-t4-O4N" secondAttribute="bottom" constant="134" id="zv6-yT-5M8"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -166,10 +186,11 @@
                         <outlet property="balanceLabel" destination="hmb-tV-YbT" id="Ydx-O6-5am"/>
                         <outlet property="heightOtherSettingsTableView" destination="BtH-xx-uD2" id="fuQ-Uy-uNx"/>
                         <outlet property="heightPersonalDataTableView" destination="7A0-g8-ffj" id="4FC-gq-8bq"/>
+                        <outlet property="instagramButton" destination="GjD-5l-ebH" id="6RX-Wx-Ah6"/>
                         <outlet property="otherSettingsTableView" destination="diQ-dL-0e8" id="zik-gT-f3R"/>
                         <outlet property="personalDataTableView" destination="bXi-Xc-0SF" id="T4G-6r-SU2"/>
                         <outlet property="scrollView" destination="vm0-kQ-sZv" id="TUP-DN-sU5"/>
-                        <outlet property="telegramButton" destination="XDY-t4-O4N" id="p7P-wc-Sfa"/>
+                        <outlet property="tiktokButton" destination="XDY-t4-O4N" id="p7P-wc-Sfa"/>
                         <outlet property="walletButton" destination="NW7-dZ-R9P" id="1JG-8o-lyY"/>
                     </connections>
                 </viewController>
@@ -179,9 +200,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="instagram" width="32" height="32"/>
         <image name="search" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
-        <image name="telegram" width="25" height="25"/>
+        <image name="tiktok" width="32" height="32"/>
         <namedColor name="gray">
             <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
