@@ -8,13 +8,25 @@
 import Foundation
 
 struct Edition: Equatable {
-    let id: Int
-    let influencerId: Int
-    let count: Int
-    let name: String
-    let description: String
-    let price: Double
-    let dateExpiration: String
-    let mediaUrl: String
-    let countNFTs: Int
+    var id: Int
+    var influencerId: Int
+    var count: Int
+    var name: String
+    var description: String
+    var price: Double
+    var dateExpiration: String
+    var mediaUrl: String
+    var countNFTs: Int
+    var influencer: EditionInfluencer
+}
+
+struct EditionInfluencer: Equatable {
+    var id: Int
+    var user: EditionUser
+}
+
+struct EditionUser: Equatable {
+    var id: Int
+    var login: String
+    var avatarUrl: String?
 }

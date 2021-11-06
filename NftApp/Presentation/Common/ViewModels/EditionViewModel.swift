@@ -17,6 +17,18 @@ struct EditionViewModel {
     var dateExpiration: String?
     var mediaUrl: String?
     var countNFTs: Int?
+    var influencer: EditionInfluencerViewModel?
+}
+
+struct EditionInfluencerViewModel: Equatable {
+    var id: Int
+    var user: EditionUserViewModel
+}
+
+struct EditionUserViewModel: Equatable {
+    var id: Int
+    var login: String
+    var avatarUrl: String?
 }
 
 extension EditionViewModel {
@@ -30,5 +42,21 @@ extension EditionViewModel {
         self.dateExpiration = edition.dateExpiration
         self.mediaUrl = edition.mediaUrl
         self.countNFTs = edition.countNFTs
+        self.influencer = EditionInfluencerViewModel.init(edition: edition.influencer)
+    }
+}
+
+extension EditionInfluencerViewModel {
+    init(edition: EditionInfluencer) {
+        self.id = edition.id
+        self.user = EditionUserViewModel.init(edition: edition.user)
+    }
+}
+
+extension EditionUserViewModel {
+    init(edition: EditionUser) {
+        self.id = edition.id
+        self.login = edition.login
+        self.avatarUrl = edition.avatarUrl
     }
 }

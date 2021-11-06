@@ -29,6 +29,7 @@ class DetailNftViewController: UIViewController {
     @IBOutlet weak var moreOffersButton: UIButton!
     @IBOutlet weak var expirationLabel: UILabel!
     @IBOutlet weak var ownerLoginContainer: UIStackView!
+    @IBOutlet weak var ownerLoginLabel: UILabel!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dismissButton: UIButton!
@@ -81,6 +82,18 @@ class DetailNftViewController: UIViewController {
             
             if let url = URL(string: nftViewModel.edition.mediaUrl ?? "") {
                 self.nftImageView.sd_setImage(with: url)
+            }
+            
+            if let influencer = nftViewModel.edition.influencer?.user {
+                self.ownerLoginLabel.text = influencer.login
+                
+                if let urlString = influencer.avatarUrl, let url = URL(string: urlString) {
+                    self.ownerAvatarImage.contentMode = .scaleAspectFill
+                    self.ownerAvatarImage.sd_setImage(with: url)
+                } else {
+                    self.ownerAvatarImage.contentMode = .scaleAspectFit
+                    self.ownerAvatarImage.image = UIImage(named: "mini_icon")
+                }
             }
         }
         
@@ -160,13 +173,15 @@ class DetailNftViewController: UIViewController {
     }
     
     @objc func ownerLoginDidTap(_ sender: UITapGestureRecognizer) {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
-        vc.viewModel = HomeViewModelImpl()
-        vc.viewModel?.userViewModel.value = nil
-        navigationController?.pushViewController(vc, animated: true) ?? present(vc, animated: true, completion: nil)
+        if let influencer = viewModel?.nftViewModel.value?.edition.influencer?.user {
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+            vc.viewModel = HomeViewModelImpl()
+            vc.viewModel?.userViewModel.value = UserViewModel(id: influencer.id)
+            navigationController?.pushViewController(vc, animated: true) ?? present(vc, animated: true, completion: nil)
 
-        HapticHelper.vibro(.light)
+            HapticHelper.vibro(.light)
+        }
     }
     
     @IBAction func tradingHistoryDidTap(_ sender: Any) {

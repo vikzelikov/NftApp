@@ -38,7 +38,16 @@ final class DropShopUseCaseImpl: DropShopUseCase {
                                 price: $0.price,
                                 dateExpiration: $0.dateExpiration,
                                 mediaUrl: $0.mediaUrl,
-                                countNFTs: Int($0.countNFTs ?? "0") ?? 0)
+                                countNFTs: Int($0.countNFTs ?? "0") ?? 0,
+                                influencer: EditionInfluencer(
+                                    id: $0.influencer.id,
+                                    user: EditionUser(
+                                        id: $0.influencer.user.id,
+                                        login: $0.influencer.user.login,
+                                        avatarUrl: $0.influencer.user.avatarUrl
+                                    )
+                                )
+                        )
                     }
                     
                     completion(.success(editions))
@@ -63,7 +72,16 @@ final class DropShopUseCaseImpl: DropShopUseCase {
                                 price: resp.price,
                                 dateExpiration: resp.dateExpiration,
                                 mediaUrl: resp.mediaUrl,
-                                countNFTs: Int(resp.countNFTs ?? "0") ?? 0)
+                                countNFTs: Int(resp.countNFTs ?? "0") ?? 0,
+                                influencer: EditionInfluencer(
+                                   id: resp.influencer.id,
+                                   user: EditionUser(
+                                       id: resp.influencer.user.id,
+                                       login: resp.influencer.user.login,
+                                       avatarUrl: resp.influencer.user.avatarUrl
+                                   )
+                                )
+                    )
                     
                     completion(.success(editions))
                 }

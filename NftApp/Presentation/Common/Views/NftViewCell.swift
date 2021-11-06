@@ -64,6 +64,18 @@ class NftViewCell: UITableViewCell {
         if let urlString = viewModel.mediaUrl, let url = URL(string: urlString) {
             nftImage.sd_setImage(with: url)
         }
+        
+        if let influencer = viewModel.influencer?.user {
+            influencerLabel.text = influencer.login
+            
+            if let urlString = influencer.avatarUrl, let url = URL(string: urlString) {
+                influencerImage.contentMode = .scaleAspectFill
+                influencerImage.sd_setImage(with: url)
+            } else {
+                influencerImage.contentMode = .scaleAspectFit
+                influencerImage.image = UIImage(named: "mini_icon")
+            }
+        }
 
         if let exp = viewModel.dateExpiration, let dateExpiration = TimeInterval(exp) {
             let timeInterval = NSDate().timeIntervalSince1970
