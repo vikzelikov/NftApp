@@ -11,7 +11,7 @@ protocol DetailNftViewModel : BaseViewModel {
     
     var typeDetailNFT: TypeDetailNFT { set get }
     var nftViewModel: Observable<NftViewModel?> { get }
-    var expirationTime: Observable<Int> { get }
+    var expirationTime: Observable<Int?> { get }
     
     func viewDidLoad()
     
@@ -32,7 +32,7 @@ class DetailNftViewModelImpl: DetailNftViewModel {
     
     var typeDetailNFT: TypeDetailNFT = TypeDetailNFT.detail
     var nftViewModel: Observable<NftViewModel?> = Observable(nil)
-    var expirationTime: Observable<Int> = Observable(0)
+    var expirationTime: Observable<Int?> = Observable(nil)
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
@@ -117,13 +117,17 @@ class DetailNftViewModelImpl: DetailNftViewModel {
     }
 
     @objc func onComplete() {
-        guard expirationTime.value >= 1 else {
+        guard var exp = expirationTime.value else { return }
+        
+        guard exp >= 1 else {
             timer?.invalidate()
             timer = nil
             return
         }
         
-        expirationTime.value -= 1
+        exp -= 1
+        
+        expirationTime.value = exp
     }
 
     private func isInvalidEdition() -> Bool {

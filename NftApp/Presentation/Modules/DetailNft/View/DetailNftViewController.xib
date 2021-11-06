@@ -14,8 +14,8 @@
             <connections>
                 <outlet property="backButton" destination="HV2-fs-wTK" id="Xz3-uf-ZMM"/>
                 <outlet property="buyButton" destination="sz4-bn-BkF" id="Gm9-VL-l8C"/>
+                <outlet property="closeButton" destination="Rnw-hD-MHF" id="Agg-KW-fpy"/>
                 <outlet property="descriptionLabel" destination="GEm-zv-R5L" id="9aM-zo-ppm"/>
-                <outlet property="dismissButton" destination="Rnw-hD-MHF" id="Agg-KW-fpy"/>
                 <outlet property="expirationLabel" destination="16O-a3-4vf" id="OrG-32-bdJ"/>
                 <outlet property="leftCountLabel" destination="7c9-1P-TnS" id="QrC-Lb-e4Z"/>
                 <outlet property="leftCountTagView" destination="9Eh-dk-pA9" id="jrY-Nd-Ovc"/>

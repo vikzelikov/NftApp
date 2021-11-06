@@ -32,7 +32,7 @@ class DetailNftViewController: UIViewController {
     @IBOutlet weak var ownerLoginLabel: UILabel!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var leftTagConstraint: NSLayoutConstraint!
@@ -98,12 +98,14 @@ class DetailNftViewController: UIViewController {
         }
         
         viewModel?.expirationTime.bind {
-            guard $0 >= 1 else {
-//                self.dismiss(animated: true, completion: nil)
+            guard let exp = $0 else { return }
+            
+            guard exp >= 1 else {
+                self.dismiss(animated: true, completion: nil)
                 return
             }
             
-            let (d, h, m, s) = self.secondsToHoursMinutesSeconds(seconds: Int($0))
+            let (d, h, m, s) = self.secondsToHoursMinutesSeconds(seconds: exp)
             var timeStr = NSLocalizedString("Expiration in", comment: "") + " \(d)d \(h)h \(m)m \(s)s"
             
             if d == 0 {
@@ -122,6 +124,20 @@ class DetailNftViewController: UIViewController {
         let ownerLoginTap = UITapGestureRecognizer(target: self, action: #selector(ownerLoginDidTap(_:)))
         ownerLoginContainer?.isUserInteractionEnabled = true
         ownerLoginContainer?.addGestureRecognizer(ownerLoginTap)
+        
+        if let count = navigationController?.viewControllers.count {
+            if count > 1 {
+                backButton.isHidden = false
+                closeButton.isHidden = true
+                
+                rightTags()
+            }
+        } else {
+            backButton.isHidden = true
+            closeButton.isHidden = !isModal
+            
+            leftTags()
+        }
     }
     
     private func checkoutView() {
@@ -136,11 +152,10 @@ class DetailNftViewController: UIViewController {
                 moreInfoNftLabel.isHidden = true
                 buyButton.isHidden = true
                 priceView.isHidden = false
-                dismissButton.isHidden = true
+                closeButton.isHidden = true
                 backButton.isHidden = false
-                leftTagConstraint.isActive = false
-                rightTagConstraint.constant = 15
-                rightTagConstraint.priority = .required
+                
+                rightTags()
 
             case .dropShop:
                 buyButton.isHidden = false
@@ -161,6 +176,17 @@ class DetailNftViewController: UIViewController {
         return URL(string: stringUrl)
     }
 
+    func leftTags() {
+        rightTagConstraint.isActive = false
+        leftTagConstraint.constant = 15
+        leftTagConstraint.priority = .required
+    }
+    
+    func rightTags() {
+        leftTagConstraint.isActive = false
+        rightTagConstraint.constant = 15
+        rightTagConstraint.priority = .required
+    }
     
     @IBAction func buyNftDidTap(_ sender: Any) {
         guard let price = viewModel?.nftViewModel.value?.edition.price else { return }

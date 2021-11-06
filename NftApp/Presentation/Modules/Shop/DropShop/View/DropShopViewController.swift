@@ -18,6 +18,7 @@ class DropShopViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     var collectionView: UICollectionView?
     var storedOffsets = [Int: CGFloat]()
+    var navigationControl: UINavigationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +115,7 @@ extension DropShopViewController: UITableViewDelegate {
             vc.viewModel = DetailNftViewModelImpl()
             vc.viewModel?.nftViewModel.value = NftViewModel(id: editionViewModel.id, edition: editionViewModel)
             vc.viewModel?.typeDetailNFT = .dropShop
-            self.present(vc, animated: true, completion: nil)
+            self.navigationControl?.pushViewController(vc, animated: true)
         }
 
         HapticHelper.vibro(.light)

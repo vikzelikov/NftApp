@@ -25,6 +25,8 @@ class ShopViewController: UIViewController {
         pageControl.numberOfPages = 1
         pageControl.currentPage = 0
         view.bringSubviewToFront(pageControl)
+        
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,6 +40,7 @@ class ShopViewController: UIViewController {
         scrollView.isPagingEnabled = true
         
         let dropShop = DropShopViewController(nibName: "DropShopViewController", bundle: nil)
+        dropShop.navigationControl = self.navigationController
         addViewController(vc: dropShop, x: 0)
         
 //        let exchange = MarketViewController(nibName: "MarketViewController", bundle: nil)
