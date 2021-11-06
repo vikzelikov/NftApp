@@ -4,7 +4,7 @@
 "unauthorization" = "Вы не авторизованы";
 "Follow" = "Подписаться";
 "Unfollow" = "Отписаться";
-"Follow back" = "Подписаться ответ";
+"Follow back" = "Подписаться в ответ";
 "Followers" = "Подписчики";
 "Following" = "Подписки";
 "You get" = "Вы получите";
@@ -28,3 +28,6 @@
 "Support" = "Поддержка";
 "Logout" = "Выйти";
 "Save" = "Сохранить";
+"Users" = "Пользователи";
+"Personal information" = "Персональная информация";
+"Password" = "Пароль";

@@ -13,7 +13,7 @@ protocol HomeViewModel: BaseViewModel {
     var followers: Observable<[UserViewModel]> { get }
     var following: Observable<[UserViewModel]> { get }
     var collectionNfts: Observable<[NftViewModel]> { get }
-    var typeFollows: Observable<TypeFollows?> { get }
+    var typeFollows: Observable<(TypeFollows?, TypeFollows?)> { get }
     
     func viewDidLoad(isRefresh: Bool)
             
@@ -40,7 +40,7 @@ class HomeViewModelImpl: HomeViewModel {
     var followers: Observable<[UserViewModel]> = Observable([])
     var following: Observable<[UserViewModel]> = Observable([])
     var collectionNfts: Observable<[NftViewModel]> = Observable([])
-    var typeFollows: Observable<TypeFollows?> = Observable(nil)
+    var typeFollows: Observable<(TypeFollows?, TypeFollows?)> = Observable((nil, nil))
     var isLoading: Observable<Bool> = Observable(true)
     var errorMessage: Observable<String?> = Observable(nil)
     
@@ -64,9 +64,7 @@ class HomeViewModelImpl: HomeViewModel {
         
         getCollectionNfts()
         
-        if typeFollows.value == nil && userViewModel.value?.id != Constant.USER_ID {
-            checkFollow()
-        }
+        if userViewModel.value?.id != Constant.USER_ID { checkFollow() }
     }
     
     private func getUser() {
@@ -156,13 +154,18 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func manageSubscribeDidTap(completion: @escaping (Bool) -> Void) {
-        guard let userId = userViewModel.value?.id else { return }
+        guard let userId = userViewModel.value?.id else {
+            completion(false)
+            return
+        }
 
-        if typeFollows.value == TypeFollows.none || typeFollows.value == TypeFollows.followers {
+        let (me, user) = typeFollows.value
+
+        if me != TypeFollows.followers {
             followsUseCase.follow(userId: userId, completion: { result in
                 switch result {
                 case .success:
-                    self.typeFollows.value = .following
+                    self.typeFollows.value = (TypeFollows.followers, user)
                     completion(true)
 
                 case .failure:
@@ -171,11 +174,11 @@ class HomeViewModelImpl: HomeViewModel {
             })
         }
         
-        if typeFollows.value == TypeFollows.following {
+        if me == TypeFollows.followers {
             followsUseCase.unfollow(userId: userId, completion: { result in
                 switch result {
                 case .success:
-                    self.typeFollows.value = TypeFollows.none
+                    self.typeFollows.value = (TypeFollows.none, user)
                     completion(true)
 
                 case .failure:

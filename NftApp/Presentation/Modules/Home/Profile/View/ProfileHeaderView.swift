@@ -85,12 +85,16 @@ class ProfileHeaderView: UIView {
             self.followingLabel.text = "\($0.count)"
         }
         
-        viewModel?.typeFollows.bind {
-            if $0 == TypeFollows.none {
+        viewModel?.typeFollows.bind { (requester, user) in
+            if user == TypeFollows.none {
                 self.miniTopButton.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
             }
             
-            if $0 == TypeFollows.following {
+            if requester == TypeFollows.none && user == TypeFollows.followers {
+                self.miniTopButton.setTitle(NSLocalizedString("Follow back", comment: ""), for: .normal)
+            }
+            
+            if requester == TypeFollows.followers {
                 self.miniTopButton.setTitle(NSLocalizedString("Unfollow", comment: ""), for: .normal)
             }
         }

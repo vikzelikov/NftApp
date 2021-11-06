@@ -77,8 +77,8 @@ class SettingsViewController: UIViewController {
         otherSettingsTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         otherSettingsTableView.register(UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
         
-        items.append(SettingCellViewModel(title: "Personal information", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
-        items.append(SettingCellViewModel(title: "Password", contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+        items.append(SettingCellViewModel(title: NSLocalizedString("Personal information", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+        items.append(SettingCellViewModel(title: NSLocalizedString("Password", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         
         if #available(iOS 15.0, *) {
             otherSettingsTableView.sectionHeaderTopPadding = 0.0

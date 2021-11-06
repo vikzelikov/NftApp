@@ -9,8 +9,10 @@ import Foundation
 
 class CheckFollowResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
-        case type
+        case requester
+        case user
     }
     
-    let type: String
+    let requester: String
+    let user: String
 }

@@ -40,7 +40,7 @@
                 <constraints>
                     <constraint firstItem="lDS-s2-aB0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="2YB-1h-32W"/>
                     <constraint firstItem="VSw-Zx-4mm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8ds-2I-J5d"/>
-                    <constraint firstItem="MfA-Ut-5Pc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lDS-s2-aB0" secondAttribute="trailing" constant="60" id="Jw6-Vk-l95"/>
+                    <constraint firstItem="MfA-Ut-5Pc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lDS-s2-aB0" secondAttribute="trailing" constant="30" id="Jw6-Vk-l95"/>
                     <constraint firstAttribute="trailing" secondItem="VSw-Zx-4mm" secondAttribute="trailing" constant="15" id="T0X-pz-PdS"/>
                     <constraint firstItem="MfA-Ut-5Pc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="btP-i9-BCU"/>
                     <constraint firstAttribute="trailing" secondItem="MfA-Ut-5Pc" secondAttribute="trailing" constant="15" id="gwQ-Uf-uz3"/>

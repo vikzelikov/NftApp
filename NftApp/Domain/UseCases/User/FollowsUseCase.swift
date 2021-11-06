@@ -17,7 +17,7 @@ protocol FollowsUseCase {
     
     func unfollow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void)
     
-    func checkFollow(userId: Int, completion: @escaping (Result<TypeFollows, Error>) -> Void)
+    func checkFollow(userId: Int, completion: @escaping (Result<(TypeFollows, TypeFollows), Error>) -> Void)
         
 }
 
@@ -69,21 +69,22 @@ final class FollowsUseCaseImpl: FollowsUseCase {
         repository?.unfollow(userId: userId, completion: completion)
     }
     
-    func checkFollow(userId: Int, completion: @escaping (Result<TypeFollows, Error>) -> Void) {
+    func checkFollow(userId: Int, completion: @escaping (Result<(TypeFollows, TypeFollows), Error>) -> Void) {
         repository?.checkFollow(userId: userId, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    switch resp.type {
-                        case "follower" : 
-                            completion(.success(.followers))
-                            
-                        case "following" :
-                            completion(.success(.following))
-                            
-                        default :
-                            completion(.success(.none))
-                        
+                    var requester: TypeFollows = .none
+                    var user: TypeFollows = .none
+                    
+                    if resp.requester == "follower" {
+                        requester = .followers
                     }
+                    
+                    if resp.user == "follower" {
+                        user = .followers
+                    }
+                    
+                    completion(.success((requester, user)))
                 }
                 
                 case .failure(let error) : do {
