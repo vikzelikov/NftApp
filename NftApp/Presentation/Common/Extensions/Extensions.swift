@@ -168,7 +168,7 @@ extension UIViewController {
         return presentingIsModal || presentingIsNavigation || presentingIsTabBar
     }
     
-    func showError(error: String) {
+    func showMessage(message: String, isHaptic: Bool = true) {
         var y = 0
         let errorView = ErrorView()
         errorView.alpha = 0.0
@@ -176,19 +176,21 @@ extension UIViewController {
             if topPadding == 20 { y = -20 }
         }
         errorView.frame = CGRect(x: 0, y: y, width: Int(UIScreen.main.bounds.size.width), height: 0)
-        errorView.errorLabel.text = error
+        errorView.errorLabel.text = message
         self.view.addSubview(errorView)
         
         UIView.animate(withDuration: 0.25) { () -> Void in
             errorView.alpha = 1.0
         }
         
-        HapticHelper.vibro(.light)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { HapticHelper.vibro(.heavy) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { HapticHelper.vibro(.light) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { HapticHelper.vibro(.heavy) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { HapticHelper.vibro(.light) }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { HapticHelper.vibro(.heavy) }
+        if isHaptic {
+            HapticHelper.vibro(.light)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { HapticHelper.vibro(.heavy) }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { HapticHelper.vibro(.light) }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { HapticHelper.vibro(.heavy) }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { HapticHelper.vibro(.light) }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { HapticHelper.vibro(.heavy) }
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             UIView.animate(withDuration: 0.25, animations: { () -> Void in

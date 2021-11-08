@@ -75,7 +75,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
             
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
-            self.showError(error: errorMessage)
+            self.showMessage(message: errorMessage)
         }
     }
     

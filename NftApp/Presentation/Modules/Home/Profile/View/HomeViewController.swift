@@ -26,11 +26,14 @@ class HomeViewController: UIViewController {
         setupHeader()
         
         setupStyle()
+        print(Constant.AUTH_TOKEN)
     }
     
     func bindData() {
-        viewModel?.collectionNfts.bind { _ in
+        viewModel?.collectionNfts.bind {
             self.reload()
+            
+            self.headerView?.countNftsLabel.text = "\($0.count)"
         }
         
         viewModel?.isLoading.bind { _ in 
@@ -39,7 +42,7 @@ class HomeViewController: UIViewController {
         
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
-            self.showError(error: errorMessage)
+            self.showMessage(message: errorMessage)
         }
     }
     

@@ -26,6 +26,8 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var miniTopButton: UIButton!
     @IBOutlet weak var collectionLabel: UILabel!
     @IBOutlet weak var observablesLabel: UILabel!
+    @IBOutlet weak var countNftsLabel: UILabel!
+    @IBOutlet weak var totalCostLabel: UILabel!
     @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
@@ -63,12 +65,16 @@ class ProfileHeaderView: UIView {
             
             self.loginLabel.text = userViewModel.login
             self.loginSubtitleLabel.text = userViewModel.flowAddress ?? "@\(userViewModel.login ?? "")"
-            
+            self.totalCostLabel.text = "\(Int(userViewModel.totalCost ?? 0.0))"
             if let avatarUrl = userViewModel.avatarUrl, let url = URL(string: avatarUrl) {
                 self.userImageView.contentMode = .scaleAspectFill
                 self.userImageView.sd_setImage(with: url)
             }
         }
+        
+//        viewModel?.collectionNfts.bind { [weak self] res in
+//            self?.countNftsLabel.text = "\(res.count)"
+//        }
         
         viewModel?.followers.bind {
             self.followersLabel.text = "\($0.count)"
@@ -192,21 +198,27 @@ class ProfileHeaderView: UIView {
     }
     
     @objc func followersContainerDidTap(_ sender: AnyObject) {
-        let vc = FollowsViewController()
-        vc.viewModel = FollowsViewModelImpl()
-//        vc.viewModel?.items.value = viewModel?.followers.value ?? []
-        vc.viewModel?.userViewModel.value = viewModel?.userViewModel.value
-        vc.viewModel?.typeFollows = .followers
-        navigationController?.pushViewController(vc, animated: true)
+        if let followers = viewModel?.followers.value {
+            if !followers.isEmpty {
+                let vc = FollowsViewController()
+                vc.viewModel = FollowsViewModelImpl()
+                vc.viewModel?.userViewModel.value = viewModel?.userViewModel.value
+                vc.viewModel?.typeFollows = .followers
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
     
     @objc func followingContainerDidTap(_ sender: AnyObject) {
-        let vc = FollowsViewController()
-        vc.viewModel = FollowsViewModelImpl()
-//        vc.viewModel?.items.value = viewModel?.following.value ?? []
-        vc.viewModel?.userViewModel.value = viewModel?.userViewModel.value
-        vc.viewModel?.typeFollows = .following
-        navigationController?.pushViewController(vc, animated: true)
+        if let following = viewModel?.following.value {
+            if !following.isEmpty {
+                let vc = FollowsViewController()
+                vc.viewModel = FollowsViewModelImpl()
+                vc.viewModel?.userViewModel.value = viewModel?.userViewModel.value
+                vc.viewModel?.typeFollows = .following
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
     
     @IBAction func dismissDidTap(_ sender: Any) {

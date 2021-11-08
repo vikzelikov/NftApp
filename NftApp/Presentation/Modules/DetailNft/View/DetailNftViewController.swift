@@ -64,9 +64,7 @@ class DetailNftViewController: UIViewController {
         
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
-            let alert = UIAlertController(title: "Error Message", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.showMessage(message: errorMessage)
         }
         
         viewModel?.nftViewModel.bind {
@@ -191,8 +189,12 @@ class DetailNftViewController: UIViewController {
 
         buyButton.loadingIndicator(isShow: true, titleButton: nil)
 
-        viewModel?.buyNftDidTap(completion: { _ in
+        viewModel?.buyNftDidTap(completion: { result in
             self.buyButton.loadingIndicator(isShow: false, titleButton: "\(Int(price)) Tokens")
+            
+            if result {
+                self.showMessage(message: NSLocalizedString("NFT has been added to your collection!", comment: ""), isHaptic: false)
+            }
         })
     }
     

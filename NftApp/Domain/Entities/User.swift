@@ -14,11 +14,7 @@ struct User: Equatable, Identifiable {
     var flowAddress: String?
     var avatarUrl: String?
     var balance: Double?
-//    let password: String?
-//    let isMale: Bool?
-//    let birthDate: TimeInterval?
-//    let balance: String?
-//    let influencerId: Int?
+    var totalCost: Double?
 }
 
 struct UserObject {

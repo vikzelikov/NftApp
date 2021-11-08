@@ -81,10 +81,17 @@ class DetailNftViewModelImpl: DetailNftViewModel {
         self.dropShopUseCase.buyNft(editionId: editionId) { result in
             switch result {
             case .success:
-                completion(true)
+                if var vm = self.nftViewModel.value, let count = vm.edition.count {
+                    vm.edition.count = count - 1
+                    self.nftViewModel.value = vm
+                }
                 
+                completion(true)
             case .failure(let error):
-                let (_, errorStr) = ErrorHelper.validateError(error: error)
+                var (_, errorStr) = ErrorHelper.validateError(error: error)
+                if errorStr == "not enough balance" {
+                    errorStr = NSLocalizedString("Not enough Tokens", comment: "")
+                }
                 self.errorMessage.value = errorStr
                 completion(false)
             }

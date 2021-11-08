@@ -15,12 +15,14 @@
                 <outlet property="backButton" destination="ApE-bJ-7gB" id="luH-Mh-RHS"/>
                 <outlet property="closeButton" destination="B4g-vY-4X2" id="UNO-aN-sum"/>
                 <outlet property="collectionLabel" destination="iz1-Em-Gsx" id="Iut-py-rYD"/>
+                <outlet property="countNftsLabel" destination="5Rw-I0-Xbl" id="eo0-Mv-l2G"/>
                 <outlet property="followersLabel" destination="CUe-NM-e1P" id="NBF-R1-MrR"/>
                 <outlet property="followingLabel" destination="zbi-dv-fQv" id="rOy-4W-UMX"/>
                 <outlet property="loginLabel" destination="ukU-lU-LHK" id="73J-HW-TKv"/>
                 <outlet property="loginSubtitleLabel" destination="Nc2-FX-821" id="6Q7-hE-4fr"/>
                 <outlet property="miniTopButton" destination="BFn-J2-FHE" id="UEA-7Q-Ird"/>
                 <outlet property="observablesLabel" destination="XTA-dW-0KS" id="gKz-4J-2Ol"/>
+                <outlet property="totalCostLabel" destination="Ep8-W5-eSd" id="LOj-Qo-rYL"/>
                 <outlet property="userImageView" destination="wWx-gL-Zb8" id="Wa8-5H-CUQ"/>
             </connections>
         </placeholder>

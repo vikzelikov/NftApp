@@ -41,7 +41,8 @@ final class UserUseCaseImpl: UserUseCase {
                         email: resp.email,
                         flowAddress: resp.flowAddress,
                         avatarUrl: resp.avatarUrl,
-                        balance: Double(resp.balance ?? "0.0")
+                        balance: Double(resp.balance ?? "0.0"),
+                        totalCost: Double(resp.totalCost ?? "0.0")
                     )
                     
                     completion(.success(user))

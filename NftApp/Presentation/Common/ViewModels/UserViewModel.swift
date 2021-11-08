@@ -14,6 +14,7 @@ struct UserViewModel {
     var flowAddress: String?
     var avatarUrl: String?
     var balance: Double?
+    var totalCost: Double?
 }
 
 extension UserViewModel {
@@ -24,5 +25,6 @@ extension UserViewModel {
         self.flowAddress = user.flowAddress
         self.avatarUrl = user.avatarUrl
         self.balance = user.balance
+        self.totalCost = user.totalCost
     }
 }
