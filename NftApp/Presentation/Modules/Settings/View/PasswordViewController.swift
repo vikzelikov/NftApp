@@ -45,4 +45,8 @@ class PasswordViewController: UIViewController {
         confirmPasswordTextField.resignFirstResponder()
     }
     
+    @IBAction func dismissDidTap(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }

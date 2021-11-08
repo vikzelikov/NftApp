@@ -14,15 +14,15 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NftViewCell" rowHeight="350" id="KGk-i7-Jjw" customClass="NftViewCell" customModule="NftApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="318" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="318" height="400"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TT-tr-NHc">
-                        <rect key="frame" x="15" y="10" width="288" height="350"/>
+                        <rect key="frame" x="15" y="10" width="136" height="136"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mrU-R1-JoF">
-                                <rect key="frame" x="0.0" y="0.0" width="288" height="350"/>
+                                <rect key="frame" x="0.0" y="0.0" width="136" height="136"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="16"/>
@@ -55,13 +55,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRF-FJ-p6f">
-                                <rect key="frame" x="10" y="258.5" width="268" height="81.5"/>
+                                <rect key="frame" x="10" y="44.5" width="116" height="81.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yhs-bw-cGs">
-                                        <rect key="frame" x="10" y="15" width="248" height="51.5"/>
+                                        <rect key="frame" x="10" y="15" width="96" height="51.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dvb-Dn-ePP">
-                                                <rect key="frame" x="0.0" y="0.0" width="207.5" height="51.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="51.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ4-3d-wb6">
                                                         <rect key="frame" x="0.0" y="0.0" width="49.5" height="21.5"/>
@@ -90,7 +90,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OCW-jT-jCA">
-                                                <rect key="frame" x="227.5" y="0.0" width="20.5" height="51.5"/>
+                                                <rect key="frame" x="75.5" y="0.0" width="20.5" height="51.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlg-Dk-Pzt">
                                                         <rect key="frame" x="0.0" y="0.0" width="20.5" height="24.5"/>
@@ -129,12 +129,12 @@
                             <constraint firstAttribute="bottom" secondItem="mrU-R1-JoF" secondAttribute="bottom" id="Hr8-KA-vFY"/>
                             <constraint firstItem="mrU-R1-JoF" firstAttribute="top" secondItem="1TT-tr-NHc" secondAttribute="top" id="YWW-Zf-EOG"/>
                             <constraint firstItem="8Df-4y-e4g" firstAttribute="top" secondItem="1TT-tr-NHc" secondAttribute="top" constant="10" id="dGO-gw-Gen"/>
+                            <constraint firstAttribute="width" secondItem="1TT-tr-NHc" secondAttribute="height" multiplier="1:1" id="e8w-J6-xLW"/>
                             <constraint firstAttribute="trailing" secondItem="fRF-FJ-p6f" secondAttribute="trailing" constant="10" id="fQv-IK-uHQ"/>
                             <constraint firstAttribute="bottom" secondItem="fRF-FJ-p6f" secondAttribute="bottom" constant="10" id="jBC-pD-Cey"/>
                             <constraint firstItem="fRF-FJ-p6f" firstAttribute="leading" secondItem="1TT-tr-NHc" secondAttribute="leading" constant="10" id="jtx-eO-9h3"/>
                             <constraint firstAttribute="trailing" secondItem="mrU-R1-JoF" secondAttribute="trailing" id="miy-Xp-Tsz"/>
                             <constraint firstItem="mrU-R1-JoF" firstAttribute="leading" secondItem="1TT-tr-NHc" secondAttribute="leading" id="oxV-8r-P0j"/>
-                            <constraint firstAttribute="height" constant="350" id="zr7-fP-28b"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

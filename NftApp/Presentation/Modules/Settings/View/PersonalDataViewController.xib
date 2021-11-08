@@ -28,7 +28,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sui-hu-cAo">
+                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sui-hu-cAo">
                     <rect key="frame" x="15" y="62" width="290" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="15Z-fv-0Vk"/>
@@ -54,6 +54,18 @@
                         <action selector="saveDidTap:" destination="-1" eventType="touchUpInside" id="yQK-vO-TsT"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRJ-yB-hbG">
+                    <rect key="frame" x="0.0" y="0.0" width="35" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="90P-U9-9oZ"/>
+                        <constraint firstAttribute="width" constant="35" id="GFq-xa-Ldy"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="15" minY="20" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" image="left_arrow"/>
+                    <connections>
+                        <action selector="dismissDidTap:" destination="-1" eventType="touchUpInside" id="Xh1-rs-iV2"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -68,12 +80,15 @@
                 <constraint firstItem="sui-hu-cAo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="Xhs-PY-Gi1"/>
                 <constraint firstItem="KBd-WY-9Q8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="a75-gC-Sa2"/>
                 <constraint firstItem="ApN-uw-DoX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="hMe-PV-MBy"/>
+                <constraint firstItem="BRJ-yB-hbG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vH1-0h-Acr"/>
+                <constraint firstItem="BRJ-yB-hbG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="x1a-NO-CEk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sui-hu-cAo" secondAttribute="trailing" constant="15" id="zVz-2B-Mf2"/>
             </constraints>
             <point key="canvasLocation" x="139" y="99"/>
         </view>
     </objects>
     <resources>
+        <image name="left_arrow" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -20,7 +20,7 @@ struct UserEndpoints {
     static func updateUserEndpoint(request: User) -> Endpoint {
         var requestDTO = UpdateUserRequestDTO().parameters
         
-        if request.login != nil { requestDTO["login"] = request.login }
+//        if request.login != nil { requestDTO["login"] = request.login }
         if request.email != nil { requestDTO["email"] = request.email }
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()

@@ -56,4 +56,8 @@ class PersonalDataViewController: UIViewController {
         emailTextField.resignFirstResponder()
     }
     
+    @IBAction func dismissDidTap(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }

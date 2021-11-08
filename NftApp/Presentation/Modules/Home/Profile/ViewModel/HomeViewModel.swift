@@ -91,9 +91,7 @@ class HomeViewModelImpl: HomeViewModel {
             case .success(let users):
                 self.followers.value = users.map(UserViewModel.init)
 
-            case .failure(let error):
-                let (_, errorStr) = ErrorHelper.validateError(error: error)
-                self.errorMessage.value = errorStr
+            case .failure: break
             }
         })
         
@@ -102,9 +100,7 @@ class HomeViewModelImpl: HomeViewModel {
             case .success(let users):
                 self.following.value = users.map(UserViewModel.init)
 
-            case .failure(let error):
-                let (_, errorStr) = ErrorHelper.validateError(error: error)
-                self.errorMessage.value = errorStr
+            case .failure: break
             }
         })
     }
@@ -120,10 +116,7 @@ class HomeViewModelImpl: HomeViewModel {
             case .success(let nfts):
                 self.appendNfts(nfts: nfts)
                 
-            case .failure(let error):
-                let (code, errorStr) = ErrorHelper.validateError(error: error)
-                if code == 404 { self.errorMessage.value = NSLocalizedString("Collection is empty", comment: "") }
-                else { self.errorMessage.value = errorStr }
+            case .failure: break
             }
             
             self.isLoading.value = false
@@ -161,7 +154,7 @@ class HomeViewModelImpl: HomeViewModel {
 
         let (me, user) = typeFollows.value
 
-        if me != TypeFollows.followers {
+        if me == TypeFollows.none {
             followsUseCase.follow(userId: userId, completion: { result in
                 switch result {
                 case .success:

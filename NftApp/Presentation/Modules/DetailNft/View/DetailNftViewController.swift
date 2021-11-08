@@ -71,10 +71,10 @@ class DetailNftViewController: UIViewController {
         
         viewModel?.nftViewModel.bind {
             guard let nftViewModel = $0 else { return }
-            self.buyButton?.setTitle("\(Int(nftViewModel.edition.price ?? 0.0))", for: .normal)
+            self.buyButton?.setTitle("\(Int(nftViewModel.edition.price ?? 0.0)) Tokens", for: .normal)
             self.titleLabel?.text = nftViewModel.edition.name
             self.descriptionLabel?.text = nftViewModel.edition.description
-            self.priceLabel.text = String(Int(nftViewModel.lastPrice ?? 0.0))
+            self.priceLabel.text = "\(Int(nftViewModel.lastPrice ?? 0.0))"
             
             if let count = nftViewModel.edition.count, let countNFTs = nftViewModel.edition.countNFTs {
                 self.leftCountLabel.text = "x\(count - countNFTs) " + NSLocalizedString("left", comment: "")
@@ -126,9 +126,7 @@ class DetailNftViewController: UIViewController {
         ownerLoginContainer?.addGestureRecognizer(ownerLoginTap)
         
         if let count = navigationController?.viewControllers.count {
-            if count > 1 {
-                rightTags()
-            }
+            if count > 1 { rightTags() }
         } else {
             leftTags()
         }
@@ -190,11 +188,11 @@ class DetailNftViewController: UIViewController {
     
     @IBAction func buyNftDidTap(_ sender: Any) {
         guard let price = viewModel?.nftViewModel.value?.edition.price else { return }
-        
+
         buyButton.loadingIndicator(isShow: true, titleButton: nil)
-   
+
         viewModel?.buyNftDidTap(completion: { _ in
-            self.buyButton.loadingIndicator(isShow: false, titleButton: "\(price)")
+            self.buyButton.loadingIndicator(isShow: false, titleButton: "\(Int(price)) Tokens")
         })
     }
     

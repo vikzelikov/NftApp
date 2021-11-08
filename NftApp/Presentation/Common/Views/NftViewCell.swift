@@ -21,7 +21,7 @@ class NftViewCell: UITableViewCell {
             startTimer()
         }
     }
-    
+
     @IBOutlet weak var influencerImage: UIImageView! {
         didSet {
             influencerImage.layer.cornerRadius = influencerImage.frame.width / 2

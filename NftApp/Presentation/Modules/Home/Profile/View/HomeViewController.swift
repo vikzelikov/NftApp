@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     var headerView: ProfileHeaderView?
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var errorLabel: UILabel!
     let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -28,12 +29,8 @@ class HomeViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.collectionNfts.bind {
-            [weak self] _ in self?.reload()
-        
-//            self?.checkoutLoading(isShow: false)
-//            self?.tableView.isHidden = false
-//            self?.errorLabel.isHidden = true
+        viewModel?.collectionNfts.bind { _ in
+            self.reload()
         }
         
         viewModel?.isLoading.bind { _ in 
@@ -42,9 +39,7 @@ class HomeViewController: UIViewController {
         
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
-            let alert = UIAlertController(title: "Error Message", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-//            self.present(alert, animated: true, completion: nil)
+            self.showError(error: errorMessage)
         }
     }
     

@@ -11,24 +11,24 @@ import UIKit
 class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var picker = UIImagePickerController();
-    var alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+    var alert = UIAlertController(title: NSLocalizedString("Choose Image", comment: ""), message: nil, preferredStyle: .actionSheet)
     var viewController: UIViewController?
     var pickImageCallback : ((UIImage) -> ())?
     
     override init() {
         super.init()
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) {
+        let cameraAction = UIAlertAction(title: NSLocalizedString("Camera", comment: ""), style: .default) {
             UIAlertAction in
             self.openCamera()
         }
         
-        let galleryAction = UIAlertAction(title: "Gallery", style: .default) {
+        let galleryAction = UIAlertAction(title: NSLocalizedString("Gallery", comment: ""), style: .default) {
             UIAlertAction in
             self.openGallery()
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) {
             UIAlertAction in
         }
 
@@ -52,15 +52,6 @@ class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigation
         if (UIImagePickerController .isSourceTypeAvailable(.camera)) {
             picker.sourceType = .camera
             self.viewController!.present(picker, animated: true, completion: nil)
-        } else {
-            let alertController: UIAlertController = {
-                let controller = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default)
-                controller.addAction(action)
-                return controller
-            } ()
-            
-            viewController?.present(alertController, animated: true)
         }
     }
     
@@ -76,9 +67,7 @@ class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigation
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
-        guard let image = info[.originalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-        }
+        guard let image = info[.originalImage] as? UIImage else { return }
         pickImageCallback?(image)
     }
 
