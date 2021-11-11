@@ -24,25 +24,17 @@ class FollowsViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.items.bind {
-            [weak self] _ in self?.reload()
-        
-//            self?.checkoutLoading(isShow: false)
-//            self?.tableView.isHidden = false
-//            self?.errorLabel.isHidden = true
+        viewModel?.items.bind { [weak self] _ in
+            self?.reload()
         }
         
         viewModel?.isLoading.bind { _ in 
 //            self.checkoutLoading(isShow: $0)
         }
         
-        viewModel?.errorMessage.bind { _ in
-//            guard let errorMessage = $0 else { return }
-            
-//            self.checkoutLoading(isShow: false)
-//            self.tableView.isHidden = true
-//            self.errorLabel.text = errorMessage
-//            self.errorLabel.isHidden = false
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            self.showMessage(message: errorMessage)
         }
     }
     

@@ -55,22 +55,17 @@ class LoginViewModelImpl: LoginViewModel {
                 self.isSuccess.value = true
                 
             case .failure(let error):
-                self.isLoading.value = false
                 self.isSuccess.value = false
                 
-                if let error = error as? ErrorMessage, let code = error.code {
-                    switch code {
-                    case let c where c >= HttpCode.internalServerError:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                        break
-                    case let c where c >= HttpCode.badRequest:
-                        self.errorMessage.value = NSLocalizedString("Error login or password", comment: "")
-                        break
-                    default:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    }
+                var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode >= HttpCode.badRequest {
+                    errorStr = NSLocalizedString("Error login or password", comment: "")
                 }
+                self.errorMessage.value = errorStr
             }
+            
+            self.isLoading.value = false
+
         })
     }
     

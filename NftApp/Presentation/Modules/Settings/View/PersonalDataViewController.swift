@@ -29,6 +29,11 @@ class PersonalDataViewController: UIViewController {
             self.loginTextField.text = $0?.login
             self.emailTextField.text = $0?.email
         }
+        
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            self.showMessage(message: errorMessage)
+        }
     }
     
     func setupStyle() {
@@ -45,8 +50,12 @@ class PersonalDataViewController: UIViewController {
         if let login = loginTextField.text, let email = emailTextField.text {
             saveButton.loadingIndicator(isShow: true, titleButton: nil)
 
-            viewModel?.personalUpdateDidTap(login: login, email: email, completion: { _ in
+            viewModel?.personalUpdateDidTap(login: login, email: email, completion: { result in
                 self.saveButton.loadingIndicator(isShow: false, titleButton: NSLocalizedString("Save", comment: "").uppercased())
+                
+                if result {
+                    self.showMessage(message: NSLocalizedString("Saved", comment: ""), isHaptic: false)
+                }
             })
         }
     }

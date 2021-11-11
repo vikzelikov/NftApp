@@ -51,7 +51,7 @@ class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigation
         alert.dismiss(animated: true, completion: nil)
         if (UIImagePickerController .isSourceTypeAvailable(.camera)) {
             picker.sourceType = .camera
-            self.viewController!.present(picker, animated: true, completion: nil)
+            self.viewController?.present(picker, animated: true, completion: nil)
         }
     }
     

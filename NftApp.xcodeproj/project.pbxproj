@@ -135,12 +135,14 @@
 		18B84272266E27A50033AFC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B84270266E27A50033AFC0 /* LaunchScreen.storyboard */; };
 		18B8428E266F648F0033AFC0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B8428D266F648F0033AFC0 /* Home.storyboard */; };
 		18B84290266F64A30033AFC0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8428F266F64A30033AFC0 /* HomeViewController.swift */; };
+		18CED70B273C0FEA00AE6738 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CED70A273C0FEA00AE6738 /* UILabelPadding.swift */; };
 		18D3FEC9268FAE390030929D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FEC8268FAE390030929D /* Extensions.swift */; };
 		18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FECF2697B8C40030929D /* LoginViewController.swift */; };
 		18D8452426CD5D2500888D32 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452326CD5D2500888D32 /* BaseViewModel.swift */; };
 		18D8452826CD682400888D32 /* ErrorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452726CD682400888D32 /* ErrorDTO.swift */; };
 		18D8452D26CDAEF100888D32 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452C26CDAEF100888D32 /* UserStorage.swift */; };
 		18D8452F26CDB2BA00888D32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452E26CDB2BA00888D32 /* LoginViewModel.swift */; };
+		18D85228273A94D0005CDA87 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D85227273A94D0005CDA87 /* StoreKit.framework */; };
 		18DDE9F526D6EE5E00306A60 /* WalletRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDE9F426D6EE5E00306A60 /* WalletRepository.swift */; };
 		18DDE9FA26D6F55900306A60 /* WalletRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDE9F926D6F55900306A60 /* WalletRepositoryImpl.swift */; };
 		18DDEA0326D6F88F00306A60 /* WithdrawFundsRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA0226D6F88F00306A60 /* WithdrawFundsRequestDTO.swift */; };
@@ -350,6 +352,8 @@
 		18B84273266E27A50033AFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18B8428D266F648F0033AFC0 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		18B8428F266F64A30033AFC0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18CED709273B383B00AE6738 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		18CED70A273C0FEA00AE6738 /* UILabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
 		18D3FEC8268FAE390030929D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		18D3FECF2697B8C40030929D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		18D8452326CD5D2500888D32 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 		18D8452C26CDAEF100888D32 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		18D8452E26CDB2BA00888D32 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		18D8453026CDC40500888D32 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Authorization.strings; sourceTree = "<group>"; };
+		18D85227273A94D0005CDA87 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		18DDE9F426D6EE5E00306A60 /* WalletRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletRepository.swift; sourceTree = "<group>"; };
 		18DDE9F926D6F55900306A60 /* WalletRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletRepositoryImpl.swift; sourceTree = "<group>"; };
 		18DDEA0226D6F88F00306A60 /* WithdrawFundsRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawFundsRequestDTO.swift; sourceTree = "<group>"; };
@@ -423,6 +428,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D85228273A94D0005CDA87 /* StoreKit.framework in Frameworks */,
 				185CBA222723223F007DF8CF /* WebKit.framework in Frameworks */,
 				EB46AD086124994FAC569F86 /* Pods_NftApp.framework in Frameworks */,
 			);
@@ -616,6 +622,7 @@
 				185CBA272725ABDC007DF8CF /* NftViewCell.swift */,
 				185CBA282725ABDC007DF8CF /* NftViewCell.xib */,
 				182342D626A081EF00CD2907 /* UICustomView.swift */,
+				18CED70A273C0FEA00AE6738 /* UILabelPadding.swift */,
 				180F6C7527385ABB00F3F03E /* ErrorView.swift */,
 				180F6C7327385A9A00F3F03E /* ErrorView.xib */,
 				186E5FFE26B6CC67008291AC /* Settings */,
@@ -1079,6 +1086,7 @@
 		18B84264266E27A40033AFC0 /* NftApp */ = {
 			isa = PBXGroup;
 			children = (
+				18CED709273B383B00AE6738 /* Configuration.storekit */,
 				185435E326D4164C00368C8E /* NftApp.entitlements */,
 				18B84273266E27A50033AFC0 /* Info.plist */,
 				18B8427E266F61180033AFC0 /* Resourses */,
@@ -1548,6 +1556,7 @@
 		4119338D394F328773616786 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18D85227273A94D0005CDA87 /* StoreKit.framework */,
 				185CBA212723223F007DF8CF /* WebKit.framework */,
 				186221C126E2C8110024C8B9 /* TMXProfiling.xcframework */,
 				186221C226E2C8120024C8B9 /* TMXProfilingConnections.xcframework */,
@@ -1779,6 +1788,7 @@
 				1813845127355F03004530BD /* SearchRequestDTO.swift in Sources */,
 				18D8452F26CDB2BA00888D32 /* LoginViewModel.swift in Sources */,
 				18D8452426CD5D2500888D32 /* BaseViewModel.swift in Sources */,
+				18CED70B273C0FEA00AE6738 /* UILabelPadding.swift in Sources */,
 				18156D4326A4D925006B8FE5 /* SettingCellViewModel.swift in Sources */,
 				18DDEA2426D791B900306A60 /* UpdateSellNftRequestDTO.swift in Sources */,
 				180164B9272FF6A1003C68E0 /* ImagePickerHelper.swift in Sources */,
@@ -2040,7 +2050,7 @@
 				CODE_SIGN_ENTITLEMENTS = NftApp/NftApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 64ZXKZ9BQ6;
 				INFOPLIST_FILE = NftApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2048,7 +2058,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.7;
+				MARKETING_VERSION = 0.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nft.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile";
@@ -2069,7 +2079,7 @@
 				CODE_SIGN_ENTITLEMENTS = NftApp/NftApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 64ZXKZ9BQ6;
 				INFOPLIST_FILE = NftApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2077,7 +2087,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.7;
+				MARKETING_VERSION = 0.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nft.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile";

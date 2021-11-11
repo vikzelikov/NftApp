@@ -39,13 +39,13 @@ class DetailTransactionViewController: UIViewController {
                 self.titleLabel?.text = NSLocalizedString("Buy tokens", comment: "")
             }
                 
-            case TypeTransactions.withdrawTokens.rawValue : do {
+            case TypeTransactions.withdrawTokens.rawValue: do {
                 self.checkLinkView.isHidden = true
                 self.destinationLabel.text = transactionViewModel.destination ?? "-"
                 self.titleLabel?.text = NSLocalizedString("Withdraw tokens", comment: "")
             }
                 
-            case TypeTransactions.dropshop.rawValue : do {
+            case TypeTransactions.dropshop.rawValue: do {
                 self.destinationView.isHidden = true
                 self.titleLabel?.text = NSLocalizedString("Dropshop", comment: "")
                 
@@ -56,7 +56,7 @@ class DetailTransactionViewController: UIViewController {
                 }
             }
                 
-            case TypeTransactions.market.rawValue : do {
+            case TypeTransactions.market.rawValue: do {
                 self.destinationView.isHidden = true
                 self.checkLinkLabel.text = "true"
                 self.titleLabel?.text = NSLocalizedString("Market", comment: "")
@@ -68,7 +68,7 @@ class DetailTransactionViewController: UIViewController {
                 }
             }
                 
-            default : do {}
+            default: break
             }
 
             self.amountLabel.text = String(Int(transactionViewModel.amount))

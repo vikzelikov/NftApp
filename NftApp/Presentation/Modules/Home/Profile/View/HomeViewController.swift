@@ -26,24 +26,28 @@ class HomeViewController: UIViewController {
         setupHeader()
         
         setupStyle()
-        print(Constant.AUTH_TOKEN)
     }
     
     func bindData() {
         viewModel?.collectionNfts.bind {
-            self.reload()
-            
+            self.tableView.isHidden = false
+            self.errorLabel.isHidden = true
             self.headerView?.countNftsLabel.text = "\($0.count)"
+            self.reload()
         }
         
-        viewModel?.isLoading.bind { _ in 
-//            self.checkoutLoading(isShow: $0)
+        viewModel?.isLoading.bind {
+            self.checkoutLoading(isShow: $0)
         }
         
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
             self.showMessage(message: errorMessage)
         }
+    }
+    
+    func checkoutLoading(isShow: Bool) {
+//        self.errorLabel.isHidden = !isShow
     }
     
     // MARK: fix this

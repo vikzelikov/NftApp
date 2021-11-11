@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropShopViewController" customModule="NftApp" customModuleProvider="target">
             <connections>
                 <outlet property="errorLabel" destination="1Lh-NP-vBe" id="Jt0-pV-9Bo"/>
-                <outlet property="loadingIndicator" destination="y1c-bD-MP3" id="pnc-I3-O1c"/>
                 <outlet property="tableView" destination="7ta-LC-yJf" id="WlR-pf-VMN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,28 +31,24 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lh-NP-vBe">
-                    <rect key="frame" x="118.5" y="273.5" width="83.5" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="1Lh-NP-vBe" customClass="UILabelPadding" customModule="NftApp" customModuleProvider="target">
+                    <rect key="frame" x="15" y="271" width="290" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="y1c-bD-MP3">
-                    <rect key="frame" x="150" y="253.5" width="20" height="20"/>
-                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="7ta-LC-yJf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3D6-vx-KPa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7ta-LC-yJf" secondAttribute="bottom" id="6xd-53-4FD"/>
-                <constraint firstItem="1Lh-NP-vBe" firstAttribute="top" secondItem="y1c-bD-MP3" secondAttribute="bottom" id="CRc-nK-oTc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7ta-LC-yJf" secondAttribute="trailing" id="Dij-hg-mXq"/>
-                <constraint firstItem="1Lh-NP-vBe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qw6-XF-epQ"/>
+                <constraint firstItem="1Lh-NP-vBe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="FdL-8d-f99"/>
                 <constraint firstItem="lE5-nj-WAE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TOA-JG-uEu"/>
                 <constraint firstItem="7ta-LC-yJf" firstAttribute="top" secondItem="lE5-nj-WAE" secondAttribute="bottom" constant="10" id="aMb-Fi-KgH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1Lh-NP-vBe" secondAttribute="trailing" constant="15" id="gTx-1c-FZQ"/>
                 <constraint firstItem="lE5-nj-WAE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="s2I-JW-b5n"/>
-                <constraint firstItem="y1c-bD-MP3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uqH-E1-96i"/>
                 <constraint firstItem="1Lh-NP-vBe" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="wCD-Mk-xdf"/>
             </constraints>
             <point key="canvasLocation" x="38" y="154"/>

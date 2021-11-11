@@ -12,6 +12,7 @@ class HistoryTransactionsViewController: UIViewController {
     var viewModel: HistoryTransactionsViewModel? = nil
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var errorLabel: UILabelPadding!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,29 +25,37 @@ class HistoryTransactionsViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.items.bind {
-            [weak self] _ in self?.reload()
+        viewModel?.items.bind { [weak self] items in
+            self?.reload()
         
-//            self?.checkoutLoading(isShow: false)
-//            self?.tableView.isHidden = false
-//            self?.errorLabel.isHidden = true
-        }
-        
-        viewModel?.isLoading.bind { _ in
-//            self.checkoutLoading(isShow: $0)
-        }
-        
-        viewModel?.errorMessage.bind { _ in
-//            guard let errorMessage = $0 else { return }
+            self?.tableView.isHidden = false
+            self?.errorLabel.isHidden = true
             
-//            self.checkoutLoading(isShow: false)
-//            self.tableView.isHidden = true
-//            self.errorLabel.text = errorMessage
-//            self.errorLabel.isHidden = false
+            if items.isEmpty {
+                self?.tableView.isHidden = true
+                self?.errorLabel.text = NSLocalizedString("Nothing here", comment: "")
+                self?.errorLabel.isHidden = false
+            }
+        }
+        
+        viewModel?.isLoading.bind {
+            self.checkoutLoading(isShow: $0)
+        }
+        
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            self.showMessage(message: errorMessage)
         }
     }
     
-    private func setupStyle() {
+    func checkoutLoading(isShow: Bool) {
+        if isShow {
+            self.tableView.isHidden = true
+            self.errorLabel.isHidden = true
+        }
+    }
+    
+    func setupStyle() {
         tableView.delegate = self
         tableView.dataSource = self
         

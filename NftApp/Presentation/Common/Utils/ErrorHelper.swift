@@ -9,8 +9,8 @@ import Foundation
 
 struct ErrorHelper {
     
-    static func validateError(error: Error) -> (Int?, String?) {
-        var httpCode: Int? = nil
+    static func validateError(error: Error) -> (Int, String?) {
+        var httpCode: Int = HttpCode.badRequest
         var errorStr: String? = nil
         
         if let error = error as? ErrorMessage, let code = error.code {

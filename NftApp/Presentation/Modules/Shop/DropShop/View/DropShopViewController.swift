@@ -12,8 +12,7 @@ class DropShopViewController: UIViewController {
     var viewModel: DropShopViewModel? = nil
         
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var errorLabel: UILabelPadding!
     
     let refreshControl = UIRefreshControl()
     var collectionView: UICollectionView?
@@ -34,18 +33,19 @@ class DropShopViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.items.bind {  [weak self] _ in        
-            self?.checkoutLoading(isShow: false)
+        viewModel?.items.bind {  [weak self] items in
             self?.tableView.isHidden = false
             self?.errorLabel.isHidden = true
+            
+            if items.isEmpty {
+                self?.tableView.isHidden = true
+                self?.errorLabel.text = NSLocalizedString("Nothing here", comment: "")
+                self?.errorLabel.isHidden = false
+            }
         }
         
-        viewModel?.reloadItems = { [weak self] in
-            self?.reload()
-        }
-        
-        viewModel?.influencers.bind {
-            [weak self] _ in self?.reloadInfluencers()
+        viewModel?.influencers.bind { [weak self] _ in
+            self?.reloadInfluencers()
         }
         
         viewModel?.isLoading.bind {
@@ -54,27 +54,20 @@ class DropShopViewController: UIViewController {
         
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
-            
-            self.checkoutLoading(isShow: false)
-            self.tableView.isHidden = true
-            self.errorLabel.text = errorMessage
-            self.errorLabel.isHidden = false
+            self.showMessage(message: errorMessage)
         }
     }
     
     func checkoutLoading(isShow: Bool) {
         if isShow {
-            self.loadingIndicator.startAnimating()
             self.tableView.isHidden = true
             self.errorLabel.isHidden = true
-        } else {
-            self.loadingIndicator.stopAnimating()
         }
     }
     
     func setupStyle() {
-        loadingIndicator.startAnimating()
-        
+        errorLabel.padding = UIEdgeInsets(top: 0, left: 0, bottom: 70, right: 0)
+
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none

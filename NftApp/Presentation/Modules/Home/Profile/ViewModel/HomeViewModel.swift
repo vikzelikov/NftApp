@@ -41,7 +41,7 @@ class HomeViewModelImpl: HomeViewModel {
     var following: Observable<[UserViewModel]> = Observable([])
     var collectionNfts: Observable<[NftViewModel]> = Observable([])
     var typeFollows: Observable<(TypeFollows?, TypeFollows?)> = Observable((nil, nil))
-    var isLoading: Observable<Bool> = Observable(true)
+    var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
     init() {
@@ -116,7 +116,11 @@ class HomeViewModelImpl: HomeViewModel {
             case .success(let nfts):
                 self.appendNfts(nfts: nfts)
                 
-            case .failure: break
+            case .failure(let error):
+                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode != HttpCode.notFound {
+                    self.errorMessage.value = errorStr
+                }
             }
             
             self.isLoading.value = false
@@ -130,10 +134,6 @@ class HomeViewModelImpl: HomeViewModel {
         let nfts = nfts.map(NftViewModel.init)
         
         collectionNfts.value += nfts
-        
-        if collectionNfts.value.isEmpty {
-            self.errorMessage.value = NSLocalizedString("Collection is empty", comment: "")
-        }
     }
     
     func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void) {

@@ -4,9 +4,7 @@
 //
 //  Created by Yegor on 15.07.2021.
 //
-
 import UIKit
-import SDWebImage
 
 class DetailNftViewController: UIViewController {
     
@@ -191,7 +189,7 @@ class DetailNftViewController: UIViewController {
 
         viewModel?.buyNftDidTap(completion: { result in
             self.buyButton.loadingIndicator(isShow: false, titleButton: "\(Int(price)) Tokens")
-            
+
             if result {
                 self.showMessage(message: NSLocalizedString("NFT has been added to your collection!", comment: ""), isHaptic: false)
             }
@@ -245,4 +243,3 @@ class DetailNftViewController: UIViewController {
     }
     
 }
-

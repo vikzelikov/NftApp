@@ -35,7 +35,7 @@ class SettingsViewModelImpl: SettingsViewModel {
     }
     
     func passwordUpdateDidTap() {
-        
+        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
     }
     
     func personalUpdateDidTap(login: String, email: String, completion: @escaping (Bool) -> Void) {

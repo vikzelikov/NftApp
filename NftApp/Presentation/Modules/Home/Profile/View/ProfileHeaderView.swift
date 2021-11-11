@@ -56,10 +56,6 @@ class ProfileHeaderView: UIView {
     }
     
     func bindData() {
-        viewModel?.isLoading.bind { _ in
-//            self.checkoutLoading(isShow: $0)
-        }
-        
         viewModel?.userViewModel.bind {
             guard let userViewModel = $0 else { return }
             

@@ -6,18 +6,17 @@
 //
 
 import UIKit
-import PassKit
-import TinkoffASDKUI
 
 class AddFundsViewController: UIViewController {
     
     var viewModel: AddFundsViewModel?
 
-    @IBOutlet weak var amountTextField: UITextField!
-    @IBOutlet weak var applePayView: UIView!
-    @IBOutlet weak var calcAmountsLabel: UILabel!
-    private var applePayButton: UIButton?
-
+    @IBOutlet weak var nextButton: AccentButton!
+    @IBOutlet weak var firstItem: UIView!
+    @IBOutlet weak var secondItem: UIView!
+    @IBOutlet weak var itemsStackView: UIStackView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,97 +25,110 @@ class AddFundsViewController: UIViewController {
         bindData()
 
         setupStyle()
-        
-        amountTextField.addTarget(self, action: #selector(amountFieldDidChange), for: .editingChanged)
-        calcTokens()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
     }
     
     func setupStyle() {
-        if self.traitCollection.userInterfaceStyle == .dark {
-            applePayButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .white)
+        if #available(iOS 13.0, *) {
+            loadingIndicator.style = .large
         } else {
-            applePayButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .black)
+            loadingIndicator.style = .gray
         }
+
+        nextButton.applyButtonEffects()
         
-        if let applePayButton = applePayButton {
-            applePayView.addSubview(applePayButton)
-            applePayButton.translatesAutoresizingMaskIntoConstraints = false
-            applePayButton.applyButtonEffects()
-            NSLayoutConstraint.activate([
-                applePayButton.widthAnchor.constraint(equalTo: self.applePayView.widthAnchor, multiplier: 1),
-            ])
-            applePayButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            applePayButton.layer.cornerRadius = 12
-            applePayButton.clipsToBounds = true
-            
-            applePayButton.addTarget(self, action: #selector(self.applePayButtonDidTap), for: .touchUpInside)
-        }
+        let firstItemDidTap = UITapGestureRecognizer(target: self, action: #selector(firstItemDidTap(_:)))
+        firstItem?.addGestureRecognizer(firstItemDidTap)
         
-        amountTextField.delegate = self
-        
-        calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(0) T"
+        let secondItemDidTap = UITapGestureRecognizer(target: self, action: #selector(secondItemDidTap(_:)))
+        secondItem?.addGestureRecognizer(secondItemDidTap)
     }
     
     func bindData() {
+        viewModel?.products.bind {
+            if !$0.isEmpty {
+                self.itemsStackView.isHidden = false
+                self.setSelected(selectedView: self.firstItem)
+                self.viewModel?.productDidTap(index: 0)
+            }
+        }
+        
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
-            let alert = UIAlertController(title: "Error Message", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.showMessage(message: errorMessage)
+        }
+        
+        viewModel?.isLoading.bind {
+            print($0)
+            $0 ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
         }
     }
     
-    @objc func applePayButtonDidTap() {
-        calcTokens()
+    @objc func firstItemDidTap(_ sender: UITapGestureRecognizer) {
+        setSelected(selectedView: firstItem)
         
-        viewModel?.applePayButtonDidTap { sdk, applePayConfigs, paymentData in
-            sdk.presentPaymentApplePay(on: self, paymentData: paymentData, viewConfiguration: AcquiringViewConfiguration(), paymentConfiguration: applePayConfigs, completionHandler: { response in
+        viewModel?.productDidTap(index: 0)
+    }
+    
+    @objc func secondItemDidTap(_ sender: UITapGestureRecognizer) {
+        setSelected(selectedView: secondItem)
+        
+        viewModel?.productDidTap(index: 1)
+    }
+    
+    func setSelected(selectedView: UIView) {
+        resetSelected()
+        
+        UIView.animate(withDuration: 0.2) {
+            selectedView.transform = .identity
+        }
+        
+        selectedView.alpha = 2
+        
+        selectedView.isUserInteractionEnabled = false
+        
+        HapticHelper.vibro(.light)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { HapticHelper.vibro(.heavy) }
+        
+        selectedView.layer.borderWidth = 2
+        selectedView.layer.borderColor = UIColor(named: "orange")?.cgColor
+    }
+    
+    func resetSelected() {
+        UIView.animate(withDuration: 0.2) {
+            self.firstItem?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.secondItem?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+        
+        firstItem.isUserInteractionEnabled = true
+        secondItem.isUserInteractionEnabled = true
+        
+        firstItem.alpha = 0.5
+        secondItem.alpha = 0.5
+        
+        firstItem.layer.borderWidth = 0
+        firstItem.layer.borderColor = UIColor.clear.cgColor
+        
+        secondItem.layer.borderWidth = 0
+        secondItem.layer.borderColor = UIColor.clear.cgColor
+    }
+        
+    @IBAction func continueDidTap(_ sender: Any) {
+        nextButton.loadingIndicator(isShow: true, titleButton: nil)
 
-                print(response)
-            })
+        viewModel?.nextDidTap { result in
+            if result {
+                self.showMessage(message: NSLocalizedString("Successful purchase", comment: ""), isHaptic: false)
+            }
+            
+            self.nextButton.loadingIndicator(isShow: false, titleButton: "CONTINUE")
         }
-    }
-    
-    @objc func amountFieldDidChange(_ sender: Any) {
-        calcTokens()
-    }
-    
-    func calcTokens() {
-        var calcAmounts = 0
-        
-        if let amountString = amountTextField.text, let amount = Int(amountString) {
-            viewModel?.updateData(amount: Double(amount))
-
-            calcAmounts = amount * 3
-            calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcAmounts) T"
-        }
-        
-        calcAmountsLabel.text = NSLocalizedString("You get", comment: "") + " \(calcAmounts) T"
-    }
-    
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        amountTextField.resignFirstResponder()
     }
     
     @IBAction func dismissDidTap(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
-}
-
-extension AddFundsViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let textFieldText = textField.text,
-            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-                return false
-        }
-        let substringToReplace = textFieldText[rangeOfTextToReplace]
-        let count = textFieldText.count - substringToReplace.count + string.count
-        return count <= 4
-    }
-    
 }

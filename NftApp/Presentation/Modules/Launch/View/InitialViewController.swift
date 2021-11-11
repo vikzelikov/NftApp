@@ -29,7 +29,11 @@ class InitialViewController: UIViewController {
     func setupStyle() {
         reloadButton.applyButtonEffects()
         
-        loadingIndicator.transform = CGAffineTransform(scaleX: 2, y: 2)
+        if #available(iOS 13.0, *) {
+            loadingIndicator.style = .large
+        } else {
+            loadingIndicator.style = .gray
+        }
         loadingIndicator.center = self.view.center
         self.view.addSubview(loadingIndicator)
         loadingIndicator.startAnimating()

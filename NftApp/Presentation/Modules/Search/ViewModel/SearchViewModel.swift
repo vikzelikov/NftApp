@@ -68,9 +68,7 @@ class SearchViewModelImpl: SearchViewModel {
             case .success(let items):
                 self.usersItems += items
 
-            case .failure(let error):
-                let (_, errorStr) = ErrorHelper.validateError(error: error)
-                self.errorMessage.value = errorStr
+            case .failure: break
             }
             
             self.isUsersSearched = true
@@ -84,9 +82,7 @@ class SearchViewModelImpl: SearchViewModel {
             case .success(let items):
                 self.editionsItems += items
 
-            case .failure(let error):
-                let (_, errorStr) = ErrorHelper.validateError(error: error)
-                self.errorMessage.value = errorStr
+            case .failure: break
             }
             
             self.isEditionsSearched = true
@@ -100,9 +96,7 @@ class SearchViewModelImpl: SearchViewModel {
             case .success(let items):
                 self.nftsItems += items
 
-            case .failure(let error):
-                let (_, errorStr) = ErrorHelper.validateError(error: error)
-                self.errorMessage.value = errorStr
+            case .failure: break
             }
             
             self.isNftsSearched = true

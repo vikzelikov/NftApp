@@ -21,12 +21,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9u-Eg-ebW">
+                                <rect key="frame" x="133" y="271" width="54.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="164-K3-Gp2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="k9u-Eg-ebW" firstAttribute="centerY" secondItem="7HY-IE-PX8" secondAttribute="centerY" id="7Um-BT-c4G"/>
                             <constraint firstAttribute="bottom" secondItem="X8C-dy-CPw" secondAttribute="bottom" id="LBu-kk-oQR"/>
                             <constraint firstItem="X8C-dy-CPw" firstAttribute="trailing" secondItem="164-K3-Gp2" secondAttribute="trailing" id="NhN-d8-Ftx"/>
+                            <constraint firstItem="k9u-Eg-ebW" firstAttribute="centerX" secondItem="7HY-IE-PX8" secondAttribute="centerX" id="QQ0-E2-bOq"/>
                             <constraint firstItem="X8C-dy-CPw" firstAttribute="leading" secondItem="164-K3-Gp2" secondAttribute="leading" id="bLa-ls-DCc"/>
                             <constraint firstItem="X8C-dy-CPw" firstAttribute="top" secondItem="164-K3-Gp2" secondAttribute="top" id="jJ8-bt-fbt"/>
                         </constraints>
@@ -34,6 +42,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="J5J-bB-swp"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="errorLabel" destination="k9u-Eg-ebW" id="OZr-R0-x8Y"/>
                         <outlet property="tableView" destination="X8C-dy-CPw" id="8T7-7h-UIS"/>
                     </connections>
                 </viewController>

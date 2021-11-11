@@ -73,12 +73,14 @@ class SignupViewModelImpl: SignupViewModel {
                 self.isSuccess.value = true
 
             case .failure(let error):
-                self.isLoading.value = false
                 self.isSuccess.value = false
 
                 let (_, errorStr) = ErrorHelper.validateError(error: error)
                 self.errorMessage.value = errorStr
             }
+            
+            self.isLoading.value = false
+
         })
     }
     

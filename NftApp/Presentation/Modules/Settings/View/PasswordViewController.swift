@@ -20,8 +20,16 @@ class PasswordViewController: UIViewController {
         super.viewDidLoad()
         
         if viewModel == nil { viewModel = SettingsViewModelImpl() }
+        bindData()
         
         setupStyle()
+    }
+    
+    func bindData() {
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            self.showMessage(message: errorMessage)
+        }
     }
     
     func setupStyle() {

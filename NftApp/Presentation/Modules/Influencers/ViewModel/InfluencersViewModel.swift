@@ -63,10 +63,6 @@ class InfluencersViewModelImpl: InfluencersViewModel {
         let followUsers = users.map(UserViewModel.init)
         
         items.value += followUsers
-        
-        if items.value.isEmpty {
-//            self.errorMessage.value = NSLocalizedString("Drop Shop is empty", comment: "")
-        }
     }
     
     private func resetPages() {

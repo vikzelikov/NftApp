@@ -54,8 +54,10 @@ class HistoryTransactionsViewModelImpl: HistoryTransactionsViewModel {
                 self.appendTransactions(transactions: transactions)
 
             case .failure(let error):
-                let (_, errorStr) = ErrorHelper.validateError(error: error)
-                self.errorMessage.value = errorStr
+                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode != HttpCode.notFound {
+                    self.errorMessage.value = errorStr
+                }
             }
 
             self.isLoading.value = false
@@ -69,10 +71,6 @@ class HistoryTransactionsViewModelImpl: HistoryTransactionsViewModel {
         let transactions = transactions.map(TransactionViewModel.init)
         
         items.value += transactions
-        
-        if items.value.isEmpty {
-//            self.errorMessage.value = NSLocalizedString("Drop Shop is empty", comment: "")
-        }
     }
     
     private func resetPages() {

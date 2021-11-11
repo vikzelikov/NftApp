@@ -155,7 +155,7 @@ class AccentButton: UIButton {
         l.frame = self.bounds
         layer.insertSublayer(l, at: 0)
         return l
-    }()
+    } ()
     
 }
 
@@ -173,7 +173,11 @@ extension UIViewController {
         let errorView = ErrorView()
         errorView.alpha = 0.0
         if let topPadding = UIApplication.shared.keyWindow?.safeAreaInsets.top {
-            if topPadding == 20 { y = -20 }
+            if topPadding == 20 {
+                y = -20
+            } else if isModal {
+                y = -30
+            }
         }
         errorView.frame = CGRect(x: 0, y: y, width: Int(UIScreen.main.bounds.size.width), height: 0)
         errorView.errorLabel.text = message

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryTransactionsViewController" customModule="NftApp" customModuleProvider="target">
             <connections>
+                <outlet property="errorLabel" destination="6Yf-6r-ufo" id="2k9-MW-Lv9"/>
                 <outlet property="tableView" destination="jlb-6Z-OuQ" id="2DU-HA-h6d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,6 +22,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="6Yf-6r-ufo" customClass="UILabelPadding" customModule="NftApp" customModuleProvider="target">
+                    <rect key="frame" x="15" y="271" width="290" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcz-Ku-IYM">
                     <rect key="frame" x="99.5" y="15" width="121.5" height="26.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -59,10 +66,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Yf-6r-ufo" secondAttribute="trailing" constant="15" id="689-AF-skM"/>
                 <constraint firstItem="jlb-6Z-OuQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CKP-ty-QB8"/>
                 <constraint firstAttribute="trailing" secondItem="lGX-cB-dw9" secondAttribute="trailing" id="Qcl-wH-7W0"/>
                 <constraint firstItem="bcz-Ku-IYM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TfX-oy-q8r"/>
                 <constraint firstItem="LmB-sk-kLy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TzA-zt-l2j"/>
+                <constraint firstItem="6Yf-6r-ufo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="VUq-Cu-ZvU"/>
+                <constraint firstItem="6Yf-6r-ufo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="VjU-wR-iVg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jlb-6Z-OuQ" secondAttribute="trailing" id="aCF-bT-AgF"/>
                 <constraint firstItem="lGX-cB-dw9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="b4I-2y-8yE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jlb-6Z-OuQ" secondAttribute="bottom" id="f5N-Gt-bCq"/>

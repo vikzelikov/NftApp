@@ -36,13 +36,9 @@ class SearchViewController: UIViewController {
 //            self.checkoutLoading(isShow: $0)
         }
         
-        viewModel?.errorMessage.bind { _ in
-//            guard let errorMessage = $0 else { return }
-            
-//            self.checkoutLoading(isShow: false)
-//            self.tableView.isHidden = true
-//            self.errorLabel.text = errorMessage
-//            self.errorLabel.isHidden = false
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            self.showMessage(message: errorMessage)
         }
     }
     

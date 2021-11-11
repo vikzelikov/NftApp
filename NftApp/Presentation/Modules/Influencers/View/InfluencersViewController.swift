@@ -19,38 +19,29 @@ class InfluencersViewController: UIViewController {
         viewModel?.viewDidLoad()
         bindData()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         setupStyle()
-        
-        reload()
     }
     
     func bindData() {
-        viewModel?.items.bind {
-            [weak self] _ in self?.reload()
-        
-//            self?.checkoutLoading(isShow: false)
-//            self?.tableView.isHidden = false
-//            self?.errorLabel.isHidden = true
+        viewModel?.items.bind { [weak self] _ in
+            self?.reload()
         }
         
         viewModel?.isLoading.bind { _ in
 //            self.checkoutLoading(isShow: $0)
         }
         
-        viewModel?.errorMessage.bind { _ in
-//            guard let errorMessage = $0 else { return }
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            self.showMessage(message: errorMessage)
             
-//            self.checkoutLoading(isShow: false)
-//            self.tableView.isHidden = true
-//            self.errorLabel.text = errorMessage
-//            self.errorLabel.isHidden = false
         }
     }
     
     func setupStyle() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorColor = UIColor.lightGray.withAlphaComponent(0.3)

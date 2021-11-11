@@ -6,50 +6,69 @@
 //
 
 import Foundation
-import PassKit
-import TinkoffASDKUI
-import TinkoffASDKCore
+import StoreKit
 
 protocol AddFundsViewModel : BaseViewModel {
         
-    var isSuccess: Observable<Bool> { get }
+    var products: Observable<[InAppPurchase]> { get }
     
-    func applePayButtonDidTap(completion: @escaping (AcquiringUISDK, AcquiringUISDK.ApplePayConfiguration, PaymentInitData) -> Void)
+    func productDidTap(index: Int)
     
-    func updateData(amount: Double)
+    func nextDidTap(completion: @escaping (Bool) -> Void)
     
 }
 
 class AddFundsViewModelImpl: AddFundsViewModel {
-    private let walletUseCase: WalletUseCase
-    
-    private var addFundsRequest = AddFundsRequest() {
-        didSet {
-            amount = addFundsRequest.amount
-        }
-    }
-    
-    private var amount: Double = 0.0
-    private var tinkoffSdk: AcquiringUISDK? = nil
-    private lazy var paymentApplePayConfiguration = AcquiringUISDK.ApplePayConfiguration()
 
-    var isLoading: Observable<Bool> = Observable(false)
-    var isSuccess: Observable<Bool> = Observable(false)
+    private let walletUseCase: WalletUseCase
+
+    var isLoading: Observable<Bool> = Observable(true)
     var errorMessage: Observable<String?> = Observable(nil)
+    var products: Observable<[InAppPurchase]> = Observable([])
+    
+    private var selectedProduct: InAppPurchase?
     
     init() {
         walletUseCase = WalletUseCaseImpl()
         
-        let credentional = AcquiringSdkCredential(terminalKey: Constant.TERMINAL_KEY_T, publicKey: Constant.PUBLIC_KEY_T)
-        let acquiringSDKConfiguration = AcquiringSdkConfiguration(credential: credentional, server: .prod)
-        tinkoffSdk = try? AcquiringUISDK.init(configuration: acquiringSDKConfiguration)
-        paymentApplePayConfiguration.merchantIdentifier = Constant.MERCHANT_ID
+        IAPManager.shared.getProducts(completion: { result in
+            DispatchQueue.main.async {
+                if result {
+                    self.products.value.append(InAppPurchase(id: 0, price: 99))
+                    self.products.value.append(InAppPurchase(id: 1, price: 449))
+                } else {
+                    self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
+                }
+
+                self.isLoading.value = false
+            }
+        })
     }
     
-    func updateData(amount: Double) {
-        addFundsRequest.amount = amount
+    func productDidTap(index: Int) {
+        if products.value.indices.contains(index) {
+            selectedProduct = products.value[index]
+        }
     }
     
+    func nextDidTap(completion: @escaping (Bool) -> Void) {
+        guard let index = selectedProduct?.id else {
+            completion(false)
+            return
+        }
+        
+        if ProductsDB.shared.items.indices.contains(index) {
+            IAPManager.shared.purchase(product: ProductsDB.shared.items[index], completion: { result in
+                
+                completion(result)
+                
+                if result {
+                    self.addFunds()
+                }
+            })
+        }
+    }
+
     private func addFunds() {
 //        self.isLoading.value = true
 //        
@@ -81,53 +100,97 @@ class AddFundsViewModelImpl: AddFundsViewModel {
 //        })
     }
     
-    private func checkData() {
-        if amount <= 1 || amount > 9999  {
-            errorMessage.value = "Please provide correct amount"
-            isSuccess.value = false
-            return
-        }
 
-        addFunds()
-    }
+
+}
+
+class IAPManager: NSObject {
     
-    func applePayButtonDidTap(completion: @escaping (AcquiringUISDK, AcquiringUISDK.ApplePayConfiguration, PaymentInitData) -> Void) {
-        checkData()
+    static let shared = IAPManager()
+    
+    private var completionPurchase: ((Bool) -> Void)?
+    private var completionGetProducts: ((Bool) -> Void)?
         
-        if let sdk = tinkoffSdk {
-            let paymentData = createPaymentData()
-            
-            completion(sdk, paymentApplePayConfiguration, paymentData)
+    private override init() {
+        super.init()
+    }
+
+    func getProducts(completion: ((Bool) -> Void)?) {
+        self.completionGetProducts = completion
+        
+        let request = SKProductsRequest(productIdentifiers: Constant.IN_APP_PRODUCTS)
+        request.delegate = self
+        request.start()
+    }
+
+    func purchase(product: SKProduct, completion: ((Bool) -> Void)?) {
+        self.completionPurchase = completion
+        
+        if IAPManager.shared.canMakePayments() {
+            let payment = SKPayment(product: product)
+            SKPaymentQueue.default().add(self)
+            SKPaymentQueue.default().add(payment)
+        } else {
+            completion?(false)
         }
     }
-    
-    private func createPaymentData() -> PaymentInitData {
-        let amount = NSDecimalNumber(value: amount)
-        let randomOrderId = String(Int64(arc4random())) + "id\(Constant.USER_ID)"
-        var paymentData = PaymentInitData(amount: amount, orderId: randomOrderId, customerKey: "1")
-        paymentData.description = "Yup NFT"
-        paymentData.paymentFormData = ["LOL": "456", "TEST": "dhdrthdr"]
-//        paymentData.addPaymentData(["userid": "456", "567567": "dhdrthdr"])
 
-        var receiptItems: [Item] = []
-        let item: Item = Item(amount: amount.int64Value * 100,
-                              price: amount.int64Value * 100,
-                              name: "Purchase of tokens",
-                              tax: .vat10)
-        
-       receiptItems.append(item)
-                   
-       paymentData.receipt = Receipt(shopCode: nil,
-                                      email: "example@example.com",
-                                      taxation: .osn,
-                                      phone: nil,
-                                      items: receiptItems,
-                                      agentData: nil,
-                                      supplierInfo: nil,
-                                      customer: "1234",
-                                      customerInn: nil)
-
-        return paymentData
+    func canMakePayments() -> Bool {
+        return SKPaymentQueue.canMakePayments()
     }
     
+}
+
+extension IAPManager: SKProductsRequestDelegate, SKRequestDelegate {
+
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        let badProducts = response.invalidProductIdentifiers
+        let goodProducts = response.products
+
+        if !goodProducts.isEmpty {
+            ProductsDB.shared.items = response.products
+            completionGetProducts?(true)
+        } else if !badProducts.isEmpty {
+            completionGetProducts?(false)
+        } else {
+            completionGetProducts?(false)
+        }
+    }
+
+    func request(_ request: SKRequest, didFailWithError error: Error) {
+        completionGetProducts?(false)
+    }
+  
+}
+
+extension IAPManager: SKPaymentTransactionObserver {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            switch transaction.transactionState {
+                
+            case .failed:
+                SKPaymentQueue.default().finishTransaction(transaction)
+                completionPurchase?(false)
+                break
+                
+            case .purchased:
+                SKPaymentQueue.default().finishTransaction(transaction)
+                completionPurchase?(true)
+                break
+                
+            default: break
+                
+            }
+        }
+    }
+}
+
+final class ProductsDB: Identifiable {
+    static let shared = ProductsDB()
+    var items: [SKProduct] = []
+}
+
+struct InAppPurchase {
+    let id: Int
+    let price: Int
 }

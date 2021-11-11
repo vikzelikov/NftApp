@@ -11,7 +11,6 @@ protocol DropShopViewModel : BaseViewModel {
     
     var items: Observable<[EditionViewModel]> { get }
     var influencers: Observable<[UserViewModel]> { get }
-    var reloadItems: (() -> Void)? { get set }
 
     func viewDidLoad()
     
@@ -61,8 +60,10 @@ class DropShopViewModelImpl: DropShopViewModel {
                 self.appendEditions(editions: editions)
 
             case .failure(let error):
-                let (_, errorStr) = ErrorHelper.validateError(error: error)
-                self.errorMessage.value = errorStr
+                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode != HttpCode.notFound {
+                    self.errorMessage.value = errorStr
+                }
             }
 
             self.isLoading.value = false
@@ -77,9 +78,7 @@ class DropShopViewModelImpl: DropShopViewModel {
             case .success(let influencers):
                 self.influencers.value = influencers.map(UserViewModel.init)
 
-            case .failure(let error):
-                let (_, errorStr) = ErrorHelper.validateError(error: error)
-                self.errorMessage.value = errorStr
+            case .failure: break
             }
 
             self.isLoading.value = false
@@ -93,12 +92,6 @@ class DropShopViewModelImpl: DropShopViewModel {
         let editions = editions.map(EditionViewModel.init)
         
         items.value += editions
-        
-        self.reloadItems?()
-        
-        if items.value.isEmpty {
-            self.errorMessage.value = NSLocalizedString("Drop Shop is empty", comment: "")
-        }
     }
     
     func didSelectItem(at index: Int, completion: @escaping (EditionViewModel) -> Void) {
