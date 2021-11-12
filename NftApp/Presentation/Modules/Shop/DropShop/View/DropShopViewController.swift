@@ -72,6 +72,7 @@ class DropShopViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.register(UINib(nibName: HeaderViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: HeaderViewCell.cellIdentifier)
         tableView.register(UINib(nibName: NftViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftViewCell.cellIdentifier)
         tableView.register(UINib(nibName: InfluencersCollectionView.cellIdentifier, bundle: nil), forCellReuseIdentifier: InfluencersCollectionView.cellIdentifier)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
@@ -103,7 +104,7 @@ extension DropShopViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 { return }
         
-        viewModel?.didSelectItem(at: indexPath.row - 1) { editionViewModel in
+        viewModel?.didSelectItem(at: indexPath.row - 3) { editionViewModel in
             let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
             vc.viewModel = DetailNftViewModelImpl()
             vc.viewModel?.nftViewModel.value = NftViewModel(id: editionViewModel.id, edition: editionViewModel)
@@ -118,25 +119,21 @@ extension DropShopViewController: UITableViewDelegate {
         if indexPath.row == 0 { return }
         
         let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.1) {
-            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        }
+        cell?.applyTouchDownAnimation(cell: cell)
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         if indexPath.row == 0 { return }
         
         let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.1, delay: 0.1) {
-            cell?.transform = .identity
-        }
+        cell?.applyTouchUpAnimation(cell: cell)
     }
 }
 
 extension DropShopViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = viewModel?.items.value.count {
-            return count + 1
+            return count + 3
         } else {
             return 0
         }
@@ -144,9 +141,22 @@ extension DropShopViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else { return UITableViewCell() }
+            cell.headerLabel.text = "Influencers"
+            cell.selectionStyle = .none
+            return cell
+            
+        } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: InfluencersCollectionView.cellIdentifier, for: indexPath)
             cell.selectionStyle = .none
             return cell
+            
+        } else if indexPath.row == 2 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else { return UITableViewCell() }
+            cell.headerLabel.text = "NFTs"
+            cell.selectionStyle = .none
+            return cell
+            
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath) as? NftViewCell else { return UITableViewCell() }
             
@@ -154,8 +164,8 @@ extension DropShopViewController: UITableViewDataSource {
             HapticHelper.vibro(.light)
             
             if let items = viewModel?.items.value {
-                if items.indices.contains(indexPath.row - 1) {
-                    if let vm = viewModel?.items.value[indexPath.row - 1] {
+                if items.indices.contains(indexPath.row - 3) {
+                    if let vm = viewModel?.items.value[indexPath.row - 3] {
                         cell.typeDetailNFT = .dropShop
                         cell.bindEdition(viewModel: vm)
                     }
@@ -163,7 +173,7 @@ extension DropShopViewController: UITableViewDataSource {
             }
             
             cell.removeItem = { [weak self] in
-                self?.viewModel?.items.value.remove(at: indexPath.row - 1)
+                self?.viewModel?.items.value.remove(at: indexPath.row - 3)
                 let indexPath = IndexPath(item: indexPath.row, section: 0)
                 self?.tableView.deleteRows(at: [indexPath], with: .fade)
             }
@@ -233,15 +243,11 @@ extension DropShopViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        UIView.animate(withDuration: 0.1) {
-            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        }
+        cell?.applyTouchDownAnimation(cell: cell)
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        UIView.animate(withDuration: 0.1, delay: 0.1) {
-            cell?.transform = .identity
-        }
+        cell?.applyTouchUpAnimation(cell: cell)
     }
 }

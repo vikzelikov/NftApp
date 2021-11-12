@@ -70,7 +70,7 @@ class DetailNftViewController: UIViewController {
             self.buyButton?.setTitle("\(Int(nftViewModel.edition.price ?? 0.0)) Tokens", for: .normal)
             self.titleLabel?.text = nftViewModel.edition.name
             self.descriptionLabel?.text = nftViewModel.edition.description
-            self.priceLabel.text = "\(Int(nftViewModel.lastPrice ?? 0.0))"
+            self.priceLabel.text = "\(Int(nftViewModel.lastPrice ?? 0.0)) T"
             
             if let count = nftViewModel.edition.count, let countNFTs = nftViewModel.edition.countNFTs {
                 self.leftCountLabel.text = "x\(count - countNFTs) " + NSLocalizedString("left", comment: "")

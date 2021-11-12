@@ -28,6 +28,7 @@ class NftViewCell: UITableViewCell {
             influencerImage.layer.cornerRadius = influencerImage.frame.width / 2
         }
     }
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var nftImage: UIImageView!
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var titleNftLabel: UILabel!
@@ -47,7 +48,11 @@ class NftViewCell: UITableViewCell {
     
     func bindNft(viewModel: NftViewModel) {
         titleNftLabel?.text = viewModel.edition.name
-        priceLabel?.text = String(Int(viewModel.lastPrice ?? 0.0))
+        
+        let price = Int(viewModel.price ?? 0.0)
+        let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
+        priceLabel?.text = "\(price) T"
+        priceFiatLabel?.text = "\((Double(price) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
         
         if let urlString = viewModel.edition.mediaUrl, let url = URL(string: urlString) {
             nftImage.sd_setImage(with: url)
@@ -60,7 +65,11 @@ class NftViewCell: UITableViewCell {
     
     func bindEdition(viewModel: EditionViewModel) {
         titleNftLabel?.text = viewModel.name
-        priceLabel?.text = String(Int(viewModel.price ?? 0.0))
+        
+        let price = Int(viewModel.price ?? 0.0)
+        let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
+        priceLabel?.text = "\(price) T"
+        priceFiatLabel?.text = "\((Double(price) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
         
         if let urlString = viewModel.mediaUrl, let url = URL(string: urlString) {
             nftImage.sd_setImage(with: url)

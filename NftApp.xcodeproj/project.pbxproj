@@ -135,6 +135,8 @@
 		18B84272266E27A50033AFC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B84270266E27A50033AFC0 /* LaunchScreen.storyboard */; };
 		18B8428E266F648F0033AFC0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B8428D266F648F0033AFC0 /* Home.storyboard */; };
 		18B84290266F64A30033AFC0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8428F266F64A30033AFC0 /* HomeViewController.swift */; };
+		18C319DD273DD4F1005BD3CA /* HeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C319DB273DD4F1005BD3CA /* HeaderViewCell.swift */; };
+		18C319DE273DD4F1005BD3CA /* HeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C319DC273DD4F1005BD3CA /* HeaderViewCell.xib */; };
 		18CED70B273C0FEA00AE6738 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CED70A273C0FEA00AE6738 /* UILabelPadding.swift */; };
 		18D3FEC9268FAE390030929D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FEC8268FAE390030929D /* Extensions.swift */; };
 		18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FECF2697B8C40030929D /* LoginViewController.swift */; };
@@ -352,6 +354,8 @@
 		18B84273266E27A50033AFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18B8428D266F648F0033AFC0 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		18B8428F266F64A30033AFC0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18C319DB273DD4F1005BD3CA /* HeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewCell.swift; sourceTree = "<group>"; };
+		18C319DC273DD4F1005BD3CA /* HeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderViewCell.xib; sourceTree = "<group>"; };
 		18CED709273B383B00AE6738 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		18CED70A273C0FEA00AE6738 /* UILabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
 		18D3FEC8268FAE390030929D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -623,6 +627,8 @@
 				185CBA282725ABDC007DF8CF /* NftViewCell.xib */,
 				182342D626A081EF00CD2907 /* UICustomView.swift */,
 				18CED70A273C0FEA00AE6738 /* UILabelPadding.swift */,
+				18C319DB273DD4F1005BD3CA /* HeaderViewCell.swift */,
+				18C319DC273DD4F1005BD3CA /* HeaderViewCell.xib */,
 				180F6C7527385ABB00F3F03E /* ErrorView.swift */,
 				180F6C7327385A9A00F3F03E /* ErrorView.xib */,
 				186E5FFE26B6CC67008291AC /* Settings */,
@@ -1659,6 +1665,7 @@
 				180F6C7427385A9A00F3F03E /* ErrorView.xib in Resources */,
 				18E1106F26D595EF007FD66E /* Localizable.strings in Resources */,
 				185CBA2A2725ABDC007DF8CF /* NftViewCell.xib in Resources */,
+				18C319DE273DD4F1005BD3CA /* HeaderViewCell.xib in Resources */,
 				186E602326B88F25008291AC /* SearchViewController.xib in Resources */,
 				18DDEA3726D7A0D100306A60 /* Initial.storyboard in Resources */,
 				182342F426A2ECF700CD2907 /* HistoryViewCell.xib in Resources */,
@@ -1768,6 +1775,7 @@
 				18E1108A26D5AA56007FD66E /* EditionDTO.swift in Sources */,
 				182342DB26A1E67F00CD2907 /* NftMarketViewCell.swift in Sources */,
 				1879C57626C9D32F00CE367E /* SignupResponseDTO.swift in Sources */,
+				18C319DD273DD4F1005BD3CA /* HeaderViewCell.swift in Sources */,
 				180F6C7627385ABB00F3F03E /* ErrorView.swift in Sources */,
 				182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */,
 				186E601C26B6F178008291AC /* TransactionViewModel.swift in Sources */,

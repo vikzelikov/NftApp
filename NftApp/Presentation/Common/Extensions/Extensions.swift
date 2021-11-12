@@ -206,6 +206,38 @@ extension UIViewController {
     }
 }
 
+extension UITableViewCell {
+    
+    func applyTouchDownAnimation(cell: UITableViewCell?) {
+        UIView.animate(withDuration: 0.2) {
+            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+    }
+    
+    func applyTouchUpAnimation(cell: UITableViewCell?) {
+        UIView.animate(withDuration: 0.2) {
+            cell?.transform = .identity
+        }
+    }
+    
+}
+
+extension UICollectionViewCell {
+    
+    func applyTouchDownAnimation(cell: UICollectionViewCell?) {
+        UIView.animate(withDuration: 0.2) {
+            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+    }
+    
+    func applyTouchUpAnimation(cell: UICollectionViewCell?) {
+        UIView.animate(withDuration: 0.2) {
+            cell?.transform = .identity
+        }
+    }
+    
+}
+
 extension Double {
     func rounded(toPlaces places:Int) -> Double {
         let divisor = pow(10.0, Double(places))

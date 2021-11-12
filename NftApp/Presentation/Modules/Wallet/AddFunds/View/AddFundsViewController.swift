@@ -46,9 +46,10 @@ class AddFundsViewController: UIViewController {
     func bindData() {
         viewModel?.products.bind {
             if !$0.isEmpty {
-                self.itemsStackView.isHidden = false
                 self.setSelected(selectedView: self.firstItem)
                 self.viewModel?.productDidTap(index: 0)
+                
+                self.itemsStackView.isHidden = false
             }
         }
         
@@ -58,7 +59,6 @@ class AddFundsViewController: UIViewController {
         }
         
         viewModel?.isLoading.bind {
-            print($0)
             $0 ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
         }
     }

@@ -26,10 +26,6 @@ class SearchViewController: UIViewController {
     func bindData() {
         viewModel?.items.bind { [weak self] _ in
             self?.reload()
-        
-//            self?.checkoutLoading(isShow: false)
-//            self?.tableView.isHidden = false
-//            self?.errorLabel.isHidden = true
         }
         
         viewModel?.isLoading.bind { _ in
@@ -53,7 +49,8 @@ class SearchViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: SearchViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SearchViewCell.cellIdentifier)
-        
+        tableView.register(UINib(nibName: HeaderViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: HeaderViewCell.cellIdentifier)
+
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.becomeFirstResponder()
@@ -115,21 +112,30 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchViewCell.cellIdentifier, for: indexPath) as? SearchViewCell else {
-            assertionFailure("Cannot dequeue reusable cell")
-            return UITableViewCell()
-        }
         
-
         if let vm = viewModel?.items.value[indexPath.row] {
             if vm.type == .separator {
-                cell.selectionStyle = UITableViewCell.SelectionStyle.none
-            }
-            
-            cell.bind(viewModel: vm)
-        }
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else {
+                    return UITableViewCell()
+                }
                 
-        return cell
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                cell.headerLabel.text = vm.title
+                
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchViewCell.cellIdentifier, for: indexPath) as? SearchViewCell else {
+                    return UITableViewCell()
+                }
+                
+                cell.bind(viewModel: vm)
+                
+                return cell
+            }
+        }
+        
+        return UITableViewCell()
+        
     }
     
 }

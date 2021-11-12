@@ -143,16 +143,12 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.1) {
-            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        }
+        cell?.applyTouchDownAnimation(cell: cell)
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.1, delay: 0.1) {
-            cell?.transform = .identity
-        }
+        cell?.applyTouchUpAnimation(cell: cell)
     }
     
     // MARK: fix this

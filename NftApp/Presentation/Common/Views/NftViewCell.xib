@@ -161,6 +161,7 @@
                 <outlet property="priceFiatLabel" destination="Edg-ec-Fy3" id="qLB-wk-fnt"/>
                 <outlet property="priceLabel" destination="Jlg-Dk-Pzt" id="ytG-3k-I2d"/>
                 <outlet property="titleNftLabel" destination="rZ4-3d-wb6" id="mzp-kC-30t"/>
+                <outlet property="view" destination="1TT-tr-NHc" id="aCm-b5-uwZ"/>
             </connections>
             <point key="canvasLocation" x="27.536231884057973" y="67.633928571428569"/>
         </tableViewCell>
