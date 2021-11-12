@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class NftViewCell: UITableViewCell {
     
@@ -55,7 +54,7 @@ class NftViewCell: UITableViewCell {
         priceFiatLabel?.text = "\((Double(price) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
         
         if let urlString = viewModel.edition.mediaUrl, let url = URL(string: urlString) {
-            nftImage.sd_setImage(with: url)
+            nftImage.load(with: url)
         }
         
         if typeDetailNFT == .detail {
@@ -72,7 +71,7 @@ class NftViewCell: UITableViewCell {
         priceFiatLabel?.text = "\((Double(price) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
         
         if let urlString = viewModel.mediaUrl, let url = URL(string: urlString) {
-            nftImage.sd_setImage(with: url)
+            nftImage.load(with: url)
         }
         
         if let influencer = viewModel.influencer?.user {
@@ -80,7 +79,7 @@ class NftViewCell: UITableViewCell {
             
             if let urlString = influencer.avatarUrl, let url = URL(string: urlString) {
                 influencerImage.contentMode = .scaleAspectFill
-                influencerImage.sd_setImage(with: url)
+                influencerImage.load(with: url)
             } else {
                 influencerImage.contentMode = .scaleAspectFit
                 influencerImage.image = UIImage(named: "mini_icon")

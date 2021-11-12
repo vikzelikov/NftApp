@@ -42,21 +42,27 @@ class DropShopViewModelImpl: DropShopViewModel {
     }
     
     func viewDidLoad() {
-        resetViewModel()
-        
-        getEditions()
-        
-        getInfluencers()
+        if !isLoading.value {
+            
+            isLoading.value = true
+            
+            getEditions()
+            
+            getInfluencers()
+            
+        }
     }
 
     private func getEditions() {
-        self.isLoading.value = true
-        
         let request = GetEditionsRequest()
         
         dropShopUseCase.getEditions(request: request, completion: { result in
             switch result {
             case .success(let editions):
+                self.currentPage = 1
+                self.totalPageCount = 1
+                self.items.value.removeAll()
+                
                 self.appendEditions(editions: editions)
 
             case .failure(let error):
@@ -66,13 +72,14 @@ class DropShopViewModelImpl: DropShopViewModel {
                 }
             }
 
-            self.isLoading.value = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLoading.value = false
+            }
+            
         })
     }
     
     private func getInfluencers() {
-        self.isLoading.value = true
-        
         userUseCase.getInfluencers { result in
             switch result {
             case .success(let influencers):
@@ -80,8 +87,6 @@ class DropShopViewModelImpl: DropShopViewModel {
 
             case .failure: break
             }
-
-            self.isLoading.value = false
         }
     }
     
@@ -112,13 +117,6 @@ class DropShopViewModelImpl: DropShopViewModel {
     
     func didSelectInfluencers(at index: Int, completion: @escaping ([UserViewModel]) -> Void) {
         completion(influencers.value)
-    }
-    
-    private func resetViewModel() {
-        currentPage = 1
-        totalPageCount = 1
-        items.value.removeAll()
-        influencers.value.removeAll()
     }
     
 }

@@ -56,20 +56,24 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func viewDidLoad(isRefresh: Bool) {
-        resetViewModel()
-        
-        if isInvalidUser() || isRefresh { getUser() }
+        if !isLoading.value {
+            
+            isLoading.value = true
+            
+            if isInvalidUser() || isRefresh { getUser() }
 
-        getFollows()
-        
-        getCollectionNfts()
-        
-        if userViewModel.value?.id != Constant.USER_ID { checkFollow() }
+            getFollows()
+            
+            getCollectionNfts()
+            
+            if userViewModel.value?.id != Constant.USER_ID { checkFollow() }
+            
+        }
     }
     
     private func getUser() {
         let userId = userViewModel.value?.id ?? Constant.USER_ID
-        
+
         userUseCase.getUser(userId: userId, completion: { result in
             switch result {
             case .success(let user):
@@ -106,14 +110,16 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func getCollectionNfts() {
-        isLoading.value = true
-
         let userId = userViewModel.value?.id ?? Constant.USER_ID
         let request = GetNftsRequest(userId: userId, page: page)
         
         nftUserCase.getNfts(request: request) { result in
             switch result {
             case .success(let nfts):
+                self.currentPage = 1
+                self.totalPageCount = 1
+                self.collectionNfts.value.removeAll()
+                
                 self.appendNfts(nfts: nfts)
                 
             case .failure(let error):
@@ -123,7 +129,10 @@ class HomeViewModelImpl: HomeViewModel {
                 }
             }
             
-            self.isLoading.value = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLoading.value = false
+            }
+            
         }
     }
     
@@ -132,7 +141,7 @@ class HomeViewModelImpl: HomeViewModel {
 //        totalPageCount = page.totalPages
         
         let nfts = nfts.map(NftViewModel.init)
-        
+
         collectionNfts.value += nfts
     }
     
@@ -205,14 +214,6 @@ class HomeViewModelImpl: HomeViewModel {
         userViewModel.value?.id == nil ||
         userViewModel.value?.login == nil ||
         userViewModel.value?.login == ""
-    }
-    
-    private func resetViewModel() {
-        currentPage = 1
-        totalPageCount = 1
-        collectionNfts.value.removeAll()
-        followers.value.removeAll()
-        following.value.removeAll()
     }
     
 }

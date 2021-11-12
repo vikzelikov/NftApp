@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailNftViewController">
             <connections>
                 <outlet property="backButton" destination="HV2-fs-wTK" id="Xz3-uf-ZMM"/>
+                <outlet property="backgroundImageView" destination="Ddx-Dh-jA5" id="Vw2-VY-HKp"/>
                 <outlet property="buyButton" destination="sz4-bn-BkF" id="Gm9-VL-l8C"/>
                 <outlet property="closeButton" destination="Rnw-hD-MHF" id="Agg-KW-fpy"/>
                 <outlet property="descriptionLabel" destination="GEm-zv-R5L" id="9aM-zo-ppm"/>
@@ -28,6 +29,7 @@
                 <outlet property="ownerAvatarImage" destination="V45-hx-1R4" id="kYl-PR-pz9"/>
                 <outlet property="ownerLoginContainer" destination="FZU-TJ-UkS" id="sEd-6f-cEG"/>
                 <outlet property="ownerLoginLabel" destination="ux6-fa-4DL" id="P2V-we-aJJ"/>
+                <outlet property="parentNftImageView" destination="W4G-Y8-pry" id="02k-lt-eXd"/>
                 <outlet property="priceLabel" destination="Erp-tC-86d" id="Y0b-BC-OIg"/>
                 <outlet property="priceView" destination="KHh-r0-nDW" id="95e-uY-KuB"/>
                 <outlet property="rightTagConstraint" destination="q1q-eB-fQz" id="dNb-WM-4Oj"/>
@@ -40,6 +42,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ddx-Dh-jA5">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnw-hD-MHF">
                     <rect key="frame" x="285" y="0.0" width="35" height="40"/>
                     <constraints>
@@ -297,6 +302,7 @@
                 <constraint firstItem="KHh-r0-nDW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="GQU-ZW-zzK"/>
                 <constraint firstItem="Ggl-IM-pp4" firstAttribute="top" secondItem="sz4-bn-BkF" secondAttribute="bottom" constant="15" id="HTg-z2-ouj"/>
                 <constraint firstItem="sz4-bn-BkF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JF1-Dj-fz5"/>
+                <constraint firstItem="Ddx-Dh-jA5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JwS-Yv-MhR"/>
                 <constraint firstItem="vPm-cX-VtC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="LWS-5k-YYP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="16O-a3-4vf" secondAttribute="bottom" constant="20" id="MBG-Vu-0Y2"/>
                 <constraint firstItem="FZU-TJ-UkS" firstAttribute="top" secondItem="GEm-zv-R5L" secondAttribute="bottom" constant="10" id="MLd-HF-xGw"/>
@@ -307,8 +313,10 @@
                 <constraint firstItem="W4G-Y8-pry" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YxQ-WC-AVh"/>
                 <constraint firstItem="r5R-2H-Avs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Z90-VU-3o3"/>
                 <constraint firstItem="HV2-fs-wTK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZLa-bF-gmy"/>
+                <constraint firstItem="Ddx-Dh-jA5" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ZTk-1U-GLg"/>
                 <constraint firstItem="W4G-Y8-pry" firstAttribute="top" secondItem="Rnw-hD-MHF" secondAttribute="bottom" constant="20" id="byZ-Pc-7Ah"/>
                 <constraint firstItem="GEm-zv-R5L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="k74-lv-okr"/>
+                <constraint firstItem="Ddx-Dh-jA5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kbS-9N-uL7"/>
                 <constraint firstItem="sz4-bn-BkF" firstAttribute="top" secondItem="FZU-TJ-UkS" secondAttribute="bottom" constant="10" id="lB0-Cg-z5a"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ggl-IM-pp4" secondAttribute="bottom" constant="15" id="nOx-6E-r5j"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vPm-cX-VtC" secondAttribute="trailing" priority="250" constant="15" id="q1q-eB-fQz"/>
@@ -320,6 +328,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sz4-bn-BkF" secondAttribute="trailing" constant="15" id="v5T-h6-lJC"/>
                 <constraint firstAttribute="trailing" secondItem="W4G-Y8-pry" secondAttribute="trailing" id="vkm-4G-9pb"/>
                 <constraint firstItem="16O-a3-4vf" firstAttribute="top" secondItem="sz4-bn-BkF" secondAttribute="bottom" constant="18" id="y9e-cX-0bN"/>
+                <constraint firstItem="Ddx-Dh-jA5" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="yfP-8P-aIm"/>
                 <constraint firstItem="FZU-TJ-UkS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yjV-MG-lle"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Rnw-hD-MHF" secondAttribute="trailing" id="zcs-wb-a7R"/>
             </constraints>

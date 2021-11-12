@@ -15,7 +15,9 @@ class DetailNftViewController: UIViewController {
             ownerAvatarImage.layer.cornerRadius = ownerAvatarImage.frame.width / 2
         }
     }
+    @IBOutlet weak var parentNftImageView: UIView!
     @IBOutlet weak var nftImageView: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -48,7 +50,7 @@ class DetailNftViewController: UIViewController {
         descriptionLabel?.isUserInteractionEnabled = true
         descriptionLabel?.addGestureRecognizer(tapAction)
     }
-    
+
     func bindData() {
 //        viewModel?.isLoading.bind { [weak self] in
 //            guard let price = self?.viewModel?.nftViewModel.value?.edition.price else { return }
@@ -77,7 +79,7 @@ class DetailNftViewController: UIViewController {
             }
             
             if let url = URL(string: nftViewModel.edition.mediaUrl ?? "") {
-                self.nftImageView.sd_setImage(with: url)
+                self.nftImageView.load(with: url)
             }
             
             if let influencer = nftViewModel.edition.influencer?.user {
@@ -85,7 +87,7 @@ class DetailNftViewController: UIViewController {
                 
                 if let urlString = influencer.avatarUrl, let url = URL(string: urlString) {
                     self.ownerAvatarImage.contentMode = .scaleAspectFill
-                    self.ownerAvatarImage.sd_setImage(with: url)
+                    self.ownerAvatarImage.load(with: url)
                 } else {
                     self.ownerAvatarImage.contentMode = .scaleAspectFit
                     self.ownerAvatarImage.image = UIImage(named: "mini_icon")

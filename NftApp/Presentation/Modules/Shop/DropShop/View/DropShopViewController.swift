@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class DropShopViewController: UIViewController {
     
@@ -49,19 +50,20 @@ class DropShopViewController: UIViewController {
         }
         
         viewModel?.isLoading.bind {
-            self.checkoutLoading(isShow: $0)
+            if $0 {
+                let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .topLeftBottomRight)
+                self.tableView.showAnimatedGradientSkeleton(animation: animation)
+                self.tableView.allowsSelection = false
+            } else {
+                self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.3))
+                self.tableView.stopSkeletonAnimation()
+                self.tableView.allowsSelection = true
+            }
         }
         
         viewModel?.errorMessage.bind {
             guard let errorMessage = $0 else { return }
             self.showMessage(message: errorMessage)
-        }
-    }
-    
-    func checkoutLoading(isShow: Bool) {
-        if isShow {
-            self.tableView.isHidden = true
-            self.errorLabel.isHidden = true
         }
     }
     

@@ -64,7 +64,7 @@ class ProfileHeaderView: UIView {
             self.totalCostLabel.text = "\(Int(userViewModel.totalCost ?? 0.0))"
             if let avatarUrl = userViewModel.avatarUrl, let url = URL(string: avatarUrl) {
                 self.userImageView.contentMode = .scaleAspectFill
-                self.userImageView.sd_setImage(with: url)
+                self.userImageView.load(with: url)
             }
         }
         

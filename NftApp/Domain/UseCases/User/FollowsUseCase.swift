@@ -33,7 +33,7 @@ final class FollowsUseCaseImpl: FollowsUseCase {
         repository?.getFollowers(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    let users = resp.rows.map{User(id: $0.id, login: $0.login, email: $0.email, flowAddress: $0.flowAddress, avatarUrl: $0.avatarUrl)}
+                    let users = resp.rows.map{User(id: $0.id, login: $0.login, email: $0.email, flowAddress: $0.flowAddress, avatarUrl: $0.avatarUrl, totalCost: Double($0.totalCost ?? "0.0"))}
                     
                     completion(.success(users))
                 }
@@ -49,7 +49,7 @@ final class FollowsUseCaseImpl: FollowsUseCase {
         repository?.getFollowing(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    let users = resp.rows.map{User(id: $0.id, login: $0.login, email: $0.email, flowAddress: $0.flowAddress, avatarUrl: $0.avatarUrl)}
+                    let users = resp.rows.map{User(id: $0.id, login: $0.login, email: $0.email, flowAddress: $0.flowAddress, avatarUrl: $0.avatarUrl, totalCost: Double($0.totalCost ?? "0.0"))}
                     
                     completion(.success(users))
                 }

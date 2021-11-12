@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class HomeViewController: UIViewController {
     
@@ -37,7 +38,17 @@ class HomeViewController: UIViewController {
         }
         
         viewModel?.isLoading.bind {
-            self.checkoutLoading(isShow: $0)
+            if $0 {
+                DispatchQueue.main.async {
+                    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .topLeftBottomRight)
+                    self.tableView.showAnimatedGradientSkeleton(animation: animation)
+                    self.tableView.allowsSelection = false
+                }
+            } else {
+                self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.3))
+                self.tableView.stopSkeletonAnimation()
+                self.tableView.allowsSelection = true
+            }
         }
         
         viewModel?.errorMessage.bind {
@@ -45,15 +56,13 @@ class HomeViewController: UIViewController {
             self.showMessage(message: errorMessage)
         }
     }
-    
-    func checkoutLoading(isShow: Bool) {
-//        self.errorLabel.isHidden = !isShow
-    }
-    
+
     // MARK: fix this
     func setupStyle() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = UIScreen.main.bounds.width - 30
+        tableView.rowHeight = UIScreen.main.bounds.width - 30
         tableView.register(UINib(nibName: NftViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftViewCell.cellIdentifier)
         tableView.contentInset = UIEdgeInsets(top: 431, left: 0, bottom: 0, right: 0)
         
@@ -166,13 +175,17 @@ extension HomeViewController: UITableViewDelegate {
     
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension HomeViewController: SkeletonTableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = viewModel?.collectionNfts.value.count {
             return count
         } else {
-            return 0
+            return 20
         }
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+       return NftViewCell.cellIdentifier
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
