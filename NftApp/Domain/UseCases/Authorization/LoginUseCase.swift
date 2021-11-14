@@ -15,6 +15,8 @@ protocol LoginUseCase {
     
     func checkInvite(inviteWord: String, completion: @escaping (Result<Bool, Error>) -> Void)
 
+    func removeInvitingState()
+
 }
 
 final class LoginUseCaseImpl: LoginUseCase {
@@ -43,7 +45,7 @@ final class LoginUseCaseImpl: LoginUseCase {
         repository?.checkInvite(inviteWord: inviteWord, completion: { result in
             switch result {
                 case .success: do {
-                    // save token and id OR NOT
+                    // save token and id OR NOT self.userStorage?.saveInvitingState()
                     completion(.success(true))
                 }
                 
@@ -75,6 +77,10 @@ final class LoginUseCaseImpl: LoginUseCase {
                 completion(.failure(error))
             }
         }
+    }
+    
+    func removeInvitingState() {
+        userStorage?.removeInvitingState()
     }
     
 }

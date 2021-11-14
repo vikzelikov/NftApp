@@ -60,6 +60,7 @@ class InviteView: UIView {
     }
     
     func setupStyle() {
+        inviteTextField.delegate = self
         inviteTextField.borderStyle = .none
         inviteTextField.layer.borderColor = UIColor.gray.withAlphaComponent(0.2).cgColor
         inviteTextField.layer.borderWidth = 1.0
@@ -88,4 +89,18 @@ class InviteView: UIView {
         inviteTextField.resignFirstResponder()
     }
     
+}
+
+extension InviteView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+         if textField == inviteTextField {
+             if let inviteWord = inviteTextField.text {
+                 viewModel?.nextDidTap(inviteWord: inviteWord)
+             }
+            
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
 }

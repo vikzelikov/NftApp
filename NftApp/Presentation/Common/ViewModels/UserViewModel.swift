@@ -9,6 +9,7 @@ import Foundation
 
 struct UserViewModel {
     var id: Int
+    var influencerId: Int?
     var login: String?
     var email: String?
     var flowAddress: String?
@@ -20,6 +21,7 @@ struct UserViewModel {
 extension UserViewModel {
     init(user: User) {
         self.id = user.id
+        self.influencerId = user.influencerId
         self.login = user.login
         self.email = user.email
         self.flowAddress = user.flowAddress

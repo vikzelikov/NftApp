@@ -14,9 +14,8 @@ class HomeViewController: UIViewController {
     var headerView: ProfileHeaderView?
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var errorLabel: UILabel!
     let refreshControl = UIRefreshControl()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         headerView = ProfileHeaderView()
@@ -30,10 +29,11 @@ class HomeViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.collectionNfts.bind {
-            self.tableView.isHidden = false
-            self.errorLabel.isHidden = true
-            self.headerView?.countNftsLabel.text = "\($0.count)"
+        viewModel?.itemsNfts.bind {
+            if self.viewModel?.typeListNfts.value == .collection {
+                self.headerView?.countNftsLabel.text = "\($0.count)"
+            }
+            
             self.reload()
         }
         
@@ -64,6 +64,7 @@ class HomeViewController: UIViewController {
         tableView.estimatedRowHeight = UIScreen.main.bounds.width - 30
         tableView.rowHeight = UIScreen.main.bounds.width - 30
         tableView.register(UINib(nibName: NftViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftViewCell.cellIdentifier)
+        tableView.register(UINib(nibName: PlaceholderViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: PlaceholderViewCell.cellIdentifier)
         tableView.contentInset = UIEdgeInsets(top: 431, left: 0, bottom: 0, right: 0)
         
         if !self.isModal {
@@ -88,6 +89,18 @@ class HomeViewController: UIViewController {
         
         header.dismissDidTap = { [weak self] in
             self?.dismissDidTap()
+        }
+        
+        header.collectionDidTap = { [weak self] in
+            self?.viewModel?.selectListDidTap(typeListNfts: .collection)
+        }
+        
+        header.observablesDidTap = { [weak self] in
+            self?.viewModel?.selectListDidTap(typeListNfts: .observables)
+        }
+        
+        header.createdDidTap = { [weak self] in
+            self?.viewModel?.selectListDidTap(typeListNfts: .created)
         }
         
         header.userImageDidTap = { [self] in
@@ -177,28 +190,46 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: SkeletonTableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = viewModel?.collectionNfts.value.count {
+        if let collectionNFTs = self.viewModel?.itemsNfts.value {
+            if collectionNFTs.isEmpty {
+                return 1
+            }
+        }
+        
+        if let count = viewModel?.itemsNfts.value.count {
             return count
         } else {
-            return 20
+            // for show error message
+            return 1
         }
     }
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-       return NftViewCell.cellIdentifier
+        return NftViewCell.cellIdentifier
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath) as? NftViewCell else { return UITableViewCell() }
-        
-        if let vm = viewModel?.collectionNfts.value[indexPath.row] {
-            cell.bindNft(viewModel: vm)
+        if let collectionNFTs = self.viewModel?.itemsNfts.value {
+            if collectionNFTs.isEmpty {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: PlaceholderViewCell.cellIdentifier, for: indexPath) as? PlaceholderViewCell else { return UITableViewCell() }
+                cell.label.text = NSLocalizedString("Nothing here", comment: "")
+                cell.selectionStyle = .none
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath) as? NftViewCell else { return UITableViewCell() }
+                
+                if let vm = viewModel?.itemsNfts.value[indexPath.row] {
+                    cell.bindNft(viewModel: vm)
+                }
+                
+                cell.selectionStyle = .none
+                HapticHelper.vibro(.light)
+                
+                return cell
+            }
         }
         
-        cell.selectionStyle = .none
-        HapticHelper.vibro(.light)
-        
-        return cell
+        return UITableViewCell()
     }
 }
 

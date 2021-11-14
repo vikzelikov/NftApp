@@ -14,6 +14,9 @@ class ProfileHeaderView: UIView {
     var shareButtonDidTap: ((_ sender: UIButton) -> Void)?
     var dismissDidTap: (() -> Void)?
     var userImageDidTap: (() -> Void)?
+    var collectionDidTap: (() -> Void)?
+    var observablesDidTap: (() -> Void)?
+    var createdDidTap: (() -> Void)?
     var isModal = false
     
     @IBOutlet weak var userImageView: UIImageView! {
@@ -26,6 +29,7 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var miniTopButton: UIButton!
     @IBOutlet weak var collectionLabel: UILabel!
     @IBOutlet weak var observablesLabel: UILabel!
+    @IBOutlet weak var createdLabel: UILabel!
     @IBOutlet weak var countNftsLabel: UILabel!
     @IBOutlet weak var totalCostLabel: UILabel!
     @IBOutlet weak var followersLabel: UILabel!
@@ -66,6 +70,8 @@ class ProfileHeaderView: UIView {
                 self.userImageView.contentMode = .scaleAspectFill
                 self.userImageView.load(with: url)
             }
+            
+            self.checkoutView()
         }
         
 //        viewModel?.collectionNfts.bind { [weak self] res in
@@ -104,20 +110,37 @@ class ProfileHeaderView: UIView {
     }
     
     @objc func collectionDidTap(_ sender: UITapGestureRecognizer) {
-        checkoutCollections(selectedLabel: collectionLabel, unselectedLabel: observablesLabel)
+        collectionDidTap?()
+        
+        checkoutList(selectedLabel: collectionLabel)
     }
     
     @objc func observablesDidTap(_ sender: UITapGestureRecognizer) {
-        checkoutCollections(selectedLabel: observablesLabel, unselectedLabel: collectionLabel)
+        observablesDidTap?()
+        
+        checkoutList(selectedLabel: observablesLabel)
     }
     
-    private func checkoutCollections(selectedLabel: UILabel, unselectedLabel: UILabel) {
-        let borderWidth = (UIScreen.main.bounds.width - 0) / 2
-        selectedLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "black") ?? UIColor.black, thickness: 1, width: borderWidth)
-        unselectedLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
+    @objc func createdDidTap(_ sender: UITapGestureRecognizer) {
+        createdDidTap?()
         
+        checkoutList(selectedLabel: createdLabel)
+    }
+    
+    private func checkoutList(selectedLabel: UILabel) {
+        HapticHelper.vibro(.light)
+        
+        let borderWidth = (UIScreen.main.bounds.width - 0) / 2
+        collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
+        observablesLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
+        createdLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
+        
+        collectionLabel.textColor = UIColor.gray
+        observablesLabel.textColor = UIColor.gray
+        createdLabel.textColor = UIColor.gray
+        
+        selectedLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "black") ?? UIColor.black, thickness: 1, width: borderWidth)
         selectedLabel.textColor = UIColor(named: "black")
-        unselectedLabel.textColor = UIColor.gray
     }
     
     @objc func userImageDidTap(_ sender: UITapGestureRecognizer) {
@@ -140,11 +163,11 @@ class ProfileHeaderView: UIView {
     private func setupStyle() {
         let windowWidth: CGFloat = UIScreen.main.bounds.width
         let borderWidth = windowWidth / 2
+        
         observablesLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
+        createdLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
         observablesLabel.textColor = UIColor.gray
-        let observablesTap = UITapGestureRecognizer(target: self, action: #selector(observablesDidTap(_:)))
-        observablesLabel?.isUserInteractionEnabled = true
-        observablesLabel?.addGestureRecognizer(observablesTap)
+        createdLabel.textColor = UIColor.gray
 
         miniTopButton.applyButtonEffects()
         
@@ -164,32 +187,57 @@ class ProfileHeaderView: UIView {
         userImageView?.isUserInteractionEnabled = true
         userImageView?.addGestureRecognizer(userImageTap)
         
+        let collectionTap = UITapGestureRecognizer(target: self, action: #selector(collectionDidTap(_:)))
+        collectionLabel?.isUserInteractionEnabled = true
+        collectionLabel?.addGestureRecognizer(collectionTap)
+        
+        let observablesTap = UITapGestureRecognizer(target: self, action: #selector(observablesDidTap(_:)))
+        observablesLabel?.isUserInteractionEnabled = true
+        observablesLabel?.addGestureRecognizer(observablesTap)
+        
+        let createdTap = UITapGestureRecognizer(target: self, action: #selector(createdDidTap(_:)))
+        createdLabel?.isUserInteractionEnabled = true
+        createdLabel?.addGestureRecognizer(createdTap)
+        
         if let count = navigationController?.viewControllers.count {
             if count < 2 { backButton.isHidden = true }
         } else {
             backButton.isHidden = true
-            
-            if isModal {
-                closeButton.isHidden = false
-            }
+            if isModal { closeButton.isHidden = false }
         }
                 
-        guard let userId = viewModel?.userViewModel.value?.id else { return }
+        checkoutView()
+    }
+    
+    func checkoutView() {
+        guard let userViewModel = viewModel?.userViewModel.value else { return }
+        let windowWidth: CGFloat = UIScreen.main.bounds.width
+        let borderWidth = windowWidth / 2
         
-        if userId != Constant.USER_ID {
+        if userViewModel.id == Constant.USER_ID {
+            // it's me
+            miniTopButton.addTarget(self, action: #selector(shareDidTap), for: .touchUpInside)
+            
+            collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "black") ?? UIColor.black, thickness: 1, width: borderWidth)
+        }
+        
+        if userViewModel.id != Constant.USER_ID {
+            // other user
             miniTopButton.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
             miniTopButton.setImage(nil, for: .normal)
             miniTopButton.addTarget(self, action: #selector(subscribeDidTap), for: .touchUpInside)
 
             observablesLabel.isHidden = true
             collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: windowWidth)
-        } else {
-            miniTopButton.addTarget(self, action: #selector(shareDidTap), for: .touchUpInside)
+        }
+
+        if userViewModel.influencerId != nil {
+            collectionLabel.isUserInteractionEnabled = true
+            createdLabel.isHidden = false
             
             collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "black") ?? UIColor.black, thickness: 1, width: borderWidth)
-            let collectionTap = UITapGestureRecognizer(target: self, action: #selector(collectionDidTap(_:)))
-            collectionLabel?.isUserInteractionEnabled = true
-            collectionLabel?.addGestureRecognizer(collectionTap)
+        } else if userViewModel.id != Constant.USER_ID {
+            collectionLabel.isUserInteractionEnabled = false
         }
     }
     

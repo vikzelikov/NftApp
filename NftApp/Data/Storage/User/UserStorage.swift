@@ -13,6 +13,10 @@ protocol UserStorage {
     func saveAuthToken(token: String)
     
     func saveUserId(userId: Int)
+    
+    func saveInvitingState()
+    
+    func removeInvitingState()
         
     func getUserId() -> Int
     
@@ -28,6 +32,14 @@ class UserStorageImpl: UserStorage  {
     
     func saveUserId(userId: Int) {
         UserDefaults.standard.set(userId, forKey: "userId")
+    }
+    
+    func saveInvitingState() {
+        UserDefaults.standard.set(true, forKey: "isInvitingState")
+    }
+    
+    func removeInvitingState() {
+        UserDefaults.standard.removeObject(forKey: "isInvitingState")
     }
     
     func getUserId() -> Int {

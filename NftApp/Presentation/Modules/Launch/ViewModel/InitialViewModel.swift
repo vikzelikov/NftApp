@@ -30,6 +30,13 @@ class InitialViewModelImpl: InitialViewModel {
     }
     
     func initial(isDelay: Bool) {
+        if let isInvitingState = UserDefaults.standard.object(forKey: "isInvitingState") as? Bool {
+            if isInvitingState {
+                self.isShowHome.value = false
+                return
+            }
+        }
+        
         var seconds = 0.0
         if isDelay { seconds = 0.5 }
         

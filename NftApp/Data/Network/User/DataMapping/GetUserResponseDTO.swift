@@ -10,6 +10,7 @@ import Foundation
 class GetUserResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id
+        case influencerId
         case login
         case email
         case avatarUrl
@@ -19,6 +20,7 @@ class GetUserResponseDTO: Decodable {
     }
     
     let id: Int
+    let influencerId: Int?
     let login: String
     let email: String
     let avatarUrl: String?

@@ -204,6 +204,8 @@
 		18E39B2526D03BF200FEC003 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39B2426D03BF200FEC003 /* UserUseCase.swift */; };
 		18E8D892272C784300C44C40 /* GetInfluencersResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8D891272C784300C44C40 /* GetInfluencersResponseDTO.swift */; };
 		18E8F3C726CBCCF100E62E33 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8F3C626CBCCF100E62E33 /* Observable.swift */; };
+		18ECC33A2741534B00260A48 /* PlaceholderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ECC3382741534B00260A48 /* PlaceholderViewCell.swift */; };
+		18ECC33B2741534B00260A48 /* PlaceholderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18ECC3392741534B00260A48 /* PlaceholderViewCell.xib */; };
 		EB46AD086124994FAC569F86 /* Pods_NftApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA8DFE8A2280954A19F8340 /* Pods_NftApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -429,6 +431,8 @@
 		18E39B2426D03BF200FEC003 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		18E8D891272C784300C44C40 /* GetInfluencersResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInfluencersResponseDTO.swift; sourceTree = "<group>"; };
 		18E8F3C626CBCCF100E62E33 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		18ECC3382741534B00260A48 /* PlaceholderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewCell.swift; sourceTree = "<group>"; };
+		18ECC3392741534B00260A48 /* PlaceholderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceholderViewCell.xib; sourceTree = "<group>"; };
 		378E9BC71BC47BBC46C5CB26 /* Pods-NftApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NftApp.release.xcconfig"; path = "Target Support Files/Pods-NftApp/Pods-NftApp.release.xcconfig"; sourceTree = "<group>"; };
 		6EA8DFE8A2280954A19F8340 /* Pods_NftApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NftApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4974C0330698A662A69260 /* Pods-NftApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NftApp.debug.xcconfig"; path = "Target Support Files/Pods-NftApp/Pods-NftApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1232,6 +1236,8 @@
 				18B8428D266F648F0033AFC0 /* Home.storyboard */,
 				1803C4A62728820F00486F1F /* ProfileHeaderView.swift */,
 				1803C4A72728820F00486F1F /* ProfileHeaderView.xib */,
+				18ECC3382741534B00260A48 /* PlaceholderViewCell.swift */,
+				18ECC3392741534B00260A48 /* PlaceholderViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1683,6 +1689,7 @@
 				18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */,
 				18D2C120274032BC0043BEEC /* InviteView.xib in Resources */,
 				1803C4A92728820F00486F1F /* ProfileHeaderView.xib in Resources */,
+				18ECC33B2741534B00260A48 /* PlaceholderViewCell.xib in Resources */,
 				1869F0FC2707537200C7654A /* InfluencersCollectionView.xib in Resources */,
 				18E3775A272F00C700A2795B /* InfluencerViewCell.xib in Resources */,
 				182342D426A0493600CD2907 /* DetailNftViewController.xib in Resources */,
@@ -1753,6 +1760,7 @@
 				1869F0F42701D79400C7654A /* FollowsViewModel.swift in Sources */,
 				18E39B1E26D03A3000FEC003 /* UserEndpoints.swift in Sources */,
 				18DDEA1C26D7906800306A60 /* CommonDTO.swift in Sources */,
+				18ECC33A2741534B00260A48 /* PlaceholderViewCell.swift in Sources */,
 				1813843027343CE2004530BD /* PersonalDataViewController.swift in Sources */,
 				18DDEA3426D79CB400306A60 /* InitialData.swift in Sources */,
 				18E1107626D59F6B007FD66E /* DropShopRepository.swift in Sources */,

@@ -12,9 +12,9 @@ protocol HomeViewModel: BaseViewModel {
     var userViewModel: Observable<UserViewModel?> { get }
     var followers: Observable<[UserViewModel]> { get }
     var following: Observable<[UserViewModel]> { get }
-    var collectionNfts: Observable<[NftViewModel]> { get }
+    var itemsNfts: Observable<[NftViewModel]> { get }
     var typeFollows: Observable<(TypeFollows?, TypeFollows?)> { get }
-    
+    var typeListNfts: Observable<TypeListNfts> { get }
     func viewDidLoad(isRefresh: Bool)
             
     func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void)
@@ -25,6 +25,14 @@ protocol HomeViewModel: BaseViewModel {
     
     func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void)
     
+    func selectListDidTap(typeListNfts: TypeListNfts)
+    
+}
+
+enum TypeListNfts {
+    case collection
+    case observables
+    case created
 }
 
 class HomeViewModelImpl: HomeViewModel {
@@ -39,8 +47,12 @@ class HomeViewModelImpl: HomeViewModel {
     var userViewModel: Observable<UserViewModel?> = Observable(nil)
     var followers: Observable<[UserViewModel]> = Observable([])
     var following: Observable<[UserViewModel]> = Observable([])
-    var collectionNfts: Observable<[NftViewModel]> = Observable([])
+    var itemsNfts: Observable<[NftViewModel]> = Observable([])
+    var collectionNfts: [NftViewModel] = []
+    var observablesNfts: [NftViewModel] = []
+    var createdNfts: [NftViewModel] = []
     var typeFollows: Observable<(TypeFollows?, TypeFollows?)> = Observable((nil, nil))
+    var typeListNfts: Observable<TypeListNfts> = Observable(.collection)
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
@@ -65,6 +77,10 @@ class HomeViewModelImpl: HomeViewModel {
             getFollows()
             
             getCollectionNfts()
+            
+            getObservablesNfts()
+            
+            getCreatedNfts()
             
             if userViewModel.value?.id != Constant.USER_ID { checkFollow() }
             
@@ -113,14 +129,14 @@ class HomeViewModelImpl: HomeViewModel {
         let userId = userViewModel.value?.id ?? Constant.USER_ID
         let request = GetNftsRequest(userId: userId, page: page)
         
-        nftUserCase.getNfts(request: request) { result in
+        nftUserCase.getCollectionNfts(request: request) { result in
             switch result {
             case .success(let nfts):
                 self.currentPage = 1
                 self.totalPageCount = 1
-                self.collectionNfts.value.removeAll()
+                self.collectionNfts.removeAll()
                 
-                self.appendNfts(nfts: nfts)
+                self.appendNfts(nfts: nfts, typeListNfts: .collection)
                 
             case .failure(let error):
                 let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
@@ -136,19 +152,90 @@ class HomeViewModelImpl: HomeViewModel {
         }
     }
     
-    private func appendNfts(nfts: [Nft]) {
+    func getObservablesNfts() {
+        let userId = 2
+        let request = GetNftsRequest(userId: userId, page: page)
+        
+        nftUserCase.getObservablesNfts(request: request) { result in
+            switch result {
+            case .success(let nfts):
+                self.currentPage = 1
+                self.totalPageCount = 1
+                self.observablesNfts.removeAll()
+                
+                self.appendNfts(nfts: nfts, typeListNfts: .observables)
+                
+            case .failure(let error):
+                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode != HttpCode.notFound {
+                    self.errorMessage.value = errorStr
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLoading.value = false
+            }
+            
+        }
+    }
+    
+    func getCreatedNfts() {
+        let userId = userViewModel.value?.id ?? Constant.USER_ID
+        let request = GetNftsRequest(userId: userId, page: page)
+        
+        nftUserCase.getCreatedNfts(request: request) { result in
+            switch result {
+            case .success(let nfts):
+                self.currentPage = 1
+                self.totalPageCount = 1
+                self.createdNfts.removeAll()
+                
+                self.appendNfts(nfts: nfts, typeListNfts: .created)
+                
+            case .failure(let error):
+                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode != HttpCode.notFound {
+                    self.errorMessage.value = errorStr
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLoading.value = false
+            }
+            
+        }
+    }
+    
+    private func appendNfts(nfts: [Nft], typeListNfts: TypeListNfts) {
 //        currentPage = page.page
 //        totalPageCount = page.totalPages
         
-        let nfts = nfts.map(NftViewModel.init)
-
-        collectionNfts.value += nfts
+        switch typeListNfts {
+        case .collection:
+            let nfts = nfts.map(NftViewModel.init)
+            collectionNfts += nfts
+            
+            // default select
+            if self.typeListNfts.value == .collection {
+                self.itemsNfts.value = collectionNfts
+            }
+            
+        case .observables:
+            let nfts = nfts.map(NftViewModel.init)
+            observablesNfts += nfts
+            
+        case .created:
+            let nfts = nfts.map(NftViewModel.init)
+            createdNfts += nfts
+        }
     }
     
     func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void) {
-        let viewModel = collectionNfts.value[index]
-        
-        completion(viewModel)
+        if collectionNfts.indices.contains(index) {
+            let viewModel = collectionNfts[index]
+            
+            completion(viewModel)
+        }
     }
     
     func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
@@ -207,6 +294,19 @@ class HomeViewModelImpl: HomeViewModel {
     
     func userImageDidTap(completion: @escaping (Bool) -> Void) {
         completion(userViewModel.value?.id == Constant.USER_ID)
+    }
+    
+    func selectListDidTap(typeListNfts: TypeListNfts) {
+        self.typeListNfts.value = typeListNfts
+        
+        switch typeListNfts {
+        case .collection:
+            itemsNfts.value = collectionNfts
+        case .observables:
+            itemsNfts.value = observablesNfts
+        case .created:
+            itemsNfts.value = createdNfts
+        }
     }
     
     private func isInvalidUser() -> Bool {

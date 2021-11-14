@@ -16,6 +16,7 @@
                 <outlet property="closeButton" destination="B4g-vY-4X2" id="UNO-aN-sum"/>
                 <outlet property="collectionLabel" destination="iz1-Em-Gsx" id="Iut-py-rYD"/>
                 <outlet property="countNftsLabel" destination="5Rw-I0-Xbl" id="eo0-Mv-l2G"/>
+                <outlet property="createdLabel" destination="IgQ-Zw-rO3" id="Ahu-BJ-XQb"/>
                 <outlet property="followersLabel" destination="CUe-NM-e1P" id="NBF-R1-MrR"/>
                 <outlet property="followingLabel" destination="zbi-dv-fQv" id="rOy-4W-UMX"/>
                 <outlet property="loginLabel" destination="ukU-lU-LHK" id="73J-HW-TKv"/>
@@ -205,6 +206,15 @@
                                     <rect key="frame" x="160" y="0.0" width="160" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="VfK-pm-kHH"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgQ-Zw-rO3">
+                                    <rect key="frame" x="320" y="0.0" width="0.0" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="3vB-mG-WQ4"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="textColor"/>

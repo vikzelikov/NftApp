@@ -9,6 +9,7 @@ import Foundation
 
 struct User: Equatable, Identifiable {
     var id: Int
+    var influencerId: Int?
     var login: String?
     var email: String?
     var flowAddress: String?

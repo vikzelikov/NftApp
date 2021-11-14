@@ -11,6 +11,8 @@ protocol SignupUseCase {
     
     func signup(request: SignupRequest, completion: @escaping (Result<Bool, Error>) -> Void)
     
+    func removeInvitingState()
+    
 }
 
 final class SignupUseCaseImpl: SignupUseCase {
@@ -32,8 +34,9 @@ final class SignupUseCaseImpl: SignupUseCase {
                     if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
                         Constant.AUTH_TOKEN = authToken
                         Constant.USER_ID = userId
-//                        self.userStorage?.saveAuthToken(token: authToken)
-//                        self.userStorage?.saveUserId(userId: userId)
+                        self.userStorage?.saveAuthToken(token: authToken)
+                        self.userStorage?.saveUserId(userId: userId)
+                        self.userStorage?.saveInvitingState()
                         
                         completion(.success(true))
                     } else {
@@ -47,6 +50,11 @@ final class SignupUseCaseImpl: SignupUseCase {
             }
         })
     }
+    
+    func removeInvitingState() {
+        userStorage?.removeInvitingState()
+    }
+    
 }
 
 struct SignupRequest {

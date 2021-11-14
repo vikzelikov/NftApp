@@ -12,6 +12,8 @@ protocol LoginViewModel : BaseViewModel {
     var isSuccess: Observable<Bool> { get }
     var isSetupInvite: Observable<Bool> { get }
     
+    func viewDidload()
+    
     func updateCredentials(login: String, password: String)
         
     func inputCredentials()
@@ -41,6 +43,12 @@ class LoginViewModelImpl: LoginViewModel {
     
     init() {
         loginUseCase = LoginUseCaseImpl()
+    }
+    
+    func viewDidload() {
+        if let isInvitingState = UserDefaults.standard.object(forKey: "isInvitingState") as? Bool {
+            if isInvitingState { isSetupInvite.value = true }
+        }
     }
     
     func updateCredentials(login: String, password: String) {

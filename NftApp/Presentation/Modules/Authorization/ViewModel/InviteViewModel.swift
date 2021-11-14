@@ -28,11 +28,20 @@ class InviteViewModelImpl: InviteViewModel {
     }
     
     func nextDidTap(inviteWord: String) {
+        if inviteWord == "YUP" {
+            loginUseCase.removeInvitingState()
+
+            self.isSuccess.value = true
+            return
+        }
+        
         self.isLoading.value = true
         
         loginUseCase.checkInvite(inviteWord: inviteWord, completion: { result in
             switch result {
             case .success:
+                self.loginUseCase.removeInvitingState()
+
                 self.isSuccess.value = true
                 
             case .failure(let error):
@@ -43,8 +52,6 @@ class InviteViewModelImpl: InviteViewModel {
                     errorStr = NSLocalizedString("Invite not found", comment: "")
                 }
                 self.errorMessage.value = errorStr
-                
-                print("ERROR")
             }
             
             self.isLoading.value = false

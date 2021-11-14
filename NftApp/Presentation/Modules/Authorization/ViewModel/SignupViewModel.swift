@@ -86,13 +86,13 @@ class SignupViewModelImpl: SignupViewModel {
     
     func inputCredentials() {
         if login.isEmpty || email.isEmpty  {
-            errorMessage.value = "Please provide login and E-mail"
+            errorMessage.value = NSLocalizedString("Please provide login and E-mail", comment: "")
             isSuccess.value = false
             return
         }
         
         if !isValidEmail(email: email) {
-            errorMessage.value = "E-mail is not vaild"
+            errorMessage.value = NSLocalizedString("E-mail is not vaild", comment: "")
             isSuccess.value = false
             return
         }

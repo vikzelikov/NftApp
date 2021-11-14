@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         viewModel = LoginViewModelImpl()
+        viewModel?.viewDidload()
         bindData()
         
         setupStyle()

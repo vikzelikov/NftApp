@@ -36,7 +36,7 @@
 "Choose Image" = "Выбрать Фото";
 "NFT has been added to your collection!" = "NFT добавлена в вашу коллекцию!";
 "Not enough Tokens" = "Пополните баланс токенов";
-"Nothing here" = "Тут ничего нет";
+"Nothing here" = "Тут еще ничего нет";
 "Saved" = "Сохранено";
 "Successful purchase" = "Успешная покупка";
 "Error Apple authorization" = "Ошибка Apple авторизации";
@@ -44,3 +44,5 @@
 "E-mail is already in use" = "E-mail уже используется";
 "Passwords don't match" = "Пароли не совпадают";
 "Password is empty" = "Введите пароль";
+"E-mail is not vaild" = "E-mail недействителен";
+"Please provide login and E-mail" = "Укажите логин и E-mail";
