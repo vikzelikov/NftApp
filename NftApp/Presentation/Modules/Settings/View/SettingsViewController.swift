@@ -36,7 +36,13 @@ class SettingsViewController: UIViewController {
     
     func bindData() {
         UserObject.user.bind {
-            self.balanceLabel.text = String($0?.balance ?? 0.0)
+            if let balance = $0?.balance {
+                if balance == 0 {
+                    self.balanceLabel.text = "0.0"
+                } else {
+                    self.balanceLabel.text = balance.clean
+                }
+            }
         }
     }
     

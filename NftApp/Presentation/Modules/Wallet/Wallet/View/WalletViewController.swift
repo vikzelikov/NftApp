@@ -31,7 +31,13 @@ class WalletViewController: UIViewController {
     
     func bindData() {
         UserObject.user.bind {
-            self.balanceLabel.text = String($0?.balance ?? 0.0)
+            if let balance = $0?.balance {
+                if balance == 0 {
+                    self.balanceLabel.text = "0.0"
+                } else {
+                    self.balanceLabel.text = balance.clean
+                }
+            }
             
             let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
             self.fiatBalanceLabel.text = "~ \((($0?.balance ?? 0.0) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
