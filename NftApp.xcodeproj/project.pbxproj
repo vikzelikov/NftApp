@@ -138,6 +138,10 @@
 		18C319DD273DD4F1005BD3CA /* HeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C319DB273DD4F1005BD3CA /* HeaderViewCell.swift */; };
 		18C319DE273DD4F1005BD3CA /* HeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C319DC273DD4F1005BD3CA /* HeaderViewCell.xib */; };
 		18CED70B273C0FEA00AE6738 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CED70A273C0FEA00AE6738 /* UILabelPadding.swift */; };
+		18D2C120274032BC0043BEEC /* InviteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D2C11F274032BC0043BEEC /* InviteView.xib */; };
+		18D2C1222740335B0043BEEC /* InviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2C1212740335B0043BEEC /* InviteView.swift */; };
+		18D2C12427403E680043BEEC /* InviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2C12327403E680043BEEC /* InviteViewModel.swift */; };
+		18D2C126274044580043BEEC /* CheckInviteRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */; };
 		18D3FEC9268FAE390030929D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FEC8268FAE390030929D /* Extensions.swift */; };
 		18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FECF2697B8C40030929D /* LoginViewController.swift */; };
 		18D8452426CD5D2500888D32 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452326CD5D2500888D32 /* BaseViewModel.swift */; };
@@ -357,6 +361,10 @@
 		18C319DB273DD4F1005BD3CA /* HeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewCell.swift; sourceTree = "<group>"; };
 		18C319DC273DD4F1005BD3CA /* HeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderViewCell.xib; sourceTree = "<group>"; };
 		18CED70A273C0FEA00AE6738 /* UILabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
+		18D2C11F274032BC0043BEEC /* InviteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InviteView.xib; sourceTree = "<group>"; };
+		18D2C1212740335B0043BEEC /* InviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteView.swift; sourceTree = "<group>"; };
+		18D2C12327403E680043BEEC /* InviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewModel.swift; sourceTree = "<group>"; };
+		18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInviteRequestDTO.swift; sourceTree = "<group>"; };
 		18D3FEC8268FAE390030929D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		18D3FECF2697B8C40030929D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		18D8452326CD5D2500888D32 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -1065,6 +1073,7 @@
 				1879C57326C9D31B00CE367E /* LoginRequestDTO.swift */,
 				1879C57726C9D34300CE367E /* LoginResponseDTO.swift */,
 				18138447273549CA004530BD /* AppleLoginRequestDTO.swift */,
+				18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -1247,10 +1256,12 @@
 		18B84289266F639D0033AFC0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				181742EB2698636B002B9FD7 /* PersonalViewController.swift */,
-				18B84269266E27A40033AFC0 /* SignUpViewController.swift */,
-				18B8426B266E27A40033AFC0 /* Authorization.storyboard */,
 				18D3FECF2697B8C40030929D /* LoginViewController.swift */,
+				18B84269266E27A40033AFC0 /* SignUpViewController.swift */,
+				181742EB2698636B002B9FD7 /* PersonalViewController.swift */,
+				18B8426B266E27A40033AFC0 /* Authorization.storyboard */,
+				18D2C1212740335B0043BEEC /* InviteView.swift */,
+				18D2C11F274032BC0043BEEC /* InviteView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1260,6 +1271,7 @@
 			children = (
 				1879C57926CA79BB00CE367E /* SignupViewModel.swift */,
 				18D8452E26CDB2BA00888D32 /* LoginViewModel.swift */,
+				18D2C12327403E680043BEEC /* InviteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1669,6 +1681,7 @@
 				182342F426A2ECF700CD2907 /* HistoryViewCell.xib in Resources */,
 				18E37756272F00AF00A2795B /* InfluencersViewController.xib in Resources */,
 				18156D5026A5D9B7006B8FE5 /* WalletViewController.xib in Resources */,
+				18D2C120274032BC0043BEEC /* InviteView.xib in Resources */,
 				1803C4A92728820F00486F1F /* ProfileHeaderView.xib in Resources */,
 				1869F0FC2707537200C7654A /* InfluencersCollectionView.xib in Resources */,
 				18E3775A272F00C700A2795B /* InfluencerViewCell.xib in Resources */,
@@ -1779,6 +1792,7 @@
 				186E601C26B6F178008291AC /* TransactionViewModel.swift in Sources */,
 				1879C56E26C9C9DF00CE367E /* LoginUseCase.swift in Sources */,
 				1879C56C26C9C90D00CE367E /* NetworkHelper.swift in Sources */,
+				18D2C1222740335B0043BEEC /* InviteView.swift in Sources */,
 				1834E761273332490081EFB1 /* PasswordViewController.swift in Sources */,
 				18E37759272F00C700A2795B /* InfluencerViewCell.swift in Sources */,
 				182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */,
@@ -1846,6 +1860,7 @@
 				18E39B1626D0394C00FEC003 /* UserRepositoryImpl.swift in Sources */,
 				18156D4626A4DD3E006B8FE5 /* SettingViewCell.swift in Sources */,
 				182342E826A2D21400CD2907 /* OfferPriceViewCell.swift in Sources */,
+				18D2C126274044580043BEEC /* CheckInviteRequestDTO.swift in Sources */,
 				18138463273572C5004530BD /* SearchCellViewModel.swift in Sources */,
 				18E37755272F00AF00A2795B /* InfluencersViewController.swift in Sources */,
 				1813844A27355E49004530BD /* SearchViewModel.swift in Sources */,
@@ -1856,6 +1871,7 @@
 				1834E7522732D57A0081EFB1 /* HistoryTransactionsViewModel.swift in Sources */,
 				18DDEA1E26D790EB00306A60 /* GetMarketNftsResponseDTO.swift in Sources */,
 				18DDEA2226D7919400306A60 /* CreateSellNftRequestDTO.swift in Sources */,
+				18D2C12427403E680043BEEC /* InviteViewModel.swift in Sources */,
 				182342F826A2F40500CD2907 /* TradingHistoryViewModel.swift in Sources */,
 				18138456273561F1004530BD /* SearchRepositoryImpl.swift in Sources */,
 				1879C57A26CA79BB00CE367E /* SignupViewModel.swift in Sources */,
@@ -2056,7 +2072,7 @@
 				CODE_SIGN_ENTITLEMENTS = NftApp/NftApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 64ZXKZ9BQ6;
 				INFOPLIST_FILE = NftApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2064,7 +2080,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.9;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nft.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile";
@@ -2085,7 +2101,7 @@
 				CODE_SIGN_ENTITLEMENTS = NftApp/NftApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 64ZXKZ9BQ6;
 				INFOPLIST_FILE = NftApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2093,7 +2109,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.9;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nft.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile";

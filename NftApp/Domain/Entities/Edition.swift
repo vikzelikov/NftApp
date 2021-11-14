@@ -8,7 +8,7 @@
 import Foundation
 
 struct Edition: Equatable {
-    var id: Int?
+    var id: Int
     var influencerId: Int?
     var count: Int
     var name: String

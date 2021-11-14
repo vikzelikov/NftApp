@@ -8,7 +8,7 @@
 import UIKit
 import AuthenticationServices
 
-class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
+class LoginViewController: UIViewController {
     
     var viewModel: LoginViewModel?
     
@@ -20,14 +20,14 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         viewModel = LoginViewModelImpl()
         bindData()
         
         setupStyle()
     }
     
-    private func setupStyle() {
+    func setupStyle() {
         self.navigationController?.navigationBar.isHidden = true
 
         setupSignInAppleButton()
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
         loginButton.applyButtonStyle()
         loginButton.applyButtonEffects()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
         loginTextField.delegate = self
@@ -62,15 +62,16 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
     
     func bindData() {
         viewModel?.isLoading.bind { [weak self] in
-            if $0 {
-                self?.loginButton.loadingIndicator(isShow: true, titleButton: nil)
-            } else {
-                self?.loginButton.loadingIndicator(isShow: false, titleButton: "NEXT")
-            }
+            $0 ? self?.loginButton.loadingIndicator(isShow: true, titleButton: nil)
+            : self?.loginButton.loadingIndicator(isShow: false, titleButton: "NEXT")
         }
         
         viewModel?.isSuccess.bind { [weak self] in
             if $0 { self?.showInitialView() }
+        }
+        
+        viewModel?.isSetupInvite.bind { [weak self] in
+            if $0 { self?.setupInviteView() }
         }
             
         viewModel?.errorMessage.bind {
@@ -79,13 +80,65 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
         }
     }
     
-    private func showInitialView() {
+    func showInitialView() {
         let storyboard = UIStoryboard(name: "Initial", bundle: nil)
         guard let page = storyboard.instantiateViewController(withIdentifier: "InitialViewController") as? InitialViewController else { return }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }
     
+    func setupInviteView() {
+        dismissKeyboard()
+        
+        let inviteView = InviteView(frame: view.bounds)
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.contentView.addSubview(inviteView)
+        blurEffectView.alpha = 0
+        view.addSubview(blurEffectView)
+        
+        inviteView.viewDidLoad()
+
+        UIView.animate(withDuration: 0.25, animations: { () -> Void in
+            blurEffectView.alpha = 1.0
+        })
+    }
+    
+    @objc func dismissKeyboard () {
+        loginTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
+    @IBAction func dismissLogin(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == loginTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            viewModel?.updateCredentials(
+                login: loginTextField.text!,
+                password: passwordTextField.text!
+            )
+
+            viewModel?.inputCredentials()
+            
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
+}
+
+extension LoginViewController: ASAuthorizationControllerDelegate {
     func setupSignInAppleButton() {
         if #available(iOS 13.0, *) {
             var authorizationButton: ASAuthorizationAppleIDButton
@@ -128,35 +181,5 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate {
             let appleId = appleIDCredential.user
             viewModel?.appleAuthDidTap(appleId: appleId)
         }
-    }
-    
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        loginTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
-    }
-    
-    @IBAction func dismissLogin(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
-
-}
-
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == loginTextField {
-            textField.resignFirstResponder()
-            passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
-            viewModel?.updateCredentials(
-                login: loginTextField.text!,
-                password: passwordTextField.text!
-            )
-
-            viewModel?.inputCredentials()
-            
-            textField.resignFirstResponder()
-        }
-        
-        return true
     }
 }

@@ -40,6 +40,16 @@ class AuthRepositoryImpl: AuthRepository {
         }
     }
     
+    func checkInvite(inviteWord: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        let endpoint = AuthEndpoints.checkInviteEndpoint(inviteWord: inviteWord)
+
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+            
+            NetworkHelper.validateBoolResponse(response: response, completion: completion)
+            
+        }
+    }
+    
 }
     
 

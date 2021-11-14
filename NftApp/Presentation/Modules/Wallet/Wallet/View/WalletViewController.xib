@@ -141,6 +141,7 @@
                                     <rect key="frame" x="15" y="317.5" width="290" height="180"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="X6h-Su-2Lg"/>
                                         <constraint firstAttribute="height" constant="180" id="k2X-Jr-vo7"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>

@@ -10,6 +10,7 @@ import Foundation
 protocol LoginViewModel : BaseViewModel {
     
     var isSuccess: Observable<Bool> { get }
+    var isSetupInvite: Observable<Bool> { get }
     
     func updateCredentials(login: String, password: String)
         
@@ -35,6 +36,7 @@ class LoginViewModelImpl: LoginViewModel {
 
     var isLoading: Observable<Bool> = Observable(false)
     var isSuccess: Observable<Bool> = Observable(false)
+    var isSetupInvite: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
     init() {
@@ -52,13 +54,14 @@ class LoginViewModelImpl: LoginViewModel {
         loginUseCase.login(request: loginRequest, completion: { result in
             switch result {
             case .success:
+                // self.isSetupInvite.value = true
                 self.isSuccess.value = true
                 
             case .failure(let error):
                 self.isSuccess.value = false
                 
                 var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode >= HttpCode.badRequest {
+                if httpCode == HttpCode.badRequest {
                     errorStr = NSLocalizedString("Error login or password", comment: "")
                 }
                 self.errorMessage.value = errorStr
@@ -93,20 +96,14 @@ class LoginViewModelImpl: LoginViewModel {
                 self.isSuccess.value = true
                 
             case .failure(let error):
-                self.isSuccess.value = true
+                self.isSuccess.value = false
                 
-                if let error = error as? ErrorMessage, let code = error.code {
-                    switch code {
-                    case let c where c >= HttpCode.internalServerError:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                        break
-                    case let c where c >= HttpCode.badRequest:
-                        self.errorMessage.value = NSLocalizedString("Error apple auth", comment: "")
-                        break
-                    default:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    }
+                var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode == HttpCode.badRequest {
+                    errorStr = NSLocalizedString("Error Apple authorization", comment: "")
                 }
+                
+                self.errorMessage.value = errorStr
             }
         })
     }

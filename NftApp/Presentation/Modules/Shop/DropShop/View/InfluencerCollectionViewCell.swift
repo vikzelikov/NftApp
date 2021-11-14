@@ -35,7 +35,7 @@ class InfluencerCollectionViewCell: UICollectionViewCell {
         nameLabel?.text = viewModel?.login
         if let avatarUrl = viewModel?.avatarUrl, let url = URL(string: avatarUrl) {
             userImageView.contentMode = .scaleAspectFill
-            userImageView.sd_setImage(with: url)
+            userImageView.load(with: url)
         } else {
             userImageView.contentMode = .scaleAspectFit
             userImageView.image = UIImage(named: "mini_icon")

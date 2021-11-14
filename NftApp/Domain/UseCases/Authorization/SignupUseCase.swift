@@ -24,7 +24,6 @@ final class SignupUseCaseImpl: SignupUseCase {
     }
     
     func signup(request: SignupRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
-
         repository?.signup(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
@@ -33,8 +32,8 @@ final class SignupUseCaseImpl: SignupUseCase {
                     if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
                         Constant.AUTH_TOKEN = authToken
                         Constant.USER_ID = userId
-                        self.userStorage?.saveAuthToken(token: authToken)
-                        self.userStorage?.saveUserId(userId: userId)
+//                        self.userStorage?.saveAuthToken(token: authToken)
+//                        self.userStorage?.saveUserId(userId: userId)
                         
                         completion(.success(true))
                     } else {

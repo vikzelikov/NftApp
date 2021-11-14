@@ -15,4 +15,6 @@ protocol AuthRepository {
     
     func appleLogin(appleId: String, completion: @escaping (Result<LoginResponseDTO, Error>) -> Void)
     
+    func checkInvite(inviteWord: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    
 }

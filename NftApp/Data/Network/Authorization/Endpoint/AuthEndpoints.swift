@@ -17,10 +17,9 @@ struct AuthEndpoints {
             password: request.password
         ).parameters
         
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/auth/registration"
         
-        return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
+        return Endpoint(url: url, method: .post, headers: [], data: requestDTO)
     }
     
     static func getLoginEndpoint(request: LoginRequest) -> Endpoint {
@@ -29,10 +28,9 @@ struct AuthEndpoints {
             password: request.password
         ).parameters
         
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/auth/login"
         
-        return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
+        return Endpoint(url: url, method: .post, headers: [], data: requestDTO)
     }
     
     static func appleLoginEndpoint(appleId: String) -> Endpoint {
@@ -40,10 +38,20 @@ struct AuthEndpoints {
             appleId: appleId
         ).parameters
         
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = Constant.BASE_URL + "api/auth/apple"
+        let url = Constant.BASE_URL + "api/auth/appleId"
         
-        return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
+        return Endpoint(url: url, method: .post, headers: [], data: requestDTO)
+    }
+    
+    static func checkInviteEndpoint(inviteWord: String) -> Endpoint {
+        let requestDTO = CheckInviteRequestDTO (
+            userId: Constant.USER_ID,
+            inviteWord: inviteWord
+        ).parameters
+        
+        let url = Constant.BASE_URL + "api/auth/checkInvite"
+        
+        return Endpoint(url: url, method: .post, headers: [], data: requestDTO)
     }
     
 }

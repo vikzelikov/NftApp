@@ -27,7 +27,7 @@ class SignUpViewController: UIViewController {
         setupStyle()
     }
     
-    private func setupStyle() {
+    func setupStyle() {
         self.scrollView.delaysContentTouches = false
 
         loginTextField.becomeFirstResponder()
@@ -39,7 +39,7 @@ class SignUpViewController: UIViewController {
         
         nextButton.applyButtonEffects()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
         loginTextField.delegate = self
@@ -61,15 +61,12 @@ class SignUpViewController: UIViewController {
         
     func bindData() {
         viewModel?.isLoading.bind { [weak self] in
-            if $0 {
-                self?.nextButton.loadingIndicator(isShow: true, titleButton: nil)
-            } else {
-                self?.nextButton.loadingIndicator(isShow: false, titleButton: "NEXT")
-            }
+            $0 ? self?.nextButton.loadingIndicator(isShow: true, titleButton: nil)
+            : self?.nextButton.loadingIndicator(isShow: false, titleButton: "NEXT")
         }
         
         viewModel?.isSuccess.bind { [weak self] in
-            if $0 { self?.showInitialView() }
+            if $0 { self?.setupInviteView() }
         }
             
         viewModel?.errorMessage.bind {
@@ -78,7 +75,7 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    private func showPersonalDataView() {
+    func showPersonalDataView() {
         if let viewController = UIStoryboard(name: "Authorization", bundle: nil).instantiateViewController(withIdentifier: "PersonalViewController") as? PersonalViewController {
             if let navigator = self.navigationController {
                 viewController.viewModel = self.viewModel
@@ -87,14 +84,36 @@ class SignUpViewController: UIViewController {
             }
     }
     
-    private func showInitialView() {
+    func showInitialView() {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
         guard let page = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }
     
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+    func setupInviteView() {
+        dismissKeyboard()
+        
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
+        let inviteView = InviteView(frame: view.bounds)
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.contentView.addSubview(inviteView)
+        blurEffectView.alpha = 0
+        view.addSubview(blurEffectView)
+        
+        inviteView.viewDidLoad()
+
+        UIView.animate(withDuration: 0.25, animations: { () -> Void in
+            blurEffectView.alpha = 1.0
+        })
+    }
+    
+    @objc func dismissKeyboard() {
         loginTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()

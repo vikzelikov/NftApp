@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings-->
+        <!--Settings View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" interfaceStyle="dark" id="Y6W-OH-hqX" customClass="SettingsViewController" customModule="NftApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -180,7 +180,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vm0-kQ-sZv" secondAttribute="trailing" id="FQe-n6-Q63"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="k16-Oa-oNj"/>
+                    <tabBarItem key="tabBarItem" title="" image="settings" selectedImage="settings" id="k16-Oa-oNj"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="320" height="1000"/>
                     <connections>

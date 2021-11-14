@@ -40,7 +40,7 @@ class SearchViewCell: UITableViewCell {
         
         if let mediaUrl = viewModel.mediaUrl, let url = URL(string: mediaUrl) {
             searchImageView.contentMode = .scaleAspectFill
-            searchImageView.sd_setImage(with: url)
+            searchImageView.load(with: url)
         } else {
             searchImageView.contentMode = .scaleAspectFit
             searchImageView.image = UIImage(named: "mini_icon")

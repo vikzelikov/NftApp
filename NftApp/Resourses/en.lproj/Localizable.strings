@@ -39,3 +39,8 @@
 "Nothing here" = "Nothing here";
 "Saved" = "Saved";
 "Successful purchase" = "Successful purchase";
+"Error Apple authorization" = "Error Apple authorization";
+"Invite not found" = "Invite not found";
+"E-mail is already in use" = "E-mail is already in use";
+"Passwords don't match" = "Passwords don't match";
+"Password is empty" = "Password is empty";

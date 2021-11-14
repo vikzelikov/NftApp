@@ -39,3 +39,8 @@
 "Nothing here" = "Тут ничего нет";
 "Saved" = "Сохранено";
 "Successful purchase" = "Успешная покупка";
+"Error Apple authorization" = "Ошибка Apple авторизации";
+"Invite not found" = "Приглашение на найдено";
+"E-mail is already in use" = "E-mail уже используется";
+"Passwords don't match" = "Пароли не совпадают";
+"Password is empty" = "Введите пароль";

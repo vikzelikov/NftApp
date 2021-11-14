@@ -98,13 +98,13 @@ class SignupViewModelImpl: SignupViewModel {
         }
     
         if password.isEmpty {
-            errorMessage.value = "Password is empty"
+            errorMessage.value = NSLocalizedString("Password is empty", comment: "")
             isSuccess.value = false
             return
         }
         
         if password != confirmPassword  {
-            errorMessage.value = "Passwords don't match"
+            errorMessage.value = NSLocalizedString("Passwords don't match", comment: "")
             isSuccess.value = false
             return
         }

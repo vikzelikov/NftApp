@@ -283,7 +283,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZBN-oz-Hf6">
-                                                <rect key="frame" x="15" y="100" width="290" height="40"/>
+                                                <rect key="frame" x="15" y="130" width="290" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="fky-kq-laz"/>
                                                 </constraints>
@@ -291,7 +291,7 @@
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qlp-ks-24R">
-                                                <rect key="frame" x="15" y="155" width="290" height="40"/>
+                                                <rect key="frame" x="15" y="185" width="290" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="ht7-yS-g1s"/>
                                                 </constraints>
@@ -299,14 +299,14 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MqE-z1-XXy">
-                                                <rect key="frame" x="15" y="334" width="290" height="60"/>
+                                                <rect key="frame" x="15" y="364" width="290" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="CjP-Yl-3rc"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQj-DX-EfH" customClass="AccentButton" customModule="NftApp" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="215" width="290" height="60"/>
+                                                <rect key="frame" x="15" y="245" width="290" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="dMA-Zj-ZFr"/>
                                                 </constraints>
@@ -322,7 +322,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKT-NX-agr">
-                                                <rect key="frame" x="97.5" y="295" width="125" height="29"/>
+                                                <rect key="frame" x="97.5" y="325" width="125" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="CREATE ACCOUNT">
                                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -332,9 +332,9 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mini_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ydx-Xx-oYh">
-                                                <rect key="frame" x="56" y="20" width="208" height="50"/>
+                                                <rect key="frame" x="56" y="30" width="208" height="70"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="hHK-DK-VLN"/>
+                                                    <constraint firstAttribute="height" constant="70" id="hHK-DK-VLN"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -345,7 +345,7 @@
                                             <constraint firstItem="ZBN-oz-Hf6" firstAttribute="leading" secondItem="ExO-LS-wbw" secondAttribute="leading" constant="15" id="B2b-x0-vSR"/>
                                             <constraint firstItem="MqE-z1-XXy" firstAttribute="top" secondItem="wKT-NX-agr" secondAttribute="bottom" constant="10" id="CSp-sw-3IH"/>
                                             <constraint firstItem="JQj-DX-EfH" firstAttribute="top" secondItem="qlp-ks-24R" secondAttribute="bottom" constant="20" id="FrB-89-gR1"/>
-                                            <constraint firstItem="Ydx-Xx-oYh" firstAttribute="top" secondItem="ExO-LS-wbw" secondAttribute="top" constant="20" id="KOV-zq-4Dx"/>
+                                            <constraint firstItem="Ydx-Xx-oYh" firstAttribute="top" secondItem="ExO-LS-wbw" secondAttribute="top" constant="30" id="KOV-zq-4Dx"/>
                                             <constraint firstAttribute="trailing" secondItem="ZBN-oz-Hf6" secondAttribute="trailing" constant="15" id="KaS-H9-LR9"/>
                                             <constraint firstAttribute="trailing" secondItem="JQj-DX-EfH" secondAttribute="trailing" constant="15" id="WHF-ww-5ao"/>
                                             <constraint firstAttribute="height" constant="700" id="WaK-eh-8Gq"/>

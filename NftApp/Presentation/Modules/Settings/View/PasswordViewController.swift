@@ -44,7 +44,24 @@ class PasswordViewController: UIViewController {
     }
     
     @IBAction func saveDidTap(_ sender: Any) {
-        viewModel?.passwordUpdateDidTap()
+        if let oldPassword = oldPasswordTextField.text,
+            let newPassword = newPasswordTextField.text,
+            let confirmPassword = confirmPasswordTextField.text {
+            
+            saveButton.loadingIndicator(isShow: true, titleButton: nil)
+
+            viewModel?.passwordUpdateDidTap(oldPassword: oldPassword,
+                                            newPassword: newPassword,
+                                            confirmPassword: confirmPassword, completion: { result in
+                
+                self.saveButton.loadingIndicator(isShow: false, titleButton: NSLocalizedString("Save", comment: "").uppercased())
+                
+                if result {
+                    self.showMessage(message: NSLocalizedString("Saved", comment: ""), isHaptic: false)
+                }
+            })
+                
+        }
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {

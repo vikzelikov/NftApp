@@ -33,7 +33,7 @@ struct EditionUserViewModel: Equatable {
 
 extension EditionViewModel {
     init(edition: Edition) {
-        self.id = edition.id ?? 0
+        self.id = edition.id
         self.influencerId = edition.influencerId
         self.count = edition.count
         self.name = edition.name

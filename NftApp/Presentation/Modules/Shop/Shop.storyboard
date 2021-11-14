@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Market-->
+        <!--Shop View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="ShopViewController" interfaceStyle="dark" id="Y6W-OH-hqX" customClass="ShopViewController" customModule="NftApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -42,7 +42,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="gAx-Rc-JLW"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Market" image="shop" selectedImage="shop" id="seV-J7-4KD"/>
+                    <tabBarItem key="tabBarItem" title="" image="shop" selectedImage="shop" id="seV-J7-4KD"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="pageControl" destination="HiK-nU-6Pk" id="7NR-fJ-rvR"/>

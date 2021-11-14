@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="28r-Dq-RPu">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" interfaceStyle="dark" id="7e9-sy-nGe" customClass="HomeViewController" customModule="NftApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,7 +43,7 @@
                             <constraint firstItem="X8C-dy-CPw" firstAttribute="top" secondItem="164-K3-Gp2" secondAttribute="top" id="jJ8-bt-fbt"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="J5J-bB-swp"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home" id="J5J-bB-swp"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="errorLabel" destination="k9u-Eg-ebW" id="OZr-R0-x8Y"/>
