@@ -191,30 +191,30 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func getCreatedNfts() {
-//        let userId = userViewModel.value?.id ?? Constant.USER_ID
-//        let request = GetNftsRequest(userId: userId, page: page)
-//
-//        nftUserCase.getCreatedNfts(request: request) { result in
-//            switch result {
-//            case .success(let nfts):
-//                self.currentPage = 1
-//                self.totalPageCount = 1
-//                self.createdNfts.removeAll()
-//
-//                self.appendNfts(nfts: nfts, typeListNfts: .created)
-//
-//            case .failure(let error):
-//                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-//                if httpCode != HttpCode.notFound {
-//                    self.errorMessage.value = errorStr
-//                }
-//            }
-//
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                self.isLoading.value = false
-//            }
-//
-//        }
+        let userId = userViewModel.value?.id ?? Constant.USER_ID
+        let request = GetNftsRequest(userId: userId, page: page)
+
+        nftUserCase.getCreatedNfts(request: request) { result in
+            switch result {
+            case .success(let nfts):
+                self.currentPage = 1
+                self.totalPageCount = 1
+                self.createdNfts.removeAll()
+
+                self.appendNfts(nfts: nfts, typeListNfts: .created)
+
+            case .failure(let error):
+                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode != HttpCode.notFound {
+                    self.errorMessage.value = errorStr
+                }
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLoading.value = false
+            }
+
+        }
     }
     
     private func appendNfts(nfts: [Nft], typeListNfts: TypeListNfts) {
