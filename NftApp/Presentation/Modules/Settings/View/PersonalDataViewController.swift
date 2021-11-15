@@ -25,14 +25,14 @@ class PersonalDataViewController: UIViewController {
     }
     
     func bindData() {
-        UserObject.user.bind {
-            self.loginTextField.text = $0?.login
-            self.emailTextField.text = $0?.email
+        UserObject.user.observe(on: self) { [weak self] userViewModel in
+            self?.loginTextField.text = userViewModel?.login
+            self?.emailTextField.text = userViewModel?.email
         }
         
-        viewModel?.errorMessage.bind {
-            guard let errorMessage = $0 else { return }
-            self.showMessage(message: errorMessage)
+        viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
+            guard let errorMessage = errMessage else { return }
+            self?.showMessage(message: errorMessage)
         }
     }
     

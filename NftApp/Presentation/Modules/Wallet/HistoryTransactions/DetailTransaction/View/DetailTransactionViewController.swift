@@ -29,49 +29,49 @@ class DetailTransactionViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.transactionViewModel.bind {
-            guard let transactionViewModel = $0 else { return }
+        viewModel?.transactionViewModel.observe(on: self) { [weak self] transactionVM in
+            guard let transactionViewModel = transactionVM else { return }
                         
             switch transactionViewModel.type {
             case TypeTransactions.buyTokens.rawValue : do {
-                self.destinationView.isHidden = true
-                self.checkLinkView.isHidden = true
-                self.titleLabel?.text = NSLocalizedString("Buy tokens", comment: "")
+                self?.destinationView.isHidden = true
+                self?.checkLinkView.isHidden = true
+                self?.titleLabel?.text = NSLocalizedString("Buy tokens", comment: "")
             }
                 
             case TypeTransactions.withdrawTokens.rawValue: do {
-                self.checkLinkView.isHidden = true
-                self.destinationLabel.text = transactionViewModel.destination ?? "-"
-                self.titleLabel?.text = NSLocalizedString("Withdraw tokens", comment: "")
+                self?.checkLinkView.isHidden = true
+                self?.destinationLabel.text = transactionViewModel.destination ?? "-"
+                self?.titleLabel?.text = NSLocalizedString("Withdraw tokens", comment: "")
             }
                 
             case TypeTransactions.dropshop.rawValue: do {
-                self.destinationView.isHidden = true
-                self.titleLabel?.text = NSLocalizedString("Dropshop", comment: "")
+                self?.destinationView.isHidden = true
+                self?.titleLabel?.text = NSLocalizedString("Dropshop", comment: "")
                 
                 if let id = transactionViewModel.blockchainTransactionId {
-                    self.checkLinkLabel.text = id
+                    self?.checkLinkLabel.text = id
                 } else {
-                    self.checkLinkView.isHidden = true
+                    self?.checkLinkView.isHidden = true
                 }
             }
                 
             case TypeTransactions.market.rawValue: do {
-                self.destinationView.isHidden = true
-                self.checkLinkLabel.text = "true"
-                self.titleLabel?.text = NSLocalizedString("Market", comment: "")
+                self?.destinationView.isHidden = true
+                self?.checkLinkLabel.text = "true"
+                self?.titleLabel?.text = NSLocalizedString("Market", comment: "")
                 
                 if let id = transactionViewModel.blockchainTransactionId {
-                    self.checkLinkLabel.text = id
+                    self?.checkLinkLabel.text = id
                 } else {
-                    self.checkLinkView.isHidden = true
+                    self?.checkLinkView.isHidden = true
                 }
             }
                 
             default: break
             }
 
-            self.amountLabel.text = String(Int(transactionViewModel.amount))
+            self?.amountLabel.text = String(Int(transactionViewModel.amount))
 
             let isoDate = transactionViewModel.date
             let isoDateFormatter = ISO8601DateFormatter()
@@ -86,7 +86,7 @@ class DetailTransactionViewController: UIViewController {
                 let date = Date(timeIntervalSince1970: unixTime)
                 let dayTimePeriodFormatter = DateFormatter()
                 dayTimePeriodFormatter.dateFormat = "dd-MM-YYYY HH:mm"
-                self.dateLabel.text = dayTimePeriodFormatter.string(from: date)
+                self?.dateLabel.text = dayTimePeriodFormatter.string(from: date)
             }
         }
     }

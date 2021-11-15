@@ -36,8 +36,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="1Lh-NP-vBe" customClass="UILabelPadding" customModule="NftApp" customModuleProvider="target">
-                    <rect key="frame" x="15" y="271" width="290" height="26.5"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                    <rect key="frame" x="15" y="269.5" width="290" height="29"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>

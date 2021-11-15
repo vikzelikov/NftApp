@@ -24,17 +24,17 @@ class FollowsViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.items.bind { [weak self] _ in
+        viewModel?.items.observe(on: self) { [weak self] _ in
             self?.reload()
         }
         
-        viewModel?.isLoading.bind { _ in 
-//            self.checkoutLoading(isShow: $0)
-        }
+//        viewModel?.isLoading.observe(on: self) { [weak self] _ in
+////            self.checkoutLoading(isShow: $0)
+//        }
         
-        viewModel?.errorMessage.bind {
-            guard let errorMessage = $0 else { return }
-            self.showMessage(message: errorMessage)
+        viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
+            guard let errorMessage = errMessage else { return }
+            self?.showMessage(message: errorMessage)
         }
     }
     

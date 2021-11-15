@@ -38,23 +38,23 @@ class InviteView: UIView {
     }
     
     func bindData() {
-        viewModel?.isLoading.bind { [weak self] in
-            $0 ? self?.nextButton.loadingIndicator(isShow: true, titleButton: nil)
+        viewModel?.isLoading.observe(on: self) { [weak self] isLoading in
+            isLoading ? self?.nextButton.loadingIndicator(isShow: true, titleButton: nil)
             : self?.nextButton.loadingIndicator(isShow: false, titleButton: "NEXT")
         }
         
-        viewModel?.isSuccess.bind { [weak self] in
-            if $0 { self?.showInitialView() }
+        viewModel?.isSuccess.observe(on: self) { [weak self] isSuccess in
+            if isSuccess { self?.showInitialView() }
         }
             
-        viewModel?.errorMessage.bind { _ in
-            self.inviteTextField.layer.borderColor = UIColor(named: "orange")?.cgColor
-            self.inviteTextField.text = ""
+        viewModel?.errorMessage.observe(on: self) { [weak self] _ in
+            self?.inviteTextField.layer.borderColor = UIColor(named: "orange")?.cgColor
+            self?.inviteTextField.text = ""
             
             HapticHelper.longHaptic()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.inviteTextField.layer.borderColor = UIColor.gray.withAlphaComponent(0.2).cgColor
+                self?.inviteTextField.layer.borderColor = UIColor.gray.withAlphaComponent(0.2).cgColor
             }
         }
     }

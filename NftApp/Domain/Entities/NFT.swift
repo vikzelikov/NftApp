@@ -15,3 +15,7 @@ struct Nft: Equatable {
     var isForSell: Bool
     var edition: Edition
 }
+
+struct NftObject {
+    static var isDropshopNeedRefresh: Observable<Bool> = Observable(false)
+}

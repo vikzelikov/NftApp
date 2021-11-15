@@ -29,31 +29,31 @@ class HomeViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.itemsNfts.bind {
-            if self.viewModel?.typeListNfts.value == .collection {
-                self.headerView?.countNftsLabel.text = "\($0.count)"
+        viewModel?.itemsNfts.observe(on: self) { [weak self] itemsNfts in
+            if self?.viewModel?.typeListNfts.value == .collection {
+                self?.headerView?.countNftsLabel.text = "\(itemsNfts.count)"
             }
             
-            self.reload()
+            self?.reload()
         }
         
-        viewModel?.isLoading.bind {
-            if $0 {
+        viewModel?.isLoading.observe(on: self) { [weak self] isLoading in
+            if isLoading {
                 DispatchQueue.main.async {
                     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .topLeftBottomRight)
-                    self.tableView.showAnimatedGradientSkeleton(animation: animation)
-                    self.tableView.allowsSelection = false
+                    self?.tableView.showAnimatedGradientSkeleton(animation: animation)
+                    self?.tableView.allowsSelection = false
                 }
             } else {
-                self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.3))
-                self.tableView.stopSkeletonAnimation()
-                self.tableView.allowsSelection = true
+                self?.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.3))
+                self?.tableView.stopSkeletonAnimation()
+                self?.tableView.allowsSelection = true
             }
         }
         
-        viewModel?.errorMessage.bind {
-            guard let errorMessage = $0 else { return }
-            self.showMessage(message: errorMessage)
+        viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
+            guard let errorMessage = errMessage else { return }
+            self?.showMessage(message: errorMessage)
         }
     }
 

@@ -61,9 +61,13 @@ class HomeViewModelImpl: HomeViewModel {
         followsUseCase = FollowsUseCaseImpl()
         nftUserCase = NftUseCaseImpl()
         
-        // set main user by default 
-        UserObject.user.bind {
-            self.userViewModel.value = $0
+        // set main user by default
+        userViewModel.value = UserObject.user.value
+        
+        UserObject.isNeedRefresh.observe(on: self) { [weak self] isNeed in
+            if isNeed && self?.userViewModel.value?.id == Constant.USER_ID {
+                self?.viewDidLoad(isRefresh: true)
+            }
         }
     }
     
@@ -95,6 +99,11 @@ class HomeViewModelImpl: HomeViewModel {
             case .success(let user):
                 self.userViewModel.value = UserViewModel.init(user: user)
                 
+                if self.userViewModel.value?.id == Constant.USER_ID {
+                    UserObject.user.value = self.userViewModel.value
+                    UserObject.isNeedRefresh.value = false
+                }
+                
             case .failure(let error):
                 let (_, errorStr) = ErrorHelper.validateError(error: error)
                 self.errorMessage.value = errorStr
@@ -111,7 +120,8 @@ class HomeViewModelImpl: HomeViewModel {
             case .success(let users):
                 self.followers.value = users.map(UserViewModel.init)
 
-            case .failure: break
+            case .failure:
+                self.followers.value.removeAll()
             }
         })
         
@@ -120,7 +130,8 @@ class HomeViewModelImpl: HomeViewModel {
             case .success(let users):
                 self.following.value = users.map(UserViewModel.init)
 
-            case .failure: break
+            case .failure:
+                self.following.value.removeAll()
             }
         })
     }
@@ -180,30 +191,30 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func getCreatedNfts() {
-        let userId = userViewModel.value?.id ?? Constant.USER_ID
-        let request = GetNftsRequest(userId: userId, page: page)
-        
-        nftUserCase.getCreatedNfts(request: request) { result in
-            switch result {
-            case .success(let nfts):
-                self.currentPage = 1
-                self.totalPageCount = 1
-                self.createdNfts.removeAll()
-                
-                self.appendNfts(nfts: nfts, typeListNfts: .created)
-                
-            case .failure(let error):
-                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode != HttpCode.notFound {
-                    self.errorMessage.value = errorStr
-                }
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isLoading.value = false
-            }
-            
-        }
+//        let userId = userViewModel.value?.id ?? Constant.USER_ID
+//        let request = GetNftsRequest(userId: userId, page: page)
+//
+//        nftUserCase.getCreatedNfts(request: request) { result in
+//            switch result {
+//            case .success(let nfts):
+//                self.currentPage = 1
+//                self.totalPageCount = 1
+//                self.createdNfts.removeAll()
+//
+//                self.appendNfts(nfts: nfts, typeListNfts: .created)
+//
+//            case .failure(let error):
+//                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+//                if httpCode != HttpCode.notFound {
+//                    self.errorMessage.value = errorStr
+//                }
+//            }
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                self.isLoading.value = false
+//            }
+//
+//        }
     }
     
     private func appendNfts(nfts: [Nft], typeListNfts: TypeListNfts) {
@@ -255,6 +266,8 @@ class HomeViewModelImpl: HomeViewModel {
                 switch result {
                 case .success:
                     self.typeFollows.value = (TypeFollows.followers, user)
+                    UserObject.isNeedRefresh.value = true
+                    self.followers.value.append(UserViewModel(id: 0))
                     completion(true)
 
                 case .failure:
@@ -268,6 +281,8 @@ class HomeViewModelImpl: HomeViewModel {
                 switch result {
                 case .success:
                     self.typeFollows.value = (TypeFollows.none, user)
+                    UserObject.isNeedRefresh.value = true
+                    self.followers.value.removeLast()
                     completion(true)
 
                 case .failure:

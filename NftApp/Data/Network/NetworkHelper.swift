@@ -65,9 +65,9 @@ struct NetworkHelper {
             }
         }
         
-        print(T.self)
-        var json = JSON(data)
-        print(json)
+//        print(T.self)
+//        var json = JSON(data)
+//        print(json)
         
         if let responseDTO = try? JSONDecoder().decode(T.self, from: data) {
             completion(.success(responseDTO))

@@ -42,22 +42,22 @@ class InitialViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.isShowHome.bind { [weak self] in
-            guard let isShowHome = $0 else { return }
+        viewModel?.isShowHome.observe(on: self) { [weak self] isShowHome in
+            guard let isShowHome = isShowHome else { return }
             
             isShowHome ? self?.showHomeView() : self?.showAuthView()
         }
         
-        viewModel?.errorMessage.bind {
-            guard let errorMessage = $0 else { return }
+        viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
+            guard let errorMessage = errMessage else { return }
             
-            self.checkoutLoading(isShow: false)
+            self?.checkoutLoading(isShow: false)
             
-            self.errorLabel.text = errorMessage
+            self?.errorLabel.text = errorMessage
         }
         
-        viewModel?.isLoading.bind {
-            self.checkoutLoading(isShow: $0)
+        viewModel?.isLoading.observe(on: self) { [weak self] isLoading in
+            self?.checkoutLoading(isShow: isLoading)
         }
     }
     

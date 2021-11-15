@@ -39,6 +39,10 @@ class DropShopViewModelImpl: DropShopViewModel {
     init() {
         dropShopUseCase = DropShopUseCaseImpl()
         userUseCase = UserUseCaseImpl()
+        
+        NftObject.isDropshopNeedRefresh.observe(on: self) { [weak self] isNeed in
+            if isNeed { self?.viewDidLoad() }
+        }
     }
     
     func viewDidLoad() {
@@ -49,7 +53,6 @@ class DropShopViewModelImpl: DropShopViewModel {
             getEditions()
             
             getInfluencers()
-            
         }
     }
 
@@ -64,6 +67,8 @@ class DropShopViewModelImpl: DropShopViewModel {
                 self.items.value.removeAll()
                 
                 self.appendEditions(editions: editions)
+                
+                NftObject.isDropshopNeedRefresh.value = false
 
             case .failure(let error):
                 let (httpCode, errorStr) = ErrorHelper.validateError(error: error)

@@ -26,9 +26,9 @@ class PasswordViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.errorMessage.bind {
-            guard let errorMessage = $0 else { return }
-            self.showMessage(message: errorMessage)
+        viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
+            guard let errorMessage = errMessage else { return }
+            self?.showMessage(message: errorMessage)
         }
     }
     

@@ -62,22 +62,22 @@ class LoginViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.isLoading.bind { [weak self] in
-            $0 ? self?.loginButton.loadingIndicator(isShow: true, titleButton: nil)
+        viewModel?.isLoading.observe(on: self) { [weak self] isLoading in
+            isLoading ? self?.loginButton.loadingIndicator(isShow: true, titleButton: nil)
             : self?.loginButton.loadingIndicator(isShow: false, titleButton: "NEXT")
         }
         
-        viewModel?.isSuccess.bind { [weak self] in
-            if $0 { self?.showInitialView() }
+        viewModel?.isSuccess.observe(on: self) { [weak self] isSuccess in
+            if isSuccess { self?.showInitialView() }
         }
         
-        viewModel?.isSetupInvite.bind { [weak self] in
-            if $0 { self?.setupInviteView() }
+        viewModel?.isSetupInvite.observe(on: self) { [weak self] isSetupInvite in
+            if isSetupInvite { self?.setupInviteView() }
         }
             
-        viewModel?.errorMessage.bind {
-            guard let errorMessage = $0 else { return }
-            self.showMessage(message: errorMessage)
+        viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
+            guard let errorMessage = errMessage else { return }
+            self?.showMessage(message: errorMessage)
         }
     }
     

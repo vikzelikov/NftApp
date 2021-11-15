@@ -60,18 +60,18 @@ class SignUpViewController: UIViewController {
     }
         
     func bindData() {
-        viewModel?.isLoading.bind { [weak self] in
-            $0 ? self?.nextButton.loadingIndicator(isShow: true, titleButton: nil)
+        viewModel?.isLoading.observe(on: self) { [weak self] isLoading in
+            isLoading ? self?.nextButton.loadingIndicator(isShow: true, titleButton: nil)
             : self?.nextButton.loadingIndicator(isShow: false, titleButton: "NEXT")
         }
         
-        viewModel?.isSuccess.bind { [weak self] in
-            if $0 { self?.setupInviteView() }
+        viewModel?.isSuccess.observe(on: self) { [weak self] isSuccess in
+            if isSuccess { self?.setupInviteView() }
         }
             
-        viewModel?.errorMessage.bind {
-            guard let errorMessage = $0 else { return }
-            self.showMessage(message: errorMessage)
+        viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
+            guard let errorMessage = errMessage else { return }
+            self?.showMessage(message: errorMessage)
         }
     }
     

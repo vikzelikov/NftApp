@@ -49,16 +49,13 @@ class PersonalViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.isLoading.bind { [weak self] in
-            if $0 {
-                self?.nextButton.loadingIndicator(isShow: true, titleButton: nil)
-            } else {
-                self?.nextButton.loadingIndicator(isShow: false, titleButton: "NEXT")
-            }
+        viewModel?.isLoading.observe(on: self) { [weak self] isLoading in
+            isLoading ? self?.nextButton.loadingIndicator(isShow: true, titleButton: nil)
+            : self?.nextButton.loadingIndicator(isShow: false, titleButton: "NEXT")
         }
         
-        viewModel?.isSuccess.bind { [weak self] in
-            if $0 { self?.showHomeView() }
+        viewModel?.isSuccess.observe(on: self) { [weak self] isSuccess in
+            if isSuccess { self?.showHomeView() }
         }
     }
     

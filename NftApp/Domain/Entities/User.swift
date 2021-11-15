@@ -21,5 +21,6 @@ struct User: Equatable, Identifiable {
 }
 
 struct UserObject {
+    static var isNeedRefresh: Observable<Bool> = Observable(false)
     static var user: Observable<UserViewModel?> = Observable(nil)
 }

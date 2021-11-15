@@ -62,55 +62,55 @@ class DetailNftViewController: UIViewController {
 //            }
 //        }
         
-        viewModel?.errorMessage.bind {
-            guard let errorMessage = $0 else { return }
-            self.showMessage(message: errorMessage)
+        viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
+            guard let errorMessage = errMessage else { return }
+            self?.showMessage(message: errorMessage)
         }
         
-        viewModel?.nftViewModel.bind {
-            guard let nftViewModel = $0 else { return }
-            self.buyButton?.setTitle("\(Int(nftViewModel.edition.price ?? 0.0)) Tokens", for: .normal)
-            self.titleLabel?.text = nftViewModel.edition.name
-            self.descriptionLabel?.text = nftViewModel.edition.description
-            self.priceLabel.text = "\(Int(nftViewModel.lastPrice ?? 0.0)) T"
+        viewModel?.nftViewModel.observe(on: self) { [weak self] nftVM in
+            guard let nftViewModel = nftVM else { return }
+            self?.buyButton?.setTitle("\(Int(nftViewModel.edition.price ?? 0.0)) Tokens", for: .normal)
+            self?.titleLabel?.text = nftViewModel.edition.name
+            self?.descriptionLabel?.text = nftViewModel.edition.description
+            self?.priceLabel.text = "\(Int(nftViewModel.lastPrice ?? 0.0)) T"
             
             if let count = nftViewModel.edition.count, let countNFTs = nftViewModel.edition.countNFTs {
-                self.leftCountLabel.text = "x\(count - countNFTs) " + NSLocalizedString("left", comment: "")
+                self?.leftCountLabel.text = "x\(count - countNFTs) " + NSLocalizedString("left", comment: "")
             }
             
             if let url = URL(string: nftViewModel.edition.mediaUrl ?? "") {
-                self.nftImageView.load(with: url)
+                self?.nftImageView.load(with: url)
             }
             
             if let influencer = nftViewModel.edition.influencer?.user {
-                self.ownerLoginLabel.text = influencer.login
+                self?.ownerLoginLabel.text = influencer.login
                 
                 if let urlString = influencer.avatarUrl, let url = URL(string: urlString) {
-                    self.ownerAvatarImage.contentMode = .scaleAspectFill
-                    self.ownerAvatarImage.load(with: url)
+                    self?.ownerAvatarImage.contentMode = .scaleAspectFill
+                    self?.ownerAvatarImage.load(with: url)
                 } else {
-                    self.ownerAvatarImage.contentMode = .scaleAspectFit
-                    self.ownerAvatarImage.image = UIImage(named: "mini_icon")
+                    self?.ownerAvatarImage.contentMode = .scaleAspectFit
+                    self?.ownerAvatarImage.image = UIImage(named: "mini_icon")
                 }
             }
         }
         
-        viewModel?.expirationTime.bind {
-            guard let exp = $0 else { return }
+        viewModel?.expirationTime.observe(on: self) { [weak self] expiration in
+            guard let exp = expiration else { return }
             
             guard exp >= 1 else {
-                self.dismiss(animated: true, completion: nil)
+                self?.dismiss(animated: true, completion: nil)
                 return
             }
             
-            let (d, h, m, s) = self.secondsToHoursMinutesSeconds(seconds: exp)
+            let (d, h, m, s) = ((exp / 86400, (exp % 86400) / 3600, (exp % 3600) / 60, (exp % 3600) % 60))
             var timeStr = NSLocalizedString("Expiration in", comment: "") + " \(d)d \(h)h \(m)m \(s)s"
             
             if d == 0 {
                 timeStr = NSLocalizedString("Expiration in", comment: "") + " \(h)h \(m)m \(s)s"
             }
             
-            self.expirationLabel.text = timeStr
+            self?.expirationLabel.text = timeStr
         }
     }
     
@@ -238,10 +238,6 @@ class DetailNftViewController: UIViewController {
     
     @IBAction func backButtonDidTap(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-    }
-    
-    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int, Int) {
-        return (seconds / 86400, (seconds % 86400) / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
 }

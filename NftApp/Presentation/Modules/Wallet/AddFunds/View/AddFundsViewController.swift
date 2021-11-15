@@ -44,22 +44,24 @@ class AddFundsViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.products.bind {
-            if !$0.isEmpty {
-                self.setSelected(selectedView: self.firstItem)
-                self.viewModel?.productDidTap(index: 0)
-                
-                self.itemsStackView.isHidden = false
+        viewModel?.products.observe(on: self) { [weak self] products in
+            if !products.isEmpty {
+                if let firstItem = self?.firstItem {
+                    self?.setSelected(selectedView: firstItem)
+                    self?.viewModel?.productDidTap(index: 0)
+                    
+                    self?.itemsStackView.isHidden = false
+                }
             }
         }
         
-        viewModel?.errorMessage.bind {
-            guard let errorMessage = $0 else { return }
-            self.showMessage(message: errorMessage)
+        viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
+            guard let errorMessage = errMessage else { return }
+            self?.showMessage(message: errorMessage)
         }
         
-        viewModel?.isLoading.bind {
-            $0 ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+        viewModel?.isLoading.observe(on: self) { [weak self] isLoading in
+            isLoading ? self?.loadingIndicator.startAnimating() : self?.loadingIndicator.stopAnimating()
         }
     }
     

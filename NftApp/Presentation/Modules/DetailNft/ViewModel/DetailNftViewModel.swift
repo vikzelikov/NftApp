@@ -84,6 +84,9 @@ class DetailNftViewModelImpl: DetailNftViewModel {
                 if var vm = self.nftViewModel.value, let count = vm.edition.count {
                     vm.edition.count = count - 1
                     self.nftViewModel.value = vm
+                    
+                    NftObject.isDropshopNeedRefresh.value = true
+                    UserObject.isNeedRefresh.value = true
                 }
                 
                 completion(true)

@@ -60,43 +60,39 @@ class ProfileHeaderView: UIView {
     }
     
     func bindData() {
-        viewModel?.userViewModel.bind {
-            guard let userViewModel = $0 else { return }
+        viewModel?.userViewModel.observe(on: self) { [weak self] userVM in
+            guard let userViewModel = userVM else { return }
             
-            self.loginLabel.text = userViewModel.login
-            self.loginSubtitleLabel.text = userViewModel.flowAddress ?? "@\(userViewModel.login ?? "")"
-            self.totalCostLabel.text = "\(Int(userViewModel.totalCost ?? 0.0))"
+            self?.loginLabel.text = userViewModel.login
+            self?.loginSubtitleLabel.text = userViewModel.flowAddress ?? "@\(userViewModel.login ?? "")"
+            self?.totalCostLabel.text = "\(Int(userViewModel.totalCost ?? 0.0))"
             if let avatarUrl = userViewModel.avatarUrl, let url = URL(string: avatarUrl) {
-                self.userImageView.contentMode = .scaleAspectFill
-                self.userImageView.load(with: url)
+                self?.userImageView.contentMode = .scaleAspectFill
+                self?.userImageView.load(with: url)
             }
             
-            self.checkoutView()
+            self?.checkoutView()
         }
         
-//        viewModel?.collectionNfts.bind { [weak self] res in
-//            self?.countNftsLabel.text = "\(res.count)"
-//        }
-        
-        viewModel?.followers.bind {
-            self.followersLabel.text = "\($0.count)"
+        viewModel?.followers.observe(on: self) { [weak self] followers in
+            self?.followersLabel.text = "\(followers.count)"
         }
         
-        viewModel?.following.bind {
-            self.followingLabel.text = "\($0.count)"
+        viewModel?.following.observe(on: self) { [weak self] following in
+            self?.followingLabel.text = "\(following.count)"
         }
         
-        viewModel?.typeFollows.bind { (requester, user) in
+        viewModel?.typeFollows.observe(on: self) { [weak self] (requester, user) in
             if user == TypeFollows.none {
-                self.miniTopButton.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
+                self?.miniTopButton.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
             }
             
             if requester == TypeFollows.none && user == TypeFollows.followers {
-                self.miniTopButton.setTitle(NSLocalizedString("Follow back", comment: ""), for: .normal)
+                self?.miniTopButton.setTitle(NSLocalizedString("Follow back", comment: ""), for: .normal)
             }
             
             if requester == TypeFollows.followers {
-                self.miniTopButton.setTitle(NSLocalizedString("Unfollow", comment: ""), for: .normal)
+                self?.miniTopButton.setTitle(NSLocalizedString("Unfollow", comment: ""), for: .normal)
             }
         }
     }
@@ -128,9 +124,11 @@ class ProfileHeaderView: UIView {
     }
     
     private func checkoutList(selectedLabel: UILabel) {
+        let countHeaders = getCountHeaders()
+        
         HapticHelper.vibro(.light)
         
-        let borderWidth = (UIScreen.main.bounds.width - 0) / 2
+        let borderWidth = UIScreen.main.bounds.width / countHeaders
         collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
         observablesLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
         createdLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
@@ -139,7 +137,11 @@ class ProfileHeaderView: UIView {
         observablesLabel.textColor = UIColor.gray
         createdLabel.textColor = UIColor.gray
         
-        selectedLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "black") ?? UIColor.black, thickness: 1, width: borderWidth)
+        var borderColor = UIColor(named: "black")
+        if countHeaders == 1 {
+            borderColor = UIColor(named: "gray")
+        }
+        selectedLabel.layer.addBorder(edge: UIRectEdge.bottom, color: borderColor ?? UIColor.black, thickness: 1, width: borderWidth)
         selectedLabel.textColor = UIColor(named: "black")
     }
     
@@ -161,14 +163,6 @@ class ProfileHeaderView: UIView {
     }
     
     private func setupStyle() {
-        let windowWidth: CGFloat = UIScreen.main.bounds.width
-        let borderWidth = windowWidth / 2
-        
-        observablesLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
-        createdLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
-        observablesLabel.textColor = UIColor.gray
-        createdLabel.textColor = UIColor.gray
-
         miniTopButton.applyButtonEffects()
         
         let followersTap = UITapGestureRecognizer(target: self, action: #selector(followersContainerDidTap(_:)))
@@ -211,14 +205,10 @@ class ProfileHeaderView: UIView {
     
     func checkoutView() {
         guard let userViewModel = viewModel?.userViewModel.value else { return }
-        let windowWidth: CGFloat = UIScreen.main.bounds.width
-        let borderWidth = windowWidth / 2
         
         if userViewModel.id == Constant.USER_ID {
             // it's me
             miniTopButton.addTarget(self, action: #selector(shareDidTap), for: .touchUpInside)
-            
-            collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "black") ?? UIColor.black, thickness: 1, width: borderWidth)
         }
         
         if userViewModel.id != Constant.USER_ID {
@@ -228,17 +218,35 @@ class ProfileHeaderView: UIView {
             miniTopButton.addTarget(self, action: #selector(subscribeDidTap), for: .touchUpInside)
 
             observablesLabel.isHidden = true
-            collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: windowWidth)
         }
 
         if userViewModel.influencerId != nil {
             collectionLabel.isUserInteractionEnabled = true
             createdLabel.isHidden = false
-            
-            collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "black") ?? UIColor.black, thickness: 1, width: borderWidth)
         } else if userViewModel.id != Constant.USER_ID {
             collectionLabel.isUserInteractionEnabled = false
         }
+        
+        if let typeList = viewModel?.typeListNfts.value {
+            switch typeList {
+            case .collection:
+                checkoutList(selectedLabel: collectionLabel)
+            case .observables:
+                checkoutList(selectedLabel: observablesLabel)
+            case .created:
+                checkoutList(selectedLabel: createdLabel)
+            }
+        }
+    }
+    
+    func getCountHeaders() -> CGFloat {
+        var count = 0
+        
+        if !collectionLabel.isHidden { count += 1 }
+        if !observablesLabel.isHidden { count += 1 }
+        if !createdLabel.isHidden { count += 1 }
+        
+        return CGFloat(count)
     }
     
     @objc func followersContainerDidTap(_ sender: AnyObject) {

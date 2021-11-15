@@ -35,12 +35,12 @@ class SettingsViewController: UIViewController {
     }
     
     func bindData() {
-        UserObject.user.bind {
-            if let balance = $0?.balance {
+        UserObject.user.observe(on: self) { [weak self] userViewModel in
+            if let balance = userViewModel?.balance {
                 if balance == 0 {
-                    self.balanceLabel.text = "0.0"
+                    self?.balanceLabel.text = "0.0"
                 } else {
-                    self.balanceLabel.text = balance.clean
+                    self?.balanceLabel.text = balance.rounded(toPlaces: 2).clean
                 }
             }
         }
