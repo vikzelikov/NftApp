@@ -16,8 +16,10 @@ struct User: Equatable, Identifiable {
     var avatarUrl: String?
     var balance: Double?
     var totalCost: Double?
+    var countNFTs: Int?
     var oldPassword: String?
     var newPassword: String?
+    var inviteWord: String?
 }
 
 struct UserObject {

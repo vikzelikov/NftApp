@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InvitationsViewController" customModule="NftApp" customModuleProvider="target">
+            <connections>
+                <outlet property="inviteTextField" destination="vd4-cU-inQ" id="B3p-Cx-pL0"/>
+                <outlet property="saveButton" destination="UrW-LY-AWL" id="Q6d-ea-ywB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Invite word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vd4-cU-inQ">
+                    <rect key="frame" x="15" y="62" width="290" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="t2N-If-kl3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrW-LY-AWL" customClass="AccentButton" customModule="NftApp" customModuleProvider="target">
+                    <rect key="frame" x="15" y="488" width="290" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="8Pp-Jf-QDg"/>
+                    </constraints>
+                    <state key="normal" title="SAVE"/>
+                    <connections>
+                        <action selector="saveDidTap:" destination="-1" eventType="touchUpInside" id="zK0-du-48t"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PO-e2-hXg">
+                    <rect key="frame" x="111.5" y="15" width="97.5" height="27"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcm-u2-MnU">
+                    <rect key="frame" x="15" y="122" width="290" height="67"/>
+                    <string key="text">With this invitation you can invite your friends to the app.
+
+The number of invitations is limited.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGc-hZ-UCx">
+                    <rect key="frame" x="0.0" y="0.0" width="35" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="Qz2-hb-cGv"/>
+                        <constraint firstAttribute="height" constant="40" id="qq6-yE-8E0"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="15" minY="20" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" image="left_arrow"/>
+                    <connections>
+                        <action selector="dismissDidTap:" destination="-1" eventType="touchUpInside" id="uxD-u1-F8T"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ZGc-hZ-UCx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DJx-pF-P09"/>
+                <constraint firstItem="vd4-cU-inQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="GDN-nv-BQD"/>
+                <constraint firstItem="UrW-LY-AWL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="T02-fy-fv3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vd4-cU-inQ" secondAttribute="trailing" constant="15" id="TCx-Bs-Mht"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UrW-LY-AWL" secondAttribute="trailing" constant="15" id="UA6-0m-0fv"/>
+                <constraint firstItem="7PO-e2-hXg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="UUI-jm-bcK"/>
+                <constraint firstItem="mcm-u2-MnU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="afr-oX-fk1"/>
+                <constraint firstItem="7PO-e2-hXg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gtS-le-Lkf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="UrW-LY-AWL" secondAttribute="bottom" constant="20" id="jD4-h8-61G"/>
+                <constraint firstItem="mcm-u2-MnU" firstAttribute="top" secondItem="vd4-cU-inQ" secondAttribute="bottom" constant="20" id="ofn-Vu-yDD"/>
+                <constraint firstItem="ZGc-hZ-UCx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="sDA-NB-eef"/>
+                <constraint firstItem="vd4-cU-inQ" firstAttribute="top" secondItem="7PO-e2-hXg" secondAttribute="bottom" constant="20" id="tfe-fk-LHf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mcm-u2-MnU" secondAttribute="trailing" constant="15" id="yGf-Cu-hx4"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="64"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="left_arrow" width="25" height="25"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

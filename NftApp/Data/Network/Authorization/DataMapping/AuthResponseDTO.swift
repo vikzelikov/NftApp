@@ -1,5 +1,5 @@
 //
-//  SignupResponseDTO.swift
+//  LoginResponseDTO.swift
 //  NftApp
 //
 //  Created by Yegor on 16.08.2021.
@@ -7,10 +7,12 @@
 
 import Foundation
 
-struct SignupResponseDTO: Decodable {
+struct AuthResponseDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
+        case userId
         case token
     }
     
-    let token: String
+    let userId: Int?
+    let token: String?
 }

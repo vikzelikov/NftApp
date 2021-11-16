@@ -17,14 +17,18 @@ class GetUserResponseDTO: Decodable {
         case flowAddress
         case balance
         case totalCost
+        case countNFTs
+        case inviteWord
     }
     
     let id: Int
     let influencerId: Int?
     let login: String
-    let email: String
+    let email: String?
     let avatarUrl: String?
     let flowAddress: String?
     let balance: String?
     let totalCost: String?
+    let countNFTs: String?
+    let inviteWord: String?
 }

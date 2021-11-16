@@ -24,6 +24,7 @@ struct UserEndpoints {
         if request.email != nil { requestDTO["email"] = request.email }
         if request.oldPassword != nil { requestDTO["oldPassword"] = request.oldPassword }
         if request.newPassword != nil { requestDTO["newPassword"] = request.newPassword }
+        if request.inviteWord != nil { requestDTO["inviteWord"] = request.inviteWord }
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/users/\(Constant.USER_ID)"

@@ -51,7 +51,7 @@
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLy-6c-cYo">
                             <rect key="frame" x="15" y="220" width="290" height="100.5"/>
-                            <string key="text">We have reserved your login.
+                            <string key="text">We have reserved your account.
 
 Anyone can join with an invite from an existing user. 
 We are so grateful you’re here and can’t wait to have you join!</string>

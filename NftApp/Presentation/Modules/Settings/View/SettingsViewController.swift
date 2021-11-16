@@ -85,6 +85,7 @@ class SettingsViewController: UIViewController {
         
         items.append(SettingCellViewModel(title: NSLocalizedString("Personal information", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         items.append(SettingCellViewModel(title: NSLocalizedString("Password", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+        items.append(SettingCellViewModel(title: NSLocalizedString("Invitations", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
         
         if #available(iOS 15.0, *) {
             otherSettingsTableView.sectionHeaderTopPadding = 0.0
@@ -136,16 +137,21 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView === personalDataTableView {
+            var vc: UIViewController? = nil
+            
             switch indexPath.row {
             case 0:
-                let vc = PersonalDataViewController()
-                navigationController?.pushViewController(vc, animated: true)
+                vc = PersonalDataViewController()
             case 1:
-                let vc = PasswordViewController()
-                navigationController?.pushViewController(vc, animated: true)
+                vc = PasswordViewController()
+            case 2:
+                vc = InvitationsViewController()
             default: break
-                
             }
+            
+            guard let vc = vc else { return }
+            navigationController?.pushViewController(vc, animated: true)
+
         } else if tableView === otherSettingsTableView {
             switch indexPath.row {
             

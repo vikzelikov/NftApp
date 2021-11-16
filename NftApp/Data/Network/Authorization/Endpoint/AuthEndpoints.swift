@@ -45,11 +45,10 @@ struct AuthEndpoints {
     
     static func checkInviteEndpoint(inviteWord: String) -> Endpoint {
         let requestDTO = CheckInviteRequestDTO (
-            userId: Constant.USER_ID,
-            inviteWord: inviteWord
+            userId: Constant.USER_ID
         ).parameters
         
-        let url = Constant.BASE_URL + "api/auth/checkInvite"
+        let url = Constant.BASE_URL + "api/auth/\(inviteWord)"
         
         return Endpoint(url: url, method: .post, headers: [], data: requestDTO)
     }

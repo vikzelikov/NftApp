@@ -16,6 +16,8 @@ protocol UserStorage {
     
     func saveInvitingState()
     
+    func getInvitingState() -> Bool
+    
     func removeInvitingState()
         
     func getUserId() -> Int
@@ -36,6 +38,10 @@ class UserStorageImpl: UserStorage  {
     
     func saveInvitingState() {
         UserDefaults.standard.set(true, forKey: "isInvitingState")
+    }
+    
+    func getInvitingState() -> Bool {
+        return UserDefaults.standard.bool(forKey: "isInvitingState")
     }
     
     func removeInvitingState() {

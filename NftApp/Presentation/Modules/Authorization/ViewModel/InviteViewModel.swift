@@ -28,28 +28,23 @@ class InviteViewModelImpl: InviteViewModel {
     }
     
     func nextDidTap(inviteWord: String) {
-        if inviteWord == "YUP" {
-            loginUseCase.removeInvitingState()
-
-            self.isSuccess.value = true
-            return
-        }
-        
         self.isLoading.value = true
         
         loginUseCase.checkInvite(inviteWord: inviteWord, completion: { result in
             switch result {
             case .success:
-                self.loginUseCase.removeInvitingState()
-
                 self.isSuccess.value = true
                 
             case .failure(let error):
                 self.isSuccess.value = false
                 
                 var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode == HttpCode.badRequest {
-                    errorStr = NSLocalizedString("Invite not found", comment: "")
+                if errorStr == "invite word is invalid" {
+                    errorStr = NSLocalizedString("Invitation has expired", comment: "")
+                }
+                
+                if httpCode == HttpCode.notFound {
+                    errorStr = NSLocalizedString("Invitation not found", comment: "")
                 }
                 self.errorMessage.value = errorStr
             }

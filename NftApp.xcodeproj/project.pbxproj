@@ -125,9 +125,10 @@
 		1879C56E26C9C9DF00CE367E /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C56D26C9C9DF00CE367E /* LoginUseCase.swift */; };
 		1879C57226C9D30900CE367E /* SignupRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57126C9D30900CE367E /* SignupRequestDTO.swift */; };
 		1879C57426C9D31B00CE367E /* LoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57326C9D31B00CE367E /* LoginRequestDTO.swift */; };
-		1879C57626C9D32F00CE367E /* SignupResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57526C9D32F00CE367E /* SignupResponseDTO.swift */; };
-		1879C57826C9D34300CE367E /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57726C9D34300CE367E /* LoginResponseDTO.swift */; };
+		1879C57826C9D34300CE367E /* AuthResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57726C9D34300CE367E /* AuthResponseDTO.swift */; };
 		1879C57A26CA79BB00CE367E /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57926CA79BB00CE367E /* SignupViewModel.swift */; };
+		187CF93627445D4B00EBCF27 /* InvitationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CF93427445D4B00EBCF27 /* InvitationsViewController.swift */; };
+		187CF93727445D4B00EBCF27 /* InvitationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187CF93527445D4B00EBCF27 /* InvitationsViewController.xib */; };
 		18855F3626D52A360018B072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18855F3526D52A360018B072 /* Assets.xcassets */; };
 		18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84265266E27A40033AFC0 /* AppDelegate.swift */; };
 		18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84269266E27A40033AFC0 /* SignUpViewController.swift */; };
@@ -348,9 +349,10 @@
 		1879C56D26C9C9DF00CE367E /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		1879C57126C9D30900CE367E /* SignupRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequestDTO.swift; sourceTree = "<group>"; };
 		1879C57326C9D31B00CE367E /* LoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestDTO.swift; sourceTree = "<group>"; };
-		1879C57526C9D32F00CE367E /* SignupResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupResponseDTO.swift; sourceTree = "<group>"; };
-		1879C57726C9D34300CE367E /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
+		1879C57726C9D34300CE367E /* AuthResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseDTO.swift; sourceTree = "<group>"; };
 		1879C57926CA79BB00CE367E /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		187CF93427445D4B00EBCF27 /* InvitationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationsViewController.swift; sourceTree = "<group>"; };
+		187CF93527445D4B00EBCF27 /* InvitationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvitationsViewController.xib; sourceTree = "<group>"; };
 		18855F3526D52A360018B072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B84262266E27A40033AFC0 /* NftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B84265266E27A40033AFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -513,6 +515,8 @@
 				1834E760273332490081EFB1 /* PasswordViewController.xib */,
 				1813842E27343CE2004530BD /* PersonalDataViewController.swift */,
 				1813842F27343CE2004530BD /* PersonalDataViewController.xib */,
+				187CF93427445D4B00EBCF27 /* InvitationsViewController.swift */,
+				187CF93527445D4B00EBCF27 /* InvitationsViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1073,9 +1077,8 @@
 			isa = PBXGroup;
 			children = (
 				1879C57126C9D30900CE367E /* SignupRequestDTO.swift */,
-				1879C57526C9D32F00CE367E /* SignupResponseDTO.swift */,
 				1879C57326C9D31B00CE367E /* LoginRequestDTO.swift */,
-				1879C57726C9D34300CE367E /* LoginResponseDTO.swift */,
+				1879C57726C9D34300CE367E /* AuthResponseDTO.swift */,
 				18138447273549CA004530BD /* AppleLoginRequestDTO.swift */,
 				18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */,
 			);
@@ -1660,6 +1663,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				182342E526A2370900CD2907 /* MoreOffersViewController.xib in Resources */,
+				187CF93727445D4B00EBCF27 /* InvitationsViewController.xib in Resources */,
 				1834E762273332490081EFB1 /* PasswordViewController.xib in Resources */,
 				18523F94269CED1100611362 /* TabBar.storyboard in Resources */,
 				18B84272266E27A50033AFC0 /* LaunchScreen.storyboard in Resources */,
@@ -1793,7 +1797,6 @@
 				1813846027356FA6004530BD /* SearchViewCell.swift in Sources */,
 				18E1108A26D5AA56007FD66E /* EditionDTO.swift in Sources */,
 				182342DB26A1E67F00CD2907 /* NftMarketViewCell.swift in Sources */,
-				1879C57626C9D32F00CE367E /* SignupResponseDTO.swift in Sources */,
 				18C319DD273DD4F1005BD3CA /* HeaderViewCell.swift in Sources */,
 				180F6C7627385ABB00F3F03E /* ErrorView.swift in Sources */,
 				182342CC269E41F300CD2907 /* DropShopViewModel.swift in Sources */,
@@ -1866,6 +1869,7 @@
 				18E1108026D5A543007FD66E /* GetEditionsResponseDTO.swift in Sources */,
 				1833847626FF1BFB00EAD9EB /* NftUseCase.swift in Sources */,
 				18E39B1626D0394C00FEC003 /* UserRepositoryImpl.swift in Sources */,
+				187CF93627445D4B00EBCF27 /* InvitationsViewController.swift in Sources */,
 				18156D4626A4DD3E006B8FE5 /* SettingViewCell.swift in Sources */,
 				182342E826A2D21400CD2907 /* OfferPriceViewCell.swift in Sources */,
 				18D2C126274044580043BEEC /* CheckInviteRequestDTO.swift in Sources */,
@@ -1898,7 +1902,7 @@
 				1833848A26FF3F6200EAD9EB /* FollowsEndpoints.swift in Sources */,
 				18E1109226D681D8007FD66E /* GetNftsRequestDTO.swift in Sources */,
 				1869F0F62701DB9000C7654A /* UserViewModel.swift in Sources */,
-				1879C57826C9D34300CE367E /* LoginResponseDTO.swift in Sources */,
+				1879C57826C9D34300CE367E /* AuthResponseDTO.swift in Sources */,
 				1869F0FB2707537200C7654A /* InfluencersCollectionView.swift in Sources */,
 				18DDEA1026D7021200306A60 /* WalletUseCase.swift in Sources */,
 				18E39B1326D02D4900FEC003 /* JWT.swift in Sources */,

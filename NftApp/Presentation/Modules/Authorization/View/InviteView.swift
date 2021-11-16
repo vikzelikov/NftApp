@@ -35,6 +35,8 @@ class InviteView: UIView {
         bindData()
         
         setupStyle()
+        
+        HapticHelper.longHaptic()
     }
     
     func bindData() {
@@ -47,15 +49,16 @@ class InviteView: UIView {
             if isSuccess { self?.showInitialView() }
         }
             
-        viewModel?.errorMessage.observe(on: self) { [weak self] _ in
+        viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
+            guard let errorMessage = errMessage else { return }
             self?.inviteTextField.layer.borderColor = UIColor(named: "orange")?.cgColor
             self?.inviteTextField.text = ""
-            
-            HapticHelper.longHaptic()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self?.inviteTextField.layer.borderColor = UIColor.gray.withAlphaComponent(0.2).cgColor
             }
+            
+            self?.showMessage(message: errorMessage)
         }
     }
     

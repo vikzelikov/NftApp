@@ -32,7 +32,8 @@ final class InitialUseCaseImpl: InitialUseCase {
                                                   isDropShopAvailable: resp.isDropshopAvailable,
                                                   isMarketAvailable: resp.isMarketAvailable,
                                                   isDepositAvailable: resp.isDepositAvailable,
-                                                  isWithdrawAvailable: resp.isWithdrawAvailable)
+                                                  isWithdrawAvailable: resp.isWithdrawAvailable,
+                                                  isInvited: resp.isInvited)
                     
                     InitialDataObject.data.value = initialData
                     

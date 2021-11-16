@@ -14,6 +14,8 @@ protocol LoginUseCase {
     func appleLogin(appleId: String, completion: @escaping (Result<Bool, Error>) -> Void)
     
     func checkInvite(inviteWord: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    
+    func getInvitingState() -> Bool
 
     func removeInvitingState()
 
@@ -44,9 +46,22 @@ final class LoginUseCaseImpl: LoginUseCase {
     func checkInvite(inviteWord: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         repository?.checkInvite(inviteWord: inviteWord, completion: { result in
             switch result {
-                case .success: do {
-                    // save token and id OR NOT self.userStorage?.saveInvitingState()
-                    completion(.success(true))
+            case .success(let resp) : do {
+                    if let authToken = resp.token {
+                        if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
+                            Constant.AUTH_TOKEN = authToken
+                            Constant.USER_ID = userId
+                            self.userStorage?.saveAuthToken(token: authToken)
+                            self.userStorage?.saveUserId(userId: userId)
+                            self.userStorage?.removeInvitingState()
+                            
+                            completion(.success(true))
+                        } else {
+                            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+                        }
+                    } else {
+                        completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+                    }
                 }
                 
                 case .failure(let error) : do {
@@ -56,17 +71,27 @@ final class LoginUseCaseImpl: LoginUseCase {
         })
     }
     
-    private func loginProcess(result: Result<LoginResponseDTO, Error>, completion: @escaping (Result<Bool, Error>) -> Void) {
+    private func loginProcess(result: Result<AuthResponseDTO, Error>, completion: @escaping (Result<Bool, Error>) -> Void) {
         switch result {
             case .success(let resp) : do {
-                let authToken = resp.token
-                
-                if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
-                    Constant.AUTH_TOKEN = authToken
+                if let authToken = resp.token {
+                    // already invited
+                    if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
+                        Constant.AUTH_TOKEN = authToken
+                        Constant.USER_ID = userId
+                        self.userStorage?.saveAuthToken(token: authToken)
+                        self.userStorage?.saveUserId(userId: userId)
+                        
+                        completion(.success(true))
+                    } else {
+                        completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+                    }
+                } else if let userId = resp.userId {
+                    // check invite
                     Constant.USER_ID = userId
-                    self.userStorage?.saveAuthToken(token: authToken)
                     self.userStorage?.saveUserId(userId: userId)
-                    
+                    self.userStorage?.saveInvitingState()
+
                     completion(.success(true))
                 } else {
                     completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
@@ -76,6 +101,14 @@ final class LoginUseCaseImpl: LoginUseCase {
             case .failure(let error) : do {
                 completion(.failure(error))
             }
+        }
+    }
+    
+    func getInvitingState() -> Bool {
+        if let isInvitingState = userStorage?.getInvitingState() {
+            return isInvitingState
+        } else {
+            return false
         }
     }
     

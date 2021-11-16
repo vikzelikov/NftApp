@@ -15,6 +15,8 @@ protocol SettingsViewModel: BaseViewModel {
     
     func personalUpdateDidTap(login: String, email: String, completion: @escaping (Bool) -> Void)
     
+    func invitationsUpdateDidTap(inviteWord: String, completion: @escaping (Bool) -> Void)
+    
     func logoutDidTap()
         
 }
@@ -74,9 +76,39 @@ class SettingsViewModelImpl: SettingsViewModel {
     
     func personalUpdateDidTap(login: String, email: String, completion: @escaping (Bool) -> Void) {
         var user = User(id: Constant.USER_ID, login: login, email: email)
+                
+        if let userViewModel = UserObject.user.value {
+            if userViewModel.login == login { user.login = nil }
+            if userViewModel.email == email || !isValidEmail(email: email) { user.email = nil }
+        }
         
-        if !isValidEmail(email: email) { user.email = nil }
-        
+        userUseCase.updateUser(request: user, completion: { result in
+            switch result {
+            case .success:
+                if user.login != nil { UserObject.user.value?.login = login }
+                if user.email != nil { UserObject.user.value?.email = email }
+                
+                UserObject.isNeedRefresh.value = true
+                
+                completion(true)
+
+            case .failure(let error):
+                var (_, errorStr) = ErrorHelper.validateError(error: error)
+                if errorStr == "email used" || errorStr == "you are using this email" {
+                    errorStr = NSLocalizedString("E-mail is already in use", comment: "")
+                }
+                self.errorMessage.value = errorStr
+                
+                completion(false)
+            }
+
+            self.isLoading.value = false
+        })
+    }
+    
+    func invitationsUpdateDidTap(inviteWord: String, completion: @escaping (Bool) -> Void) {
+        let user = User(id: Constant.USER_ID, inviteWord: inviteWord)
+                
         userUseCase.updateUser(request: user, completion: { result in
             switch result {
             case .success:
@@ -84,7 +116,7 @@ class SettingsViewModelImpl: SettingsViewModel {
 
             case .failure(let error):
                 var (_, errorStr) = ErrorHelper.validateError(error: error)
-                if errorStr == "email used" || errorStr == "you are using this email" {
+                if errorStr == "email used" {
                     errorStr = NSLocalizedString("E-mail is already in use", comment: "")
                 }
                 self.errorMessage.value = errorStr

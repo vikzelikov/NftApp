@@ -9,7 +9,7 @@ import Foundation
 
 struct Constant {
     
-    static let BASE_URL = "http://80.249.146.230:5000/"
+    static let BASE_URL = "http://5.53.125.173:5000/"
     
     static let MERCHANT_ID = "merchant.com.nft.dev"
     

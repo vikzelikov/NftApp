@@ -9,15 +9,12 @@ import Foundation
 
 class CheckInviteRequestDTO: Decodable {
     private var userId: Int
-    private var inviteWord: String
     
     lazy var parameters = [
-        "userId": userId,
-        "inviteWord": inviteWord
+        "userId": userId
     ] as [String : Any]
 
-    init(userId: Int, inviteWord: String) {
+    init(userId: Int) {
         self.userId = userId
-        self.inviteWord = inviteWord
     }
 }

@@ -29,12 +29,8 @@ final class SignupUseCaseImpl: SignupUseCase {
         repository?.signup(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    let authToken = resp.token
-
-                    if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
-                        Constant.AUTH_TOKEN = authToken
+                    if let userId = resp.userId {
                         Constant.USER_ID = userId
-                        self.userStorage?.saveAuthToken(token: authToken)
                         self.userStorage?.saveUserId(userId: userId)
                         self.userStorage?.saveInvitingState()
                         

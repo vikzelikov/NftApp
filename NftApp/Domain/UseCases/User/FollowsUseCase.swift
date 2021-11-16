@@ -31,34 +31,37 @@ final class FollowsUseCaseImpl: FollowsUseCase {
     
     func getFollowers(request: FollowsRequest, completion: @escaping (Result<[User], Error>) -> Void) {
         repository?.getFollowers(request: request, completion: { result in
-            switch result {
-                case .success(let resp) : do {
-                    let users = resp.rows.map{User(id: $0.id, influencerId: $0.influencerId, login: $0.login, email: $0.email, flowAddress: $0.flowAddress, avatarUrl: $0.avatarUrl, totalCost: Double($0.totalCost ?? "0.0"))}
-                    
-                    completion(.success(users))
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
-            }
+            self.processGetFollows(result: result, completion: completion)
         })
     }
 
     func getFollowing(request: FollowsRequest, completion: @escaping (Result<[User], Error>) -> Void) {
         repository?.getFollowing(request: request, completion: { result in
-            switch result {
-                case .success(let resp) : do {
-                    let users = resp.rows.map{User(id: $0.id, influencerId: $0.influencerId, login: $0.login, email: $0.email, flowAddress: $0.flowAddress, avatarUrl: $0.avatarUrl, totalCost: Double($0.totalCost ?? "0.0"))}
-                    
-                    completion(.success(users))
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
-            }
+            self.processGetFollows(result: result, completion: completion)
         })
+    }
+    
+    private func processGetFollows(result: Result<GetUsersResponseDTO, Error>, completion: @escaping (Result<[User], Error>) -> Void) {
+        switch result {
+            case .success(let resp) : do {
+                let users = resp.rows.map{User(
+                    id: $0.id,
+                    influencerId: $0.influencerId,
+                    login: $0.login,
+                    email: $0.email,
+                    flowAddress: $0.flowAddress,
+                    avatarUrl: $0.avatarUrl,
+                    totalCost: Double($0.totalCost ?? "0.0"),
+                    countNFTs: Int($0.countNFTs ?? "0")
+                )}
+                
+                completion(.success(users))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
+        }
     }
     
     func follow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {

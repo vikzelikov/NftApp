@@ -40,9 +40,12 @@
 "Saved" = "Saved";
 "Successful purchase" = "Successful purchase";
 "Error Apple authorization" = "Error Apple authorization";
-"Invite not found" = "Invite not found";
+"Invitation not found" = "Invitation not found";
 "E-mail is already in use" = "E-mail is already in use";
 "Passwords don't match" = "Passwords don't match";
 "Password is empty" = "Password is empty";
 "E-mail is not vaild" = "E-mail is not vaild";
 "Please provide login and E-mail" = "Please provide login and E-mail";
+"Please provide login" = "Please provide login";
+"Invitation has expired" = "Invitation has expired";
+"Invitations" = "Invitations";

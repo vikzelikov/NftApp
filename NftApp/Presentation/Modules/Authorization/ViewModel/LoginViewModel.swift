@@ -46,9 +46,8 @@ class LoginViewModelImpl: LoginViewModel {
     }
     
     func viewDidload() {
-        if let isInvitingState = UserDefaults.standard.object(forKey: "isInvitingState") as? Bool {
-            if isInvitingState { isSetupInvite.value = true }
-        }
+        let isInvitingState = loginUseCase.getInvitingState()
+        if isInvitingState { isSetupInvite.value = true }
     }
     
     func updateCredentials(login: String, password: String) {
@@ -62,14 +61,19 @@ class LoginViewModelImpl: LoginViewModel {
         loginUseCase.login(request: loginRequest, completion: { result in
             switch result {
             case .success:
-                // self.isSetupInvite.value = true
-                self.isSuccess.value = true
+                let isInvitingState = self.loginUseCase.getInvitingState()
+                
+                if isInvitingState {
+                    self.isSetupInvite.value = true
+                } else {
+                    self.isSuccess.value = true
+                }
                 
             case .failure(let error):
                 self.isSuccess.value = false
                 
                 var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode == HttpCode.badRequest {
+                if httpCode == HttpCode.badRequest || httpCode == HttpCode.unauthorized {
                     errorStr = NSLocalizedString("Error login or password", comment: "")
                 }
                 self.errorMessage.value = errorStr
@@ -82,13 +86,13 @@ class LoginViewModelImpl: LoginViewModel {
     
     func inputCredentials() {
         if login.isEmpty  {
-            errorMessage.value = "Please provide login"
+            errorMessage.value = NSLocalizedString("Please provide login", comment: "")
             isSuccess.value = false
             return
         }
     
         if password.isEmpty {
-            errorMessage.value = "Password is empty"
+            errorMessage.value = NSLocalizedString("Password is empty", comment: "")
             isSuccess.value = false
             return
         }

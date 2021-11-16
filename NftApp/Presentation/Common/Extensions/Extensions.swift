@@ -201,6 +201,40 @@ extension UIViewController {
     }
 }
 
+extension UIView {
+    
+    func showMessage(message: String, isHaptic: Bool = true) {
+        var y = 0
+        let errorView = ErrorView()
+        errorView.alpha = 0.0
+        if let topPadding = UIApplication.shared.keyWindow?.safeAreaInsets.top {
+            if topPadding == 20 {
+                y = -20
+            }
+        }
+        errorView.frame = CGRect(x: 0, y: y, width: Int(UIScreen.main.bounds.size.width), height: 0)
+        errorView.errorLabel.text = message
+        self.addSubview(errorView)
+        
+        UIView.animate(withDuration: 0.25) { () -> Void in
+            errorView.alpha = 1.0
+        }
+        
+        if isHaptic {
+            HapticHelper.longHaptic()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                errorView.alpha = 0.0
+            }, completion: { _ in
+                errorView.removeFromSuperview()
+            })
+        }
+    }
+    
+}
+
 extension UITableViewCell {
     
     func applyTouchDownAnimation(cell: UITableViewCell?) {

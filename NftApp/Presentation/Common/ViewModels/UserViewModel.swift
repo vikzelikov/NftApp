@@ -16,6 +16,8 @@ struct UserViewModel {
     var avatarUrl: String?
     var balance: Double?
     var totalCost: Double?
+    var countNFTs: Int?
+    var inviteWord: String?
 }
 
 extension UserViewModel {
@@ -28,5 +30,7 @@ extension UserViewModel {
         self.avatarUrl = user.avatarUrl
         self.balance = user.balance
         self.totalCost = user.totalCost
+        self.countNFTs = user.countNFTs
+        self.inviteWord = user.inviteWord
     }
 }

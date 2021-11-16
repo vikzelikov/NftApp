@@ -40,9 +40,12 @@
 "Saved" = "Сохранено";
 "Successful purchase" = "Успешная покупка";
 "Error Apple authorization" = "Ошибка Apple авторизации";
-"Invite not found" = "Приглашение на найдено";
+"Invitation not found" = "Приглашение на найдено";
 "E-mail is already in use" = "E-mail уже используется";
 "Passwords don't match" = "Пароли не совпадают";
 "Password is empty" = "Введите пароль";
 "E-mail is not vaild" = "E-mail недействителен";
 "Please provide login and E-mail" = "Укажите логин и E-mail";
+"Please provide login" = "Укажите логин";
+"Invitation has expired" = "Приглашение недействительно";
+"Invitations" = "Приглашения";

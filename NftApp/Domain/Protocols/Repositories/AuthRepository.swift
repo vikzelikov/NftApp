@@ -9,12 +9,12 @@ import Foundation
 
 protocol AuthRepository {
     
-    func signup(request: SignupRequest, completion: @escaping (Result<SignupResponseDTO, Error>) -> Void)
+    func signup(request: SignupRequest, completion: @escaping (Result<AuthResponseDTO, Error>) -> Void)
     
-    func login(request: LoginRequest, completion: @escaping (Result<LoginResponseDTO, Error>) -> Void)
+    func login(request: LoginRequest, completion: @escaping (Result<AuthResponseDTO, Error>) -> Void)
     
-    func appleLogin(appleId: String, completion: @escaping (Result<LoginResponseDTO, Error>) -> Void)
+    func appleLogin(appleId: String, completion: @escaping (Result<AuthResponseDTO, Error>) -> Void)
     
-    func checkInvite(inviteWord: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    func checkInvite(inviteWord: String, completion: @escaping (Result<AuthResponseDTO, Error>) -> Void)
     
 }
