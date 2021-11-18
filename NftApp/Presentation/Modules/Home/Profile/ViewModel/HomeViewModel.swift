@@ -159,7 +159,6 @@ class HomeViewModelImpl: HomeViewModel {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.isLoading.value = false
             }
-            
         }
     }
     
@@ -178,7 +177,7 @@ class HomeViewModelImpl: HomeViewModel {
 
             case .failure(let error):
                 let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode != HttpCode.notFound {
+                if httpCode != HttpCode.notFound && httpCode != HttpCode.badRequest {
                     self.errorMessage.value = errorStr
                 }
             }
@@ -186,7 +185,6 @@ class HomeViewModelImpl: HomeViewModel {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.isLoading.value = false
             }
-
         }
     }
     
@@ -205,7 +203,7 @@ class HomeViewModelImpl: HomeViewModel {
 
             case .failure(let error):
                 let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode != HttpCode.notFound {
+                if httpCode != HttpCode.notFound && httpCode != HttpCode.badRequest {
                     self.errorMessage.value = errorStr
                 }
             }
@@ -213,7 +211,6 @@ class HomeViewModelImpl: HomeViewModel {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.isLoading.value = false
             }
-
         }
     }
     

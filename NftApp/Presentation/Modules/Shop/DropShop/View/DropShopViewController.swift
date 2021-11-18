@@ -230,7 +230,7 @@ extension DropShopViewController: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.didSelectInfluencer(at: indexPath.row - 1) { userViewModel in
+        viewModel?.didSelectInfluencer(at: indexPath.row) { userViewModel in
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
             vc.viewModel = HomeViewModelImpl()
