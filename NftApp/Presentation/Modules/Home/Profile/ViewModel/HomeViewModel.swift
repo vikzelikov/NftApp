@@ -99,6 +99,8 @@ class HomeViewModelImpl: HomeViewModel {
             case .success(let user):
                 self.userViewModel.value = UserViewModel.init(user: user)
                 
+                self.getCreatedNfts()
+                
                 if self.userViewModel.value?.id == Constant.USER_ID {
                     UserObject.user.value = self.userViewModel.value
                     UserObject.isNeedRefresh.value = false
@@ -138,9 +140,9 @@ class HomeViewModelImpl: HomeViewModel {
     
     func getCollectionNfts() {
         let userId = userViewModel.value?.id ?? Constant.USER_ID
-        let request = GetNftsRequest(userId: userId, page: page)
+        let request = GetNftsRequest(userId: userId, page: page, type: .collection)
         
-        nftUserCase.getCollectionNfts(request: request) { result in
+        nftUserCase.getNfts(request: request) { result in
             switch result {
             case .success(let nfts):
                 self.currentPage = 1
@@ -163,10 +165,10 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func getObservablesNfts() {
-        let userId = 2
-        let request = GetNftsRequest(userId: userId, page: page)
+        let userId = userViewModel.value?.id ?? Constant.USER_ID
+        let request = GetNftsRequest(userId: userId, page: page, type: .observables)
 
-        nftUserCase.getObservablesNfts(request: request) { result in
+        nftUserCase.getNfts(request: request) { result in
             switch result {
             case .success(let nfts):
                 self.currentPage = 1
@@ -189,27 +191,34 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func getCreatedNfts() {
-        let userId = userViewModel.value?.id ?? Constant.USER_ID
-        let request = GetNftsRequest(userId: 1, page: page)
+        if let influencerId = userViewModel.value?.influencerId {
+            nftUserCase.getCreatedNfts(influencerId: influencerId) { result in
+                switch result {
+                case .success(let editions):
+                    self.createdNfts.removeAll()
 
-        nftUserCase.getCreatedNfts(request: request) { result in
-            switch result {
-            case .success(let nfts):
-                self.currentPage = 1
-                self.totalPageCount = 1
-                self.createdNfts.removeAll()
+                    guard let user = self.userViewModel.value  else { return }
+                    var editions = editions.map(EditionViewModel.init)
+                    
+                    editions = editions.map { obj in
+                       var obj = obj
+                       obj.influencer = EditionInfluencerViewModel(id: 0, user: EditionUserViewModel(id: user.id, login: user.login ?? "", avatarUrl: user.avatarUrl))
+                       return obj
+                    }
+                    
+                    let nfts = editions.map { NftViewModel(id: 0, edition: $0) }
+                    self.createdNfts += nfts
 
-                self.appendNfts(nfts: nfts, typeListNfts: .created)
-
-            case .failure(let error):
-                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode != HttpCode.notFound && httpCode != HttpCode.badRequest {
-                    self.errorMessage.value = errorStr
+                case .failure(let error):
+                    let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                    if httpCode != HttpCode.notFound && httpCode != HttpCode.badRequest {
+                        self.errorMessage.value = errorStr
+                    }
                 }
-            }
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isLoading.value = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isLoading.value = false
+                }
             }
         }
     }
@@ -232,15 +241,14 @@ class HomeViewModelImpl: HomeViewModel {
             let nfts = nfts.map(NftViewModel.init)
             observablesNfts += nfts
             
-        case .created:
-            let nfts = nfts.map(NftViewModel.init)
-            createdNfts += nfts
+        case .created: break
+            
         }
     }
     
     func didSelectItem(at index: Int, completion: @escaping (NftViewModel) -> Void) {
-        if collectionNfts.indices.contains(index) {
-            let viewModel = collectionNfts[index]
+        if itemsNfts.value.indices.contains(index) {
+            let viewModel = itemsNfts.value[index]
             
             completion(viewModel)
         }

@@ -42,7 +42,10 @@ extension EditionViewModel {
         self.dateExpiration = edition.dateExpiration
         self.mediaUrl = edition.mediaUrl
         self.countNFTs = edition.countNFTs
-        self.influencer = EditionInfluencerViewModel.init(edition: edition.influencer)
+        
+        if let influencer = edition.influencer {
+            self.influencer = EditionInfluencerViewModel.init(edition: influencer)
+        }
     }
 }
 

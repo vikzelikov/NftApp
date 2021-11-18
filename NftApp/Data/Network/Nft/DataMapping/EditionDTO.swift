@@ -23,14 +23,14 @@ class EditionDTO: Decodable {
     
     let id: Int
     let influencerId: Int?
-    let count: Int
+    let count: Int?
     let countNFTs: String?
     let name: String
     let description: String
     let price: Double?
-    let dateExpiration: String
+    let dateExpiration: String?
     let mediaUrl: String
-    let influencer: EditionInfluencerDTO
+    let influencer: EditionInfluencerDTO?
 }
 
 class EditionInfluencerDTO: Decodable {

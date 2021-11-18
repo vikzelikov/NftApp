@@ -60,6 +60,18 @@ class NftViewCell: UITableViewCell {
         if typeDetailNFT == .detail {
             expirationView.isHidden = true
         }
+        
+        if let influencer = viewModel.edition.influencer?.user {
+            influencerLabel.text = influencer.login
+            
+            if let urlString = influencer.avatarUrl, let url = URL(string: urlString) {
+                influencerImage.contentMode = .scaleAspectFill
+                influencerImage.load(with: url)
+            } else {
+                influencerImage.contentMode = .scaleAspectFit
+                influencerImage.image = UIImage(named: "mini_icon")
+            }
+        }
     }
     
     func bindEdition(viewModel: EditionViewModel) {

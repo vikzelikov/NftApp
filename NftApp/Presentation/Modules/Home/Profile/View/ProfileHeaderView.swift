@@ -215,7 +215,9 @@ class ProfileHeaderView: UIView {
             // other user
             miniTopButton.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
             miniTopButton.setImage(nil, for: .normal)
+            miniTopButton.removeTarget(nil, action: nil, for: .allEvents)
             miniTopButton.addTarget(self, action: #selector(subscribeDidTap), for: .touchUpInside)
+            miniTopButton.applyButtonEffects()
 
             observablesLabel.isHidden = true
         }

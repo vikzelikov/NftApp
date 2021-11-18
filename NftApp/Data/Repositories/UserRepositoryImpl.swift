@@ -54,6 +54,16 @@ class UserRepositoryImpl: UserRepository {
         }
     }
     
+    func getInfluencer(influencerId: Int, completion: @escaping (Result<InfluencerDTO, Error>) -> Void) {
+        let endpoint = UserEndpoints.getInfluencerEndpoint(influencerId: influencerId)
+
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+           
+            NetworkHelper.validateResponse(response: response, completion: completion)
+            
+        }
+    }
+    
     func getNfts(request: GetNftsRequest, completion: @escaping (Result<GetNftsResponseDTO, Error>) -> Void) {
         let endpoint = UserEndpoints.getNftsEndpoint(request: request)
         

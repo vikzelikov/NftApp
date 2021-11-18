@@ -102,8 +102,11 @@ class DropShopViewController: UIViewController {
     
 }
 
+// MARK: fix this
 extension DropShopViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 { return }
+
         if indexPath.row == 0 {
             viewModel?.didSelectInfluencers(at: indexPath.row) { influencers in
                 let vc = InfluencersViewController()
@@ -127,14 +130,14 @@ extension DropShopViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 { return }
-        
+        if indexPath.row == 0 || indexPath.row == 2 { return }
+
         let cell = tableView.cellForRow(at: indexPath)
         cell?.applyTouchDownAnimation(cell: cell)
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 { return }
+        if indexPath.row == 0 || indexPath.row == 2 { return }
         
         let cell = tableView.cellForRow(at: indexPath)
         cell?.applyTouchUpAnimation(cell: cell)

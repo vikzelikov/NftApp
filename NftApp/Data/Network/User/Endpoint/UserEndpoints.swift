@@ -46,13 +46,20 @@ struct UserEndpoints {
         return Endpoint(url: url, method: .get, headers: headers, data: nil)
     }
     
+    static func getInfluencerEndpoint(influencerId: Int) -> Endpoint {
+        let headers: HTTPHeaders = NetworkHelper.getHeaders()
+        let url = Constant.BASE_URL + "api/influencers/\(influencerId)"
+        
+        return Endpoint(url: url, method: .get, headers: headers, data: nil)
+    }
+    
     static func getNftsEndpoint(request: GetNftsRequest) -> Endpoint {
         let requestDTO = GetNftsRequestDTO (
             page: request.page
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = Constant.BASE_URL + "api/users/\(request.userId)/nfts"
+        let url = Constant.BASE_URL + "api/users/\(request.userId)/nfts/?type=\(request.type == .collection ? "unhidden" : "observables")"
         
         return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
     }

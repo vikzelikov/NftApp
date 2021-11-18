@@ -8,13 +8,11 @@
 import Foundation
 
 protocol NftUseCase {
+            
+    func getNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void)
+
+    func getCreatedNfts(influencerId: Int, completion: @escaping (Result<[Edition], Error>) -> Void)
     
-    func getCollectionNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void)
-        
-    func getObservablesNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void)
-
-    func getCreatedNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void)
-
 }
 
 final class NftUseCaseImpl: NftUseCase {
@@ -27,7 +25,7 @@ final class NftUseCaseImpl: NftUseCase {
         self.userStorage = UserStorageImpl()
     }
     
-    func getCollectionNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void) {
+    func getNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void) {
         repository?.getNfts(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
@@ -43,29 +41,19 @@ final class NftUseCaseImpl: NftUseCase {
         })
     }
     
-    func getObservablesNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void) {
-        repository?.getNfts(request: request, completion: { result in
+    func getCreatedNfts(influencerId: Int, completion: @escaping (Result<[Edition], Error>) -> Void) {
+        repository?.getInfluencer(influencerId: influencerId, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    let nfts = self.mapNfts(response: resp)
-
-                    completion(.success(nfts))
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
-            }
-        })
-    }
-    
-    func getCreatedNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void) {
-        repository?.getNfts(request: request, completion: { result in
-            switch result {
-                case .success(let resp) : do {
-                    let nfts = self.mapNfts(response: resp)
+                    if let editionsDTO = resp.editions {
+                        let editions = editionsDTO.map {
+                            self.mapEdition(edition: $0)
+                        }
                         
-                    completion(.success(nfts))
+                        completion(.success(editions))
+                    } else {
+                        completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+                    }
                 }
                 
                 case .failure(let error) : do {
@@ -82,29 +70,44 @@ final class NftUseCaseImpl: NftUseCase {
                 currentPrice: $0.currentPrice,
                 serialNumber: $0.serialNumber,
                 isForSell: $0.isForSell,
-                edition: Edition(
-                    id: $0.id,
-                    influencerId: $0.edition.influencerId,
-                    count: $0.edition.count,
-                    name: $0.edition.name,
-                    description: $0.edition.description,
-                    price: $0.edition.price,
-                    dateExpiration: $0.edition.dateExpiration,
-                    mediaUrl: $0.edition.mediaUrl,
-                    countNFTs: Int($0.edition.countNFTs ?? "0") ?? 0,
-                    influencer: EditionInfluencer(
-                        id: $0.edition.influencer.id,
-                        user: EditionUser(
-                            id: $0.edition.influencer.user.id,
-                            login: $0.edition.influencer.user.login,
-                            avatarUrl: $0.edition.influencer.user.avatarUrl
-                        )
-                    )
-                )
+                edition: self.mapEdition(edition: $0.edition)
             )
         }
         
         return nfts
+    }
+    
+    private func mapInfluencer(edition: EditionDTO) -> EditionInfluencer? {
+        var influencer: EditionInfluencer?
+        if let infl = edition.influencer {
+            influencer = EditionInfluencer(
+               id: infl.id,
+               user: EditionUser(
+                   id: infl.user.id,
+                   login: infl.user.login,
+                   avatarUrl: infl.user.avatarUrl
+               )
+            )
+        }
+
+        return influencer
+    }
+    
+    private func mapEdition(edition: EditionDTO) -> Edition {
+        let influencer = mapInfluencer(edition: edition)
+        
+        return Edition(
+            id: edition.id,
+            influencerId: edition.influencerId,
+            count: edition.count ?? 0,
+            name: edition.name,
+            description: edition.description,
+            price: edition.price,
+            dateExpiration: edition.dateExpiration ?? "0" ,
+            mediaUrl: edition.mediaUrl,
+            countNFTs: Int(edition.countNFTs ?? "0") ?? 0,
+            influencer: influencer
+        )
     }
     
 }
@@ -112,4 +115,5 @@ final class NftUseCaseImpl: NftUseCase {
 struct GetNftsRequest {
     var userId: Int = 0
     var page: Int = 0
+    var type: TypeListNfts = .collection
 }

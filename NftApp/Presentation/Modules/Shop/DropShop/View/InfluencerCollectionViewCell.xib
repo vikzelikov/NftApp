@@ -27,7 +27,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ed1-eJ-zrh">
-                                <rect key="frame" x="21" y="90" width="38" height="17"/>
+                                <rect key="frame" x="5" y="90" width="70" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,8 +40,10 @@
                             <constraint firstAttribute="width" constant="80" id="OZg-1v-N8C"/>
                             <constraint firstAttribute="bottom" secondItem="Ed1-eJ-zrh" secondAttribute="bottom" constant="5" id="SLr-1s-j9Z"/>
                             <constraint firstItem="Ed1-eJ-zrh" firstAttribute="top" secondItem="NVA-nm-Ej1" secondAttribute="bottom" constant="10" id="WHw-d0-T3e"/>
+                            <constraint firstAttribute="trailing" secondItem="Ed1-eJ-zrh" secondAttribute="trailing" constant="5" id="YEt-ce-Qaj"/>
                             <constraint firstItem="Ed1-eJ-zrh" firstAttribute="centerX" secondItem="N50-f2-4x3" secondAttribute="centerX" id="bcW-jP-Izb"/>
                             <constraint firstItem="NVA-nm-Ej1" firstAttribute="top" secondItem="N50-f2-4x3" secondAttribute="top" id="naj-hc-dNq"/>
+                            <constraint firstItem="Ed1-eJ-zrh" firstAttribute="leading" secondItem="N50-f2-4x3" secondAttribute="leading" constant="5" id="v3H-Qb-gYr"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

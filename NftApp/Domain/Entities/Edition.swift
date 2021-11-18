@@ -17,7 +17,7 @@ struct Edition: Equatable {
     var dateExpiration: String
     var mediaUrl: String
     var countNFTs: Int
-    var influencer: EditionInfluencer
+    var influencer: EditionInfluencer?
 }
 
 struct EditionInfluencer: Equatable {

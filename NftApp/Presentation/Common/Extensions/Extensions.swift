@@ -172,6 +172,7 @@ extension UIViewController {
         var y = 0
         let errorView = ErrorView()
         errorView.alpha = 0.0
+
         if let topPadding = UIApplication.shared.keyWindow?.safeAreaInsets.top {
             if topPadding == 20 {
                 y = -20

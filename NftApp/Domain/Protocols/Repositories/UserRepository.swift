@@ -17,6 +17,8 @@ protocol UserRepository {
     
     func getInfluencers(completion: @escaping (Result<GetInfluencersResponseDTO, Error>) -> Void)
     
+    func getInfluencer(influencerId: Int, completion: @escaping (Result<InfluencerDTO, Error>) -> Void)
+    
     func getNfts(request: GetNftsRequest, completion: @escaping (Result<GetNftsResponseDTO, Error>) -> Void)
     
     func getFollowers(request: FollowsRequest, completion: @escaping (Result<GetUsersResponseDTO, Error>) -> Void)

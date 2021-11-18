@@ -20,7 +20,7 @@ class NftDTO: Decodable {
     }
     
     let id: Int
-    let userId: Int
+    let userId: Int?
     let lastPrice: Double
     let currentPrice: Double?
     let serialNumber: Int

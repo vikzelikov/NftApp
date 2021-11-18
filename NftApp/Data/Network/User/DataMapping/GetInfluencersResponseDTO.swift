@@ -20,9 +20,11 @@ class InfluencerDTO: Decodable {
         case id
         case description
         case user
+        case editions
     }
     
     let id: Int
     let description: String?
     let user: GetUserResponseDTO
+    let editions: [EditionDTO]?
 }

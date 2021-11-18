@@ -150,10 +150,14 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.didSelectItem(at: indexPath.row) { nftViewModel in
-            let vc = DetailNftViewController()
-            vc.viewModel = DetailNftViewModelImpl()
-            vc.viewModel?.nftViewModel.value = nftViewModel
-            self.navigationController?.pushViewController(vc, animated: true)
+            if let typeList = self.viewModel?.typeListNfts.value {
+                let vc = DetailNftViewController()
+                vc.viewModel = DetailNftViewModelImpl()
+                vc.viewModel?.nftViewModel.value = nftViewModel
+                vc.viewModel?.typeDetailNFT = (typeList == .created ? .dropShop : .detail)
+                    
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
         
         HapticHelper.vibro(.light)
@@ -215,7 +219,9 @@ extension HomeViewController: SkeletonTableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath) as? NftViewCell else { return UITableViewCell() }
                 
                 if let vm = viewModel?.itemsNfts.value[indexPath.row] {
-                    cell.bindNft(viewModel: vm)
+                    if let typeList = self.viewModel?.typeListNfts.value {
+                        typeList == .created ? cell.bindEdition(viewModel: vm.edition) : cell.bindNft(viewModel: vm)
+                    }
                 }
                 
                 cell.selectionStyle = .none
