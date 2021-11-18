@@ -80,7 +80,7 @@ final class UserUseCaseImpl: UserUseCase {
         repository?.getInfluencers { result in
             switch result {
                 case .success(let resp) : do {
-                    let users = resp.rows.map{User(id: $0.user.id, influencerId: $0.user.influencerId, login: $0.user.login, email: $0.user.email, flowAddress: $0.user.flowAddress, avatarUrl: $0.user.avatarUrl)}
+                    let users = resp.rows.map{User(id: $0.user.id, influencerId: $0.id, login: $0.user.login, email: $0.user.email, flowAddress: $0.user.flowAddress, avatarUrl: $0.user.avatarUrl)}
                     
                     completion(.success(users))
                 }

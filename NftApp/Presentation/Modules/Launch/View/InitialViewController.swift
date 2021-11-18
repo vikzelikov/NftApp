@@ -19,6 +19,9 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserDefaults.standard.set(["English"], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+        
         viewModel = InitialViewModelImpl()
         viewModel?.initial(isDelay: false)
         bindData()

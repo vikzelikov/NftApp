@@ -104,7 +104,16 @@ class DropShopViewController: UIViewController {
 
 extension DropShopViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 { return }
+        if indexPath.row == 0 {
+            viewModel?.didSelectInfluencers(at: indexPath.row) { influencers in
+                let vc = InfluencersViewController()
+                vc.viewModel = InfluencersViewModelImpl()
+                vc.viewModel?.items.value = influencers
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            return
+        }
         
         viewModel?.didSelectItem(at: indexPath.row - 3) { editionViewModel in
             let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
@@ -144,7 +153,8 @@ extension DropShopViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else { return UITableViewCell() }
-            cell.headerLabel.text = "Influencers"
+            cell.headerLabel.text = "Influencers 🔥"
+            cell.headerLabel.font = .systemFont(ofSize: 24, weight: .bold)
             cell.selectionStyle = .none
             return cell
             
@@ -155,7 +165,8 @@ extension DropShopViewController: UITableViewDataSource {
             
         } else if indexPath.row == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else { return UITableViewCell() }
-            cell.headerLabel.text = "NFTs"
+            cell.headerLabel.text = "Hot drops 🌀"
+            cell.headerLabel.font = .systemFont(ofSize: 24, weight: .bold)
             cell.selectionStyle = .none
             return cell
             
@@ -202,7 +213,7 @@ extension DropShopViewController: UITableViewDataSource {
 extension DropShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = viewModel?.influencers.value.prefix(10).count {
-            return count + 1
+            return count
         } else {
             return 0
         }
@@ -211,33 +222,20 @@ extension DropShopViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfluencerCollectionViewCell.cellIdentifier, for: indexPath) as? InfluencerCollectionViewCell else { return UICollectionViewCell() }
 
-        if indexPath.row == 0 {
-            cell.setupAll()
-        } else {
-            if let vm = viewModel?.influencers.value[indexPath.row - 1] {
-                cell.bind(viewModel: vm)
-            }
+        if let vm = viewModel?.influencers.value[indexPath.row] {
+            cell.bind(viewModel: vm)
         }
         
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            viewModel?.didSelectInfluencers(at: indexPath.row) { influencers in
-                let vc = InfluencersViewController()
-                vc.viewModel = InfluencersViewModelImpl()
-                vc.viewModel?.items.value = influencers
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        } else {
-            viewModel?.didSelectInfluencer(at: indexPath.row - 1) { userViewModel in
-                let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
-                vc.viewModel = HomeViewModelImpl()
-                vc.viewModel?.userViewModel.value = userViewModel
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+        viewModel?.didSelectInfluencer(at: indexPath.row - 1) { userViewModel in
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+            vc.viewModel = HomeViewModelImpl()
+            vc.viewModel?.userViewModel.value = userViewModel
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
         HapticHelper.vibro(.light)

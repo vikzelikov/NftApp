@@ -17,8 +17,12 @@ class GetInfluencersResponseDTO: Decodable {
 
 class InfluencerDTO: Decodable {
     private enum CodingKeys: String, CodingKey {
+        case id
+        case description
         case user
     }
     
+    let id: Int
+    let description: String?
     let user: GetUserResponseDTO
 }

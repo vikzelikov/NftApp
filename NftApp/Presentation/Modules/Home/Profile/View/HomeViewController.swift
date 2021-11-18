@@ -29,11 +29,7 @@ class HomeViewController: UIViewController {
     }
     
     func bindData() {
-        viewModel?.itemsNfts.observe(on: self) { [weak self] itemsNfts in
-            if self?.viewModel?.typeListNfts.value == .collection {
-                self?.headerView?.countNftsLabel.text = "\(itemsNfts.count)"
-            }
-            
+        viewModel?.itemsNfts.observe(on: self) { [weak self] _ in
             self?.reload()
         }
         
@@ -65,13 +61,13 @@ class HomeViewController: UIViewController {
         tableView.rowHeight = UIScreen.main.bounds.width - 30
         tableView.register(UINib(nibName: NftViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftViewCell.cellIdentifier)
         tableView.register(UINib(nibName: PlaceholderViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: PlaceholderViewCell.cellIdentifier)
-        tableView.contentInset = UIEdgeInsets(top: 431, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 370, left: 0, bottom: 0, right: 0)
         
         if !self.isModal {
             refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
             tableView.addSubview(refreshControl)
             tableView.refreshControl = refreshControl
-            tableView.refreshControl?.bounds.origin.y = 431
+            tableView.refreshControl?.bounds.origin.y = 370
         }
     }
     
@@ -175,15 +171,15 @@ extension HomeViewController: UITableViewDelegate {
     
     // MARK: fix this
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        var positionY = -abs(scrollView.contentOffset.y + 400)
+        var positionY = scrollView.contentOffset.y
 
-        if positionY > -350 {
-            positionY = -431
+        if positionY < -40 {
+            positionY = -380
         } else {
-            positionY = scrollView.contentOffset.y - 380
+            positionY = scrollView.contentOffset.y - 340
         }
 
-        headerView?.frame = CGRect(x: 0, y: positionY, width: UIScreen.main.bounds.size.width, height: 431)
+        headerView?.frame = CGRect(x: 0, y: positionY, width: UIScreen.main.bounds.size.width, height: 370)
     }
     
 }

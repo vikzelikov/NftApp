@@ -164,57 +164,57 @@ class HomeViewModelImpl: HomeViewModel {
     }
     
     func getObservablesNfts() {
-//        let userId = 2
-//        let request = GetNftsRequest(userId: userId, page: page)
-//
-//        nftUserCase.getObservablesNfts(request: request) { result in
-//            switch result {
-//            case .success(let nfts):
-//                self.currentPage = 1
-//                self.totalPageCount = 1
-//                self.observablesNfts.removeAll()
-//
-//                self.appendNfts(nfts: nfts, typeListNfts: .observables)
-//
-//            case .failure(let error):
-//                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-//                if httpCode != HttpCode.notFound {
-//                    self.errorMessage.value = errorStr
-//                }
-//            }
-//
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                self.isLoading.value = false
-//            }
-//
-//        }
+        let userId = 2
+        let request = GetNftsRequest(userId: userId, page: page)
+
+        nftUserCase.getObservablesNfts(request: request) { result in
+            switch result {
+            case .success(let nfts):
+                self.currentPage = 1
+                self.totalPageCount = 1
+                self.observablesNfts.removeAll()
+
+                self.appendNfts(nfts: nfts, typeListNfts: .observables)
+
+            case .failure(let error):
+                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode != HttpCode.notFound {
+                    self.errorMessage.value = errorStr
+                }
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLoading.value = false
+            }
+
+        }
     }
     
     func getCreatedNfts() {
-//        let userId = userViewModel.value?.id ?? Constant.USER_ID
-//        let request = GetNftsRequest(userId: userId, page: page)
-//
-//        nftUserCase.getCreatedNfts(request: request) { result in
-//            switch result {
-//            case .success(let nfts):
-//                self.currentPage = 1
-//                self.totalPageCount = 1
-//                self.createdNfts.removeAll()
-//
-//                self.appendNfts(nfts: nfts, typeListNfts: .created)
-//
-//            case .failure(let error):
-//                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-//                if httpCode != HttpCode.notFound {
-//                    self.errorMessage.value = errorStr
-//                }
-//            }
-//
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                self.isLoading.value = false
-//            }
-//
-//        }
+        let userId = userViewModel.value?.id ?? Constant.USER_ID
+        let request = GetNftsRequest(userId: 1, page: page)
+
+        nftUserCase.getCreatedNfts(request: request) { result in
+            switch result {
+            case .success(let nfts):
+                self.currentPage = 1
+                self.totalPageCount = 1
+                self.createdNfts.removeAll()
+
+                self.appendNfts(nfts: nfts, typeListNfts: .created)
+
+            case .failure(let error):
+                let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode != HttpCode.notFound {
+                    self.errorMessage.value = errorStr
+                }
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isLoading.value = false
+            }
+
+        }
     }
     
     private func appendNfts(nfts: [Nft], typeListNfts: TypeListNfts) {
@@ -282,7 +282,10 @@ class HomeViewModelImpl: HomeViewModel {
                 case .success:
                     self.typeFollows.value = (TypeFollows.none, user)
                     UserObject.isNeedRefresh.value = true
-                    self.followers.value.removeLast()
+                    if !self.followers.value.isEmpty {
+                        self.followers.value.removeLast()
+                    }
+                    
                     completion(true)
 
                 case .failure:

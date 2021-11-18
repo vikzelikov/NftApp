@@ -65,7 +65,7 @@ class ProfileHeaderView: UIView {
             
             self?.loginLabel.text = userViewModel.login
             self?.loginSubtitleLabel.text = userViewModel.flowAddress ?? "@\(userViewModel.login ?? "")"
-            self?.totalCostLabel.text = "\(Int(userViewModel.totalCost ?? 0.0))"
+            self?.countNftsLabel.text = "\(Int(userViewModel.countNFTs ?? 0))"
             if let avatarUrl = userViewModel.avatarUrl, let url = URL(string: avatarUrl) {
                 self?.userImageView.contentMode = .scaleAspectFill
                 self?.userImageView.load(with: url)
