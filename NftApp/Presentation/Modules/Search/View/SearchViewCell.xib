@@ -13,7 +13,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="SearchViewCell" customModule="NftApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="374" height="65"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="374" height="65"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -41,29 +41,18 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBC-0h-hbv">
-                        <rect key="frame" x="15" y="15" width="344" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="kBC-0h-hbv" secondAttribute="bottom" constant="15" id="0Lh-HC-CZO"/>
                     <constraint firstAttribute="bottom" secondItem="WoV-f7-d8U" secondAttribute="bottom" constant="10" id="Adr-r5-Lhw"/>
-                    <constraint firstAttribute="trailing" secondItem="kBC-0h-hbv" secondAttribute="trailing" constant="15" id="E59-EZ-247"/>
                     <constraint firstAttribute="trailing" secondItem="0hM-8a-0Fc" secondAttribute="trailing" constant="15" id="LCO-zP-4Vf"/>
                     <constraint firstItem="WoV-f7-d8U" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="OjA-Jf-5ek"/>
                     <constraint firstItem="0hM-8a-0Fc" firstAttribute="centerY" secondItem="WoV-f7-d8U" secondAttribute="centerY" id="RWs-g4-rAc"/>
                     <constraint firstItem="WoV-f7-d8U" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="UX4-fT-qg1"/>
-                    <constraint firstItem="kBC-0h-hbv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="koJ-FD-wqm"/>
                     <constraint firstItem="0hM-8a-0Fc" firstAttribute="leading" secondItem="WoV-f7-d8U" secondAttribute="trailing" constant="15" id="oJC-yG-f0L"/>
-                    <constraint firstItem="kBC-0h-hbv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="qlL-0o-JJX"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="headerLabel" destination="kBC-0h-hbv" id="i7g-TZ-QA6"/>
                 <outlet property="searchImageView" destination="WoV-f7-d8U" id="YYC-TK-Y3x"/>
                 <outlet property="subtitleLabel" destination="URo-9I-LcQ" id="D4l-2e-uD8"/>
                 <outlet property="titleLabel" destination="L6i-mN-Amd" id="lgz-YZ-WNV"/>

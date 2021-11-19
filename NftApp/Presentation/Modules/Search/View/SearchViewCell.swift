@@ -11,7 +11,6 @@ class SearchViewCell: UITableViewCell {
 
     static let cellIdentifier = String(describing: SearchViewCell.self)
     
-    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var searchImageView: UIImageView! {
@@ -45,17 +44,9 @@ class SearchViewCell: UITableViewCell {
             searchImageView.contentMode = .scaleAspectFit
             searchImageView.image = UIImage(named: "mini_icon")
         }
-        
-        if viewModel.type == .separator {
-            headerLabel?.text = viewModel.title
-            headerLabel.isHidden = false
-            titleLabel.isHidden = true
-            searchImageView.isHidden = true
-        } else {
-            headerLabel.isHidden = true
-            titleLabel.isHidden = false
-            searchImageView.isHidden = false
-        }
+
+        titleLabel.isHidden = false
+        searchImageView.isHidden = false
     }
     
 }

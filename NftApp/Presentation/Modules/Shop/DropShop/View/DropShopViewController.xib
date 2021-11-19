@@ -22,19 +22,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7ta-LC-yJf">
-                    <rect key="frame" x="0.0" y="62" width="320" height="506"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isUserInteractionDisabledWhenSkeletonIsActive" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop Shop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lE5-nj-WAE">
-                    <rect key="frame" x="109.5" y="25" width="101.5" height="27"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="1Lh-NP-vBe" customClass="UILabelPadding" customModule="NftApp" customModuleProvider="target">
                     <rect key="frame" x="15" y="269.5" width="290" height="29"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -49,10 +43,8 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7ta-LC-yJf" secondAttribute="bottom" id="6xd-53-4FD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7ta-LC-yJf" secondAttribute="trailing" id="Dij-hg-mXq"/>
                 <constraint firstItem="1Lh-NP-vBe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="FdL-8d-f99"/>
-                <constraint firstItem="lE5-nj-WAE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TOA-JG-uEu"/>
-                <constraint firstItem="7ta-LC-yJf" firstAttribute="top" secondItem="lE5-nj-WAE" secondAttribute="bottom" constant="10" id="aMb-Fi-KgH"/>
+                <constraint firstItem="7ta-LC-yJf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gOP-l9-NKp"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1Lh-NP-vBe" secondAttribute="trailing" constant="15" id="gTx-1c-FZQ"/>
-                <constraint firstItem="lE5-nj-WAE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="s2I-JW-b5n"/>
                 <constraint firstItem="1Lh-NP-vBe" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="wCD-Mk-xdf"/>
             </constraints>
             <point key="canvasLocation" x="38" y="154"/>

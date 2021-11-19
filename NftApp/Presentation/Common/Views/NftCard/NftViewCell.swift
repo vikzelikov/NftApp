@@ -46,41 +46,27 @@ class NftViewCell: UITableViewCell {
     }
     
     func bindNft(viewModel: NftViewModel) {
-        titleNftLabel?.text = viewModel.edition.name
-        
-        let price = Int(viewModel.price ?? 0.0)
-        let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
-        priceLabel?.text = "\(price) T"
-        priceFiatLabel?.text = "\((Double(price) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
-        
-        if let urlString = viewModel.edition.mediaUrl, let url = URL(string: urlString) {
-            nftImage.load(with: url)
-        }
-        
         if typeDetailNFT == .detail {
-            expirationView.isHidden = true
+            let price = Int(viewModel.lastPrice ?? 0.0)
+            priceLabel?.text = "\(price) T"
         }
         
-        if let influencer = viewModel.edition.influencer?.user {
-            influencerLabel.text = influencer.login
-            
-            if let urlString = influencer.avatarUrl, let url = URL(string: urlString) {
-                influencerImage.contentMode = .scaleAspectFill
-                influencerImage.load(with: url)
-            } else {
-                influencerImage.contentMode = .scaleAspectFit
-                influencerImage.image = UIImage(named: "mini_icon")
-            }
-        }
+        setEdition(viewModel: viewModel.edition)
     }
     
     func bindEdition(viewModel: EditionViewModel) {
+        setEdition(viewModel: viewModel)
+    }
+
+    private func setEdition(viewModel: EditionViewModel) {
         titleNftLabel?.text = viewModel.name
         
-        let price = Int(viewModel.price ?? 0.0)
-        let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
-        priceLabel?.text = "\(price) T"
-        priceFiatLabel?.text = "\((Double(price) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
+        if typeDetailNFT == .dropShop {
+            let price = Int(viewModel.price ?? 0.0)
+            let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
+            priceLabel?.text = "\(price) T"
+            priceFiatLabel?.text = "\((Double(price) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
+        }
         
         if let urlString = viewModel.mediaUrl, let url = URL(string: urlString) {
             nftImage.load(with: url)
@@ -97,15 +83,25 @@ class NftViewCell: UITableViewCell {
                 influencerImage.image = UIImage(named: "mini_icon")
             }
         }
+        
+        if typeDetailNFT == .dropShop {
+            if let exp = viewModel.dateExpiration, let dateExpiration = TimeInterval(exp) {
+                let timeInterval = NSDate().timeIntervalSince1970
+                let exp = dateExpiration / 1000
+                
+                if timeInterval < exp {
+                    expirationView.isHidden = false
+                } else {
+                    expirationView.isHidden = true
+                }
+                
+                let del = Int((exp - timeInterval))
+                expiryTimeInterval = del
 
-        if let exp = viewModel.dateExpiration, let dateExpiration = TimeInterval(exp) {
-            let timeInterval = NSDate().timeIntervalSince1970
-            let exp = dateExpiration / 1000
-            
-            let del = Int((exp - timeInterval))
-            expiryTimeInterval = del
-
-            setTime(deltaTime: del)
+                setTime(deltaTime: del)
+            }
+        } else {
+            expirationView.isHidden = true
         }
     }
     
@@ -134,7 +130,7 @@ class NftViewCell: UITableViewCell {
     }
     
     func setTime(deltaTime: Int) {
-        let (d, h, m, s) = secondsToHoursMinutesSeconds(seconds: Int(deltaTime))
+        let (d, h, m, s) = (deltaTime / 86400, (deltaTime % 86400) / 3600, (deltaTime % 3600) / 60, (deltaTime % 3600) % 60)
         var timeStr = "\(d)d \(h)h \(m)m \(s)s"
         
         if d == 0 {
@@ -142,10 +138,6 @@ class NftViewCell: UITableViewCell {
         }
         
         expirationLabel.text = timeStr
-    }
-    
-    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int, Int) {
-        return (seconds / 86400, (seconds % 86400) / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
     override func prepareForReuse() {

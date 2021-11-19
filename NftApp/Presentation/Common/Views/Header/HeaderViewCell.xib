@@ -18,14 +18,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP0-Sz-car">
-                        <rect key="frame" x="15" y="20" width="75.5" height="58"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                        <rect key="frame" x="15" y="20" width="82.5" height="58"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="8lq-eG-cLW">
+                        <rect key="frame" x="288" y="36.5" width="17" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="17" id="lHY-4v-feo"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GP0-Sz-car" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="E7m-OQ-6yl"/>
+                    <constraint firstItem="8lq-eG-cLW" firstAttribute="centerY" secondItem="GP0-Sz-car" secondAttribute="centerY" id="Lrz-ob-jfG"/>
+                    <constraint firstAttribute="trailing" secondItem="8lq-eG-cLW" secondAttribute="trailing" constant="15" id="fXi-LT-Zl1"/>
                     <constraint firstAttribute="bottom" secondItem="GP0-Sz-car" secondAttribute="bottom" constant="10" id="hal-ew-eY7"/>
                     <constraint firstItem="GP0-Sz-car" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="prH-Hh-KP3"/>
                 </constraints>
@@ -33,8 +41,12 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="headerLabel" destination="GP0-Sz-car" id="CI7-NN-0Fc"/>
+                <outlet property="rightArrow" destination="8lq-eG-cLW" id="Vld-T3-qsp"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="104.46428571428571"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="right_arrow" width="25" height="25"/>
+    </resources>
 </document>

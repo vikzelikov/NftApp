@@ -129,6 +129,8 @@
 		1879C57A26CA79BB00CE367E /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879C57926CA79BB00CE367E /* SignupViewModel.swift */; };
 		187CF93627445D4B00EBCF27 /* InvitationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CF93427445D4B00EBCF27 /* InvitationsViewController.swift */; };
 		187CF93727445D4B00EBCF27 /* InvitationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187CF93527445D4B00EBCF27 /* InvitationsViewController.xib */; };
+		187CF93C27483D1C00EBCF27 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187CF93B27483D1C00EBCF27 /* HeaderView.xib */; };
+		187CF93E27483D2600EBCF27 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CF93D27483D2600EBCF27 /* HeaderView.swift */; };
 		18855F3626D52A360018B072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18855F3526D52A360018B072 /* Assets.xcassets */; };
 		18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84265266E27A40033AFC0 /* AppDelegate.swift */; };
 		18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84269266E27A40033AFC0 /* SignUpViewController.swift */; };
@@ -353,6 +355,8 @@
 		1879C57926CA79BB00CE367E /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		187CF93427445D4B00EBCF27 /* InvitationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationsViewController.swift; sourceTree = "<group>"; };
 		187CF93527445D4B00EBCF27 /* InvitationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvitationsViewController.xib; sourceTree = "<group>"; };
+		187CF93B27483D1C00EBCF27 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		187CF93D27483D2600EBCF27 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		18855F3526D52A360018B072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B84262266E27A40033AFC0 /* NftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B84265266E27A40033AFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -638,14 +642,11 @@
 		182342D526A081DB00CD2907 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				185CBA272725ABDC007DF8CF /* NftViewCell.swift */,
-				185CBA282725ABDC007DF8CF /* NftViewCell.xib */,
 				182342D626A081EF00CD2907 /* UICustomView.swift */,
 				18CED70A273C0FEA00AE6738 /* UILabelPadding.swift */,
-				18C319DB273DD4F1005BD3CA /* HeaderViewCell.swift */,
-				18C319DC273DD4F1005BD3CA /* HeaderViewCell.xib */,
-				180F6C7527385ABB00F3F03E /* ErrorView.swift */,
-				180F6C7327385A9A00F3F03E /* ErrorView.xib */,
+				187CF93A27482D5B00EBCF27 /* NftCard */,
+				187CF93927482D4900EBCF27 /* Error */,
+				187CF93827482D3400EBCF27 /* Header */,
 				186E5FFE26B6CC67008291AC /* Settings */,
 			);
 			path = Views;
@@ -1083,6 +1084,35 @@
 				18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */,
 			);
 			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		187CF93827482D3400EBCF27 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				18C319DB273DD4F1005BD3CA /* HeaderViewCell.swift */,
+				18C319DC273DD4F1005BD3CA /* HeaderViewCell.xib */,
+				187CF93D27483D2600EBCF27 /* HeaderView.swift */,
+				187CF93B27483D1C00EBCF27 /* HeaderView.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		187CF93927482D4900EBCF27 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				180F6C7527385ABB00F3F03E /* ErrorView.swift */,
+				180F6C7327385A9A00F3F03E /* ErrorView.xib */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		187CF93A27482D5B00EBCF27 /* NftCard */ = {
+			isa = PBXGroup;
+			children = (
+				185CBA272725ABDC007DF8CF /* NftViewCell.swift */,
+				185CBA282725ABDC007DF8CF /* NftViewCell.xib */,
+			);
+			path = NftCard;
 			sourceTree = "<group>";
 		};
 		18B84259266E27A40033AFC0 = {
@@ -1668,6 +1698,7 @@
 				18523F94269CED1100611362 /* TabBar.storyboard in Resources */,
 				18B84272266E27A50033AFC0 /* LaunchScreen.storyboard in Resources */,
 				186E600A26B6DFCA008291AC /* HistoryTransactionsViewController.xib in Resources */,
+				187CF93C27483D1C00EBCF27 /* HeaderView.xib in Resources */,
 				18156D4726A4DD3E006B8FE5 /* SettingViewCell.xib in Resources */,
 				1869F1002707555B00C7654A /* InfluencerCollectionViewCell.xib in Resources */,
 				186E600E26B6DFE3008291AC /* CollectionNftViewController.xib in Resources */,
@@ -1808,6 +1839,7 @@
 				18E37759272F00C700A2795B /* InfluencerViewCell.swift in Sources */,
 				182342E426A2370900CD2907 /* MoreOffersViewController.swift in Sources */,
 				18523F90269CEAA000611362 /* ShopViewController.swift in Sources */,
+				187CF93E27483D2600EBCF27 /* HeaderView.swift in Sources */,
 				1834E7542732D6550081EFB1 /* Transaction.swift in Sources */,
 				1834E75C2733014A0081EFB1 /* DetailTransactionViewModel.swift in Sources */,
 				1879C56126C9B7EA00CE367E /* AuthRepositoryImpl.swift in Sources */,
@@ -2084,7 +2116,7 @@
 				CODE_SIGN_ENTITLEMENTS = NftApp/NftApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 64ZXKZ9BQ6;
 				INFOPLIST_FILE = NftApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2092,7 +2124,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nft.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile";
@@ -2113,7 +2145,7 @@
 				CODE_SIGN_ENTITLEMENTS = NftApp/NftApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 64ZXKZ9BQ6;
 				INFOPLIST_FILE = NftApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2121,7 +2153,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nft.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile";

@@ -9,11 +9,11 @@ import Foundation
 
 protocol SearchViewModel: BaseViewModel {
     
-    var items: Observable<[SearchCellViewModel]> { get }
-    
+    var items: Observable<[[SearchCellViewModel]]> { get }
+    var headers: [String] { get set }
     func searchDidTap(keyWord: String)
     
-    func didSelectItem(at index: Int, completion: @escaping (SearchCellViewModel) -> Void)
+    func didSelectItem(section: Int, at index: Int, completion: @escaping (SearchCellViewModel) -> Void)
     
 }
 
@@ -21,14 +21,15 @@ enum TypeSearch {
     case users
     case editions
     case nfts
-    case separator
 }
 
 class SearchViewModelImpl: SearchViewModel {
     
     private let searchUseCase: SearchUseCase
     
-    var items: Observable<[SearchCellViewModel]> = Observable([])
+    var items: Observable<[[SearchCellViewModel]]> = Observable([])
+    var headers: [String] = ["Users", "Drop Shop", "NFTs"]
+    
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     private var usersItems: [SearchCellViewModel] = []
@@ -104,27 +105,26 @@ class SearchViewModelImpl: SearchViewModel {
         })
     }
     
-    func didSelectItem(at index: Int, completion: @escaping (SearchCellViewModel) -> Void) {
-        let viewModel = items.value[index]
-        
-        completion(viewModel)
+    func didSelectItem(section: Int, at index: Int, completion: @escaping (SearchCellViewModel) -> Void) {
+        if items.value[section].indices.contains(index) {
+            let viewModel = items.value[section][index]
+            
+            completion(viewModel)
+        }
     }
     
     private func serachDone() {
         if self.isSearched() {
             if usersItems.count > 0 {
-                items.value += [SearchCellViewModel(id: -1, title: NSLocalizedString("Users", comment: ""), subtitle: nil, mediaUrl: nil, type: .separator)]
-                items.value += usersItems
+                items.value.append(usersItems)
             }
             
             if editionsItems.count > 0 {
-                items.value += [SearchCellViewModel(id: -2, title: "Drop Shop", subtitle: nil, mediaUrl: nil, type: .separator)]
-                items.value += editionsItems
+                items.value.append(editionsItems)
             }
             
             if nftsItems.count > 0 {
-                items.value += [SearchCellViewModel(id: -3, title: "NFTs", subtitle: nil, mediaUrl: nil, type: .separator)]
-                items.value += nftsItems
+                items.value.append(nftsItems)
             }
             
             items.value = items.value.uniqued()
@@ -132,11 +132,11 @@ class SearchViewModelImpl: SearchViewModel {
     }
     
     private func resetSearch() {
-        items.value = []
+        items.value.removeAll()
         
-        usersItems = []
-        editionsItems = []
-        nftsItems = []
+        usersItems.removeAll()
+        editionsItems.removeAll()
+        nftsItems.removeAll()
         
         isUsersSearched = false
         isEditionsSearched = false

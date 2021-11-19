@@ -49,7 +49,6 @@ class SearchViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: SearchViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SearchViewCell.cellIdentifier)
-        tableView.register(UINib(nibName: HeaderViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: HeaderViewCell.cellIdentifier)
 
         searchBar.delegate = self
         searchBar.showsCancelButton = true
@@ -64,12 +63,9 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.didSelectItem(at: indexPath.row) { searchCellViewModel in
+        viewModel?.didSelectItem(section: indexPath.section, at: indexPath.row) { searchCellViewModel in
             switch searchCellViewModel.type {
             case .users:
-                tableView.deselectRow(at: indexPath, animated: true)
-                HapticHelper.vibro(.light)
-                
                 let storyboard = UIStoryboard(name: "Home", bundle: nil)
                 guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
                 vc.viewModel = HomeViewModelImpl()
@@ -77,9 +73,6 @@ extension SearchViewController: UITableViewDelegate {
                 self.navigationController?.pushViewController(vc, animated: true)
             
             case .editions:
-                tableView.deselectRow(at: indexPath, animated: true)
-                HapticHelper.vibro(.light)
-                
                 let vc = DetailNftViewController()
                 vc.viewModel = DetailNftViewModelImpl()
                 vc.viewModel?.typeDetailNFT = .dropShop
@@ -87,23 +80,41 @@ extension SearchViewController: UITableViewDelegate {
                 self.navigationController?.pushViewController(vc, animated: true)
             
             case .nfts:
-                tableView.deselectRow(at: indexPath, animated: true)
-                HapticHelper.vibro(.light)
-                
                 let vc = DetailNftViewController()
                 vc.viewModel = DetailNftViewModelImpl()
                 vc.viewModel?.nftViewModel.value = NftViewModel(id: 0, edition: EditionViewModel(id: searchCellViewModel.id))
                 self.navigationController?.pushViewController(vc, animated: true)
-                
-            default: break
             }
-            
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        HapticHelper.vibro(.light)
+        
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = HeaderView()
+        guard let headers = viewModel?.headers else { return header }
+        header.bind(title: headers[section])
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
 }
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let count = viewModel?.items.value[section].count {
+            return count
+        } else {
+            return 0
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         if let count = viewModel?.items.value.count {
             return count
         } else {
@@ -112,32 +123,18 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if let vm = viewModel?.items.value[indexPath.row] {
-            if vm.type == .separator {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else {
-                    return UITableViewCell()
-                }
-                
-                cell.selectionStyle = UITableViewCell.SelectionStyle.none
-                cell.headerLabel.text = vm.title
-                
-                return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchViewCell.cellIdentifier, for: indexPath) as? SearchViewCell else {
-                    return UITableViewCell()
-                }
-                
-                cell.bind(viewModel: vm)
-                
-                return cell
+        if let vm = viewModel?.items.value[indexPath.section][indexPath.row] {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchViewCell.cellIdentifier, for: indexPath) as? SearchViewCell else {
+                return UITableViewCell()
             }
+            
+            cell.bind(viewModel: vm)
+            
+            return cell
         }
         
         return UITableViewCell()
-        
     }
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {

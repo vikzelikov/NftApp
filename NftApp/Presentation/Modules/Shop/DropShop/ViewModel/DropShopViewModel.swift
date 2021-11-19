@@ -11,12 +11,12 @@ protocol DropShopViewModel : BaseViewModel {
     
     var items: Observable<[EditionViewModel]> { get }
     var influencers: Observable<[UserViewModel]> { get }
-
+    
     func viewDidLoad()
     
     func didSelectItem(at index: Int, completion: @escaping (EditionViewModel) -> Void)
     
-    func didSelectInfluencers(at index: Int, completion: @escaping ([UserViewModel]) -> Void)
+    func didSelectInfluencers(completion: @escaping ([UserViewModel]) -> Void)
     
     func didSelectInfluencer(at index: Int, completion: @escaping (UserViewModel) -> Void)
     
@@ -120,7 +120,7 @@ class DropShopViewModelImpl: DropShopViewModel {
         }
     }
     
-    func didSelectInfluencers(at index: Int, completion: @escaping ([UserViewModel]) -> Void) {
+    func didSelectInfluencers(completion: @escaping ([UserViewModel]) -> Void) {
         completion(influencers.value)
     }
     

@@ -177,10 +177,10 @@ extension HomeViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var positionY = scrollView.contentOffset.y
 
-        if positionY < -40 {
+        if positionY < -50 {
             positionY = -380
         } else {
-            positionY = scrollView.contentOffset.y - 340
+            positionY = scrollView.contentOffset.y - 330
         }
 
         headerView?.frame = CGRect(x: 0, y: positionY, width: UIScreen.main.bounds.size.width, height: 370)
@@ -220,12 +220,19 @@ extension HomeViewController: SkeletonTableViewDataSource {
                 
                 if let vm = viewModel?.itemsNfts.value[indexPath.row] {
                     if let typeList = self.viewModel?.typeListNfts.value {
-                        typeList == .created ? cell.bindEdition(viewModel: vm.edition) : cell.bindNft(viewModel: vm)
+                        if typeList == .collection || typeList == .observables {
+                            cell.typeDetailNFT = .detail
+                            cell.bindNft(viewModel: vm)
+                        }
+                        
+                        if typeList == .created {
+                            cell.typeDetailNFT = .dropShop
+                            cell.bindEdition(viewModel: vm.edition)
+                        }
                     }
                 }
                 
                 cell.selectionStyle = .none
-                HapticHelper.vibro(.light)
                 
                 return cell
             }

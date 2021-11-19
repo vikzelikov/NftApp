@@ -12,6 +12,7 @@ class HeaderViewCell: UITableViewCell {
     static let cellIdentifier = String(describing: HeaderViewCell.self)
     
     @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var rightArrow: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +20,11 @@ class HeaderViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func bind(title: String, showArrow: Bool = false) {
+        headerLabel.text = title
+        rightArrow.isHidden = !showArrow
     }
     
 }

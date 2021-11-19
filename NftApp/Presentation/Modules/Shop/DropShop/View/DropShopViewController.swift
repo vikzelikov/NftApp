@@ -105,10 +105,8 @@ class DropShopViewController: UIViewController {
 // MARK: fix this
 extension DropShopViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2 { return }
-
         if indexPath.row == 0 {
-            viewModel?.didSelectInfluencers(at: indexPath.row) { influencers in
+            viewModel?.didSelectInfluencers { influencers in
                 let vc = InfluencersViewController()
                 vc.viewModel = InfluencersViewModelImpl()
                 vc.viewModel?.items.value = influencers
@@ -117,6 +115,8 @@ extension DropShopViewController: UITableViewDelegate {
             
             return
         }
+        
+        if indexPath.row == 1 || indexPath.row == 2 { return }
         
         viewModel?.didSelectItem(at: indexPath.row - 3) { editionViewModel in
             let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
@@ -130,20 +130,21 @@ extension DropShopViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 || indexPath.row == 2 { return }
+        if indexPath.row < 3 { return }
 
         let cell = tableView.cellForRow(at: indexPath)
         cell?.applyTouchDownAnimation(cell: cell)
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 || indexPath.row == 2 { return }
+        if indexPath.row < 3 { return }
         
         let cell = tableView.cellForRow(at: indexPath)
         cell?.applyTouchUpAnimation(cell: cell)
     }
 }
 
+// MARK: fix this
 extension DropShopViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = viewModel?.items.value.count {
@@ -156,8 +157,7 @@ extension DropShopViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else { return UITableViewCell() }
-            cell.headerLabel.text = "Influencers 🔥"
-            cell.headerLabel.font = .systemFont(ofSize: 24, weight: .bold)
+            cell.bind(title: "Top influencers 🔥", showArrow: true)
             cell.selectionStyle = .none
             return cell
             
@@ -168,8 +168,7 @@ extension DropShopViewController: UITableViewDataSource {
             
         } else if indexPath.row == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else { return UITableViewCell() }
-            cell.headerLabel.text = "Hot drops 🌀"
-            cell.headerLabel.font = .systemFont(ofSize: 24, weight: .bold)
+            cell.bind(title: "Hot drops 🌀")
             cell.selectionStyle = .none
             return cell
             
@@ -177,7 +176,6 @@ extension DropShopViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath) as? NftViewCell else { return UITableViewCell() }
             
             cell.selectionStyle = .none
-            HapticHelper.vibro(.light)
             
             if let items = viewModel?.items.value {
                 if items.indices.contains(indexPath.row - 3) {
