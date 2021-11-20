@@ -11,6 +11,7 @@ protocol LoginViewModel : BaseViewModel {
     
     var isSuccess: Observable<Bool> { get }
     var isSetupInvite: Observable<Bool> { get }
+    var isSetupEarlyAccess: Observable<Bool> { get }
     
     func viewDidload()
     
@@ -39,6 +40,7 @@ class LoginViewModelImpl: LoginViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var isSuccess: Observable<Bool> = Observable(false)
     var isSetupInvite: Observable<Bool> = Observable(false)
+    var isSetupEarlyAccess: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
     init() {
@@ -47,7 +49,18 @@ class LoginViewModelImpl: LoginViewModel {
     
     func viewDidload() {
         let isInvitingState = loginUseCase.getInvitingState()
-        if isInvitingState { isSetupInvite.value = true }
+        let isEarlyAccessState = loginUseCase.getEarlyAccessState()
+        
+        if let data = InitialDataObject.data.value {
+            if data.isMarketAvailable {
+                loginUseCase.removeEarlyAccessState()
+            } else if isEarlyAccessState {
+                isSetupEarlyAccess.value = true
+                return
+            }
+        }
+        
+        isSetupInvite.value = isInvitingState
     }
     
     func updateCredentials(login: String, password: String) {
@@ -61,13 +74,7 @@ class LoginViewModelImpl: LoginViewModel {
         loginUseCase.login(request: loginRequest, completion: { result in
             switch result {
             case .success:
-                let isInvitingState = self.loginUseCase.getInvitingState()
-                
-                if isInvitingState {
-                    self.isSetupInvite.value = true
-                } else {
-                    self.isSuccess.value = true
-                }
+                self.checkInviting()
                 
             case .failure(let error):
                 self.isSuccess.value = false
@@ -81,6 +88,25 @@ class LoginViewModelImpl: LoginViewModel {
             
             self.isLoading.value = false
 
+        })
+    }
+    
+    func appleAuthDidTap(appleId: String) {
+        loginUseCase.appleLogin(appleId: appleId, completion: { result in
+            switch result {
+            case .success:
+                self.checkInviting()
+                
+            case .failure(let error):
+                self.isSuccess.value = false
+                
+                var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
+                if httpCode == HttpCode.badRequest {
+                    errorStr = NSLocalizedString("Error Apple authorization", comment: "")
+                }
+                
+                self.errorMessage.value = errorStr
+            }
         })
     }
     
@@ -101,23 +127,14 @@ class LoginViewModelImpl: LoginViewModel {
         
     }
     
-    func appleAuthDidTap(appleId: String) {
-        loginUseCase.appleLogin(appleId: appleId, completion: { result in
-            switch result {
-            case .success:
-                self.isSuccess.value = true
-                
-            case .failure(let error):
-                self.isSuccess.value = false
-                
-                var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode == HttpCode.badRequest {
-                    errorStr = NSLocalizedString("Error Apple authorization", comment: "")
-                }
-                
-                self.errorMessage.value = errorStr
-            }
-        })
+    private func checkInviting() {
+        let isInvitingState = self.loginUseCase.getInvitingState()
+                    
+        if isInvitingState {
+            self.isSetupInvite.value = true
+        } else {
+            self.isSuccess.value = true
+        }
     }
     
 }

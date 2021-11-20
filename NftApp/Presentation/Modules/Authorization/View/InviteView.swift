@@ -12,6 +12,7 @@ class InviteView: UIView {
     var viewModel: InviteViewModel?
     
     @IBOutlet weak var nextButton: AccentButton!
+    @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var inviteTextField: UITextField!
     
     override init(frame: CGRect) {

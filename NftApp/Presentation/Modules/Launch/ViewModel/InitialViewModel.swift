@@ -30,24 +30,32 @@ class InitialViewModelImpl: InitialViewModel {
     }
     
     func initial(isDelay: Bool) {
-        if let isInvitingState = UserDefaults.standard.object(forKey: "isInvitingState") as? Bool {
-            if isInvitingState {
-                self.isShowHome.value = false
-                return
-            }
-        }
-        
+        isLoading.value = true
+
         var seconds = 0.0
         if isDelay { seconds = 0.5 }
         
-        isLoading.value = true
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            if Constant.USER_ID == 0 || Constant.AUTH_TOKEN == "" {
-                self.isShowHome.value = false
-                return
+            self.getInitialData { result in
+                if result {
+                    if let data = InitialDataObject.data.value {
+                        if !data.isAppAvailable {
+                            self.errorMessage.value = NSLocalizedString("YUP is temporarily unavailable", comment: "")
+                            return
+                        }
+                        
+                        self.checkUser()
+                        
+                    }
+                }
             }
-
+        }
+    }
+    
+    private func checkUser() {
+        if Constant.USER_ID == 0 || Constant.AUTH_TOKEN == "" {
+            self.isShowHome.value = false
+        } else {
             self.getUser()
         }
     }
@@ -58,37 +66,25 @@ class InitialViewModelImpl: InitialViewModel {
             case .success(let user):
                 // save static
                 UserObject.user.value = UserViewModel.init(user: user)
-                
-                self.getInitialData()
+                self.isShowHome.value = true
+
                 break
                 
-            case .failure(let error):
-                if let error = error as? ErrorMessage, let code = error.code {
-                    switch code {
-                    case let c where c >= HttpCode.internalServerError:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                        break
-                    case let c where c >= HttpCode.badRequest:
-                        self.isShowHome.value = false
-                        break
-                    default:
-                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                    }
-                } else {
-                    self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-                }
+            case .failure:
+                self.isShowHome.value = false
             }
         })
     }
     
-    private func getInitialData() {
+    private func getInitialData(completion: @escaping (Bool) -> Void) {
         initialUseCase.getInitialData(completion: { result in
             switch result {
-            case .success:                
-                self.isShowHome.value = true
+            case .success:
+                completion(true)
                 break
             case .failure:
                 self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
+                completion(false)
                 break
             }
         })

@@ -15,9 +15,15 @@ protocol LoginUseCase {
     
     func checkInvite(inviteWord: String, completion: @escaping (Result<Bool, Error>) -> Void)
     
+    func saveInvitingState()
+    
     func getInvitingState() -> Bool
 
     func removeInvitingState()
+    
+    func getEarlyAccessState() -> Bool
+    
+    func removeEarlyAccessState()
 
 }
 
@@ -53,7 +59,7 @@ final class LoginUseCaseImpl: LoginUseCase {
                             Constant.USER_ID = userId
                             self.userStorage?.saveAuthToken(token: authToken)
                             self.userStorage?.saveUserId(userId: userId)
-                            self.userStorage?.removeInvitingState()
+                            self.removeInvitingState()
                             
                             completion(.success(true))
                         } else {
@@ -90,7 +96,7 @@ final class LoginUseCaseImpl: LoginUseCase {
                     // check invite
                     Constant.USER_ID = userId
                     self.userStorage?.saveUserId(userId: userId)
-                    self.userStorage?.saveInvitingState()
+                    self.saveInvitingState()
 
                     completion(.success(true))
                 } else {
@@ -104,6 +110,10 @@ final class LoginUseCaseImpl: LoginUseCase {
         }
     }
     
+    func saveInvitingState() {
+        userStorage?.saveInvitingState()
+    }
+    
     func getInvitingState() -> Bool {
         if let isInvitingState = userStorage?.getInvitingState() {
             return isInvitingState
@@ -114,6 +124,18 @@ final class LoginUseCaseImpl: LoginUseCase {
     
     func removeInvitingState() {
         userStorage?.removeInvitingState()
+    }
+    
+    func getEarlyAccessState() -> Bool {
+        if let isEarlyAccessState = userStorage?.getEarlyAccess() {
+            return isEarlyAccessState
+        } else {
+            return false
+        }
+    }
+    
+    func removeEarlyAccessState() {
+        userStorage?.removeEarlyAccess()
     }
     
 }

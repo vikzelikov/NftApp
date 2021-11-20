@@ -66,7 +66,17 @@ class SignUpViewController: UIViewController {
         }
         
         viewModel?.isSuccess.observe(on: self) { [weak self] isSuccess in
-            if isSuccess { self?.setupInviteView() }
+            if isSuccess {
+                if let data = InitialDataObject.data.value {
+                    if !data.isMarketAvailable {
+                        self?.setupEarlyAccessView()
+                        return
+                    }
+                }
+                
+                self?.setupInviteView()
+                
+            }
         }
             
         viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
@@ -92,21 +102,33 @@ class SignUpViewController: UIViewController {
     }
     
     func setupInviteView() {
+        let overView = InviteView(frame: view.bounds)
+        
+        setupOverView(overView: overView)
+        
+        overView.viewDidLoad()
+    }
+    
+    func setupEarlyAccessView() {
+        let overView = EarlyAccessView(frame: view.bounds)
+        
+        setupOverView(overView: overView)
+        
+        overView.viewDidLoad()
+    }
+    
+    func setupOverView(overView: UIView) {
         dismissKeyboard()
         
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        
-        let inviteView = InviteView(frame: view.bounds)
         
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurEffectView.contentView.addSubview(inviteView)
+        blurEffectView.contentView.addSubview(overView)
         blurEffectView.alpha = 0
         view.addSubview(blurEffectView)
-        
-        inviteView.viewDidLoad()
 
         UIView.animate(withDuration: 0.25, animations: { () -> Void in
             blurEffectView.alpha = 1.0

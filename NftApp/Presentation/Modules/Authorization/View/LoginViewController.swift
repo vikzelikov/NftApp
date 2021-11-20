@@ -74,6 +74,10 @@ class LoginViewController: UIViewController {
         viewModel?.isSetupInvite.observe(on: self) { [weak self] isSetupInvite in
             if isSetupInvite { self?.setupInviteView() }
         }
+        
+        viewModel?.isSetupEarlyAccess.observe(on: self) { [weak self] isSetupEarlyAccess in
+            if isSetupEarlyAccess { self?.setupEarlyAccessView() }
+        }
             
         viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
             guard let errorMessage = errMessage else { return }
@@ -89,19 +93,33 @@ class LoginViewController: UIViewController {
     }
     
     func setupInviteView() {
+        let overView = InviteView(frame: view.bounds)
+        
+        setupOverView(overView: overView)
+        
+        overView.viewDidLoad()
+    }
+    
+    func setupEarlyAccessView() {
+        let overView = EarlyAccessView(frame: view.bounds)
+        
+        setupOverView(overView: overView)
+        
+        overView.viewDidLoad()
+    }
+    
+    func setupOverView(overView: UIView) {
         dismissKeyboard()
         
-        let inviteView = InviteView(frame: view.bounds)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurEffectView.contentView.addSubview(inviteView)
+        blurEffectView.contentView.addSubview(overView)
         blurEffectView.alpha = 0
         view.addSubview(blurEffectView)
-        
-        inviteView.viewDidLoad()
 
         UIView.animate(withDuration: 0.25, animations: { () -> Void in
             blurEffectView.alpha = 1.0

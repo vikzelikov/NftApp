@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import PassKit
 
 protocol WalletUseCase {
         

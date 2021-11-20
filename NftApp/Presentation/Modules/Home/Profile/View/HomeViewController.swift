@@ -61,7 +61,7 @@ class HomeViewController: UIViewController {
         tableView.rowHeight = UIScreen.main.bounds.width - 30
         tableView.register(UINib(nibName: NftViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftViewCell.cellIdentifier)
         tableView.register(UINib(nibName: PlaceholderViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: PlaceholderViewCell.cellIdentifier)
-        tableView.contentInset = UIEdgeInsets(top: 370, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 380, left: 0, bottom: 0, right: 0)
         
         if !self.isModal {
             refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)

@@ -32,7 +32,10 @@ final class SignupUseCaseImpl: SignupUseCase {
                     if let userId = resp.userId {
                         Constant.USER_ID = userId
                         self.userStorage?.saveUserId(userId: userId)
-                        self.userStorage?.saveInvitingState()
+                        
+                        if let data = InitialDataObject.data.value {
+                            !data.isMarketAvailable ? self.userStorage?.saveEarlyAccess() : self.userStorage?.saveInvitingState()
+                        }
                         
                         completion(.success(true))
                     } else {

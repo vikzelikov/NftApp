@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="inviteTextField" destination="cVd-IL-V73" id="cXq-Kr-Fed"/>
                 <outlet property="nextButton" destination="6vC-j9-Wd1" id="hFR-ve-aVO"/>
+                <outlet property="textLabel" destination="DLy-6c-cYo" id="DkG-6Z-rtr"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

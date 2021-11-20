@@ -19,6 +19,12 @@ protocol UserStorage {
     func getInvitingState() -> Bool
     
     func removeInvitingState()
+    
+    func saveEarlyAccess()
+    
+    func getEarlyAccess() -> Bool
+    
+    func removeEarlyAccess()
         
     func getUserId() -> Int
     
@@ -46,6 +52,18 @@ class UserStorageImpl: UserStorage  {
     
     func removeInvitingState() {
         UserDefaults.standard.removeObject(forKey: "isInvitingState")
+    }
+    
+    func saveEarlyAccess() {
+        UserDefaults.standard.set(true, forKey: "isEarlyAccess")
+    }
+    
+    func getEarlyAccess() -> Bool {
+        return UserDefaults.standard.bool(forKey: "isEarlyAccess")
+    }
+    
+    func removeEarlyAccess() {
+        UserDefaults.standard.removeObject(forKey: "isEarlyAccess")
     }
     
     func getUserId() -> Int {

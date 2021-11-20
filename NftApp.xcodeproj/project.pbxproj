@@ -131,6 +131,8 @@
 		187CF93727445D4B00EBCF27 /* InvitationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187CF93527445D4B00EBCF27 /* InvitationsViewController.xib */; };
 		187CF93C27483D1C00EBCF27 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187CF93B27483D1C00EBCF27 /* HeaderView.xib */; };
 		187CF93E27483D2600EBCF27 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CF93D27483D2600EBCF27 /* HeaderView.swift */; };
+		187CF94027493B5400EBCF27 /* EarlyAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CF93F27493B5400EBCF27 /* EarlyAccessView.swift */; };
+		187CF94227493B6300EBCF27 /* EarlyAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187CF94127493B6300EBCF27 /* EarlyAccessView.xib */; };
 		18855F3626D52A360018B072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18855F3526D52A360018B072 /* Assets.xcassets */; };
 		18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84265266E27A40033AFC0 /* AppDelegate.swift */; };
 		18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84269266E27A40033AFC0 /* SignUpViewController.swift */; };
@@ -357,6 +359,8 @@
 		187CF93527445D4B00EBCF27 /* InvitationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvitationsViewController.xib; sourceTree = "<group>"; };
 		187CF93B27483D1C00EBCF27 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		187CF93D27483D2600EBCF27 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		187CF93F27493B5400EBCF27 /* EarlyAccessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarlyAccessView.swift; sourceTree = "<group>"; };
+		187CF94127493B6300EBCF27 /* EarlyAccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EarlyAccessView.xib; sourceTree = "<group>"; };
 		18855F3526D52A360018B072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B84262266E27A40033AFC0 /* NftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B84265266E27A40033AFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1301,6 +1305,8 @@
 				18B8426B266E27A40033AFC0 /* Authorization.storyboard */,
 				18D2C1212740335B0043BEEC /* InviteView.swift */,
 				18D2C11F274032BC0043BEEC /* InviteView.xib */,
+				187CF93F27493B5400EBCF27 /* EarlyAccessView.swift */,
+				187CF94127493B6300EBCF27 /* EarlyAccessView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1696,6 +1702,7 @@
 				187CF93727445D4B00EBCF27 /* InvitationsViewController.xib in Resources */,
 				1834E762273332490081EFB1 /* PasswordViewController.xib in Resources */,
 				18523F94269CED1100611362 /* TabBar.storyboard in Resources */,
+				187CF94227493B6300EBCF27 /* EarlyAccessView.xib in Resources */,
 				18B84272266E27A50033AFC0 /* LaunchScreen.storyboard in Resources */,
 				186E600A26B6DFCA008291AC /* HistoryTransactionsViewController.xib in Resources */,
 				187CF93C27483D1C00EBCF27 /* HeaderView.xib in Resources */,
@@ -1827,6 +1834,7 @@
 				1879C57226C9D30900CE367E /* SignupRequestDTO.swift in Sources */,
 				1813846027356FA6004530BD /* SearchViewCell.swift in Sources */,
 				18E1108A26D5AA56007FD66E /* EditionDTO.swift in Sources */,
+				187CF94027493B5400EBCF27 /* EarlyAccessView.swift in Sources */,
 				182342DB26A1E67F00CD2907 /* NftMarketViewCell.swift in Sources */,
 				18C319DD273DD4F1005BD3CA /* HeaderViewCell.swift in Sources */,
 				180F6C7627385ABB00F3F03E /* ErrorView.swift in Sources */,
