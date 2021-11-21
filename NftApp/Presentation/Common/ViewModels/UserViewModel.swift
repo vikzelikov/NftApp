@@ -18,6 +18,7 @@ struct UserViewModel {
     var totalCost: Double?
     var countNFTs: Int?
     var inviteWord: String?
+    var publicKey: String?
 }
 
 extension UserViewModel {
@@ -32,5 +33,6 @@ extension UserViewModel {
         self.totalCost = user.totalCost
         self.countNFTs = user.countNFTs
         self.inviteWord = user.inviteWord
+        self.publicKey = user.publicKey
     }
 }

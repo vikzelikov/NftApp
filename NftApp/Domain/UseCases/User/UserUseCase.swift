@@ -45,7 +45,8 @@ final class UserUseCaseImpl: UserUseCase {
                         balance: Double(resp.balance ?? "0.0"),
                         totalCost: Double(resp.totalCost ?? "0.0"),
                         countNFTs: Int(resp.countNFTs ?? "0"),
-                        inviteWord: resp.inviteWord
+                        inviteWord: resp.inviteWord,
+                        publicKey: resp.publicKey
                     )
                     
                     completion(.success(user))

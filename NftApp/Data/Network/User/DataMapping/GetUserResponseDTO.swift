@@ -19,6 +19,7 @@ class GetUserResponseDTO: Decodable {
         case totalCost
         case countNFTs
         case inviteWord
+        case publicKey
     }
     
     let id: Int
@@ -31,4 +32,5 @@ class GetUserResponseDTO: Decodable {
     let totalCost: String?
     let countNFTs: String?
     let inviteWord: String?
+    let publicKey: String?
 }

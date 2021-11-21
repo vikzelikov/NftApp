@@ -20,6 +20,7 @@ struct User: Equatable, Identifiable {
     var oldPassword: String?
     var newPassword: String?
     var inviteWord: String?
+    var publicKey: String?
 }
 
 struct UserObject {

@@ -60,13 +60,17 @@ class InitialViewModelImpl: InitialViewModel {
         }
     }
     
-    private func getUser() {        
+    private func getUser() {
         userUseCase.getUser(userId: Constant.USER_ID, completion: { result in
             switch result {
             case .success(let user):
-                // save static
-                UserObject.user.value = UserViewModel.init(user: user)
-                self.isShowHome.value = true
+                if user.publicKey != nil {
+                    // save static
+                    UserObject.user.value = UserViewModel.init(user: user)
+                    self.isShowHome.value = true
+                } else {
+                    self.isShowHome.value = false
+                }
 
                 break
                 
