@@ -16,6 +16,7 @@ struct InitialData: Equatable {
     var isDepositAvailable: Bool
     var isWithdrawAvailable: Bool
     var isInvited: Bool
+    var isEarlyAccess: Bool
 }
 
 struct InitialDataObject {

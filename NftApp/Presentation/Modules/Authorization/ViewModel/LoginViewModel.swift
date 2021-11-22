@@ -52,7 +52,7 @@ class LoginViewModelImpl: LoginViewModel {
         let isEarlyAccessState = loginUseCase.getEarlyAccessState()
         
         if let data = InitialDataObject.data.value {
-            if data.isMarketAvailable {
+            if !data.isEarlyAccess {
                 loginUseCase.removeEarlyAccessState()
             } else if isEarlyAccessState {
                 isSetupEarlyAccess.value = true
@@ -74,6 +74,7 @@ class LoginViewModelImpl: LoginViewModel {
         loginUseCase.login(request: loginRequest, completion: { result in
             switch result {
             case .success:
+                print("!!!!!!")
                 self.checkInviting()
                 
             case .failure(let error):

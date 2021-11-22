@@ -68,7 +68,7 @@ class SignUpViewController: UIViewController {
         viewModel?.isSuccess.observe(on: self) { [weak self] isSuccess in
             if isSuccess {
                 if let data = InitialDataObject.data.value {
-                    if !data.isMarketAvailable {
+                    if data.isEarlyAccess {
                         self?.setupEarlyAccessView()
                         return
                     }

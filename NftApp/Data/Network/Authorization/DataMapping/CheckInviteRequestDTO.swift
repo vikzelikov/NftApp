@@ -12,7 +12,7 @@ class CheckInviteRequestDTO: Decodable {
     
     lazy var parameters = [
         "userId": userId
-    ] as [String : Any]
+    ] as [String : Int]
 
     init(userId: Int) {
         self.userId = userId

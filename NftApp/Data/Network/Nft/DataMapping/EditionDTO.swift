@@ -24,7 +24,7 @@ class EditionDTO: Decodable {
     let id: Int
     let influencerId: Int?
     let count: Int?
-    let countNFTs: String?
+    let countNFTs: Int?
     let name: String
     let description: String
     let price: Double?

@@ -51,8 +51,8 @@ final class FollowsUseCaseImpl: FollowsUseCase {
                     email: $0.email,
                     flowAddress: $0.flowAddress,
                     avatarUrl: $0.avatarUrl,
-                    totalCost: Double($0.totalCost ?? "0.0"),
-                    countNFTs: Int($0.countNFTs ?? "0")
+                    totalCost: Double($0.totalCost ?? 0),
+                    countNFTs: $0.countNFTs ?? 0
                 )}
                 
                 completion(.success(users))

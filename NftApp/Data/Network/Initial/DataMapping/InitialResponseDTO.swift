@@ -18,6 +18,7 @@ struct InitialResponseDTO: Decodable {
         case isDepositAvailable
         case isWithdrawAvailable
         case isInvited
+        case isEarlyAccess
     }
     
     let id: Int
@@ -29,4 +30,5 @@ struct InitialResponseDTO: Decodable {
     let isDepositAvailable: Bool
     let isWithdrawAvailable: Bool
     let isInvited: Bool
+    let isEarlyAccess: Bool
 }

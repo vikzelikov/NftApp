@@ -33,7 +33,9 @@ final class InitialUseCaseImpl: InitialUseCase {
                                                   isMarketAvailable: resp.isMarketAvailable,
                                                   isDepositAvailable: resp.isDepositAvailable,
                                                   isWithdrawAvailable: resp.isWithdrawAvailable,
-                                                  isInvited: resp.isInvited)
+                                                  isInvited: resp.isInvited,
+                                                  isEarlyAccess: resp.isEarlyAccess
+                    )
                     
                     InitialDataObject.data.value = initialData
                     

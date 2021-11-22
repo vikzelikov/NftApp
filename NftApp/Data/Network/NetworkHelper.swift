@@ -47,16 +47,15 @@ struct NetworkHelper {
             completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: nil)))
             return
         }
-        
+
         guard let data = response.data else {
             completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
             return
         }
-        
+
         if response.error != nil {
             if let errorDTO = try? JSONDecoder().decode(ErrorDTO.self, from: data) {
                 let error = ErrorMessage(errorType: .error, errorDTO: errorDTO, code: resp.statusCode)
-                print(error)
                 completion(.failure(error))
                 return
             } else {
@@ -72,7 +71,7 @@ struct NetworkHelper {
         if let responseDTO = try? JSONDecoder().decode(T.self, from: data) {
             completion(.success(responseDTO))
         } else {
-            print("пизда \(resp.statusCode)")
+            print("DTO not compare \(resp.statusCode)")
             completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: resp.statusCode)))
         }
         

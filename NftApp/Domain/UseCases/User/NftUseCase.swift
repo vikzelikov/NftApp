@@ -105,7 +105,7 @@ final class NftUseCaseImpl: NftUseCase {
             price: edition.price,
             dateExpiration: edition.dateExpiration ?? "0" ,
             mediaUrl: edition.mediaUrl,
-            countNFTs: Int(edition.countNFTs ?? "0") ?? 0,
+            countNFTs: edition.countNFTs ?? 0,
             influencer: influencer
         )
     }

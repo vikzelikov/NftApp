@@ -40,7 +40,7 @@ class WalletViewController: UIViewController {
             }
             
             let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
-            self?.fiatBalanceLabel.text = "~ \(((userViewModel?.balance ?? 0.0) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
+            self?.fiatBalanceLabel.text = "~ \(((userViewModel?.balance ?? 0.0) / currency).rounded(toPlaces: 2).clean) \(NSLocalizedString("RUB", comment: ""))"
         }
     }
     

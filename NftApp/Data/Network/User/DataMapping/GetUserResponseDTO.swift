@@ -29,8 +29,8 @@ class GetUserResponseDTO: Decodable {
     let avatarUrl: String?
     let flowAddress: String?
     let balance: String?
-    let totalCost: String?
-    let countNFTs: String?
+    let totalCost: Int?
+    let countNFTs: Int?
     let inviteWord: String?
     let publicKey: String?
 }

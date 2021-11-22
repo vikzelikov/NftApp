@@ -47,7 +47,6 @@ struct AuthEndpoints {
         let requestDTO = CheckInviteRequestDTO (
             userId: Constant.USER_ID
         ).parameters
-        
         let url = Constant.BASE_URL + "api/auth/\(inviteWord)"
         
         return Endpoint(url: url, method: .post, headers: [], data: requestDTO)

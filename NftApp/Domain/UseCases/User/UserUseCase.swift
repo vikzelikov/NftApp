@@ -43,8 +43,8 @@ final class UserUseCaseImpl: UserUseCase {
                         flowAddress: resp.flowAddress,
                         avatarUrl: resp.avatarUrl,
                         balance: Double(resp.balance ?? "0.0"),
-                        totalCost: Double(resp.totalCost ?? "0.0"),
-                        countNFTs: Int(resp.countNFTs ?? "0"),
+                        totalCost: Double(resp.totalCost ?? 0),
+                        countNFTs: resp.countNFTs ?? 0,
                         inviteWord: resp.inviteWord,
                         publicKey: resp.publicKey
                     )

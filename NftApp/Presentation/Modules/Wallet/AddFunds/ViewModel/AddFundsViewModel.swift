@@ -58,6 +58,7 @@ class AddFundsViewModelImpl: AddFundsViewModel {
         }
         
         if ProductsDB.shared.items.indices.contains(index) {
+            print(ProductsDB.shared.items[index].price)
             IAPManager.shared.purchase(product: ProductsDB.shared.items[index], completion: { result in
                 
                 completion(result)
@@ -174,6 +175,7 @@ extension IAPManager: SKPaymentTransactionObserver {
                 break
                 
             case .purchased:
+                print(transaction.payment.productIdentifier)
                 SKPaymentQueue.default().finishTransaction(transaction)
                 completionPurchase?(true)
                 break
