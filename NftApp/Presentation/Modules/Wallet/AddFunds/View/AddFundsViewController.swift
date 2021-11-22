@@ -11,10 +11,8 @@ class AddFundsViewController: UIViewController {
     
     var viewModel: AddFundsViewModel?
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextButton: AccentButton!
-    @IBOutlet weak var firstItem: UIView!
-    @IBOutlet weak var secondItem: UIView!
-    @IBOutlet weak var itemsStackView: UIStackView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -36,22 +34,21 @@ class AddFundsViewController: UIViewController {
 
         nextButton.applyButtonEffects()
         
-        let firstItemDidTap = UITapGestureRecognizer(target: self, action: #selector(firstItemDidTap(_:)))
-        firstItem?.addGestureRecognizer(firstItemDidTap)
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        let secondItemDidTap = UITapGestureRecognizer(target: self, action: #selector(secondItemDidTap(_:)))
-        secondItem?.addGestureRecognizer(secondItemDidTap)
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: PurchaseViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: PurchaseViewCell.cellIdentifier)
+        
     }
     
     func bindData() {
         viewModel?.products.observe(on: self) { [weak self] products in
             if !products.isEmpty {
-                if let firstItem = self?.firstItem {
-                    self?.setSelected(selectedView: firstItem)
-                    self?.viewModel?.productDidTap(index: 0)
-                    
-                    self?.itemsStackView.isHidden = false
-                }
+                self?.tableView.isHidden = false
+                self?.tableView.reloadData()
             }
         }
         
@@ -64,58 +61,6 @@ class AddFundsViewController: UIViewController {
             isLoading ? self?.loadingIndicator.startAnimating() : self?.loadingIndicator.stopAnimating()
         }
     }
-    
-    @objc func firstItemDidTap(_ sender: UITapGestureRecognizer) {
-        setSelected(selectedView: firstItem)
-        
-        viewModel?.productDidTap(index: 0)
-    }
-    
-    @objc func secondItemDidTap(_ sender: UITapGestureRecognizer) {
-        setSelected(selectedView: secondItem)
-        
-        viewModel?.productDidTap(index: 1)
-    }
-    
-    func setSelected(selectedView: UIView) {
-        resetSelected()
-        
-        UIView.animate(withDuration: 0.2) {
-            selectedView.transform = .identity
-        }
-        
-        selectedView.alpha = 2
-        
-        selectedView.isUserInteractionEnabled = false
-        
-        HapticHelper.vibro(.light)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { HapticHelper.vibro(.heavy) }
-        
-        selectedView.layer.borderWidth = 2
-        selectedView.layer.borderColor = UIColor(named: "orange")?.cgColor
-    }
-    
-    func resetSelected() {
-        UIView.animate(withDuration: 0.2) {
-            self.firstItem?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        }
-        
-        UIView.animate(withDuration: 0.2) {
-            self.secondItem?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        }
-        
-        firstItem.isUserInteractionEnabled = true
-        secondItem.isUserInteractionEnabled = true
-        
-        firstItem.alpha = 0.5
-        secondItem.alpha = 0.5
-        
-        firstItem.layer.borderWidth = 0
-        firstItem.layer.borderColor = UIColor.clear.cgColor
-        
-        secondItem.layer.borderWidth = 0
-        secondItem.layer.borderColor = UIColor.clear.cgColor
-    }
         
     @IBAction func continueDidTap(_ sender: Any) {
         nextButton.loadingIndicator(isShow: true, titleButton: nil)
@@ -125,7 +70,7 @@ class AddFundsViewController: UIViewController {
                 self.showMessage(message: NSLocalizedString("Successful purchase", comment: ""), isHaptic: false)
             }
             
-            self.nextButton.loadingIndicator(isShow: false, titleButton: "CONTINUE")
+            self.nextButton.loadingIndicator(isShow: false, titleButton: "GET")
         }
     }
     
@@ -133,4 +78,37 @@ class AddFundsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+}
+
+extension AddFundsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.productDidTap(index: indexPath.row)
+        
+        HapticHelper.vibro(.light)
+    }
+}
+
+extension AddFundsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let count = viewModel?.products.value.count {
+            return count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PurchaseViewCell.cellIdentifier, for: indexPath) as? PurchaseViewCell else {
+            assertionFailure("Cannot dequeue reusable cell")
+            return UITableViewCell()
+        }
+        
+        cell.selectionStyle = .none
+
+        if let vm = viewModel?.products.value[indexPath.row] {
+            cell.bind(viewModel: vm)
+        }
+                
+        return cell
+    }
 }

@@ -158,9 +158,7 @@ class HomeViewModelImpl: HomeViewModel {
                 }
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isLoading.value = false
-            }
+            self.isLoading.value = false
         }
     }
     

@@ -10,6 +10,16 @@ import Alamofire
 
 class WalletRepositoryImpl: WalletRepository {
     
+    func addFunds(request: AddFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
+        let endpoint = WalletEndpoints.addFundsEndpoint(request: request)
+
+        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
+            
+            NetworkHelper.validateBoolResponse(response: response, completion: completion)
+            
+        }
+    }
+    
     func withdrawFunds(request: WithdrawFundsRequest, completion: @escaping (Result<WithdrawFundsResponseDTO, Error>) -> Void) {
         let endpoint = WalletEndpoints.withdrawFundsEndpoint(request: request)
 

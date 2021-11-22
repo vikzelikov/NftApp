@@ -76,6 +76,7 @@
 		1834E75C2733014A0081EFB1 /* DetailTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E75B2733014A0081EFB1 /* DetailTransactionViewModel.swift */; };
 		1834E761273332490081EFB1 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834E75F273332490081EFB1 /* PasswordViewController.swift */; };
 		1834E762273332490081EFB1 /* PasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834E760273332490081EFB1 /* PasswordViewController.xib */; };
+		18414CEC274C3F8800411328 /* AddFundsRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18414CEB274C3F8800411328 /* AddFundsRequestDTO.swift */; };
 		18523F89269CE7DB00611362 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F88269CE7DB00611362 /* TabBarViewController.swift */; };
 		18523F90269CEAA000611362 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18523F8F269CEAA000611362 /* ShopViewController.swift */; };
 		18523F92269CEB4E00611362 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18523F91269CEB4E00611362 /* Shop.storyboard */; };
@@ -92,6 +93,8 @@
 		1869F0FC2707537200C7654A /* InfluencersCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869F0FA2707537200C7654A /* InfluencersCollectionView.xib */; };
 		1869F0FF2707555B00C7654A /* InfluencerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869F0FD2707555B00C7654A /* InfluencerCollectionViewCell.swift */; };
 		1869F1002707555B00C7654A /* InfluencerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869F0FE2707555B00C7654A /* InfluencerCollectionViewCell.xib */; };
+		186BE61E274C007B002E6506 /* PurchaseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186BE61C274C007B002E6506 /* PurchaseViewCell.swift */; };
+		186BE61F274C007B002E6506 /* PurchaseViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186BE61D274C007B002E6506 /* PurchaseViewCell.xib */; };
 		186E5FF326B6A3E2008291AC /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E5FF126B6A3E2008291AC /* WithdrawViewController.swift */; };
 		186E5FF426B6A3E2008291AC /* WithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186E5FF226B6A3E2008291AC /* WithdrawViewController.xib */; };
 		186E5FF726B6A3FD008291AC /* AddFundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E5FF526B6A3FD008291AC /* AddFundsViewController.swift */; };
@@ -301,6 +304,7 @@
 		1834E75B2733014A0081EFB1 /* DetailTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransactionViewModel.swift; sourceTree = "<group>"; };
 		1834E75F273332490081EFB1 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		1834E760273332490081EFB1 /* PasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordViewController.xib; sourceTree = "<group>"; };
+		18414CEB274C3F8800411328 /* AddFundsRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFundsRequestDTO.swift; sourceTree = "<group>"; };
 		18523F88269CE7DB00611362 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		18523F8F269CEAA000611362 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		18523F91269CEB4E00611362 /* Shop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
@@ -320,6 +324,8 @@
 		1869F0FA2707537200C7654A /* InfluencersCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfluencersCollectionView.xib; sourceTree = "<group>"; };
 		1869F0FD2707555B00C7654A /* InfluencerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfluencerCollectionViewCell.swift; sourceTree = "<group>"; };
 		1869F0FE2707555B00C7654A /* InfluencerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfluencerCollectionViewCell.xib; sourceTree = "<group>"; };
+		186BE61C274C007B002E6506 /* PurchaseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewCell.swift; sourceTree = "<group>"; };
+		186BE61D274C007B002E6506 /* PurchaseViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseViewCell.xib; sourceTree = "<group>"; };
 		186E5FF126B6A3E2008291AC /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
 		186E5FF226B6A3E2008291AC /* WithdrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawViewController.xib; sourceTree = "<group>"; };
 		186E5FF526B6A3FD008291AC /* AddFundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFundsViewController.swift; sourceTree = "<group>"; };
@@ -783,6 +789,8 @@
 			children = (
 				186E5FF526B6A3FD008291AC /* AddFundsViewController.swift */,
 				186E5FF626B6A3FD008291AC /* AddFundsViewController.xib */,
+				186BE61C274C007B002E6506 /* PurchaseViewCell.swift */,
+				186BE61D274C007B002E6506 /* PurchaseViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1398,6 +1406,7 @@
 		18DDE9FC26D6F80B00306A60 /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
+				18414CEB274C3F8800411328 /* AddFundsRequestDTO.swift */,
 				18DDEA0226D6F88F00306A60 /* WithdrawFundsRequestDTO.swift */,
 				18DDEA0426D6F8A300306A60 /* WithdrawFundsResponseDTO.swift */,
 				1834E7552732DA0C0081EFB1 /* GetTransactionsRequestDTO.swift */,
@@ -1721,6 +1730,7 @@
 				18156D3B26A43240006B8FE5 /* Settings.storyboard in Resources */,
 				18B8428E266F648F0033AFC0 /* Home.storyboard in Resources */,
 				180F6C7427385A9A00F3F03E /* ErrorView.xib in Resources */,
+				186BE61F274C007B002E6506 /* PurchaseViewCell.xib in Resources */,
 				18E1106F26D595EF007FD66E /* Localizable.strings in Resources */,
 				185CBA2A2725ABDC007DF8CF /* NftViewCell.xib in Resources */,
 				18C319DE273DD4F1005BD3CA /* HeaderViewCell.xib in Resources */,
@@ -1834,6 +1844,7 @@
 				1879C57226C9D30900CE367E /* SignupRequestDTO.swift in Sources */,
 				1813846027356FA6004530BD /* SearchViewCell.swift in Sources */,
 				18E1108A26D5AA56007FD66E /* EditionDTO.swift in Sources */,
+				18414CEC274C3F8800411328 /* AddFundsRequestDTO.swift in Sources */,
 				187CF94027493B5400EBCF27 /* EarlyAccessView.swift in Sources */,
 				182342DB26A1E67F00CD2907 /* NftMarketViewCell.swift in Sources */,
 				18C319DD273DD4F1005BD3CA /* HeaderViewCell.swift in Sources */,
@@ -1881,6 +1892,7 @@
 				18E8D892272C784300C44C40 /* GetInfluencersResponseDTO.swift in Sources */,
 				182342EF26A2EB5E00CD2907 /* TradingHistoryViewController.swift in Sources */,
 				18E1107426D59F4F007FD66E /* DropShopRepositoryImpl.swift in Sources */,
+				186BE61E274C007B002E6506 /* PurchaseViewCell.swift in Sources */,
 				18DDEA0526D6F8A300306A60 /* WithdrawFundsResponseDTO.swift in Sources */,
 				1834E7562732DA0C0081EFB1 /* GetTransactionsRequestDTO.swift in Sources */,
 				18E39B1926D039B000FEC003 /* UserRepository.swift in Sources */,
@@ -2124,7 +2136,7 @@
 				CODE_SIGN_ENTITLEMENTS = NftApp/NftApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 64ZXKZ9BQ6;
 				INFOPLIST_FILE = NftApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2132,7 +2144,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.6;
+				MARKETING_VERSION = 0.1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nft.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile";
@@ -2153,7 +2165,7 @@
 				CODE_SIGN_ENTITLEMENTS = NftApp/NftApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 64ZXKZ9BQ6;
 				INFOPLIST_FILE = NftApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2161,7 +2173,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.6;
+				MARKETING_VERSION = 0.1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nft.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Development Provisioning Profile";

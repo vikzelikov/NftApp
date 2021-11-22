@@ -54,6 +54,7 @@ class InitialViewModelImpl: InitialViewModel {
     
     private func checkUser() {
         if Constant.USER_ID == 0 || Constant.AUTH_TOKEN == "" {
+            self.userUseCase.clearUserStorage()
             self.isShowHome.value = false
         } else {
             self.getUser()
@@ -69,12 +70,14 @@ class InitialViewModelImpl: InitialViewModel {
                     UserObject.user.value = UserViewModel.init(user: user)
                     self.isShowHome.value = true
                 } else {
+                    self.userUseCase.clearUserStorage()
                     self.isShowHome.value = false
                 }
 
                 break
                 
             case .failure:
+                self.userUseCase.clearUserStorage()
                 self.isShowHome.value = false
             }
         })

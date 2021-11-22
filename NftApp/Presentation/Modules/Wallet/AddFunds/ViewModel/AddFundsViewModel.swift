@@ -7,6 +7,7 @@
 
 import Foundation
 import StoreKit
+import CommonCrypto
 
 protocol AddFundsViewModel : BaseViewModel {
         
@@ -34,8 +35,18 @@ class AddFundsViewModelImpl: AddFundsViewModel {
         IAPManager.shared.getProducts(completion: { result in
             DispatchQueue.main.async {
                 if result {
-                    self.products.value.append(InAppPurchase(id: 0, price: 99))
-                    self.products.value.append(InAppPurchase(id: 1, price: 449))
+                    for (index, product) in ProductsDB.shared.items.enumerated() {
+                        self.products.value.append(InAppPurchase(
+                            id: index,
+                            price: product.price,
+                            priceLocale: product.priceLocale,
+                            productIdentifier: product.productIdentifier,
+                            isSelected: index == 0 ? true : false
+                        ))
+                    }
+                    
+                    self.selectedProduct = self.products.value.first
+                    
                 } else {
                     self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
                 }
@@ -47,6 +58,15 @@ class AddFundsViewModelImpl: AddFundsViewModel {
     
     func productDidTap(index: Int) {
         if products.value.indices.contains(index) {
+            
+            for (id, t) in products.value.enumerated() {
+                if t.id == index {
+                    products.value[index].isSelected = true
+                } else {
+                    products.value[id].isSelected = false
+                }
+            }
+            
             selectedProduct = products.value[index]
         }
     }
@@ -58,50 +78,63 @@ class AddFundsViewModelImpl: AddFundsViewModel {
         }
         
         if ProductsDB.shared.items.indices.contains(index) {
-            print(ProductsDB.shared.items[index].price)
-            IAPManager.shared.purchase(product: ProductsDB.shared.items[index], completion: { result in
-                
-                completion(result)
-                
-                if result {
-                    self.addFunds()
+            IAPManager.shared.purchase(product: ProductsDB.shared.items[index], completion: { isSuccessPurchase, prodIdentifier in
+                if let productIdentifier = prodIdentifier {
+                    for product in self.products.value {
+                        if product.productIdentifier == productIdentifier {
+                            if isSuccessPurchase {
+                                let orderId = "\(Date().millisecondsSince1970 + Int64.random(in: 0 ... 10000000000))"
+                                let amount = "\(product.price)"
+                                let locale = "\(product.priceLocale)"
+                                let concatData = orderId + "\(Constant.USER_ID)" + productIdentifier + amount + locale + Constant.IAP_SECRET
+                                let concatHash = self.sha256(concatData)
+                                                                
+                                let request = AddFundsRequest(orderId: orderId, productIdentifier: productIdentifier, amount: amount, locale: locale, concatHash: concatHash)
+                                
+                                self.addFunds(request: request) { isSuccessRequest in
+                                    completion(isSuccessRequest)
+                                }
+                            } else {
+                                completion(false)
+                            }
+                            
+                            break
+                        }
+                    }
+                } else {
+                    completion(false)
                 }
             })
         }
     }
 
-    private func addFunds() {
-//        self.isLoading.value = true
-//        
-//        walletUseCase.addFunds(request: addFundsRequest, completion: { result in
-//            switch result {
-//            case .success(let isSuccess):
-//                NSLog("OK Signup: \(isSuccess)")
-//                self.isSuccess.value = true
-//            case .failure(let error):
-//                self.isSuccess.value = false
-//                NSLog("ERROR: \(String(describing: SignupViewModel.self)) \(error)")
-//                if let error = error as? ErrorMessage, let code = error.code {
-//                    switch code {
-//                    case let c where c >= HttpCode.internalServerError:
-//                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-//                    case HttpCode.badRequest:
-//                        let message = error.errorDTO?.message
-//                        self.errorMessage.value = message
-//                    default:
-//                        self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-//                    }
-//                } else {
-//                    self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
-//                }
-//
-//            }
-//
-//            self.isLoading.value = false
-//        })
+    private func addFunds(request: AddFundsRequest, completion: @escaping (Bool) -> Void) {        
+        walletUseCase.addFunds(request: request, completion: { result in
+            switch result {
+            case .success:
+                completion(true)
+                
+            case .failure:
+                self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
+                completion(false)
+            }
+        })
     }
     
+    private func sha256(_ data: Data) -> Data {
+        var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
+        data.withUnsafeBytes {
+            _ = CC_SHA256($0.baseAddress, CC_LONG(data.count), &hash)
+        }
+        return Data(hash)
+    }
 
+    private func sha256(_ str: String) -> String {
+        guard let data = str.data(using: .utf8) else { return "" }
+        let shaData = sha256(data)
+        let hashString = shaData.compactMap { String(format: "%02x", $0) }.joined()
+        return hashString
+    }
 
 }
 
@@ -109,7 +142,7 @@ class IAPManager: NSObject {
     
     static let shared = IAPManager()
     
-    private var completionPurchase: ((Bool) -> Void)?
+    private var completionPurchase: ((Bool, String?) -> Void)?
     private var completionGetProducts: ((Bool) -> Void)?
         
     private override init() {
@@ -124,7 +157,7 @@ class IAPManager: NSObject {
         request.start()
     }
 
-    func purchase(product: SKProduct, completion: ((Bool) -> Void)?) {
+    func purchase(product: SKProduct, completion: ((Bool, String?) -> Void)?) {
         self.completionPurchase = completion
         
         if IAPManager.shared.canMakePayments() {
@@ -132,7 +165,7 @@ class IAPManager: NSObject {
             SKPaymentQueue.default().add(self)
             SKPaymentQueue.default().add(payment)
         } else {
-            completion?(false)
+            completion?(false, nil)
         }
     }
 
@@ -171,13 +204,12 @@ extension IAPManager: SKPaymentTransactionObserver {
                 
             case .failed:
                 SKPaymentQueue.default().finishTransaction(transaction)
-                completionPurchase?(false)
+                completionPurchase?(false, nil)
                 break
                 
             case .purchased:
-                print(transaction.payment.productIdentifier)
                 SKPaymentQueue.default().finishTransaction(transaction)
-                completionPurchase?(true)
+                completionPurchase?(true, transaction.payment.productIdentifier)
                 break
                 
             default: break
@@ -194,5 +226,8 @@ final class ProductsDB: Identifiable {
 
 struct InAppPurchase {
     let id: Int
-    let price: Int
+    let price: NSDecimalNumber
+    let priceLocale: Locale
+    let productIdentifier: String
+    var isSelected: Bool
 }

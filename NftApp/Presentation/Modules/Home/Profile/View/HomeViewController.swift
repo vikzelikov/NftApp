@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
         bindData()
         
         setupHeader()
-        
+
         setupStyle()
     }
     
