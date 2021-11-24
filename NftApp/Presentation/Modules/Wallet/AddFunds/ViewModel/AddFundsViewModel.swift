@@ -83,7 +83,7 @@ class AddFundsViewModelImpl: AddFundsViewModel {
                     for product in self.products.value {
                         if product.productIdentifier == productIdentifier {
                             if isSuccessPurchase {
-                                let orderId = "\(Date().millisecondsSince1970 + Int64.random(in: 0 ... 10000000000))"
+                                let orderId = "\(Date().millisecondsSince1970)"
                                 let amount = "\(product.price)"
                                 let locale = "\(product.priceLocale)"
                                 let concatData = orderId + "\(Constant.USER_ID)" + productIdentifier + amount + locale + Constant.IAP_SECRET

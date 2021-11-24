@@ -49,7 +49,12 @@ class SearchViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: SearchViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SearchViewCell.cellIdentifier)
-
+        tableView.contentInsetAdjustmentBehavior = .never
+        
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.becomeFirstResponder()
@@ -94,12 +99,32 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = HeaderView()
-        guard let headers = viewModel?.headers else { return header }
-        header.bind(title: headers[section])
+        guard let headers = viewModel?.headers else { return nil }
+        
+        switch section {
+        case 0:
+            if self.tableView(tableView, numberOfRowsInSection: section) > 0 {
+                header.bind(title: headers[section])
+            }
+        case 1:
+            if self.tableView(tableView, numberOfRowsInSection: section) > 0 {
+                header.bind(title: headers[section])
+            }
+        default: break
+        }
+        
         return header
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            if self.tableView(tableView, numberOfRowsInSection: section) == 0 { return 0 }
+        case 1:
+            if self.tableView(tableView, numberOfRowsInSection: section) == 0 { return 0 }
+        default: break
+        }
+        
         return 50
     }
     

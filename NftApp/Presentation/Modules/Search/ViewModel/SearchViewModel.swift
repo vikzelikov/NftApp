@@ -115,17 +115,12 @@ class SearchViewModelImpl: SearchViewModel {
     
     private func serachDone() {
         if self.isSearched() {
-            if usersItems.count > 0 {
-                items.value.append(usersItems)
-            }
+            items.value.append(usersItems)
+            items.value.append(editionsItems)
             
-            if editionsItems.count > 0 {
-                items.value.append(editionsItems)
-            }
-            
-            if nftsItems.count > 0 {
-                items.value.append(nftsItems)
-            }
+//            if nftsItems.count > 0 {
+//                items.value.append(nftsItems)
+//            }
             
             items.value = items.value.uniqued()
         }
