@@ -36,7 +36,7 @@ class TransactionViewCell: UITableViewCell {
         case TypeTransactions.buyTokens.rawValue : do {
             prefixAmount = "+"
             subtitleLabel.isHidden = true
-            titleLabel?.text = NSLocalizedString("Buy tokens", comment: "")
+            titleLabel?.text = NSLocalizedString("Purchase of Tokens", comment: "")
         }
             
         case TypeTransactions.withdrawTokens.rawValue : do {
@@ -47,14 +47,14 @@ class TransactionViewCell: UITableViewCell {
             
         case TypeTransactions.dropshop.rawValue : do {
             prefixAmount = "-"
-            titleLabel?.text = String(viewModel.nftId ?? 0)
-            subtitleLabel?.text = NSLocalizedString("Dropshop", comment: "")
+            subtitleLabel.isHidden = true
+            titleLabel?.text = NSLocalizedString("Dropshop", comment: "")
         }
             
         case TypeTransactions.market.rawValue : do {
             prefixAmount = "+"
-            titleLabel?.text = String(viewModel.nftId ?? 0)
-            subtitleLabel?.text = NSLocalizedString("Market", comment: "")
+            subtitleLabel.isHidden = true
+            titleLabel?.text = NSLocalizedString("Market", comment: "")
         }
             
         default : do {}

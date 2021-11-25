@@ -154,7 +154,6 @@
 		18D2C126274044580043BEEC /* CheckInviteRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */; };
 		18D3FEC9268FAE390030929D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FEC8268FAE390030929D /* Extensions.swift */; };
 		18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FECF2697B8C40030929D /* LoginViewController.swift */; };
-		18D7F9AC274D1DB200BD6C71 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18D7F9AB274D1DB200BD6C71 /* GoogleService-Info.plist */; };
 		18D8452426CD5D2500888D32 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452326CD5D2500888D32 /* BaseViewModel.swift */; };
 		18D8452826CD682400888D32 /* ErrorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452726CD682400888D32 /* ErrorDTO.swift */; };
 		18D8452D26CDAEF100888D32 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452C26CDAEF100888D32 /* UserStorage.swift */; };
@@ -213,6 +212,7 @@
 		18E39B2026D03AD300FEC003 /* GetUserRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39B1F26D03AD300FEC003 /* GetUserRequestDTO.swift */; };
 		18E39B2226D03AE600FEC003 /* GetUserResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39B2126D03AE600FEC003 /* GetUserResponseDTO.swift */; };
 		18E39B2526D03BF200FEC003 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39B2426D03BF200FEC003 /* UserUseCase.swift */; };
+		18E8739A274EDC2800654A1F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18E87399274EDC2800654A1F /* GoogleService-Info.plist */; };
 		18E8D892272C784300C44C40 /* GetInfluencersResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8D891272C784300C44C40 /* GetInfluencersResponseDTO.swift */; };
 		18E8F3C726CBCCF100E62E33 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8F3C626CBCCF100E62E33 /* Observable.swift */; };
 		18ECC33A2741534B00260A48 /* PlaceholderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ECC3382741534B00260A48 /* PlaceholderViewCell.swift */; };
@@ -388,7 +388,6 @@
 		18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInviteRequestDTO.swift; sourceTree = "<group>"; };
 		18D3FEC8268FAE390030929D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		18D3FECF2697B8C40030929D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		18D7F9AB274D1DB200BD6C71 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18D8452326CD5D2500888D32 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		18D8452726CD682400888D32 /* ErrorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDTO.swift; sourceTree = "<group>"; };
 		18D8452C26CDAEF100888D32 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
@@ -449,6 +448,7 @@
 		18E39B1F26D03AD300FEC003 /* GetUserRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRequestDTO.swift; sourceTree = "<group>"; };
 		18E39B2126D03AE600FEC003 /* GetUserResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserResponseDTO.swift; sourceTree = "<group>"; };
 		18E39B2426D03BF200FEC003 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		18E87399274EDC2800654A1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18E8D891272C784300C44C40 /* GetInfluencersResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInfluencersResponseDTO.swift; sourceTree = "<group>"; };
 		18E8F3C626CBCCF100E62E33 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		18ECC3382741534B00260A48 /* PlaceholderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewCell.swift; sourceTree = "<group>"; };
@@ -1154,9 +1154,9 @@
 		18B84264266E27A40033AFC0 /* NftApp */ = {
 			isa = PBXGroup;
 			children = (
+				18E87399274EDC2800654A1F /* GoogleService-Info.plist */,
 				185435E326D4164C00368C8E /* NftApp.entitlements */,
 				18B84273266E27A50033AFC0 /* Info.plist */,
-				18D7F9AB274D1DB200BD6C71 /* GoogleService-Info.plist */,
 				18B8427E266F61180033AFC0 /* Resourses */,
 				18B8427D266F61030033AFC0 /* Data */,
 				18B8427C266F60FD0033AFC0 /* Domain */,
@@ -1762,7 +1762,7 @@
 				182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */,
 				18855F3626D52A360018B072 /* Assets.xcassets in Resources */,
 				186E5FF826B6A3FD008291AC /* AddFundsViewController.xib in Resources */,
-				18D7F9AC274D1DB200BD6C71 /* GoogleService-Info.plist in Resources */,
+				18E8739A274EDC2800654A1F /* GoogleService-Info.plist in Resources */,
 				182342F026A2EB5E00CD2907 /* TradingHistoryViewController.xib in Resources */,
 				1833847126FD399A00EAD9EB /* DetailDescriptionViewController.xib in Resources */,
 				182342DC26A1E67F00CD2907 /* NftMarketViewCell.xib in Resources */,

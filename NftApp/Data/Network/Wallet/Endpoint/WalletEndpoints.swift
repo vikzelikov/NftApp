@@ -12,6 +12,7 @@ struct WalletEndpoints {
     
     static func addFundsEndpoint(request: AddFundsRequest) -> Endpoint {
         let requestDTO = AddFundsRequestDTO (
+            userId: Constant.USER_ID,
             orderId: request.orderId,
             productIdentifier: request.productIdentifier,
             amount: request.amount,
@@ -20,7 +21,7 @@ struct WalletEndpoints {
         ).parameters
         
         let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = Constant.BASE_URL + "api/users/\(Constant.USER_ID)/addFunds"
+        let url = Constant.BASE_URL + "api/wallet/addFunds"
         
         return Endpoint(url: url, method: .post, headers: headers, data: requestDTO)
     }

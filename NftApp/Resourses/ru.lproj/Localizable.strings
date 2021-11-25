@@ -14,7 +14,7 @@
 "left" = "";
 "All" = "Все";
 "Expiration in" = "Истекает через";
-"Buy tokens" = "Покупка токенов";
+"Purchase of Tokens" = "Покупка токенов";
 "Withdraw tokens" = "Вывод токенов";
 "Dropshop" = "Dropshop";
 "Market" = "Биржа";
@@ -50,3 +50,4 @@
 "Invitation has expired" = "Приглашение недействительно";
 "Invitations" = "Приглашения";
 "YUP is temporarily unavailable" = "YUP временно недоступно";
+"Saving error" = "Ошибка сохранения";

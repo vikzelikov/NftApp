@@ -54,7 +54,7 @@ final class WalletUseCaseImpl: WalletUseCase {
                                                                  amount: $0.amount,
                                                                  destination: $0.destination,
                                                                  blockchainTransactionId: $0.blockchainTransactionId,
-                                                                 nftId: $0.nftId,
+                                                                 editionId: $0.nft?.edition?.id,
                                                                  date: $0.createdAt)}
                     
                     completion(.success(transactions))

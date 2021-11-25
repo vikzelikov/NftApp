@@ -39,11 +39,19 @@ class PasswordViewController: UIViewController {
         
         saveButton.applyButtonEffects()
         
+        oldPasswordTextField.delegate = self
+        newPasswordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
     }
     
     @IBAction func saveDidTap(_ sender: Any) {
+        saveDidTap()
+    }
+    
+    func saveDidTap() {
         if let oldPassword = oldPasswordTextField.text,
             let newPassword = newPasswordTextField.text,
             let confirmPassword = confirmPasswordTextField.text {
@@ -60,7 +68,6 @@ class PasswordViewController: UIViewController {
                     self.showMessage(message: NSLocalizedString("Saved", comment: ""), isHaptic: false)
                 }
             })
-                
         }
     }
     
@@ -74,4 +81,20 @@ class PasswordViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+}
+
+extension PasswordViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == oldPasswordTextField {
+            textField.resignFirstResponder()
+            newPasswordTextField.becomeFirstResponder()
+        } else if textField == newPasswordTextField {
+            textField.resignFirstResponder()
+            confirmPasswordTextField.becomeFirstResponder()
+        } else if textField == confirmPasswordTextField {
+            saveDidTap()
+        }
+        
+        return true
+    }
 }

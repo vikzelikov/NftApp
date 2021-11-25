@@ -62,8 +62,8 @@ class SettingsViewModelImpl: SettingsViewModel {
 
             case .failure(let error):
                 var (_, errorStr) = ErrorHelper.validateError(error: error)
-                if errorStr == "old password is error" {
-                    errorStr = "Old password is error"
+                if errorStr == "password error" {
+                    errorStr = "Old password is incorrect"
                 }
                 self.errorMessage.value = errorStr
                 
@@ -116,8 +116,8 @@ class SettingsViewModelImpl: SettingsViewModel {
 
             case .failure(let error):
                 var (_, errorStr) = ErrorHelper.validateError(error: error)
-                if errorStr == "email used" {
-                    errorStr = NSLocalizedString("E-mail is already in use", comment: "")
+                if errorStr == "invite word error" {
+                    errorStr = NSLocalizedString("Saving error", comment: "")
                 }
                 self.errorMessage.value = errorStr
                 

@@ -36,7 +36,7 @@ class DetailTransactionViewController: UIViewController {
             case TypeTransactions.buyTokens.rawValue : do {
                 self?.destinationView.isHidden = true
                 self?.checkLinkView.isHidden = true
-                self?.titleLabel?.text = NSLocalizedString("Buy tokens", comment: "")
+                self?.titleLabel?.text = NSLocalizedString("Purchase of Tokens", comment: "")
             }
                 
             case TypeTransactions.withdrawTokens.rawValue: do {

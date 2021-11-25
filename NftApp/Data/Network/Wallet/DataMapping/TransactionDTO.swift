@@ -16,17 +16,35 @@ class TransactionDTO: Decodable {
         case amount
         case destination
         case blockchainTransactionId
-        case nftId
+        case nft
         case createdAt
     }
     
     let id: Int
-    let fromUserId: Int
-    let toUserId: Int
+    let fromUserId: Int?
+    let toUserId: Int?
     let type: Int
     let amount: Double
     let destination: String?
     let blockchainTransactionId: String?
-    let nftId: Int?
+    let nft: TransactionNftDTO?
     let createdAt: String
+}
+
+class TransactionNftDTO: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case edition
+    }
+    
+    let id: Int
+    let edition: TransactionEditionDTO?
+}
+
+class TransactionEditionDTO: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case id
+    }
+    
+    let id: Int
 }

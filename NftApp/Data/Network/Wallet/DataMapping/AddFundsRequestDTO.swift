@@ -8,6 +8,7 @@
 import Foundation
 
 class AddFundsRequestDTO: Decodable {
+    private var userId: Int
     private var orderId: String
     private var productIdentifier: String
     private var amount: String
@@ -15,6 +16,7 @@ class AddFundsRequestDTO: Decodable {
     private var hash: String
     
     lazy var parameters = [
+        "userId": userId,
         "orderId": orderId,
         "productIdentifier": productIdentifier,
         "amount": amount,
@@ -22,7 +24,8 @@ class AddFundsRequestDTO: Decodable {
         "hash": hash
     ] as [String : Any]
 
-    init(orderId: String, productIdentifier: String, amount: String, locale: String, hash: String) {
+    init(userId: Int, orderId: String, productIdentifier: String, amount: String, locale: String, hash: String) {
+        self.userId = userId
         self.orderId = orderId
         self.productIdentifier = productIdentifier
         self.amount = amount

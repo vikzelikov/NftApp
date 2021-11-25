@@ -9,12 +9,12 @@ import Foundation
 
 struct Transaction: Equatable {
     let id: Int
-    let fromUserId: Int
-    let toUserId: Int
+    let fromUserId: Int?
+    let toUserId: Int?
     let type: Int
     let amount: Double
     let destination: String?
     let blockchainTransactionId: String?
-    let nftId: Int?
+    let editionId: Int?
     let date: String
 }

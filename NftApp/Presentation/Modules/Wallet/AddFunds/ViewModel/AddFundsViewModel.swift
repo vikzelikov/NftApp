@@ -112,6 +112,8 @@ class AddFundsViewModelImpl: AddFundsViewModel {
         walletUseCase.addFunds(request: request, completion: { result in
             switch result {
             case .success:
+                UserObject.isNeedRefresh.value = true
+                
                 completion(true)
                 
             case .failure:

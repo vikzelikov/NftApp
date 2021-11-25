@@ -74,7 +74,7 @@
             <connections>
                 <outlet property="amountLabel" destination="Qmb-NP-78c" id="H5Z-yk-ePn"/>
                 <outlet property="dateLabel" destination="hon-lL-uCG" id="tB9-Gd-rMC"/>
-                <outlet property="imageTransaction" destination="CBT-Ji-2rZ" id="WEH-9C-uQ3"/>
+                <outlet property="imageTransaction" destination="CBT-Ji-2rZ" id="kad-Yv-ZHW"/>
                 <outlet property="subtitleLabel" destination="psY-GG-jTF" id="amy-ea-3Sw"/>
                 <outlet property="titleLabel" destination="kkp-ko-Glo" id="xPS-mO-IEk"/>
             </connections>
