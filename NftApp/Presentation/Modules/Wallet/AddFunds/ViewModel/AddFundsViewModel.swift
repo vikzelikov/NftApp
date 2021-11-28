@@ -13,6 +13,8 @@ protocol AddFundsViewModel : BaseViewModel {
         
     var products: Observable<[InAppPurchase]> { get }
     
+    func viewDidLoad()
+    
     func productDidTap(index: Int)
     
     func nextDidTap(completion: @escaping (Bool) -> Void)
@@ -29,9 +31,11 @@ class AddFundsViewModelImpl: AddFundsViewModel {
     
     private var selectedProduct: InAppPurchase?
     
-    init() {
-        walletUseCase = WalletUseCaseImpl()
-        
+    init(walletUseCase: WalletUseCase = WalletUseCaseImpl()) {
+        self.walletUseCase = walletUseCase
+    }
+    
+    func viewDidLoad() {
         IAPManager.shared.getProducts(completion: { result in
             DispatchQueue.main.async {
                 if result {

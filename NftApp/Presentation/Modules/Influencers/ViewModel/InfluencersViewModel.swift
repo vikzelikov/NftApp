@@ -28,8 +28,8 @@ class InfluencersViewModelImpl: InfluencersViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init() {
-        userUseCase = UserUseCaseImpl()
+    init(userUseCase: UserUseCase = UserUseCaseImpl()) {
+        self.userUseCase = userUseCase
     }
     
     func viewDidLoad() {

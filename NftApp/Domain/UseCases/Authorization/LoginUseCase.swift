@@ -29,36 +29,39 @@ protocol LoginUseCase {
 
 final class LoginUseCaseImpl: LoginUseCase {
     
-    private let repository: AuthRepository?
-    private let userStorage: UserStorage?
+    private let repository: AuthRepository
+    private let userStorage: UserStorage
     
-    init() {
-        self.repository = AuthRepositoryImpl()
-        self.userStorage = UserStorageImpl()
+    init(
+        repository: AuthRepository = AuthRepositoryImpl(),
+        userStorage: UserStorage = UserStorageImpl()
+    ) {
+        self.repository = repository
+        self.userStorage = userStorage
     }
     
     func login(request: LoginRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.login(request: request, completion: { result in
+        repository.login(request: request, completion: { result in
             self.loginProcess(result: result, completion: completion)
         })
     }
     
     func appleLogin(appleId: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.appleLogin(appleId: appleId, completion: { result in
+        repository.appleLogin(appleId: appleId, completion: { result in
             self.loginProcess(result: result, completion: completion)
         })
     }
     
     func checkInvite(inviteWord: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.checkInvite(inviteWord: inviteWord, completion: { result in
+        repository.checkInvite(inviteWord: inviteWord, completion: { result in
             switch result {
             case .success(let resp) : do {
                     if let authToken = resp.token {
                         if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
                             Constant.AUTH_TOKEN = authToken
                             Constant.USER_ID = userId
-                            self.userStorage?.saveAuthToken(token: authToken)
-                            self.userStorage?.saveUserId(userId: userId)
+                            self.userStorage.saveAuthToken(token: authToken)
+                            self.userStorage.saveUserId(userId: userId)
                             self.removeInvitingState()
                             
                             completion(.success(true))
@@ -85,8 +88,8 @@ final class LoginUseCaseImpl: LoginUseCase {
                     if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
                         Constant.AUTH_TOKEN = authToken
                         Constant.USER_ID = userId
-                        self.userStorage?.saveAuthToken(token: authToken)
-                        self.userStorage?.saveUserId(userId: userId)
+                        self.userStorage.saveAuthToken(token: authToken)
+                        self.userStorage.saveUserId(userId: userId)
                         
                         completion(.success(true))
                     } else {
@@ -95,7 +98,7 @@ final class LoginUseCaseImpl: LoginUseCase {
                 } else if let userId = resp.userId {
                     // check invite
                     Constant.USER_ID = userId
-                    self.userStorage?.saveUserId(userId: userId)
+                    self.userStorage.saveUserId(userId: userId)
                     self.saveInvitingState()
 
                     completion(.success(true))
@@ -111,31 +114,23 @@ final class LoginUseCaseImpl: LoginUseCase {
     }
     
     func saveInvitingState() {
-        userStorage?.saveInvitingState()
+        userStorage.saveInvitingState()
     }
     
     func getInvitingState() -> Bool {
-        if let isInvitingState = userStorage?.getInvitingState() {
-            return isInvitingState
-        } else {
-            return false
-        }
+        return userStorage.getInvitingState()
     }
     
     func removeInvitingState() {
-        userStorage?.removeInvitingState()
+        userStorage.removeInvitingState()
     }
     
     func getEarlyAccessState() -> Bool {
-        if let isEarlyAccessState = userStorage?.getEarlyAccess() {
-            return isEarlyAccessState
-        } else {
-            return false
-        }
+        return userStorage.getEarlyAccess()
     }
     
     func removeEarlyAccessState() {
-        userStorage?.removeEarlyAccess()
+        userStorage.removeEarlyAccess()
     }
     
 }

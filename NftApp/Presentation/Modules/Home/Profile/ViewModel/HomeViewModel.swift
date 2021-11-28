@@ -56,10 +56,14 @@ class HomeViewModelImpl: HomeViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init() {
-        userUseCase = UserUseCaseImpl()
-        followsUseCase = FollowsUseCaseImpl()
-        nftUserCase = NftUseCaseImpl()
+    init(
+        userUseCase: UserUseCase = UserUseCaseImpl(),
+        followsUseCase: FollowsUseCase = FollowsUseCaseImpl(),
+        nftUserCase: NftUseCase = NftUseCaseImpl()
+    ) {
+        self.userUseCase = userUseCase
+        self.followsUseCase = followsUseCase
+        self.nftUserCase = nftUserCase
         
         // set main user by default
         userViewModel.value = UserObject.user.value

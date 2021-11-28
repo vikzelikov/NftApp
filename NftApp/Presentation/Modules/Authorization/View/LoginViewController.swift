@@ -47,12 +47,10 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginDidTap(_ sender: Any) {
-        viewModel?.updateCredentials(
+        viewModel?.loginDidTap(
             login: loginTextField.text!,
             password: passwordTextField.text!
         )
-
-        viewModel?.inputCredentials()
     }
     
     @IBAction func signupDidTap(_ sender: Any) {
@@ -64,7 +62,7 @@ class LoginViewController: UIViewController {
     func bindData() {
         viewModel?.isLoading.observe(on: self) { [weak self] isLoading in
             isLoading ? self?.loginButton.loadingIndicator(isShow: true, titleButton: nil)
-            : self?.loginButton.loadingIndicator(isShow: false, titleButton: "NEXT")
+            : self?.loginButton.loadingIndicator(isShow: false, titleButton: "LOGIN")
         }
         
         viewModel?.isSuccess.observe(on: self) { [weak self] isSuccess in
@@ -143,12 +141,12 @@ extension LoginViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
-            viewModel?.updateCredentials(
-                login: loginTextField.text!,
-                password: passwordTextField.text!
-            )
-
-            viewModel?.inputCredentials()
+            if let login = loginTextField.text, let password = passwordTextField.text {
+                viewModel?.loginDidTap(
+                    login: login,
+                    password: password
+                )
+            }
             
             textField.resignFirstResponder()
         }

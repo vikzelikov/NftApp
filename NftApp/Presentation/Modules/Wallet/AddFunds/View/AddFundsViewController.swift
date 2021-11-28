@@ -19,6 +19,7 @@ class AddFundsViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel = AddFundsViewModelImpl()
+        viewModel?.viewDidLoad()
         
         bindData()
 

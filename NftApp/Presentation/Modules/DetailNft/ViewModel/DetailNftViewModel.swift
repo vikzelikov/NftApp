@@ -43,9 +43,9 @@ class DetailNftViewModelImpl: DetailNftViewModel {
         }
     }
     
-    init() {
-        dropShopUseCase = DropShopUseCaseImpl()
-        marketUseCase = MarketUseCaseImpl()
+    init(dropShopUseCase: DropShopUseCase = DropShopUseCaseImpl(), marketUseCase: MarketUseCase = MarketUseCaseImpl()) {
+        self.dropShopUseCase = dropShopUseCase
+        self.marketUseCase = marketUseCase
     }
     
     func viewDidLoad() {

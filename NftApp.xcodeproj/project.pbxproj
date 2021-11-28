@@ -215,6 +215,7 @@
 		18E8F3C726CBCCF100E62E33 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E8F3C626CBCCF100E62E33 /* Observable.swift */; };
 		18ECC33A2741534B00260A48 /* PlaceholderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ECC3382741534B00260A48 /* PlaceholderViewCell.swift */; };
 		18ECC33B2741534B00260A48 /* PlaceholderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18ECC3392741534B00260A48 /* PlaceholderViewCell.xib */; };
+		18FE768E275290B700B438F2 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE768D275290B700B438F2 /* DI.swift */; };
 		73DD229D3DB792C51796AF31 /* Pods_NftApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0157E4A81FCBC42EEEE7CC9 /* Pods_NftApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -449,6 +450,7 @@
 		18E8F3C626CBCCF100E62E33 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		18ECC3382741534B00260A48 /* PlaceholderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewCell.swift; sourceTree = "<group>"; };
 		18ECC3392741534B00260A48 /* PlaceholderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceholderViewCell.xib; sourceTree = "<group>"; };
+		18FE768D275290B700B438F2 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		378E9BC71BC47BBC46C5CB26 /* Pods-NftApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NftApp.release.xcconfig"; path = "Target Support Files/Pods-NftApp/Pods-NftApp.release.xcconfig"; sourceTree = "<group>"; };
 		D0157E4A81FCBC42EEEE7CC9 /* Pods_NftApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NftApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4974C0330698A662A69260 /* Pods-NftApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NftApp.debug.xcconfig"; path = "Target Support Files/Pods-NftApp/Pods-NftApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 		181742F32699B5C3002B9FD7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				18FE768D275290B700B438F2 /* DI.swift */,
 				18E39B1226D02D4900FEC003 /* JWT.swift */,
 				18E8F3C626CBCCF100E62E33 /* Observable.swift */,
 				181742F42699B601002B9FD7 /* HapticHelper.swift */,
@@ -1928,6 +1931,7 @@
 				18138463273572C5004530BD /* SearchCellViewModel.swift in Sources */,
 				18E37755272F00AF00A2795B /* InfluencersViewController.swift in Sources */,
 				1813844A27355E49004530BD /* SearchViewModel.swift in Sources */,
+				18FE768E275290B700B438F2 /* DI.swift in Sources */,
 				18DDE9F526D6EE5E00306A60 /* WalletRepository.swift in Sources */,
 				181742F9269B0705002B9FD7 /* ColorHelper.swift in Sources */,
 				182342C4269DFC6300CD2907 /* DropShopViewController.swift in Sources */,

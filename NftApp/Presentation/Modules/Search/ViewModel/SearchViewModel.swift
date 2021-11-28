@@ -39,8 +39,8 @@ class SearchViewModelImpl: SearchViewModel {
     private var isEditionsSearched = false
     private var isNftsSearched = false
     
-    init() {
-        searchUseCase = SearchUseCaseImpl()
+    init(searchUseCase: SearchUseCase = SearchUseCaseImpl()) {
+        self.searchUseCase = searchUseCase
     }
     
     func searchDidTap(keyWord: String) {

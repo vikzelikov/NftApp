@@ -15,9 +15,7 @@ protocol LoginViewModel : BaseViewModel {
     
     func viewDidload()
     
-    func updateCredentials(login: String, password: String)
-        
-    func inputCredentials()
+    func loginDidTap(login: String, password: String)
     
     func appleAuthDidTap(appleId: String)
         
@@ -27,24 +25,14 @@ class LoginViewModelImpl: LoginViewModel {
     
     private let loginUseCase: LoginUseCase
 
-    private var loginRequest = LoginRequest() {
-        didSet {
-            login = loginRequest.login
-            password = loginRequest.password
-        }
-    }
-    
-    private var login = ""
-    private var password = ""
-
     var isLoading: Observable<Bool> = Observable(false)
     var isSuccess: Observable<Bool> = Observable(false)
     var isSetupInvite: Observable<Bool> = Observable(false)
     var isSetupEarlyAccess: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init() {
-        loginUseCase = LoginUseCaseImpl()
+    init(loginUseCase: LoginUseCase = LoginUseCaseImpl()) {
+        self.loginUseCase = loginUseCase
     }
     
     func viewDidload() {
@@ -62,24 +50,30 @@ class LoginViewModelImpl: LoginViewModel {
         
         isSetupInvite.value = isInvitingState
     }
-    
-    func updateCredentials(login: String, password: String) {
-        loginRequest.login = login
-        loginRequest.password = password
-    }
 
-    private func auth() {
+    func loginDidTap(login: String, password: String) {
         self.isLoading.value = true
+        
+        if login.isEmpty  {
+            errorMessage.value = NSLocalizedString("Please provide login", comment: "")
+            isLoading.value = false
+            return
+        }
+    
+        if password.isEmpty {
+            errorMessage.value = NSLocalizedString("Password is empty", comment: "")
+            isLoading.value = false
+            return
+        }
+        
+        let loginRequest = LoginRequest(login: login, password: password)
         
         loginUseCase.login(request: loginRequest, completion: { result in
             switch result {
             case .success:
-                print("!!!!!!")
                 self.checkInviting()
                 
             case .failure(let error):
-                self.isSuccess.value = false
-                
                 var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
                 if httpCode == HttpCode.badRequest || httpCode == HttpCode.unauthorized {
                     errorStr = NSLocalizedString("Error login or password", comment: "")
@@ -99,8 +93,6 @@ class LoginViewModelImpl: LoginViewModel {
                 self.checkInviting()
                 
             case .failure(let error):
-                self.isSuccess.value = false
-                
                 var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
                 if httpCode == HttpCode.badRequest {
                     errorStr = NSLocalizedString("Error Apple authorization", comment: "")
@@ -109,23 +101,6 @@ class LoginViewModelImpl: LoginViewModel {
                 self.errorMessage.value = errorStr
             }
         })
-    }
-    
-    func inputCredentials() {
-        if login.isEmpty  {
-            errorMessage.value = NSLocalizedString("Please provide login", comment: "")
-            isSuccess.value = false
-            return
-        }
-    
-        if password.isEmpty {
-            errorMessage.value = NSLocalizedString("Password is empty", comment: "")
-            isSuccess.value = false
-            return
-        }
-        
-        auth()
-        
     }
     
     private func checkInviting() {

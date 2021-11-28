@@ -17,24 +17,27 @@ protocol SignupUseCase {
 
 final class SignupUseCaseImpl: SignupUseCase {
     
-    private let repository: AuthRepository?
-    private let userStorage: UserStorage?
+    private let repository: AuthRepository
+    private let userStorage: UserStorage
     
-    init() {
-        self.repository = AuthRepositoryImpl()
-        self.userStorage = UserStorageImpl()
+    init(
+        repository: AuthRepository = AuthRepositoryImpl(),
+        userStorage: UserStorage = UserStorageImpl()
+    ) {
+        self.repository = repository
+        self.userStorage = userStorage
     }
     
     func signup(request: SignupRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.signup(request: request, completion: { result in
+        repository.signup(request: request, completion: { result in
             switch result {
                 case .success(let resp) : do {
                     if let userId = resp.userId {
                         Constant.USER_ID = userId
-                        self.userStorage?.saveUserId(userId: userId)
+                        self.userStorage.saveUserId(userId: userId)
                         
                         if let data = InitialDataObject.data.value {
-                            data.isEarlyAccess ? self.userStorage?.saveEarlyAccess() : self.userStorage?.saveInvitingState()
+                            data.isEarlyAccess ? self.userStorage.saveEarlyAccess() : self.userStorage.saveInvitingState()
                         }
                         
                         completion(.success(true))
@@ -51,7 +54,7 @@ final class SignupUseCaseImpl: SignupUseCase {
     }
     
     func removeInvitingState() {
-        userStorage?.removeInvitingState()
+        userStorage.removeInvitingState()
     }
     
 }

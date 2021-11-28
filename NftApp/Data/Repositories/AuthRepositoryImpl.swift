@@ -12,7 +12,7 @@ class AuthRepositoryImpl: AuthRepository {
     
     func signup(request: SignupRequest, completion: @escaping (Result<AuthResponseDTO, Error>) -> Void) {
         let endpoint = AuthEndpoints.signupEndpoint(request: request)
-        
+
         AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
             
             NetworkHelper.validateResponse(response: response, completion: completion)

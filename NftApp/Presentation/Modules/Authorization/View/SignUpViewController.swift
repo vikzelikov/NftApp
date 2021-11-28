@@ -49,14 +49,12 @@ class SignUpViewController: UIViewController {
     }
 
     @IBAction func nextButtonDidPress(_ sender: Any) {
-        viewModel?.updateCredentials(
+        viewModel?.signupDidTap(
             login: loginTextField.text!,
             email: emailTextField.text!,
             password: passwordTextField.text!,
             confirmPassword: confirmPassTextField.text!
         )
-        
-        viewModel?.inputCredentials()
     }
         
     func bindData() {
@@ -160,14 +158,19 @@ extension SignUpViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
             confirmPassTextField.becomeFirstResponder()
         } else if textField == confirmPassTextField {
-            viewModel?.updateCredentials(
-                login: loginTextField.text!,
-                email: emailTextField.text!,
-                password: passwordTextField.text!,
-                confirmPassword: confirmPassTextField.text!
-            )
-            
-            viewModel?.inputCredentials()
+            if let login = loginTextField.text,
+               let email = emailTextField.text,
+               let password = passwordTextField.text,
+               let confirmPassword = confirmPassTextField.text {
+                
+                viewModel?.signupDidTap(
+                    login: login,
+                    email: email,
+                    password: password,
+                    confirmPassword: confirmPassword
+                )
+                
+            }
             
             textField.resignFirstResponder()
         }

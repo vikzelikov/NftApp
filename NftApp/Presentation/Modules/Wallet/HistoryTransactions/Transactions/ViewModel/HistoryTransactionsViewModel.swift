@@ -26,7 +26,7 @@ enum TypeTransactions: Int {
 
 class HistoryTransactionsViewModelImpl: HistoryTransactionsViewModel {
     
-    private let walletUseCase: WalletUseCaseImpl
+    private let walletUseCase: WalletUseCase
     
     private var query: String = ""
     private var currentPage: Int = 1
@@ -35,8 +35,8 @@ class HistoryTransactionsViewModelImpl: HistoryTransactionsViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init() {
-        walletUseCase = WalletUseCaseImpl()
+    init(walletUseCase: WalletUseCase = WalletUseCaseImpl()) {
+        self.walletUseCase = walletUseCase
     }
     
     func viewDidLoad() {

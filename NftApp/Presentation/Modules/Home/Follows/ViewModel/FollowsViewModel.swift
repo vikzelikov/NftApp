@@ -38,8 +38,8 @@ class FollowsViewModelImpl: FollowsViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init() {
-        followsUseCase = FollowsUseCaseImpl()
+    init(followsUseCase: FollowsUseCase = FollowsUseCaseImpl()) {
+        self.followsUseCase = followsUseCase
     }
     
     func viewDidLoad() {

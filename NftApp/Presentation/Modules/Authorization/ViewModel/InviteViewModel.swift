@@ -23,8 +23,8 @@ class InviteViewModelImpl: InviteViewModel {
     var isSuccess: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init() {
-        loginUseCase = LoginUseCaseImpl()
+    init(loginUseCase: LoginUseCase = LoginUseCaseImpl()) {
+        self.loginUseCase = loginUseCase
     }
     
     func nextDidTap(inviteWord: String) {

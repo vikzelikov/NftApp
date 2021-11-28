@@ -11,31 +11,15 @@ protocol SignupViewModel : BaseViewModel {
     
     var isSuccess: Observable<Bool> { get }
     
-    func updateCredentials(login: String, email: String, password: String, confirmPassword: String)
+    func signupDidTap(login: String, email: String, password: String, confirmPassword: String)
     
     func updatePersonalData(isMale: Bool?, birthDate: TimeInterval?)
-    
-    func inputCredentials()
-        
+
 }
 
 class SignupViewModelImpl: SignupViewModel {
     
     private let signupUseCase: SignupUseCase
-
-    private var signupRequest = SignupRequest() {
-        didSet {
-            login = signupRequest.login
-            email = signupRequest.email
-            password = signupRequest.password
-            confirmPassword = signupRequest.confirmPassword
-        }
-    }
-    
-    private var login = ""
-    private var email = ""
-    private var password = ""
-    private var confirmPassword = ""
     private var isMale: Bool? = nil
     private var birthDate: TimeInterval? = 0
 
@@ -43,15 +27,8 @@ class SignupViewModelImpl: SignupViewModel {
     var isSuccess: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init() {
-        signupUseCase = SignupUseCaseImpl()
-    }
-    
-    func updateCredentials(login: String, email: String, password: String, confirmPassword: String) {
-        signupRequest.login = login
-        signupRequest.email = email
-        signupRequest.password = password
-        signupRequest.confirmPassword = confirmPassword
+    init(signupUseCase: SignupUseCase = SignupUseCaseImpl()) {
+        self.signupUseCase = signupUseCase
     }
     
     func updatePersonalData(isMale: Bool?, birthDate: TimeInterval?) {
@@ -64,8 +41,22 @@ class SignupViewModelImpl: SignupViewModel {
 //        }
     }
     
-    private func signup() {
+    func signupDidTap(login: String, email: String, password: String, confirmPassword: String) {
         self.isLoading.value = true
+        
+        let isValid = validateCredentials(login: login, email: email, password: password, confirmPassword: confirmPassword)
+        
+        if !isValid {
+            self.isLoading.value = false
+            return
+        }
+        
+        let signupRequest = SignupRequest(
+            login: login,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword
+        )
         
         signupUseCase.signup(request: signupRequest, completion: { result in
             switch result {
@@ -84,33 +75,28 @@ class SignupViewModelImpl: SignupViewModel {
         })
     }
     
-    func inputCredentials() {
+    private func validateCredentials(login: String, email: String, password: String, confirmPassword: String) -> Bool {
         if login.isEmpty || email.isEmpty  {
             errorMessage.value = NSLocalizedString("Please provide login and E-mail", comment: "")
-            isSuccess.value = false
-            return
+            return false
         }
         
         if !isValidEmail(email: email) {
             errorMessage.value = NSLocalizedString("E-mail is not vaild", comment: "")
-            isSuccess.value = false
-            return
+            return false
         }
     
         if password.isEmpty {
             errorMessage.value = NSLocalizedString("Password is empty", comment: "")
-            isSuccess.value = false
-            return
+            return false
         }
         
         if password != confirmPassword  {
             errorMessage.value = NSLocalizedString("Passwords don't match", comment: "")
-            isSuccess.value = false
-            return
+            return false
         }
         
-        signup()
-        
+        return true
     }
     
     private func isValidEmail(email: String) -> Bool {
@@ -119,9 +105,5 @@ class SignupViewModelImpl: SignupViewModel {
         let result = emailTest.evaluate(with: email)
         return result
     }
-    
-    private func validUserData() -> Bool {
-        return !login.isEmpty && !email.isEmpty && !password.isEmpty && isMale != nil && birthDate != 0
-    }
-    
+
 }

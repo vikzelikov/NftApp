@@ -36,9 +36,9 @@ class DropShopViewModelImpl: DropShopViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init() {
-        dropShopUseCase = DropShopUseCaseImpl()
-        userUseCase = UserUseCaseImpl()
+    init(dropShopUseCase: DropShopUseCase = DropShopUseCaseImpl(), userUseCase: UserUseCase = UserUseCaseImpl()) {
+        self.dropShopUseCase = dropShopUseCase
+        self.userUseCase = userUseCase
         
         NftObject.isDropshopNeedRefresh.observe(on: self) { [weak self] isNeed in
             if isNeed { self?.viewDidLoad() }
