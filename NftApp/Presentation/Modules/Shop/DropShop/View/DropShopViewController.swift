@@ -120,8 +120,10 @@ extension DropShopViewController: UITableViewDelegate {
         
         viewModel?.didSelectItem(at: indexPath.row - 3) { editionViewModel in
             let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
+            var nft = Nft(nft: .defaultValue)
+            nft.edition = editionViewModel
             vc.viewModel = DetailNftViewModelImpl()
-            vc.viewModel?.nftViewModel.value = NftViewModel(id: editionViewModel.id, edition: editionViewModel)
+            vc.viewModel?.nftViewModel.value = nft
             vc.viewModel?.typeDetailNFT = .dropShop
             self.navigationControl?.pushViewController(vc, animated: true)
         }
@@ -157,7 +159,7 @@ extension DropShopViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else { return UITableViewCell() }
-            cell.bind(title: "Top influencers 🔥", showArrow: true)
+            cell.bind(title: "Top collections 🔥", showArrow: true)
             cell.selectionStyle = .none
             return cell
             
@@ -168,7 +170,7 @@ extension DropShopViewController: UITableViewDataSource {
             
         } else if indexPath.row == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else { return UITableViewCell() }
-            cell.bind(title: "Hot drops 🌀")
+            cell.bind(title: "Trending 🌀")
             cell.selectionStyle = .none
             return cell
             

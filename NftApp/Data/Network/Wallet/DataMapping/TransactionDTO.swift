@@ -8,6 +8,7 @@
 import Foundation
 
 class TransactionDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case fromUserId
@@ -29,9 +30,11 @@ class TransactionDTO: Decodable {
     let blockchainTransactionId: String?
     let nft: TransactionNftDTO?
     let createdAt: String
+    
 }
 
 class TransactionNftDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case edition
@@ -39,12 +42,15 @@ class TransactionNftDTO: Decodable {
     
     let id: Int
     let edition: TransactionEditionDTO?
+    
 }
 
 class TransactionEditionDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case id
     }
     
     let id: Int
+    
 }

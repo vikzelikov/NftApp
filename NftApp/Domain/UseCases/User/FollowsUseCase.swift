@@ -23,20 +23,20 @@ protocol FollowsUseCase {
 
 final class FollowsUseCaseImpl: FollowsUseCase {
     
-    private let repository: UserRepository?
+    private let repository: UserRepository
     
-    init() {
-        self.repository = UserRepositoryImpl()
+    init(repository: UserRepository = UserRepositoryImpl()) {
+        self.repository = repository
     }
     
     func getFollowers(request: FollowsRequest, completion: @escaping (Result<[User], Error>) -> Void) {
-        repository?.getFollowers(request: request, completion: { result in
+        repository.getFollowers(request: request, completion: { result in
             self.processGetFollows(result: result, completion: completion)
         })
     }
 
     func getFollowing(request: FollowsRequest, completion: @escaping (Result<[User], Error>) -> Void) {
-        repository?.getFollowing(request: request, completion: { result in
+        repository.getFollowing(request: request, completion: { result in
             self.processGetFollows(result: result, completion: completion)
         })
     }
@@ -44,17 +44,8 @@ final class FollowsUseCaseImpl: FollowsUseCase {
     private func processGetFollows(result: Result<GetUsersResponseDTO, Error>, completion: @escaping (Result<[User], Error>) -> Void) {
         switch result {
             case .success(let resp) : do {
-                let users = resp.rows.map{User(
-                    id: $0.id,
-                    influencerId: $0.influencerId,
-                    login: $0.login,
-                    email: $0.email,
-                    flowAddress: $0.flowAddress,
-                    avatarUrl: $0.avatarUrl,
-                    totalCost: Double($0.totalCost ?? 0),
-                    countNFTs: $0.countNFTs ?? 0
-                )}
-                
+                let users = resp.rows.map(User.init)
+
                 completion(.success(users))
             }
             
@@ -65,15 +56,35 @@ final class FollowsUseCaseImpl: FollowsUseCase {
     }
     
     func follow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.follow(userId: userId, completion: completion)
+        repository.follow(userId: userId) { result in
+            switch result {
+                case .success : do {
+                    completion(.success(true))
+                }
+                
+                case .failure(let error) : do {
+                    completion(.failure(error))
+                }
+            }
+        }
     }
     
     func unfollow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.unfollow(userId: userId, completion: completion)
+        repository.unfollow(userId: userId) { result in
+            switch result {
+                case .success : do {
+                    completion(.success(true))
+                }
+                
+                case .failure(let error) : do {
+                    completion(.failure(error))
+                }
+            }
+        }
     }
     
     func checkFollow(userId: Int, completion: @escaping (Result<(TypeFollows, TypeFollows), Error>) -> Void) {
-        repository?.checkFollow(userId: userId, completion: { result in
+        repository.checkFollow(userId: userId, completion: { result in
             switch result {
                 case .success(let resp) : do {
                     var requester: TypeFollows = .none
@@ -100,6 +111,8 @@ final class FollowsUseCaseImpl: FollowsUseCase {
 }
 
 struct FollowsRequest {
+    
     var userId: Int = 0
     var page: Int = 0
+    
 }

@@ -7,14 +7,8 @@
 
 import Foundation
 
-class UpdateSellNftRequestDTO: Decodable {
-    private var price: Double
+struct UpdateSellNftRequestDTO: EncodableProtocol {
     
-    lazy var parameters = [
-        "price": price
-    ] as [String : Any]
-
-    init(price: Double) {
-        self.price = price
-    }
+    var price: Double
+    
 }

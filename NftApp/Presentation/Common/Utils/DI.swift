@@ -13,6 +13,8 @@ protocol DIContainerProtocol {
     
     func resolve<Component>(type: Component.Type) -> Component
     
+    func remove<Component>(type: Component.Type)
+    
 }
 
 final class DIContainer: DIContainerProtocol {
@@ -28,10 +30,11 @@ final class DIContainer: DIContainerProtocol {
     }
 
     func resolve<Component>(type: Component.Type) -> Component {
-        let component = components["\(type)"] as? Component
-        if component == nil { print("DI error cast: \(Component.self)") }
+        guard let component = components["\(type)"] as? Component else {
+            fatalError("DI error cast: \(Component.self)")
+        }
         
-        return component!
+        return component
     }
     
     func remove<Component>(type: Component.Type) {

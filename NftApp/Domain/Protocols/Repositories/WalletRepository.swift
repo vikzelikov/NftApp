@@ -9,7 +9,7 @@ import Foundation
 
 protocol WalletRepository {
         
-    func addFunds(request: AddFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void)
+    func addFunds(request: AddFundsRequest, completion: @escaping (Result<CommonDTO, Error>) -> Void)
     
     func withdrawFunds(request: WithdrawFundsRequest, completion: @escaping (Result<WithdrawFundsResponseDTO, Error>) -> Void)
     

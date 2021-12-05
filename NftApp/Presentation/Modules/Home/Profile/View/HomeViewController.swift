@@ -104,7 +104,7 @@ class HomeViewController: UIViewController {
                 self.headerView?.userImageView.image = image
                 self.headerView?.userImageView.contentMode = .scaleAspectFill
                 
-                self.viewModel?.updateAvatar(request: UpdateAvatarRequest(image: image), completion: { _ in })
+                self.viewModel?.updateAvatar(request: UploadMediaRequest(image: image), completion: { _ in })
             }
         }
     }
@@ -242,6 +242,8 @@ extension HomeViewController: SkeletonTableViewDataSource {
     }
 }
 
-struct UpdateAvatarRequest {
+struct UploadMediaRequest {
+    
     var image: UIImage
+    
 }

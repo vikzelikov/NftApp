@@ -10,7 +10,7 @@ import Foundation
 protocol DetailNftViewModel : BaseViewModel {
     
     var typeDetailNFT: TypeDetailNFT { set get }
-    var nftViewModel: Observable<NftViewModel?> { get }
+    var nftViewModel: Observable<Nft?> { get }
     var expirationTime: Observable<Int?> { get }
     
     func viewDidLoad()
@@ -20,18 +20,20 @@ protocol DetailNftViewModel : BaseViewModel {
 }
 
 enum TypeDetailNFT {
+    
     case detail
     case dropShop
     case market
+    
 }
 
-class DetailNftViewModelImpl: DetailNftViewModel {
+final class DetailNftViewModelImpl: DetailNftViewModel {
     
     private let dropShopUseCase: DropShopUseCase
     private let marketUseCase: MarketUseCase
     
     var typeDetailNFT: TypeDetailNFT = TypeDetailNFT.detail
-    var nftViewModel: Observable<NftViewModel?> = Observable(nil)
+    var nftViewModel: Observable<Nft?> = Observable(nil)
     var expirationTime: Observable<Int?> = Observable(nil)
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
@@ -62,7 +64,7 @@ class DetailNftViewModelImpl: DetailNftViewModel {
         self.dropShopUseCase.getEdition(editionId: editionId) { result in
             switch result {
             case .success(let edition):
-                self.nftViewModel.value?.edition = EditionViewModel(edition: edition)
+                self.nftViewModel.value?.edition = edition
                 
                 self.initTimer()
                 
@@ -81,8 +83,8 @@ class DetailNftViewModelImpl: DetailNftViewModel {
         self.dropShopUseCase.buyNft(editionId: editionId) { result in
             switch result {
             case .success:
-                if var vm = self.nftViewModel.value, let count = vm.edition.count {
-                    vm.edition.count = count - 1
+                if var vm = self.nftViewModel.value {
+                    vm.edition.count = vm.edition.count - 1
                     self.nftViewModel.value = vm
                     
                     NftObject.isDropshopNeedRefresh.value = true

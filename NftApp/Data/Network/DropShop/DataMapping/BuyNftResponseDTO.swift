@@ -8,6 +8,7 @@
 import Foundation
 
 struct BuyNftResponseDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case mintId
@@ -27,4 +28,5 @@ struct BuyNftResponseDTO: Decodable {
     let currentPrice: Double?
     let lastPrice: Int
     let isForSell: Bool
+    
 }

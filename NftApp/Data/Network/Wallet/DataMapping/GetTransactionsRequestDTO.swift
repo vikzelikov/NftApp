@@ -7,14 +7,8 @@
 
 import Foundation
 
-class GetTransactionsRequestDTO: Decodable {
-    private var page: Int
+struct GetTransactionsRequestDTO {
     
-    lazy var parameters = [
-        "page": page
-    ] as [String : Any]
-
-    init(page: Int) {
-        self.page = page
-    }
+    var page: Int
+    
 }

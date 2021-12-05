@@ -8,9 +8,11 @@
 import Foundation
 
 struct CommonDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case message
     }
     
-    let message: String
+    let message: String?
+    
 }

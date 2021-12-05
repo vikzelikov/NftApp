@@ -8,6 +8,7 @@
 import Foundation
 
 struct InitialResponseDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case tokenCurrency
@@ -31,4 +32,5 @@ struct InitialResponseDTO: Decodable {
     let isWithdrawAvailable: Bool
     let isInvited: Bool
     let isEarlyAccess: Bool
+    
 }

@@ -8,6 +8,7 @@
 import Foundation
 
 struct GetTransactionsResponseDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case count
         case rows

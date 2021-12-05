@@ -7,14 +7,19 @@
 
 import Foundation
 
-class GetNftsRequestDTO: Decodable {
-    private var page: Int
+class GetNftsRequestDTO {
     
+    private var page: Int
+    private var type: String
+        
     lazy var parameters = [
-        "page": page
+        "page": page,
+        "type": type
     ] as [String : Any]
 
-    init(page: Int) {
+    init(page: Int, type: String) {
         self.page = page
+        self.type = type
     }
+    
 }

@@ -17,6 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mini_icon" translatesAutoresizingMaskIntoConstraints="NO" id="FvC-4C-2b0">
+                                <rect key="frame" x="60" y="184" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="LnH-Zn-NbA"/>
+                                    <constraint firstAttribute="width" constant="200" id="bO6-ZQ-TPI"/>
+                                </constraints>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjA-RL-9Pt">
                                 <rect key="frame" x="118.5" y="273.5" width="83.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -37,7 +44,9 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="FvC-4C-2b0" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="0BE-Fz-Jb0"/>
                             <constraint firstItem="gjA-RL-9Pt" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="6jl-y7-rZ9"/>
+                            <constraint firstItem="FvC-4C-2b0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="FDM-vG-gxP"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Sle-7C-zS7" secondAttribute="trailing" constant="15" id="P1y-BA-p50"/>
                             <constraint firstItem="gjA-RL-9Pt" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="aTj-aA-LaH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Sle-7C-zS7" secondAttribute="bottom" constant="20" id="dxv-89-HBd"/>
@@ -47,6 +56,7 @@
                     <navigationItem key="navigationItem" id="5ns-5y-LUA"/>
                     <connections>
                         <outlet property="errorLabel" destination="gjA-RL-9Pt" id="lPy-xQ-W3k"/>
+                        <outlet property="logoImage" destination="FvC-4C-2b0" id="vbu-AT-3vM"/>
                         <outlet property="reloadButton" destination="Sle-7C-zS7" id="ALV-yd-ucU"/>
                     </connections>
                 </viewController>
@@ -56,6 +66,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="mini_icon" width="2479" height="1342"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -9,11 +9,11 @@ import Foundation
 
 protocol UserRepository {
     
-    func getUser(userId: Int, completion: @escaping (Result<GetUserResponseDTO, Error>) -> Void)
+    func getUser(userId: Int, completion: @escaping (Result<UserDTO, Error>) -> Void)
     
     func updateUser(request: User, completion: @escaping (Result<UpdateUserResponseDTO, Error>) -> Void)
     
-    func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void)
+    func updateAvatar(request: UploadMediaRequest, completion: @escaping (Result<CommonDTO, Error>) -> Void)
     
     func getInfluencers(completion: @escaping (Result<GetInfluencersResponseDTO, Error>) -> Void)
     
@@ -25,9 +25,9 @@ protocol UserRepository {
     
     func getFollowing(request: FollowsRequest, completion: @escaping (Result<GetUsersResponseDTO, Error>) -> Void)
     
-    func follow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void)
+    func follow(userId: Int, completion: @escaping (Result<CommonDTO, Error>) -> Void)
     
-    func unfollow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void)
+    func unfollow(userId: Int, completion: @escaping (Result<CommonDTO, Error>) -> Void)
     
     func checkFollow(userId: Int, completion: @escaping (Result<CheckFollowResponseDTO, Error>) -> Void)
             

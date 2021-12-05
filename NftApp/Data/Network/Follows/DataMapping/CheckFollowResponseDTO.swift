@@ -8,6 +8,7 @@
 import Foundation
 
 class CheckFollowResponseDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case requester
         case user
@@ -15,4 +16,5 @@ class CheckFollowResponseDTO: Decodable {
     
     let requester: String
     let user: String
+    
 }

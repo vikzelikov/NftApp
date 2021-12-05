@@ -8,6 +8,7 @@
 import Foundation
 
 class GetInfluencersResponseDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case rows
     }
@@ -16,6 +17,7 @@ class GetInfluencersResponseDTO: Decodable {
 }
 
 class InfluencerDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case description
@@ -25,6 +27,7 @@ class InfluencerDTO: Decodable {
     
     let id: Int
     let description: String?
-    let user: GetUserResponseDTO
+    let user: UserDTO
     let editions: [EditionDTO]?
+    
 }

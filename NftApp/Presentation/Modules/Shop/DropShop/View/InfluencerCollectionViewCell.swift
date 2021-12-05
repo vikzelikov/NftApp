@@ -25,7 +25,7 @@ class InfluencerCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func bind(viewModel: UserViewModel?) {
+    func bind(viewModel: User?) {
 //        mainView.layer.shadowColor = UIColor(named: "gray")?.cgColor
 //        mainView.layer.shadowOpacity = 1
 //        mainView.layer.shadowOffset = .zero

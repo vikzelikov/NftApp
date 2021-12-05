@@ -21,7 +21,7 @@ protocol AddFundsViewModel : BaseViewModel {
     
 }
 
-class AddFundsViewModelImpl: AddFundsViewModel {
+final class AddFundsViewModelImpl: AddFundsViewModel {
 
     private let walletUseCase: WalletUseCase
 
@@ -204,6 +204,7 @@ extension IAPManager: SKProductsRequestDelegate, SKRequestDelegate {
 }
 
 extension IAPManager: SKPaymentTransactionObserver {
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
@@ -223,17 +224,22 @@ extension IAPManager: SKPaymentTransactionObserver {
             }
         }
     }
+    
 }
 
 final class ProductsDB: Identifiable {
+    
     static let shared = ProductsDB()
     var items: [SKProduct] = []
+    
 }
 
 struct InAppPurchase {
+    
     let id: Int
     let price: NSDecimalNumber
     let priceLocale: Locale
     let productIdentifier: String
     var isSelected: Bool
+    
 }

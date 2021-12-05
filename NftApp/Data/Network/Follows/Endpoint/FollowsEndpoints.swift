@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 struct FollowsEndpoints {
     
@@ -15,10 +14,9 @@ struct FollowsEndpoints {
             page: request.page
         ).parameters
         
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/users/\(request.userId)/followers"
         
-        return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
+        return Endpoint(url: url, method: .get, urlParameters: requestDTO)
     }
     
     static func getFollowingEndpoint(request: FollowsRequest) -> Endpoint {
@@ -26,31 +24,27 @@ struct FollowsEndpoints {
             page: request.page
         ).parameters
         
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/users/\(request.userId)/following"
 
-        return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
+        return Endpoint(url: url, method: .get, urlParameters: requestDTO)
     }
     
     static func followEndpoint(userId: Int) -> Endpoint {
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/users/\(userId)/follow"
         
-        return Endpoint(url: url, method: .post, headers: headers, data: nil)
+        return Endpoint(url: url, method: .post)
     }
     
     static func unfollowEndpoint(userId: Int) -> Endpoint {
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/users/\(userId)/unfollow"
         
-        return Endpoint(url: url, method: .delete, headers: headers, data: nil)
+        return Endpoint(url: url, method: .delete)
     }
     
     static func checkFollowEndpoint(userId: Int) -> Endpoint {
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/users/\(userId)/checkFollow"
         
-        return Endpoint(url: url, method: .get, headers: headers, data: nil)
+        return Endpoint(url: url, method: .get)
     }
     
 }

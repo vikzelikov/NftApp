@@ -74,20 +74,24 @@ extension SearchViewController: UITableViewDelegate {
                 let storyboard = UIStoryboard(name: "Home", bundle: nil)
                 guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
                 vc.viewModel = HomeViewModelImpl()
-                vc.viewModel?.userViewModel.value = UserViewModel(id: searchCellViewModel.id)
+                vc.viewModel?.userViewModel.value = User(id: searchCellViewModel.id)
                 self.navigationController?.pushViewController(vc, animated: true)
             
             case .editions:
                 let vc = DetailNftViewController()
+                var nft = Nft(nft: .defaultValue)
+                nft.edition.id = searchCellViewModel.id
                 vc.viewModel = DetailNftViewModelImpl()
                 vc.viewModel?.typeDetailNFT = .dropShop
-                vc.viewModel?.nftViewModel.value = NftViewModel(id: 0, edition: EditionViewModel(id: searchCellViewModel.id))
+                vc.viewModel?.nftViewModel.value = nft
                 self.navigationController?.pushViewController(vc, animated: true)
             
             case .nfts:
                 let vc = DetailNftViewController()
+                var nft = Nft(nft: .defaultValue)
+                nft.edition.id = searchCellViewModel.id
                 vc.viewModel = DetailNftViewModelImpl()
-                vc.viewModel?.nftViewModel.value = NftViewModel(id: 0, edition: EditionViewModel(id: searchCellViewModel.id))
+                vc.viewModel?.nftViewModel.value = nft
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }

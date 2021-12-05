@@ -6,33 +6,30 @@
 //
 
 import Foundation
-import Alamofire
 
 struct DropShopEndpoints {
     
     static func getEditionsEndpoint(request: GetEditionsRequest) -> Endpoint {
         let requestDTO = GetEditionsRequestDTO (
-            page: request.page
+            page: request.page,
+            type: "dropshop"
         ).parameters
         
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
-        let url = Constant.BASE_URL + "api/editions/?type=dropshop"
+        let url = Constant.BASE_URL + "api/editions"
         
-        return Endpoint(url: url, method: .get, headers: headers, data: requestDTO)
+        return Endpoint(url: url, method: .get, urlParameters: requestDTO)
     }
     
     static func getEditionEndpoint(editionId: Int) -> Endpoint {
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/editions/\(editionId)"
         
-        return Endpoint(url: url, method: .get, headers: headers, data: nil)
+        return Endpoint(url: url, method: .get)
     }
     
     static func buyNftEndpoint(editionId: Int) -> Endpoint {
-        let headers: HTTPHeaders = NetworkHelper.getHeaders()
         let url = Constant.BASE_URL + "api/editions/\(editionId)"
         
-        return Endpoint(url: url, method: .post, headers: headers, data: nil)
+        return Endpoint(url: url, method: .post)
     }
     
 }

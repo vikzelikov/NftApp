@@ -29,7 +29,7 @@ class TransactionViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func bind(viewModel: TransactionViewModel) {
+    func bind(viewModel: Transaction) {
         var prefixAmount = ""
         
         switch viewModel.type {

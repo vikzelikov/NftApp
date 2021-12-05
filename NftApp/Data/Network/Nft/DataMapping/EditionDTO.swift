@@ -7,7 +7,8 @@
 
 import Foundation
 
-class EditionDTO: Decodable {
+struct EditionDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case influencerId
@@ -31,9 +32,26 @@ class EditionDTO: Decodable {
     let dateExpiration: String?
     let mediaUrl: String
     let influencer: EditionInfluencerDTO?
+    
+    static var defaultValue: EditionDTO {
+        .init(
+            id: 0,
+            influencerId: 0,
+            count: 1000,
+            countNFTs: 30,
+            name: "name",
+            description: "description",
+            price: 200.0,
+            dateExpiration: "1640889297",
+            mediaUrl: "",
+            influencer: nil
+        )
+    }
+    
 }
 
 class EditionInfluencerDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case user
@@ -42,9 +60,11 @@ class EditionInfluencerDTO: Decodable {
     
     let id: Int
     let user: EditionUserDTO
+    
 }
 
 class EditionUserDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case login
@@ -55,4 +75,5 @@ class EditionUserDTO: Decodable {
     let id: Int
     let login: String
     let avatarUrl: String?
+    
 }

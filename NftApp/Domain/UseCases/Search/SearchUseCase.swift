@@ -19,17 +19,25 @@ protocol SearchUseCase {
 
 final class SearchUseCaseImpl: SearchUseCase {
     
-    private let repository: SearchRepository?
+    private let repository: SearchRepository
     
-    init() {
-        self.repository = SearchRepositoryImpl()
+    init(repository: SearchRepository = SearchRepositoryImpl()) {
+        self.repository = repository
     }
     
     func searchUsers(keyWord: String, completion: @escaping (Result<[SearchCellViewModel], Error>) -> Void) {
-        repository?.searchUsers(keyWord: keyWord, completion: { result in
+        repository.searchUsers(keyWord: keyWord, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    let results = resp.rows.map{SearchCellViewModel(id: $0.id, title: $0.login, subtitle: nil, mediaUrl: $0.avatarUrl, type: .users)}
+                    let results = resp.rows.map{
+                        SearchCellViewModel(
+                            id: $0.id,
+                            title: $0.login,
+                            subtitle: nil,
+                            mediaUrl: $0.avatarUrl,
+                            type: .users
+                        )
+                    }
                     
                     completion(.success(results))
                 }
@@ -42,10 +50,18 @@ final class SearchUseCaseImpl: SearchUseCase {
     }
     
     func searchEditions(keyWord: String, completion: @escaping (Result<[SearchCellViewModel], Error>) -> Void) {
-        repository?.searchEditions(keyWord: keyWord, completion: { result in
+        repository.searchEditions(keyWord: keyWord, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    let results = resp.rows.map{SearchCellViewModel(id: $0.id, title: $0.name, subtitle: $0.description, mediaUrl: $0.mediaUrl, type: .editions)}
+                    let results = resp.rows.map{
+                        SearchCellViewModel(
+                            id: $0.id,
+                            title: $0.name,
+                            subtitle: $0.description,
+                            mediaUrl: $0.mediaUrl,
+                            type: .editions
+                        )
+                    }
                     
                     completion(.success(results))
                 }
@@ -58,10 +74,18 @@ final class SearchUseCaseImpl: SearchUseCase {
     }
     
     func searchNfts(keyWord: String, completion: @escaping (Result<[SearchCellViewModel], Error>) -> Void) {
-        repository?.searchNfts(keyWord: keyWord, completion: { result in
+        repository.searchNfts(keyWord: keyWord, completion: { result in
             switch result {
                 case .success(let resp) : do {
-                    let results = resp.rows.map{SearchCellViewModel(id: $0.id, title: $0.edition.name, subtitle: nil, mediaUrl: $0.edition.mediaUrl, type: .nfts)}
+                    let results = resp.rows.map{
+                        SearchCellViewModel(
+                            id: $0.id,
+                            title: $0.edition.name,
+                            subtitle: nil,
+                            mediaUrl: $0.edition.mediaUrl,
+                            type: .nfts
+                        )
+                    }
                     
                     completion(.success(results))
                 }

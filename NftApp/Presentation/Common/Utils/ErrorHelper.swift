@@ -10,7 +10,7 @@ import Foundation
 struct ErrorHelper {
     
     static func validateError(error: Error) -> (Int, String?) {
-        var httpCode: Int = HttpCode.badRequest
+        var httpCode: Int = HTTPCode.badRequest
         var errorStr: String? = nil
         
         if let error = error as? ErrorMessage, let code = error.code {
@@ -18,16 +18,16 @@ struct ErrorHelper {
             httpCode = code
 
             switch code {
-            case let c where c >= HttpCode.internalServerError:
+            case let c where c >= HTTPCode.internalServerError:
                 errorStr = NSLocalizedString("defaultError", comment: "")
                 break
-            case HttpCode.badRequest:
+            case HTTPCode.badRequest:
                 errorStr = error.errorDTO?.message
                 break
-            case HttpCode.unauthorized:
+            case HTTPCode.unauthorized:
                 errorStr = NSLocalizedString("unauthorization", comment: "")
                 break
-            case HttpCode.notFound:
+            case HTTPCode.notFound:
                 errorStr = NSLocalizedString("Empty", comment: "")
                 break
             default:

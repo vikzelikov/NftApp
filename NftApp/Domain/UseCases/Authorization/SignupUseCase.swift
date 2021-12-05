@@ -60,8 +60,10 @@ final class SignupUseCaseImpl: SignupUseCase {
 }
 
 struct SignupRequest {
+    
     var login: String = ""
     var email: String = ""
     var password: String = ""
     var confirmPassword: String = ""
+    
 }

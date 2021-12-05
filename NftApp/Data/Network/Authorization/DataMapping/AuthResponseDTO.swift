@@ -8,6 +8,7 @@
 import Foundation
 
 struct AuthResponseDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case userId
         case token
@@ -15,4 +16,5 @@ struct AuthResponseDTO: Decodable {
     
     let userId: Int?
     let token: String?
+    
 }

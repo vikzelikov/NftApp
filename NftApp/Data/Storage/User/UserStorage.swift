@@ -32,7 +32,7 @@ protocol UserStorage {
     
 }
 
-class UserStorageImpl: UserStorage  {
+final class UserStorageImpl: UserStorage  {
 
     func saveAuthToken(token: String) {
         UserDefaults.standard.set(token, forKey: "authToken")

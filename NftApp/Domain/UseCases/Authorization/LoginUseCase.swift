@@ -136,6 +136,8 @@ final class LoginUseCaseImpl: LoginUseCase {
 }
 
 struct LoginRequest {
+    
     var login: String = ""
     var password: String = ""
+    
 }

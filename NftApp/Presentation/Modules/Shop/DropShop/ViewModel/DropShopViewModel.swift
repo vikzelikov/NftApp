@@ -9,20 +9,20 @@ import Foundation
 
 protocol DropShopViewModel : BaseViewModel {
     
-    var items: Observable<[EditionViewModel]> { get }
-    var influencers: Observable<[UserViewModel]> { get }
+    var items: Observable<[Edition]> { get }
+    var influencers: Observable<[User]> { get }
     
     func viewDidLoad()
     
-    func didSelectItem(at index: Int, completion: @escaping (EditionViewModel) -> Void)
+    func didSelectItem(at index: Int, completion: @escaping (Edition) -> Void)
     
-    func didSelectInfluencers(completion: @escaping ([UserViewModel]) -> Void)
+    func didSelectInfluencers(completion: @escaping ([User]) -> Void)
     
-    func didSelectInfluencer(at index: Int, completion: @escaping (UserViewModel) -> Void)
+    func didSelectInfluencer(at index: Int, completion: @escaping (User) -> Void)
     
 }
 
-class DropShopViewModelImpl: DropShopViewModel {
+final class DropShopViewModelImpl: DropShopViewModel {
     
     private let dropShopUseCase: DropShopUseCase
     private let userUseCase: UserUseCase
@@ -30,8 +30,8 @@ class DropShopViewModelImpl: DropShopViewModel {
     private var query: String = ""
     private var currentPage: Int = 1
     private var totalPageCount: Int = 1
-    var items: Observable<[EditionViewModel]> = Observable([])
-    var influencers: Observable<[UserViewModel]> = Observable([])
+    var items: Observable<[Edition]> = Observable([])
+    var influencers: Observable<[User]> = Observable([])
     var reloadItems: (() -> Void)?
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
@@ -72,7 +72,7 @@ class DropShopViewModelImpl: DropShopViewModel {
 
             case .failure(let error):
                 let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode != HttpCode.notFound {
+                if httpCode != HTTPCode.notFound {
                     self.errorMessage.value = errorStr
                 }
             }
@@ -88,7 +88,7 @@ class DropShopViewModelImpl: DropShopViewModel {
         userUseCase.getInfluencers { result in
             switch result {
             case .success(let influencers):
-                self.influencers.value = influencers.map(UserViewModel.init)
+                self.influencers.value = influencers
 
             case .failure: break
             }
@@ -99,12 +99,10 @@ class DropShopViewModelImpl: DropShopViewModel {
 //        currentPage = page.page
 //        totalPageCount = page.totalPages
         
-        let editions = editions.map(EditionViewModel.init)
-        
         items.value += editions
     }
     
-    func didSelectItem(at index: Int, completion: @escaping (EditionViewModel) -> Void) {
+    func didSelectItem(at index: Int, completion: @escaping (Edition) -> Void) {
         if items.value.indices.contains(index) {
             let viewModel = items.value[index]
             
@@ -112,7 +110,7 @@ class DropShopViewModelImpl: DropShopViewModel {
         }
     }
     
-    func didSelectInfluencer(at index: Int, completion: @escaping (UserViewModel) -> Void) {
+    func didSelectInfluencer(at index: Int, completion: @escaping (User) -> Void) {
         if influencers.value.indices.contains(index) {
             let viewModel = influencers.value[index]
             
@@ -120,7 +118,7 @@ class DropShopViewModelImpl: DropShopViewModel {
         }
     }
     
-    func didSelectInfluencers(completion: @escaping ([UserViewModel]) -> Void) {
+    func didSelectInfluencers(completion: @escaping ([User]) -> Void) {
         completion(influencers.value)
     }
     

@@ -17,7 +17,7 @@ protocol SignupViewModel : BaseViewModel {
 
 }
 
-class SignupViewModelImpl: SignupViewModel {
+final class SignupViewModelImpl: SignupViewModel {
     
     private let signupUseCase: SignupUseCase
     private var isMale: Bool? = nil

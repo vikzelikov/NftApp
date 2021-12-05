@@ -8,10 +8,11 @@
 import Foundation
 
 class GetUsersResponseDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case rows
     }
     
-    let rows: [GetUserResponseDTO]
+    let rows: [UserDTO]
     
 }

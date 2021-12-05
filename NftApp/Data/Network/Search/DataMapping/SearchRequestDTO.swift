@@ -7,15 +7,8 @@
 
 import Foundation
 
-class SearchRequestDTO: Decodable {
-    private var keyWord: String
+struct SearchRequestDTO {
     
-    lazy var parameters = [
-        "keyWord": keyWord
-    ] as [String : Any]
-
-    init(keyWord: String) {
-        self.keyWord = keyWord
-    }
+    var keyWord: String
     
 }

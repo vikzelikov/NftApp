@@ -19,7 +19,7 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
     increment_build_number(xcodeproj: "NftApp.xcodeproj")
-    build_app(workspace: "NftApp.xcworkspace", scheme: "NftApp")
+    build_app(scheme: "NftApp")
     upload_to_testflight
   end
 end

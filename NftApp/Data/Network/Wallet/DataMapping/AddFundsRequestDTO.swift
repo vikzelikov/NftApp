@@ -7,29 +7,13 @@
 
 import Foundation
 
-class AddFundsRequestDTO: Decodable {
-    private var userId: Int
-    private var orderId: String
-    private var productIdentifier: String
-    private var amount: String
-    private var locale: String
-    private var hash: String
+struct AddFundsRequestDTO: EncodableProtocol {
     
-    lazy var parameters = [
-        "userId": userId,
-        "orderId": orderId,
-        "productIdentifier": productIdentifier,
-        "amount": amount,
-        "locale": locale,
-        "hash": hash
-    ] as [String : Any]
-
-    init(userId: Int, orderId: String, productIdentifier: String, amount: String, locale: String, hash: String) {
-        self.userId = userId
-        self.orderId = orderId
-        self.productIdentifier = productIdentifier
-        self.amount = amount
-        self.locale = locale
-        self.hash = hash
-    }
+    var userId: Int
+    var orderId: String
+    var productIdentifier: String
+    var amount: String
+    var locale: String
+    var hash: String
+    
 }

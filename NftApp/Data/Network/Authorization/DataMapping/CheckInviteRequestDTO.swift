@@ -7,14 +7,8 @@
 
 import Foundation
 
-class CheckInviteRequestDTO: Decodable {
-    private var userId: Int
+struct CheckInviteRequestDTO: EncodableProtocol {
     
-    lazy var parameters = [
-        "userId": userId
-    ] as [String : Int]
-
-    init(userId: Int) {
-        self.userId = userId
-    }
+    var userId: Int
+    
 }

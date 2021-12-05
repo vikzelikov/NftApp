@@ -9,8 +9,8 @@ import Foundation
 
 struct Constant {
     
-    static let BASE_URL = "http://80.249.145.13:5000/"
-//    static let BASE_URL = "http://showyouryup.com:5000/"
+//    static let BASE_URL = "http://80.249.145.13:5000/"
+    static let BASE_URL = "http://showyouryup.com:5000/"
     
     static let MERCHANT_ID = "merchant.com.nft.dev"
     

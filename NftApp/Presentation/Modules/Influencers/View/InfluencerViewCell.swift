@@ -25,7 +25,7 @@ class InfluencerViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func bind(viewModel: UserViewModel) {
+    func bind(viewModel: User) {
         loginLabel?.text = viewModel.login
 
         if let avatarUrl = viewModel.avatarUrl, let url = URL(string: avatarUrl) {

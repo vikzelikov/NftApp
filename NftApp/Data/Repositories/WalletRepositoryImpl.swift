@@ -6,38 +6,25 @@
 //
 
 import Foundation
-import Alamofire
 
 class WalletRepositoryImpl: WalletRepository {
     
-    func addFunds(request: AddFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func addFunds(request: AddFundsRequest, completion: @escaping (Result<CommonDTO, Error>) -> Void) {
         let endpoint = WalletEndpoints.addFundsEndpoint(request: request)
 
-        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
-            
-            NetworkHelper.validateBoolResponse(response: response, completion: completion)
-            
-        }
+        NetworkHelper.request(endpoint: endpoint, completion: completion)
     }
     
     func withdrawFunds(request: WithdrawFundsRequest, completion: @escaping (Result<WithdrawFundsResponseDTO, Error>) -> Void) {
         let endpoint = WalletEndpoints.withdrawFundsEndpoint(request: request)
 
-        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
-            
-            NetworkHelper.validateResponse(response: response, completion: completion)
-            
-        }
+        NetworkHelper.request(endpoint: endpoint, completion: completion)
     }
     
     func getTransactions(request: GetTransactionsRequest, completion: @escaping (Result<GetTransactionsResponseDTO, Error>) -> Void) {
         let endpoint = WalletEndpoints.getTransactionsEndpoint(request: request)
 
-        AF.request(endpoint.url, method: endpoint.method, parameters: endpoint.data, headers: endpoint.headers).validate().responseString { response in
-            
-            NetworkHelper.validateResponse(response: response, completion: completion)
-            
-        }
+        NetworkHelper.request(endpoint: endpoint, completion: completion)
     }
     
 }

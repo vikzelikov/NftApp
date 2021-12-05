@@ -15,7 +15,7 @@ protocol InitialViewModel: BaseViewModel {
     
 }
 
-class InitialViewModelImpl: InitialViewModel {
+final class InitialViewModelImpl: InitialViewModel {
     
     private let initialUseCase: InitialUseCase
     private let userUseCase: UserUseCase
@@ -67,7 +67,7 @@ class InitialViewModelImpl: InitialViewModel {
             case .success(let user):
                 if user.publicKey != nil {
                     // save static
-                    UserObject.user.value = UserViewModel.init(user: user)
+                    UserObject.user.value = user
                     self.isShowHome.value = true
                 } else {
                     self.userUseCase.clearUserStorage()

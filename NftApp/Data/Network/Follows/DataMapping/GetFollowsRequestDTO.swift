@@ -7,11 +7,12 @@
 
 import Foundation
 
-class GetFollowsRequestDTO: Decodable {
-    private var page: Int
+class GetFollowsRequestDTO {
     
+    private var page: Int
+        
     lazy var parameters = [
-        "page": page
+        "page": page,
     ] as [String : Any]
 
     init(page: Int) {

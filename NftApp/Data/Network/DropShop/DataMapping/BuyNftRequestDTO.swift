@@ -7,18 +7,9 @@
 
 import Foundation
 
-class BuyNftRequestDTO: Decodable {
+struct BuyNftRequestDTO: EncodableProtocol {
+    
     private var userId: Int
     private var editionId: Int
-    
-    lazy var parameters = [
-        "userID": userId,
-        "editionID": editionId
-    ] as [String : Any]
-
-    init(userId: Int, editionId: Int) {
-        self.userId = userId
-        self.editionId = editionId
-    }
     
 }

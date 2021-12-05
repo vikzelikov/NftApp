@@ -7,14 +7,8 @@
 
 import Foundation
 
-class WithdrawFundsRequestDTO: Decodable {
-    private var amount: Double
+struct WithdrawFundsRequestDTO: EncodableProtocol {
     
-    lazy var parameters = [
-        "amount": amount
-    ] as [String : Any]
-
-    init(amount: Double) {
-        self.amount = amount
-    }
+    var amount: Double
+    
 }

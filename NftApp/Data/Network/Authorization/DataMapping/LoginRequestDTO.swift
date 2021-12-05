@@ -7,17 +7,9 @@
 
 import Foundation
 
-class LoginRequestDTO: Decodable {
-    private var login: String
-    private var password: String
+struct LoginRequestDTO: EncodableProtocol {
     
-    lazy var parameters = [
-        "login": login,
-        "password": password,
-    ]
-
-    init(login: String, password: String) {
-        self.login = login
-        self.password = password
-    }
+    var login: String
+    var password: String
+    
 }

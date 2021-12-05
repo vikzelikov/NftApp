@@ -6,11 +6,12 @@
 //
 
 import Foundation
-import Alamofire
 
 struct Endpoint {
+    
     let url: String
     let method: HTTPMethod
-    let headers: HTTPHeaders
-    let data: [String : Any]?
+    var bodyParameters: EncodableProtocol? = nil
+    var urlParameters: [String: Any]? = nil
+    
 }

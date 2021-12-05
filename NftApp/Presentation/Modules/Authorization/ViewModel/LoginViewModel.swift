@@ -21,7 +21,7 @@ protocol LoginViewModel : BaseViewModel {
         
 }
 
-class LoginViewModelImpl: LoginViewModel {
+final class LoginViewModelImpl: LoginViewModel {
     
     private let loginUseCase: LoginUseCase
 
@@ -75,7 +75,7 @@ class LoginViewModelImpl: LoginViewModel {
                 
             case .failure(let error):
                 var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode == HttpCode.badRequest || httpCode == HttpCode.unauthorized {
+                if httpCode == HTTPCode.badRequest || httpCode == HTTPCode.unauthorized {
                     errorStr = NSLocalizedString("Error login or password", comment: "")
                 }
                 self.errorMessage.value = errorStr
@@ -94,7 +94,7 @@ class LoginViewModelImpl: LoginViewModel {
                 
             case .failure(let error):
                 var (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode == HttpCode.badRequest {
+                if httpCode == HTTPCode.badRequest {
                     errorStr = NSLocalizedString("Error Apple authorization", comment: "")
                 }
                 

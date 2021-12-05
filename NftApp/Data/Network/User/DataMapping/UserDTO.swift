@@ -7,7 +7,8 @@
 
 import Foundation
 
-class GetUserResponseDTO: Decodable {
+class UserDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case influencerId
@@ -33,4 +34,5 @@ class GetUserResponseDTO: Decodable {
     let countNFTs: Int?
     let inviteWord: String?
     let publicKey: String?
+    
 }

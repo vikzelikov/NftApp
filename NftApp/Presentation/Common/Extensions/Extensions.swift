@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import SDWebImage
 
 extension UIButton {
     func applyButtonStyle() {
@@ -168,6 +167,7 @@ extension UIViewController {
         return presentingIsModal || presentingIsNavigation || presentingIsTabBar
     }
     
+    // MARK: fix this
     func showMessage(message: String, isHaptic: Bool = true) {
         var y = 0
         let errorView = ErrorView()
@@ -204,6 +204,7 @@ extension UIViewController {
 
 extension UIView {
     
+    // MARK: fix this
     func showMessage(message: String, isHaptic: Bool = true) {
         var y = 0
         let errorView = ErrorView()
@@ -264,15 +265,6 @@ extension UICollectionViewCell {
         UIView.animate(withDuration: 0.2) {
             cell?.transform = .identity
         }
-    }
-    
-}
-
-extension UIImageView {
-    
-    func load(with: URL) {
-        self.sd_imageTransition = .fade(duration: 0.35)
-        self.sd_setImage(with: with)
     }
     
 }

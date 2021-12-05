@@ -7,14 +7,8 @@
 
 import Foundation
 
-class GetMarketNftsRequestDTO: Decodable {
-    private var page: Int
+struct GetMarketNftsRequestDTO {
     
-    lazy var parameters = [
-        "page": page
-    ] as [String : Any]
-
-    init(page: Int) {
-        self.page = page
-    }
+    var page: Int
+    
 }

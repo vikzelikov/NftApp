@@ -15,6 +15,7 @@ class InitialViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var logoImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +39,9 @@ class InitialViewController: UIViewController {
             loadingIndicator.style = .gray
         }
         loadingIndicator.center = self.view.center
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.stopAnimating()
         self.view.addSubview(loadingIndicator)
-        loadingIndicator.startAnimating()
         
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -73,6 +75,7 @@ class InitialViewController: UIViewController {
             self.loadingIndicator.stopAnimating()
             self.errorLabel.isHidden = false
             self.reloadButton.isHidden = false
+            self.logoImage.isHidden = true
         }
     }
     

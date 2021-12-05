@@ -107,15 +107,21 @@ final class MarketUseCaseImpl: MarketUseCase {
 }
 
 struct CreateSellNftRequest {
+    
     var nftId: Int
     var price: Double
+    
 }
 
 struct UpdateSellNftRequest {
+    
     var nftId: Int
     var price: Double
+    
 }
 
 struct GetMarketNftsRequest {
+    
     var page: Int
+    
 }

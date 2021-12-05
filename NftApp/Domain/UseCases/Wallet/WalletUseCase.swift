@@ -19,18 +19,28 @@ protocol WalletUseCase {
 
 final class WalletUseCaseImpl: WalletUseCase {
     
-    private let repository: WalletRepository?
+    private let repository: WalletRepository
     
-    init() {
-        self.repository = WalletRepositoryImpl()
+    init(repository: WalletRepository = WalletRepositoryImpl()) {
+        self.repository = repository
     }
     
     func addFunds(request: AddFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.addFunds(request: request, completion: completion)
+        repository.addFunds(request: request) { result in
+            switch result {
+                case .success : do {
+                    completion(.success(true))
+                }
+                
+                case .failure(let error) : do {
+                    completion(.failure(error))
+                }
+            }
+        }
     }
     
     func withdrawFunds(request: WithdrawFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.withdrawFunds(request: request, completion: { result in
+        repository.withdrawFunds(request: request) { result in
             switch result {
                 case .success(let resp) : do {
                     print("success \(resp)")
@@ -40,23 +50,15 @@ final class WalletUseCaseImpl: WalletUseCase {
                     completion(.failure(error))
                 }
             }
-        })
+        }
     }
     
     func getTransactions(request: GetTransactionsRequest, completion: @escaping (Result<[Transaction], Error>) -> Void) {
-        repository?.getTransactions(request: request, completion: { result in
+        repository.getTransactions(request: request) { result in
             switch result {
                 case .success(let resp) : do {
-                    let transactions = resp.rows.map{Transaction(id: $0.id,
-                                                                 fromUserId: $0.fromUserId,
-                                                                 toUserId: $0.toUserId,
-                                                                 type: $0.type,
-                                                                 amount: $0.amount,
-                                                                 destination: $0.destination,
-                                                                 blockchainTransactionId: $0.blockchainTransactionId,
-                                                                 editionId: $0.nft?.edition?.id,
-                                                                 date: $0.createdAt)}
-                    
+                    let transactions = resp.rows.map(Transaction.init)
+
                     completion(.success(transactions))
                 }
                 
@@ -64,23 +66,29 @@ final class WalletUseCaseImpl: WalletUseCase {
                     completion(.failure(error))
                 }
             }
-        })
+        }
     }
     
 }
 
 struct AddFundsRequest {
+    
     var orderId: String
     var productIdentifier: String
     var amount: String
     var locale: String
     var concatHash: String
+    
 }
 
 struct WithdrawFundsRequest {
+    
     var amount: Double = 0
+    
 }
 
 struct GetTransactionsRequest {
+    
     var page: Int = 0
+    
 }

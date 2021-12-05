@@ -24,7 +24,7 @@ class NftMarketViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func bind(viewModel: NftViewModel) {
+    func bind(viewModel: Nft) {
         mainView.layer.shadowColor = UIColor(named: "gray")?.cgColor
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowOffset = .zero
@@ -32,7 +32,7 @@ class NftMarketViewCell: UITableViewCell {
 
         
         titleLabel?.text = viewModel.edition.name
-        priceLabel?.text = "\(viewModel.price ?? 0.0)"
+//        priceLabel?.text = "\(viewModel.price ?? 0.0)"
 //        if let stringUrl = viewModel.imageUrl {
 //            if let url = getUrl(stringUrl: stringUrl) {
 //                nftImageView.load(with: url)

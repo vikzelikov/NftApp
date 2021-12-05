@@ -21,7 +21,7 @@ protocol SettingsViewModel: BaseViewModel {
         
 }
 
-class SettingsViewModelImpl: SettingsViewModel {
+final class SettingsViewModelImpl: SettingsViewModel {
     
     private let userUseCase: UserUseCase
     

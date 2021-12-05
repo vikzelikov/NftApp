@@ -13,7 +13,7 @@ protocol UserUseCase {
     
     func updateUser(request: User, completion: @escaping (Result<Bool, Error>) -> Void)
     
-    func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void)
+    func updateAvatar(request: UploadMediaRequest, completion: @escaping (Result<Bool, Error>) -> Void)
     
     func getInfluencers(completion: @escaping (Result<[User], Error>) -> Void)
     
@@ -23,32 +23,20 @@ protocol UserUseCase {
 
 final class UserUseCaseImpl: UserUseCase {
     
-    private let repository: UserRepository?
-    private let userStorage: UserStorage?
+    private let repository: UserRepository
+    private let userStorage: UserStorage
     
-    init() {
-        self.repository = UserRepositoryImpl()
-        self.userStorage = UserStorageImpl()
+    init(repository: UserRepository = UserRepositoryImpl(), userStorage: UserStorage = UserStorageImpl()) {
+        self.repository = repository
+        self.userStorage = userStorage
     }
     
     func getUser(userId: Int, completion: @escaping (Result<User, Error>) -> Void) {
-        repository?.getUser(userId: userId, completion: { result in
+        repository.getUser(userId: userId) { result in
             switch result {
-                case .success(let resp) : do {
-                    let user = User(
-                        id: resp.id,
-                        influencerId: resp.influencerId,
-                        login: resp.login,
-                        email: resp.email,
-                        flowAddress: resp.flowAddress,
-                        avatarUrl: resp.avatarUrl,
-                        balance: Double(resp.balance ?? "0.0"),
-                        totalCost: Double(resp.totalCost ?? 0),
-                        countNFTs: resp.countNFTs ?? 0,
-                        inviteWord: resp.inviteWord,
-                        publicKey: resp.publicKey
-                    )
-                    
+                case .success(let userDTO) : do {
+                    let user = User.init(user: userDTO)
+
                     completion(.success(user))
                 }
                 
@@ -56,11 +44,11 @@ final class UserUseCaseImpl: UserUseCase {
                     completion(.failure(error))
                 }
             }
-        })
+        }
     }
     
     func updateUser(request: User, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.updateUser(request: request, completion: { result in
+        repository.updateUser(request: request) { result in
             switch result {
                 case .success : do {
                     completion(.success(true))
@@ -70,18 +58,32 @@ final class UserUseCaseImpl: UserUseCase {
                     completion(.failure(error))
                 }
             }
-        })
+        }
     }
     
-    func updateAvatar(request: UpdateAvatarRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository?.updateAvatar(request: request, completion: completion)
+    func updateAvatar(request: UploadMediaRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
+        repository.updateAvatar(request: request) { result in
+            switch result {
+                case .success : do {
+                    completion(.success(true))
+                }
+                
+                case .failure(let error) : do {
+                    completion(.failure(error))
+                }
+            }
+        }
     }
     
     func getInfluencers(completion: @escaping (Result<[User], Error>) -> Void) {
-        repository?.getInfluencers { result in
+        repository.getInfluencers { result in
             switch result {
                 case .success(let resp) : do {
-                    let users = resp.rows.map{User(id: $0.user.id, influencerId: $0.id, login: $0.user.login, email: $0.user.email, flowAddress: $0.user.flowAddress, avatarUrl: $0.user.avatarUrl)}
+                    let users: [User] = resp.rows.map {
+                        var user = User.init(user: $0.user)
+                        user.influencerId = $0.id
+                        return user
+                    }
                     
                     completion(.success(users))
                 }
@@ -94,7 +96,7 @@ final class UserUseCaseImpl: UserUseCase {
     }
     
     func clearUserStorage() {
-        userStorage?.clearUserStorage()
+        userStorage.clearUserStorage()
     }
     
 }

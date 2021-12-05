@@ -45,20 +45,20 @@ class NftViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func bindNft(viewModel: NftViewModel) {
+    func bindNft(viewModel: Nft) {
         if typeDetailNFT == .detail {
-            let price = Int(viewModel.lastPrice ?? 0.0)
+            let price = Int(viewModel.lastPrice)
             priceLabel?.text = "\(price) T"
         }
         
         setEdition(viewModel: viewModel.edition)
     }
     
-    func bindEdition(viewModel: EditionViewModel) {
+    func bindEdition(viewModel: Edition) {
         setEdition(viewModel: viewModel)
     }
 
-    private func setEdition(viewModel: EditionViewModel) {
+    private func setEdition(viewModel: Edition) {
         titleNftLabel?.text = viewModel.name
         
         if typeDetailNFT == .dropShop {
@@ -68,7 +68,7 @@ class NftViewCell: UITableViewCell {
             priceFiatLabel?.text = "\((Double(price) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
         }
         
-        if let urlString = viewModel.mediaUrl, let url = URL(string: urlString) {
+        if let url = URL(string: viewModel.mediaUrl) {
             nftImage.load(with: url)
         }
         
@@ -78,6 +78,7 @@ class NftViewCell: UITableViewCell {
             if let urlString = influencer.avatarUrl, let url = URL(string: urlString) {
                 influencerImage.contentMode = .scaleAspectFill
                 influencerImage.load(with: url)
+                
             } else {
                 influencerImage.contentMode = .scaleAspectFit
                 influencerImage.image = UIImage(named: "mini_icon")
@@ -85,7 +86,7 @@ class NftViewCell: UITableViewCell {
         }
         
         if typeDetailNFT == .dropShop {
-            if let exp = viewModel.dateExpiration, let dateExpiration = TimeInterval(exp) {
+            if let dateExpiration = TimeInterval(viewModel.dateExpiration) {
                 let timeInterval = NSDate().timeIntervalSince1970
                 let exp = dateExpiration / 1000
                 

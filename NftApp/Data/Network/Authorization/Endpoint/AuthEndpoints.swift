@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 struct AuthEndpoints {
     
@@ -15,41 +14,42 @@ struct AuthEndpoints {
             login: request.login,
             email: request.email,
             password: request.password
-        ).parameters
+        )
         
         let url = Constant.BASE_URL + "api/auth/registration"
         
-        return Endpoint(url: url, method: .post, headers: [], data: requestDTO)
+        return Endpoint(url: url, method: .post, bodyParameters: requestDTO)
     }
     
     static func getLoginEndpoint(request: LoginRequest) -> Endpoint {
         let requestDTO = LoginRequestDTO (
             login: request.login,
             password: request.password
-        ).parameters
+        )
         
         let url = Constant.BASE_URL + "api/auth/login"
         
-        return Endpoint(url: url, method: .post, headers: [], data: requestDTO)
+        return Endpoint(url: url, method: .post, bodyParameters: requestDTO)
     }
     
     static func appleLoginEndpoint(appleId: String) -> Endpoint {
         let requestDTO = AppleLoginRequestDTO (
             appleId: appleId
-        ).parameters
+        )
         
         let url = Constant.BASE_URL + "api/auth/appleId"
         
-        return Endpoint(url: url, method: .post, headers: [], data: requestDTO)
+        return Endpoint(url: url, method: .post, bodyParameters: requestDTO)
     }
     
     static func checkInviteEndpoint(inviteWord: String) -> Endpoint {
         let requestDTO = CheckInviteRequestDTO (
             userId: Constant.USER_ID
-        ).parameters
+        )
+        
         let url = Constant.BASE_URL + "api/auth/\(inviteWord)"
         
-        return Endpoint(url: url, method: .post, headers: [], data: requestDTO)
+        return Endpoint(url: url, method: .post, bodyParameters: requestDTO)
     }
     
 }

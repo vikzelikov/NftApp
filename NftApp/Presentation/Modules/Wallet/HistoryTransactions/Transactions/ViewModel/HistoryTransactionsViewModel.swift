@@ -9,29 +9,31 @@ import Foundation
 
 protocol HistoryTransactionsViewModel: BaseViewModel {
     
-    var items: Observable<[TransactionViewModel]> { get }
+    var items: Observable<[Transaction]> { get }
     
     func viewDidLoad()
     
-    func didSelectItem(at index: Int, completion: @escaping (TransactionViewModel) -> Void)
+    func didSelectItem(at index: Int, completion: @escaping (Transaction) -> Void)
     
 }
 
 enum TypeTransactions: Int {
+    
     case buyTokens = 0
     case withdrawTokens = 1
     case dropshop = 2
     case market = 3
+    
 }
 
-class HistoryTransactionsViewModelImpl: HistoryTransactionsViewModel {
+final class HistoryTransactionsViewModelImpl: HistoryTransactionsViewModel {
     
     private let walletUseCase: WalletUseCase
     
     private var query: String = ""
     private var currentPage: Int = 1
     private var totalPageCount: Int = 1
-    var items: Observable<[TransactionViewModel]> = Observable([])
+    var items: Observable<[Transaction]> = Observable([])
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
@@ -55,7 +57,7 @@ class HistoryTransactionsViewModelImpl: HistoryTransactionsViewModel {
 
             case .failure(let error):
                 let (httpCode, errorStr) = ErrorHelper.validateError(error: error)
-                if httpCode != HttpCode.notFound {
+                if httpCode != HTTPCode.notFound {
                     self.errorMessage.value = errorStr
                 }
             }
@@ -67,9 +69,7 @@ class HistoryTransactionsViewModelImpl: HistoryTransactionsViewModel {
     private func appendTransactions(transactions: [Transaction]) {
 //        currentPage = page.page
 //        totalPageCount = page.totalPages
-        
-        let transactions = transactions.map(TransactionViewModel.init)
-        
+                
         items.value += transactions
     }
     
@@ -79,7 +79,7 @@ class HistoryTransactionsViewModelImpl: HistoryTransactionsViewModel {
         items.value.removeAll()
     }
     
-    func didSelectItem(at index: Int, completion: @escaping (TransactionViewModel) -> Void) {
+    func didSelectItem(at index: Int, completion: @escaping (Transaction) -> Void) {
         let viewModel = items.value[index]
         
         completion(viewModel)

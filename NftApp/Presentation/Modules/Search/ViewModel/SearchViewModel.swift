@@ -23,7 +23,7 @@ enum TypeSearch {
     case nfts
 }
 
-class SearchViewModelImpl: SearchViewModel {
+final class SearchViewModelImpl: SearchViewModel {
     
     private let searchUseCase: SearchUseCase
     

@@ -10,22 +10,24 @@ import Foundation
 protocol FollowsViewModel: BaseViewModel {
     
     var typeFollows: TypeFollows { set get }
-    var items: Observable<[UserViewModel]> { get }
-    var userViewModel: Observable<UserViewModel?> { get }
+    var items: Observable<[User]> { get }
+    var userViewModel: Observable<User?> { get }
     
     func viewDidLoad()
     
-    func didSelectItem(at index: Int, completion: @escaping (UserViewModel) -> Void)
+    func didSelectItem(at index: Int, completion: @escaping (User) -> Void)
     
 }
 
 enum TypeFollows {
+    
     case followers
     case following
     case none
+    
 }
 
-class FollowsViewModelImpl: FollowsViewModel {
+final class FollowsViewModelImpl: FollowsViewModel {
     
     private let followsUseCase: FollowsUseCase
     
@@ -33,8 +35,8 @@ class FollowsViewModelImpl: FollowsViewModel {
     private var currentPage: Int = 1
     private var totalPageCount: Int = 1
     var typeFollows: TypeFollows = TypeFollows.followers
-    var items: Observable<[UserViewModel]> = Observable([])
-    var userViewModel: Observable<UserViewModel?> = Observable(nil)
+    var items: Observable<[User]> = Observable([])
+    var userViewModel: Observable<User?> = Observable(nil)
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
@@ -92,9 +94,7 @@ class FollowsViewModelImpl: FollowsViewModel {
 //        currentPage = page.page
 //        totalPageCount = page.totalPages
         
-        let followUsers = users.map(UserViewModel.init)
-        
-        items.value += followUsers
+        items.value += users
     }
     
     private func resetPages() {
@@ -103,7 +103,7 @@ class FollowsViewModelImpl: FollowsViewModel {
         items.value.removeAll()
     }
     
-    func didSelectItem(at index: Int, completion: @escaping (UserViewModel) -> Void) {
+    func didSelectItem(at index: Int, completion: @escaping (User) -> Void) {
         let viewModel = items.value[index]
         
         completion(viewModel)

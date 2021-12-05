@@ -15,7 +15,7 @@ protocol InviteViewModel : BaseViewModel {
 
 }
 
-class InviteViewModelImpl: InviteViewModel {
+final class InviteViewModelImpl: InviteViewModel {
     
     private let loginUseCase: LoginUseCase
 
@@ -43,7 +43,7 @@ class InviteViewModelImpl: InviteViewModel {
                     errorStr = NSLocalizedString("Invitation has expired", comment: "")
                 }
                 
-                if httpCode == HttpCode.notFound {
+                if httpCode == HTTPCode.notFound {
                     errorStr = NSLocalizedString("Invitation not found", comment: "")
                 }
                 self.errorMessage.value = errorStr

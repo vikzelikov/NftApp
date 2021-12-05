@@ -10,7 +10,7 @@ import UIKit
 class MarketViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var items: [NftViewModel] = []
+    var items: [Nft] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

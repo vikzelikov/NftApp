@@ -9,22 +9,22 @@ import Foundation
 
 protocol InfluencersViewModel: BaseViewModel {
     
-    var items: Observable<[UserViewModel]> { get }
+    var items: Observable<[User]> { get }
     
     func viewDidLoad()
     
-    func didSelectItem(at index: Int, completion: @escaping (UserViewModel) -> Void)
+    func didSelectItem(at index: Int, completion: @escaping (User) -> Void)
     
 }
 
-class InfluencersViewModelImpl: InfluencersViewModel {
+final class InfluencersViewModelImpl: InfluencersViewModel {
     
     private let userUseCase: UserUseCase
     
     private var query: String = ""
     private var currentPage: Int = 1
     private var totalPageCount: Int = 1
-    var items: Observable<[UserViewModel]> = Observable([])
+    var items: Observable<[User]> = Observable([])
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
@@ -59,10 +59,8 @@ class InfluencersViewModelImpl: InfluencersViewModel {
     private func appendInfluencers(users: [User]) {
 //        currentPage = page.page
 //        totalPageCount = page.totalPages
-        
-        let followUsers = users.map(UserViewModel.init)
-        
-        items.value += followUsers
+                
+        items.value += users
     }
     
     private func resetPages() {
@@ -71,7 +69,7 @@ class InfluencersViewModelImpl: InfluencersViewModel {
         items.value.removeAll()
     }
     
-    func didSelectItem(at index: Int, completion: @escaping (UserViewModel) -> Void) {
+    func didSelectItem(at index: Int, completion: @escaping (User) -> Void) {
         let viewModel = items.value[index]
         
         completion(viewModel)

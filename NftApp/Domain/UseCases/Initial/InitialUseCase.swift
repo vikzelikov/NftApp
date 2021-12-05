@@ -15,27 +15,18 @@ protocol InitialUseCase {
 
 final class InitialUseCaseImpl: InitialUseCase {
     
-    private let repository: InitialRepository?
+    private let repository: InitialRepository
     
-    init() {
-        self.repository = InitialRepositoryImpl()
+    init(repository: InitialRepository = InitialRepositoryImpl()) {
+        self.repository = repository
     }
     
     func getInitialData(completion: @escaping (Result<InitialData, Error>) -> Void) {
         
-        repository?.getInitialData(completion: { result in
+        repository.getInitialData(completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    let initialData = InitialData(tokenCurrency: resp.tokenCurrency,
-                                                  marketFee: resp.marketFee,
-                                                  isAppAvailable: resp.isAppAvailable,
-                                                  isDropShopAvailable: resp.isDropshopAvailable,
-                                                  isMarketAvailable: resp.isMarketAvailable,
-                                                  isDepositAvailable: resp.isDepositAvailable,
-                                                  isWithdrawAvailable: resp.isWithdrawAvailable,
-                                                  isInvited: resp.isInvited,
-                                                  isEarlyAccess: resp.isEarlyAccess
-                    )
+                case .success(let initialDataDTO) : do {
+                    let initialData = InitialData.init(data: initialDataDTO)
                     
                     InitialDataObject.data.value = initialData
                     

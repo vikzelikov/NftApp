@@ -72,13 +72,12 @@ class DetailNftViewController: UIViewController {
             self?.buyButton?.setTitle("\(Int(nftViewModel.edition.price ?? 0.0)) Tokens", for: .normal)
             self?.titleLabel?.text = nftViewModel.edition.name
             self?.descriptionLabel?.text = nftViewModel.edition.description
-            self?.priceLabel.text = "\(Int(nftViewModel.lastPrice ?? 0.0)) T"
+            self?.priceLabel.text = "\(Int(nftViewModel.lastPrice)) T"
             
-            if let count = nftViewModel.edition.count, let countNFTs = nftViewModel.edition.countNFTs {
-                self?.leftCountLabel.text = "x\(count - countNFTs) " + NSLocalizedString("left", comment: "")
-            }
+            self?.leftCountLabel.text = "x\(nftViewModel.edition.count - nftViewModel.edition.countNFTs) " + NSLocalizedString("left", comment: "")
             
-            if let url = URL(string: nftViewModel.edition.mediaUrl ?? "") {
+            
+            if let url = URL(string: nftViewModel.edition.mediaUrl) {
                 self?.nftImageView.load(with: url)
             }
             
@@ -203,7 +202,7 @@ class DetailNftViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
             vc.viewModel = HomeViewModelImpl()
-            vc.viewModel?.userViewModel.value = UserViewModel(id: influencer.id)
+            vc.viewModel?.userViewModel.value = User(id: influencer.id)
             navigationController?.pushViewController(vc, animated: true) ?? present(vc, animated: true, completion: nil)
 
             HapticHelper.vibro(.light)

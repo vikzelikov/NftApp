@@ -8,9 +8,11 @@
 import Foundation
 
 class GetNftsResponseDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case rows
     }
     
     let rows: [NftDTO]
+    
 }

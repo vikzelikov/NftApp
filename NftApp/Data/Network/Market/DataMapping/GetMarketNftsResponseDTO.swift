@@ -8,6 +8,7 @@
 import Foundation
 
 struct GetMarketNftsResponseDTO: Decodable {
+    
     private enum CodingKeys: String, CodingKey {
         case nfts
     }

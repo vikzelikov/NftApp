@@ -7,14 +7,8 @@
 
 import Foundation
 
-class AppleLoginRequestDTO: Decodable {
-    private var appleId: String
+struct AppleLoginRequestDTO: EncodableProtocol {
     
-    lazy var parameters = [
-        "appleId": appleId
-    ]
-
-    init(appleId: String) {
-        self.appleId = appleId
-    }
+    var appleId: String
+    
 }

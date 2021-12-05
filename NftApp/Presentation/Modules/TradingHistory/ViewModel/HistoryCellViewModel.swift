@@ -8,7 +8,9 @@
 import Foundation
 
 struct HistoryCellViewModel {
+    
     let loginOwner: String?
     let datePurchase: String?
     let price: String?
+    
 }

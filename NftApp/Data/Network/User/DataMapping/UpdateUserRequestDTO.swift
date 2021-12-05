@@ -2,17 +2,18 @@
 //  UpdateUserRequestDTO.swift
 //  NftApp
 //
-//  Created by Yegor on 25.08.2021.
+//  Created by Yegor on 04.12.2021.
 //
 
 import Foundation
 
-class UpdateUserRequestDTO: Decodable {
+struct UpdateUserRequestDTO: EncodableProtocol {
     
-    lazy var parameters = [
-        "id": Constant.USER_ID
-    ] as [String : Any]
-
-    init() { }
+    var id = Constant.USER_ID
+    var login: String?
+    var email: String?
+    var oldPassword: String?
+    var newPassword: String?
+    var inviteWord: String?
     
 }

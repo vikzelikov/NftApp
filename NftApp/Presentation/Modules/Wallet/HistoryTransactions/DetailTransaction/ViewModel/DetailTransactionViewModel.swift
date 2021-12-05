@@ -9,15 +9,15 @@ import Foundation
 
 protocol DetailTransactionViewModel: BaseViewModel {
     
-    var transactionViewModel: Observable<TransactionViewModel?> { get }
+    var transactionViewModel: Observable<Transaction?> { get }
     
     func viewDidLoad()
         
 }
 
-class DetailTransactionViewModelImpl: DetailTransactionViewModel {
+final class DetailTransactionViewModelImpl: DetailTransactionViewModel {
         
-    var transactionViewModel: Observable<TransactionViewModel?> = Observable(nil)
+    var transactionViewModel: Observable<Transaction?> = Observable(nil)
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
