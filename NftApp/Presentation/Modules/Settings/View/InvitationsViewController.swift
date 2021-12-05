@@ -9,7 +9,7 @@ import UIKit
 
 class InvitationsViewController: UIViewController {
 
-    var viewModel: SettingsViewModel? = nil
+    var viewModel: SettingsViewModel?
     
     @IBOutlet weak var inviteTextField: UITextField!
     @IBOutlet weak var saveButton: AccentButton!
@@ -48,7 +48,10 @@ class InvitationsViewController: UIViewController {
             saveButton.loadingIndicator(isShow: true, titleButton: nil)
 
             viewModel?.invitationsUpdateDidTap(inviteWord: inviteWord, completion: { result in
-                self.saveButton.loadingIndicator(isShow: false, titleButton: NSLocalizedString("Save", comment: "").uppercased())
+                self.saveButton.loadingIndicator(
+                    isShow: false,
+                    titleButton: NSLocalizedString("Save", comment: "").uppercased()
+                )
                 
                 if result {
                     self.showMessage(message: NSLocalizedString("Saved", comment: ""), isHaptic: false)

@@ -9,7 +9,7 @@ import UIKit
 
 class DetailDescriptionViewController: UIViewController {
 
-    var descriptionNft: String? = nil
+    var descriptionNft: String?
     @IBOutlet weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {

@@ -10,7 +10,7 @@ import SkeletonView
 
 class DropShopViewController: UIViewController {
     
-    var viewModel: DropShopViewModel? = nil
+    var viewModel: DropShopViewModel?
         
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorLabel: UILabelPadding!
@@ -74,9 +74,18 @@ class DropShopViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: HeaderViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: HeaderViewCell.cellIdentifier)
-        tableView.register(UINib(nibName: NftViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftViewCell.cellIdentifier)
-        tableView.register(UINib(nibName: InfluencersCollectionView.cellIdentifier, bundle: nil), forCellReuseIdentifier: InfluencersCollectionView.cellIdentifier)
+        tableView.register(
+            UINib(nibName: HeaderViewCell.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: HeaderViewCell.cellIdentifier
+        )
+        tableView.register(
+            UINib(nibName: NftViewCell.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: NftViewCell.cellIdentifier
+        )
+        tableView.register(
+            UINib(nibName: InfluencersCollectionView.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: InfluencersCollectionView.cellIdentifier
+        )
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
         
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -147,6 +156,7 @@ extension DropShopViewController: UITableViewDelegate {
 }
 
 // MARK: fix this
+// swiftlint:disable function_body_length
 extension DropShopViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = viewModel?.items.value.count {
@@ -156,26 +166,48 @@ extension DropShopViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else { return UITableViewCell() }
+            guard
+                let cell = tableView
+                    .dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath)
+                    as? HeaderViewCell
+            else {
+                return UITableViewCell()
+            }
             cell.bind(title: "Top collections 🔥", showArrow: true)
             cell.selectionStyle = .none
             return cell
             
         } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: InfluencersCollectionView.cellIdentifier, for: indexPath)
+            let cell = tableView
+                .dequeueReusableCell(withIdentifier: InfluencersCollectionView.cellIdentifier, for: indexPath)
             cell.selectionStyle = .none
             return cell
             
         } else if indexPath.row == 2 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath) as? HeaderViewCell else { return UITableViewCell() }
+            guard
+                let cell = tableView
+                    .dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath)
+                    as? HeaderViewCell
+            else {
+                return UITableViewCell()
+            }
             cell.bind(title: "Trending 🌀")
             cell.selectionStyle = .none
             return cell
             
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath) as? NftViewCell else { return UITableViewCell() }
+            guard
+                let cell = tableView
+                    .dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath)
+                    as? NftViewCell
+            else {
+                return UITableViewCell()
+            }
             
             cell.selectionStyle = .none
             
@@ -222,8 +254,17 @@ extension DropShopViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfluencerCollectionViewCell.cellIdentifier, for: indexPath) as? InfluencerCollectionViewCell else { return UICollectionViewCell() }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard
+            let cell = collectionView
+                .dequeueReusableCell(withReuseIdentifier: InfluencerCollectionViewCell.cellIdentifier, for: indexPath)
+                as? InfluencerCollectionViewCell
+        else {
+            return UICollectionViewCell()
+        }
 
         if let vm = viewModel?.influencers.value[indexPath.row] {
             cell.bind(viewModel: vm)
@@ -235,7 +276,13 @@ extension DropShopViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel?.didSelectInfluencer(at: indexPath.row) { userViewModel in
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+            guard
+                let vc = storyboard
+                    .instantiateViewController(withIdentifier: "HomeViewController")
+                    as? HomeViewController
+            else {
+                return
+            }
             vc.viewModel = HomeViewModelImpl()
             vc.viewModel?.userViewModel.value = userViewModel
             self.navigationController?.pushViewController(vc, animated: true)

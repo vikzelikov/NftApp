@@ -10,7 +10,7 @@ import Foundation
 struct DropShopEndpoints {
     
     static func getEditionsEndpoint(request: GetEditionsRequest) -> Endpoint {
-        let requestDTO = GetEditionsRequestDTO (
+        let requestDTO = GetEditionsRequestDTO(
             page: request.page,
             type: "dropshop"
         ).parameters

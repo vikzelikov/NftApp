@@ -8,7 +8,7 @@ import UIKit
 
 class DetailNftViewController: UIViewController {
     
-    var viewModel: DetailNftViewModel? = nil
+    var viewModel: DetailNftViewModel?
     
     @IBOutlet weak var ownerAvatarImage: UIImageView! {
         didSet {
@@ -74,8 +74,8 @@ class DetailNftViewController: UIViewController {
             self?.descriptionLabel?.text = nftViewModel.edition.description
             self?.priceLabel.text = "\(Int(nftViewModel.lastPrice)) T"
             
-            self?.leftCountLabel.text = "x\(nftViewModel.edition.count - nftViewModel.edition.countNFTs) " + NSLocalizedString("left", comment: "")
-            
+            self?.leftCountLabel.text = "x\(nftViewModel.edition.count - nftViewModel.edition.countNFTs) "
+                + NSLocalizedString("left", comment: "")
             
             if let url = URL(string: nftViewModel.edition.mediaUrl) {
                 self?.nftImageView.load(with: url)
@@ -133,31 +133,31 @@ class DetailNftViewController: UIViewController {
         guard let typeDetailNFT = viewModel?.typeDetailNFT else { return }
         
         switch typeDetailNFT {
-            case .detail:
-                leftCountTagView.isHidden = true
-                moreOffersButton.isHidden = true
-                originalTagView.isHidden = true
-                expirationLabel.isHidden = true
-                moreInfoNftLabel.isHidden = true
-                buyButton.isHidden = true
-                priceView.isHidden = false
-                closeButton.isHidden = true
-                backButton.isHidden = false
-                
-                rightTags()
-
-            case .dropShop:
-                buyButton.isHidden = false
-                moreInfoNftLabel.isHidden = true
-                expirationLabel.isHidden = false
-                ownerLoginContainer.isHidden = false
+        case .detail:
+            leftCountTagView.isHidden = true
+            moreOffersButton.isHidden = true
+            originalTagView.isHidden = true
+            expirationLabel.isHidden = true
+            moreInfoNftLabel.isHidden = true
+            buyButton.isHidden = true
+            priceView.isHidden = false
+            closeButton.isHidden = true
+            backButton.isHidden = false
             
-            case .market:
-                buyButton.isHidden = false
-                moreInfoNftLabel.isHidden = false
-                expirationLabel.isHidden = true
-                originalTagView.isHidden = true
-                leftCountTagView.isHidden = true
+            rightTags()
+
+        case .dropShop:
+            buyButton.isHidden = false
+            moreInfoNftLabel.isHidden = true
+            expirationLabel.isHidden = false
+            ownerLoginContainer.isHidden = false
+        
+        case .market:
+            buyButton.isHidden = false
+            moreInfoNftLabel.isHidden = false
+            expirationLabel.isHidden = true
+            originalTagView.isHidden = true
+            leftCountTagView.isHidden = true
         }
     }
     
@@ -192,7 +192,10 @@ class DetailNftViewController: UIViewController {
             self.buyButton.loadingIndicator(isShow: false, titleButton: "\(Int(price)) Tokens")
 
             if result {
-                self.showMessage(message: NSLocalizedString("NFT has been added to your collection!", comment: ""), isHaptic: false)
+                self.showMessage(
+                    message: NSLocalizedString("NFT has been added to your collection!", comment: ""),
+                    isHaptic: false
+                )
             }
         })
     }
@@ -200,7 +203,12 @@ class DetailNftViewController: UIViewController {
     @objc func ownerLoginDidTap(_ sender: UITapGestureRecognizer) {
         if let influencer = viewModel?.nftViewModel.value?.edition.influencer?.user {
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+            guard
+                let vc = storyboard
+                    .instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+            else {
+                return
+            }
             vc.viewModel = HomeViewModelImpl()
             vc.viewModel?.userViewModel.value = User(id: influencer.id)
             navigationController?.pushViewController(vc, animated: true) ?? present(vc, animated: true, completion: nil)

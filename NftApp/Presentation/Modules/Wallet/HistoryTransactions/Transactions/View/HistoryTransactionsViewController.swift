@@ -9,7 +9,7 @@ import UIKit
 
 class HistoryTransactionsViewController: UIViewController {
     
-    var viewModel: HistoryTransactionsViewModel? = nil
+    var viewModel: HistoryTransactionsViewModel?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorLabel: UILabelPadding!
@@ -55,7 +55,10 @@ class HistoryTransactionsViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: "TransactionViewCell", bundle: nil), forCellReuseIdentifier: TransactionViewCell.cellIdentifier)
+        tableView.register(
+            UINib(nibName: "TransactionViewCell", bundle: nil),
+            forCellReuseIdentifier: TransactionViewCell.cellIdentifier
+        )
         
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0.0
@@ -96,7 +99,11 @@ extension HistoryTransactionsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionViewCell", for: indexPath) as? TransactionViewCell else {
+        guard
+            let cell = tableView
+                .dequeueReusableCell(withIdentifier: "TransactionViewCell", for: indexPath)
+                as? TransactionViewCell
+        else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()
         }
@@ -110,4 +117,3 @@ extension HistoryTransactionsViewController: UITableViewDataSource {
         return cell
     }
 }
-

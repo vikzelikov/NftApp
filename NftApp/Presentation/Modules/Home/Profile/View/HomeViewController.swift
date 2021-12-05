@@ -59,8 +59,14 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.estimatedRowHeight = UIScreen.main.bounds.width - 30
         tableView.rowHeight = UIScreen.main.bounds.width - 30
-        tableView.register(UINib(nibName: NftViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: NftViewCell.cellIdentifier)
-        tableView.register(UINib(nibName: PlaceholderViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: PlaceholderViewCell.cellIdentifier)
+        tableView.register(
+            UINib(nibName: NftViewCell.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: NftViewCell.cellIdentifier
+        )
+        tableView.register(
+            UINib(nibName: PlaceholderViewCell.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: PlaceholderViewCell.cellIdentifier
+        )
         tableView.contentInset = UIEdgeInsets(top: 380, left: 0, bottom: 0, right: 0)
         
         if !self.isModal {
@@ -128,7 +134,10 @@ class HomeViewController: UIViewController {
             let objectsToShare = [textToShare, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            activityVC.excludedActivityTypes = [
+                UIActivity.ActivityType.airDrop,
+                UIActivity.ActivityType.addToReadingList
+            ]
 
             activityVC.popoverPresentationController?.sourceView = sender as UIView
             self.present(activityVC, animated: true, completion: nil)
@@ -204,19 +213,34 @@ extension HomeViewController: SkeletonTableViewDataSource {
         }
     }
     
-    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+    func collectionSkeletonView(
+        _ skeletonView: UITableView,
+        cellIdentifierForRowAt indexPath: IndexPath
+    ) -> ReusableCellIdentifier {
         return NftViewCell.cellIdentifier
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let collectionNFTs = self.viewModel?.itemsNfts.value {
             if collectionNFTs.isEmpty {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: PlaceholderViewCell.cellIdentifier, for: indexPath) as? PlaceholderViewCell else { return UITableViewCell() }
+                guard
+                    let cell = tableView
+                        .dequeueReusableCell(withIdentifier: PlaceholderViewCell.cellIdentifier, for: indexPath)
+                        as? PlaceholderViewCell
+                else {
+                    return UITableViewCell()
+                }
                 cell.label.text = NSLocalizedString("Nothing here", comment: "")
                 cell.selectionStyle = .none
                 return cell
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath) as? NftViewCell else { return UITableViewCell() }
+                guard
+                    let cell = tableView
+                        .dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath)
+                        as? NftViewCell
+                else {
+                    return UITableViewCell()
+                }
                 
                 if let vm = viewModel?.itemsNfts.value[indexPath.row] {
                     if let typeList = self.viewModel?.typeListNfts.value {

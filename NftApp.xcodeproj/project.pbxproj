@@ -154,6 +154,7 @@
 		18D2C126274044580043BEEC /* CheckInviteRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */; };
 		18D3FEC9268FAE390030929D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FEC8268FAE390030929D /* Extensions.swift */; };
 		18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FECF2697B8C40030929D /* LoginViewController.swift */; };
+		18D452B1275D817B009D3156 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18D452B0275D817B009D3156 /* GoogleService-Info.plist */; };
 		18D8452426CD5D2500888D32 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452326CD5D2500888D32 /* BaseViewModel.swift */; };
 		18D8452826CD682400888D32 /* ErrorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452726CD682400888D32 /* ErrorDTO.swift */; };
 		18D8452D26CDAEF100888D32 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452C26CDAEF100888D32 /* UserStorage.swift */; };
@@ -183,7 +184,6 @@
 		18DDEA3726D7A0D100306A60 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18DDEA3626D7A0D100306A60 /* Initial.storyboard */; };
 		18DDEA3926D7A16800306A60 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA3826D7A16800306A60 /* InitialViewController.swift */; };
 		18DDEA3C26D7A1A300306A60 /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDEA3B26D7A1A300306A60 /* InitialViewModel.swift */; };
-		18E0566D275BAB7F0091FFE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18E0566C275BAB7F0091FFE8 /* GoogleService-Info.plist */; };
 		18E1106F26D595EF007FD66E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18E1107126D595EF007FD66E /* Localizable.strings */; };
 		18E1107426D59F4F007FD66E /* DropShopRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1107326D59F4F007FD66E /* DropShopRepositoryImpl.swift */; };
 		18E1107626D59F6B007FD66E /* DropShopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1107526D59F6B007FD66E /* DropShopRepository.swift */; };
@@ -383,6 +383,7 @@
 		18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInviteRequestDTO.swift; sourceTree = "<group>"; };
 		18D3FEC8268FAE390030929D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		18D3FECF2697B8C40030929D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		18D452B0275D817B009D3156 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18D8452326CD5D2500888D32 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		18D8452726CD682400888D32 /* ErrorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDTO.swift; sourceTree = "<group>"; };
 		18D8452C26CDAEF100888D32 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
@@ -413,7 +414,6 @@
 		18DDEA3626D7A0D100306A60 /* Initial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
 		18DDEA3826D7A16800306A60 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		18DDEA3B26D7A1A300306A60 /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
-		18E0566C275BAB7F0091FFE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18E1107026D595EF007FD66E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18E1107226D595F3007FD66E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18E1107326D59F4F007FD66E /* DropShopRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropShopRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -1146,7 +1146,7 @@
 		18B84264266E27A40033AFC0 /* NftApp */ = {
 			isa = PBXGroup;
 			children = (
-				18E0566C275BAB7F0091FFE8 /* GoogleService-Info.plist */,
+				18D452B0275D817B009D3156 /* GoogleService-Info.plist */,
 				185435E326D4164C00368C8E /* NftApp.entitlements */,
 				18B84273266E27A50033AFC0 /* Info.plist */,
 				18B8427E266F61180033AFC0 /* Resourses */,
@@ -1633,6 +1633,7 @@
 				18B8425F266E27A40033AFC0 /* Frameworks */,
 				18B84260266E27A40033AFC0 /* Resources */,
 				1813844627346A4D004530BD /* Embed App Extensions */,
+				18D452AF275D62A2009D3156 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1734,7 +1735,7 @@
 				182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */,
 				18855F3626D52A360018B072 /* Assets.xcassets in Resources */,
 				186E5FF826B6A3FD008291AC /* AddFundsViewController.xib in Resources */,
-				18E0566D275BAB7F0091FFE8 /* GoogleService-Info.plist in Resources */,
+				18D452B1275D817B009D3156 /* GoogleService-Info.plist in Resources */,
 				182342F026A2EB5E00CD2907 /* TradingHistoryViewController.xib in Resources */,
 				1833847126FD399A00EAD9EB /* DetailDescriptionViewController.xib in Resources */,
 				182342DC26A1E67F00CD2907 /* NftMarketViewCell.xib in Resources */,
@@ -1745,6 +1746,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18D452AF275D62A2009D3156 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18B8425E266E27A40033AFC0 /* Sources */ = {

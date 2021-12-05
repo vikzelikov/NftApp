@@ -22,9 +22,15 @@ class ErrorView: UIView {
     }
     
     func commonInit() {
-        let viewFromXib = Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)![0] as! UIView
-        viewFromXib.frame = self.bounds
-        addSubview(viewFromXib)
+        guard
+            let viewFromXib = Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil),
+            let view = viewFromXib.first as? UIView
+        else {
+            fatalError("Error cast \(self)")
+        }
+        
+        view.frame = self.bounds
+        addSubview(view)
     }
     
 }

@@ -26,9 +26,15 @@ class InviteView: UIView {
     }
     
     func commonInit() {
-        let viewFromXib = Bundle.main.loadNibNamed("InviteView", owner: self, options: nil)![0] as! UIView
-        viewFromXib.frame = self.bounds
-        addSubview(viewFromXib)
+        guard
+            let viewFromXib = Bundle.main.loadNibNamed("InviteView", owner: self, options: nil),
+            let view = viewFromXib.first as? UIView
+        else {
+            fatalError("Error cast \(self)")
+        }
+        
+        view.frame = self.bounds
+        addSubview(view)
     }
     
     func viewDidLoad() {
@@ -84,7 +90,12 @@ class InviteView: UIView {
     
     func showInitialView() {
         let storyboard = UIStoryboard(name: "Initial", bundle: nil)
-        guard let page = storyboard.instantiateViewController(withIdentifier: "InitialViewController") as? InitialViewController else { return }
+        guard
+            let page = storyboard
+                .instantiateViewController(withIdentifier: "InitialViewController") as? InitialViewController
+        else {
+            return
+        }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }

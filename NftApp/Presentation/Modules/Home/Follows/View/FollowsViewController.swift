@@ -9,7 +9,7 @@ import UIKit
 
 class FollowsViewController: UIViewController {
 
-    var viewModel: FollowsViewModel? = nil
+    var viewModel: FollowsViewModel?
 
     @IBOutlet weak var followsTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -29,7 +29,7 @@ class FollowsViewController: UIViewController {
         }
         
 //        viewModel?.isLoading.observe(on: self) { [weak self] _ in
-////            self.checkoutLoading(isShow: $0)
+//            self.checkoutLoading(isShow: $0)
 //        }
         
         viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
@@ -55,7 +55,10 @@ class FollowsViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: FollowsViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: FollowsViewCell.cellIdentifier)
+        tableView.register(
+            UINib(nibName: FollowsViewCell.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: FollowsViewCell.cellIdentifier
+        )
         
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0.0
@@ -81,7 +84,12 @@ extension FollowsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.didSelectItem(at: indexPath.row) { userViewModel in
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+            guard
+                let vc = storyboard
+                    .instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+            else {
+                return
+            }
             vc.viewModel = HomeViewModelImpl()
             vc.viewModel?.userViewModel.value = userViewModel
             self.navigationController?.pushViewController(vc, animated: true)
@@ -102,7 +110,11 @@ extension FollowsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FollowsViewCell.cellIdentifier, for: indexPath) as? FollowsViewCell else {
+        guard
+            let cell = tableView
+                .dequeueReusableCell(withIdentifier: FollowsViewCell.cellIdentifier, for: indexPath)
+                as? FollowsViewCell
+        else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()
         }

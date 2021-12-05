@@ -28,23 +28,23 @@ final class SearchUseCaseImpl: SearchUseCase {
     func searchUsers(keyWord: String, completion: @escaping (Result<[SearchCellViewModel], Error>) -> Void) {
         repository.searchUsers(keyWord: keyWord, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    let results = resp.rows.map{
-                        SearchCellViewModel(
-                            id: $0.id,
-                            title: $0.login,
-                            subtitle: nil,
-                            mediaUrl: $0.avatarUrl,
-                            type: .users
-                        )
-                    }
-                    
-                    completion(.success(results))
+            case .success(let resp) : do {
+                let results = resp.rows.map {
+                    SearchCellViewModel(
+                        id: $0.id,
+                        title: $0.login,
+                        subtitle: nil,
+                        mediaUrl: $0.avatarUrl,
+                        type: .users
+                    )
                 }
                 
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+                completion(.success(results))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }
@@ -52,23 +52,23 @@ final class SearchUseCaseImpl: SearchUseCase {
     func searchEditions(keyWord: String, completion: @escaping (Result<[SearchCellViewModel], Error>) -> Void) {
         repository.searchEditions(keyWord: keyWord, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    let results = resp.rows.map{
-                        SearchCellViewModel(
-                            id: $0.id,
-                            title: $0.name,
-                            subtitle: $0.description,
-                            mediaUrl: $0.mediaUrl,
-                            type: .editions
-                        )
-                    }
-                    
-                    completion(.success(results))
+            case .success(let resp) : do {
+                let results = resp.rows.map {
+                    SearchCellViewModel(
+                        id: $0.id,
+                        title: $0.name,
+                        subtitle: $0.description,
+                        mediaUrl: $0.mediaUrl,
+                        type: .editions
+                    )
                 }
                 
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+                completion(.success(results))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }
@@ -76,23 +76,23 @@ final class SearchUseCaseImpl: SearchUseCase {
     func searchNfts(keyWord: String, completion: @escaping (Result<[SearchCellViewModel], Error>) -> Void) {
         repository.searchNfts(keyWord: keyWord, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    let results = resp.rows.map{
-                        SearchCellViewModel(
-                            id: $0.id,
-                            title: $0.edition.name,
-                            subtitle: nil,
-                            mediaUrl: $0.edition.mediaUrl,
-                            type: .nfts
-                        )
-                    }
-                    
-                    completion(.success(results))
+            case .success(let resp) : do {
+                let results = resp.rows.map {
+                    SearchCellViewModel(
+                        id: $0.id,
+                        title: $0.edition.name,
+                        subtitle: nil,
+                        mediaUrl: $0.edition.mediaUrl,
+                        type: .nfts
+                    )
                 }
                 
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+                completion(.success(results))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }

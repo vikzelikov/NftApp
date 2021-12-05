@@ -23,7 +23,10 @@ class TradingHistoryViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.allowsSelection = true
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: "HistoryViewCell", bundle: nil), forCellReuseIdentifier: HistoryViewCell.cellIdentifier)
+        tableView.register(
+            UINib(nibName: "HistoryViewCell", bundle: nil),
+            forCellReuseIdentifier: HistoryViewCell.cellIdentifier
+        )
         
         items.append(HistoryCellViewModel(loginOwner: "some login", datePurchase: "12/12/2012", price: "1234 USD"))
         items.append(HistoryCellViewModel(loginOwner: "some login", datePurchase: "12/12/2012", price: "1234 USD"))
@@ -33,7 +36,6 @@ class TradingHistoryViewController: UIViewController {
         items.append(HistoryCellViewModel(loginOwner: "some login", datePurchase: "12/12/2012", price: "1234 USD"))
         items.append(HistoryCellViewModel(loginOwner: "some login", datePurchase: "12/12/2012", price: "1234 USD"))
         items.append(HistoryCellViewModel(loginOwner: "some login", datePurchase: "12/12/2012", price: "1234 USD"))
-
         
         reload()
         
@@ -81,7 +83,10 @@ extension TradingHistoryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryViewCell", for: indexPath) as? HistoryViewCell else {
+        guard
+            let cell = tableView
+                .dequeueReusableCell(withIdentifier: "HistoryViewCell", for: indexPath) as? HistoryViewCell
+        else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()
         }
@@ -93,4 +98,3 @@ extension TradingHistoryViewController: UITableViewDataSource {
         return cell
     }
 }
-

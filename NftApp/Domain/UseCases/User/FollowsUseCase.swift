@@ -41,30 +41,33 @@ final class FollowsUseCaseImpl: FollowsUseCase {
         })
     }
     
-    private func processGetFollows(result: Result<GetUsersResponseDTO, Error>, completion: @escaping (Result<[User], Error>) -> Void) {
+    private func processGetFollows(
+        result: Result<GetUsersResponseDTO, Error>,
+        completion: @escaping (Result<[User], Error>) -> Void
+    ) {
         switch result {
-            case .success(let resp) : do {
-                let users = resp.rows.map(User.init)
+        case .success(let resp) : do {
+            let users = resp.rows.map(User.init)
 
-                completion(.success(users))
-            }
-            
-            case .failure(let error) : do {
-                completion(.failure(error))
-            }
+            completion(.success(users))
+        }
+        
+        case .failure(let error) : do {
+            completion(.failure(error))
+        }
         }
     }
     
     func follow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
         repository.follow(userId: userId) { result in
             switch result {
-                case .success : do {
-                    completion(.success(true))
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success : do {
+                completion(.success(true))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         }
     }
@@ -72,13 +75,13 @@ final class FollowsUseCaseImpl: FollowsUseCase {
     func unfollow(userId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
         repository.unfollow(userId: userId) { result in
             switch result {
-                case .success : do {
-                    completion(.success(true))
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success : do {
+                completion(.success(true))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         }
     }
@@ -86,24 +89,24 @@ final class FollowsUseCaseImpl: FollowsUseCase {
     func checkFollow(userId: Int, completion: @escaping (Result<(TypeFollows, TypeFollows), Error>) -> Void) {
         repository.checkFollow(userId: userId, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    var requester: TypeFollows = .none
-                    var user: TypeFollows = .none
-                    
-                    if resp.requester == "follower" {
-                        requester = .followers
-                    }
-                    
-                    if resp.user == "follower" {
-                        user = .followers
-                    }
-                    
-                    completion(.success((requester, user)))
+            case .success(let resp) : do {
+                var requester: TypeFollows = .none
+                var user: TypeFollows = .none
+                
+                if resp.requester == "follower" {
+                    requester = .followers
                 }
                 
-                case .failure(let error) : do {
-                    completion(.failure(error))
+                if resp.user == "follower" {
+                    user = .followers
                 }
+                
+                completion(.success((requester, user)))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }

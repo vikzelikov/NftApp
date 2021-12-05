@@ -116,7 +116,10 @@ struct NetworkHelper {
         let fileName = "image"
 
         body.append("\r\n--\(boundary)\r\n".data(using: .utf8) ?? Data())
-        body.append("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=\"\(fileName)\"\r\n".data(using: .utf8) ?? Data())
+        body.append(
+            "Content-Disposition: form-data; name=\"\(fieldName)\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)
+            ?? Data()
+        )
         body.append("Content-Type: image/png\r\n\r\n".data(using: .utf8) ?? Data())
         body.append(imageData)
         body.append("\r\n--\(boundary)--\r\n".data(using: .utf8) ?? Data())
@@ -137,7 +140,7 @@ struct NetworkHelper {
         DispatchQueue.main.async {
             if let error = error {
                 completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: nil)))
-                fatalError("Error making request: \(error.localizedDescription) from \(T.self)")
+                print("Error making request: \(error.localizedDescription) from \(T.self)")
             }
                 
             if let httpCode = (response as? HTTPURLResponse)?.statusCode, let data = data {

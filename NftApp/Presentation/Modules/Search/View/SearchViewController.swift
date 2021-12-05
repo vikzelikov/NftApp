@@ -9,7 +9,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    var viewModel: SearchViewModel? = nil
+    var viewModel: SearchViewModel?
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -29,7 +29,7 @@ class SearchViewController: UIViewController {
         }
         
 //        viewModel?.isLoading.observe(on: self) { [weak self] _ in
-////            self.checkoutLoading(isShow: $0)
+//            self.checkoutLoading(isShow: $0)
 //        }
         
         viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
@@ -48,8 +48,11 @@ class SearchViewController: UIViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
-        tableView.register(UINib(nibName: SearchViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SearchViewCell.cellIdentifier)
         tableView.contentInsetAdjustmentBehavior = .never
+        tableView.register(
+            UINib(nibName: SearchViewCell.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: SearchViewCell.cellIdentifier
+        )
         
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -72,7 +75,13 @@ extension SearchViewController: UITableViewDelegate {
             switch searchCellViewModel.type {
             case .users:
                 let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+                guard
+                    let vc = storyboard
+                        .instantiateViewController(withIdentifier: "HomeViewController")
+                        as? HomeViewController
+                else {
+                    return
+                }
                 vc.viewModel = HomeViewModelImpl()
                 vc.viewModel?.userViewModel.value = User(id: searchCellViewModel.id)
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -153,7 +162,11 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let vm = viewModel?.items.value[indexPath.section][indexPath.row] {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchViewCell.cellIdentifier, for: indexPath) as? SearchViewCell else {
+            guard
+                let cell = tableView
+                    .dequeueReusableCell(withIdentifier: SearchViewCell.cellIdentifier, for: indexPath)
+                    as? SearchViewCell
+            else {
                 return UITableViewCell()
             }
             

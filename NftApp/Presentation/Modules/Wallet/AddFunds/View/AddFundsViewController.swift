@@ -41,7 +41,10 @@ class AddFundsViewController: UIViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
-        tableView.register(UINib(nibName: PurchaseViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: PurchaseViewCell.cellIdentifier)
+        tableView.register(
+            UINib(nibName: PurchaseViewCell.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: PurchaseViewCell.cellIdentifier
+        )
         
     }
     
@@ -99,7 +102,11 @@ extension AddFundsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PurchaseViewCell.cellIdentifier, for: indexPath) as? PurchaseViewCell else {
+        guard
+            let cell = tableView
+                .dequeueReusableCell(withIdentifier: PurchaseViewCell.cellIdentifier, for: indexPath)
+                as? PurchaseViewCell
+        else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()
         }

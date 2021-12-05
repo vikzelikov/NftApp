@@ -15,13 +15,19 @@ class WalletRepositoryImpl: WalletRepository {
         NetworkHelper.request(endpoint: endpoint, completion: completion)
     }
     
-    func withdrawFunds(request: WithdrawFundsRequest, completion: @escaping (Result<WithdrawFundsResponseDTO, Error>) -> Void) {
+    func withdrawFunds(
+        request: WithdrawFundsRequest,
+        completion: @escaping (Result<WithdrawFundsResponseDTO, Error>) -> Void
+    ) {
         let endpoint = WalletEndpoints.withdrawFundsEndpoint(request: request)
 
         NetworkHelper.request(endpoint: endpoint, completion: completion)
     }
     
-    func getTransactions(request: GetTransactionsRequest, completion: @escaping (Result<GetTransactionsResponseDTO, Error>) -> Void) {
+    func getTransactions(
+        request: GetTransactionsRequest,
+        completion: @escaping (Result<GetTransactionsResponseDTO, Error>) -> Void
+    ) {
         let endpoint = WalletEndpoints.getTransactionsEndpoint(request: request)
 
         NetworkHelper.request(endpoint: endpoint, completion: completion)

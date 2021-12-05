@@ -55,7 +55,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func signupDidTap(_ sender: Any) {
         let homeStoryboard = UIStoryboard(name: "Authorization", bundle: nil)
-        guard let vc = homeStoryboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
+        guard
+            let vc = homeStoryboard
+                .instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController
+        else {
+            return
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -85,7 +90,12 @@ class LoginViewController: UIViewController {
     
     func showInitialView() {
         let storyboard = UIStoryboard(name: "Initial", bundle: nil)
-        guard let page = storyboard.instantiateViewController(withIdentifier: "InitialViewController") as? InitialViewController else { return }
+        guard
+            let page = storyboard
+                .instantiateViewController(withIdentifier: "InitialViewController") as? InitialViewController
+        else {
+            return
+        }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }
@@ -160,9 +170,15 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         if #available(iOS 13.0, *) {
             var authorizationButton: ASAuthorizationAppleIDButton
             if self.traitCollection.userInterfaceStyle == .dark {
-                authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .white)
+                authorizationButton = ASAuthorizationAppleIDButton(
+                    authorizationButtonType: .signIn,
+                    authorizationButtonStyle: .white
+                )
             } else {
-                authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
+                authorizationButton = ASAuthorizationAppleIDButton(
+                    authorizationButtonType: .signIn,
+                    authorizationButtonStyle: .black
+                )
             }
 
             let appleAuthTap = UITapGestureRecognizer(target: self, action: #selector(handleAppleIdRequest))
@@ -193,7 +209,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     
     @objc(authorizationController:didCompleteWithAuthorization:)
     @available(iOS 13.0, *)
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithAuthorization authorization: ASAuthorization
+    ) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let appleId = appleIDCredential.user
             viewModel?.appleAuthDidTap(appleId: appleId)

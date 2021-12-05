@@ -11,7 +11,7 @@ struct Endpoint {
     
     let url: String
     let method: HTTPMethod
-    var bodyParameters: EncodableProtocol? = nil
-    var urlParameters: [String: Any]? = nil
+    var bodyParameters: EncodableProtocol?
+    var urlParameters: [String: Any]?
     
 }

@@ -54,7 +54,7 @@ final class LoginViewModelImpl: LoginViewModel {
     func loginDidTap(login: String, password: String) {
         self.isLoading.value = true
         
-        if login.isEmpty  {
+        if login.isEmpty {
             errorMessage.value = NSLocalizedString("Please provide login", comment: "")
             isLoading.value = false
             return

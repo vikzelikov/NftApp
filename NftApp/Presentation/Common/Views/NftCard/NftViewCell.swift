@@ -65,7 +65,8 @@ class NftViewCell: UITableViewCell {
             let price = Int(viewModel.price ?? 0.0)
             let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
             priceLabel?.text = "\(price) T"
-            priceFiatLabel?.text = "\((Double(price) / currency).rounded(toPlaces: 2)) \(NSLocalizedString("RUB", comment: ""))"
+            priceFiatLabel?.text = "\((Double(price) / currency).rounded(toPlaces: 2))"
+                + "\(NSLocalizedString("RUB", comment: ""))"
         }
         
         if let url = URL(string: viewModel.mediaUrl) {
@@ -99,7 +100,7 @@ class NftViewCell: UITableViewCell {
                 let del = Int((exp - timeInterval))
                 expiryTimeInterval = del
 
-                setTime(deltaTime: del)
+                setTime(dTime: del)
             }
         } else {
             expirationView.isHidden = true
@@ -110,7 +111,13 @@ class NftViewCell: UITableViewCell {
         if let interval = expiryTimeInterval {
             expirationTime = interval
             
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onComplete), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(
+                timeInterval: 1.0,
+                target: self,
+                selector: #selector(onComplete),
+                userInfo: nil,
+                repeats: true
+            )
             
             guard let t = timer else { return }
             RunLoop.current.add(t, forMode: RunLoop.Mode.common)
@@ -127,11 +134,11 @@ class NftViewCell: UITableViewCell {
         
         expirationTime -= 1
         
-        setTime(deltaTime: expirationTime)
+        setTime(dTime: expirationTime)
     }
     
-    func setTime(deltaTime: Int) {
-        let (d, h, m, s) = (deltaTime / 86400, (deltaTime % 86400) / 3600, (deltaTime % 3600) / 60, (deltaTime % 3600) % 60)
+    func setTime(dTime: Int) {
+        let (d, h, m, s) = (dTime / 86400, (dTime % 86400) / 3600, (dTime % 3600) / 60, (dTime % 3600) % 60)
         var timeStr = "\(d)d \(h)h \(m)m \(s)s"
         
         if d == 0 {

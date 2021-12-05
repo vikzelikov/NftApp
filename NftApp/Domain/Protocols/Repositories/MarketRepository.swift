@@ -15,7 +15,10 @@ protocol MarketRepository {
     
     func cancelSellNft(nftId: Int, completion: @escaping (Result<CommonDTO, Error>) -> Void)
     
-    func getMarketNfts(request: GetMarketNftsRequest, completion: @escaping (Result<GetMarketNftsResponseDTO, Error>) -> Void)
+    func getMarketNfts(
+        request: GetMarketNftsRequest,
+        completion: @escaping (Result<GetMarketNftsResponseDTO, Error>) -> Void
+    )
     
     func buyNft(nftId: Int, completion: @escaping (Result<CommonDTO, Error>) -> Void)
     

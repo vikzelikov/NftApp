@@ -9,7 +9,7 @@ import Foundation
 
 protocol FollowsViewModel: BaseViewModel {
     
-    var typeFollows: TypeFollows { set get }
+    var typeFollows: TypeFollows { get set }
     var items: Observable<[User]> { get }
     var userViewModel: Observable<User?> { get }
     

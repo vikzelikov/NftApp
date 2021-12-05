@@ -10,7 +10,7 @@ import Foundation
 struct MarketEndpoints {
     
     static func createSellNft(request: CreateSellNftRequest) -> Endpoint {
-        let requestDTO = CreateSellNftRequestDTO (
+        let requestDTO = CreateSellNftRequestDTO(
             price: request.price
         )
         
@@ -20,7 +20,7 @@ struct MarketEndpoints {
     }
     
     static func updateSellNft(request: UpdateSellNftRequest) -> Endpoint {
-        let requestDTO = UpdateSellNftRequestDTO (
+        let requestDTO = UpdateSellNftRequestDTO(
             price: request.price
         )
         

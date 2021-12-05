@@ -12,7 +12,7 @@ class GetFollowsRequestDTO {
     private var page: Int
         
     lazy var parameters = [
-        "page": page,
+        "page": page
     ] as [String : Any]
 
     init(page: Int) {

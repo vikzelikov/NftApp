@@ -29,7 +29,7 @@ extension UIImageView {
 //        URLSession.shared.dataTask(with: url) { (data, _, _) in
 //            if let data = data, let image = UIImage(data: data) {
 //                DispatchQueue.main.async { [weak self] in
-////                    imageCache.setObject(image, forKey: url.absoluteString as NSString)
+//                    imageCache.setObject(image, forKey: url.absoluteString as NSString)
 //                    self?.image = image
 //
 //                    UIView.animate(withDuration: 0.35, animations: { () -> Void in

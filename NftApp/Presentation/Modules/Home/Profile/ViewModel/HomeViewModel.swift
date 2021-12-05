@@ -209,7 +209,13 @@ final class HomeViewModelImpl: HomeViewModel {
                     
                     let editions: [Edition] = editions.map { obj in
                        var obj = obj
-                       obj.influencer = EditionInfluencer(id: 0, user: EditionUser(id: user.id, login: user.login ?? "", avatarUrl: user.avatarUrl))
+                       obj.influencer = EditionInfluencer(
+                        id: 0,
+                        user: EditionUser(
+                            id: user.id,
+                            login: user.login ?? "",
+                            avatarUrl: user.avatarUrl)
+                       )
                        return obj
                     }
                     

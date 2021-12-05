@@ -73,8 +73,6 @@ final class InitialViewModelImpl: InitialViewModel {
                     self.userUseCase.clearUserStorage()
                     self.isShowHome.value = false
                 }
-
-                break
                 
             case .failure:
                 self.userUseCase.clearUserStorage()
@@ -88,11 +86,9 @@ final class InitialViewModelImpl: InitialViewModel {
             switch result {
             case .success:
                 completion(true)
-                break
             case .failure:
                 self.errorMessage.value = NSLocalizedString("defaultError", comment: "")
                 completion(false)
-                break
             }
         })
     }

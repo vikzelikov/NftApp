@@ -31,24 +31,24 @@ final class SignupUseCaseImpl: SignupUseCase {
     func signup(request: SignupRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
         repository.signup(request: request, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    if let userId = resp.userId {
-                        Constant.USER_ID = userId
-                        self.userStorage.saveUserId(userId: userId)
-                        
-                        if let data = InitialDataObject.data.value {
-                            data.isEarlyAccess ? self.userStorage.saveEarlyAccess() : self.userStorage.saveInvitingState()
-                        }
-                        
-                        completion(.success(true))
-                    } else {
-                        completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+            case .success(let resp) : do {
+                if let userId = resp.userId {
+                    Constant.USER_ID = userId
+                    self.userStorage.saveUserId(userId: userId)
+                    
+                    if let data = InitialDataObject.data.value {
+                        data.isEarlyAccess ? self.userStorage.saveEarlyAccess() : self.userStorage.saveInvitingState()
                     }
+                    
+                    completion(.success(true))
+                } else {
+                    completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
                 }
+            }
                 
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }

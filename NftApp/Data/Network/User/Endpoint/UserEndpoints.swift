@@ -48,7 +48,7 @@ struct UserEndpoints {
     }
     
     static func getNftsEndpoint(request: GetNftsRequest) -> Endpoint {
-        let requestDTO = GetNftsRequestDTO (
+        let requestDTO = GetNftsRequestDTO(
             page: request.page,
             type: request.type == .collection ? "unhidden" : "observables"
         ).parameters

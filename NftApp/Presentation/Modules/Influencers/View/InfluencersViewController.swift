@@ -9,7 +9,7 @@ import UIKit
 
 class InfluencersViewController: UIViewController {
 
-    var viewModel: InfluencersViewModel? = nil
+    var viewModel: InfluencersViewModel?
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -28,7 +28,7 @@ class InfluencersViewController: UIViewController {
         }
         
 //        viewModel?.isLoading.observe(on: self) { [weak self] _ in
-////            self.checkoutLoading(isShow: $0)
+//            self.checkoutLoading(isShow: $0)
 //        }
         
         viewModel?.errorMessage.observe(on: self) { [weak self] errMessage in
@@ -49,7 +49,10 @@ class InfluencersViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: InfluencerViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: InfluencerViewCell.cellIdentifier)
+        tableView.register(
+            UINib(nibName: InfluencerViewCell.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: InfluencerViewCell.cellIdentifier
+        )
     
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0.0
@@ -75,7 +78,12 @@ extension InfluencersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.didSelectItem(at: indexPath.row) { userViewModel in
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+            guard
+                let vc = storyboard
+                    .instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+            else {
+                return
+            }
             vc.viewModel = HomeViewModelImpl()
             vc.viewModel?.userViewModel.value = userViewModel
             self.navigationController?.pushViewController(vc, animated: true)
@@ -96,7 +104,11 @@ extension InfluencersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: InfluencerViewCell.cellIdentifier, for: indexPath) as? InfluencerViewCell else {
+        guard
+            let cell = tableView
+                .dequeueReusableCell(withIdentifier: InfluencerViewCell.cellIdentifier, for: indexPath)
+                as? InfluencerViewCell
+        else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()
         }

@@ -17,7 +17,7 @@ class PersonalViewController: UIViewController {
     @IBOutlet weak var dateBirthPicker: UIDatePicker!
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var femaleButton: UIButton!
-    private var isMale: Bool? = nil
+    private var isMale: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,13 @@ class PersonalViewController: UIViewController {
     
     private func showHomeView() {
         let homeStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
-        guard let homePage = homeStoryboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
+        guard
+            let homePage = homeStoryboard
+                .instantiateViewController(withIdentifier: "TabBarViewController")
+                as? TabBarViewController
+        else {
+            return
+        }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = homePage
     }

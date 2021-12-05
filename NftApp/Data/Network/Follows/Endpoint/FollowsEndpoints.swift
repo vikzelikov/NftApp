@@ -10,7 +10,7 @@ import Foundation
 struct FollowsEndpoints {
     
     static func getFollowersEndpoint(request: FollowsRequest) -> Endpoint {
-        let requestDTO = GetFollowsRequestDTO (
+        let requestDTO = GetFollowsRequestDTO(
             page: request.page
         ).parameters
         
@@ -20,7 +20,7 @@ struct FollowsEndpoints {
     }
     
     static func getFollowingEndpoint(request: FollowsRequest) -> Endpoint {
-        let requestDTO = GetFollowsRequestDTO (
+        let requestDTO = GetFollowsRequestDTO(
             page: request.page
         ).parameters
         

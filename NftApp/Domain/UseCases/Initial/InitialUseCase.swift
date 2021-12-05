@@ -25,17 +25,17 @@ final class InitialUseCaseImpl: InitialUseCase {
         
         repository.getInitialData(completion: { result in
             switch result {
-                case .success(let initialDataDTO) : do {
-                    let initialData = InitialData.init(data: initialDataDTO)
-                    
-                    InitialDataObject.data.value = initialData
-                    
-                    completion(.success(initialData))
-                }
-                            
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success(let initialDataDTO) : do {
+                let initialData = InitialData.init(data: initialDataDTO)
+                
+                InitialDataObject.data.value = initialData
+                
+                completion(.success(initialData))
+            }
+                        
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }

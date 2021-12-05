@@ -10,7 +10,7 @@ import MessageUI
 
 class SettingsViewController: UIViewController {
 
-    var viewModel: SettingsViewModel? = nil
+    var viewModel: SettingsViewModel?
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var walletButton: UIButton!
@@ -78,14 +78,48 @@ class SettingsViewController: UIViewController {
         otherSettingsTableView.rowHeight = 60.0
         otherSettingsTableView.separatorColor = UIColor.lightGray.withAlphaComponent(0.3)
         otherSettingsTableView.separatorStyle = .singleLine
-        otherSettingsTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: otherSettingsTableView.frame.size.width, height: 1))
-        otherSettingsTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: otherSettingsTableView.frame.size.width, height: 1))
+        otherSettingsTableView.tableFooterView = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: otherSettingsTableView.frame.size.width,
+                height: 1
+            )
+        )
+        otherSettingsTableView.tableHeaderView = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: otherSettingsTableView.frame.size.width,
+                height: 1
+            )
+        )
         otherSettingsTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-        otherSettingsTableView.register(UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
-        
-        items.append(SettingCellViewModel(title: NSLocalizedString("Personal information", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
-        items.append(SettingCellViewModel(title: NSLocalizedString("Password", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
-        items.append(SettingCellViewModel(title: NSLocalizedString("Invitations", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+        otherSettingsTableView.register(
+            UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: SettingViewCell.cellIdentifier
+        )
+        items.append(
+            SettingCellViewModel(
+                title: NSLocalizedString("Personal information", comment: ""),
+                contentLabel: nil,
+                iconContentView: UIImage(named: "right_arrow")
+            )
+        )
+        items.append(
+            SettingCellViewModel(
+                title: NSLocalizedString("Password", comment: ""),
+                contentLabel: nil,
+                iconContentView: UIImage(named: "right_arrow")
+            )
+        )
+        items.append(
+            SettingCellViewModel(
+                title: NSLocalizedString("Invitations", comment: ""),
+                contentLabel: nil,
+                iconContentView: UIImage(named: "right_arrow")
+            )
+        )
         
         if #available(iOS 15.0, *) {
             otherSettingsTableView.sectionHeaderTopPadding = 0.0
@@ -100,13 +134,41 @@ class SettingsViewController: UIViewController {
         personalDataTableView.rowHeight = 60.0
         personalDataTableView.separatorColor = UIColor.lightGray.withAlphaComponent(0.3)
         personalDataTableView.separatorStyle = .singleLine
-        personalDataTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: personalDataTableView.frame.size.width, height: 1))
-        personalDataTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: personalDataTableView.frame.size.width, height: 1))
+        personalDataTableView.tableFooterView = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: personalDataTableView.frame.size.width,
+                height: 1
+            )
+        )
+        personalDataTableView.tableHeaderView = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: personalDataTableView.frame.size.width,
+                height: 1
+            )
+        )
         personalDataTableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-        personalDataTableView.register(UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: SettingViewCell.cellIdentifier)
-        
-        items1.append(SettingCellViewModel(title: NSLocalizedString("Support", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
-        items1.append(SettingCellViewModel(title: NSLocalizedString("Logout", comment: ""), contentLabel: nil, iconContentView: UIImage(named: "right_arrow")))
+        personalDataTableView.register(
+            UINib(nibName: SettingViewCell.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: SettingViewCell.cellIdentifier
+        )
+        items1.append(
+            SettingCellViewModel(
+                title: NSLocalizedString("Support", comment: ""),
+                contentLabel: nil,
+                iconContentView: UIImage(named: "right_arrow")
+            )
+        )
+        items1.append(
+            SettingCellViewModel(
+                title: NSLocalizedString("Logout", comment: ""),
+                contentLabel: nil,
+                iconContentView: UIImage(named: "right_arrow")
+            )
+        )
         
         if #available(iOS 15.0, *) {
             personalDataTableView.sectionHeaderTopPadding = 0.0
@@ -137,7 +199,7 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView === personalDataTableView {
-            var vc: UIViewController? = nil
+            var vc: UIViewController?
             
             switch indexPath.row {
             case 0:
@@ -182,14 +244,22 @@ extension SettingsViewController: UITableViewDelegate {
     }
     
     func logout() {
-        let alert = UIAlertController(title: NSLocalizedString("Warning", comment: ""), message: NSLocalizedString("Do you want to logout?", comment: ""), preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(
+            title: NSLocalizedString("Warning", comment: ""),
+            message: NSLocalizedString("Do you want to logout?", comment: ""),
+            preferredStyle: UIAlertController.Style.alert
+        )
 
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { _ in
-              
             self.viewModel?.logoutDidTap()
 
             let storyboard = UIStoryboard(name: "Authorization", bundle: nil)
-            guard let page = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+            guard
+                let page = storyboard
+                    .instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+            else {
+                return
+            }
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
             
@@ -215,7 +285,11 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView === personalDataTableView {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingViewCell.cellIdentifier, for: indexPath) as? SettingViewCell else {
+            guard
+                let cell = tableView
+                    .dequeueReusableCell(withIdentifier: SettingViewCell.cellIdentifier, for: indexPath)
+                    as? SettingViewCell
+            else {
                 assertionFailure("Cannot dequeue reusable cell")
                 return UITableViewCell()
             }
@@ -227,7 +301,11 @@ extension SettingsViewController: UITableViewDataSource {
                     
             return cell
         } else if tableView === otherSettingsTableView {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingViewCell.cellIdentifier, for: indexPath) as? SettingViewCell else {
+            guard
+                let cell = tableView
+                    .dequeueReusableCell(withIdentifier: SettingViewCell.cellIdentifier, for: indexPath)
+                    as? SettingViewCell
+            else {
                 assertionFailure("Cannot dequeue reusable cell")
                 return UITableViewCell()
             }
@@ -245,7 +323,11 @@ extension SettingsViewController: UITableViewDataSource {
 }
 
 extension SettingsViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    func mailComposeController(
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
         controller.dismiss(animated: true, completion: nil)
     }
 }

@@ -56,60 +56,63 @@ final class LoginUseCaseImpl: LoginUseCase {
         repository.checkInvite(inviteWord: inviteWord, completion: { result in
             switch result {
             case .success(let resp) : do {
-                    if let authToken = resp.token {
-                        if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
-                            Constant.AUTH_TOKEN = authToken
-                            Constant.USER_ID = userId
-                            self.userStorage.saveAuthToken(token: authToken)
-                            self.userStorage.saveUserId(userId: userId)
-                            self.removeInvitingState()
-                            
-                            completion(.success(true))
-                        } else {
-                            completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
-                        }
-                    } else {
-                        completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
-                    }
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
-            }
-        })
-    }
-    
-    private func loginProcess(result: Result<AuthResponseDTO, Error>, completion: @escaping (Result<Bool, Error>) -> Void) {
-        switch result {
-            case .success(let resp) : do {
                 if let authToken = resp.token {
-                    // already invited
                     if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
                         Constant.AUTH_TOKEN = authToken
                         Constant.USER_ID = userId
                         self.userStorage.saveAuthToken(token: authToken)
                         self.userStorage.saveUserId(userId: userId)
+                        self.removeInvitingState()
                         
                         completion(.success(true))
                     } else {
                         completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
                     }
-                } else if let userId = resp.userId {
-                    // check invite
-                    Constant.USER_ID = userId
-                    self.userStorage.saveUserId(userId: userId)
-                    self.saveInvitingState()
-
-                    completion(.success(true))
                 } else {
                     completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
                 }
             }
-            
+                
             case .failure(let error) : do {
                 completion(.failure(error))
             }
+            }
+        })
+    }
+    
+    private func loginProcess(
+        result: Result<AuthResponseDTO, Error>,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        switch result {
+        case .success(let resp) : do {
+            if let authToken = resp.token {
+                // already invited
+                if let userId = JWT.decode(jwtToken: authToken)["id"] as? Int {
+                    Constant.AUTH_TOKEN = authToken
+                    Constant.USER_ID = userId
+                    self.userStorage.saveAuthToken(token: authToken)
+                    self.userStorage.saveUserId(userId: userId)
+                    
+                    completion(.success(true))
+                } else {
+                    completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+                }
+            } else if let userId = resp.userId {
+                // check invite
+                Constant.USER_ID = userId
+                self.userStorage.saveUserId(userId: userId)
+                self.saveInvitingState()
+
+                completion(.success(true))
+            } else {
+                completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
+            }
+        }
+            
+        case .failure(let error) : do {
+            completion(.failure(error))
+        }
         }
     }
     

@@ -29,7 +29,6 @@ class NftMarketViewCell: UITableViewCell {
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowOffset = .zero
         mainView.layer.shadowRadius = 5
-
         
         titleLabel?.text = viewModel.edition.name
 //        priceLabel?.text = "\(viewModel.price ?? 0.0)"

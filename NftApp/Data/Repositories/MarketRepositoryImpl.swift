@@ -27,7 +27,10 @@ class MarketRepositoryImpl: MarketRepository {
         NetworkHelper.request(endpoint: endpoint, completion: completion)
     }
     
-    func getMarketNfts(request: GetMarketNftsRequest, completion: @escaping (Result<GetMarketNftsResponseDTO, Error>) -> Void) {
+    func getMarketNfts(
+        request: GetMarketNftsRequest,
+        completion: @escaping (Result<GetMarketNftsResponseDTO, Error>) -> Void
+    ) {
         let endpoint = MarketEndpoints.getMarketNfts(request: request)
         
         NetworkHelper.request(endpoint: endpoint, completion: completion)

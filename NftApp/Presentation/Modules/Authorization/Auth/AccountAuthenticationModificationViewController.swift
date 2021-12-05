@@ -2,8 +2,10 @@
 
 import AuthenticationServices
 
+// swiftlint:disable type_name
+// swiftlint:disable line_length
 class AccountAuthenticationModificationViewController: ASAccountAuthenticationModificationViewController {
-
+    
 /*
      Prepare your extension to convert the account with the credential for the given service identifier to
      use Sign in with Apple. If you need additional user authentication before doing the conversion and
@@ -72,7 +74,6 @@ class AccountAuthenticationModificationViewController: ASAccountAuthenticationMo
    }
 */
 
-
     @IBAction func completeAdditionalAuthentication(_ sender: AnyObject?) {
 /*
      Sign in with Apple Conversion:
@@ -94,4 +95,3 @@ class AccountAuthenticationModificationViewController: ASAccountAuthenticationMo
     }
 
 }
-

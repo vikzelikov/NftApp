@@ -82,33 +82,44 @@ final class AddFundsViewModelImpl: AddFundsViewModel {
         }
         
         if ProductsDB.shared.items.indices.contains(index) {
-            IAPManager.shared.purchase(product: ProductsDB.shared.items[index], completion: { isSuccessPurchase, prodIdentifier in
+            IAPManager.shared.purchase(product: ProductsDB.shared.items[index]) { isSuccessPurchase, prodIdentifier in
                 if let productIdentifier = prodIdentifier {
-                    for product in self.products.value {
-                        if product.productIdentifier == productIdentifier {
-                            if isSuccessPurchase {
-                                let orderId = "\(Date().millisecondsSince1970)"
-                                let amount = "\(product.price)"
-                                let locale = "\(product.priceLocale)"
-                                let concatData = orderId + "\(Constant.USER_ID)" + productIdentifier + amount + locale + Constant.IAP_SECRET
-                                let concatHash = self.sha256(concatData)
-                                                                
-                                let request = AddFundsRequest(orderId: orderId, productIdentifier: productIdentifier, amount: amount, locale: locale, concatHash: concatHash)
-                                
-                                self.addFunds(request: request) { isSuccessRequest in
-                                    completion(isSuccessRequest)
-                                }
-                            } else {
-                                completion(false)
-                            }
+                    for product in self.products.value where product.productIdentifier == productIdentifier {
+                        if isSuccessPurchase {
+                            let orderId = "\(Date().millisecondsSince1970)"
+                            let amount = "\(product.price)"
+                            let locale = "\(product.priceLocale)"
                             
-                            break
+                            let concatData = orderId
+                            + "\(Constant.USER_ID)"
+                            + productIdentifier
+                            + amount
+                            + locale
+                            + Constant.IAP_SECRET
+                            
+                            let concatHash = self.sha256(concatData)
+                                                            
+                            let request = AddFundsRequest(
+                                orderId: orderId,
+                                productIdentifier: productIdentifier,
+                                amount: amount,
+                                locale: locale,
+                                concatHash: concatHash
+                            )
+                            
+                            self.addFunds(request: request) { isSuccessRequest in
+                                completion(isSuccessRequest)
+                            }
+                        } else {
+                            completion(false)
                         }
+                        
+                        break
                     }
                 } else {
                     completion(false)
                 }
-            })
+            }
         }
     }
 
@@ -208,19 +219,15 @@ extension IAPManager: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
-                
             case .failed:
                 SKPaymentQueue.default().finishTransaction(transaction)
                 completionPurchase?(false, nil)
-                break
                 
             case .purchased:
                 SKPaymentQueue.default().finishTransaction(transaction)
                 completionPurchase?(true, transaction.payment.productIdentifier)
-                break
                 
             default: break
-                
             }
         }
     }

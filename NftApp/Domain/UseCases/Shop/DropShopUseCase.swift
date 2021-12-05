@@ -28,15 +28,15 @@ final class DropShopUseCaseImpl: DropShopUseCase {
     func getEditions(request: GetEditionsRequest, completion: @escaping (Result<[Edition], Error>) -> Void) {
         repository.getEditions(request: request) { result in
             switch result {
-                case .success(let resp) : do {                    
-                    let editions = resp.rows.map { Edition.init(edition: $0) }
-                    
-                    completion(.success(editions))
-                }
+            case .success(let resp) : do {
+                let editions = resp.rows.map { Edition.init(edition: $0) }
                 
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+                completion(.success(editions))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         }
     }
@@ -44,15 +44,15 @@ final class DropShopUseCaseImpl: DropShopUseCase {
     func getEdition(editionId: Int, completion: @escaping (Result<Edition, Error>) -> Void) {
         repository.getEdition(editionId: editionId) { result in
             switch result {
-                case .success(let editionDTO) : do {
-                    let edition = Edition.init(edition: editionDTO)
-                    
-                    completion(.success(edition))
-                }
+            case .success(let editionDTO) : do {
+                let edition = Edition.init(edition: editionDTO)
                 
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+                completion(.success(edition))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         }
     }
@@ -60,13 +60,13 @@ final class DropShopUseCaseImpl: DropShopUseCase {
     func buyNft(editionId: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
         repository.buyNft(editionId: editionId) { result in
             switch result {
-                case .success: do {
-                    completion(.success(true))
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success: do {
+                completion(.success(true))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         }
     }

@@ -11,8 +11,8 @@ class ShopViewController: UIViewController {
     
     @IBOutlet weak var pageControl: UIPageControl!
     
-    @IBOutlet weak var scrollView: UIScrollView!{
-        didSet{
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
             scrollView.delegate = self
         }
     }

@@ -84,17 +84,26 @@ class SignUpViewController: UIViewController {
     }
     
     func showPersonalDataView() {
-        if let viewController = UIStoryboard(name: "Authorization", bundle: nil).instantiateViewController(withIdentifier: "PersonalViewController") as? PersonalViewController {
+        if let viewController = UIStoryboard(name: "Authorization", bundle: nil)
+            .instantiateViewController(withIdentifier: "PersonalViewController")
+            as? PersonalViewController {
+            
             if let navigator = self.navigationController {
                 viewController.viewModel = self.viewModel
-                    navigator.pushViewController(viewController, animated: true)
-                }
+                navigator.pushViewController(viewController, animated: true)
             }
+        }
     }
     
     func showInitialView() {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
-        guard let page = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
+        guard
+            let page = storyboard
+                .instantiateViewController(withIdentifier: "TabBarViewController")
+                as? TabBarViewController
+        else {
+            return
+        }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }

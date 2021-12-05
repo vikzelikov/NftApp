@@ -28,5 +28,4 @@ class HistoryViewCell: UITableViewCell {
 //        priceLabel?.text = viewModel.price
     }
     
-    
 }

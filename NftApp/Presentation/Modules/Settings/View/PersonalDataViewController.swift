@@ -9,7 +9,7 @@ import UIKit
 
 class PersonalDataViewController: UIViewController {
 
-    var viewModel: SettingsViewModel? = nil
+    var viewModel: SettingsViewModel?
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -51,7 +51,10 @@ class PersonalDataViewController: UIViewController {
             saveButton.loadingIndicator(isShow: true, titleButton: nil)
 
             viewModel?.personalUpdateDidTap(login: login, email: email, completion: { result in
-                self.saveButton.loadingIndicator(isShow: false, titleButton: NSLocalizedString("Save", comment: "").uppercased())
+                self.saveButton.loadingIndicator(
+                    isShow: false,
+                    titleButton: NSLocalizedString("Save", comment: "").uppercased()
+                )
                 
                 if result {
                     self.showMessage(message: NSLocalizedString("Saved", comment: ""), isHaptic: false)

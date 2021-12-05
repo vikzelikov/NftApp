@@ -9,7 +9,8 @@ import Foundation
 
 class DropShopRepositoryImpl: DropShopRepository {
     
-    func getEditions(request: GetEditionsRequest, completion: @escaping (Result<GetEditionsResponseDTO, Error>) -> Void) {
+    func getEditions(
+        request: GetEditionsRequest, completion: @escaping (Result<GetEditionsResponseDTO, Error>) -> Void) {
         let endpoint = DropShopEndpoints.getEditionsEndpoint(request: request)
         
         NetworkHelper.request(endpoint: endpoint, completion: completion)

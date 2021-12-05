@@ -85,14 +85,23 @@ class InitialViewController: UIViewController {
     
     private func showAuthView() {
         let storyboard = UIStoryboard(name: "Authorization", bundle: nil)
-        guard let page = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+        guard let page = storyboard
+                .instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+        else {
+            return
+        }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }
     
     private func showHomeView() {
         let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
-        guard let page = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController else { return }
+        guard
+            let page = storyboard
+                .instantiateViewController(withIdentifier: "TabBarViewController") as? TabBarViewController
+        else {
+            return
+        }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
     }

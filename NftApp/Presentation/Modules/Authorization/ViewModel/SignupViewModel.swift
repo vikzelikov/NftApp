@@ -20,7 +20,7 @@ protocol SignupViewModel : BaseViewModel {
 final class SignupViewModelImpl: SignupViewModel {
     
     private let signupUseCase: SignupUseCase
-    private var isMale: Bool? = nil
+    private var isMale: Bool?
     private var birthDate: TimeInterval? = 0
 
     var isLoading: Observable<Bool> = Observable(false)
@@ -44,7 +44,12 @@ final class SignupViewModelImpl: SignupViewModel {
     func signupDidTap(login: String, email: String, password: String, confirmPassword: String) {
         self.isLoading.value = true
         
-        let isValid = validateCredentials(login: login, email: email, password: password, confirmPassword: confirmPassword)
+        let isValid = validateCredentials(
+            login: login,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword
+        )
         
         if !isValid {
             self.isLoading.value = false
@@ -76,7 +81,7 @@ final class SignupViewModelImpl: SignupViewModel {
     }
     
     private func validateCredentials(login: String, email: String, password: String, confirmPassword: String) -> Bool {
-        if login.isEmpty || email.isEmpty  {
+        if login.isEmpty || email.isEmpty {
             errorMessage.value = NSLocalizedString("Please provide login and E-mail", comment: "")
             return false
         }
@@ -91,7 +96,7 @@ final class SignupViewModelImpl: SignupViewModel {
             return false
         }
         
-        if password != confirmPassword  {
+        if password != confirmPassword {
             errorMessage.value = NSLocalizedString("Passwords don't match", comment: "")
             return false
         }
@@ -99,6 +104,7 @@ final class SignupViewModelImpl: SignupViewModel {
         return true
     }
     
+    // swiftlint:disable line_length
     private func isValidEmail(email: String) -> Bool {
         let emailRegEx = "^(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?(?:(?:(?:[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+(?:\\.[-A-Za-z0-9!#$%&’*+/=?^_'{|}~]+)*)|(?:\"(?:(?:(?:(?: )*(?:(?:[!#-Z^-~]|\\[|\\])|(?:\\\\(?:\\t|[ -~]))))+(?: )*)|(?: )+)\"))(?:@)(?:(?:(?:[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)(?:\\.[A-Za-z0-9](?:[-A-Za-z0-9]{0,61}[A-Za-z0-9])?)*)|(?:\\[(?:(?:(?:(?:(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))\\.){3}(?:[0-9]|(?:[1-9][0-9])|(?:1[0-9][0-9])|(?:2[0-4][0-9])|(?:25[0-5]))))|(?:(?:(?: )*[!-Z^-~])*(?: )*)|(?:[Vv][0-9A-Fa-f]+\\.[-A-Za-z0-9._~!$&'()*+,;=:]+))\\])))(?:(?:(?:(?: )*(?:(?:(?:\\t| )*\\r\\n)?(?:\\t| )+))+(?: )*)|(?: )+)?$"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)

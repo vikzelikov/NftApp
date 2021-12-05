@@ -20,13 +20,28 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     func setupTabBar() {
         let shop = UIStoryboard(name: "Shop", bundle: nil)
-        guard let firstVC = shop.instantiateViewController(withIdentifier: "ShopViewController") as? ShopViewController else { return }
+        guard
+            let firstVC = shop
+                .instantiateViewController(withIdentifier: "ShopViewController") as? ShopViewController
+        else {
+            return
+        }
         
         let home = UIStoryboard(name: "Home", bundle: nil)
-        guard let secondVC = home.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+        guard
+            let secondVC = home
+                .instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+        else {
+            return
+        }
         
         let profile = UIStoryboard(name: "Settings", bundle: nil)
-        guard let thirdVC = profile.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController else { return }
+        guard
+            let thirdVC = profile
+                .instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController
+        else {
+            return
+        }
 
         let tabBarList = [firstVC, secondVC, thirdVC]
         

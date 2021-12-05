@@ -9,7 +9,7 @@ import Foundation
 
 protocol DetailNftViewModel : BaseViewModel {
     
-    var typeDetailNFT: TypeDetailNFT { set get }
+    var typeDetailNFT: TypeDetailNFT { get set }
     var nftViewModel: Observable<Nft?> { get }
     var expirationTime: Observable<Int?> { get }
     
@@ -84,7 +84,7 @@ final class DetailNftViewModelImpl: DetailNftViewModel {
             switch result {
             case .success:
                 if var vm = self.nftViewModel.value {
-                    vm.edition.count = vm.edition.count - 1
+                    vm.edition.count -= 1
                     self.nftViewModel.value = vm
                     
                     NftObject.isDropshopNeedRefresh.value = true
@@ -121,7 +121,13 @@ final class DetailNftViewModelImpl: DetailNftViewModel {
         if let interval = expiryTimeInterval {
             expirationTime.value = interval
             
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onComplete), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(
+                timeInterval: 1.0,
+                target: self,
+                selector: #selector(onComplete),
+                userInfo: nil,
+                repeats: true
+            )
             
             guard let t = timer else { return }
             RunLoop.current.add(t, forMode: RunLoop.Mode.common)

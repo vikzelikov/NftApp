@@ -28,15 +28,15 @@ final class NftUseCaseImpl: NftUseCase {
     func getNfts(request: GetNftsRequest, completion: @escaping (Result<[Nft], Error>) -> Void) {
         repository.getNfts(request: request, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    let nfts = resp.rows.map { Nft.init(nft: $0) }
+            case .success(let resp) : do {
+                let nfts = resp.rows.map { Nft.init(nft: $0) }
 
-                    completion(.success(nfts))
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+                completion(.success(nfts))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }
@@ -44,19 +44,19 @@ final class NftUseCaseImpl: NftUseCase {
     func getCreatedNfts(influencerId: Int, completion: @escaping (Result<[Edition], Error>) -> Void) {
         repository.getInfluencer(influencerId: influencerId, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    if let editionsDTO = resp.editions {
-                        let editions = editionsDTO.map { Edition.init(edition: $0) }
+            case .success(let resp) : do {
+                if let editionsDTO = resp.editions {
+                    let editions = editionsDTO.map { Edition.init(edition: $0) }
 
-                        completion(.success(editions))
-                    } else {
-                        completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
-                    }
+                    completion(.success(editions))
+                } else {
+                    completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
                 }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }

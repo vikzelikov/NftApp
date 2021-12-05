@@ -48,9 +48,15 @@ class ProfileHeaderView: UIView {
     }
     
     func commonInit() {
-        let viewFromXib = Bundle.main.loadNibNamed("ProfileHeaderView", owner: self, options: nil)![0] as! UIView
-        viewFromXib.frame = self.bounds
-        addSubview(viewFromXib)
+        guard
+            let viewFromXib = Bundle.main.loadNibNamed("ProfileHeaderView", owner: self, options: nil),
+            let view = viewFromXib.first as? UIView
+        else {
+            fatalError("Error cast \(self)")
+        }
+        
+        view.frame = self.bounds
+        addSubview(view)
     }
     
     func viewDidLoad() {
@@ -129,9 +135,24 @@ class ProfileHeaderView: UIView {
         HapticHelper.vibro(.light)
         
         let borderWidth = UIScreen.main.bounds.width / countHeaders
-        collectionLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
-        observablesLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
-        createdLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor(named: "gray") ?? UIColor.gray, thickness: 1, width: borderWidth)
+        collectionLabel.layer.addBorder(
+            edge: UIRectEdge.bottom,
+            color: UIColor(named: "gray") ?? UIColor.gray,
+            thickness: 1,
+            width: borderWidth
+        )
+        observablesLabel.layer.addBorder(
+            edge: UIRectEdge.bottom,
+            color: UIColor(named: "gray") ?? UIColor.gray,
+            thickness: 1,
+            width: borderWidth
+        )
+        createdLabel.layer.addBorder(
+            edge: UIRectEdge.bottom,
+            color: UIColor(named: "gray") ?? UIColor.gray,
+            thickness: 1,
+            width: borderWidth
+        )
         
         collectionLabel.textColor = UIColor.gray
         observablesLabel.textColor = UIColor.gray
@@ -141,7 +162,12 @@ class ProfileHeaderView: UIView {
         if countHeaders == 1 {
             borderColor = UIColor(named: "gray")
         }
-        selectedLabel.layer.addBorder(edge: UIRectEdge.bottom, color: borderColor ?? UIColor.black, thickness: 1, width: borderWidth)
+        selectedLabel.layer.addBorder(
+            edge: UIRectEdge.bottom,
+            color: borderColor ?? UIColor.black,
+            thickness: 1,
+            width: borderWidth
+        )
         selectedLabel.textColor = UIColor(named: "black")
     }
     

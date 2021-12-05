@@ -30,15 +30,15 @@ class FilterSheetController: UIPresentationController {
   override func presentationTransitionWillBegin() {
       self.blurEffectView.alpha = 0
       self.containerView?.addSubview(blurEffectView)
-      self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) in
+      self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (_) in
           self.blurEffectView.alpha = 0.7
-      }, completion: { (UIViewControllerTransitionCoordinatorContext) in })
+      }, completion: { (_) in })
   }
   
   override func dismissalTransitionWillBegin() {
-      self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) in
+      self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (_) in
           self.blurEffectView.alpha = 0
-      }, completion: { (UIViewControllerTransitionCoordinatorContext) in
+      }, completion: { (_) in
           self.blurEffectView.removeFromSuperview()
       })
   }
@@ -54,7 +54,7 @@ class FilterSheetController: UIPresentationController {
       blurEffectView.frame = containerView!.bounds
   }
 
-  @objc func dismissController(){
+  @objc func dismissController() {
       self.presentedViewController.dismiss(animated: true, completion: nil)
   }
 }

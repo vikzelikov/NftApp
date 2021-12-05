@@ -33,13 +33,13 @@ final class MarketUseCaseImpl: MarketUseCase {
 
         repository?.createSellNft(request: request, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    print("success \(resp)")
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success(let resp) : do {
+                print("success \(resp)")
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }
@@ -48,13 +48,13 @@ final class MarketUseCaseImpl: MarketUseCase {
 
         repository?.updateSellNft(request: request, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    print("success \(resp)")
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success(let resp) : do {
+                print("success \(resp)")
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }
@@ -63,13 +63,13 @@ final class MarketUseCaseImpl: MarketUseCase {
 
         repository?.cancelSellNft(nftId: nftId, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    print("success \(resp)")
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success(let resp) : do {
+                print("success \(resp)")
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }
@@ -78,13 +78,13 @@ final class MarketUseCaseImpl: MarketUseCase {
 
         repository?.getMarketNfts(request: request, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    print("success \(resp)")
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success(let resp) : do {
+                print("success \(resp)")
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }
@@ -93,13 +93,13 @@ final class MarketUseCaseImpl: MarketUseCase {
 
         repository?.buyNft(nftId: nftId, completion: { result in
             switch result {
-                case .success(let resp) : do {
-                    print("success \(resp)")
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success(let resp) : do {
+                print("success \(resp)")
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         })
     }

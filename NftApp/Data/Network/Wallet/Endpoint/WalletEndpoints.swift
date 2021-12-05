@@ -10,7 +10,7 @@ import Foundation
 struct WalletEndpoints {
     
     static func addFundsEndpoint(request: AddFundsRequest) -> Endpoint {
-        let requestDTO = AddFundsRequestDTO (
+        let requestDTO = AddFundsRequestDTO(
             userId: Constant.USER_ID,
             orderId: request.orderId,
             productIdentifier: request.productIdentifier,
@@ -25,7 +25,7 @@ struct WalletEndpoints {
     }
     
     static func withdrawFundsEndpoint(request: WithdrawFundsRequest) -> Endpoint {
-        let requestDTO = WithdrawFundsRequestDTO (
+        let requestDTO = WithdrawFundsRequestDTO(
             amount: request.amount
         )
         

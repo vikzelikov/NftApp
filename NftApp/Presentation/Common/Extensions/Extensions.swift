@@ -109,21 +109,17 @@ extension CALayer {
             switch edge {
             case UIRectEdge.top:
                 border.frame = CGRect(x: 0, y: 0, width: width, height: thickness)
-                break
             case UIRectEdge.bottom:
                 border.frame = CGRect(x: 0, y: 45, width: width, height: thickness)
-                break
             case UIRectEdge.left:
                 border.frame = CGRect(x: 0, y: 0, width: thickness, height: self.bounds.height)
-                break
             case UIRectEdge.right:
                 border.frame = CGRect(x: width - thickness, y: 0, width: thickness, height: self.bounds.height)
-                break
             default:
                 break
             }
 
-            border.backgroundColor = color.cgColor;
+            border.backgroundColor = color.cgColor
 
             self.addSublayer(border)
         }
@@ -154,14 +150,16 @@ class AccentButton: UIButton {
         l.frame = self.bounds
         layer.insertSublayer(l, at: 0)
         return l
-    } ()
+    }()
     
 }
 
 extension UIViewController {
     var isModal: Bool {
+        let presentingIsNavigation = navigationController?
+            .presentingViewController?
+            .presentedViewController == navigationController
         let presentingIsModal = presentingViewController != nil
-        let presentingIsNavigation = navigationController?.presentingViewController?.presentedViewController == navigationController
         let presentingIsTabBar = tabBarController?.presentingViewController is UITabBarController
 
         return presentingIsModal || presentingIsNavigation || presentingIsTabBar

@@ -10,27 +10,28 @@ import UIKit
 
 class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    var picker = UIImagePickerController();
-    var alert = UIAlertController(title: NSLocalizedString("Choose Image", comment: ""), message: nil, preferredStyle: .actionSheet)
+    var alert = UIAlertController(
+        title: NSLocalizedString("Choose Image", comment: ""),
+        message: nil,
+        preferredStyle: .actionSheet
+    )
+    
+    var picker = UIImagePickerController()
     var viewController: UIViewController?
-    var pickImageCallback : ((UIImage) -> ())?
+    var pickImageCallback : ((UIImage) -> Void)?
     
     override init() {
         super.init()
         
-        let cameraAction = UIAlertAction(title: NSLocalizedString("Camera", comment: ""), style: .default) {
-            UIAlertAction in
+        let cameraAction = UIAlertAction(title: NSLocalizedString("Camera", comment: ""), style: .default) { _ in
             self.openCamera()
         }
         
-        let galleryAction = UIAlertAction(title: NSLocalizedString("Gallery", comment: ""), style: .default) {
-            UIAlertAction in
+        let galleryAction = UIAlertAction(title: NSLocalizedString("Gallery", comment: ""), style: .default) { _ in
             self.openGallery()
         }
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) {
-            UIAlertAction in
-        }
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in }
 
         picker.delegate = self
         alert.addAction(cameraAction)
@@ -38,9 +39,9 @@ class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigation
         alert.addAction(cancelAction)
     }
 
-    func pickImage(_ viewController: UIViewController, _ callback: @escaping ((UIImage) -> ())) {
-        pickImageCallback = callback;
-        self.viewController = viewController;
+    func pickImage(_ viewController: UIViewController, _ callback: @escaping ((UIImage) -> Void)) {
+        pickImageCallback = callback
+        self.viewController = viewController
 
         alert.popoverPresentationController?.sourceView = self.viewController!.view
 
@@ -65,7 +66,10 @@ class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigation
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[.originalImage] as? UIImage else { return }
         pickImageCallback?(image)

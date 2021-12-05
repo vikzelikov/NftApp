@@ -28,13 +28,13 @@ final class WalletUseCaseImpl: WalletUseCase {
     func addFunds(request: AddFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
         repository.addFunds(request: request) { result in
             switch result {
-                case .success : do {
-                    completion(.success(true))
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success : do {
+                completion(.success(true))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         }
     }
@@ -42,29 +42,32 @@ final class WalletUseCaseImpl: WalletUseCase {
     func withdrawFunds(request: WithdrawFundsRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
         repository.withdrawFunds(request: request) { result in
             switch result {
-                case .success(let resp) : do {
-                    print("success \(resp)")
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+            case .success(let resp) : do {
+                print("success \(resp)")
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         }
     }
     
-    func getTransactions(request: GetTransactionsRequest, completion: @escaping (Result<[Transaction], Error>) -> Void) {
+    func getTransactions(
+        request: GetTransactionsRequest,
+        completion: @escaping (Result<[Transaction], Error>) -> Void
+    ) {
         repository.getTransactions(request: request) { result in
             switch result {
-                case .success(let resp) : do {
-                    let transactions = resp.rows.map(Transaction.init)
+            case .success(let resp) : do {
+                let transactions = resp.rows.map(Transaction.init)
 
-                    completion(.success(transactions))
-                }
-                
-                case .failure(let error) : do {
-                    completion(.failure(error))
-                }
+                completion(.success(transactions))
+            }
+            
+            case .failure(let error) : do {
+                completion(.failure(error))
+            }
             }
         }
     }

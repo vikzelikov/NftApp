@@ -34,7 +34,8 @@ class WalletViewController: UIViewController {
             }
             
             let currency = InitialDataObject.data.value?.tokenCurrency ?? 0.0
-            self?.fiatBalanceLabel.text = "~ \(((userViewModel?.balance ?? 0.0) / currency).rounded(toPlaces: 2).clean) \(NSLocalizedString("RUB", comment: ""))"
+            let amount = (((userViewModel?.balance ?? 0.0) / currency).rounded(toPlaces: 2).clean)
+            self?.fiatBalanceLabel.text = "~ \(amount) \(NSLocalizedString("RUB", comment: ""))"
         }
     }
     
@@ -51,7 +52,10 @@ class WalletViewController: UIViewController {
     private func setupStyle() {
         scrollView.delaysContentTouches = false
         
-        let historyTransactionsTap = UITapGestureRecognizer(target: self, action: #selector(historyTransactionsDidTap(_:)))
+        let historyTransactionsTap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(historyTransactionsDidTap(_:))
+        )
         historyTransactions?.isUserInteractionEnabled = true
         historyTransactions?.addGestureRecognizer(historyTransactionsTap)
 

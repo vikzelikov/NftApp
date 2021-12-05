@@ -9,7 +9,7 @@ import UIKit
 
 class PasswordViewController: UIViewController {
 
-    var viewModel: SettingsViewModel? = nil
+    var viewModel: SettingsViewModel?
     
     @IBOutlet weak var oldPasswordTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
@@ -62,7 +62,10 @@ class PasswordViewController: UIViewController {
                                             newPassword: newPassword,
                                             confirmPassword: confirmPassword, completion: { result in
                 
-                self.saveButton.loadingIndicator(isShow: false, titleButton: NSLocalizedString("Save", comment: "").uppercased())
+                self.saveButton.loadingIndicator(
+                    isShow: false,
+                    titleButton: NSLocalizedString("Save", comment: "").uppercased()
+                )
                 
                 if result {
                     self.showMessage(message: NSLocalizedString("Saved", comment: ""), isHaptic: false)

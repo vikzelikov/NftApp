@@ -10,7 +10,7 @@ import Foundation
 struct AuthEndpoints {
     
     static func signupEndpoint(request: SignupRequest) -> Endpoint {
-        let requestDTO = SignupRequestDTO (
+        let requestDTO = SignupRequestDTO(
             login: request.login,
             email: request.email,
             password: request.password
@@ -22,7 +22,7 @@ struct AuthEndpoints {
     }
     
     static func getLoginEndpoint(request: LoginRequest) -> Endpoint {
-        let requestDTO = LoginRequestDTO (
+        let requestDTO = LoginRequestDTO(
             login: request.login,
             password: request.password
         )
@@ -33,7 +33,7 @@ struct AuthEndpoints {
     }
     
     static func appleLoginEndpoint(appleId: String) -> Endpoint {
-        let requestDTO = AppleLoginRequestDTO (
+        let requestDTO = AppleLoginRequestDTO(
             appleId: appleId
         )
         
@@ -43,7 +43,7 @@ struct AuthEndpoints {
     }
     
     static func checkInviteEndpoint(inviteWord: String) -> Endpoint {
-        let requestDTO = CheckInviteRequestDTO (
+        let requestDTO = CheckInviteRequestDTO(
             userId: Constant.USER_ID
         )
         
