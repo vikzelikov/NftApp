@@ -21,7 +21,13 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = SignupViewModelImpl()
+        let container = DIContainer.shared
+        container.register(type: AuthRepository.self, component: AuthRepositoryImpl())
+        container.register(type: UserStorage.self, component: UserStorageImpl())
+        container.register(type: SignupUseCase.self, component: SignupUseCaseImpl())
+        container.register(type: SignupViewModel.self, component: SignupViewModelImpl())
+        
+        viewModel = container.resolve(type: SignupViewModel.self)
         bindData()
         
         setupStyle()

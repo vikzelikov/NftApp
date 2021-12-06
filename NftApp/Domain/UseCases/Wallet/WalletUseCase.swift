@@ -21,7 +21,7 @@ final class WalletUseCaseImpl: WalletUseCase {
     
     private let repository: WalletRepository
     
-    init(repository: WalletRepository = WalletRepositoryImpl()) {
+    init(repository: WalletRepository = DIContainer.shared.resolve(type: WalletRepository.self)) {
         self.repository = repository
     }
     

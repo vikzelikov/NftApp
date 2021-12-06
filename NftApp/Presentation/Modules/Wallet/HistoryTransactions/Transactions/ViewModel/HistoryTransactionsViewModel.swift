@@ -37,7 +37,7 @@ final class HistoryTransactionsViewModelImpl: HistoryTransactionsViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init(walletUseCase: WalletUseCase = WalletUseCaseImpl()) {
+    init(walletUseCase: WalletUseCase = DIContainer.shared.resolve(type: WalletUseCase.self)) {
         self.walletUseCase = walletUseCase
     }
     

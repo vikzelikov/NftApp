@@ -31,7 +31,7 @@ final class LoginViewModelImpl: LoginViewModel {
     var isSetupEarlyAccess: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init(loginUseCase: LoginUseCase = LoginUseCaseImpl()) {
+    init(loginUseCase: LoginUseCase = DIContainer.shared.resolve(type: LoginUseCase.self)) {
         self.loginUseCase = loginUseCase
     }
     

@@ -27,7 +27,7 @@ final class SignupViewModelImpl: SignupViewModel {
     var isSuccess: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init(signupUseCase: SignupUseCase = SignupUseCaseImpl()) {
+    init(signupUseCase: SignupUseCase = DIContainer.shared.resolve(type: SignupUseCase.self)) {
         self.signupUseCase = signupUseCase
     }
     

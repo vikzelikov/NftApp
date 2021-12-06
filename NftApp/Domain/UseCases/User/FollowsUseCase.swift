@@ -25,7 +25,7 @@ final class FollowsUseCaseImpl: FollowsUseCase {
     
     private let repository: UserRepository
     
-    init(repository: UserRepository = UserRepositoryImpl()) {
+    init(repository: UserRepository = DIContainer.shared.resolve(type: UserRepository.self)) {
         self.repository = repository
     }
     

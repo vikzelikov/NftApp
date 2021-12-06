@@ -17,7 +17,7 @@ final class InitialUseCaseImpl: InitialUseCase {
     
     private let repository: InitialRepository
     
-    init(repository: InitialRepository = InitialRepositoryImpl()) {
+    init(repository: InitialRepository = DIContainer.shared.resolve(type: InitialRepository.self)) {
         self.repository = repository
     }
     

@@ -59,9 +59,9 @@ final class HomeViewModelImpl: HomeViewModel {
     var errorMessage: Observable<String?> = Observable(nil)
     
     init(
-        userUseCase: UserUseCase = UserUseCaseImpl(),
-        followsUseCase: FollowsUseCase = FollowsUseCaseImpl(),
-        nftUserCase: NftUseCase = NftUseCaseImpl()
+        userUseCase: UserUseCase = DIContainer.shared.resolve(type: UserUseCase.self),
+        followsUseCase: FollowsUseCase = DIContainer.shared.resolve(type: FollowsUseCase.self),
+        nftUserCase: NftUseCase = DIContainer.shared.resolve(type: NftUseCase.self)
     ) {
         self.userUseCase = userUseCase
         self.followsUseCase = followsUseCase

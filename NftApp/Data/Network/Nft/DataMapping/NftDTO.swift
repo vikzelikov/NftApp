@@ -35,7 +35,7 @@ struct NftDTO: Decodable {
             userId: 0,
             lastPrice: 100.0,
             currentPrice: 150.0,
-            serialNumber: 100000,
+            serialNumber: 12345,
             isForSell: false,
             isHidden: false,
             edition: .defaultValue

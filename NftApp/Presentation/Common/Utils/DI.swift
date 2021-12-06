@@ -31,7 +31,7 @@ final class DIContainer: DIContainerProtocol {
 
     func resolve<Component>(type: Component.Type) -> Component {
         guard let component = components["\(type)"] as? Component else {
-            fatalError("DI error cast: \(Component.self)")
+            fatalError("DI error cast from: \(Component.self)")
         }
         
         return component

@@ -18,8 +18,17 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let container = DIContainer.shared
+        container.register(type: UserRepository.self, component: UserRepositoryImpl())
+        container.register(type: UserStorage.self, component: UserStorageImpl())
+        container.register(type: UserUseCase.self, component: UserUseCaseImpl())
+        container.register(type: FollowsUseCase.self, component: FollowsUseCaseImpl())
+        container.register(type: NftUseCase.self, component: NftUseCaseImpl())
+        container.register(type: HomeViewModel.self, component: HomeViewModelImpl())
+        
         headerView = ProfileHeaderView()
-        if viewModel == nil { viewModel = HomeViewModelImpl() }
+        if viewModel == nil { viewModel = container.resolve(type: HomeViewModel.self) }
         viewModel?.viewDidLoad(isRefresh: false)
         bindData()
         
@@ -140,7 +149,9 @@ class HomeViewController: UIViewController {
             ]
 
             activityVC.popoverPresentationController?.sourceView = sender as UIView
-            self.present(activityVC, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.present(activityVC, animated: true, completion: nil)
+            }
         }
     }
     

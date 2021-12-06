@@ -39,7 +39,7 @@ final class SearchViewModelImpl: SearchViewModel {
     private var isEditionsSearched = false
     private var isNftsSearched = false
     
-    init(searchUseCase: SearchUseCase = SearchUseCaseImpl()) {
+    init(searchUseCase: SearchUseCase = DIContainer.shared.resolve(type: SearchUseCase.self)) {
         self.searchUseCase = searchUseCase
     }
     

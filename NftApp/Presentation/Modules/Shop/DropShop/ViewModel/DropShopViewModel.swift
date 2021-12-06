@@ -36,7 +36,10 @@ final class DropShopViewModelImpl: DropShopViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init(dropShopUseCase: DropShopUseCase = DropShopUseCaseImpl(), userUseCase: UserUseCase = UserUseCaseImpl()) {
+    init(
+        dropShopUseCase: DropShopUseCase = DIContainer.shared.resolve(type: DropShopUseCase.self),
+        userUseCase: UserUseCase = DIContainer.shared.resolve(type: UserUseCase.self)
+    ) {
         self.dropShopUseCase = dropShopUseCase
         self.userUseCase = userUseCase
         

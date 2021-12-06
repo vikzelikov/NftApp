@@ -23,7 +23,12 @@ class DropShopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = DropShopViewModelImpl()
+        let container = DIContainer.shared
+        container.register(type: DropShopRepository.self, component: DropShopRepositoryImpl())
+        container.register(type: DropShopUseCase.self, component: DropShopUseCaseImpl())
+        container.register(type: DropShopViewModel.self, component: DropShopViewModelImpl())
+        
+        viewModel = container.resolve(type: DropShopViewModel.self)
         viewModel?.viewDidLoad()
         bindData()
         

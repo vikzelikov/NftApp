@@ -31,7 +31,7 @@ final class AddFundsViewModelImpl: AddFundsViewModel {
     
     private var selectedProduct: InAppPurchase?
     
-    init(walletUseCase: WalletUseCase = WalletUseCaseImpl()) {
+    init(walletUseCase: WalletUseCase = DIContainer.shared.resolve(type: WalletUseCase.self)) {
         self.walletUseCase = walletUseCase
     }
     

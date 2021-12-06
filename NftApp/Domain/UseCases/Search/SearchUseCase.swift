@@ -21,7 +21,7 @@ final class SearchUseCaseImpl: SearchUseCase {
     
     private let repository: SearchRepository
     
-    init(repository: SearchRepository = SearchRepositoryImpl()) {
+    init(repository: SearchRepository = DIContainer.shared.resolve(type: SearchRepository.self)) {
         self.repository = repository
     }
     

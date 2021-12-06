@@ -30,7 +30,6 @@ enum TypeDetailNFT {
 final class DetailNftViewModelImpl: DetailNftViewModel {
     
     private let dropShopUseCase: DropShopUseCase
-    private let marketUseCase: MarketUseCase
     
     var typeDetailNFT: TypeDetailNFT = TypeDetailNFT.detail
     var nftViewModel: Observable<Nft?> = Observable(nil)
@@ -45,9 +44,8 @@ final class DetailNftViewModelImpl: DetailNftViewModel {
         }
     }
     
-    init(dropShopUseCase: DropShopUseCase = DropShopUseCaseImpl(), marketUseCase: MarketUseCase = MarketUseCaseImpl()) {
+    init(dropShopUseCase: DropShopUseCase = DIContainer.shared.resolve(type: DropShopUseCase.self)) {
         self.dropShopUseCase = dropShopUseCase
-        self.marketUseCase = marketUseCase
     }
     
     func viewDidLoad() {
@@ -149,7 +147,7 @@ final class DetailNftViewModelImpl: DetailNftViewModel {
     }
 
     private func isInvalidEdition() -> Bool {
-        return nftViewModel.value?.edition.name == nil
+        return nftViewModel.value?.edition.id == 0 || nftViewModel.value?.edition.name == ""
     }
     
 }

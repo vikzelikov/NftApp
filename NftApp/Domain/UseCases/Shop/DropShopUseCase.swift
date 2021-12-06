@@ -21,7 +21,7 @@ final class DropShopUseCaseImpl: DropShopUseCase {
     
     private let repository: DropShopRepository
     
-    init(repository: DropShopRepository = DropShopRepositoryImpl()) {
+    init(repository: DropShopRepository = DIContainer.shared.resolve(type: DropShopRepository.self)) {
         self.repository = repository
     }
     

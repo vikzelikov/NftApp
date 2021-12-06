@@ -39,7 +39,7 @@ struct EditionDTO: Decodable {
             influencerId: 0,
             count: 1000,
             countNFTs: 30,
-            name: "name",
+            name: "",
             description: "description",
             price: 200.0,
             dateExpiration: "1640889297",

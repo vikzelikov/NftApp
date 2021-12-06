@@ -21,8 +21,8 @@ final class SignupUseCaseImpl: SignupUseCase {
     private let userStorage: UserStorage
     
     init(
-        repository: AuthRepository = AuthRepositoryImpl(),
-        userStorage: UserStorage = UserStorageImpl()
+        repository: AuthRepository = DIContainer.shared.resolve(type: AuthRepository.self),
+        userStorage: UserStorage = DIContainer.shared.resolve(type: UserStorage.self)
     ) {
         self.repository = repository
         self.userStorage = userStorage

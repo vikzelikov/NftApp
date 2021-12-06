@@ -17,7 +17,12 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel = SearchViewModelImpl()
+        let container = DIContainer.shared
+        container.register(type: SearchRepository.self, component: SearchRepositoryImpl())
+        container.register(type: SearchUseCase.self, component: SearchUseCaseImpl())
+        container.register(type: SearchViewModel.self, component: SearchViewModelImpl())
+        
+        viewModel = container.resolve(type: SearchViewModel.self)
         bindData()
         
         setupStyle()

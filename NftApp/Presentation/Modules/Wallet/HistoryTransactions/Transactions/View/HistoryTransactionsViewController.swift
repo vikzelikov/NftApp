@@ -79,7 +79,7 @@ extension HistoryTransactionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.didSelectItem(at: indexPath.row) { transactionViewModel in
             let vc = DetailTransactionViewController()
-            vc.viewModel = DetailTransactionViewModelImpl()
+            vc.viewModel = DIContainer.shared.resolve(type: DetailTransactionViewModel.self)
             vc.viewModel?.transactionViewModel.value = transactionViewModel
             self.navigationController?.pushViewController(vc, animated: true)
         }

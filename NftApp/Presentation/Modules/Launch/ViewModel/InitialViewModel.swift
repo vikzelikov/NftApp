@@ -25,8 +25,8 @@ final class InitialViewModelImpl: InitialViewModel {
     var errorMessage: Observable<String?> = Observable(nil)
     
     init() {
-        initialUseCase = InitialUseCaseImpl()
-        userUseCase = UserUseCaseImpl()
+        initialUseCase = DIContainer.shared.resolve(type: InitialUseCase.self)
+        userUseCase = DIContainer.shared.resolve(type: UserUseCase.self)
     }
     
     func initial(isDelay: Bool) {

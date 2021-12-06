@@ -17,6 +17,13 @@ class WalletViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let container = DIContainer.shared
+        container.register(type: WalletRepository.self, component: WalletRepositoryImpl())
+        container.register(type: WalletUseCase.self, component: WalletUseCaseImpl())
+        container.register(type: HistoryTransactionsViewModel.self, component: HistoryTransactionsViewModelImpl())
+        container.register(type: DetailTransactionViewModel.self, component: DetailTransactionViewModelImpl())
+        container.register(type: AddFundsViewModel.self, component: AddFundsViewModelImpl())
                 
         bindData()
         

@@ -40,7 +40,7 @@ final class FollowsViewModelImpl: FollowsViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init(followsUseCase: FollowsUseCase = FollowsUseCaseImpl()) {
+    init(followsUseCase: FollowsUseCase = DIContainer.shared.resolve(type: FollowsUseCase.self)) {
         self.followsUseCase = followsUseCase
     }
     

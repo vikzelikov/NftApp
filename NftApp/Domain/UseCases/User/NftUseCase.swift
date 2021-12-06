@@ -20,7 +20,10 @@ final class NftUseCaseImpl: NftUseCase {
     private let repository: UserRepository
     private let userStorage: UserStorage
     
-    init(repository: UserRepository = UserRepositoryImpl(), userStorage: UserStorage = UserStorageImpl()) {
+    init(
+        repository: UserRepository = DIContainer.shared.resolve(type: UserRepository.self),
+        userStorage: UserStorage = DIContainer.shared.resolve(type: UserStorage.self)
+    ) {
         self.repository = repository
         self.userStorage = userStorage
     }
