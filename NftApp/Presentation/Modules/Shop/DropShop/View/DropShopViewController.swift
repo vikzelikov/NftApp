@@ -23,12 +23,9 @@ class DropShopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let container = DIContainer.shared
-        container.register(type: DropShopRepository.self, component: DropShopRepositoryImpl())
-        container.register(type: DropShopUseCase.self, component: DropShopUseCaseImpl())
-        container.register(type: DropShopViewModel.self, component: DropShopViewModelImpl())
+        AppDIContainer.shared.makeDropShopScene()
         
-        viewModel = container.resolve(type: DropShopViewModel.self)
+        viewModel = DIContainer.shared.resolve(type: DropShopViewModel.self)
         viewModel?.viewDidLoad()
         bindData()
         
@@ -176,10 +173,9 @@ extension DropShopViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath)
             guard
-                let cell = tableView
-                    .dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath)
-                    as? HeaderViewCell
+                let cell = cell as? HeaderViewCell
             else {
                 return UITableViewCell()
             }
@@ -188,16 +184,17 @@ extension DropShopViewController: UITableViewDataSource {
             return cell
             
         } else if indexPath.row == 1 {
-            let cell = tableView
-                .dequeueReusableCell(withIdentifier: InfluencersCollectionView.cellIdentifier, for: indexPath)
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: InfluencersCollectionView.cellIdentifier,
+                for: indexPath
+            )
             cell.selectionStyle = .none
             return cell
             
         } else if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath)
             guard
-                let cell = tableView
-                    .dequeueReusableCell(withIdentifier: HeaderViewCell.cellIdentifier, for: indexPath)
-                    as? HeaderViewCell
+                let cell = cell as? HeaderViewCell
             else {
                 return UITableViewCell()
             }
@@ -206,10 +203,9 @@ extension DropShopViewController: UITableViewDataSource {
             return cell
             
         } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath)
             guard
-                let cell = tableView
-                    .dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath)
-                    as? NftViewCell
+                let cell = cell as? NftViewCell
             else {
                 return UITableViewCell()
             }
@@ -263,10 +259,13 @@ extension DropShopViewController: UICollectionViewDelegate, UICollectionViewData
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: InfluencerCollectionViewCell.cellIdentifier,
+            for: indexPath
+        )
+        
         guard
-            let cell = collectionView
-                .dequeueReusableCell(withReuseIdentifier: InfluencerCollectionViewCell.cellIdentifier, for: indexPath)
-                as? InfluencerCollectionViewCell
+            let cell = cell as? InfluencerCollectionViewCell
         else {
             return UICollectionViewCell()
         }
@@ -281,10 +280,9 @@ extension DropShopViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel?.didSelectInfluencer(at: indexPath.row) { userViewModel in
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
             guard
-                let vc = storyboard
-                    .instantiateViewController(withIdentifier: "HomeViewController")
-                    as? HomeViewController
+                let vc = vc as? HomeViewController
             else {
                 return
             }

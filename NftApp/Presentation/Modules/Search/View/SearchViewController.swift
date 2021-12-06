@@ -17,12 +17,9 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let container = DIContainer.shared
-        container.register(type: SearchRepository.self, component: SearchRepositoryImpl())
-        container.register(type: SearchUseCase.self, component: SearchUseCaseImpl())
-        container.register(type: SearchViewModel.self, component: SearchViewModelImpl())
+        AppDIContainer.shared.makeSearchScene()
         
-        viewModel = container.resolve(type: SearchViewModel.self)
+        viewModel = DIContainer.shared.resolve(type: SearchViewModel.self)
         bindData()
         
         setupStyle()
@@ -167,10 +164,9 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let vm = viewModel?.items.value[indexPath.section][indexPath.row] {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SearchViewCell.cellIdentifier, for: indexPath)
             guard
-                let cell = tableView
-                    .dequeueReusableCell(withIdentifier: SearchViewCell.cellIdentifier, for: indexPath)
-                    as? SearchViewCell
+                let cell = cell as? SearchViewCell
             else {
                 return UITableViewCell()
             }

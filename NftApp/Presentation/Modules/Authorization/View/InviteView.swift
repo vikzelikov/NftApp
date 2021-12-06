@@ -38,10 +38,7 @@ class InviteView: UIView {
     }
     
     func viewDidLoad() {
-        let container = DIContainer.shared
-        container.register(type: InviteViewModel.self, component: InviteViewModelImpl())
-        
-        viewModel = container.resolve(type: InviteViewModel.self)
+        viewModel = DIContainer.shared.resolve(type: InviteViewModel.self)
         bindData()
         
         setupStyle()

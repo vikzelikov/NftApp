@@ -19,16 +19,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let container = DIContainer.shared
-        container.register(type: UserRepository.self, component: UserRepositoryImpl())
-        container.register(type: UserStorage.self, component: UserStorageImpl())
-        container.register(type: UserUseCase.self, component: UserUseCaseImpl())
-        container.register(type: FollowsUseCase.self, component: FollowsUseCaseImpl())
-        container.register(type: NftUseCase.self, component: NftUseCaseImpl())
-        container.register(type: HomeViewModel.self, component: HomeViewModelImpl())
+        AppDIContainer.shared.makeHomeScene()
         
         headerView = ProfileHeaderView()
-        if viewModel == nil { viewModel = container.resolve(type: HomeViewModel.self) }
+        if viewModel == nil { viewModel = DIContainer.shared.resolve(type: HomeViewModel.self) }
         viewModel?.viewDidLoad(isRefresh: false)
         bindData()
         
@@ -234,10 +228,12 @@ extension HomeViewController: SkeletonTableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let collectionNFTs = self.viewModel?.itemsNfts.value {
             if collectionNFTs.isEmpty {
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: PlaceholderViewCell.cellIdentifier,
+                    for: indexPath
+                )
                 guard
-                    let cell = tableView
-                        .dequeueReusableCell(withIdentifier: PlaceholderViewCell.cellIdentifier, for: indexPath)
-                        as? PlaceholderViewCell
+                    let cell = cell as? PlaceholderViewCell
                 else {
                     return UITableViewCell()
                 }
@@ -245,10 +241,9 @@ extension HomeViewController: SkeletonTableViewDataSource {
                 cell.selectionStyle = .none
                 return cell
             } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath)
                 guard
-                    let cell = tableView
-                        .dequeueReusableCell(withIdentifier: NftViewCell.cellIdentifier, for: indexPath)
-                        as? NftViewCell
+                    let cell = cell as? NftViewCell
                 else {
                     return UITableViewCell()
                 }

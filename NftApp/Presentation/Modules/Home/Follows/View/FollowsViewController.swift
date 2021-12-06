@@ -84,9 +84,9 @@ extension FollowsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.didSelectItem(at: indexPath.row) { userViewModel in
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
             guard
-                let vc = storyboard
-                    .instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+                 let vc = vc as? HomeViewController
             else {
                 return
             }
@@ -110,13 +110,11 @@ extension FollowsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: FollowsViewCell.cellIdentifier, for: indexPath)
         guard
-            let cell = tableView
-                .dequeueReusableCell(withIdentifier: FollowsViewCell.cellIdentifier, for: indexPath)
-                as? FollowsViewCell
+            let cell = cell as? FollowsViewCell
         else {
-            assertionFailure("Cannot dequeue reusable cell")
-            return UITableViewCell()
+            fatalError("Cannot dequeue reusable cell")
         }
         
         cell.selectionStyle = UITableViewCell.SelectionStyle.default

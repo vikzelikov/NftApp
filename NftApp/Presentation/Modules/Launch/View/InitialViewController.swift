@@ -20,18 +20,12 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let container = DIContainer.shared
-        container.register(type: InitialRepository.self, component: InitialRepositoryImpl())
-        container.register(type: UserRepository.self, component: UserRepositoryImpl())
-        container.register(type: UserStorage.self, component: UserStorageImpl())
-        container.register(type: UserUseCase.self, component: UserUseCaseImpl())
-        container.register(type: InitialUseCase.self, component: InitialUseCaseImpl())
-        container.register(type: InitialViewModel.self, component: InitialViewModelImpl())
+        AppDIContainer.shared.makeInitialScene()
         
         UserDefaults.standard.set(["English"], forKey: "AppleLanguages")
         UserDefaults.standard.synchronize()
         
-        viewModel = container.resolve(type: InitialViewModel.self)
+        viewModel = DIContainer.shared.resolve(type: InitialViewModel.self)
         viewModel?.initial(isDelay: false)
         bindData()
         

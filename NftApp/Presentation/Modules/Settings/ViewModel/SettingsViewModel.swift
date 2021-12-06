@@ -33,7 +33,7 @@ final class SettingsViewModelImpl: SettingsViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var errorMessage: Observable<String?> = Observable(nil)
     
-    init(userUseCase: UserUseCase = UserUseCaseImpl()) {
+    init(userUseCase: UserUseCase = DIContainer.shared.resolve(type: UserUseCase.self)) {
         self.userUseCase = userUseCase
     }
     

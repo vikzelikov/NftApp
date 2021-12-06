@@ -15,6 +15,8 @@ class InfluencersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        AppDIContainer.shared.makeInfluencersScene()
             
         viewModel?.viewDidLoad()
         bindData()
@@ -78,9 +80,9 @@ extension InfluencersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.didSelectItem(at: indexPath.row) { userViewModel in
             let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
             guard
-                let vc = storyboard
-                    .instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+                let vc = vc as? HomeViewController
             else {
                 return
             }
@@ -104,10 +106,9 @@ extension InfluencersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: InfluencerViewCell.cellIdentifier, for: indexPath)
         guard
-            let cell = tableView
-                .dequeueReusableCell(withIdentifier: InfluencerViewCell.cellIdentifier, for: indexPath)
-                as? InfluencerViewCell
+            let cell = cell as? InfluencerViewCell
         else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()

@@ -27,7 +27,9 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = SettingsViewModelImpl()
+        AppDIContainer.shared.makeSettingsScene()
+        
+        viewModel = DIContainer.shared.resolve(type: SettingsViewModel.self)
         viewModel?.viewDidLoad()
         bindData()
         
@@ -254,15 +256,14 @@ extension SettingsViewController: UITableViewDelegate {
             self.viewModel?.logoutDidTap()
 
             let storyboard = UIStoryboard(name: "Authorization", bundle: nil)
+            let page = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
             guard
-                let page = storyboard
-                    .instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+                let page = page as? LoginViewController
             else {
                 return
             }
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             appDelegate.window?.rootViewController = UINavigationController(rootViewController: page)
-            
         }))
 
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
@@ -285,10 +286,9 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView === personalDataTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingViewCell.cellIdentifier, for: indexPath)
             guard
-                let cell = tableView
-                    .dequeueReusableCell(withIdentifier: SettingViewCell.cellIdentifier, for: indexPath)
-                    as? SettingViewCell
+                let cell = cell as? SettingViewCell
             else {
                 assertionFailure("Cannot dequeue reusable cell")
                 return UITableViewCell()
@@ -301,10 +301,9 @@ extension SettingsViewController: UITableViewDataSource {
                     
             return cell
         } else if tableView === otherSettingsTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingViewCell.cellIdentifier, for: indexPath)
             guard
-                let cell = tableView
-                    .dequeueReusableCell(withIdentifier: SettingViewCell.cellIdentifier, for: indexPath)
-                    as? SettingViewCell
+                let cell = cell as? SettingViewCell
             else {
                 assertionFailure("Cannot dequeue reusable cell")
                 return UITableViewCell()

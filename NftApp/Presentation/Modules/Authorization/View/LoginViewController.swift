@@ -21,13 +21,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let container = DIContainer.shared
-        container.register(type: AuthRepository.self, component: AuthRepositoryImpl())
-        container.register(type: UserStorage.self, component: UserStorageImpl())
-        container.register(type: LoginUseCase.self, component: LoginUseCaseImpl())
-        container.register(type: LoginViewModel.self, component: LoginViewModelImpl())
+        AppDIContainer.shared.makeAuthorizationScene()
 
-        viewModel = container.resolve(type: LoginViewModel.self)
+        viewModel = DIContainer.shared.resolve(type: LoginViewModel.self)
         viewModel?.viewDidload()
         bindData()
         

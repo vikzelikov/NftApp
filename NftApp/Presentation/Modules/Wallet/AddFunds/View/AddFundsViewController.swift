@@ -102,10 +102,9 @@ extension AddFundsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PurchaseViewCell.cellIdentifier, for: indexPath)
         guard
-            let cell = tableView
-                .dequeueReusableCell(withIdentifier: PurchaseViewCell.cellIdentifier, for: indexPath)
-                as? PurchaseViewCell
+            let cell = cell as? PurchaseViewCell
         else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()
