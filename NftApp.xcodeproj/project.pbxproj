@@ -135,6 +135,7 @@
 		187CF94027493B5400EBCF27 /* EarlyAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CF93F27493B5400EBCF27 /* EarlyAccessView.swift */; };
 		187CF94227493B6300EBCF27 /* EarlyAccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187CF94127493B6300EBCF27 /* EarlyAccessView.xib */; };
 		18855F3626D52A360018B072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18855F3526D52A360018B072 /* Assets.xcassets */; };
+		1898738E277B551C00590B1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1898738D277B551C00590B1A /* GoogleService-Info.plist */; };
 		18B84266266E27A40033AFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84265266E27A40033AFC0 /* AppDelegate.swift */; };
 		18B8426A266E27A40033AFC0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B84269266E27A40033AFC0 /* SignUpViewController.swift */; };
 		18B8426D266E27A40033AFC0 /* Authorization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B8426B266E27A40033AFC0 /* Authorization.storyboard */; };
@@ -154,7 +155,6 @@
 		18D2C126274044580043BEEC /* CheckInviteRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */; };
 		18D3FEC9268FAE390030929D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FEC8268FAE390030929D /* Extensions.swift */; };
 		18D3FED02697B8C40030929D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3FECF2697B8C40030929D /* LoginViewController.swift */; };
-		18D452B1275D817B009D3156 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18D452B0275D817B009D3156 /* GoogleService-Info.plist */; };
 		18D8452426CD5D2500888D32 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452326CD5D2500888D32 /* BaseViewModel.swift */; };
 		18D8452826CD682400888D32 /* ErrorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452726CD682400888D32 /* ErrorDTO.swift */; };
 		18D8452D26CDAEF100888D32 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8452C26CDAEF100888D32 /* UserStorage.swift */; };
@@ -364,6 +364,7 @@
 		187CF93F27493B5400EBCF27 /* EarlyAccessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarlyAccessView.swift; sourceTree = "<group>"; };
 		187CF94127493B6300EBCF27 /* EarlyAccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EarlyAccessView.xib; sourceTree = "<group>"; };
 		18855F3526D52A360018B072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1898738D277B551C00590B1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18B84262266E27A40033AFC0 /* NftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B84265266E27A40033AFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18B84269266E27A40033AFC0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -383,7 +384,6 @@
 		18D2C125274044580043BEEC /* CheckInviteRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInviteRequestDTO.swift; sourceTree = "<group>"; };
 		18D3FEC8268FAE390030929D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		18D3FECF2697B8C40030929D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		18D452B0275D817B009D3156 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18D8452326CD5D2500888D32 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		18D8452726CD682400888D32 /* ErrorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDTO.swift; sourceTree = "<group>"; };
 		18D8452C26CDAEF100888D32 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
@@ -1146,10 +1146,10 @@
 		18B84264266E27A40033AFC0 /* NftApp */ = {
 			isa = PBXGroup;
 			children = (
-				18D452B0275D817B009D3156 /* GoogleService-Info.plist */,
+				1898738D277B551C00590B1A /* GoogleService-Info.plist */,
 				185435E326D4164C00368C8E /* NftApp.entitlements */,
 				18B84273266E27A50033AFC0 /* Info.plist */,
-				18B8427E266F61180033AFC0 /* Resourses */,
+				18B8427E266F61180033AFC0 /* Resources */,
 				18B8427D266F61030033AFC0 /* Data */,
 				18B8427C266F60FD0033AFC0 /* Domain */,
 				18B8427B266F60B30033AFC0 /* Presentation */,
@@ -1187,14 +1187,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		18B8427E266F61180033AFC0 /* Resourses */ = {
+		18B8427E266F61180033AFC0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				18E1107126D595EF007FD66E /* Localizable.strings */,
 				1879C56926C9C74D00CE367E /* Constants.swift */,
 				18855F3526D52A360018B072 /* Assets.xcassets */,
 			);
-			path = Resourses;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		18B8427F266F618F0033AFC0 /* UseCases */ = {
@@ -1735,7 +1735,7 @@
 				182342C5269DFC6300CD2907 /* DropShopViewController.xib in Resources */,
 				18855F3626D52A360018B072 /* Assets.xcassets in Resources */,
 				186E5FF826B6A3FD008291AC /* AddFundsViewController.xib in Resources */,
-				18D452B1275D817B009D3156 /* GoogleService-Info.plist in Resources */,
+				1898738E277B551C00590B1A /* GoogleService-Info.plist in Resources */,
 				182342F026A2EB5E00CD2907 /* TradingHistoryViewController.xib in Resources */,
 				1833847126FD399A00EAD9EB /* DetailDescriptionViewController.xib in Resources */,
 				182342DC26A1E67F00CD2907 /* NftMarketViewCell.xib in Resources */,
