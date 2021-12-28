@@ -33,7 +33,7 @@ struct EditionDTO: Decodable {
     let mediaUrl: String
     let influencer: EditionInfluencerDTO?
     
-    static var defaultValue: EditionDTO {
+    static var placeholder: Self {
         .init(
             id: 0,
             influencerId: 0,

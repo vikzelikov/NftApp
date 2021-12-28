@@ -221,7 +221,7 @@ final class HomeViewModelImpl: HomeViewModel {
                     
                     self.createdNfts += editions.map {
                         let edition = $0
-                        var nft = Nft(nft: .defaultValue)
+                        var nft = Nft(nft: .placeholder)
                         nft.edition = edition
                         return nft
                     }

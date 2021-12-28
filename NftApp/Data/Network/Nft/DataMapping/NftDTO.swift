@@ -29,7 +29,7 @@ struct NftDTO: Decodable {
     let isHidden: Bool
     let edition: EditionDTO
     
-    static var defaultValue: NftDTO {
+    static var placeholder: Self {
         .init(
             id: 0,
             userId: 0,
@@ -38,7 +38,7 @@ struct NftDTO: Decodable {
             serialNumber: 12345,
             isForSell: false,
             isHidden: false,
-            edition: .defaultValue
+            edition: .placeholder
         )
     }
     

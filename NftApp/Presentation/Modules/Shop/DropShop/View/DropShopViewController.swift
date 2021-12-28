@@ -131,7 +131,7 @@ extension DropShopViewController: UITableViewDelegate {
         
         viewModel?.didSelectItem(at: indexPath.row - 3) { editionViewModel in
             let vc = DetailNftViewController(nibName: "DetailNftViewController", bundle: nil)
-            var nft = Nft(nft: .defaultValue)
+            var nft = Nft(nft: .placeholder)
             nft.edition = editionViewModel
             vc.viewModel = DetailNftViewModelImpl()
             vc.viewModel?.nftViewModel.value = nft

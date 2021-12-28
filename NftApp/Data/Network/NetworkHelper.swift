@@ -60,11 +60,12 @@ struct NetworkHelper {
     
     static func request<T : Decodable>(
         endpoint: Endpoint,
+        receiveOn: DispatchQueue = .main,
         completion: @escaping (Result<T, Error>) -> Void
     ) {
         guard var components = URLComponents(string: endpoint.url) else {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
-            fatalError("Error URLComponents")
+            return
         }
         
         components.queryItems = getUrlParameters(parameters: endpoint.urlParameters)
@@ -72,7 +73,7 @@ struct NetworkHelper {
 
         guard let url = components.url else {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
-            fatalError("Error URL")
+            return
         }
         
         var request = URLRequest(url: url)
@@ -85,7 +86,13 @@ struct NetworkHelper {
                 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
-            self.validateResponse(data: data, response: response, error: error, completion: completion)
+            self.validateResponse(
+                data: data,
+                response: response,
+                error: error,
+                receiveOn: receiveOn,
+                completion: completion
+            )
             
         }.resume()
     }
@@ -100,7 +107,7 @@ struct NetworkHelper {
             let imageData = request.image.jpegData(compressionQuality: 0.1)
         else {
             completion(.failure(ErrorMessage(errorType: .cancelled, errorDTO: nil, code: nil)))
-            fatalError("Error URL or image")
+            return
         }
         
         var request = URLRequest(url: url)
@@ -126,7 +133,12 @@ struct NetworkHelper {
         
         URLSession.shared.uploadTask(with: request, from: body, completionHandler: { data, response, error in
             
-            self.validateResponse(data: data, response: response, error: error, completion: completion)
+            self.validateResponse(
+                data: data,
+                response: response,
+                error: error,
+                completion: completion
+            )
             
         }).resume()
     }
@@ -135,9 +147,10 @@ struct NetworkHelper {
         data: Data?,
         response: URLResponse?,
         error: Error?,
+        receiveOn: DispatchQueue = .main,
         completion: @escaping (Result<T, Error>) -> Void
     ) {
-        DispatchQueue.main.async {
+        receiveOn.async {
             if let error = error {
                 completion(.failure(ErrorMessage(errorType: .error, errorDTO: nil, code: nil)))
                 print("Error making request: \(error.localizedDescription) from \(T.self)")

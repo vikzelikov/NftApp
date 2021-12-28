@@ -72,6 +72,7 @@ final class AppDIContainer {
 
         container.register(type: LoginViewModel.self, component: LoginViewModelImpl())
         container.register(type: SignupViewModel.self, component: SignupViewModelImpl())
+        container.register(type: InviteViewModel.self, component: InviteViewModelImpl())
     }
     
     // MARK: - Home

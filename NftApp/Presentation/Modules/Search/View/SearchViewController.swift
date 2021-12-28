@@ -90,7 +90,7 @@ extension SearchViewController: UITableViewDelegate {
             
             case .editions:
                 let vc = DetailNftViewController()
-                var nft = Nft(nft: .defaultValue)
+                var nft = Nft(nft: .placeholder)
                 nft.edition.id = searchCellViewModel.id
                 vc.viewModel = DetailNftViewModelImpl()
                 vc.viewModel?.typeDetailNFT = .dropShop
@@ -99,7 +99,7 @@ extension SearchViewController: UITableViewDelegate {
             
             case .nfts:
                 let vc = DetailNftViewController()
-                var nft = Nft(nft: .defaultValue)
+                var nft = Nft(nft: .placeholder)
                 nft.edition.id = searchCellViewModel.id
                 vc.viewModel = DetailNftViewModelImpl()
                 vc.viewModel?.nftViewModel.value = nft
